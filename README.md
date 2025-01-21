@@ -1,8 +1,12 @@
 # convertpdf-gpt
 
-## 1. Quick Use Guide
+## 1. Quick Start Guide
 
-Convert a pdf file automatically to markdown. This `convertpdf-gpt` project provides two python scripts to get it done. The first one does a rough conversion:
+Convert a pdf file automatically to markdown. This `convertpdf-gpt` project provides two python scripts to get it done.
+
+### 1.1 `convert_pdf.py` script
+
+The first script does a rough conversion:
 
 ```sh
 >python convert_pdf.py --model "gpt-4o-mini"
@@ -10,9 +14,29 @@ Convert a pdf file automatically to markdown. This `convertpdf-gpt` project prov
                        --api-key "sk-proj-xmj...ktgA"
                        my_file.pdf
 ```
-This script takes your `my_file.pdf` file and uses Poppler (see https://github.com/oschwartz10612/poppler-windows/releases/tag/v24.08.0-0) to convert every page to a `.png` image. Then it feeds these images one-by-one to the OpenAI API (ChatGPT), with the request to convert the screenshot to markdown. The markdown for all pages is then written to `my_file.md`.
+This script takes your `my_file.pdf` file and uses Poppler (see https://github.com/oschwartz10612/poppler-windows/releases/tag/v24.08.0-0) to convert every page to a `.png` image. Then it feeds these images one-by-one to the OpenAI API (ChatGPT), with the request to convert the screenshot to markdown.
+When you run the script, you should see output like:
 
-The second script does some post processing on `my_file.md`:
+```
+C:\Users\krist\Documents\convertpdf-gpt>python convert_pdf.py --poppler-path "C:/poppler-24.08.0/Library/bin" user_manual.pdf
+[pdftocairo] Converting PDF to images... This may take a while.
+[pdftocairo] ...still working, please wait...
+[pdftocairo] ...still working, please wait...
+[pdftocairo] ...still working, please wait...
+[pdftocairo] ...still working, please wait...
+[pdftocairo] ...still working, please wait...
+[pdftocairo] Done! Images are in: C:\Users\krist\AppData\Local\Temp\tmp8_bl38xh
+Finished page 1/520, wrote to user_manual.md
+Finished page 2/520, wrote to user_manual.md
+Finished page 3/520, wrote to user_manual.md
+...
+```
+
+The markdown output gets written to `my_file.md`. Open it to have a look after the script has fully completed.
+
+### 1.2 `post_process.py` script
+
+The second script does some post processing on the markdown file:
 
 ```sh
 >python post_process.py my_file.md
