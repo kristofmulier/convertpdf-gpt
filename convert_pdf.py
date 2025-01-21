@@ -1,4 +1,5 @@
 import base64
+import time
 import io
 import os
 import re
@@ -70,11 +71,6 @@ def call_pdftocairo(
     dpi: int = 300,
     extra_args: Optional[List[str]] = None
 ) -> None:
-    """
-    Call pdftocairo (from the Poppler suite) in a subprocess to convert a PDF
-    into PNG images in the specified output directory. The output files will be
-    named 'page-1.png', 'page-2.png', etc.
-    """
     if extra_args is None:
         extra_args = []
 
@@ -84,14 +80,39 @@ def call_pdftocairo(
 
     cmd: List[str] = [
         pdftocairo_exe,
-        "-png",              # Output format: PNG
-        "-r", str(dpi),      # Resolution
+        "-png",
+        "-r", str(dpi),
     ] + extra_args + [
         pdf_path,
-        os.path.join(out_dir, "page")  # Output prefix
+        os.path.join(out_dir, "page")
     ]
 
-    subprocess.run(cmd, check=True)
+    print("[pdftocairo] Converting PDF to images... This may take a while.")
+
+    proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    try:
+        # Poll the process every 3 seconds and print a message if still running
+        while True:
+            time.sleep(3)
+            ret = proc.poll()
+            if ret is not None:
+                # Process finished
+                break
+            print("[pdftocairo] ...still working, please wait...")
+
+        # Now check the return code
+        if proc.returncode != 0:
+            stdout, stderr = proc.communicate()
+            print(stdout.decode('utf-8'))
+            print(stderr.decode('utf-8'))
+            raise subprocess.CalledProcessError(proc.returncode, cmd)
+    finally:
+        proc.stdout.close()
+        proc.stderr.close()
+
+    print("[pdftocairo] Done! Images are in:", out_dir)
+    return
+
 
 def convert_pdf_to_images(pdf_path: str, poppler_path: str, debug: bool = False) -> List[Image.Image]:
     """
@@ -216,7 +237,6 @@ def pdf_pages_to_vision_api(
             response = client.chat.completions.create(
                 model=model_name,
                 messages=[{"role": "user", "content": message_content}],
-                max_tokens=1000,
             )
 
             response_text: str = response.choices[0].message.content
