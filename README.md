@@ -8,11 +8,11 @@ ChatGPT does a tremendous job converting pdf page screenshots to markdown. The b
 
 The `convertpdf-gpt` project lets you convert a pdf file to markdown in three steps:
 
-- STEP 1: Run `convert_pdf.py` on the pdf-file.
-- STEP 2: Check for missing pages and add them manually.
-- STEP 3: Run `post_process.py`.
+- **STEP 1:** Run `convert_pdf.py` on the pdf-file.
+- **STEP 2:** Check for missing pages and add them manually.
+- **STEP 3:** Run `post_process.py`.
 
-### 1.1 `convert_pdf.py` script
+### 1.1 STEP 1: `convert_pdf.py` script
 
 The first script does a rough conversion:
 
@@ -42,7 +42,7 @@ Finished page 3/520, wrote to user_manual.md
 
 The markdown output gets written to `my_file.md`. Open it to have a look *after* the script has fully completed.
 
-### 1.2 Check for missing pages
+### 1.2 STEP 2: Check for missing pages
 
 Upon converting a 520 page pdf-file, I miss two pages. Here is one of them:
 
@@ -57,7 +57,7 @@ I'm unable to access the content of the PDF or any specific page within it. If y
 It's easy to find these missing pages in `my_file.md` (the output from the conversion script). Just search for the token `"backtick"` and you'll find them. Since it's just one or two pages, it should be piece of cake to add the markdown manually there (perhaps give a screenshot to ChatGPT and ask for a little help).
 
 
-### 1.3 `post_process.py` script
+### 1.3 STEP 3: `post_process.py` script
 
 Now let the post processing script take care of your markdown file:
 
