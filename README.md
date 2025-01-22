@@ -22,7 +22,7 @@ The first script does a rough conversion:
                        --api-key "sk-proj-xmj...ktgA"
                        my_file.pdf
 ```
-This script takes your `my_file.pdf` file and uses Poppler (see [2. Prerequisites](#2-prerequisites)) to convert every page to a `.png` image. Then it feeds these images one-by-one to the OpenAI API (ChatGPT), with the request to convert the screenshot to markdown.
+This script takes your `my_file.pdf` file and uses Poppler (see [2. Prerequisites](#2-prerequisites)) to convert every page to a `.png` image. Then it feeds these images one-by-one to the OpenAI API (ChatGPT), with the request to convert the screenshot to markdown. You need an API key to get that working (see [2. Prerequisites](#2-prerequisites)).
 When you run the script, you should see output like:
 
 ```
