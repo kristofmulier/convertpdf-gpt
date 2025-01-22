@@ -2,7 +2,7 @@
 
 Several tools exist to convert pdf to markdown: I've tried `pdfplumber` and `markitdown` - but none of them were satisfying. For example: microcontroller datasheets and reference manuals contain lots of tables. These tools fail to convert them properly. Maybe it's due to the buildup of the pdf-file? Whatever it is - I want a more robust conversion strategy.
 
-ChatGPT does a tremendous job converting pdf page screenshots to markdown. The beauty of a screenshot is that it rules out any problems related to internal pdf buildup: a screenshot is a screenshot - period. However, it isn't feasible to feed 500 screenshots manually to ChatGPT. So I created this `convertpdf-gpt` project to do that automatically.
+ChatGPT does a tremendous job converting pdf page screenshots to markdown. The beauty of a screenshot is that it rules out any problems related to internal pdf buildup: a screenshot is a screenshot - period. However, it isn't feasible to feed 500 screenshots manually to ChatGPT. So I created this `convertpdf-gpt` project to do that automatically (note: using the ChatGPT API costs some money, but it's less than one dollar per 100 pages).
 
 &nbsp;
 ## 1. Quick Start Guide
