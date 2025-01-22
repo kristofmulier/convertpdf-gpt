@@ -1,0 +1,15878 @@
+User Manual
+
+
+
+APM32F411xCxE
+
+
+
+Arm® Cortex®-M4F core-based 32-bit MCU
+
+
+
+Version: V 1.4
+
+
+
+
+
+Contents
+
+
+# 1 Introduction and document description rules................................. 7
+
+## 1.1 Introduction....................................................................................... 7
+
+## 1.2 Document description rules ......................................................... 7
+
+# 2 System architecture ............................................................................... 11
+
+## 2.1 Full Name and Abbreviation of Terms........................................... 11
+
+## 2.2 System architecture block diagram................................................ 11
+
+## 2.3 Memory mapping ............................................................................ 13
+
+## 2.4 Startup configuration ...................................................................... 13
+
+# 3 Flash memory ........................................................................................... 15
+
+## 3.1 Full Name and Abbreviation of Terms........................................... 15
+
+## 3.2 Introduction....................................................................................... 15
+
+## 3.3 Main characteristics .......................................................................... 15
+
+## 3.4 Flash memory structure .................................................................... 16
+
+## 3.5 Functional description ...................................................................... 16
+
+## 3.6 Register address mapping ................................................................ 23
+
+## 3.7 Register functional description ........................................................ 23
+
+# 4 Static Memory Controller (SMC)............................................................. 28
+
+## 4.1 Full Name and Abbreviation Description of Terms........................ 28
+
+## 4.2 SMC Introduction .............................................................................. 28
+
+## 4.3 SMC Structure Block Diagram .......................................................... 28
+
+## 4.4 SMC Functional Description ............................................................. 29
+
+## 4.5 SMC register address mapping .......................................................... 35
+
+## 4.6 SMC register functional description ................................................ 35
+
+# 5 System configuration controller (SYSCFG)........................................... 45
+
+## 5.1 Main characteristics .......................................................................... 45
+
+## 5.2 I/O compensation cell......................................................................... 45
+
+## 5.3 Register address mapping ................................................................ 45
+
+## 5.4 Register functional description .......................................................... 45
+
+# 6 Reset and clock (RCM) .......................................................................... 50
+
+## 6.1 Full Name and Abbreviation of Terms............................................ 50
+
+## 6.2 Reset management unit (RMU)........................................................ 50
+
+## 6.3 Clock Management Unit (CMU)....................................................... 52
+
+## 6.4 Register address mapping ................................................................ 60
+
+## 6.5 Register functional description .......................................................... 61
+
+# 7 Power management unit (PMU) ............................................................. 87
+
+
+
+
+# 7 Full Name and Abbreviation of Terms ......................................................................... 87
+
+## 7.1 Full Name and Abbreviation of Terms .................................................................. 87
+
+## 7.2 Introduction ......................................................................................................... 87
+
+## 7.3 Structure block diagram ..................................................................................... 88
+
+## 7.4 Functional Description ..................................................................................... 88
+
+## 7.5 Register address mapping ................................................................................. 95
+
+## 7.6 Register functional description .......................................................................... 95
+
+# 8 Nested Vector Interrupt Controller (NVIC) ......................................................... 99
+
+## 8.1 Full Name and Abbreviation of Terms .................................................................. 99
+
+## 8.2 Introduction ......................................................................................................... 99
+
+## 8.3 Main characteristics ............................................................................................ 99
+
+## 8.4 Interrupt and exception vector table .................................................................. 99
+
+# 9 External interrupt/event controller (EINT) ....................................................... 104
+
+## 9.1 Introduction ....................................................................................................... 104
+
+## 9.2 Main characteristics ........................................................................................... 104
+
+## 9.3 Functional Description ...................................................................................... 104
+
+## 9.4 Register address mapping .................................................................................. 107
+
+## 9.5 Register functional description .......................................................................... 107
+
+# 10 Direct memory access (DMA) ............................................................... 111
+
+## 10.1 Introduction ..................................................................................................... 111
+
+## 10.2 Main characteristics ........................................................................................... 111
+
+## 10.3 Functional Description ..................................................................................... 111
+
+## 10.4 DMA register address mapping ........................................................................... 118
+
+## 10.5 Register functional description ......................................................................... 118
+
+# 11 Debug MCU (DBGMCU) ...................................................................................... 127
+
+## 11.1 Full Name and Abbreviation of Terms ............................................................... 127
+
+## 11.2 Introduction ...................................................................................................... 127
+
+## 11.3 Main characteristics ......................................................................................... 127
+
+## 11.4 Functional Description ...................................................................................... 128
+
+## 11.5 Register address mapping ................................................................................. 129
+
+## 11.6 Register functional description .......................................................................... 129
+
+# 12 General-Purpose Input/Output Pin (GPIO) ................................................. 134
+
+## 12.1 Full Name and Abbreviation of Terms .............................................................. 134
+
+## 12.2 Main characteristics ......................................................................................... 134
+
+## 12.3 Structure block diagram .................................................................................. 135
+
+## 12.4 Functional Description ...................................................................................... 135
+
+## 12.5 Register address mapping ................................................................................. 139
+
+## 12.6 Register functional description ......................................................................... 139
+
+
+
+
+
+# 13 Timer overview................................................................................. 144
+
+## 13.1 Full Name and Abbreviation of Terms........................................................... 144
+
+## 13.2 Timer category and main difference ............................................................ 144
+
+
+
+# 14 Advanced Timers (TMR1/8)....................................................................... 147
+
+## 14.1 Introduction............................................................................................... 147
+
+## 14.2 Main characteristics .................................................................................. 147
+
+## 14.3 Structure block diagram ............................................................................ 148
+
+## 14.4 Functional Description .............................................................................. 148
+
+## 14.5 Register address mapping ........................................................................ 166
+
+## 14.6 Register functional description.................................................................. 167
+
+
+
+# 15 General-purpose timer (TMR2/3/4/5) ................................................... 187
+
+## 15.1 Introduction............................................................................................... 187
+
+## 15.2 Main characteristics .................................................................................. 187
+
+## 15.3 Structure block diagram ............................................................................ 188
+
+## 15.4 Functional Description .............................................................................. 188
+
+## 15.5 Register address mapping ........................................................................ 201
+
+## 15.6 Register functional description.................................................................. 202
+
+
+
+# 16 General-purpose timers (TMR9/10/11/12/13/14)............................. 219
+
+## 16.1 Introduction............................................................................................... 219
+
+## 16.2 Main characteristics of TMR9/12 ................................................................ 219
+
+## 16.3 Main characteristics of TMR10/11/13/14 ................................................... 219
+
+## 16.4 TMR9/12 structure block diagram............................................................... 220
+
+## 16.5 TMR10/11/13/14 structure block diagram................................................... 221
+
+## 16.6 Functional Description .............................................................................. 221
+
+## 16.7 TMR9/12 register address mapping ............................................................ 227
+
+## 16.8 TMR9/12 register functional description.................................................... 228
+
+## 16.9 TMR10/11/13/14 register address mapping................................................ 237
+
+## 16.10 TMR10/11/13/14 register functional description ....................................... 238
+
+
+
+# 17 Watchdog timer (WDT) .......................................................................... 246
+
+## 17.1 Introduction............................................................................................... 246
+
+## 17.2 Independent watchdog timer (IWDT).......................................................... 246
+
+## 17.3 Window watchdog timer (WWDT)................................................................. 248
+
+## 17.4 IWDT register address mapping ................................................................ 249
+
+## 17.5 IWDT register functional description.......................................................... 250
+
+## 17.6 WWDT register address mapping ............................................................... 251
+
+## 17.7 WWDT register functional description ....................................................... 251
+
+
+
+# 18 Real-time clock (RTC)............................................................................ 253
+
+
+
+
+
+Table of Contents
+
+
+
+# 18 Full Name and Abbreviation of Terms ................................................................................................. 253
+
+## 18.1 Introduction .................................................................................................................................... 253
+
+## 18.2 Main characteristics ...................................................................................................................... 253
+
+## 18.3 Structure block diagram ................................................................................................................ 253
+
+## 18.4 Functional Description .................................................................................................................. 254
+
+## 18.5 Register address mapping ............................................................................................................. 260
+
+## 18.6 Register functional description .................................................................................................... 260
+
+
+
+# 19 Universal synchronous/asynchronous transceiver (USART) .......................................................... 276
+
+## 19.1 Full Name and Abbreviation of Terms ......................................................................................... 276
+
+## 19.2 Introduction .................................................................................................................................... 276
+
+## 19.3 Main characteristics ...................................................................................................................... 276
+
+## 19.4 Functional Description ................................................................................................................. 278
+
+## 19.5 Register address mapping ............................................................................................................ 292
+
+## 19.6 Register functional description ................................................................................................... 292
+
+
+
+# 20 Internal integrated circuit interface (I2C) ...................................................................................... 301
+
+## 20.1 Full Name and Abbreviation of Terms ......................................................................................... 301
+
+## 20.2 Introduction .................................................................................................................................... 301
+
+## 20.3 Main characteristics ...................................................................................................................... 301
+
+## 20.4 Structure block diagram ............................................................................................................... 303
+
+## 20.5 Functional Description ................................................................................................................ 303
+
+## 20.6 Register address mapping ............................................................................................................ 310
+
+## 20.7 Register functional description ................................................................................................... 311
+
+
+
+# 21 Serial peripheral interface/Inter-IC sound interface (SPI/I2S) ................................................... 321
+
+## 21.1 Full Name and Abbreviation of Terms ......................................................................................... 321
+
+## 21.2 Introduction .................................................................................................................................... 321
+
+## 21.3 Main characteristics ...................................................................................................................... 322
+
+## 21.4 SPI functional description ............................................................................................................. 323
+
+## 21.5 I2S functional description ............................................................................................................ 334
+
+## 21.6 Register address mapping ............................................................................................................ 346
+
+## 21.7 Register functional description ................................................................................................... 347
+
+
+
+# 22 Quad serial peripheral interface (QSPI) .......................................................................................... 354
+
+## 22.1 Introduction .................................................................................................................................... 354
+
+## 22.2 Main characteristics ....................................................................................................................... 354
+
+## 22.3 Functional Description ............................................................................................................... 354
+
+## 22.4 Register address mapping ............................................................................................................ 363
+
+## 22.5 Register functional description ................................................................................................... 364
+
+
+
+# 23 Controller area network (CAN) ......................................................................................................... 376
+
+
+
+
+
+# 23 Peripheral Registers
+
+
+
+## 23.1 Full Name and Abbreviation Description of Terms ...................................................... 376
+
+
+
+## 23.2 Introduction ...................................................................................................................... 376
+
+
+
+## 23.3 Main Features .................................................................................................................. 376
+
+
+
+## 23.4 Functional Description ................................................................................................... 376
+
+
+
+## 23.5 Register address mapping ............................................................................................. 385
+
+
+
+## 23.6 Register functional description ...................................................................................... 386
+
+
+
+# 24 Secure digital input/output interface (SDIO) ................................................................. 404
+
+
+
+## 24.1 Full Name and Abbreviation of Terms ............................................................................ 404
+
+
+
+## 24.2 Introduction ........................................................................................................................ 404
+
+
+
+## 24.3 Main characteristics .......................................................................................................... 404
+
+
+
+## 24.4 Functional Description .................................................................................................... 404
+
+
+
+## 24.5 Register address mapping ............................................................................................... 429
+
+
+
+## 24.6 Register functional description ....................................................................................... 429
+
+
+
+# 25 USB_OTG .............................................................................................................................. 441
+
+
+
+## 25.1 Introduction ........................................................................................................................ 441
+
+
+
+## 25.2 OTG_FS global register address mapping ......................................................................... 441
+
+
+
+## 25.3 OTG_FS global register functional description ............................................................... 442
+
+
+
+## 25.4 OTG_FS master mode register address mapping ............................................................. 457
+
+
+
+## 25.5 OTG_FS host mode register functional description ........................................................ 457
+
+
+
+## 25.6 OTG_FS device mode register address mapping .............................................................. 464
+
+
+
+## 25.7 OTG_FS device mode register functional description .................................................... 465
+
+
+
+## 25.8 Full-speed OTG power and clock gating control register (OTG_FS_PCGCTRL) 481
+
+
+
+# 26 Analog-digital converter (ADC) ...................................................................................... 483
+
+
+
+## 26.1 Full Name and Abbreviation of Terms ............................................................................... 483
+
+
+
+## 26.2 Introduction ........................................................................................................................ 484
+
+
+
+## 26.3 Main characteristics .......................................................................................................... 484
+
+
+
+## 26.4 Functional Description ..................................................................................................... 485
+
+
+
+## 26.5 Register address mapping ............................................................................................... 494
+
+
+
+## 26.6 Register functional description ........................................................................................ 495
+
+
+
+# 27 Comparator (COMP) ......................................................................................................... 504
+
+
+
+## 27.1 Full Name and Abbreviation of Terms ............................................................................... 504
+
+
+
+## 27.2 Introduction ........................................................................................................................ 504
+
+
+
+## 27.3 Main characteristics .......................................................................................................... 504
+
+
+
+## 27.4 Structure block diagram ................................................................................................... 505
+
+
+
+## 27.5 Functional Description ..................................................................................................... 505
+
+
+
+## 27.6 Register address mapping ............................................................................................... 506
+
+
+
+## 27.7 Register functional description ....................................................................................... 506
+
+
+
+
+# 28 Random number (RNG) ...................................................................... 509
+## 28.1 Introduction .......................................................................................... 509
+## 28.2 Main characteristics ........................................................................... 509
+## 28.3 Functional Description ....................................................................... 509
+## 28.4 Register address mapping .................................................................. 510
+## 28.5 Register functional description ............................................................ 510
+
+# 29 Cyclic redundancy check computing unit (CRC) ......................... 513
+## 29.1 Introduction .......................................................................................... 513
+## 29.2 Functional Description ....................................................................... 513
+## 29.3 Register address mapping .................................................................. 513
+## 29.4 Register functional description ............................................................ 513
+
+# 30 Chip electronic signature ..................................................................... 515
+## 30.1 Introduction .......................................................................................... 515
+## 30.2 Register functional description ............................................................ 515
+
+# 31 Revision ................................................................................................... 516
+
+
+
+
+# 1 Introduction and document description rules
+
+
+
+## 1.1 Introduction
+
+
+This user manual provides application developers with all the information about how to use MCU (micro-controller unit) system architecture, memory and peripherals.
+
+For information about Arm® Cortex®-M4F core, please refer to Arm® Cortex®-M4F Technical Reference Manual; for detailed data such as model information, dimensions and electrical characteristics of the device, please refer to the corresponding datasheet; for the memory mapping, peripheral existence and the number of all MCU series models, please refer to the corresponding datasheet.
+
+Note that: Zhuhai Geehy Semiconductor Co., Ltd. is hereinafter referred to as "Geehy".
+
+
+## 1.2 Document description rules
+
+
+
+### 1.2.1 "Register functional description" rules
+
+(1) Control (CTRL) registers are all "set to 1 and cleared to 0 by software", unless otherwise specified.  
+(2) The control registers are usually followed by verb abbreviations to make a distinction. The verbs can be: EN-Enable, CFG-Configure, D-Disable, SET-Setup and SEL-Select  
+(3) The status register abbreviation is usually followed by FLG to make a difference.  
+(4) The value and data registers usually include V, VALUE, D and DATA, which are not followed by verbs, such as: xxPSC and CNT.
+
+
+### 1.2.2 Full Name and Abbreviation Description of Terms
+
+
+
+| R/W mode | Description | Abbreviations |
+| -------------- | ---------------------------------------------------------------------- | --------------- |
+| read/write | The software can read and write this bit. | R/W |
+| read-only | The software can only read this bit. | R |
+| write-only | Software can only write this bit, and after reading this bit, the reset value will be returned. | W |
+| read/clear | The software can read this bit and clear it by writing 1. Writing 0 has no effect on this bit. | RC_W1 |
+| read/clear | The software can read this bit and clear it by writing 0. Writing 1 has no effect on this bit. | RC_W0 |
+| read/clear by read | The software can read this bit and reading this bit will automatically clear it to 0, and writing this bit is invalid. | RC_R |
+| read/set | The software can read and set this bit, and writing 0 has no effect on this bit. | R/S |
+| read-only write trigger | The software can read this bit and writing 0 or 1 can trigger an event but has no effect on the value of this bit. | RT_W |
+| toggle | The software can flip this bit only by writing 1, and writing 0 has no effect on this bit. | T |
+
+
+Table 2 Functional Description and Full Name and Abbreviation of Terms of Commonly Used Registers
+
+
+
+| Full name in English | English abbreviation |
+| --------------------------- | ---------------------- |
+| Enable | EN |
+| Disable | D |
+| Clear | CLR |
+| Select | SEL |
+| Configure | CFG |
+| Control | CTRL |
+| Controller | C |
+| Reset | RST |
+| Stop | STOP |
+| Set | SET |
+| Load | LD |
+| Calibration | CAL |
+| Initialize | INIT |
+| Error | ERR |
+| Status | STS |
+| Ready | RDY |
+| Software | SW |
+| Hardware | HW |
+| Source | SRC |
+| System | SYS |
+| Peripheral | PER |
+| Address | ADDR |
+| Direction | DIR |
+| Clock | CLK |
+| Input | I |
+| Output | O |
+| Interrupt | INT |
+| Data | DATA |
+| Size | SIZE |
+| Divider | DIV |
+| Prescaler | PSC |
+| Multiplier | MUL |
+| Period | PRD |
+
+
+Table 3 Full Name and Abbreviation of Modules
+
+
+
+| Full name in English | English abbreviation |
+| --------------------------------------------------- | ---------------------- |
+| Static Memory Controller | SMC |
+| Reset and Clock Management Unit | RCM |
+| Power Management Unit | PMU |
+| Nested Vector Interrupt Controller | NVIC |
+| External Interrupt /Event Controller | EINT |
+| Direct Memory Access | DMA |
+| Debug MCU | DBG MCU |
+| General-Purpose Input Output Pin | GPIO |
+| Alternate Function Input Output Pin | AFIO |
+| Timer | TMR |
+| Watchdog Timer | WDT |
+| Independent Watchdog Timer | IWDT |
+| Windows Watchdog Timer | WWDT |
+| Real-Time Clock | RTC |
+| Universal Synchronous Asynchronous Receiver Transmitter | USART |
+| Inter-Integrated Circuit Interface | I2C |
+| Serial Peripheral Interface | SPI |
+| Inter-IC Sound Interface | I2S |
+| Quad Serial Peripheral Interface | QSPI |
+| Controller Area Network | CAN |
+| Secure Digital Input and Output | SDIO |
+| Universal Serial Bus Full-Speed Device | USB |
+| Analog-to-Digital Converter | ADC |
+| Comparator | COMP |
+| Cyclic Redundancy Check Calculation Unit | CRC |
+| Float Point Unit | FPU |
+
+
+# 2 System architecture
+
+
+
+## 2.1 Full Name and Abbreviation of Terms
+
+
+
+Table 4 Full Name and Abbreviation Description of Terms
+
+
+
+| Full name in English | English abbreviation |
+| ------------------------------------- | ---------------------- |
+| Advanced High-Performance Bus | AHB |
+| Advanced Peripheral Bus | APB |
+
+
+## 2.2 System architecture block diagram
+
+
+Arm® Cortex®-M4F core of the product includes FPU. The system mainly consists of six master modules and five slave modules.
+
+The master modules are respectively I-bus, D-bus and S-bus of Arm® Cortex®-M4 core with FPU, as well as general-purpose DMA1, general-purpose DMA2, and DMA2 peripheral bus.
+
+The slave modules are respectively I-bus and D-bus of internal Flash, main internal memory SRAM, all peripherals connected to AHB1 bus and AHB1/APB bridge, and peripherals on AHB2 bus.
+
+The bus matrix provides a platform to support the master module to access the slave module. The matrix can realize concurrent access, and the CPU still has efficient processing capacity when multiple peripherals are running at high speed.
+
+The name and description of the bus are shown in the following table.
+
+
+Table 5 Bus Name
+
+
+
+| Name | Description |
+| -------------------- | -------------------------------------------------------------------------------------- |
+| I-bus | Connect the instruction bus of Arm® Cortex®-M4F core and the bus matrix.          <br>Used for obtaining instructions. |
+| D-bus | Connect the data bus of Arm® Cortex®-M4F core and the bus matrix.                  <br>Used for text loading and debugging access. |
+| S-bus | Connect the system bus (peripheral bus) of Arm® Cortex®-M4F core and the bus matrix. <br>Used for accessing the data in peripherals and SRAM. |
+| DMA memory bus | Connect the main interface of DMA memory and the bus matrix.                        <br>Realize transmission related to the memory through DMA. |
+| DMA peripheral bus | Connect the main interface of DMA peripherals and the bus matrix.                   <br>It can not only realize access of DMA to the peripherals on AHB, but also realize transmission among memories. |
+| Bus matrix | Coordinate the access among modules, and roll polling algorithm is used during arbitration. |
+| AHB/APB bridge | The bridge provides synchronous connection between AHB and APB buses. <br> The non-32-bit access to APB register will be converted into 32 bits automatically. |
+
+
+Figure 1 APM32F411xCxE System Architecture Block Diagram
+
+
+
+
+## 2.3 Memory mapping
+
+
+The assigned addresses of memory mapping include the core (including core peripherals), on-chip Flash (including main memory area, system memory area and option bytes), on-chip SRAM, and bus peripherals (including AHB and APB peripherals). Please refer to the data manual of the corresponding model for specific information of various addresses.
+
+
+### 2.3.1 Embedded SRAM
+
+
+Built-in static SRAM. It allows access by byte, half word (16 bits) or full word (32 bits). The start address of SRAM is 0x2000 0000.
+
+
+### 2.3.2 Bit band
+
+
+Arm® Cortex®-M4F memory is mapped with two bit-band areas, and it maps each word in the alias memory area to one bit in the bit-band memory. Write a word to the alias memory and there will be the same effect as the read-change-write operation on the target of the bit-band area. Both peripheral register and SRAM are mapped into one bit band area, and it is allowed to perform single bit-band write and read operations.
+
+A mapping formula is given below:
+
+
+
+
+Startup mode configuration
+
+
+
+| BOOT1 pin | BOOT0 pin | Startup mode | Access methods |
+| ----------- | ----------- | ---------------- | ----------------------------------------------------- |
+| 1 | 1 | Built-in SRAM | SRAM can be accessed only at the starting address. |
+
+
+Note:
+(1) The boot space address is 0x0000 0000  
+(2) The original address of Flash is 0x0800 0000  
+(3) The original address of the system memory is 0x1FFF 0000  
+(4) The start address of SRAM is 0x2000 0000  
+(5) The user can select the startup mode after reset by setting the state of BOOT[T:0] pin.  
+(6) BOOT pin should keep the startup configuration required by user in standby mode. When exiting the standby mode, the value of boot pin will be latched.  
+(7) If you choose to start from built-in SRAM, you must use NVIC's exception table and offset register to remap the vector table to SRAM when writing the application code.  
+
+
+Physical remapping
+
+
+After BOOT pin is selected, MMSEL bit of SYSCFG_MMSEL register can be modified through software program to configure some register to allow access from I-Code bus. See SYSCFG register for specific configuration.  
+
+
+Embedded BootLoader
+
+
+In embedded BootLoader mode, users can choose to reprogram Flash through any of the following serial interfaces:
+- USART1(PA9/PA10)  
+- USART2(PD5/PD6)  
+- I2C1(PB6/PB7)  
+- SPI1(PA4/PA5/PA6/PA7)  
+- SPI2(PB12/PB13/PB14/PB15)  
+- USB OTG_FS slave mode(PA11/PA12)  
+
+Note: The external pull-down resistor of BOOTO is essential. It can affect the edge of the pull-down level in application and may also have an impact on system startup.
+
+
+
+
+# 3 Flash memory
+
+
+
+## 3.1 Full Name and Abbreviation of Terms
+
+
+
+Table 7 Full Name and Abbreviation Description of Terms
+
+
+
+| Full name in English | English abbreviation |
+| ---------------------------- | ---------------------- |
+| Flash Memory Controller | FMC |
+| One-time Programmable | OTP |
+| Adaptive Real-time | ART |
+
+
+## 3.2 Introduction
+
+
+This chapter mainly introduces the storage structure, read, erase, write, read/write protection, unlock/lock characteristics of Flash, and the involved register functional description.
+
+
+## 3.3 Main characteristics
+
+
+(1) Flash memory structure
+- Contain main memory area and information block
+- The capacity of main memory area is up to 512KB
+- The information block is divided into three areas, i.e. system memory, OTP area and option byte
+- The capacity of the system memory area is 30KB. It is used for storing BootLoader program, 96-bit unique UID, and main memory area capacity information
+- The OTP area is 528 Bytes, 512 OTP bytes are used for storing user data, and the remaining 16 bytes are used for locking the corresponding OTP data block
+- The capacity of the option byte area is 16 Bytes
+
+(2) Functional Description
+- Operate the Flash:
+  - Read
+  - Sector/Erase all
+  - Write
+  - Read/Write protection
+- Perform operation on the option byte:
+  - Read
+  - Erase
+  - Write
+  - Read/Write protection
+
+
+
+
+## 3.4 Flash memory structure
+
+
+
+Table 8 Flash Memory Structure
+
+
+
+| Block | Name | Address range | Size (bytes) | Sector |
+| --------------------------- | ------------------- | ------------------------------ | -------------- | ---------- |
+| Main memory block |  |  |  |  |
+|  |  | 0x0800 0000–0x0800 3FFF | 16K | Sector 0 |
+|  |  | 0x0800 4000–0x0800 7FFF | 16K | Sector 1 |
+|  |  | 0x0800 8000–0x0800 BFFF | 16K | Sector 2 |
+|  |  | 0x0800 C000–0x0800 FFFF | 16K | Sector 3 |
+|  |  | 0x0801 0000–0x0801 FFFF | 64K | Sector 4 |
+|  |  | 0x0802 0000–0x0803 FFFF | 128K | Sector 5 |
+|  |  | 0x0804 0000–0x0805 FFFF | 128K | Sector 6 |
+|  |  | 0x0806 0000–0x0807 FFFF | 128K | Sector 7 |
+| Information block | System storage | 0x1FFF 0000–0x1FFF 77FF | 30K | - |
+|  | OTP area | 0x1FFF 7800–0x1FFF 7A0F | 528 | - |
+|  | Option byte | 0x1FFF C000–0x1FFF C00F | 16 | - |
+
+
+Note: The number of sectors included in the main memory block of APM32F411xCxc series products is related to the specific Flash capacity; see the Datasheet for the Flash capacity of different models.
+
+
+## 3.5 Functional description
+
+
+
+### 3.5.1 Read Flash
+
+
+Flash has a prefetch buffer area, and it can be enabled only when the power supply voltage is not lower than 2.1V.
+
+The reading speed of Flash is affected by the number of wait cycles, and the number of wait cycles is affected by HCLK and power supply voltage. Assuming the wait cycle is n, and the rising base of HCLK range is X
+- When (n+1) X is less than the recommended value: 
+  nX<HCLK<(n+1) X
+- When (n-1) X is greater than the recommended value: 
+  nX<HCLK<recommended value
+
+
+Table 9 X Affected by Voltage Range and Recommended Value of HCLK
+
+
+
+| Voltage range | 1.8V-2.1V | 2.1V-2.4V | 2.4V-2.7V | 2.7V-3.6V |
+| ------------------ | ----------- | ----------- | ----------- | ----------- |
+| X | 16MHz | 18MHz | 24MHz | 30MHz |
+| Recommended value | 100MHz | 100MHz | 100MHz | 100MHz |
+
+
+Note: When VOSSSEL=0x01 for PMU_CTRL register, the recommended value of HCLK is 64MHz; when VOSSSEL=0x10, the recommended value of HCLK is 84MHz; when VOSSSEL=0x11, the recommended value of HCLK is 100MHz.
+
+CPU frequency can be adjusted by selecting different wait cycles, so as to adjust the reading speed of Flash.
+
+
+### 3.5.1 Adaptive real-time memory accelerator (ART)
+
+ART accelerator can improve the execution speed of Flash, so that the Flash can execute programs with fewer wait cycles at high CPU frequency.
+
+
+Prefetch buffer
+
+When wait cycle needs to be inserted to access Flash, the next instruction line of Flash can be pre-read through I-Code bus, to improve the access rate.
+
+
+I-cache
+
+I-cache is an instruction buffer memory. The instructions in I-cache can be obtained without delay. The system can store 64 lines of 128-bit instructions in I-cache and the I-cache function can be enabled through the ICACHEEN bit of FMC_ACCTRL register.
+
+
+D-cache
+
+D-cache is a data buffer memory. The system accesses the data buffer area of Flash through D-Bus to reduce the waiting time. Access of D-bus is prior to I-bus. The system can store 8 lines of 128-bit instructions in D-cache and the D-cache function can be enabled through DCACHEEN bit of FMC_ACCTRL register.
+
+
+### 3.5.2 Main memory block
+
+When erasing/writing to the main storage area, Flash can no longer be read.
+
+
+Number of parallel bits
+
+The number of parallel bits is the number of bytes to be processed when erasing/writing to the Flash, and it is determined by the power supply voltage and the use of external power supply. The number of parallel bits is configured by programming the PGSIZE bit of FMC_CTRL register. The determinant factors and the number of parallel bits are shown in the table below:
+
+
+| Voltage range (V) | 1.8-2.1 | 2.1-2.4 | 2.4-2.7 | 2.7-3.6 | 2.7-3.6 (external VPP is used) |
+| ------------------- | ---------- | ---------- | ---------- | ---------- | --------------------------------- |
+
+| Number of parallel bits | 8-bit | 16-bit | 32-bit | 64-bit |
+
+
+#### 3.5.2.1 Erase main memory block
+
+
+Flash can support sector erase and mass erase (erase all). Mass erase does not affect OTP sector or configuration sector.
+
+
+Main memory page erase
+
+
+Page erase is an independent erase according to the main memory area page selected by the program, which will not have any impact on the page not selected for erasure.
+
+After the correct page erase (or flash write operation) is completed, OPRCMP bit of FMC_STS register will be set. If OPCINTEN interrupt is enabled, an operation completion interrupt will be triggered. Users need to pay attention that the page selected for erase must be a valid page (the valid address of the main memory area and the address not write-protected).
+
+
+Main memory mass erase
+
+
+The mass erase operation will erase all the contents in the main storage area of Flash, so the users need to pay special attention during use to avoid the loss of important data caused by misoperation.
+
+Mass erase does not affect OTP sector or configuration sector.
+
+
+#### 3.5.2.2 Write main memory block
+
+
+Flash supports byte, half-word, word, and double-word write operation, specifically depending on the number of parallel bits.
+
+It should be noted that, to ensure correct writing, it is necessary to check whether the destination address has been erased before writing. Flash unit can be written only when it is erased to 1.
+
+If the destination address has write protection, the written data is invalid and a write protection error will be triggered (WPROTERR bit of FMC_STS register is set to "1").
+
+In FMC_STS register, there are three write error bits, which are PGALGERR (programming alignment error), PGPRLERR (programming parallelism error) and PGSEQERR (programming sequence error).
+
+
+Programming alignment error
+
+
+To program more than 128-bit lines of data to the Flash, a programming alignment error will occur, and the PGALGERR bit will be set to 1.
+
+
+Programming parallelism error
+
+
+If the width of the write operation is inconsistent with the number of parallel bits,
+
+
+
+the write operation will be suspended, a programming parallelism error will be generated, and the PGPRLERR bit will be set to 1.
+
+
+Programming sequence error
+
+
+The correct programming sequence is:
+
+1. Confirm the operation currently not performed on the Flash through FMC_STS[BUSY]
+2. Set FMC_CTRL[PG] to 1
+3. Perform write operation
+4. Operation is completed, waiting for BUSY bit to be cleared to zero
+
+If the programming sequence is wrong, a programming sequence error will occur, and the PGSEQEERR bit will be set to 1.
+
+
+#### 3.5.2.3 Lock/unlock
+
+
+FMC_CTRL[LOCK] can only be set to 1, in order to lock the Flash control register. Then it is impossible to operate the main memory block area (i.e. it is locked).
+
+Write the keywords 0x4567 0123 and 0xCDEF 89AB successively to FMC_KEY register. When the system detects unlocking sequence, LOCK bit of FMC_CTRL register will be cleared to zero, and the Flash control register and main memory block can then be unlocked.
+
+
+#### 3.5.2.4 Cache
+
+
+If the write operation of Flash involves some data in D-cache, the data in Flash and D-cache will be modified.
+
+If the erase operation of Flash involves the data in D-cache or I-cache, the data shall be written to the cache before it.
+
+
+#### 3.5.2.5 Interrupt
+
+
+An interrupt will occur in any of the following events:
+- End of operation: End of erase/write operation
+- Write protection error: Perform erase/write operation for the write protection area
+- Programming error: An error occurs during erase/write/read
+
+When OPCINTEN bit or ERRINTEN bit in FMC_CTRL register is set to 1 and the corresponding interrupt event occurs, an interrupt will be generated.
+
+
+### 3.5.3 Option byte
+
+
+The address and composition of the option byte are shown in the following table, and the specific meaning description can be seen in the corresponding bit.
+
+
+
+
+#### 3.5.3.1 Erase/write option byte
+
+
+The option byte must be unlocked before erase/write.
+
+The programming sequence of option byte is:
+
+(1) Confirm the operation currently not performed on the Flash through FMC_STS[BUSY]  
+(2) Write the programming value to FMC_OPTCTRL  
+(3) Set FMC_OPTCTRL[OPTSTART] to 1  
+(4) Operation is completed, waiting for BUSY bit to be cleared to zero  
+
+If page erase/write operation is performed on the main memory block Flash immediately after the option byte write operation is completed, the following steps need to be taken after the option byte write operation is completed:  
+Unlock main memory block Flash  
+Write data 0x08 to the address 0x40023C30  
+Lock main memory block Flash  
+
+Perform the page erase/write operation on the main memory block Flash after the above three steps are completed.  
+
+
+#### 3.5.3.2 Lock/unlock
+
+
+FMC_OPTCTRL[OPTLOCK] can only be set to 1, so as to lock the option byte area.  
+
+
+| Address | Field | Option byte | Functional Description |
+| ------------- | --------- | ------------- | --------------------------------------------------------- |
+| 0x1FFF C000 | 1:0 | - | - |
+|  | 3:2 | BORLVL | Brownout reset level |
+|  | 4 | - | - |
+|  | 5 | WDTSEL | Select the watchdog |
+|  | 6 | RSTSTOP | Reset occurs when entering the stop mode |
+|  | 7 | RSTSTDB | Reset occurs when entering the standby mode |
+|  | 15:8 | RPROT | Read protection |
+| 0x1FFF C008 | 7:0 | NWPROT | No write protection |
+|  | 14:8 | - | - |
+|  | 15 | SELRMOD | Select write protection mode |
+
+
+Write the keywords 0x0819 2A3B and 0x4C5D 6E7F successively to the FMC_OPTKEY register, and when the system detects unlocking sequence, OPTLOCK bit of FMC_OPTCTRL register will be cleared to zero and the option byte will be unlocked.
+
+
+### 3.5.4 Write protection
+
+
+In order to prevent accidental rewriting of Flash due to program disorder, in default state, the Flash supports write protection function of up to 7 user sectors; when the corresponding bit of the FMC_OPTCTRL[NWPROT] field is at low level, the corresponding sector will be write-protected, and this sector cannot be erased/written.
+
+
+#### 3.5.4.1 Write protection error
+
+
+FMC_STS[WPROTERR] is a write protection error bit, and it will be set to 1 when any of the following events occur:
+- Perform erase/write operation for the write protection area
+- Execute page erase/mass erase for invalid sector
+- Meanwhile, select page erase and mass erase
+- Flash is under read protection but detects erase/write request
+- Perform write operation for user configuration area
+- Perform write operation for the locked OTP area
+
+
+### 3.5.5 Read protection
+
+
+In order to prevent untrusted code from reading Flash data, you can choose to use the read protection function for the Flash and the read protection level can be selected by configuring the value of the FMC_OPTCTRL[RPROT] bit field. The read protection has three levels, namely, Level 0, Level 1 and Level 2.
+
+The access restriction at different read protection levels is shown in the following table.
+
+
+| Memory area | Level | Bootstrap from Flash | Debugging function, bootstrap from RAM or system memory |
+| ------------- | ------- | --------------------- | ------------------------------------------------------- |
+
+|  |  | Read | Write | Erase | Read | Write | Erase |
+| OTP | Level 1 | ✔ | - | - | ✔ | - | - |
+|  | Level 2 | ✔ |  |  | ✔ |  |  |
+| Option byte | Level 1 | ✔ |  |  | ✔ |  |  |
+|  | Level 2 | ✖ |  |  |  |  |  |
+|  |  | Read | Write | Erase | Read | Write | Erase |
+| Main memory block | Level 1 | ✗ | ✗ | (1) | ✗ | ✗ | ✗ |
+|  | Level 2 | ✗ | ✗ |  | ✗ | ✗ | ✗ |
+
+
+Note:
+(1) means that only when Level 1 changes to Level 0, can the data of main memory block be erased. 
+(2) "−" means the operation is allowed, "✗" means the operation is not allowed, and "−" means undefined.
+
+
+#### 3.5.5.1 Level 0
+
+When FMC_OPCTRL[RPROT]=0xAA, the read protection function is not used for Flash.
+
+
+#### 3.5.5.2 Level 1
+
+When FMC_OPCTRL[RPROT]=any value (except 0xAA and 0xCC), the read protection level is 1. At this time, if the level is adjusted back to Level 0, mass erase operation will be performed to erase all data of main memory block. Mass erase only affects user code area, and write-protected other option bytes and OTP will not be affected.
+
+
+#### 3.5.5.3 Level 2
+
+When FMC_OPCTRL[RPROT]=0xCC, the read protection level is 2. Then:
+- Reserve the read protection function of Level 1
+- It is not allowed to bootstrap from RAM or system memory
+- JTAG, SWV, ETM and boundary scan are disabled
+- The option byte is locked
+
+Note: When the read protection level is set to 2, it cannot be degraded any more.
+
+
+### 3.5.6 Proprietary code readout protection (PCROP)
+
+7 user sectors of the main memory block can prevent D-bus read access by using PCROP. When PCROPEN bit of FLASH_OPCTRL register is set to 1, select PCROP protection.
+
+
+### 3.5.7 OTP
+
+The following table shows OTP structure.
+
+
+
+
+Table 13 OTP Structure
+
+
+
+| Address | [31:0] | [63:32] | [95:64] | [128:96] | Block |
+| --------------- | ---------------- | --------------- | -------------- | ------------- | ----------------- |
+| 0x1FFF 7800 | OTP0 | OTP0 | OTP0 | OTP0 | Data block 0 |
+| 0x1FFF 7810 | OTP0 | OTP0 | OTP0 | OTP0 | Data block 0 |
+| 0x1FFF 7820 | OTP1 | OTP1 | OTP1 | OTP1 | Data block 1 |
+| 0x1FFF 7830 | OTP1 | OTP1 | OTP1 | OTP1 | Data block 1 |
+| 0x1FFF 7840 | OTP2 | OTP2 | OTP2 | OTP2 | Data block 2 |
+| 0x1FFF 7850 | OTP2 | OTP2 | OTP2 | OTP2 | Data block 2 |
+| … | … | … | … | … | … |
+| 0x1FFF 79E0 | OTP15 | OTP15 | OTP15 | OTP15 | Data block 15 |
+| 0x1FFF 79F0 | OTP15 | OTP15 | OTP15 | OTP15 | Data block 15 |
+| 0x1FFF 7A00 | LOCKB0 | LOCKB4 | LOCKB8 | LOCKB12 | Lock block |
+| … | LOCKB3 | … | LOCKB7 | … | LOCKB11 LOCKB15 |
+
+
+OTP consists of 16 32-byte data blocks and 1 16-byte lock block. The lock block n is used to lock the data block n (n=0...15), and the corresponding data block can be programmed only when the value of the lock block is 0x00. The value of the lock block can only be 0x00 or 0xFF; otherwise, the OTP byte cannot be used normally.
+
+Note that neither data block nor lock block of OTP can be erased.
+
+
+## 3.6 Register address mapping
+
+
+
+Table 14 FMC Register Address Mapping
+
+
+
+| Register name | Description | Offset Address |
+| ------------------- | ------------------------------------- | ---------------- |
+| FMC_ACCTRL | Flash access control register | 0x00 |
+| FMC_KEY | Flash key register | 0x04 |
+| FMC_OPTKEY | Flash option key register | 0x08 |
+| FMC_STS | Flash state register | 0x0C |
+| FMC_CTRL | Flash control register | 0x10 |
+| FMC_OPTCTRL | Flash option control register | 0x14 |
+
+
+## 3.7 Register functional description
+
+
+
+### 3.7.1 Flash access control register (FMC_ACCTRL)
+
+Offset address: 0x00
+
+
+
+
+Reset value: 0x0000 0000
+
+
+
+| Field | Name | R/W | Description |
+| ------- | -------- | ----- | ----------------------------------------------------------------------------- |
+| 3:0 | WAITP | R/W | Wait Period<br>This bit means the number of wait cycles.<br>0000: 0<br>0001: 1<br>0010: 2<br>0011: 3<br>.......<br>1110: 14<br>1111: 15 |
+| 7:4 |  |  | Reserved |
+| 8 | PREFEN | R/W | Prefetch Enable<br>0: Disable<br>1: Enable |
+| 9 | ICACHEEN | R/W | Instruction Cache Enable<br>0: Disable<br>1: Enable |
+| 10 | DCACHEEN | R/W | Data Cache Enable<br>0: Disable<br>1: Enable |
+| 11 | ICACHERST | W | Instruction Cache Reset<br>0: Invalid<br>1: Reset |
+| 12 | DCACHERST | R/W | Data Cache Reset<br>0: Invalid<br>1: Reset |
+| 31:13 |  |  | Reserved |
+
+
+### 3.7.2 Flash key register (FMC_KEY)
+
+Offset address: 0x04<br>Reset value: 0x0000 0000
+
+
+| Field | Name | R/W | Description |
+| ------- | ------ | ----- | ----------------------------------------------------------------------------- |
+| 31:0 | KEY | W | Key<br>When unlocking, this key needs to be input into this register. |
+
+
+### 3.7.3 Flash option key register (FMC_OPTKEY)
+
+Offset address: 0x08<br>Reset value: 0x0000 0000
+
+
+| Field | Name | R/W | Description |
+| ------- | -------- | ----- | ----------------------------------------------------------------------------- |
+| 31:0 | OPTKEY | W | Option Key<br>When unlocking, this key needs to be input into this register. |
+
+
+### 3.7.4 Flash state register (FMC_STS)
+
+Offset address: 0x0C<br>Reset value: 0x0000 0000
+
+
+
+Reset value: 0x0000 0000
+
+
+| Field | Name | R/W | Description |
+| ------- | ---------- | ------ | --------------------------------------------------------------------------------------------------- |
+| 0 | OPRCMP | RC_W1 | Operation Complete<br>This bit will be set to 1 when the operation for Flash is completed. |
+| 1 | OPERR | RC_W1 | Operation Error<br>This bit will be set to 1 when an error occurs in operation process. |
+| 3:2 | Reserved |  |  |
+| 4 | WPROTERR | RC_W1 | Write Protection Error<br>This bit will be set to 1 when erase/write operation is performed for Flash write protection area. |
+| 5 | PGALGFERR | RC_W1 | Programming Alignment Error<br>This bit will be set to 1 when a programming alignment error occurs. |
+| 6 | PGPRLERR | RC_W1 | Programming Parallelism Error<br>This bit will be set to 1 when a programming parallelism error occurs. |
+| 7 | PGSEQERR | RC_W1 | Programming Sequence Error<br>This bit will be set to 1 when a programming sequence error occurs. |
+| 8 | RPROERR | R/W | Read Protection Error<br>This bit will be set to 1 when read operation is performed for Flash read protection area. |
+| 15:9 | Reserved |  |  |
+| 16 | BUSY | R | Busy<br>This bit will be set to 1 when operation is performed for Flash. |
+| 31:17 | Reserved |  |  |
+
+
+### 3.7.5 Flash control register (FMC_CTRL)
+
+Offset address: 0x10  
+Reset value: 0x8000 0000  
+This register can be accessed only when there is no Flash operation ongoing.
+
+
+| Field | Name | R/W | Description |
+| ------- | ------ | ------ | ------------------------------------------------------------------------------------------- |
+| 0 | PG | R/W | Programming<br>When this bit is set to 1, Flash programming can be enabled. |
+| 1 | SERS | R/W | Sector Erase<br>When this bit is set to 1, sector erase can be enabled. |
+| 2 | MERS | R/W | Mass Erase<br>When this bit is set to 1, mass erase can be enabled. |
+| 6:3 | SNUM | R/W | Sector Number<br>This bit is used for the specified erase sector.<br>0000: Sector 0<br>0001: Sector 1<br>.......<br>0101: Sector 5<br>0110: Sector 6<br>0111: Sector 7<br>1000: Reserved<br>.......<br>1011: Reserved<br>1100: Specific sector of user<br>1101: Sector configured by user<br>Others: Reserved |
+| 7 | Reserved |  |  |
+| 9:8 | PGSIZE | R/W | Program Size<br>This bit is used to select the number of parallel bits.<br>00: 8-bit<br>01: 16-bit<br>10: 32-bit<br>11: 64-bit |
+| 15:10 | Reserved |  |  |
+| 16 | START | R/S | Start<br>When this bit is set to 1, the erase operation can be started.<br>This bit will be cleared to zero when BUSY bit is cleared to zero. |
+| 23:17 | Reserved |  |  |
+| 24 | OPCINTEN | R/W | Operation Complete Interrupt Enable<br>0: Disable<br>1: Enable |
+| 25 | ERRINTEN | R/W | Error interrupt Enable<br>0: Disable<br>1: Enable |
+| 30:26 | Reserved |  |  |
+| 31 | LOCK | R/S | Lock<br>When this bit is set to 1, it means that this register is locked;<br>when the unlocking sequence is detected, it will be cleared to zero by hardware. |
+
+
+### 3.7.6 Flash option control register (FMC_OPCTRL)
+Offset address: 0x14  
+Reset value: 0x0FFF AAED  
+This register can be accessed only when there is no Flash operation ongoing.
+
+
+
+
+| Field | Name | R/W | Description |
+| ----------- | ----------- | ----- | ------------------------------------------------------------------------------------------------------- |
+| 0 | OPTLOCK | R/S | Option Lock<br>When this bit is set to 1, it means that this register is locked; when the unlocking sequence is detected, it will be cleared to zero by hardware. |
+| 1 | OPTSTART | R/S | Option Start<br>After this bit is set to 1 by software, the option byte can be operated and it can be cleared to zero when the BUSY bit is cleared to zero. |
+| 3:2 | BORLV | R/W | Brownout Reset Level<br>When the power supply voltage is less than the threshold of the brownout reset level, a reset will be generated.<br>00: Level 3, voltage range: 2.7V-3.6V<br>01: Level 2, voltage range: 2.4V-2.7V<br>10: Level 1, voltage range: 2.1V-2.4V<br>11: Disable; voltage range: 1.8V-2.1V |
+| 4 |  |  | Reserved |
+| 5 | WDTSEL | R/W | Watchdog Select<br>0: Software watchdog<br>1: Hardware watchdog |
+| 6 | RSTSTOP | R/W | nReset in STOP Mode<br>0: Reset occurs when entering the Stop mode<br>1: Reset does not occur when entering the Stop mode |
+| 7 | RSTSTDB | R/W | nReset in STANDBY Mode<br>0: Reset occurs when entering the Standby mode<br>1: Reset does not occur when entering the Standby mode |
+| 15:8 | RPROT | R/W | Read Protect<br>This bit is used to select the read protection level.<br>0xAA: Level 0<br>0xCC: Level 2<br>Others: Level 1 |
+| 23:16 | NWPROT | R/W | Not Write Protect<br>0: Write protection is enabled<br>1: Write protection is disabled<br>When PCROPEN is reset:<br>0: Write protection is enabled for Sector i<br>1: Write protection is disabled for Sector i<br>When PCROPEN is set:<br>0: PCROP protection is disabled for Sector i<br>1: PCROP protection is enabled for Sector i |
+| 30:24 |  |  | Reserved |
+| 31 | PCROPEN | R/W | PCROP Enable<br>0: Disable<br>1: Enable |
+
+
+# 4 Static Memory Controller (SMC)
+
+
+
+## 4.1 Full Name and Abbreviation Description of Terms
+
+
+
+Table 15 Full Name and Abbreviation Description of Terms
+
+
+
+| Full name in English | English abbreviation |
+| ------------------------------------------ | ---------------------- |
+| Static Random Access Memory | SRAM |
+| Read Only Memory | ROM |
+| Pseudo Static Random Access Memory | PSRAM |
+| Random Access Memory | RAM |
+| Multiplex | MUX |
+| Width | WID |
+| Flash Memory | FM |
+| Access | ACC |
+| Wait | W |
+| Signal | S |
+| Polarity | POL |
+| Asynchronous | ASYN |
+| Burst | BURST |
+| Timing | TIM |
+| Setup | SET |
+| Hold | HLD |
+| Empty | E |
+
+
+## 4.2 SMC Introduction
+
+
+SMC is used to manage the peripherals of extended static memory; it can convert AHB transmission signals to the appropriate external devices; there are four internal memory blocks, each of which controls different types of memory and is distinguished by chip selection signal; only one external device can be accessed at any moment; each memory block can be configured separately, and the timing can be programmed for external devices.
+
+
+## 4.3 SMC Structure Block Diagram
+
+
+SMC consists of five parts: AHB bus interface, configuration register, NORFlash controller, NANDFlash/PC card controller and external device interface, specifically as shown in the figure below:
+
+
+
+
+Figure 2 SMC Block Diagram
+
+
+
+| NORflash signal | Common signal | NANDflash signal | PC card signal |
+| ------------------ | --------------- | ------------------ | ----------------- |
+| SMC_NC[0:1] | SMC_CLK | SMC_A[25:0] | SMC_NO[15:0] |
+| SMC_NC[2:3] | SMC_NMAT | SMC_NC[23:32] | SMC_INT[3:2] |
+| SMC_NC[4:11] | SMC_NPIR | SMC_NC[12:1] | SMC_NOR[0] |
+| SMC_NREG | SMC_CD |  |  |
+
+
+**HCLK from clock controller**
+
+
+| NORflash controller | NANDflash/PC card controller | Configuration register |
+| -------------------------- | ------------------------------ | ------------------------ |
+|  |  |  |
+
+
+**Interrupt from SMC to NVIC**
+
+
+## 4.4 SMC Functional Description
+
+
+
+### 4.4.1 SMC access rules
+
+
+SMC is an interface for internal CPU to access external static memory through AHB bus. On AHB bus, the operation of 32-bit data will be converted into continuous 16 or 8-bit operation. In order to ensure the consistency of data transmission, SMC needs to comply with the following rules in external read-write operation:
+
+(5) When the width of external data accessed by AHB is equal to the memory data width, it can transmit normally without any problem.
+
+(6) When the width of external data accessed by AHB is larger than the memory data width, the access operation will be automatically cut to be consistent with the width of external data for transmission.
+
+(7) When the width of external data accessed by AHB is less than the memory data width, if the external memory has the function of byte selection, it can transmit data normally through byte channel; if it does not have such function, write operation is not allowed, and only read operation is allowed.
+
+
+### 4.4.2 External device address mapping
+
+
+SMC divides external devices into multiple memory blocks, and different
+
+
+
+memory blocks control different external devices. The specific classification is shown in the table below:
+
+
+Table 16 External Device Address Mapping Table
+
+
+
+| Start address | End address | Memory block | Memory type supported |
+| --------------- | -------------- | -------------- | ----------------------- |
+| 0x60000000 | 0x6FFFFFFF | Memory block 1 (4*64MB) | NOR/PSRAM |
+| 0x70000000 | 0x7FFFFFFF | Memory block 2 (4*64MB) | NAND |
+| 0x80000000 | 0x8FFFFFFF | Memory block 3 (4*64MB) | NAND |
+| 0x90000000 | 0x9FFFFFFF | Memory block 4 (4*64MB) | PC card |
+
+
+### 4.4.3 NOR flash memory and PSRAM
+
+
+
+#### 4.4.3.1 Address mapping
+
+
+Memory block 1 is used to control NOR/PSRAM memory, and is divided into four 64MB areas of the same size. The selection of each area depends on the value of HADDR[27:26], and the specific information is as follows:
+
+
+Table 17 Address Mapping of Memory Block 1
+
+
+
+| HADDR[27:26] | Start address | End address | Area block |
+| --------------- | --------------- | -------------- | ------------- |
+| 00 | 0x60000000 | 0x63FFFFFF | Area block 1 |
+| 01 | 0x64000000 | 0x67FFFFFF | Area block 2 |
+| 10 | 0x68000000 | 0x6BFFFFFF | Area block 3 |
+| 11 | 0xC0000000 | 0x6FFFFFFF | Area block 4 |
+
+
+HADDR is the internal AHB address line that needs to be converted to the external memory. It is a byte address. However, some external memories are not accessed by byte, so the address may be inconsistent. In order to avoid the error caused by this situation, SMC will be adjusted according to the following rules:
+
+- When the width of external memory data is 8 bits, HADDR[25:0] is connected to SMC_A [25:0], while SMC_A[25:0] is connected to the external memory address line.
+- When the width of external memory data is 16 bits, HADDR[25:1] is connected to SMC_A [24:0], while SMC_A[24:0] is connected to the external memory address line.
+
+
+#### 4.4.3.2 Interface signal and controller
+
+
+The memory block 1 supports NOR Flash, PSRAM, SRAM and ROM external memory. There are corresponding chip selection signals NE[x] (x=1..4) in the
+
+
+
+four areas of the memory block 1. All other signals are shared. The specific interface signals and functions are as follows:
+
+
+Table 18 NOR Flash Interface Signal
+
+
+
+| SMC signal name | Signal direction | Function |
+| ------------------ | ----------------- | -------------------------------------------- |
+| CLK | Output | Synchronous clock signal |
+| NE[x] | Output | Chip selection signal, x=1..4 |
+| NOE | Output | Read enable signal |
+| NWE | Output | Write enable signal |
+| NWAIT | Input | Signal that NOR flash memory requires SMC to wait |
+| A[25:0] | Output | Non-multiplexing: A[25:0] all are address bus |
+|  | Output | Multiplexing: A[25:16] is address bus |
+| AD[15:0] | Input/Output | Non-multiplexing: Bidirectional data bus |
+| AD[15:0] | Input/Output | Multiplexing: Bidirectional address/Data bus |
+| NL (=NADV) | Output | Effective address signal |
+
+
+Table 19 PSRAM Interface Signal
+
+
+
+| SMC signal name | Signal direction | Function |
+| ------------------ | ----------------- | -------------------------------------------- |
+| CLK | Output | Synchronous clock signal |
+| NE[x] | Output | Chip selection signal, x=1..4 |
+| NOE | Output | Read enable signal |
+| NWE | Output | Write enable signal |
+| NWAIT | Input | Signal that PSRAM requires SMC to wait |
+| A[25:0] | Output | Address bus |
+| D[15:0] | Input/Output | Bidirectional data bus |
+| NL (=NADV) | Output | Effective address signal |
+| NBL[1] | Output | High byte enable |
+| NBL[0] | Output | Low byte enable |
+
+
+Note: The output signal of the controller changes at the rising edge of the internal clock; in the synchronous write mode, the output data changes at the falling edge of the memory clock.
+
+NOR Flash/PSRAM controller provides programmable timing parameters for external memory, including the parameters in the following table:
+
+
+
+
+Table 20 Programmable NOR/PSRAM Timing Parameters
+
+
+
+| Parameter | Function | Access methods | Unit | Minimum | Maximum |
+| ------------------------- | ----------------------------------------------------------------- | ---------------------------------- | -------------------------- | --------- | --------- |
+| Data generation time | The number of clocks required to generate the first data in burst mode | Synchronize | Memory clock cycle (CLK) | 2 | 17 |
+| Clock division factor | The ratio of memory access clock cycle (CLK) to AHB clock cycle | Synchronize |  | 2 | 16 |
+| Bus recovery time | Duration of bus recovery phase | Asynchronous or synchronous read | AHB clock cycle (HCLK) | 0 | 15 |
+| Data setup time | Duration of data setup phase | Asynchronous |  | 1 | 256 |
+| Address hold time | Duration of address hold phase | Asynchronous, multiplexing IO |  | 1 | 15 |
+| Address setup time | Duration of address setup phase | Asynchronous |  | 0 | 15 |
+
+
+### 4.4.4 NAND flash memory and PC card
+
+
+
+#### 4.4.4.1 Address mapping
+
+
+Memory blocks 2, 3 and 4 are used to access NAND flash and PC card. Each memory block is also divided into different areas, the effect of different areas is different, and the specific distribution is as follows:
+
+
+Table 21 Address Mapping of Memory Blocks 2, 3 and 4
+
+
+
+| SMC memory block | Storage space | Start address | End address |
+| ------------------------ | --------------- | --------------- | --------------- |
+| Memory block 2-NAND flash memory | Universal | 0x70000000 | 0x73FFFFFF |
+|  | Attributes | 0x78000000 | 0x7BFFFFFF |
+| Memory block 3-NAND flash memory | Universal | 0x80000000 | 0x83FFFFFF |
+|  | Attributes | 0x88000000 | 0x8BFFFFFF |
+| Memory block 4-PC card | Universal | 0x90000000 | 0x93FFFFFF |
+|  | Attributes | 0x98000000 | 0x9BFFFFFF |
+|  | I/O | 0x9C000000 | 0x9FFFFFFF |
+
+
+NAND flash memory block is divided into three blocks in part of the low-byte area, and different blocks can be accessed through HADDR[17:16]. The specific division and selection of these three blocks are shown in the table below:
+
+
+
+
+Table 22 NAND Memory Block Division
+
+
+
+| HADDR[17:16] | Address range | Block name |
+| -------------- | ----------------------------- | -------------- |
+| 00 | 0x00000000-0x00FFFF | Data block |
+| 01 | 0x010000-0x01FFFF | Command block |
+| 1X | 0x020000-0x03FFFF | Address block |
+
+
+In order to read and write NAND memory normally, the following steps are needed:
+- Transmit command to the memory
+- Transmit the address for reading and writing to the memory
+- Read/Write data
+
+The operation address of the corresponding three-step operation corresponds to the three blocks in the memory block. To transmit a command to the memory is to write the corresponding command value to the command block; to transmit an address to the memory is to transmit the corresponding address value to the address block; to read and write data is to read and write in the data block; finally write or read out the internal unit of NAND, and the address of the corresponding unit is the address written in the address block.
+
+
+#### 4.4.4.2 Interface signal and controller
+
+
+NAND/PC card controller can control three memory blocks. The memory blocks 2 and 3 support NAND Flash, and the memory block 4 supports PC card devices. These three memory blocks have their own chip selection signals, and the specific interfaces and functions are as follows:
+
+
+Table 23 NAND Flash Interface Signal
+
+
+
+| SMC signal name | Signal direction | Function |
+| ------------------ | ------------------ | -------------------------------------- |
+| NCE[x] | Output | Chip selection signal, x=2, 3 |
+| NOE (=NRE) | Output | Read enable signal |
+| NWE | Output | Write enable signal |
+| NWAIT/INT[3:2] | Input | NAND Flash ready/busy input signal |
+| A[17] | Output | NAND Flash address latch signal (ALE) |
+| A[16] | Output | NAND Flash command latch signal (CLE) |
+| D[15:0] | Input/Output | 8-bit multiplexing: D[7:0] bidirectional address/data bus |
+| D[15:0] | Input/Output | 16-bit multiplexing: D[15:0] bidirectional address/data bus |
+
+
+Table 24 PC Card Interface Signal
+
+
+
+| SMC signal name | Signal direction | Function |
+| ------------------ | ------------------ | --------------------------------------------------- |
+| NCE4_1 | Output | Chip selection signal 1 |
+| NCE4_2 | Output | Chip selection signal 2 (select 16-bit or        <br>8-bit operation) |
+| NOE | Output | Read enable signal |
+| NWE | Output | Write enable signal |
+| NWAIT | Input | PC card wait signal |
+| INTR | Input | PC card interrupt signal |
+| CD | Input | PC card detection signal |
+| A[10:0] | Output | Address bus |
+| NIOS16 | Input | Data transmission width of 16-bit                <br>transmission I/O space (must be grounded) |
+| NIORD | Output | I/O space output enable |
+| NIOWR | Output | I/O space write enable |
+| NREG | Output | Selection of common space or attribute            <br>space access |
+| D[15:0] | Output/Input | Bidirectional data bus |
+
+
+NAND Flash/PC card controller provides programmable timing parameters for external memory, including the parameters in the following table:
+
+
+Table 25 Programmable NAND/PC Card Timing Parameters
+
+
+
+| Parameter | Function | Operation mode | Unit | Minimum | Maximum |
+| -------------------------- | -------------------------------------------------------- | ----------------- | ------------------------- | --------- | --------- |
+| Memory data high-impedance time | The time of holding the data bus in high-impedance state after starting write operation | Write |  | 0 | 255 |
+| Memory hold time | The number of clocks holding the address after transmitting the command, also the hold time of data during write operation | AHB clock cycle (HCLK) |  | 1 | 254 |
+| Memory waiting time | Minimum transmission duration | Read/Write |  | 2 | 256 |
+| Memory setup time | The number of clocks that set up the address before issuing the command |  |  | 1 | 255 |
+
+
+## 4.5 SMC register address mapping
+
+
+
+Table 26 SMC Register Address Mapping
+
+
+
+| Register name | Description | Offset Address |
+| --------------------- | ------------------------------------------------------- | ------------------------------------ |
+| SMC_CSCTRL1…4 | SRAM/NOR flash memory chip selection control | 8*(x-1),x=1…4 |
+|  | register 1…4 |  |
+| SMC_CSTIM1…4 | SRAM/NOR flash memory chip selection timing | 0x04 + 8*(x-1),x=1…4 |
+|  | register 1…4 |  |
+| SMC_WRTTIM1…4 | SRAM/NOR flash memory write timing register | 0x104 + 8*(x-1),x=1…4 |
+| SMC_CTRL2…4 | PC card/NAND flash memory control register 2…4 | 0x40 + 0x20*(x-1),x=2…4 |
+| SMC_STSINT2…4 | FIFO state and interrupt register 2…4 | 0x44 + 0x20*(x-1),x=2…4 |
+| SMC_CNSTIM2…4 | Common memory space timing register 2…4 | 0x48 + 0x20*(x-1),x=2…4 |
+| SMC_AMSTIM2…4 | Attribute memory space timing register 2…4 | 0x4C + 0x20*(x-1),x=2…4 |
+| SMC_IOSTIM4 | I/O space timing register 4 | 0xB0 |
+| SMC_ECCRS2/3 | ECC result register 2/3 | 0x54 + 0x20*(x-1),x=2 or 3 |
+
+
+## 4.6 SMC register functional description
+
+
+
+### 4.6.1 NOR flash memory and PSRAM control register
+
+
+
+#### 4.6.1.1 SRAM/NOR flash memory chip selection control register 1…4 (SMC_CSCTRL1…4)
+
+
+Offset address: 8*(x-1), x=1…4  
+Reset value: 0x0000 30DX  
+
+
+| Field | Name | R/W | Description |
+| ------- | ------------- | ----- | ------------------------------------------------------- |
+| 0 | MBKEN | R/W | Enable the Corresponding Memory Bank                  <br>0: Disable<br>1: Enable |
+| 1 | ADMUXEN | R/W | Address/Data Multiplexing Enable                       <br>This bit is effective only for NORFlash and PSRAM.<br>0: Disable<br>1: Address low 16-bit and data sharing data bus |
+| 3:2 | MTYPEPCFG | R/W | Memory Type Configure                                  <br>00: SRAM, ROM (default value of Bank2~Bank4 after reset)<br>01: PSRAM<br>10: NORFlash (default value after Bank1 reset)<br>Others are reserved |
+| 5:4 | MDBWIDCFG | R/W | Memory Data Bus Width Configure<br>00: 8 bits<br>01: 16 bits<br>Others: Reserved |
+| 6 | NORFMACCEN | R/W | NORFlash Memory Access Enable<br>0: Disable<br>1: Enable |
+| 7 | Reserved |  |  |
+| 8 | BURSTEN | R/W | Burst Mode Enable<br>In synchronous mode, use the burst mode to access the memory.<br>0: Disable<br>1: Enable |
+| 9 | WSPOLCFG | R/W | Wait Signal Polarity Configure<br>This bit is effective only in burst mode.<br>0: Active low<br>1: Active high |
+| 10 | WRAPBEN | R/W | Wrapped Burst Mode Enable<br>This bit is effective only in burst mode.<br>0: Disable<br>1: Enable |
+| 11 | WTIMCFG | R/W | Wait Timing Configure<br>This bit is used to configure whether the memory generates NWAIT signal in the period before the waiting state or during the waiting period; this bit is effective only in burst mode.<br>0: NWAIT signal is effective in the data period before waiting<br>1: NWAIT signal is effective in the waiting period |
+| 12 | WREN | R/W | Write Memory Enable<br>This bit is used to enable write operation of SMC for the memory.<br>0: Disable write; otherwise, an AHB error will be generated<br>1: Allow write |
+| 13 | WAITEN | R/W | Wait Enable<br>This bit is used to enable NWAIT signal to insert the wait state; this bit is effective only in burst mode.<br>0: Disable<br>1: Enable |
+| 14 | EXTMODEEN | R/W | Extended Mode Enable<br>In extended mode, SMC_WRTTIM register can be used to realize read and write using different timing function.<br>0: Disable<br>1: Enable |
+| 15 | WSASYNCEN | R/W | Wait Signal During Asynchronous Transfers Enable<br>This bit is used to enable SMC to use NWAIT signal during asynchronous protocol period.<br>0: Disable<br>1: Enable |
+| 18:16 | CRAMSIZECFG | R/W | CRAM Page Size Configure<br>000: There is no burst split when crossing the page boundary<br>001: 128 bytes<br>010: 256 bytes<br>011: 512 bytes<br>100: 1024 bytes<br>Others: Reserved |
+| 19 | WRBURSTEN | R/W | Write PSRAM Burst Enable<br>This bit is used to enable the synchronous burst transmission protocol for write operation.<br>0: Write operation is asynchronous mode<br>1: Write operation is synchronous mode |
+| 31:20 | Reserved |  |  |
+
+
+#### 4.6.1.2 SRAM/NOR flash memory chip selection timing register 1…4 (SMC_CSTIM1…4)
+Offset address: 0x04 + 8*(x-1), x=1…4  
+Reset value: 0x0FFF FFFF  
+
+
+| Field | Name | R/W | Description |
+| ------------- | --------------- | ----- | ------------------------------------------------------------------ |
+| 3:0 | ADDRSETCFG | R/W | Address Setup Time Configure<br>Only apply to NOR flash memory operation in SRAM, ROM and asynchronous bus multiplexing mode. 0000: 1 HCLK clock cycle<br>0001: 2 HCLK clock cycles<br>......<br>1111: 16 HCLK clock cycles<br>Note: In synchronous operation, this parameter is meaningless and is always 1 memory clock cycle |
+| 7:4 | ADDRHLDCFG | R/W | Address-Hold Time Configure<br>Only apply to NOR flash memory operation in SRAM, ROM and asynchronous bus multiplexing mode.<br>0000: Reserved<br>0001: 2 HCLK clock cycles<br>......<br>1111: 16 HCLK clock cycles<br>Note: In synchronous operation, this parameter is meaningless and is always 1 memory clock cycle |
+| 15:8 | DATASETCFG | R/W | Data Setup Time Configure <br> Only apply to NOR flash memory operation in SRAM, ROM and asynchronous bus multiplexing mode. <br> 0000 0000: Reserved <br> 0000 0001: 2 HCLK clock cycles <br> 0000 0010: 3 HCLK clock cycles <br> …… <br> 1111 1111: 256 HCLK clock cycles |
+| 19:16 | BUSTURNCFG | R/W | Bus Turnaround Phase Duration Configure <br> These bits are used to configure the delay time on the bus after a read operation. They are only applicable to NOR flash memory operation in bus multiplexing mode. <br> 0000: 1 HCLK clock cycle <br> 0001: 2 HCLK clock cycles <br> …… <br> 1111: 16 HCLK clock cycles |
+| 23:20 | CLKDIVCFG | R/W | Clock Divide Factor Configure <br> CLK comes from HCLK frequency division. These bits are used to configure the frequency of CLK clock output signal. They are only applicable to synchronous mode. <br> 0000: Reserved <br> 0001: 2 divided frequency <br> 0010: 3 divided frequency <br> …… <br> 1111: 16 divided frequency <br> Note: This parameter is ineffective when accessing asynchronous NOR flash memory, SRAM or ROM. |
+| 27:24 | DATALATCFG | R/W | Data Latency Configure <br> These bits are used to configure the number of memory cycles for waiting before reading the first data. They are only applicable to NOR flash memory operation in synchronous burst mode. <br> 0000: 2 CLK clock cycles <br> 0001: 3 CLK clock cycles <br> …… <br> 1111: 17 CLK clock cycles <br> Note: When accessing asynchronous NOR flash memory, SRAM or ROM, this parameter is invalid. When operating CRAM, this parameter is 0. |
+| 29:28 | ASYNCACCCFG | R/W | Asynchronous Access Mode Configure <br> Valid only when EXTMODEEN bit of SMC_CSCTRLX register is 1. <br> 00: Access mode A <br> 01: Access mode B <br> 10: Access mode C <br> 11: Access mode D |
+| 31:30 |  |  | Reserved |
+
+
+4.6.1.3 SRAM/NOR flash memory write timing register 1...4 (SMC_WRTTIM1...4) <br> Offset address: 0x104 + 8*(x-1), x=1...4
+
+
+
+Reset value: 0x0FFF FFFF
+
+
+| Field | Name | R/W | Description |
+| ----------- | ---------------- | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 3:0 | ADDRSETCFG | R/W | Address Setup Time Configure<br>Only apply to NOR flash memory operation in SRAM, ROM and asynchronous bus multiplexing mode.<br>0000: 1 HCLK clock cycle<br>0001: 2 HCLK clock cycles<br>……<br>1111: 16 HCLK clock cycles<br>Note: In synchronous operation, this parameter is meaningless and is always 1 memory clock cycle |
+| 7:4 | ADDRHLDCFG | R/W | Address-Hold Time Configure<br>Only apply to NOR flash memory operation in SRAM, ROM and asynchronous bus multiplexing mode.<br>0000: Reserved<br>0001: 2 HCLK clock cycles<br>……<br>1111: 16 HCLK clock cycles<br>Note: In synchronous operation, this parameter is meaningless and is always 1 memory clock cycle |
+| 15:8 | DATASETCFG | R/W | Data-Setup Time Configure<br>Only apply to NOR flash memory operation in SRAM, ROM and asynchronous bus multiplexing mode.<br>0000 0000: Reserved<br>0000 0001: 2 HCLK clock cycles<br>0000 0010: 3 HCLK clock cycles<br>……<br>1111 1111: 256 HCLK clock cycles |
+| 19:16 | BUSTURNCFG | R/W | Bus Turnaround Phase Duration Configure<br>These bits are used to configure the delay time on the bus after a read operation. They are only applicable to NOR flash memory operation in bus multiplexing mode.<br>0000: 1 HCLK clock cycle<br>0001: 2 HCLK clock cycles<br>……<br>1111: 16 HCLK clock cycles |
+| 27:20 | Reserved |  |  |
+| 29:28 | ASYNCACCCFG | R/W | Asynchronous Access Mode Configure<br>These bits are used to configure asynchronous access mode, and are valid only when EXTMODEEN bit of SMC_CSCTRLX register is 1.<br>00: Access mode A<br>01: Access mode B<br>10: Access mode C<br>11: Access mode D |
+| 31:30 | Reserved |  |  |
+
+
+### 4.6.2 NAND flash memory and PC card control register
+
+
+
+#### 4.6.2.1 PC card/NAND flash control register 2...4 (SMC_CTRL2...4)
+
+Offset address: 0x40 + 0x20 * (x-1), x=2...4  
+Reset value: 0x0000 0018  
+
+
+| Field | Name | R/W | Description |
+| ------- | ------------ | ----- | ----------------------------------------------- |
+| 0 | Reserved |  |  |
+| 1 | WAITFEN | R/W | PC Card/NAND Flash Wait Feature Enable        <br>0: Disable<br>1: Enable |
+| 2 | MBKEN | R/W | PC Card/NAND Flash Memory Bank Enable         <br>0: Disable<br>1: Enable |
+| 3 | MTYPEPCFG | R/W | Memory Type Configure                          <br>0: PC card, CF card, CF+ card or PCMCIA<br>1: NAND flash memory |
+| 5:4 | DBWIDCFG | R/W | Databus Width Configure                        <br>16 bits must be used for PC Card.<br>00: 8 bits<br>01: 16 bits<br>Others are reserved |
+| 6 | ECCEN | R/W | ECC Computation Logic Enable                  <br>0: Disable and reset ECC<br>1: Enable |
+| 8:7 | Reserved |  |  |
+| 12:9 | C2RDCFG | R/W | CLE To RE Delay Configure                     <br>Configure the duration from "CLE becomes low level" to "RE becomes low level".<br>0000: 1 HCLK cycle<br>0000: 2 HCLK cycles<br>......<br>1111: 16 HCLK cycles |
+| 16:13 | A2RDCFG | R/W | ALE To RE Delay Configure                     <br>Configure the duration from "ALE becomes low level" to "RE becomes low level"<br>0000: 1 HCLK cycle<br>0000: 2 HCLK cycles<br>......<br>1111: 16 HCLK cycles |
+| 19:17 | ECCPSCFG | R/W | ECC Page Size Configure                       <br>000: 256 bytes<br>001: 512 bytes<br>010: 1024 bytes<br>011: 2048 bytes<br>100: 4096 bytes<br>101: 8192 bytes |
+
+
+#### 4.6.2.2 FIFO state and interrupt register 2...4 (SMC_STSINT2...4)
+
+Offset address: 0x44 + 0x20 * (x-1), x=2...4  
+Reset value: 0x0000 0040  
+
+
+| Field | Name | R/W | Description |
+| ------- | --------- | ----- | ---------------------------------------------------------------------------------------------------- |
+| 31:20 |  |  | Reserved |
+| 0 | IREFLG | R/W | Interrupt Rising Edge Generate Flag<br>This bit is set to 1 by hardware and cleared to 0 by software.<br>0: Not generate<br>1: Generate |
+| 1 | IHLFLG | R/W | Interrupt High-Level Generate Flag<br>This bit is set to 1 by hardware and cleared to 0 by software.<br>0: Not generate<br>1: Generate |
+| 2 | IFEFLG | R/W | Interrupt Falling Edge Generate Flag<br>This bit is set to 1 by hardware and cleared to 0 by software.<br>0: Not generate<br>1: Generate |
+| 3 | IREDEN | R/W | Interrupt Rising Edge Detection Enable<br>0: Disable<br>1: Enable |
+| 4 | IHDEN | R/W | Interrupt High-Level Detection Enable<br>0: Disable<br>1: Enable |
+| 5 | IFEDEN | R/W | Interrupt Falling Edge Detection Enable<br>0: Disable<br>1: Enable |
+| 6 | FEFLG | R | FIFO Empty Flag<br>0: Not empty<br>1: Empty |
+| 31:7 |  |  | Reserved |
+
+
+#### 4.6.2.3 Common memory space timing register 2...4 (SMC_CMSTIM2...4)
+
+Offset address: 0x48 + 0x20 * (x-1), x=2...4  
+Reset value: 0xFCFC FCFC  
+
+
+| Field | Name | R/W | Description |
+| ------- | ------- | ----- | ------------------------------------------------------------------------------------------------------- |
+| 7:0 | SETx | R/W | Common Memory x Setup Time Configure<br>This bit takes CLK as the clock cycle, and defines the time of setting up the address before transmitting the command.<br>0000 0000: 1 HCLK cycle<br>0000 0001: 2 HCLK cycles<br>……<br>1111 1111: 255 HCLK cycles<br>1111 1111: Reserved |
+| 15:8 | WAITx | R/W | Common Memory x Wait Time Configure<br>This bit takes HCLK as the clock cycle and defines the minimum hold time of the command. After the defined time, if the waiting signal is active low, the hold time of the command will become longer.<br>0000 0000: Reserved<br>0000 0001: 2 HCLK cycles (+ wait cycles introduced by NWAIT signal becoming low)<br>0000 0010: 3 HCLK cycles<br>……<br>1111 1110: 255 HCLK cycles (+ wait cycles introduced by NWAIT signal becoming low)<br>1111 1111: Reserved |
+| 23:16 | HLDx | R/W | Common Memory x Hold Time Configure<br>This bit takes CLK as the clock cycle, and defines the hold time of address signal after transmitting the command.<br>0000 0000: Reserved<br>0000 0001: 1 HCLK cycle of write access, 3 HCLK cycles of read access<br>……<br>1111 1110: 254 HCLK cycles of write access, 256 HCLK cycles of read access<br>1111 1111: Reserved |
+| 31:24 | HIZx | R/W | Common Memory x Databus Hiz Time Configure<br>This bit takes HCLK as the clock cycle and defines the time of high-impedance state of data bus, which is only effective for write operation.<br>0000 0000: 1 HCLK cycle<br>0000 0001: 2 HCLK cycles<br>……<br>1111 1111: 255 HCLK cycles<br>1111 1111: Reserved |
+
+
+#### 4.6.2.4 Attribute memory space timing register 2…4 (SMC_AMSTIM2…4)
+
+Offset address: 0x4C + 0x20 * (x-1), x=2…4<br>
+Reset value: 0xFCFC FCFC
+
+
+
+
+| Field | Name | R/W | Description |
+| -------- | -------- | ----- | ------------------------------------------------------------------ |
+| 7:0 | SETx | R/W | Attribute Memory x Setup Time Configure                          <br>This bit takes CLK as the clock cycle, and defines the time of<br>setting up the address signal before transmitting the command.<br>0000 0000: 1 HCLK cycle<br>0000 0001: 2 HCLK cycles<br>……<br>1111 1111: 255 HCLK cycles<br>1111 1111: Reserved |
+| 15:8 | WAITx | R/W | Attribute Memory x Wait Time Configure                           <br>This bit takes HCLK as the clock cycle and defines the minimum<br>hold time of the command. After the defined time, if the waiting<br>signal is active low, the hold time of the command will become<br>longer.<br>0000 0000: Reserved<br>0000 0001: 2 HCLK cycles (+ wait cycles introduced by NWAIT<br>signal becoming low)<br>0000 0010: 3 HCLK cycles<br>……<br>1111 1110: 255 HCLK cycles (+ wait cycles introduced by NWAIT<br>signal becoming low)<br>1111 1111: Reserved |
+| 23:16 | HLDx | R/W | Attribute Memory x Hold Time Configure                           <br>This bit takes CLK as the clock cycle, and defines the hold<br>time of address signal after transmitting the command.<br>0000 0000: Reserved<br>0000 0001: 1 HCLK cycle of write access, 3 HCLK cycles of read<br>access<br>……<br>1111 1110: 254 HCLK cycles of write access, 256 HCLK cycles of<br>read access<br>1111 1111: Reserved |
+| 31:24 | HIZx | R/W | Attribute Memory x Databus Hiz Time Configure                   <br>This bit takes HCLK as the clock cycle and defines the time of<br>high-impedance state of data bus, which is only effective for<br>write operation.<br>0000 0000: 0 HCLK cycle<br>0000 0001: 1 HCLK cycle<br>……<br>1111 1111: 255 HCLK cycles |
+
+
+#### 4.6.2.5 I/O space timing register 4 (SMC_IOSTIM4)
+Offset address: 0xB0  
+Reset value: 0xFCFC FCFC
+
+
+
+
+| Field | Name | R/W | Description |
+| --------- | ------ | ----- | ------------------------------------------------------------------------------------------------------------------- |
+| 7:0 | SET | R/W | I/O × Setup Time Configure<br>This bit takes CLK as the clock cycle, and defines the time of setting up the address signal before transmitting the command. <br>0000 0000: 1 HCLK cycle <br>0000 0001: 2 HCLK cycles <br>…… <br>1111 1111: 256 HCLK cycles |
+| 15:8 | WAIT | R/W | I/O × Wait Time Configure<br>This bit takes HCLK as the clock cycle and defines the minimum hold time of the command. After the defined time, if the waiting signal is active low, the hold time of the command will become longer. <br>0000 0000: Reserved <br>0000 0001: 2 HCLK cycles (+ wait cycles introduced by NWAIT signal becoming low) <br>0000 0010: 3 HCLK cycles <br>…… <br>1111 1111: 256 HCLK cycles (+ wait cycles introduced by card NWAIT signal becoming low) |
+| 23:16 | HLD | R/W | I/O × Hold Time Configure<br>This bit takes CLK as the clock cycle, and defines the hold time of address signal after transmitting the command. <br>0000 0000: Reserved <br>0000 0001: 1 HCLK cycle <br>0000 0010: 2 HCLK cycles <br>…… <br>1111 1111: 255 HCLK cycles |
+| 31:24 | HIZ | R/W | I/O × Databus Hiz Time Configure<br>This bit takes HCLK as the clock cycle and defines the time of high-impedance state of data bus, which is only effective for write operation. <br>0000 0000: 0 HCLK cycle <br>0000 0001: 1 HCLK cycle <br>…… <br>1111 1111: 255 HCLK cycles |
+
+
+#### 4.6.2.6 ECC result register 2/3 (SMC_ECCRS2/3)
+
+Offset address: 0x54 + 0x20 × (x-1), x=2 or 3<br>Reset value: 0x0000 0000
+
+
+| Field | Name | R/W | Description |
+| --------- | ------- | ----- | ------------------- |
+| 31:0 | ECCRS | R | ECC Result |
+
+
+# 5 System configuration controller (SYSCFG)
+
+
+
+## 5.1 Main characteristics
+
+
+(1) Remap configuration memory  
+(2) Configure external interrupt of GPIO  
+(3) Control I/O compensation cell  
+
+
+## 5.2 I/O compensation cell
+
+
+When the I/O output buffer speed is configured as 50MHz or 100MHz, the I/O port noise will affect the power supply voltage. Therefore, at this time (when the power supply voltage is 2.4~3.6V), the compensation cell can be enabled to control the t<sub>t(io)</sub>out/t<sub>t(io)</sub>in slope to reduce the impact on the power supply.
+
+
+## 5.3 Register address mapping
+
+
+
+Table 27 SYSCFG Register Address Mapping
+
+
+
+| Register name | Description | Offset Address |
+| ----------------------- | ----------------------------------------- | ---------------- |
+| SYSCFG_MMSEL | Memory mapping selection register | 0x00 |
+| SYSCFG_PMCFG | Peripheral mode configuration register | 0x04 |
+| SYSCFG_EINTCFG1 | External interrupt register 1 | 0x08 |
+| SYSCFG_EINTCFG2 | External interrupt register 2 | 0x0C |
+| SYSCFG_EINTCFG3 | External interrupt register 3 | 0x10 |
+| SYSCFG_EINTCFG4 | External interrupt register 4 | 0x14 |
+| SYSCFG_CCTRL | Compensation cell control register | 0x20 |
+
+
+## 5.4 Register functional description
+
+
+
+### 5.4.1 Memory mapping selection register (SYSCFG_MMSEL)
+
+
+Offset address: 0x00  
+Reset value: 0x0000 000X (after reset, the value of X is the same as the setting of BOOT pin)  
+This register is used to configure in the memory area accessed at the address 0x0000 0000 through the software so as to bypass BOOT pin.
+
+
+
+
+### 5.4.2 Peripheral mode configuration register (SYS_cfg_PMCFG)
+
+Offset address: 0x04  
+Reset value: 0x0000 0000  
+
+
+| Field | Name | R/W | Description |
+| -------------------- | ---------- | ----- | -------------------------------------------------------------------------------------------------- |
+| 1:0 | MMSEL | R/W | Memory Mapping Select<br>Control the memory mapping address 0x0000 0000. After reset, the parameters of these bits are determined by actual BOOT.<br>00: Main flash mapping address: 0x0000 0000<br>01: System flash mapping address: 0x0000 0000<br>10: SMC Bank1 (NOR/PSRAM1 and 2) mapping address: 0x0000 0000<br>11: Embedded SRAM mapping address: 0x0000 0000 |
+| 31:2 | Reserved |  |  |
+
+
+### 5.4.3 External interrupt register 1 (SYS_CFG_EINTCFG1)
+
+The selected external interrupt sources represented by values of the EINTx [3:0] of the following several SYSCFG external interrupt registers are shown in the table below.
+
+
+| EINTx [3:0] | External interrupt source |
+| ------------- | -------------------------- |
+| 0000 | PA[x] pin |
+| 0001 | PB[x] pin |
+| 0010 | PC[x] pin |
+| 0011 | PD[x] pin |
+| 0100 | PE[x] pin |
+| 0101 | Reserved |
+| 0110 | Reserved |
+| 0111 | PH[x] pin |
+| Others | Reserved |
+
+
+Offset address: 0x08
+
+
+
+Reset value: 0x0000 0000  
+These bits are controlled by software to be rewritten to select the external interrupt source of EINTx(x=0..3).
+
+
+### 5.4.4 External interrupt register 2 (SYSCFG_EINTCFG2)
+
+Offset address: 0x0C  
+Reset value: 0x0000 0000  
+These bits are controlled by software to be rewritten to select the external interrupt source of EINTx(x=4..7).
+
+
+| Field | Name | R/W | Description |
+| -------- | ------- | ----- | ----------------------------------------------------------------------------------------------- |
+| 3:0 | EINT4 | R/W | EINT4 Configure<br>These bits are controlled by software to be rewritten to select the external interrupt source of EINT4. |
+| 7:4 | EINT5 | R/W | EINT5 Configure<br>These bits are controlled by software to be rewritten to select the external interrupt source of EINT5. |
+| 11:8 | EINT6 | R/W | EINT6 Configure<br>These bits are controlled by software to be rewritten to select the external interrupt source of EINT6. |
+| 15:12 | EINT7 | R/W | EINT7 Configure<br>These bits are controlled by software to be rewritten to select the external interrupt source of EINT7. |
+| 31:16 |  |  | Reserved |
+
+
+### 5.4.5 External interrupt register 3 (SYSCFG_EINTCFG3)
+
+Offset address: 0x10  
+Reset value: 0x0000 0000  
+These bits are controlled by software to be rewritten to select the external interrupt source of EINTx(x=8..11).
+
+
+| Field | Name | R/W | Description |
+| -------- | ------- | ----- | ----------------------------------------------------------------------------------------------- |
+| 3:0 | EINT4 | R/W | EINT4 Configure<br>These bits are controlled by software to be rewritten to select the external interrupt source of EINT4. |
+| 7:4 | EINT5 | R/W | EINT5 Configure<br>These bits are controlled by software to be rewritten to select the external interrupt source of EINT5. |
+| 11:8 | EINT6 | R/W | EINT6 Configure<br>These bits are controlled by software to be rewritten to select the external interrupt source of EINT6. |
+| 15:12 | EINT7 | R/W | EINT7 Configure<br>These bits are controlled by software to be rewritten to select the external interrupt source of EINT7. |
+| 31:16 |  |  | Reserved |
+
+
+### 5.4.6 External interrupt register 4 (SYSCFG_EINTCFG4)
+
+
+Offset address: 0x14  
+Reset value: 0x0000 0000  
+These bits are controlled by software to be rewritten to select the external interrupt source of EINTx (x=12…15).  
+Note that when the value of each bit of the register is 0x1000, this bit is reserved bit, namely, PI[15:12] is unused.  
+
+
+| Field | Name | R/W | Description |
+| ------- | ------- | ----- | ----------------------------------------------------------------------------- |
+| 3:0 | EINT12 | R/W | EINT12 Configure |
+| 7:4 | EINT13 | R/W | These bits are controlled by software to be rewritten to select the external interrupt source of EINT13. |
+| 11:8 | EINT14 | R/W | These bits are controlled by software to be rewritten to select the external interrupt source of EINT14. |
+| 15:12 | EINT15 | R/W | EINT15 Configure |
+| 31:16 |  |  | Reserved |
+
+
+### 5.4.7 Compensation cell control register (SYSCFG_CCCTRL)
+
+
+Offset address: 0x20  
+Reset value: 0x0000 0000  
+
+
+| Field | Name | R/W | Description |
+| ------- | ------- | ----- | --------------------------------------------------------- |
+| 0 | CCPD | R/W | Compensation Cell Power-down                            <br>0: I/O compensation cell enters power-down mode <br> 1: I/O compensation cell is enabled |
+| 7:1 |  |  | Reserved |
+| 8 | RDYFLG | R | Compensation Cell Ready Flag       <br>0: Not ready<br>1: Ready |
+| 31:9 |  |  | Reserved |
+
+
+# 6 Reset and clock (RCM)
+
+
+
+## 6.1 Full Name and Abbreviation of Terms
+
+
+
+Table 29 Full Name and Abbreviation Description of Terms
+
+
+
+| Full name in English | English abbreviation |
+| ------------------------------------------- | ---------------------- |
+| Reset and Clock Management | RCM |
+| Reset | RST |
+| Power-On Reset | POR |
+| Power-Down Reset | PDR |
+| High Speed External Clock | HSECLK |
+| Low Speed External Clock | LSECLK |
+| High Speed Internal Clock | HSICLK |
+| Low Speed Internal Clock | LSICLK |
+| Phase Locked Loop | PLL |
+| Main clock output | MCO |
+| Calibrate | CAL |
+| Trim | TRM |
+| Clock Security System | CSS |
+| Non Maskable Interrupt | NMI |
+
+
+## 6.2 Reset management unit (RMU)
+
+
+The reset is divided into three forms, namely, system reset, power reset and backup area reset.
+
+
+### 6.2.1 System reset
+
+
+
+#### 6.2.1.1 "System reset" reset source
+
+
+The reset source is divided into external reset source and internal reset source.
+
+External reset source:
+- Low level on NRST pin.
+
+Internal reset source:
+- Window watchdog termination count (WWDT reset)
+- Independent watchdog termination count (IWDT reset)
+- Software reset (SW reset)
+- Power reset
+- Low-power management reset
+
+
+
+A system reset will occur when any of the above events occurs. Besides, the reset event source can be identified by viewing the reset flag bit in RCM_CSTS (control/status register).
+
+When the system is reset, all registers except the registers in RCM_CSTS (control/state register) reset flag bit and backup area will be reset to the reset state.
+
+
+Software Reset
+
+
+Software can be reset by setting SYSRESETREQ in Arm® Cortex®-M4F interrupt application and reset control register with FPU to "1".
+
+
+Low-power management reset
+
+
+Low-power management may reset in two cases, one is when entering the standby mode, and the other is when entering the stop mode. In these two cases, if RSTSTDB (in standby mode) or RSTSTOP (in stop mode) in user selection byte is set to "1", the system will be reset rather than enter the standby or stop mode.
+
+
+#### 6.2.1.2 "System reset" reset circuit
+
+
+The reset source is used in the NRST pin, which remains low in reset process.
+
+The internal reset source generates a delay of at least 20µs pulse on the NRST pin through the pulse generator, which causes the NRST to maintain the level to generate reset; the external reset source directly pulls down the NRST pin level to generate reset.
+
+The "system reset" reset circuit is shown in the figure below.
+
+
+
+![Figure 3 "System Reset" Reset Circuit](attachment://system_reset_circuit.png)
+
+
+## 6.2 Power reset
+
+
+"Power reset" reset source is as follows:
+- Power-on reset (POR)
+- Power-down reset (PDR)
+- Brown-out reset (BOR)
+- Exit (Wake up) from standby mode
+
+A power reset will occur when any of the above events occurs.<br>
+Power reset will reset all registers except that in backup area.
+
+
+### 6.2.3 Backup domain reset
+
+
+"Backup domain reset" reset source is as follows:
+- Software resets and sets the BDRST bit in RCM_BDCTRL (backup domain control register)
+- VDD or VBAT is powered on again when VDD and VBAT is powered down
+
+A backup domain reset will occur in case of any of the above events.<br>
+The backup area reset has two special resets, which only affect backup area.
+
+
+## 6.3 Clock Management Unit (CMU)
+
+
+The clock sources of the whole system are: HSECCLK, LSECCLK, HSICLK,
+
+
+
+
+### 6.3.1 External clock source
+
+
+The external clock signal includes HSECLK (high-speed external clock signal) and LSECLK (low-speed external clock signal).
+
+There are two kinds of external clock sources:
+- External crystal/ceramic resonator
+- External clock of user
+
+The hardware configuration of the two kinds of clock sources is shown in the figure below.
+
+Figure 4 HSECLK/LSECLK Clock Source Hardware Configuration  
+
+
+| Clock source | Hardware configuration |
+| --------------------------- | ----------------------------------------------------- |
+| External clock | ![External clock source](#) <br> OSC_IN <br> OSC_OUT <br> (Hi-Z) <br> External clock source |
+| Crystal/ceramic resonator | ![Crystal/ceramic resonator](#) <br> OSC_IN <br> OSC_OUT <br> C₁₁ <br> C₂ |
+
+
+In order to reduce the distortion of clock output and shorten the startup stabilization time, the crystal/ceramic resonator and load capacitor must be as close to the oscillator pin as possible. The value of load capacitance (C₁₁, C₂) must be adjusted according to the selected oscillator.
+
+
+#### 6.3.1.1 HSECLK high-speed external clock signal
+
+
+HSECLK clock signal is generated by HSECLK external crystal/ceramic resonator and HSECLK external clock two kinds of clock sources.
+
+
+
+
+Table 30 Clock Source Generating HSECLK
+
+
+
+| Name | Description |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| External clock source | Provide clock to the MCU through OSC_IN pin.<br>The signal can be generated by ordinary function signal transmitter (in debugging), crystal oscillator and other signal generators; the waveform can be square wave, sine wave or triangle wave with 50% duty cycle, and the maximum frequency is up to 26MHz.<br>For hardware connection, it must be connected to OSC_IN pin, ensuring OSC_OUT pin is suspended (in high-impedance state); for MCU configuration, the user can select this mode by setting HSEBCFG and HSEEN bits in RCM_CTRL (clock control register). |
+| (HSECLK bypass) |  |
+| External crystal/ceramic | The clock is provided to MCU by the resonator, and the resonator includes crystal resonator and ceramic resonator.<br>The frequency range is 4-26MHz.<br>When OSC_IN and OSC_OUT need to connect to the resonator, it can be enabled and disabled by setting the HSEEN bit in clock control register RCM_CTRL (clock control register).<br>HSERDYFLG bit in the clock control register RCM_CTRL (clock control register) is used to indicate whether the high-speed external oscillator is stable. After it is enabled, the clock is not released until this bit is set to "1" by hardware. If interrupt is allowed in RCM_INT (clock interrupt register), corresponding interrupt will be generated. |
+| (HSECLK crystal) |  |
+
+
+#### 6.3.1.2 LSECLK low-speed external clock signal
+
+
+LSECLK clock signal is generated by LSECLK external crystal/ceramic resonator and LSECLK external clock two kinds of clock sources.
+
+
+Table 31 Clock Source Generating LSECLK
+
+
+
+| Name | Description |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| External clock source | The clock is provided to MCU by OSC32_IN pin.<br>The signal can be generated by ordinary function signal transmitter (in debugging), crystal oscillator and other signal generators; the waveform can be square wave, sine wave or triangle wave with 50% duty cycle, and the signal frequency needs to be 32.768kHz.<br>For hardware connection, it must be connected to OSC32_IN pin, ensuring OSC32_OUT pin is suspended; for MCU configuration, the user can select this mode by setting LSEBCFG and LSEEN bits in RCM_BDCTRL (backup domain control register). |
+| (LSECLK bypass) |  |
+| External crystal/ceramic resonator (LSECLK crystal) | The clock is provided to MCU by the resonator, and the resonator includes crystal resonator and ceramic resonator. The frequency is 32.768kHz.<br>OSC32_IN and OSC32_OUT need to be connected to the oscillator which can be enabled and disabled through LSEEN bit in RCM_BDCTRL (clock backup domain control register).<br>LSERDYFLG in RCM_BDCTRL indicates whether LSECLK crystal oscillator is stable. At startup stage, LSECLK clock signal is not released until this bit is set to “1” by hardware. If it is allowed in the clock interrupt register, an interrupt request can be generated. |
+
+
+### 6.3.2 Internal clock source
+
+
+The internal clock includes HSICLK (high-speed internal clock signal) and LSICLK (low-speed internal clock signal).
+
+
+#### 6.3.2.1 HSICLK high-speed internal clock signal
+
+
+HSICLK clock signal is generated by internal 16MHz RC oscillator.
+
+The RC oscillator frequency of different chips is different, and the frequency of the same chip may also be different with the change of temperature and voltage; the HSICLK clock frequency of each chip has been calibrated to 1% (25˚C, VDD=VDOA=3.3V) by the manufacturer before leaving the factory. When the system is reset, the value calibrated by the manufacturer will be loaded to RCM_CTRL register; in addition, users can further adjust the frequency by setting HSITRM bit in RCM_CTRL register according to the application environment (temperature and voltage) of the site.
+
+HSIRDYFLG bit can be used to indicate whether HSICLK RC oscillator is stable. In the clock startup process, HSICLK RC output clock is not released until the HSIRDYFLG bit is set to 1 by hardware. HSICLK RC can be enabled or disabled by HSIEN bit in RCM_CTRL.
+
+Compared with HSECLK crystal oscillator, RC oscillator can provide system clock without any external device; the start time of RC oscillator is shorter than that of HSECLK crystal oscillator; even after calibration, its clock frequency accuracy is still inferior to that of HSECLK crystal oscillator.
+
+
+#### 6.3.2.2 LSICLK low-speed internal clock signal
+
+
+Main characteristics of LSICLK
+
+LSICLK is generated by RC oscillator, within the range of 32kHz. The frequency may change along with the change of temperature and voltage. It can keep running in stop and standby mode and provide clock for independent watchdog and automatic wakeup unit.
+
+
+
+LSICLK can be enabled or disabled by LSIEN bit in RCM_CSTS register.  
+LSIRDYFLG bit in RCM_CSTS indicates whether the low-speed internal oscillator is stable. At startup stage, the clock is not released until this bit is set to "1" by hardware. If it is allowed in RCM_INT register, LSICLK ready interrupt request signal will be generated.
+
+
+### 6.3.3  PLL (phase locked loop)
+
+
+This series of products have two PLL, which usually take HSICLK or HSECLK oscillator as their clock source. These two PLL will be disabled by hardware in either of the following situations:  
+- Enter the stop or standby state  
+- The system clock directly or indirectly selects HSECLK as the clock source, and a fault occurs to HSECLK  
+
+When configuring PLL related coefficient, ensure that it is not enabled.
+
+
+#### 6.3.3.1  PLL1
+
+
+PLL1 is the main phase-locked loop, which mainly generates the clock signal with maximum frequency of 120MHz for the system clock. The clock output frequency of PLL1 is configured by RCM_PLL1CFG register, the clock frequency is adjusted by setting the multiplication/division factor in the formula, and PLL1 shall be disabled during configuration.
+
+
+#### 6.3.3.2  PLL2
+
+
+PLL2 is dedicated to providing clock signals to I2S, and the clock frequency is jointly determined by the related bits in RCM_PLL1CFG and RCM_PLL2CFG registers (see the register function description for details).
+
+
+
+
+### 6.3.4 Clock tree
+
+
+Figure 5 APM32F411xCxE Clock Tree
+
+
+
+(8) ADC clock can be divided into analog circuit clock and digital circuit clock. The clock management unit provides a prescaler for the analog circuit clock of ADC, so that the ADC can work at the clock frequency of PCLK2 after 2/4/6/8 frequency division, and at this time the clock can be used by all ADC; the clock frequency of digital circuit of ADC is equal to PCLK2, and ADC1/2 clocks can be enabled respectively through the corresponding bits of RCM_APB2CLKEN register.
+
+(9) SysTick (system timer) can be provided by the clock signal after frequency division of HCLK8. Different clock sources can be selected by setting SysTick control and status registers.
+
+(10) Frequency assignment of all TMRxCLK (timer clocks) is automatically set by hardware according to the following two situations:
+
+- If the corresponding APB prescaler factor is 1, the clock frequency of the timer is the same as the frequency of the APB bus.
+  
+- Otherwise, the clock frequency of the timer will be set to twice the frequency of the APB bus connected to it.
+
+(11) The maximum output frequency of MCO1/2 is 120MHz
+
+(12) For the structure of PLL1 and PLL2, please see the chapter of PLL and PLLx Configuration Register.
+
+
+### 6.3.5 Clock source selection of RTC
+
+
+By setting RTCSCRSEL bit in RCM_BDCTRL (backup domain control register), you can select to divide the frequency of HSECLK into 1MHz clock signal, and use LSECLK or LSICLK as the clock source of RTC. The selection of clock source can be changed only when the backup domain is reset.
+
+Because LSECLK is in the backup domain, and HSECLK and LSICLK are not in the backup domain, different clocks will be selected as the clock source of RTC, the working condition of RTC is different, and details can be seen in the following table:
+
+
+| Clock Source | Working Condition |
+| ------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| LSECLK is selected as RTC clock | As long as Vₕₙ₏ maintains power supply, RTC will continue to work even if Vₕₙ₏ is powered off |
+| LSICLK is selected as automatic | If Vₕₙ₏ is powered off, the automatic wake-up unit state cannot be guaranteed. |
+| wake-up unit clock |  |
+| HSECLK is used as RTC clock | If the Vₕₙ₏ is powered off or the internal voltage regulator is disabled (the power supply of 1.2V domain is cut off), the RTC state is uncertain, so the BPWEN bit (cancel the write protection of backup area) of PMU_CTRL (power control register) must be set to “1”. |
+
+
+### 6.3.6 Clock source selection of IWDT
+
+
+When IWDT (independent watchdog) is enabled, LSICLK oscillator will be enabled by force, and when it is stable, it will provide the clock signal to IWDT.
+
+
+
+
+### 6.3.7 Clock source selection of MCO
+
+
+There are two MCU clock output pins, i.e. MCO1 (PA8) and MCO2 (PC9). When the corresponding GPIO ports of ports (PA8 and PC9) are configured as the corresponding multiplexing function, the clock signal can be selected to be output to MCO pin by configuring MCOxSEL bit and MCOxPSC bit in RCM_CFG (clock configuration register). See the clock tree or register functional description for specific clock signal.
+
+
+### 6.3.8 Clock source selection of SYSCLK
+
+
+After system reset, HSICLK oscillator will (directly or indirectly) be selected as the system clock, and cannot be stopped. If you want to switch the SYSCLK clock source, you must wait until the target clock source is ready (i.e. the target clock source is stable). The target clock source can be HSICLK, HSECLK and PLL1CLK.
+
+The state bit of RCM_CTRL and RCM_CFG registers can indicate the ready clock and selected SYSCLK clock source.
+
+
+### 6.3.9 CSS clock security system
+
+
+In order to prevent MCU from failing to run normally due to short circuit of external crystal oscillator, MCU can activate CSS clock security system by software. After the security system is activated, if the HSECLK oscillator is used as the system clock directly or indirectly (used as the PLL input clock and PLL is used as the system clock), the external HSECLK oscillator will be disabled when the HSECLK fails, and the system clock will automatically switch to HSICLK. At this time, the PLLCLK which selects HSECLK as the clock input and is used as the system clock input source will also be disabled.
+
+Note: When CSS is activated by software and HSECLK fails, CSS interrupt and NMI (non-maskable interrupt) will be generated. Since NMI is executed continuously before CSS interrupt is cleared, CSSCLR bit in RCM_INT register needs to be set to clear the interrupt.
+
+
+### 6.3.10 TMR5-based internal/external clock measurement
+
+
+Through the input capture function of TMR5 Channel 4, the frequency of certain clock source generators can be indirectly measured. The circuit diagram is as follows:
+
+
+
+![](https://www.geehy.com/page60)
+
+Figure 6 TMR5 Measurement Clock Frequency Circuit Diagram
+
+RMPSel
+          
+        TMR5
+|  |
+
+
+         T14
+          
+TMR5 Channel 4 can connect a GPIO port or a MCU internal clock by configuring RMPSel bit of TMR5_OPT register
+
+
+### 6.3.11 TMR11-based internal/external clock measurement
+
+
+The external oscillator frequency can be tested through TMR11 when HSICLK is used as the system clock source. As shown in the figure below, the user can select to trigger T11 by I/O port or internal clock by configuring RMPSel bit of TMR11_OPT register.
+
+Figure 7 TMR11 Measurement Clock Frequency Circuit Diagram
+
+RMPSel
+          
+        TMR11
+|  |
+
+
+         T11
+          
+       
+          
+        HSEC_LK_RTC
+
+
+## 6.4 Register address mapping
+
+
+Table 33 RCM Register Address Mapping
+
+
+| Register name | Description | Offset Address |
+| ------------------- | ----------------------------------- | ---------------- |
+| RCM_CTRL | Clock control register | 0x00 |
+| RCM_PLL1CFG | PLL1 configuration register | 0x04 |
+| RCM_CFG | Clock configuration register | 0x08 |
+| RCM_INT | Clock interrupt register | 0x0C |
+| RCM_AHB1RST | AHB1 peripheral reset register | 0x10 |
+| RCM_AHB2RST | AHB2 peripheral reset register | 0x14 |
+| Reserved | - | 0x18 |
+| RCM_APB1RST | APB1 peripheral reset register | 0x20 |
+| RCM_APB2RST | APB2 peripheral reset register | 0x24 |
+| RCM_AHB1CLKEN | AHB1 peripheral clock enable register | 0x30 |
+| RCM_AHB2CLKEN | AHB2 peripheral clock enable register | 0x34 |
+| Reserved | - | 0x38 |
+| RCM_APB1CLKEN | APB1 peripheral clock enable register | 0x40 |
+| RCM_APB2CLKEN | APB2 peripheral clock enable register | 0x44 |
+| RCM_LPAHB1CLKEN | AHB1 peripheral clock enable register in low-power mode | 0x50 |
+| RCM_LPAHB2CLKEN | AHB2 peripheral clock enable register in low-power mode | 0x54 |
+| Reserved | - | 0x58 |
+| RCM_LPAPB1CLKEN | APB1 peripheral clock enable register in low-power mode | 0x60 |
+| RCM_LPAPB2CLKEN | APB2 peripheral clock enable register in low-power mode | 0x64 |
+| RCM_BDCTRL | Backup domain control register | 0x70 |
+| RCM_CSTS | Clock control/state register | 0x74 |
+| RCM_SSCCFG | Spread spectrum clock configuration register | 0x80 |
+| RCM_PLL2CFG | PLL2 configuration register | 0x84 |
+
+
+## 6.5 Register functional description
+
+### 6.5.1 Clock control register (RCM_CTRL)
+Offset address: 0x00  
+Reset value: 0x0000 XX81; X means undefined  
+Access: Access in the form of word, half word and byte, without wait cycle  
+
+
+| Field | Name | R/W | Description |
+| ------- | -------------- | ----- | ------------------------------------------------------------ |
+| 0 | HSIEN | R/W | High Speed Internal Clock Enable<br>Set 1 or clear 0 by software.<br>HSICLK is an RC oscillator. When one of the following conditions occurs, it will be set to 1 by hardware: power-on start, software reset, wake-up from standby mode, wake-up from stop mode, failure of external high-speed clock source (as system clock or providing system clock through PLL). When HSICLK is used as system clock or provides system clock through PLL, this bit cannot be cleared to 0.<br>0: HSICLK RC oscillator is disabled<br>1: HSICLK RC oscillator is enabled |
+| 1 | HSIRDYFLG | R | High Speed Internal Clock Ready Flag<br>0: HSICLK RC oscillator is not stable<br>1: HSICLK RC oscillator is stable |
+| 2 | Reserved |  |  |
+| 7:3 | HSITRM | R/W | High Speed Internal Clock Trim <br> HSICLK has been calibrated to 16MHz±1% when the product leaves <br> the factory. However, it changes with the temperature and voltage, but <br> the frequency of HSICLK RC oscillator can be adjusted by this bit. |
+| 15:8 | HSICAL | R | High Speed Internal Clock Calibrate <br> HSICLK has been calibrated to 16MHz±1% when the product leaves <br> the factory. When the system is started up, the calibration parameters <br> will be automatically written to the register. |
+| 16 | HSEEN | R/W | High Speed External Clock Enable <br> When entering the standby or stop mode, this bit is cleared to 0 by <br> hardware and HSECLK is disabled; when HSECLK is used as system <br> clock source or the system clock is provided through PLL, this bit <br> cannot be cleared to 0. <br> 0: Disable <br> 1: Enable |
+| 17 | HSERDYFLG | R | High Speed External Clock Ready Flag <br> When HSECLK is stable, this bit will be set to 1 by hardware and <br> cleared to 0 by software. <br> 0: HSECLK is not stable <br> 1: HSECLK is stable |
+| 18 | HSEBCFG | R/W | High Speed External Clock Bypass Configure <br> Bypass mode refers to the mode in which external clock is used as the <br> HSECLK clock source; otherwise, the resonator is used as the <br> HSECLK clock source. <br> 0: Non-bypass mode <br> 1: Bypass mode |
+| 19 | CSSEN | R/W | Clock Security System Enable <br> 0: Disable <br> 1: Enable <br> Note: This bit can be set to 1 only when HSECLK resonator is stable. |
+| 23:20 | Reserved |  |  |
+| 24 | PLL1EN | R/W | PLL1 Enable <br> When entering the standby and stop mode, this bit is cleared to 0 by the hardware; when <br> PLL1CLK has been configured as the clock source <br> of the system clock (or in the process of configuration), this bit cannot <br> be cleared to 0; in other cases, it can be set to 1 or cleared to 0 by <br> software. <br> 0: PLL1 is disabled <br> 1: PLL1 is enabled |
+| 25 | PLL1RDYFLG | R | PLL1 Clock Ready Flag <br> It is set to 1 by hardware after PLL1 is locked. <br> 0: PLL1 is unlocked <br> 1: PLL1 is locked |
+
+
+### 6.5.2 PLL1 configuration register (RCM_PLL1CFG)
+
+Offset address: 0x04  
+Reset value: 0x2400 3010  
+Access in the form of word, half word and byte, without wait cycle.  
+The register is used to configure various parameters so as to output different clock signals.  
+
+
+| Field | Name | R/W | Description |
+| ------- | -------- | ----- | ------------------------------------------------------------------------------------------------------ |
+| 26 | PLL2EN | R/W | PLL2 Enable<br>When entering the standby and stop mode, this bit is cleared to 0 by hardware.<br>0: PLL2 is disabled<br>1: PLL2 is enabled |
+| 27 | PLL2RDYFLG | R | PLL2 Clock Ready Flag<br>It is set to 1 by hardware after PLL2 is locked.<br>0: PLL2 is unlocked<br>1: PLL2 is locked |
+| 31:28 | Reserved |  |  |
+| 5:0 | PLLB | R/W | Division Factor B<br>It is used to calculate the clock frequency of VCO. These bits can be written only when PLL and PLL2S are disabled.<br>000000: PLLB=0 (error)<br>000001: PLLB=1 (error)<br>000010: PLLB=2<br>000011: PLLB=3<br>......<br>111110: PLLB=62<br>111111: PLLB=63 |
+| 14:6 | PLLA | R/W | PLL Multiplication Factor A<br>It is used to calculate VCO frequency. The calculation formula is f<sub>vco output</sub>=f<sub>vco input</sub>×PLL1A, and the formula is established only when PLL1A is 50–432.<br>00000000: PLLA=0 (error)<br>00000001: PLLA=1 (error)<br>......<br>00011010: PLLA=50<br>......<br>11011000: PLLA=432<br>11011001: PLLA=433 (error)<br>......<br>11111111: PLLA=511 (error) |
+
+
+### 6.5.3 Clock configuration register (RCM_CFG)
+
+Offset address: 0x08  
+Reset value: 0x0000 0000  
+All bits of this register are set or cleared to 0 by software.  
+Access: Access in the form of word, half word and byte, with 0 to 2 wait cycles.  
+1 or 2 wait cycles are inserted only when the access occurs during clock switching.
+
+
+| Field | Name | R/W | Description |
+| ------- | ---------- | ----- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1:0 | SCLKSEL | R/W | System Clock Source Select<br>When returning from stop or standby mode or the HSECLK directly or indirectly used as system clock fails, the hardware selects HSICLK as system clock by force (if the clock security system has been started)<br>00: HSICLK is used as system clock<br>01: HSECLK is used as system clock<br>10: PLL1CLK is used as system clock<br>11: Reserved |
+| 17:16 | PLL1C | R/W | Division Factor C<br>It is used to calculate the output clock frequency of PLL1.<br>00: PLL1C=2<br>01: PLL1C=4<br>10: PLL1C=6<br>11: PLL1C=8<br>Note: This bit can be written only when PLL1 is disabled. |
+| 21:18 | Reserved |  |  |
+| 22 | PLLCKS | R/W | PLL Clock Source<br>This bit can be set or cleared by software and be used to select the clock source of PLL1 and PLL2.<br>0: HSICLK is used as clock source<br>1: HSECLK is used as clock source<br>Note: This bit can be written only when PLL1 and PLL2 are disabled. |
+| 23 | Reserved |  |  |
+| 27:24 | PLLD | R/W | Division Factor<br>It is used to calculate the clock frequency of OTG_FS, RNG and SDIO.<br>0000: PLLD=0 (error)<br>0001: PLLD=1 (error)<br>0010: PLLD=2<br>0011: PLLD=3<br>0100: PLLD=4<br>.......<br>1111: PLLD=15 |
+| 31:28 | Reserved |  |  |
+
+
+
+**SCLKSELSTS**  R  
+System Clock Selection Status<br>
+Indicate which clock source is used as system clock; set to 1 or clear to 0 by hardware.<br>
+00: HSICLK is used as system clock<br>
+01: HSECLK is used as system clock<br>
+10: PLL1CLK output is used as system clock<br>
+11: No application
+
+
+7:4
+
+**AHBPSC**  R/W  
+AHB Clock Prescaler Factor Configure<br>
+Control the prescaler factor of AHB clock.<br>
+0xxx: No frequency division for SYSCLK<br>
+1000: SYSCLK two-divided frequency<br>
+1001: SYSCLK four-divided frequency<br>
+1010: SYSCLK eight-divided frequency<br>
+1011: SYSCLK 16-divided frequency<br>
+1100: SYSCLK 64-divided frequency<br>
+1101: SYSCLK 128-divided frequency<br>
+1110: SYSCLK 256-divided frequency<br>
+1111: SYSCLK 512-divided frequency<br>
+Note: Only after 1 to 16 AHB clock cycles after this bit is written, can the frequency of the clock signal be divided according to the new division factor.
+
+
+9:8
+
+**Reserved**
+
+
+12:10
+
+**APB1PSC**  R/W  
+APB1 Clock Prescaler Factor Configure<br>
+Prescaler factor used to control low-speed APB1 clock (PCLK1).<br>
+0xx: No frequency division for HCLK<br>
+100: HCLK 2-divided frequency<br>
+101: HCLK 4-divided frequency<br>
+110: HCLK 8-divided frequency<br>
+111: HCLK 16-divided frequency<br>
+Note: PCLK1 shall not be greater than 60MHz.
+
+
+15:13
+
+**APB2PSC**  R/W  
+APB2 Clock Prescaler Factor Configure<br>
+Prescaler factor used to control low-speed APB2 clock (PCLK2).<br>
+0xx: No frequency division for HCLK<br>
+100: HCLK 2-divided frequency<br>
+101: HCLK 4-divided frequency<br>
+110: HCLK 8-divided frequency<br>
+111: HCLK 16-divided frequency<br>
+Note: PCLK2 shall not be greater than 120MHz.
+
+
+
+
+| Field | Name | R/W | Description |
+| ------- | ---------- | ----- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 20:16 | RTCPSC | R/W | RTC Clock Prescaler Factor Configure<br>Control the prescaler factor, to make HSECLK frequency division generate a 1MHz clock signal to provide it to RTC.<br>0000X: No clock<br>00010: HSECLK2 frequency division<br>00011: HSECLK3 frequency division<br>00100: HSECLK4 frequency division<br>.......<br>11110: HSECLK30 frequency division<br>11111: HSECLK31 frequency division<br>Note: This bit must be configured before RTC selects HSECLK as the clock source. |
+| 22:21 | MCO1SEL | R/W | Main Clock Output1 Select<br>Set or clear 0 by software.<br>00: HSICLK is output as a clock<br>01: LSECLK is output as a clock<br>10: HSECLK is output as a clock<br>11: PLL1CLK is output as a clock |
+| 23 | I2SSEL | R/W | I2S Clock Source Select<br>Set this bit after reset and before enabling I2S, and this bit can be used to select the clock source for I2S.<br>0: PLL2CLK<br>1: External clock projected to I2S_CKIN pin |
+| 26:24 | MCO1PSC | R/W | MCO Clock Output1 Prescaler Factor Configure<br>00X: No frequency division<br>100: 2 divided frequency<br>101: 3 divided frequency<br>110: 4 divided frequency<br>111: 5 divided frequency |
+| 29:27 | MCO2PSC | R/W | MCO Clock Output2 Prescaler Factor Configure<br>00X: No frequency division<br>100: 2 divided frequency<br>101: 3 divided frequency<br>110: 4 divided frequency<br>111: 5 divided frequency |
+| 31:30 | MCO2SEL | R/W | Main Clock Output2 Select<br>00: SYSCLK is output as a clock<br>01: PLL2CLK is output as a clock<br>10: HSECLK is output as a clock<br>11: PLL1CLK is output as a clock |
+
+
+### 6.5.4 Clock interrupt register (RCM_INT)
+
+Offset address: 0x0C<br>
+Reset value: 0x0000 0000<br>
+Access: Access in the form of word, half word and byte, without wait cycle.
+
+
+
+
+| Field | Name | R/W | Description |
+| ------- | ------------- | ----- | ---------------------------------------------------------------------------------------------------------------------- |
+| 0 | LSIRDYFLG | R | LSICLK Ready Interrupt Flag<br>When LSICLK is stable and LSIRDYEN bit is set to 1, set 1 by hardware; set 1 by software and clear 0 by LSIRDYCLR.<br>0: No LSICLK ready interrupt<br>1: LSICLK ready interrupt occurred |
+| 1 | LSERDYFLG | R | LSECLK Ready Interrupt Flag<br>When LSECLK is stable and LSERDYEN bit is set to 1, set 1 by hardware; set 1 by software and clear 0 by LSERDYCLR.<br>0: No LSECLK ready interrupt<br>1: LSECLK ready interrupt occurred |
+| 2 | HSIRDYFLG | R | HSICLK Ready Interrupt Flag<br>When HSICLK is stable and HSIRDYEN bit is set to 1, set 1 by hardware; set 1 by software and clear 0 by HSIRDYCLR.<br>0: No HSICLK ready interrupt<br>1: HSICLK ready interrupt occurred |
+| 3 | HSERDYFLG | R | HSECLK Ready Interrupt Flag<br>When HSECLK is stable and HSERDYEN bit is set to 1, set 1 by hardware; set 1 by software and clear 0 by HSERDYCLR.<br>0: No HSECLK ready interrupt<br>1: HSECLK ready interrupt occurred |
+| 4 | PLL1RDYFLG | R | PLL1 Ready Interrupt Flag<br>When PLL1 is stable and PLL1RDYEN bit is set to 1, this bit will be set to 1 by hardware; when PLL1RDYCLR is set to 1 by software, this bit will be cleared.<br>0: PLL1 clock ready interrupt does not occur<br>1: PLL1 clock ready interrupt occurred |
+| 5 | PLL2RDYFLG | R | PLL2 Ready Interrupt Flag<br>When PLL2 is stable and PLL2RDYEN bit is set to 1, this bit will be set to 1 by hardware; when PLL2RDYCLR is set to 1 by software, this bit will be cleared to 0.<br>0: PLL2 clock ready interrupt does not occur<br>1: PLL2 clock ready interrupt occurred |
+| 6 | Reserved |  |  |
+| 7 | CSSFLG | R | Clock Security System Interrupt Flag<br>When the external high-speed oscillator clock fails, it is set to 1 by hardware.<br>When CSSCLR is set to 1 by software, this bit will be cleared to 0.<br>0: No security system interrupt caused by HSE clock failure<br>1: Clock security system interrupt is caused by HSE clock failure |
+| 8 | LSIRDYEN | R/W | LSICLK Ready Interrupt Enable<br>Enable or disable internal 28KHz RC oscillator ready interrupt.<br>0: Disable<br>1: Enable |
+| 9 | LSERDYEN | R/W | LSECLK Ready Interrupt Enable<br>Enable external 32kHz RC oscillator ready interrupt.<br>0: Disable<br>1: Enable |
+| 10 | HSIRDYEN | R/W | HSICLK Ready Interrupt Enable<br>Enable internal 8MHz RC oscillator ready interrupt.<br>0: Disable<br>1: Enable |
+| 11 | HSERDYEN | R/W | HSCLKE Ready Interrupt Enable<br>Enable external 4-16MHz oscillator ready interrupt.<br>0: Disable<br>1: Enable |
+| 12 | PLL1RDYEN | R/W | PLL1 Ready Interrupt Enable<br>Enable PLL1 ready interrupt.<br>0: Disable<br>1: Enable |
+| 13 | PLL2RDYEN | R/W | PLL2 Ready Interrupt Enable<br>Enable PLL2 ready interrupt.<br>0: Disable<br>1: Enable |
+| 15:14 |  |  | Reserved |
+| 16 | LSIRDYCLR | W | LSICLK Ready Interrupt Clear<br>Clear LSI ready interrupt flag bit LSIRDYFLG.<br>0: No effect<br>1: Clear |
+| 17 | LSERDYCLR | W | Ready Interrupt Clear<br>Clear LSE ready interrupt flag bit LSERDYFLG.<br>0: No effect<br>1: Clear |
+| 18 | HSIRDYCLR | W | HSICLK Ready Interrupt Clear<br>Clear HSI ready interrupt flag bit HSIRDYFLG.<br>0: No effect<br>1: Clear |
+| 19 | HSERDYCLR | W | HSECLOCK Ready Interrupt Clear<br>Clear HSE ready interrupt flag bit HSERDYFLG.<br>0: No effect<br>1: Clear |
+| 20 | PLL1DYCLR | W | PLL1 Ready Interrupt Clear<br>Clear PLL1 ready interrupt flag bit PLL1RDYFLG.<br>0: No effect<br>1: Clear |
+| 21 | PLL2DYCLR | W | PLL2 Ready Interrupt Clear<br>Clear PLL2 ready interrupt flag bit PLL2RDYFLG.<br>0: No effect<br>1: Clear |
+| 22 |  |  | Reserved |
+
+
+### 6.5.5 AHB1 peripheral reset register (RCM_AHB1RST)
+
+Offset address: 0x10  
+Reset value: 0x0000 0000  
+Access: Access in the form of word, half word and byte, without wait cycle.  
+
+
+| Field | Name | R/W | Description |
+| ------- | -------- | ------- | -------------------------------------------- |
+| 0 | PARST | R/W | GPIOA Reset                               <br>0: No effect<br>1: Reset |
+| 1 | PBRST | R/W | GPIOB Reset                               <br>0: No effect<br>1: Reset |
+| 2 | PCRST | R/W | GPIOC Reset                               <br>0: No effect<br>1: Reset |
+| 3 | PDRST | R/W | GPIOD Reset                               <br>0: No effect<br>1: Reset |
+| 4 | PERST | R/W | GPIOE Reset                               <br>0: No effect<br>1: Reset |
+| 6:5 |  |  | Reserved |
+| 7 | PHRST | R/W | GPIOH Reset                               <br>0: No effect<br>1: Reset |
+| 11:8 |  |  | Reserved |
+| 12 | CRCRST | R/W | CRC Reset                                 <br>0: No effect<br>1: Reset |
+| 20:13 |  |  | Reserved |
+| 21 | DMA1RST | R/W | DMA1 Reset                                <br>0: No effect<br>1: Reset |
+| 22 | DMA2RST | R/W | DMA2 Reset                                <br>0: No effect<br>1: Reset |
+| 31:23 |  |  | Reserved |
+
+
+### 6.5.6 AHB2 peripheral reset register (RCM_AHB2RST)
+
+Offset address: 0x14  
+Reset value: 0x0000 0000  
+Access: Access in the form of word, half word and byte, without wait cycle.
+
+
+| Field | Name | R/W | Description |
+| ------- | ---------- | ----- | ----------------------------------- |
+| 0 | Reserved |  |  |
+| 1 | SMCRST | R/W | SMC Reset<br>0: No effect<br>1: Reset |
+| 2 | QSPIRST | R/W | QSPI Reset<br>0: No effect<br>1: Reset |
+| 5:3 | Reserved |  |  |
+| 6 | RNGRST | R/W | RNG Reset<br>0: No effect<br>1: Reset |
+| 7 | OTGFSRST | R/W | OTG_FS Reset<br>0: No effect<br>1: Reset |
+| 31:8 | Reserved |  |  |
+
+
+### 6.5.7 APB1 peripheral reset register (RCM_APB1RST)
+
+Offset address: 0x20  
+Reset value: 0x0000 0000  
+Access: Access in the form of word, half word and byte, without wait cycle.  
+All bits can be set or cleared to 0 by software.
+
+
+| Field | Name | R/W | Description |
+| ------- | ---------- | ----- | ----------------------------------- |
+| 0 | TMR2RST | R/W | TMR2 Reset<br>0: No effect<br>1: Reset |
+| 1 | TMR3RST | R/W | TMR3 Reset<br>0: No effect<br>1: Reset |
+| 2 | TMR4RST | R/W | TMR4 Reset<br>0: No effect<br>1: Reset |
+| 3 | TMR5RST | R/W | TMR5 Reset<br>0: No effect<br>1: Reset |
+| 5:4 | Reserved |  |  |
+| 6 | TMR12RST | R/W | TMR12 Reset<br>0: No effect<br>1: Reset |
+| 7 | TMR13RST | R/W | TMR13 Reset<br>0: No effect<br>1: Reset |
+| 8 | TMR14RST | R/W | TMR14 Reset<br>0: No effect<br>1: Reset |
+| 10:9 | Reserved |  |  |
+| 11 | WWDTRST | R/W | WWDT Reset<br>0: No effect<br>1: Reset |
+| 13:12 | Reserved |  |  |
+| 14 | SPI2RST | R/W | SPI2 Reset<br>0: No effect<br>1: Reset |
+| 15 | SPI3RST | R/W | SPI3 Reset<br>0: No effect<br>1: Reset |
+| 16 |  |  | Reserved |
+| 17 | USART2RST | R/W | USART2 Reset<br>0: No effect<br>1: Reset |
+| 18 | USART3RST | R/W | USART3 Reset<br>0: No effect<br>1: Reset |
+| 19 | UART4RST | R/W | UART4 Reset<br>0: No effect<br>1: Reset |
+| 20 | UART5RST | R/W | UART5 Reset<br>0: No effect<br>1: Reset |
+| 21 | I2C1RST | R/W | I2C1 Reset<br>0: No effect<br>1: Reset |
+| 22 | I2C2RST | R/W | I2C2 Reset<br>0: No effect<br>1: Reset |
+| 23 | I2C3RST | R/W | I2C3 Reset<br>0: No effect<br>1: Reset |
+| 24 |  |  | Reserved |
+| 25 | CAN1RST | R/W | CAN1 Reset<br>0: No effect<br>1: Reset |
+| 26 | CAN2RST | R/W | CAN2 Reset                   <br>0: No effect<br>1: Reset |
+| 27 | Reserved |  |  |
+| 28 | PWRRST | R/W | Power Interface Reset        <br>0: No effect<br>1: Reset |
+| 31:29 | Reserved |  |  |
+
+
+### 6.5.8 APB2 peripheral reset register (RCM_APB2RST)
+
+Offset address: 0x24  
+Reset value: 0x0000 0000  
+Access: Access in the form of word, half word and byte, without wait cycle.  
+All bits can be set or cleared to 0 by software.
+
+
+| Field | Name | R/W | Description |
+| ------ | ----------- | ----- | ------------------------------ |
+| 0 | TMR1RST | R/W | TMR1 Reset                   <br>0: No effect<br>1: Reset |
+| 1 | TMR8RST | R/W | TMR8 Reset                   <br>0: No effect<br>1: Reset |
+| 3:2 | Reserved |  |  |
+| 4 | USART1RST | R/W | USART1 Reset                 <br>0: No effect<br>1: Reset |
+| 5 | USART6RST | R/W | USART6 Reset                 <br>0: No effect<br>1: Reset |
+| 7:6 | Reserved |  |  |
+| 8 | ADC1RST | R/W | ADC1 Interface Reset         <br>0: No effect<br>1: Reset |
+| 9 | ADC2RST | R/W | ADC2 Interface Reset         <br>0: No effect<br>1: Reset |
+| 10 | Reserved |  |  |
+| 11 | SDIORST | R/W | SDIO Reset                   <br>0: No effect<br>1: Reset |
+| 12 | SPI1RST | R/W | SPI1 Reset                   <br>0: No effect<br>1: Reset |
+| 13 | SPI4RST | R/W | SPI4 Reset<br>0: No effect<br>1: Reset |
+| 14 | SYSCFGRST | R/W | SYSCFG Module Reset<br>0: No effect<br>1: Reset <br>Reserved |
+| 16 | TMR9RST | R/W | TMR9 Reset<br>0: No effect<br>1: Reset |
+| 17 | TMR10RST | R/W | TMR10 Reset<br>0: No effect<br>1: Reset |
+| 18 | TMR11RST | R/W | TMR11 Reset<br>0: No effect<br>1: Reset <br>Reserved |
+| 20 | SPI5RST | R/W | SPI5 Reset<br>0: No effect<br>1: Reset |
+| 31:21 |  |  | Reserved |
+
+
+### 6.5.9 AHB1 peripheral clock enable register (RCM_AHB1CLKEN)
+
+Offset address: 0x30<br>
+Reset value: 0x0000 0000<br>
+Access: Access in the form of word, half word and byte, without wait cycle.
+
+
+| Field | Name | R/W | Description |
+| ------- | ---------- | ----- | ------------------------------------ |
+| 0 | PAEN | R/W | GPIOA Clock Enable<br>0: Disable<br>1: Enable |
+| 1 | PBEN | R/W | GPIOB Clock Enable<br>0: Disable<br>1: Enable |
+| 2 | PCEN | R/W | GPIOC Clock Enable<br>0: Disable<br>1: Enable |
+| 3 | PDEN | R/W | GPIOD Clock Enable<br>0: Disable<br>1: Enable |
+| 4 | PEEN | R/W | GPIOE Clock Enable<br>0: Disable<br>1: Enable |
+| 6:5 |  |  | Reserved |
+
+
+### 6.5.10 AHB2 peripheral clock enable register (RCM_AHB2CKEN)
+
+Offset address: 0x34  
+Reset value: 0x0000 0000  
+Access: Access in the form of word, half word and byte, without wait cycle.
+
+
+| Field | Name | R/W | Description |
+| ------- | -------- | ----- | ---------------------------- |
+| 0 |  |  | Reserved |
+| 1 | SMCEN | R/W | SMC Clock Enable           <br>0: Disable<br>1: Enable |
+| 2 | QSPIEN | R/W | QSPI Clock Enable          <br>0: Disable<br>1: Enable |
+| 5:3 |  |  | Reserved |
+| 6 | RNGEN | R/W | RNG Clock Enable           <br>0: Disable<br>1: Enable |
+| 7 | OTGFSE | R/W | OTG_FS Clock Enable        <br>0: Disable<br>1: Enable |
+| 31:8 |  |  | Reserved |
+
+
+### 6.5.11 APB1 peripheral clock enable register (RCM_APB1CLKEN)
+
+Offset address: 0x40  
+Reset value: 0x0000 0000  
+Access: Access in the form of word, half word and byte, without wait cycle.  
+All bits can be set or cleared to 0 by software.
+
+
+| Field | Name | R/W | Description |
+| ------- | -------- | ----- | ---------------------------- |
+| 7 | PHEN | R/W | GPIOH Clock Enable         <br>0: Disable<br>1: Enable |
+| 11:8 |  |  | Reserved |
+| 12 | CRCEN | R/W | CRC Clock Enable           <br>0: Disable<br>1: Enable |
+| 20:13 |  |  | Reserved |
+| 21 | DMA1EN | R/W | DMA1 Clock Enable          <br>0: Disable<br>1: Enable |
+| 22 | DMA2EN | R/W | DMA2 Clock Enable          <br>0: Disable<br>1: Enable |
+| 31:23 |  |  | Reserved |
+| 0 | TMR2EN | R/W | TMR2 Clock Enable          <br>0: Disable<br>1: Enable |
+| 1 | TMR3EN | R/W | TMR3 Clock Enable          <br>0: Disable<br>1: Enable |
+| 2 | TMR4EN | R/W | TMR4 Clock Enable          <br>0: Disable<br>1: Enable |
+| 3 | TMR5EN | R/W | TMR5 Clock Enable          <br>0: Disable<br>1: Enable |
+| 5:4 |  |  | Reserved |
+| 6 | TMR12EN | R/W | TMR12 Clock Enable         <br>0: Disable<br>1: Enable |
+| 7 | TMR13EN | R/W | TMR13 Clock Enable         <br>0: Disable<br>1: Enable |
+| 8 | TMR14EN | R/W | TMR14 Clock Enable         <br>0: Disable<br>1: Enable |
+| 10:9 |  |  | Reserved |
+| 11 | WWDTEN | R/W | WWDT Clock Enable          <br>0: Disable<br>1: Enable |
+| 13:12 |  |  | Reserved |
+| 14 | SPI2EN | R/W | SPI2 Clock Enable          <br>0: Disable<br>1: Enable |
+| 15 | SPI3EN | R/W | SPI3 Clock Enable          <br>0: Disable<br>1: Enable |
+| 16 |  |  | Reserved |
+| 17 | USART2EN | R/W | USART2 Clock Enable        <br>0: Disable<br>1: Enable |
+| 18 | USART3EN | R/W | USART3 Clock Enable        <br>0: Disable<br>1: Enable |
+| 19 | UART4EN | R/W | UART4 Clock Enable         <br>0: Disable<br>1: Enable |
+| 20 | UART5EN | R/W | UART5 Clock Enable                <br>0: Disable<br>1: Enable |
+| 21 | I2C1EN | R/W | I2C1 Clock Enable                 <br>0: Disable<br>1: Enable |
+| 22 | I2C2EN | R/W | I2C2 Clock Enable                 <br>0: Disable<br>1: Enable |
+| 23 | I2C3EN | R/W | I2C3 Clock Enable                 <br>0: Disable<br>1: Enable |
+| 24 |  |  | Reserved |
+| 25 | CAN1EN | R/W | CAN1 Clock Enable                 <br>0: Disable<br>1: Enable |
+| 26 | CAN2EN | R/W | CAN2 Clock Enable                 <br>0: Disable<br>1: Enable |
+| 27 |  |  | Reserved |
+| 28 | PMUEN | R/W | PMU Clock Enable                  <br>0: Disable<br>1: Enable |
+| 31:29 |  |  | Reserved |
+
+
+### 6.5.12 APB2 peripheral clock enable register (RCM_APB2CLKEN)
+Offset address: 0x44  
+Reset value: 0x0000 0000  
+Access: Access in the form of word, half word and byte, without wait cycle.  
+All bits can be set or cleared to 0 by software.
+
+
+| Field | Name | R/W | Description |
+| ------- | ---------- | ----- | ----------------------------------- |
+| 0 | TMR1EN | R/W | TMR1 Clock Enable                 <br>0: Disable<br>1: Enable |
+| 1 | TMR8EN | R/W | TMR8 Clock Enable                 <br>0: Disable<br>1: Enable |
+| 3:2 |  |  | Reserved |
+| 4 | USART1EN | R/W | USART1 Clock Enable               <br>0: Disable<br>1: Enable |
+| 5 | USART6EN | R/W | USART6 Clock Enable                  <br>0: Disable<br>1: Enable |
+| 7:6 |  |  | Reserved |
+| 8 | ADC1EN | R/W | ADC1 Interface Clock Enable          <br>0: Disable<br>1: Enable |
+| 9 | ADC2EN | R/W | ADC2 Interface Clock Enable          <br>0: Disable<br>1: Enable |
+| 10 |  |  | Reserved |
+| 11 | SDIOEN | R/W | SDIO Clock Enable                    <br>0: Disable<br>1: Enable |
+| 12 | SPI1EN | R/W | SPI1 Clock Enable                    <br>0: Disable<br>1: Enable |
+| 13 | SPI4EN | R/W | SPI4 Clock Enable                    <br>0: Disable<br>1: Enable |
+| 14 | SYSCFGEN | R/W | SYSCFG Module Clock Enable           <br>0: Disable<br>1: Enable |
+| 15 |  |  | Reserved |
+| 16 | TMR9EN | R/W | TMR9 Clock Enable                    <br>0: Disable<br>1: Enable |
+| 17 | TMR10EN | R/W | TMR10 Clock Enable                   <br>0: Disable<br>1: Enable |
+| 18 | TMR11EN | R/W | TMR11 Clock Enable                   <br>0: Disable<br>1: Enable |
+| 19 |  |  | Reserved |
+| 20 | SPI5EN | R/W | SPI5 Clock Enable                    <br>0: Disable<br>1: Enable |
+| 31:21 |  |  | Reserved |
+
+
+### 6.5.13 AHB1 peripheral clock enable register in low-power mode (RCM_LPABH1CLKEN)
+
+Offset address: 0x50<br>
+Reset value: 0x0061 900F
+
+
+
+Access: Access in the form of word, half word and byte, without wait cycle.  
+The function of the register is to enable the peripheral clock of AHB1 in low-power (sleep) mode.
+
+
+Field
+
+
+
+| Field | Name | R/W | Description |
+| ------- | -------- | ------- | ------------------------------- |
+| 0 | PAEN | R/W | GPIOA Clock Enable<br>0: Disable<br>1: Enable |
+| 1 | PBEN | R/W | GPIOB Clock Enable<br>0: Disable<br>1: Enable |
+| 2 | PCEN | R/W | GPIOC Clock Enable<br>0: Disable<br>1: Enable |
+| 3 | PDEN | R/W | GPIOD Clock Enable<br>0: Disable<br>1: Enable |
+| 4 | PEEN | R/W | GPIOE Clock Enable<br>0: Disable<br>1: Enable |
+| 6:5 |  |  | Reserved |
+| 7 | PHEN | R/W | GPIOH Clock Enable<br>0: Disable<br>1: Enable |
+| 11:8 |  |  | Reserved |
+| 12 | CRCEN | R/W | CRC Clock Enable<br>0: Disable<br>1: Enable |
+| 14:13 |  |  | Reserved |
+| 15 | FMCEN | R/W | FMC Clock Enable<br>0: Disable<br>1: Enable |
+| 16 | SRAM1EN | R/W | SRAM1Clock Enable<br>0: Disable<br>1: Enable |
+| 20:17 |  |  | Reserved |
+| 21 | DMA1EN | R/W | DMA1 Clock Enable<br>0: Disable<br>1: Enable |
+| 22 | DMA2EN | R/W | DMA2 Clock Enable<br>0: Disable<br>1: Enable |
+| 31:23 |  |  | Reserved |
+
+
+www.geehy.com
+
+
+
+
+### 6.5.14 AHB2 peripheral clock enable register in low-power mode (RCM_LPAHB2CLKEN)
+
+Offset address: 0x54  
+Reset value: 0x0000 0080  
+Access: Access in the form of word, half word and byte, without wait cycle.  
+The function of this register is to enable the peripheral clock of AHB2 in low-power (sleep) mode.  
+
+
+| Field | Name | R/W | Description |
+| ------- | -------- | ----- | --------------------------- |
+| 0 |  |  | Reserved |
+| 1 | SMCEN | R/W | SMC Clock Enable          <br>0: Disable<br>1: Enable |
+| 2 | QSPIEN | R/W | QSPI Clock Enable         <br>0: Disable<br>1: Enable |
+| 5:3 |  |  | Reserved |
+| 6 | RNGEN | R/W | RNG Clock Enable          <br>0: Disable<br>1: Enable |
+| 7 | OTGFSEN | R/W | OTG_FS Clock Enable       <br>0: Disable<br>1: Enable |
+| 31:8 |  |  | Reserved |
+
+
+### 6.5.15 APB1 peripheral clock enable register in low-power mode (RCM_LPAPB1CLKEN)
+
+Offset address: 0x60  
+Reset value: 0x10E2 C80F  
+Access: Access in the form of word, half word and byte, without wait cycle.  
+All bits can be set or cleared to 0 by software.  
+The function of this register is to enable the peripheral clock of APB1 in low-power (sleep) mode.  
+
+
+| Field | Name | R/W | Description |
+| ------- | -------- | ----- | --------------------------- |
+| 0 | TMR2EN | R/W | TMR2 Clock Enable         <br>0: Disable<br>1: Enable |
+| 1 | TMR3EN | R/W | TMR3 Clock Enable         <br>0: Disable<br>1: Enable |
+| 2 | TMR4EN | R/W | TMR4 Clock Enable         <br>0: Disable<br>1: Enable |
+| 3 | TMR5EN | R/W | TMR5 Clock Enable              <br>0: Disable<br>1: Enable |
+| 5:4 |  |  | Reserved |
+| 6 | TMR12EN | R/W | TMR12 Clock Enable             <br>0: Disable<br>1: Enable |
+| 7 | TMR13EN | R/W | TMR13 Clock Enable             <br>0: Disable<br>1: Enable |
+| 8 | TMR14EN | R/W | TMR14 Clock Enable             <br>0: Disable<br>1: Enable |
+| 10:9 |  |  | Reserved |
+| 11 | WWDTEN | R/W | WWDT Clock Enable              <br>0: Disable<br>1: Enable |
+| 13:12 |  |  | Reserved |
+| 14 | SPI2EN | R/W | SPI2 Clock Enable              <br>0: Disable<br>1: Enable |
+| 15 | SPI3EN | R/W | SPI3 Clock Enable              <br>0: Disable<br>1: Enable |
+| 16 |  |  | Reserved |
+| 17 | USART2EN | R/W | USART2 Clock Enable            <br>0: Disable<br>1: Enable |
+| 18 | USART3EN | R/W | USART3 Clock Enable            <br>0: Disable<br>1: Enable |
+| 19 | UART4EN | R/W | UART4 Clock Enable             <br>0: Disable<br>1: Enable |
+| 20 | UART5EN | R/W | UART5 Clock Enable             <br>0: Disable<br>1: Enable |
+| 21 | I2C1EN | R/W | I2C1 Clock Enable              <br>0: Disable<br>1: Enable |
+| 22 | I2C2EN | R/W | I2C2 Clock Enable              <br>0: Disable<br>1: Enable |
+
+
+### 6.5.16 APB2 peripheral clock enable register in low-power mode (RCM_LPAPB2CLKEN)
+
+
+Offset address: 0x64  
+Reset value: 0x0007 7930  
+Access: Access in the form of word, half word and byte, without wait cycle.  
+All bits can be set or cleared to 0 by software.  
+The function of this register is to enable the peripheral clock of AHB2 in low-power (sleep) mode.
+
+
+| Field | Name | R/W | Description |
+| ------- | --------- | ----- | ----------------------------------- |
+| 0 | TMR1EN | R/W | TMR1 Clock Enable                 <br>0: Disable<br>1: Enable |
+| 1 | TMR8EN | R/W | TMR8 Clock Enable                 <br>0: Disable<br>1: Enable |
+| 3:2 | Reserved |  |  |
+| 4 | USART1EN | R/W | USART1 Clock Enable               <br>0: Disable<br>1: Enable |
+| 5 | USART6EN | R/W | USART6 Clock Enable               <br>0: Disable<br>1: Enable |
+| 7:6 | Reserved |  |  |
+| 8 | ADC1EN | R/W | ADC1 Interface Clock Enable       <br>0: Disable<br>1: Enable |
+| 9 | ADC2EN | R/W | ADC2 Interface Clock Enable<br>0: Disable<br>1: Enable |
+| 10 |  |  | Reserved |
+| 11 | SDIOEN | R/W | SDIO Clock Enable<br>0: Disable<br>1: Enable |
+| 12 | SPI1EN | R/W | SPI1 Clock Enable<br>0: Disable<br>1: Enable |
+| 13 | SPI4EN | R/W | SPI4 Clock Enable<br>0: Disable<br>1: Enable |
+| 14 | SYSCFGEN | R/W | SYSCFG Module Clock Enable<br>0: Disable<br>1: Enable |
+| 15 |  |  | Reserved |
+| 16 | TMR9EN | R/W | TMR9 Clock Enable<br>0: Disable<br>1: Enable |
+| 17 | TMR10EN | R/W | TMR10 Clock Enable<br>0: Disable<br>1: Enable |
+| 18 | TMR11EN | R/W | TMR11 Clock Enable<br>0: Disable<br>1: Enable |
+| 19 |  |  | Reserved |
+| 20 | SPI5EN | R/W | SPI5 Clock Enable<br>0: Disable<br>1: Enable |
+| 31:21 |  |  | Reserved |
+
+
+### 6.5.17 Backup domain control register (RCM_BDCTRL)
+
+Offset address: 0x70<br>
+Reset value: 0x0000 0000, which can be reset effectively only by RTC domain<br>
+Access: Access in the form of word, half word and byte, with 0 to 3 wait cycles<br>
+When the register is accessed continuously, the waiting state will be inserted.<br>
+Note: Only when BPWEN bit in PMU_CTRL is set to 1, can LSEEN, LSEBCFG, RTCSRCSEL and RTCCLKEN be changed.
+
+
+| Field | Name | R/W | Description |
+| ------- | --------- | ------ | ----------------------------------------------- |
+| 0 | LSEEN | R/W | Low-Speed External Oscillator Enable<br>0: Disable<br>1: Enable |
+| 1 | LSERDYFLG | R | Low-Speed External Clock Ready Flag<br>Set 1 by hardware when LSECLK is stable, and clear 0 by hardware when it is unstable.<br>0: Not ready<br>1: Ready |
+| 2 | LSEBCFG | R/W | Low-Speed External Clock Bypass Mode Configure<br>Bypass mode refers to the mode in which external clock is used as the LSECLK clock source; otherwise, the resonator is used as the LSECLK clock source.<br>0: Non-bypass mode<br>1: Bypass mode |
+| 7:3 | Reserved |  |  |
+| 9:8 | RTCSRCSEL | R/W | RTC Clock Source Select<br>First set the RTCRST bit to reset the RTC domain, and then select the RTC clock source. It is impossible to directly configure the register to modify.<br>00: No clock<br>01: LSECLK is used as RTC clock<br>10: LSICLK is used as RTC clock<br>11: HSECLK is used as RTC clock after frequency division (the frequency division factor is determined by RTCPSC bit of RCM_CFG register) |
+| 14:10 | Reserved |  |  |
+| 15 | RTCCLKEN | R/W | RTC Clock Enable<br>0: Disable<br>1: Enable |
+| 16 | BDRST | R/W | Backup Domain Software Reset<br>Set 1 or clear 0 by software<br>0: Reset is not activated<br>1: Reset the backup domain (only affect LSECLK oscillator, RTC real-time clock and register RCM_BDCTRL) |
+| 31:17 | Reserved |  |  |
+
+
+### 6.5.18 Clock control/state register (RCM_CSTS)
+
+Offset address: 0x04<br>Reset value: 0x0E00 0000; except reset flag, all are cleared by system reset, and reset flag can only be cleared by power reset.<br>Access: Access in the form of word, half word and byte, with 0 to 3 wait cycles. When the register is accessed continuously, the waiting state will be inserted. 
+
+
+| Field | Name | R/W | Description |
+| ------- | ------- | ----- | --------------------------------------- |
+| 0 | LSIEN | R/W | Low-Speed Internal Oscillator Enable<br>Set 1 or clear 0 by software.<br>0: Disable<br>1: Enable |
+| 1 | LSIRDYFLG | R | Low-Speed Internal Oscillator Ready Flag<br>Set 1 by hardware when LSICLK is stable, and clear 0 by hardware when it is unstable.<br>0: Not ready<br>1: Ready <br> |
+| 23:2 | Reserved |  |  |
+| 24 | RSTFLGCLR | RT_W | Reset Flag Clear<br>Set or clear reset flag by software, including RSTFLGCLR.<br>0: Disable<br>1: Clear reset flag |
+| 25 | BORRSTFLG | R | BOR Flag<br>It is set by hardware when brownout reset occurs; otherwise it is cleared by setting RSTFLGCLR bit.<br>0: Reset did not occur<br>1: Reset occurred |
+| 26 | PINRSTFLG | R | PIN Reset Flag<br>Set by hardware when pin reset occurs; otherwise, clear by setting RSTFLGCLR.<br>0: Reset did not occur<br>1: Reset occurred |
+| 27 | PODRSTFLG | R | POR/PDR Reset Flag<br>Set 1 by hardware; and clear by software by writing RSTFLGCLR bit.<br>0: No power-on/power-down reset occurs<br>1: Power-on/power-down reset occurs |
+| 28 | SWRSTFLG | R | Software Reset Flag<br>Set 1 by hardware; and clear by software by writing RSTFLGCLR bit.<br>0: Reset did not occur<br>1: Reset occurred |
+| 29 | IWDTRSTFLG | R | Independent Watchdog Reset Flag<br>Set 1 by hardware when independent watchdog reset occurs in V00 area; clear by software by writing RSTFLGCLR bit.<br>0: Reset did not occur<br>1: Reset occurred |
+| 30 | WWDTRSTFLG | R | Window Watchdog Reset Flag<br>Set 1 by hardware when window watchdog is reset; clear by software by writing RSTFLGCLR bit.<br>0: Reset did not occur<br>1: Reset occurred |
+| 31 | LPWRRSTFLG | R | Low Power Reset Flag<br>Set 1 by hardware when low-power management is reset; clear by software by writing RSTFLGCLR bit.<br>0: Reset did not occur<br>1: Reset occurred |
+
+
+### 6.5.19 Spread spectrum clock configuration register (RCM_SSCFG)
+
+Offset address: 0x80  
+Reset value: 0x0000 0000  
+Access: Access in the form of word, half word and byte, with 0 to 3 wait cycles.  
+Because the spread spectrum clock only acts on PLL1, this register can be written only when PLL1 is not enabled to configure the spread spectrum clock.
+
+
+| Field | Name | R/W | Description |
+| ------------ | --------- | ----- | ------------------------------------------------------------------------- |
+| 12:0 | MODPCFG | R/W | Modulation Period Configure<br>Set 1 or clear 0 by software.<br>Configure the input of modulation period. |
+| 27:13 | STEP | R/W | Incrementation Step<br>Set 1 or clear 0 by software.<br>Configure the input of modulation amplitude. |
+| 29:28 | Reserved |  |  |
+| 30 | SSEL | R/W | Spread Spectrum Select<br>It is set or cleared by software.<br>0: Center spread<br>1: Downward spread |
+| 31 | SSEN | R/W | Spread Spectrum Enable<br>Set 1 or clear 0 by software.<br>0: Disable<br>1: Enable |
+
+
+### 6.5.20 PLL2 configuration register (RCM_PLL2CFG)
+
+Offset address: 0x84  
+Reset value: 0x2400 3000  
+Access in the form of word, half word and byte, without wait cycle.  
+The register is used to configure various parameters so as to output different clock signals.  
+\( f_{VCO clock} = (f_{PLL2 clock input}) \times (PLL2A/PLL2B) \)  
+\( f_{PLL2 clock output} = \frac{f_{VCO clock}}{PLL2C} \)
+
+
+| Field | Name | R/W | Description |
+| ------------ | --------- | ----- | ------------------------------------------------------------------------- |
+| 5:0 | Reserved |  |  |
+| 5:0 | PLLB | R/W | Division Factor B<br>It is used to calculate the clock frequency of VCO. These bits can be written only when PLL and PLL12S are disabled.<br>000000: PLLB=0 (error)<br>000001: PLLB=1 (error)<br>000010: PLLB=2<br>000011: PLLB=3<br>.......<br>111110: PLLB=62<br>111111: PLLB=63 |
+
+
+
+PLL2A  
+
+**R/W**  
+**Description**  
+PLL Multiplication Factor  
+It is used to calculate VCO frequency. The calculation formula is \(f_{VCO\ output} = f_{VCO\ input} \times PLL2A\), and the formula is established only when PLL2A is 50–432.  
+00000000: PLL2A=0 (error)  
+00000001: PLL2A=1 (error)  
+……  
+00011010: PLL2A=50  
+……  
+00110011: PLL2A=99  
+00110010: PLL2A=100  
+……  
+11011000: PLL2A=432  
+11011001: PLL2A=433 (error)  
+……  
+11111111: PLL2A=511 (error)  
+
+27:15  
+**Reserved**  
+
+30:28  
+
+PLL2C  
+
+**R/W**  
+**Description**  
+Division Factor  
+This bit can be set or cleared by software, and this variable can be controlled to change the clock frequency provided to I2S. This bit can be set only when PLL2 is disabled. Since I2S can only work at a frequency not greater than 192MHz, the range of PLL2C value shall be 2–7.  
+000: PLL2C=0 (wrong configuration)  
+001: PLL2C=1 (wrong configuration)  
+010: PLL2C=2  
+……  
+111: PLL2C=7  
+
+# 31
+**Reserved**  
+
+
+### 6.5.21 Selecting Clock Configuration Registers (RCM_CFGSEL)
+
+**Offset address:** 0x8C  
+**Reset value:** 0x0000 0000  
+**Access:** Access in the form of word, half word and byte, without wait cycle.  
+
+23:0  
+**Reserved**  
+
+# 24
+
+CLKPSEL  
+
+**R/W**  
+**Description**  
+Clock Prescaler Select  
+0: If APB1PSC and APB2PSC are configured for 1 division, then TMRxCLK=HCLK. Otherwise, TMRxCLK=HCLK*2.  
+1: If APB1PSC and APB2PSC are configured as 1 division or 2 division, then TMRxCLK=HCLK. Otherwise, TMRxCLK=HCLK*4.  
+
+31:25  
+**Reserved**
+
+
+
+
+# 7 Power management unit (PMU)
+
+
+
+## 7.1 Full Name and Abbreviation of Terms
+
+
+Table 34 Full Name and Abbreviation Description of Terms
+
+
+| Full name in English | English abbreviation |
+| ---------------------------- | ---------------------- |
+| Power Management Unit | PMU |
+| Power On Reset | POR |
+| Power Down Reset | PDR |
+| Brown-out Reset | BOR |
+| Power Voltage Detector | PVD |
+
+
+## 7.2 Introduction
+
+
+The power supply is the basis for stable operation of a system. The working voltage is 1.8~3.6V. It can provide 1.2V power supply through the built-in voltage regulator. If the main power V<sub>DD</sub> is powered down, it can supply power to the backup power supply area through V<sub>BAT</sub>.
+
+
+
+
+## 7.3 Structure block diagram
+
+
+Figure 8 Power Supply Structure Block Diagram
+
+
+
+● Normal mode: In this mode, 1.2V power supply area operates at full power, and the level of the output voltage can be selected through VOSSEL bit of the register PMU_CTRL.
+● Stop mode: In this mode, 1.2V power supply area works in low-power state, all clocks are disabled, peripherals stop working, and the set voltage output level remains unchanged.
+● Standby mode: In this mode, 1.2V power supply area stops power supply, and except for the standby circuit, the content of register and SRAM will be lost
+
+
+#### 7.4.1.2 VDDA power domain
+
+Power supply is provided through VDDA/VSSA and VREF+/VREF- pins to power the ADC, HSICLK, LSICLK, PLL and reset module.
+
+
+Independent ADC power supply and reference voltage
+
+Independent ADC power supply can improve conversion accuracy, and the specific power pins are as follows:
+- VDDA: Power pin of ADC  
+- VSSA: Independent power ground pin  
+- VREF+/VREF-: Reference voltage pin of ADC  
+
+
+#### 7.4.1.3 1.2V power domain
+
+The core, Flash, SRAM and digital peripherals are powered by voltage regulator.
+
+
+#### 7.4.1.4 Backup power domain
+
+When VDD exists, the backup power supply area is powered by VDD. When VDD is powered down, the backup power supply area is powered by VBAT, which is used to save the content of backup register and maintain RTC function. Power the LSECLK crystal oscillator, RTC, PC13, PC14, PC15 and wake-up logics.
+
+
+### 7.4.2 Power Management
+
+
+
+#### 7.4.2.1 Power-on/power-down reset (POR and PDR)
+
+When the VDDA/VDD is lower than the threshold voltage VPOR and VPDR, the chip will automatically remain in the reset state. The waveform diagrams of power-on reset and power-down reset are as follows. For POR, PDR, hysteresis voltage and hysteresis time, please refer to the Datasheet.
+
+
+
+![Figure 9 Power-on Reset and Power-down Reset Oscillogram](https://www.geehy.com)
+
+
+#### 7.4.2.2 Brown-out reset (BOR)
+
+
+When it is detected that \( V_{DD}/V_{DDA} \) is lower than the threshold voltage \( V_{BOR} \), the chip will automatically remain in reset state, and \( V_{BOR} \) can be configured through option byte. The followings are 4 thresholds of \( V_{BOR} \):
+
+- \( V_{BOR0} \): BOR is disabled, and the voltage range is 1.80~2.10V
+- \( V_{BOR1} \): BOR level is 1, and the voltage range is 2.10~2.40V
+- \( V_{BOR2} \): BOR level is 2, and the voltage range is 2.40~2.70V
+- \( V_{BOR3} \): BOR level is 3, and the voltage range is 2.70~3.60V
+
+
+
+![Figure 10 BOR Threshold Oscillogram](https://example.com/figure10.png)
+
+#### 7.4.2.3 Power voltage detector (PVD)
+A threshold can be set for PVD to monitor whether VDD/VDA is higher or lower than the threshold. If the interrupt is enabled, the interrupt can be triggered to process the VDD/VDA exceeding the threshold in advance. The usage of PVD is as follows:
+
+(1) Set the PVDEN bit of the configuration register PMU_CTRL to 1 to enable PVD  
+(2) Select the voltage threshold of PVD through the PLSEL[2:0] bit of the configuration register PMU_CTRL  
+(3) The PVDOFLG bit of the configuration register PMU_CSTS indicates whether the value of VDD is higher or lower than the threshold of PVD  
+(4) When it is detected that VDD/VDA is lower or higher than the threshold of PVD, PVD interrupt will be generated  
+
+The threshold waveform of PVD is shown below. Please see "Datasheet" for PVD threshold and hysteresis voltage.
+
+
+
+
+### 7.4.3 Power control
+
+
+
+#### 7.4.3.1 Reduce the power in low-power mode
+
+
+There are three low-power modes: sleep mode, stop mode and standby mode. The power is reduced by disabling the core and clock source and setting the voltage regulator.
+
+The power consumption, wake-up start time, wake-up mode and data storage after wake-up of each low-power mode are different; the lower the power consumption is, the longer the wake-up time is, the less the wake-up mode is, the less the data saved are after wake-up; users can choose the most appropriate low-power mode according to their needs. The following table shows the difference among three low-power modes.
+
+
+Table 35 Difference among "Sleep Mode, Stop Mode and Standby Mode"
+
+
+
+| Mode | Description | Entry method | Wake-up mode | Voltage regulator | Effect on 1.2V area clock | Effect on VDD area clock |
+| ------- | ------------------------------- | ------------------------------- | ------------------- | ------------------- | ---------------------------- | --------------------------- |
+| Sleep | Arm® Cortex®-M4F core | Call WFI instruction | Any interrupt | On | Only the core clock | N/A |
+
+
+Sleep mode
+
+
+The characteristics of sleep mode are shown in the table below
+
+
+Table 36 Characteristics of Sleep Mode
+
+
+
+| Characteristics | Description |
+| ------------------ | ------------- |
+| Enter | Enter the sleep mode immediately by executing WFI or WFE instructions; When SLEEPONEINT is set to 0 and WFI or WFE instruction is executed, the system will enter the sleep mode immediately; when SLEEPONEINT is set to 1, the system will exit the interrupt program and then enter the sleep mode immediately. |
+| Wake-up | If WFI instruction is executed to enter the sleep mode, wake up by any interrupt; if WFE instruction is executed to enter the sleep mode, wake up by an event. |
+| When entering sleep mode | The core stops working, all peripherals are still running, and the data in the core registers and memory before sleep are saved. |
+| Wakeup delay | N/A |
+
+
+Characteristics
+
+
+
+| Characteristics | Description |
+| ------------------ | ------------- |
+| After wake-up | If the system wakes up by an interrupt, it will first enter the interrupt, then exit the interrupt, and then execute the program after WFI instruction. If the system wakes up by an event, it will directly execute the program after WFI instruction. |
+
+
+Stop mode
+
+
+The characteristics of stop mode are shown in the table below:
+
+
+Table 37 Characteristics of Stop Mode
+
+
+
+| Characteristics | Description |
+| ------------------ | ------------- |
+| Enter | SLEEPDEEP bit of the core register is set to 1, PDDSCFG bit of the register PMU_CTRL is set to 0, and when executing WFI or WFE instruction, enter the stop mode immediately; When LDPSCFG bit of the register PMU_CTRL is set to 0, the voltage regulator is working in normal mode; when LDPSCFG bit of the register PMU_CTRL is set to 1, the voltage regulator is working in low-power mode. |
+| Wake-up | If WFI instruction is executed to enter the stop mode, wake up by any interrupt; if WFE instruction is executed to enter the stop mode, wake up by an event. |
+| When stopping | The core and the peripheral will stop working, and the data in the core register and memory before stop will be saved. |
+| Wakeup delay | Wake-up time of HSICLK oscillator + wake-up time of voltage regulator from low-power mode. |
+| After wake-up | If the system wakes up by an interrupt, it will first enter the interrupt, then exit the interrupt, and then execute the program after WFI instruction. If the system wakes up by an event, it will directly execute the program after WFI instruction. |
+
+
+Standby mode
+
+
+The characteristics of standby mode are shown in the table below:
+
+
+Table 38 Standby Mode
+
+
+
+| Characteristics | Description |
+| ------------------ | ------------- |
+| Enter | SLEEPDEEP bit of the core register is set to 1, PDDSCFG bit of the register PMU_CTRL is set to 1, WUEFLG bit is set to 0 and when WFI or WFE instruction is executed, it will enter the standby mode immediately. |
+| Wake-up | Wake up by rising edge of WKUP pin, RTC alarm, wake-up, tamper event or NRST pin external reset and IWDT reset. |
+| In standby state | The core and the peripheral will stop working, and the data in the core register and memory will be lost. |
+| Wakeup delay | Chip reset time. |
+| After wake-up | The program starts executing from the beginning. |
+
+
+#### 7.4.3.2 Reduce the power in run mode
+
+
+In the run mode, the power in run mode can be reduced by reducing the system clock, enabling or disabling the peripheral clock on the APB/AHB bus.
+
+
+
+
+#### 7.4.3.3 RTC multiplexing function is awakened from low-power mode
+
+
+RTC multiplexing functions include RTC alarm, RTC wake-up event, RTC tamper event and RTC timestamp event. These functions can wake up MCU from stop mode or standby mode, and RTC provides programmable time base in order to wake up the devices regularly from stop or standby mode.
+
+
+## 7.5 Register address mapping
+
+
+
+Table 39 PMU Register Address Mapping
+
+
+
+| Register name | Description | Offset Address |
+| --------------- | ---------------------------------- | ----------------- |
+| PMU_CTRL | Power control register | 0x00 |
+| PMU_CSTS | Power control/status register | 0x04 |
+
+
+## 7.6 Register functional description
+
+
+
+### 7.6.1 Power control register (PMU_CTRL)
+
+
+Offset address: 0x00<br>
+Reset value: 0x0000 8000 (cleared when waking up from standby mode)
+
+
+| Field | Name | R/W | Description |
+| ------- | ----------- | ------- | --------------------------------------------------------------- |
+| 0 | LPDSCFG | R/W | Low Power Deepsleep Configure<br>Configure the working state of the voltage regulator in stop mode.<br>0: Enable<br>1: Low-power mode |
+| 1 | PDDSCFG | R/W | Power Down Deep Sleep Configure<br>When the CPU enters deep sleep, configure the voltage regulator state in standby or stop mode.<br>0: The voltage regulator is controlled by LPDSCFG bit when entering the stop mode<br>1: Enter standby mode |
+| 2 | WUFLGCLR | RC_W1 | Wakeup Flag Clear<br>0: Invalid<br>1: Clear the wake-up flag after 2 system clock cycles by writing 1 |
+| 3 | SBFLGCLR | RC_W1 | Standby Flag Clear<br>0: Invalid<br>1: Write 1 to clear the standby flag |
+| 4 | PVDEN | R/W | Power Voltage Detector Enable<br>0: Disable<br>1: Enable |
+| 7:5 | PLSEL | R/W | PVD Level Select<br>000 :2.2V<br>001 :2.3V<br>010 :2.4V<br>011 :2.5V<br>100 :2.6V<br>101 :2.7V<br>110 :2.8V<br>111 :2.9V<br>Note: See "Datasheet" for detailed instructions |
+| 8 | BPWEN | R/W | Backup Domain Write Access Enable<br>Backup area refers to RTC and backup register; write access is disabled after reset, and is allowed after writing 1.<br>0: Write is disabled<br>1: Write is enabled |
+| 9 | FPDSM | R/W | Flash power-down in Stop Mode<br>0: Flash does not power down when entering the stop mode<br>1: Flash powers down when entering the stop mode |
+| 10 | LPRLV | R/W | Low Power Regulator Low Voltage in Stop Mode<br>0: When entering the stop mode, the low-power regulator is enabled<br>1: When entering the stop mode, the low-power regulator is in low-voltage mode and Flash is in deep sleep mode |
+| 11 | MRLV | R/W | Main Regulator Low Voltage in Stop Mode<br>0: Voltage of main regulator when entering the stop mode<br>1: When entering the stop mode, the main regulator is in low-voltage mode and Flash is in deep sleep mode |
+| 12 | Reserved |  |  |
+| 13 | ADC01EN | R/W | ADC Option 1 Enable<br>0: Disable<br>1: Enable<br>These bits can be set only when the following conditions are met:<br>Prefetch disable: SYSCFG_PMCFG[ADC02EN]=0. |
+| 15:14 | VOSSEL | R/W | Regulator Voltage Scaling Output Selection<br>00: Reserved<br>01: Level 3 mode<br>10: Level 2 mode<br>11: Level 1 mode |
+| 19:16 | Reserved |  |  |
+| 20 | FSMODE | R/W | Force Flash Sleep Mode<br>0: Standard mode<br>1: Stop mode or deep sleep mode |
+| 21 | FLASHEN | R/W | Flash Interface Enable<br>0: Enable<br>1: Disable |
+
+
+### 7.6.2 Power control/status register (PMU_CSTS)
+
+Offset address: 0x04  
+Reset value: 0x0000 0000 (not cleared when waking up from standby mode)  
+Compared with the standard APB read, it requires extra APB cycle to read this register  
+
+
+Field
+
+
+
+| Field | Name | R/W | Description |
+| ------- | ----------- | ----- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 0 | WUEFLG | R | Wakeup Event Flag<br>This bit is set by hardware, indicating whether wake-up event or RTC alarm wake-up event, RTC tamper event, RTC timestamp or RTC <br>wake-up event occurs on WKUP pin.<br>0: Not occur<br>1: Occurred<br>Note: Enable the WKUP pin, and an event will be detected when the WKUP pin is at high level. |
+| 1 | SBFLG | R | Standby Flag<br>This bit is set to 1 by hardware, and can only be cleared by POR/PDR (power-on/power-down reset) or by setting the SBFLGCLR bit of the <br>power control register (PMU_CTRL).<br>0: Not enter the standby mode<br>1: Have entered the standby mode |
+| 2 | PVDOFLG | R | PVD Output Flag<br>Indicate whether VDD/VDA is higher than the PVD threshold selected by PLSEL[2:0]<br>This bit is valid only when PVD is enabled by PVDEN bit.<br>0: VDD/VDA is higher than PVD threshold<br>1: VDD/VDA is lower than PVD threshold<br>Note: This bit is 0 after reset or when entering the standby mode (PVD stops work). |
+| 3 | BKPRFLG | R | Backup regulator ready Flag<br>This bit is set to 1 by hardware, indicating whether the backup regulator is ready.<br>0: Not ready<br>1: Ready |
+
+
+Reserved
+
+7:4  
+
+
+Field
+
+
+
+| Field | Name | R/W | Description |
+| ------- | ----------- | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 8 | WKUPCFG | R/W | WKUP Pin Configure<br>When WKUP is used as a normal I/O, the event on WKUP pin cannot wake up the CPU in standby mode; it can wake up CPU only when it<br>is not used as a normal I/O.<br>0: Configure normal I/O<br>1: Can wake up MCU<br>Note: Clear this bit during system reset |
+| 9 | BKPREN | R/W | Backup Regulator Enable<br>0: Disable<br>1: Enable |
+| 13:10 |  |  | Reserved |
+| 14 | VOSRFLG | R | Regulator Voltage Scaling Output Selection Ready Flag <br> 0: Not ready <br> 1. Ready |
+| 31:15 |  |  | Reserved |
+
+
+# 8 Nested Vector Interrupt Controller (NVIC)
+
+
+
+## 8.1 Full Name and Abbreviation of Terms
+
+
+
+| Full name in English | English abbreviation |
+| --------------------- | -------------------- |
+| Non Maskable Interrupt | NMI |
+
+
+## 8.2 Introduction
+
+
+The Cortex-M4F core in the product integrates nested vectored interrupt controller (NVIC), which is closely coupled with the core, and can handle exceptions and interrupts and power management control efficiently with low delay. Please see Cortex-M4F Technical Reference Manual for more instructions about NVIC.
+
+
+## 8.3 Main characteristics
+
+
+1. 75 maskable interrupt channels (excluding 16 Arm® Cortex®-M4F interrupt lines)  
+2. 16 programmable priority levels (use 4-bit interrupt priority level)  
+3. Low-delay exception and interrupt processing  
+4. Power management control  
+5. Realization of system control register  
+
+
+## 8.4 Interrupt and exception vector table
+
+
+
+| Exception type | Vector No. | Priority | Vector address | Description |
+| ---------------- | ------------ | ---------- | ---------------- | ---------------------------- |
+| - | - | - | 0x0000_0000 | Reserved |
+| Reset | - | -3 | 0x0000_0004 | Reset |
+| NMI | - | -2 | 0x0000_0008 | Non-maskable interrupt |
+| HardFault | - | -1 | 0x0000_000C | Various hardware faults |
+| MemManage | - | Can set | 0x0000_0010 | Memory management |
+| BusFault | - | Can set | 0x0000_0014 | - |
+| UsageFault | - | Can set | 0x0000_0018 | - |
+| - | - | - | 0x0000_001C-0x0000_002B | Reserved |
+| SVCAll | - | Can set | 0x0000_002C | SWI instruction realizes system service call |
+| Debug Monitor | - | Can set | 0x0000_0030 | Debug monitor |
+| - | - | - | 0x0000_0034 | Reserved |
+| PendSV | - | Can set | 0x0000_0038 | Pending system service request |
+| SysTick | - | Can set | 0x0000_003C | System tick timer |
+| WWDT | 0 | Can set | 0x0000_0040 | Window watchdog interrupt |
+| EXTIL6/PVD | 1 | Can set | 0x0000_0044 | EINT line 16 interrupt/power supply voltage detection interrupt through EINT line |
+| EXTIL21/TAMP_STAMP | 2 | Can set | 0x0000_0048 | EINT line 21 interrupt/tamper and timestamp interrupt through EINT line |
+| EXTIL22/RTC_WKUP | 3 | Can set | 0x0000_004C | EINT line 22 interrupt/RTC wake-up interrupt through EINT line |
+| FLASH | 4 | Can set | 0x0000_0050 | Flash memory global interrupt |
+| RCM | 5 | Can set | 0x0000_0054 | RCM interrupt |
+| EINT0 | 6 | Can set | 0x0000_0058 | EINT Line 0 interrupt |
+| EINT1 | 7 | Can set | 0x0000_005C | EINT Line 1 interrupt |
+| EINT2 | 8 | Can set | 0x0000_0060 | EINT Line 2 interrupt |
+| EINT3 | 9 | Can set | 0x0000_0064 | EINT Line 3 interrupt |
+| EINT4 | 10 | Can set | 0x0000_0068 | EINT Line 4 interrupt |
+| DMA1_STR0 | 11 | Can set | 0x0000_006C | DMA1 data stream 0 global interrupt |
+| DMA1_STR1 | 12 | Can set | 0x0000_0070 | DMA1 data stream 1 global interrupt |
+| DMA1_STR2 | 13 | Can set | 0x0000_0074 | DMA1 data stream 2 global interrupt |
+| DMA1_STR3 | 14 | Can set | 0x0000_0078 | DMA1 data stream 3 global interrupt |
+| DMA1_STR4 | 15 | Can set | 0x0000_007C | DMA1 data stream 4 global interrupt |
+| DMA1_STR5 | 16 | Can set | 0x0000_0080 | DMA1 data stream 5 global interrupt |
+| DMA1_STR6 | 17 | Can set | 0x0000_0084 | DMA1 data stream 6 global interrupt |
+| ADC | 18 | Can set | 0x0000_0088 | ADC1 and ADC2 global interrupt |
+| CAN1_TX | 19 | Can set | 0x0000_008C | CAN1 transmit interrupt |
+| CAN1_RX0 | 20 | Can set | 0x0000_0090 | CAN1 receiving 0 interrupt |
+| CAN1_RX1 | 21 | Can set | 0x0000_0094 | CAN1 receiving 1 interrupt |
+| CAN1_SCE | 22 | Can set | 0x0000_0098 | CAN1 SCE interrupt |
+| EINT9_5 | 23 | Can set | 0x0000_009C | EINT line [9:5] interrupt |
+| TMR1_BRK_TMR9 | 24 | Can set | 0x0000_00A0 | TMR1 braking interrupt/TMR9 global interrupt |
+| TMR1_UP_TMR10 | 25 | Can set | 0x0000_00A4 | TMR1 update interrupt/TMR10 global interrupt |
+| TMR1_TRG_COM_TM R11 | 26 | Can set | 0x0000_00A8 | TMR1 trigger and communication interrupt/TMR11 global interrupt |
+| TMR1_CC | 27 | Can set | 0x0000_00AC | TMR1 capture/compare interrupt |
+| TMR2 | 28 | Can set | 0x0000_00B0 | TMR2 interrupt |
+| TMR3 | 29 | Can set | 0x0000_00B4 | TMR3 interrupt |
+| TMR4 | 30 | Can set | 0x0000_00B8 | TMR4 interrupt |
+| I2C1_EV | 31 | Can set | 0x0000_00BC | I2C1 event interrupt |
+| I2C1_ER | 32 | Can set | 0x0000_00C0 | I2C1 error interrupt |
+| I2C2_EV | 33 | Can set | 0x0000_00C4 | I2C2 event interrupt |
+| I2C2_ER | 34 | Can set | 0x0000_00C8 | I2C2 error interrupt |
+| SPI1 | 35 | Can set | 0x0000_00CC | SPI1 interrupt |
+| SPI2 | 36 | Can set | 0x0000_00D0 | SPI2 interrupt |
+| USART1 | 37 | Can set | 0x0000_00D4 | USART1 interrupt |
+| USART2 | 38 | Can set | 0x0000_00D8 | USART2 interrupt |
+| USART3 | 39 | Can set | 0x0000_00DC | USART3 interrupt |
+| EINT15_10 | 40 | Can set | 0x0000_00E0 | EINT line [15:10] interrupt |
+| EXT17/RTC_Alarm | 41 | Can set | 0x0000_00E4 | EINT line 17 interrupt/RTC alarm interrupt |
+| EINT18/OTG_FS WKUP | 42 | Can set | 0x0000_00E8 | EINT line 18 interrupt/OTG_FS wake-up interrupt through EINT line |
+| TMR8_BRK_TMR12 | 43 | Can set | 0x0000_00EC | TMR8 braking interrupt/TMR12 global interrupt |
+| TMR8_UP_TMR13 | 44 | Can set | 0x0000_00F0 | TMR8 update interrupt/TMR13 global interrupt |
+| TMR8_TRG_COM_TM R14 | 45 | Can set | 0x0000_00F4 | TMR8 trigger and communication interrupt/TMR14 global interrupt |
+| TMR8_CC | 46 | Can set | 0x0000_00F8 | TMR8 capture compare interrupt |
+| DMA1_STR7 | 47 | Can set | 0x0000_00FC | DMA1 data stream 7 global interrupt |
+| SMC | 48 | Can set | 0x0000_0100 | SMC interrupt |
+| SDIO | 49 | Can set | 0x0000_0104 | SDIO interrupt |
+| TMR5 | 50 | Can set | 0x0000_0108 | TMR5 interrupt |
+| SPI3 | 51 | Can set | 0x0000_010C | SPI3 interrupt |
+| UART4 | 52 | Can set | 0x0000_0110 | UART4 interrupt |
+| UART5 | 53 | Can set | 0x0000_0114 | UART5 interrupt |
+| - | 54 | - | 0x0000_0118 | Reserved |
+| - | 55 | - | 0x0000_011C | Reserved |
+| DMA2_STR0 | 56 | Can set | 0x0000_0120 | DMA2 data stream 0 interrupt |
+| DMA2_STR1 | 57 | Can set | 0x0000_0124 | DMA2 data stream 1 interrupt |
+| DMA2_STR2 | 58 | Can set | 0x0000_0128 | DMA2 data stream 2 interrupt |
+| DMA2_STR3 | 59 | Can set | 0x0000_012C | DMA2 data stream 3 interrupt |
+| DMA2_STR4 | 60 | Can set | 0x0000_0130 | DMA2 data stream 4 interrupt |
+| - | 61 | - | 0x0000_0134 | Reserved |
+| - | 62 | - | 0x0000_0138 | Reserved |
+| CAN2_TX | 63 | Can set | 0x0000_013C | CAN2 transmit interrupt |
+| CAN2_RX0 | 64 | Can set | 0x0000_0140 | CAN2 receiving 0 interrupt |
+| CAN2_RX1 | 65 | Can set | 0x0000_0144 | CAN2 receiving 1 interrupt |
+| CAN2_SCE | 66 | Can set | 0x0000_0148 | CAN2 SCE interrupt |
+| OTG_FS | 67 | Can set | 0x0000_014C | OTG_FS global interrupt |
+| DMA2_STR5 | 68 | Can set | 0x0000_0150 | DMA2 data stream 5 interrupt |
+| DMA2_STR6 | 69 | Can set | 0x0000_0154 | DMA2 data stream 6 interrupt |
+| DMA2_STR7 | 70 | Can set | 0x0000_0158 | DMA2 data stream 7 interrupt |
+| USART6 | 71 | Can set | 0x0000_015C | USART6 global interrupt |
+| I2C3_EV | 72 | Can set | 0x0000_0160 | I2C3 event interrupt |
+| I2C3_ER | 73 | Can set | 0x0000_0164 | I2C3 error interrupt |
+| - | 74 | - | 0x0000_0168 | Reserved |
+| - | 75 | - | 0x0000_016C | Reserved |
+| - | 76 | - | 0x0000_0170 | Reserved |
+| - | 77 | - | 0x0000_0174 | Reserved |
+| - | 78 | - | 0x0000_0178 | Reserved |
+| - | 79 | - | 0x0000_017C | Reserved |
+| RNG | 80 | Can set | 0x0000_0180 | RNG global interrupt |
+| FPU | 81 | Can set | 0x0000_0184 | FPU global interrupt |
+| - | 82 | - | 0x0000_0188 | Reserved |
+| QSPI | 83 | Can set | 0x0000_018C | QSPI interrupt |
+| SPI4 | 84 | Can set | 0x0000_0190 | SPI4 interrupt |
+| SPI5 | 85 | Can set | 0x0000_0194 | SPI5 interrupt |
+
+
+# 9 External interrupt/event controller (EINT)
+
+
+
+## 9.1 Introduction
+
+
+The interrupts/events contain internal interrupts/events and external interrupts/events. In this manual, the external interrupt refers to the interrupt/event caused by I/O pin input signal, which is EINTx in interrupt vector table; other interrupts mean internal interrupts/events.
+
+The events can be divided into hardware events and software events. Hardware events are generated by external/core hardware signals, while software events are generated by instructions.
+
+Interrupts need to go through the interrupt handler function to implement the work to be processed, while events do not need to go through interrupt handler function, and the preset work can be triggered by hardware. The external events output pulse through events such as GPIO, while the internal events trigger another TMR to work, for example, through update event of a TMR.
+
+
+## 9.2 Main characteristics
+
+
+1. Support 21 event/interrupt requests  
+2. Each event/interrupt line can be masked independently  
+3. Each external event/interrupt line can be triggered independently  
+4. Each external interrupt line has dedicated status bit  
+5. Detect external signals with pulse width lower than APB2 clock width  
+
+
+## 9.3 Functional Description
+
+
+
+### 9.3.1 Classification and difference of "external interrupt and event"
+
+
+"External interrupt and event" can be classified into external hardware interrupt, external hardware event, external software event and external software interrupt according to trigger source, configuration and execution process. The differences are shown in the table below:
+
+
+
+
+Table 42 Classification and Differences of "External Interrupts and Events"
+
+
+
+| Name | Trigger source | Configuration and execution process |
+| ------------------------------- | ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| External hardware interrupt | External signal | (1) Set the trigger mode, allow the interrupt request, and enable corresponding peripheral interrupt line (enable in NVIC);<br>(2) When an edge consistent with the configuration is generated on the external interrupt line, an interrupt request will be generated, and the corresponding pending bit will be set to 1; write 1 to the corresponding bit of the pending register and the interrupt request will be cleared. |
+| External hardware event | External signal | (1) Set the trigger mode and enable the event line;<br>(2) When an edge consistent with the configuration is generated on the external event line, an event request pulse will be generated, and the corresponding pending bit will not be set to 1. |
+| External software event | Software interrupt register/transmit event (SEV) instruction | (1) Enable the event line;<br>(2) Write 1 to the software interrupt event register of the corresponding event line to generate an event request pulse, and the corresponding pending bit will not be set to 1. |
+| External software interrupt | Software interrupt register | (1) Allow interrupt request, and enable the corresponding peripheral interrupt line (enable in NVIC);<br>(2) Write 1 to the software interrupt event register of the corresponding interrupt line to generate an interrupt request, the corresponding pending bit will be set to 1; write 1 to the corresponding bit of the pending register and the interrupt request will be cleared. |
+
+
+### 9.3.2 Core wake-up
+
+
+Using WFI and WFE instructions can make stop the core. When WFI instruction is used, any interrupt can wake up the core; when WFE instruction is used, the core can be waken up by an event.
+
+When interrupt is used for wake-up, the interrupt handler function will be triggered, and normal interrupt configuration can wake up the core. When an event is used to wake up the core, the interrupt handler function will not be triggered, which will reduce the wake-up time, and the configuration method is:
+
+(1) Trigger an internal interrupt (internal hardware event) but do not trigger the interrupt handler function for wake-up  
+● Enable an internal interrupt in the peripheral, but do not enable the corresponding interrupt in NVIC to avoid triggering the interrupt handler function
+
+
+
+
+#### 9.3.2.1 Event wake-up
+
+
+
+Trigger an internal interrupt (internal hardware event) but do not trigger the interrupt handler function for wake-up
+
+
+(1) Enable SEVONPEND bit in the system controller of the core, and execute WFE instruction to make the core enter sleep mode  
+(2) Generate an interrupt to wake up the core; when the core recovers from WFE, it is required to clear the pending bit of corresponding peripheral interrupt and the pending bit of peripheral NVIC interrupt channel (clear the pending register in the NVIC interrupt)  
+
+
+Wake up by EINT line events (external hardware event)
+
+
+(1) Configure EINT line as the event mode;  
+(2) Execute WFE instruction to make the core enter the sleep mode;  
+(3) Generate an interrupt to wake up the core; after the CPU recovers from WFE, since the pending bit of corresponding event line is not set, it is unnecessary to clear the interrupt pending bit of corresponding peripheral or the pending bit NVIC interrupt channel.
+
+
+### 9.3.3 External interrupt and event line mapping
+
+
+
+| External Interrupt and Event Channel Name | External Interrupt and Event Line No. |
+| ------------------------------------------- | --------------------------------------- |
+| PA0/PB0/PC0/PD0/PE0/PH0 | EINT 0 |
+| PA1/PB1/PC1/PD1/PE1/PH1 | EINT 1 |
+
+
+External Interrupt and Event Channel Name | External Interrupt and Event<br>Line No.
+--- | ---
+… | …
+PA15/PB15/PC15/PD15/PE15 | EINT 15
+PVD output | EINT 16
+RTC Alarm event | EINT 17
+OTG_FS wake-up event | EINT 18
+Reserved | EINT 19
+Reserved | EINT 20
+RTC tamper and timestamp event | EINT 21
+RTC wake-up event | EINT 22
+Reserved | EINT 23
+Reserved | EINT 24
+Reserved | EINT 25
+Reserved | EINT 26
+Reserved | EINT 27
+Reserved | EINT 28
+Reserved | EINT 29
+Reserved | EINT 30
+Reserved | EINT 31
+
+
+## 9.4 Register address mapping
+
+
+Table 44 EINT Register Address Mapping
+
+
+| Register name | Description | Offset Address |
+| --- | --- | --- |
+| EINT_IMASK | Interrupt mask register | 0x00 |
+| EINT_EMASK | Event mask register | 0x04 |
+| EINT_RTEN | Enable the rising edge to trigger the register | 0x08 |
+| EINT_FTEN | Enable the falling edge to trigger the register | 0x0C |
+| EINT_SWINTE | Software interrupt event register | 0x10 |
+| EINT_IPEND | Interrupt pending register | 0x14 |
+
+
+## 9.5 Register functional description
+
+
+
+### 9.5.1 Interrupt mask register (EINT_IMASK)
+
+Offset address: 0x00
+
+
+
+Reset value: 0x0000 0000
+
+
+| Field | Name | R/W | Description |
+| ------- | --------- | ----- | ------------------------------------------------------------------- |
+| 18:0 | IMASKx | R/W | Interrupt Request Mask on Line x (x=0~18) <br> 0: Mask <br> 1: Open |
+| 20:19 |  |  | Reserved |
+| 22:21 | IMASKx | R/W | Interrupt Request Mask on Line x (x=21~22) <br> 0: Mask <br> 1: Open |
+| 31:23 |  |  | Reserved |
+
+
+### 9.5.2 Event mask register (EINT_EMASK)
+
+Offset address: 0x04  
+Reset value: 0x0000 0000
+
+
+| Field | Name | R/W | Description |
+| ------- | --------- | ----- | ------------------------------------------------------------------- |
+| 18:0 | EMASKx | R/W | Event Request Mask on Line x (x=0~18) <br> 0: Mask <br> 1: Open |
+| 20:19 |  |  | Reserved |
+| 22:21 | EMASKx | R/W | Event Request Mask on Line x (x=21~22) <br> 0: Mask <br> 1: Open |
+| 31:23 |  |  | Reserved |
+
+
+### 9.5.3 Enable the rising edge to trigger the register (EINT_RTEN)
+
+Offset address: 0x08  
+Reset value: 0x0000 0000
+
+
+| Field | Name | R/W | Description |
+| ------- | --------- | ----- | ------------------------------------------------------------------- |
+| 18:0 | RTENx | R/W | Rising Trigger Event and Interrupt Enable of Line x (x=0~18) <br> 0: Disable <br> 1: Enable |
+| 20:19 |  |  | Reserved |
+| 22:21 | RTENx | R/W | Rising Trigger Event and Interrupt Enable of Line x (x=21~22) <br> 0: Disable <br> 1: Enable |
+| 31:23 |  |  | Reserved |
+
+
+Note: Since the external wake-up lines are edge-triggered, there should be no glitch signal on these lines; when writing EINT_RTEN register, if the rising edge signal is on the external interrupt line, it will not be recognized and the pending bit will not be set; on the same interrupt line, the rising edge trigger and falling edge trigger can be set at the same time.
+
+
+### 9.5.4 Enable the falling edge to trigger the register (EINT_FTEN)
+
+Offset address: 0x0C  
+Reset address: 0x0C
+
+
+
+Reset value: 0x0000 0000
+
+
+| Field | Name | R/W | Description |
+| -------- | -------- | ----- | ------------------------------------------------------------------------------- |
+| 18:0 | FTENx | R/W | Falling Trigger Event and Interrupt Enable of Line x (x=0~18)                  <br>0: Disable<br>1: Enable |
+| 20:19 |  |  | Reserved |
+| 22:21 | FTENx | R/W | Falling Trigger Event and Interrupt Enable of Line x (x=21~22)                <br>0: Disable<br>1: Enable |
+| 31:23 |  |  | Reserved |
+
+
+Note: Since the external wake-up lines are edge-triggered, there should be no glitch signal on these lines; when writing EINT_FTEN register, if the rising edge signal is on the external interrupt line, it will not be recognized and the pending bit will not be set; on the same interrupt line, the rising edge trigger and falling edge trigger can be set at the same time.
+
+
+### 9.5.5 Software interrupt event register (EINT_SWINT)
+
+Offset address: 0x10  
+Reset value: 0x0000 0000
+
+
+| Field | Name | R/W | Description |
+| -------- | --------- | ----- | ------------------------------------------------------------------------------- |
+| 18:0 | SWINTEx | R/W | Software Interrupt Event on Line x (x=0~18)                                   <br>Set 1 by software, write 1 or clear 0 for the corresponding bit of EINT_IPEND.<br>When this bit is 0, the pending bit of EINT_IPEND can be set by writing 1.<br>1. If EINT_IMASK (EINT_EMASK) is set to open the interrupt (event) request, an interrupt (event) will be generated.<br>0: No effect<br>1: Software generates an interrupt (event) |
+| 20:19 |  |  | Reserved |
+| 22:21 | SWINTEx | R/W | Software Interrupt Event on Line x (x=21~22)                                  <br>Set 1 by software, write 1 or clear 0 for the corresponding bit of EINT_IPEND.<br>When this bit is 0, the pending bit of EINT_IPEND can be set by writing 1.<br>If EINT_IMASK (EINT_EMASK) is set to open the interrupt (event) request, an interrupt (event) will be generated.<br>0: No effect<br>1: Software generates an interrupt (event) |
+| 31:23 |  |  | Reserved |
+
+
+### 9.5.6 Interrupt pending register (EINT_IPEND)
+
+Offset address: 0x14  
+Reset value: 0xXXXX XXXX
+
+
+
+
+| Field | Name | R/W | Description |
+| -------- | -------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 18:0 | IPENDx | RC_W1 | Interrupt Pending Occur of Line x Flag (x=0~18) <br> When a request is triggered by the corresponding edge of EINT_RTEN/EINT_FTEN on the external interrupt line, set 1 by hardware; clear 0 by changing the polarity of the edge detection or clear 0 by writing 1 to this bit. |
+| 20:19 |  |  | Reserved |
+| 22:21 | IPENDx | RC_W1 | Interrupt Pending Occur of Line x Flag (x=21~22) <br> When a request is triggered by the corresponding edge of EINT_RTEN/EINT_FTEN on the external interrupt line, set 1 by hardware; clear 0 by changing the polarity of the edge detection or clear 0 by writing 1 to this bit. |
+| 31:23 |  |  | Reserved |
+
+
+# 10 Direct memory access (DMA)
+
+
+
+## 10.1 Introduction
+
+
+DMA (Direct Memory Access) can realize high-speed data transmission between peripheral devices and memory or between memory and memory without CPU intervention, thus saving CPU resources for other operations.
+
+The product has two DMA controllers, with 16 data streams. Each data stream corresponds to 8 channels, but only 1 channel can be used for each data stream at the same time. Each data stream can set priority, and the arbiter can coordinate the priority of corresponding DMA requests of each data stream according to the priority of the data stream.
+
+
+## 10.2 Main characteristics
+
+
+(1) Two DMA; each DMA has 8 data streams, and each data stream has 8 channels <br>
+(2) Dual AHB main interfaces; one is memory interface, and the other is peripheral interface <br>
+(3) There are three data transmission modes: peripheral to memory, memory to peripheral, and memory to memory <br>
+(4) Each data stream has a special hardware DMA request for connection <br>
+(5) Support software priority and hardware priority when multiple requests occur at the same time <br>
+(6) Each data stream has 5 event flags and independent interrupts <br>
+(7) Support circular transmission mode <br>
+(8) The number of data for transmission is programmable, up to 65535 <br>
+(9) The configurable source and target transmission width is byte, half word or word <br>
+(10) Support source and target incremental modes <br>
+(11) The configurable burst increment size is single time, 4, 8 or 16 ticks
+
+
+## 10.3 Functional Description
+
+
+
+### 10.3.1 DMA request
+
+
+If the peripheral or memory needs to transmit data using DMA, it is required to first transmit DMA request and after it is approved by DMA, data transmission can be started. Two DMA have 16 data streams in total. Each data stream is connected with different peripheral channels, and each data stream has five event flags (DMA half transmission, DMA transmission completion, DMA transmission error, DMA FIFO error, and direct mode error). The logic of the five event flags may become a separate interrupt request, and they all support software trigger. When multiple peripherals request the same data stream, it is required to configure the corresponding register to turn on or off the request of each peripheral, so as to ensure that one data stream can only turn on one peripheral request.
+
+
+
+
+Table 45 DMA1 Request Mapping Table
+
+
+
+| Peripheral request | Data stream 0 | Data stream 1 | Data stream 2 | Data stream 3 | Data stream 4 | Data stream 5 | Data stream 6 | Data stream 7 |
+| --------------------- | ---------------- | ---------------- | ---------------- | ---------------- | ---------------- | ---------------- | ---------------- | ---------------- |
+
+| Channel 0 | SPI3_RX | I2C1_TX | SPI3_RX | SPI2_TX | SPI3_TX | - | SPI3_TX |
+| Channel 1 | I2C1_RX | I2C3_RX | - | - | - | I2C1_RX | I2C1_TX |
+
+| Channel 2 | TMR4_CH1 | - | I2S3_EXT_RX | TMR4_CH2 | I2S2_EXT_TX | I2S3_EXT_TX | TMR4_UP | TMR4_CH3 |
+| Channel 3 | I2S3_EXT_RX | TMR2_UP TMR2_CH3 | I2C3_RX | I2S2_EXT_RX | I2C3_TX | TMR2_CH1 | TMR2_CH2 TMR2_CH4 | TMR2_UP TMR2_CH4 |
+| Channel 4 | UART5_RX | USART3_RX | UART4_RX | USART3_TX | UART4_TX | USART2_RX | USART2_TX | UART5_TX |
+| Channel 5 | - | - | TMR3_CH4 TMR3_UP | - | TMR3_CH1 TMR3_TRIG | TMR3_CH2 | - | TMR3_CH3 |
+| Channel 6 | TMR5_CH3 | TMR5_CH4 | TMR5_CH1 | TMR5_CH4 TMR5_TRIG | TMR5_CH2 | I2C3_TX | TMR5_UP | USART2_RX |
+| Channel 7 | - | - | I2C2_RX | I2C2_RX | - | - | I2C2_TX |  |
+
+
+Table 46 DMA2 Request Mapping Table
+
+
+
+| Peripheral request | Data stream 0 | Data stream 1 | Data stream 2 | Data stream 3 | Data stream 4 | Data stream 5 | Data stream 6 | Data stream 7 |
+| -------------------- | ---------------- | ---------------- | ---------------- | ---------------- | ---------------- | ---------------- | ---------------- | ---------------- |
+| Channel 0 | ADC1 | - | TMR8_CH1 | TMR8_CH2 | - | ADC1 | - | TMR1_CH1 |
+| Channel 1 | - | - | ADC2 | ADC2 | - | - | - | - |
+| Channel 2 | SPI1_TX | SPI5_RX | SPI5_TX | - | - | - | - | - |
+| Channel 3 | SPI1_RX | - | SPI1_RX | QSPI_RX | SPI1_TX | - | QSPI_TX | - |
+| Channel 4 | SPI4_RX | SPI4_TX | USART1_RX | SDIO | SPI4_RX | USART1_RX | - | USART1_TX |
+| Channel 5 | - | USART6_RX | SPI4_RX | SPI4_TX | SPI5_TX | USART6_TX | USART6_TX | - |
+| Channel 6 | TMR1_TRIG | TMR1_CH1 | TMR1_CH2 | TMR1_CH4 | TMR1_TRIG | TMR1_UP | TMR1_CH3 | - |
+| Channel 7 | - | TMR8_UP | TMR8_CH1 | TMR8_CH2 | TMR8_CH3 | SPI5_RX | SPI5_TX | TMR8_CH4 |
+|  |  |  | TMR8_TRIG | TMR8_COM |  |  |  |  |
+
+
+### 10.3.2 Arbiter
+
+When multiple DMA channel requests occur, an arbiter is needed to manage the response sequence. Management is divided into two stages: the first stage is software stage, which is divided into the highest, high, medium and low priority; the second stage is hardware stage, and under the condition of the same software priority, the lower the data stream number is, the higher the priority is.
+
+
+### 10.3.3 FIFO
+
+FIFO is used to temporarily store data before the source data is transmitted to the destination address. Each data stream has an independent 4-word FIFO, and the FIFO threshold can be controlled by software to be 1/4, 1/2, 3/4 or full.
+
+There are two DMA transmission modes. The first is direct mode, in which a single transmission will be started to the memory immediately after each peripheral request. If DMA is configured to transmit data from the memory to the peripheral, DMA will store a data in FIFO, and once the peripheral triggers the DMA request, it will transmit the data. The direct mode requires the same data width configuration for the source and destination addresses, and does not support burst mode or memory-to-memory transmission mode. The second is FIFO mode, in which, FIFO threshold is configured first, and when the data storage reaches the threshold, FIFO content will be transmitted to the destination address; FIFO mode is applicable when the data width of source address and destination address is different, and it supports burst mode; FIFO can store the data first and output them as required.
+
+
+### 10.3.4 Port
+
+DMA controller transmits data between the memory and the peripherals through the memory port and the peripheral port. The memory port and peripheral port of DMA2 are connected to AHB matrix bus, and the memory and peripheral of DMA2 can access the internal Flash, internal SRAM, AHB1 peripheral, APB1 peripheral, APB2 peripheral, AHB2 peripheral and external memory; the memory port of DMA1 does not have the access right for AHB2 peripheral compared with DMA2, the peripheral port of DMA1 is only connected to APB1 peripheral, so DMA1 cannot realize memory-to-memory transmission.
+
+
+### 10.3.5 DMA initialization parameter configuration
+
+
+
+#### 10.3.5.1 Transmission mode
+
+DMA2 supports three transmission modes: peripheral-to-memory mode, memory-to-peripheral mode and memory-to-memory mode. DMA1 supports two transmission modes: from peripheral to memory and from memory to peripheral.
+
+The transmission mode can be controlled through DIRCFG bit of DMA_SCFG register.
+
+
+
+
+#### 10.3.5.2 Increment mode
+
+
+The increment mode of peripheral and memory is controlled through PERIM and MEMIM bits of DMA_SCFG register. When both bits are set to 1, it is configured as the increment mode and the increment is the value of PERSIZECFG and MENSIZECFG bits of DMA_SCFG register. The PERSIZECFG and MENSIZECFG bits are used to set the data size of peripheral and memory to byte, half word or word.
+
+
+#### 10.3.5.3 Single transmission and burst mode
+
+
+Burst transmission refers to the high-speed transmission that increases the data volume transmitted each time at the transmission stage so as to improve the transmission speed. In the process of burst transmission, AHB bus will be occupied.
+
+Single and burst transmissions can be controlled through the PBCFG and MBCFG bits of DMA_SCFG register, and they can be configured as single transmission, incremental burst transmission of 4 ticks, incremental burst transmission of 8 ticks and incremental burst transmission of 16 ticks. This increment is determined by the value of PERSIZECFG and MENSIZECFG bits. The burst mode can be enabled only when the increment mode is supported.
+
+The burst mode shall be used in combination with FIFO, and the selected FIFO threshold shall be suitable for the burst size of memory, as shown in the table below.
+
+
+Table 47 FIFO Threshold Configuration
+
+
+
+| MENSIZECFG | FIFO threshold | MBCFG=01 | MBCFG=10 | MBCFG=11 |
+| ------------ | ---------------- | ------------------------ | ------------------------ | ----------------------- |
+| Byte | 1/4 | One-time burst of 4 ticks | Disable |  |
+|  | 1/2 | Two-time burst of 4 ticks | One-time burst of 8 ticks | Disable |
+|  | 3/4 | Three-time burst of 4 ticks | Disable |  |
+|  | Full | Four-time burst of 4 ticks | Two-time burst of 8 ticks | One-time burst of 16 ticks |
+| Half word | 1/4 | Disable |  |  |
+|  | 1/2 | One-time burst of 4 ticks | Disable |  |
+|  | 3/4 | Disable |  | Disable |
+|  | Full | Two-time burst of 4 ticks | One-time burst of 8 ticks |  |
+| Word | 1/4 | Disable | Disable |  |
+| 1/2 |  |  |  |  |
+| 3/4 |  |  |  |  |
+| Full | One-time burst of 4 ticks |  |  |  |
+
+
+#### 10.3.5.4 Circular mode
+
+
+The circular mode is used to process the circular buffer area and continuous data stream. The circular mode will automatically configure the number of data items as the initial value after the transmission ends, and continue the data transmission.
+
+The circular mode can be controlled through CIRCMEN bit of DMA_SCFG register.
+
+
+#### 10.3.5.5 Double-buffer mode
+
+
+Set DBM of DMA_SCFG register to 1 to enable the double- buffer mode and automatically activate the circular mode. In the double-buffer mode, the DMA_M1ADDR register is activated, and when the corresponding memory area of the address pointer of DMA_M0ADDR register finishes transmission, it will switch to the corresponding memory area of the address pointer of DMA_M1ADDR register to continue to transmit and be called circularly. When DMA accesses the DMA_M1ADDR, CTARG bit of DMA_SCFG register will be set to 1 and data can be written or read to DMA_M0ADDR register.
+
+This mode does not support memory-to-memory transmission.
+
+
+#### 10.3.5.6 Stream controller
+
+
+The stream controller can be configured as DMA or peripheral through PERFCT bit of DMA_SCFG register.
+
+When DMA is used as the stream controller, configure DMA_NDATA register before enabling data stream, and set the number of data items to be transmitted.
+
+When the peripheral is used as the stream controller, the number of transmitted data items is unknown, and the hardware will force the value of DMA_NDATA register to be set to 0xFFFF for execution. After the transmission is completed, the peripheral will transmit instructions to DMA through hardware, and then read the value of the register. The number of transmitted data=0xFFFF- DMA_NDATA.
+
+When the peripheral is used as the stream controller, the circular mode is disabled. When the memory-to-memory mode is selected, the PERFCT bit will be forced to be cleared to zero by the hardware, and only DMA can be selected as
+
+
+
+
+### 10.3.6 Interrupt
+
+
+Each data stream has five types of interrupt events: half transmission, transmission completion, transmission error, FIFO error and direct mode error.
+
+
+Table 48 DMA Interrupt Request
+
+
+
+| Interrupt event | Event flag bit | Enable interrupt bit |
+| ------------------------- | ---------------- | ----------------------- |
+| Half transmission | HTXIFLGx | HTXIEN |
+| Transmission completed | TXCIFLGx | TXCIEN |
+| Transmission error | TXEIFLGx | TXEIEN |
+| FIFO error | FEIFLGx | FEIEN |
+| Direct mode error | DMEIFLGx | DMEIEN |
+
+
+## 10.4 DMA register address mapping
+
+
+
+Table 49 DMA Register Address Mapping
+
+
+
+| Register name | Description | Offset Address |
+| ------------------------- | --------------------------------------------- | ------------------------------- |
+| DMA_LINTSTS | DMA low interrupt state register | 0x00 |
+| DMA_HINTSTS | DMA high interrupt state register | 0x04 |
+| DMA_LIFCLR | DMA low interrupt flag clear register | 0x08 |
+| DMA_HIFCLR | DMA high interrupt flag clear register | 0x0C |
+| DMA_SCFG | DMA data stream x configuration register | 0x10+0×18*(data stream number) |
+| DMA_NDATA | DMA data stream x data item number register | 0x14+0×18*(data stream number) |
+| DMA_PADDR | DMA data stream x peripheral address register | 0x18+0×18*(data stream number) |
+| DMA_M0ADDR | DMA data stream x memory 0 address register | 0x1C+0×18*(data stream number) |
+| DMA_M1ADDR | DMA data stream x memory 1 address register | 0x20+0×18*(data stream number) |
+| DMA_FCTRL | DMA data stream x FIFO control register | 0x24+0×18*(data stream number) |
+
+
+## 10.5 Register functional description
+
+
+
+### 10.5.1 DMA low interrupt state register (DMA_LINTSTS)
+
+
+Offset address: 0x00 <br>
+Reset value: 0x0000 0000
+
+
+
+
+| Field | Name | R/W | Description |
+| --------------- | ----------- | ----- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 22, 16, 6, 0 | FEIFLGx | R | Stream x FIFO Error Interrupt Flag (x=0…3)<br>These bits are set to 1 by hardware; write 1 and clear to 0 by software on the corresponding bit of DMA_LIFCLR register.<br>0: No FIFO error event<br>1: FIFO error event occurs |
+| 23, 17, 7, 1 | Reserved |  |  |
+| 24, 18, 8, 2 | DMEIFLGx | R | Stream x Direct Mode Error Interrupt Flag (x=0…3)<br>These bits are set to 1 by hardware; write 1 and clear to 0 by software on the corresponding bit of DMA_LIFCLR register.<br>0: No direct mode error<br>1: Direct mode error occurs |
+| 25, 19, 9, 3 | TXEIFLGx | R | Stream x Transfer Error Interrupt Flag (x=0…3)<br>These bits are set to 1 by hardware; write 1 and clear to 0 by software on the corresponding bit of DMA_LIFCLR register.<br>0: No transmission error<br>1: Transmission error occurs |
+| 26, 20, 10, 4 | HTXIFLGx | R | Stream x Half Transfer Interrupt Flag (x=0…3)<br>These bits are set to 1 by hardware; write 1 and clear to 0 by software on the corresponding bit of DMA_LIFCLR register.<br>0: No half-transmission event<br>1: Half-transmission event occurs |
+| 27, 21, 11, 5 | TXCIFLGx | R | Stream x Transfer Complete Interrupt Flag (x=0…3)<br>These bits are set to 1 by hardware; write 1 and clear to 0 by software on the corresponding bit of DMA_LIFCLR register.<br>0: No transmission completion event<br>1: Transmission completion event occurs |
+| 31:28, 15:12 | Reserved |  |  |
+
+
+### 10.5.2 DMA high interrupt state register (DMA_HINTSTS)
+
+Offset address: 0x04<br>
+Reset value: 0x0000 0000
+
+
+| Field | Name | R/W | Description |
+| --------------- | ----------- | ----- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 22, 16, 6, 0 | FEIFLGx | R | Stream x FIFO Error Interrupt Flag (x=4…7)<br>These bits are set to 1 by hardware; write 1 and clear to 0 by software on the corresponding bit of DMA_HIFCLR register.<br>0: No FIFO error event<br>1: FIFO error event occurs |
+| 23, 17, 7, 1 | Reserved |  |  |
+| 24, 18, 8, 2 | DMEIFLGx | R | Stream x Direct Mode Error Interrupt Flag (x=4…7)<br>These bits are set to 1 by hardware; write 1 and clear to 0 by software on the corresponding bit of DMA_HIFCLR register.<br>0: No direct mode error<br>1: Direct mode error occurs |
+| 26, 20, 10, 4 | HTXIFLGx | R | Stream x Half Transfer Interrupt Flag (x=4...7)<br>These bits are set to 1 by hardware; write 1 and clear to 0 by software on the corresponding bit of DMA_HIFCLR register.<br>0: No half-transmission event<br>1: Half-transmission event occurs |
+| 27, 21, 11, 5 | TXCIFLGx | R | Stream x Transfer Complete Interrupt Flag (x=4...7)<br>These bits are set to 1 by hardware; write 1 and clear to 0 by software on the corresponding bit of DMA_HIFCLR register.<br>0: No transmission completion event<br>1: Transmission completion event occurs |
+
+
+31:28, 15:12 | Reserved
+---------------------
+
+
+### 10.5.3 DMA low interrupt flag clear register (DMA_LIFCLR)
+
+Offset address: 0x08<br>Reset value: 0x0000 0000
+
+
+| 22, 16, 6, 0 | CFEIFLGx | W | Stream x Clear FIFO Error Interrupt Flag (x=0...3)<br>0: Invalid<br>1: The corresponding FEIFLGx flag in DMA_LINTSTS register is cleared to 0 |
+| --- | --- | --- | --- |
+
+| 23, 17, 7, 1 | Reserved |  |
+
+| 24, 18, 8, 2 | CDMEIFLGx | W | Stream x Clear Direct Mode Error Interrupt Flag (x=0...3)<br>0: Invalid<br>1: The corresponding DMEIFLGx flag in DMA_LINTSTS register is cleared to 0 |
+| 25, 19, 9, 3 | CTXEIFLGx | W | Stream x Clear Transfer Error Interrupt Flag (x=0...3)<br>0: Invalid<br>1: The corresponding TXEIFLGx flag in DMA_LINTSTS register is cleared to 0 |
+| 26, 20, 10, 4 | CHTXIFLGx | W | Stream x Clear Half Transfer Interrupt Flag (x=0...3)<br>0: Invalid<br>1: The corresponding HTXIFLGx flag in DMA_LINTSTS register is cleared to 0 |
+| 27, 21, 11, 5 | CTXCIFLGx | W | Stream x Clear Transfer Complete Interrupt Flag (x=0...3)<br>0: Invalid<br>1: The corresponding TXCIFLGx flag in DMA_LINTSTS register is cleared to 0 |
+
+
+31:28, 15:12 | Reserved
+
+
+### 10.5.4 DMA high interrupt flag clear register (DMA_HIFCLR)
+
+Offset address: 0x0C
+
+
+
+Reset value: 0x0000 0000
+
+
+| Field | Name | R/W | Description |
+| ------- | ----------- | ----- | -------------------------------------------------------------- |
+
+| 22 | 16, 6, 0 | CFEIFLGx | W | Stream x Clear FIFO Error Interrupt Flag (x=4...7)<br>0: Invalid<br>1: The corresponding FEIFLGx flag in DMA_HINTSTS register is cleared to 0 |
+| 23 | 17, 7, 1 | Reserved | - | - |
+| 24 | 18, 8, 2 | CDMEIFLGx | W | Stream x Clear Direct Mode Error Interrupt Flag (x=4...7)<br>0: Invalid<br>1: The corresponding DMEIFLGx flag in DMA_HINTSTS register is cleared to 0 |
+| 25 | 19, 9, 3 | CTXEIFLGx | W | Stream x Clear Transfer Error Interrupt Flag (x=4...7)<br>0: Invalid<br>1: The corresponding TXEIFLGx flag in DMA_HINTSTS register is cleared to 0 |
+| 26 | 20, 10, 4 | CHTXIFLGx | W | Stream x Clear Half Transfer Interrupt Flag (x=4...7)<br>0: Invalid<br>1: The corresponding HTXIFLGx flag in DMA_HINTSTS register is cleared to 0 |
+| 27 | 21, 11, 5 | CTXCIFLGx | W | Stream x Clear Transfer Complete Interrupt Flag (x=4...7)<br>0: Invalid<br>1: The corresponding TXCIFLGx flag in DMA_HINTSTS register is cleared to 0 |
+| 31:28 | 15:12 | Reserved | - | - |
+
+
+### 10.5.5 DMA data stream x configuration register (DMA_SCFG) (x=0...7)
+
+Offset address: 0x10+0x18× (data stream number)  
+Reset value: 0x0000 0000  
+
+
+| Field | Name | R/W | Description |
+| ------- | ----------- | ----- | -------------------------------------------------------------- |
+| 0 | EN | R/W | Stream Enable<br>0: Disable<br>1: Enable<br>This bit shall be cleared to 0 by hardware in any of the following situations:<br>1. When DMA transmission ends<br>2. When transmission error occurs to AHB main bus<br>3. When the FIFO threshold on the memory AHB port is incompatible with the burst size |
+| 1 | DMIEIEN | R/W | Direct Mode Error Interrupt Enable<br>0: Disable<br>1: Enable |
+| 2 | TXEIEN | R/W | Transfer Error Interrupt Enable<br>0: Disable<br>1: Enable |
+| 3 | HTXIEN | R/W | Half Transfer Interrupt Enable<br>0: Disable<br>1: Enable |
+| 4 | TXCIEN | R/W | Transfer Complete Interrupt Enable<br>0: Disable<br>1: Enable |
+| 5 | PERFIC | R/W | Peripheral Flow Controller<br>0: DMA is stream controller<br>1: The peripheral is stream controller<br>This bit can be written only when the EN bit is 0; when the memory-to-memory mode is selected, this bit will be automatically forced to zero by the hardware. |
+| 7:6 | DIRCFG | R/W | Data Transfer Direction Configure<br>00: From peripheral to memory<br>01: From memory to peripheral<br>10: From memory to memory<br>11: Reserved<br>These bits can be written only when EN bit is 0. |
+| 8 | CIRCEN | R/W | Circular Mode Enable<br>This bit can be set to 1 or cleared to 0 by software, or be cleared to 0 by hardware.<br>0: Disable<br>1: Enable<br>If the peripheral is set as the stream controller and the data stream is enabled, this bit will be automatically cleared to 0 by hardware.<br>If DMA transmission is ended, switch the target memory area, enable the data stream, and this bit will be automatically forced to 1 by the hardware. |
+| 9 | PERIM | R/W | Peripheral Increment Mode<br>0: The peripheral address pointer is fixed<br>1: After each data transmission, the peripheral address pointer will increase<br>This bit can be written only when EN bit is 0. |
+| 10 | MEMIM | R/W | Memory Increment Mode<br>0: The memory address pointer is fixed<br>1: After each data transmission, the memory address pointer will increase<br>This bit can be written only when EN bit is 0. |
+| 12:11 | PERSIZECFG | R/W | Peripheral Data Size Configure<br>00: Byte (8 bits)<br>01: Half word (16 bits)<br>10: Word (32 bits)<br>11: Reserved<br>These bits can be written only when EN bit is 0. |
+| 14:13 | MEMSIZECFG | R/W | Memory Data Size Configure<br>00: Byte (8 bits)<br>01: Half word (16 bits)<br>10: Word (32 bits)<br>11: Reserved<br>These bits can be written only when EN bit is 0.<br>In direct mode, when EN bit is 1, MEMSIZECFG bit will be forced to be of the same value as that of PERSIZECFG bit. |
+| 15 | PERSIZE | R/W | Peripheral increment offset size<br>0: The offset used to calculate the peripheral address is related to PERSIZECFG<br>1: The offset used to calculate the peripheral address is fixed to be 4<br>If PERIM bit is 0, this bit is meaningless, and it can be written only when EN bit is 0.<br>If the direct mode is selected or the PBCFG bit is not configured to 00, and the data stream is enabled, this bit will be forced to low level by hardware. |
+| 17:16 | PRILCFG | R/W | Priority Level Configure<br>00: Low<br>01: Medium<br>10: High<br>11: Very high<br>These bits can be written only when EN bit is 0. |
+| 18 | DBM | R/W | Double Buffer Mode<br>0: Do not switch the buffer when the transmission ends<br>1: Switch the target memory when DMA transmission ends<br>This bit can be written only when EN bit is 0. |
+| 19 | CTARG | R/W | Current Target (only in double buffer mode)<br>This bit can be set to 1 or cleared to 0 by hardware, or be written by software.<br>0: The current target memory is Memory 0<br>1: The current target memory is Memory 1 |
+| 20 | Reserved |  |  |
+| 22:21 | PBCFG | R/W | Peripheral Burst Transfer Configure<br>00: Single transmission<br>01: INCR4 (4-tick increment burst transmission)<br>10: INCR8 (8-tick increment burst transmission)<br>11: INCR16 (16-tick increment burst transmission)<br>This bit can be written only when EN bit is 0.<br>In direct mode, these bits will be forced to 0. |
+| 24:23 | MBCFG | R/W | Memory Burst Transfer Configure<br>00: Single transmission<br>01: INCR4 (4-tick increment burst transmission)<br>10: INCR8 (8-tick increment burst transmission)<br>11: INCR16 (16-tick increment burst transmission)<br>This bit can be written only when EN bit is 0.<br>In direct mode, these bits will be forced to 0. |
+| 27:25 | CHSEL | R/W | Channel Selection<br>000: Select Channel 0<br>001: Select Channel 1<br>010: Select Channel 2<br>011: Select Channel 3<br>100: Select Channel 4<br>101: Select Channel 5<br>110: Select Channel 6<br>111: Select Channel 7 |
+| 31:28 |  |  | Reserved |
+
+
+### 10.5.6 DMA data stream x data item number register (DMA_NDATA) (x=0…7)
+
+Offset address: 0x14+0x18× (data stream number)<br>Reset value: 0x0000 0000
+
+
+| Field | Name | R/W | Description |
+| -------- | -------- | ----- | --------------------------------------------------------------------------------------------------------------- |
+| 15:0 | NDATA | R/W | Number Of Data Items To Transfer<br>The number of data items to be transmitted is 0-65535. This register can be operated only when the data stream is disabled.<br>After the data stream is enabled, this register is read-only to indicate the number of remaining data items to be transmitted.<br>After each DMA transmission, this register will decrease.<br>This register is 0 after completion of transmission, and the initial value will be automatically reloaded in any of the following circumstances:<br>1. Configure the data stream in circular mode<br>2. Re-enable the data stream |
+| 31:16 |  |  | Reserved |
+
+
+### 10.5.7 DMA data stream x peripheral address register (DMA_PADDR) (x=0…7)
+
+Offset address: 0x18+0x18× (data stream number)<br>Reset value: 0x0000 0000
+
+
+| Field | Name | R/W | Description |
+| -------- | -------- | ----- | --------------------------------------------------------------------------------------------------------------- |
+| 31:0 | PADDR | R/W | Peripheral Address<br>Base address of peripheral data register of read/write data.<br>This bit can be written only when EN bit is 0. |
+| 31:16 |  |  | Reserved |
+
+
+### 10.5.8 DMA data stream x memory 0 address register (DMA_M0ADDR) (x=0...7)
+
+
+Offset address: 0x1C+0x18× (data stream number)  
+Reset value: 0x0000 0000
+
+
+| Field | Name | R/W | Description |
+| ------- | -------- | ----- | ------------------------------------------------------------------------------------- |
+| 31:0 | M0ADDR | R/W | Memory 0 Address<br>Base address of memory 0 of read/write data.<br>These bits are write-protected, and can be written only in any of the following circumstances:<br>● Disable data stream<br>● Enable the data stream and set CTARG bit of DMA_SCFG register to 1 |
+
+
+### 10.5.9 DMA data stream x memory 1 address register (DMA_M1ADDR) (x=0...7)
+
+
+Offset address: 0x20+0x18× (data stream number)  
+Reset value: 0x0000 0000
+
+
+| Field | Name | R/W | Description |
+| ------- | -------- | ----- | ------------------------------------------------------------------------------------- |
+| 31:0 | M1ADDR | R/W | Memory 1 Address<br>Base address of memory 1 of read/write data.<br>This register is only applicable to double-buffer mode.<br>These bits are write-protected, and can be written only in any of the following circumstances:<br>● Disable data stream<br>● Enable the data stream and clear CTARG bit of DMA_SCFG register to 0 |
+
+
+### 10.5.10 DMA data stream x FIFO control register (DMA_FCTRL) (x=0...7)
+
+
+Offset address: 0x24+0x18× (data stream number)  
+Reset value: 0x0000 0000
+
+
+| Field | Name | R/W | Description |
+| ------- | -------- | ----- | ------------------------------------------------------------------------------------- |
+| 1:0 | FTHSEL | R/W | FIFO Threshold Select<br>00: 1/4 of FIFO capacity<br>01: 1/2 of FIFO capacity<br>10: 3/4 of FIFO capacity<br>11: Full FIFO capacity<br>In direct mode, these bits are invalid, and they can be written only when EN bit is 1. |
+| 2 | DMDEN | R/W | Direct Mode Disable<br>0: Enable direct mode<br>1: Disable direct mode<br>This bit can be written only when the EN bit is 0; when the memory-to-memory mode is selected and EN bit is 1, this will be set to 1 by hardware. |
+| 5:3 | FSTS | R | FIFO Status<br>000:0<fifo_level<1/4<br>001:1/4<fifo_level<1/2<br>010:1/2<fifo_level<3/4<br>011: 3/4<fifo_level<full<br>100: FIFO is empty<br>101: FIFO is full<br>Others: Meaningless<br>These bits are invalid in direct mode. |
+| 6 |  |  | Reserved |
+| 7 | FEIEN | R/W | FIFO Error Interrupt Enable<br>0: Disable<br>1: Enable |
+| 31:8 |  |  | Reserved |
+
+
+# 11 Debug MCU (DBGMCU)
+
+
+
+## 11.1 Full Name and Abbreviation of Terms
+
+
+
+| Full name in English | English abbreviation |
+| ----------------------------- | ---------------------- |
+| Frame Clock | FCLK |
+| Serial Wire/JTAG Debug Port | SWJ-DP |
+
+
+## 11.2 Introduction
+
+
+APM32F411xCxE MCU series uses Arm® Cortex®-M4F core, and Arm® Cortex®-M4F core includes hardware debug module and supports complex debugging operation. During debugging, the module can make the running core stop at breakpoint, and achieve the effect of querying the internal state of the core and the external state of the system, and after the query is completed, the core and peripheral operation can be restored to continue to execute the program.
+
+Two debugging interfaces are supported:
+- Serial interfaces
+- JTAG debugging interface
+
+Note: The hardware debugging module included in Arm® Cortex®-M4F core is a subset of Arm CoreSight development tool set. Please refer to Cortex®-M4F (Version r1p1) Technical Reference Manual (TRM) and CoreSight Development Tool Set (Version r1p0) TRM for more information about debug function of Arm® Cortex®-M4F core.
+
+
+## 11.3 Main characteristics
+
+
+1. Able to replace the core to access AHB bus matrix
+2. Flexible debug pin assignment
+3. MCU debug box (support low-power mode, control peripheral clock, etc.)
+
+
+
+
+## 11.4 Functional Description
+
+
+
+### 11.4.1 Debug pin function configuration
+
+(1) Realize the on-line programming and debugging of the chip  
+(2) Using KEIL/IAR and other software to implement on-line debugging, downloading and programming  
+(3) Flexible implementation of production of bus-off programmer  
+
+
+| SWJ-CFG[2:0] | I/O port assignment of SWJ interface |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------ |
+| Configured as dedicated pin for debugging | PA13/ JTMS/ SWDIO |
+| Others | PA14/ JTCK/ SWCLK |
+| 100 | PA15/ JTDI |
+| Both JTAG-DP interface and SW-DP interface disabled | PB3/ JTDO |
+| Release | PB4/ JNTRST |
+| 010 |  |
+| JTAG-DP interface disabled, SW-DP interface enabled | Special |
+| Special | Special |
+| Release |  |
+| 001 |  |
+| All SWJ pins (JTAG-DP+SW-DP) Except JNTRST pin | Special |
+| Special | Special |
+| Special | Release |
+| 000 |  |
+| All SWJ pins (JTAG-DP+SW-DP) Reset state | Special |
+| Special | Special |
+| Special | Special |
+| Special | Special |
+
+
+Note: The items that cannot be tested in run mode can be observed and tested in detail
+
+
+
+
+### 11.4.2 ID code
+
+
+
+#### 11.4.2.1 MCU device ID code
+
+
+APM32F411xCxE MCU series includes a MCU ID code. It can be accessed with JTAG or SW debugging interface or user code.
+
+
+#### 11.4.2.2 Boundary scan TAP
+
+
+JTAG ID code
+
+The boundary scan TAP of APM32F411xCxE MCU series integrates JTAG ID code. For APM32F411xCxE series products, its JTAG ID code is 0x0A431B47.
+
+
+#### 11.4.2.3 Arm® Cortex®-M4F TAP
+
+
+Arm® Cortex®-M4 TAP has a JTAG ID code, which is 0x4BA00477.
+
+
+#### 11.4.2.4 Arm® Cortex®-M4F JEDEC-106 ID code
+
+
+Arm® Cortex -M4F has a JEDEC-106 ID code. It is located in 4KB ROM table in which the internal PPB bus address is 0xE0042000.
+
+
+## 11.5 Register address mapping
+
+
+
+| Register name | Description | Address |
+| ---------------------- | ----------------------------------- | ----------- |
+| DBGMCU_IDCODE | Device ID register | 0xE004 2000 |
+| DBGMCU_CFG | Debug MCU configuration register | 0xE004 2004 |
+| DBGMCU_APB1F | Debug MCU APB1 freeze register | 0xE004 2008 |
+| DBGMCU_APB2F | Debug MCU APB2 freeze register | 0xE004 200C |
+
+
+## 11.6 Register functional description
+
+
+
+### 11.6.1 Device ID register (DBGMCU_IDCODE)
+
+
+Address: 0xE004 2000<br>
+Only support 32-bit access<br>
+Reset value: 0xXXXXX XXXX, X=undefined bit
+
+
+| Field | Name | R/W | Description |
+| ----------- | ------ | ----- | ----------------------------------------------------------------------------------------------- |
+| 11:0 | EQR | R | Equipment Recognition<br>APM32F411xCxE series products: 0x431 or 0x433;<br>The debugger/programming tool identifies chips by QR (11:0). |
+| 15:12 |  | R | Reserved |
+| 31:16 | WVR | R | Wafer Version Recognition<br>This domain identifies wafer information<br>APM32F411xCxE series products version A: 0x0015 |
+
+
+### 11.6.2 Debug MCU configuration register (DBGMCU_CFG)
+
+
+This register can configure MCU in debug mode. It includes the counter supporting timer and watchdog, low-power mode, CAN communication and assignment tracking pin.  
+Address: 0xE004 2004  
+Only support 32-bit access  
+Reset value: 0x0000 0000 (not affected by system reset, only for power-on reset)
+
+
+| Field | Name | R/W | Description |
+| ------- | ----------------- | ----- | -------------------------------------------------------------------------------------------------- |
+| 0 | SLEEP_CLK_STS | R/W | Configure clock status when MCU is debugged in sleep mode<br>0: FCLK ON, HCLK OFF<br>1: FCLK ON, HCLK ON, provided by system clock |
+| 1 | STOP_CLK_STS | R/W | Configure clock status when MCU is debugged in stop mode<br>0: FCLK OFF, HCLK OFF<br>1: FCLK ON, HCLK ON, provided by HSICLK |
+| 2 | STANDBY_CLK_STS | R/W | Configure clock status when MCU is debugged in standby mode<br>0: FCLK OFF, HCLK OFF<br>1: FCLK ON, HCLK ON, provided by HSICLK |
+| 4:3 | Reserved |  |  |
+| 5 | TRACE_IOEN | R/W | Trace Debug Pin Enable<br>0: Tracking debug pin disabled<br>1: Tracking debug pin enabled |
+| 7:6 | TRACE_MODE | R/W | Trace Debug Pin Mode Configure<br>Tracking debug pin mode can be configured only when TRACE_IOEN=1:<br>00: Asynchronous mode<br>01: Synchronous mode, the data length is 1<br>10: Synchronous mode, the data length is 2<br>11: Synchronous mode, the data length is 4 |
+| 31:8 | Reserved |  |  |
+
+
+### 11.6.3 Debug MCU APB1 freeze register (DBGMCU_APB1F)
+
+
+This register is used to configure MCU during debugging.  
+Involve some APB peripherals:  
+- Freeze the timer counter  
+- Freeze I2C SMBus timeout  
+- Freeze supporting system window regulators and independent watchdog counter  
+
+This register is reset asynchronously by POR (not reset by system) and can be written by the debugger through system reset.  
+Only support 32-bit access  
+Address: 0xE004 2008  
+Reset value: 0x0000 (unaffected by system reset)
+
+
+
+
+| Field | Name | R/W | Description |
+| ------- | ----------- | ----- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| 0 | TMR2_STS | R/W | Configure TMR2 Work Status When Core is in Halted <br> Whether TMR2 counter continues to work when the core stops work <br> 0: Continue to work <br> 1: Stop working |
+| 1 | TMR3_STS | R/W | Configure Timer3 Work Status When Core is in Halted <br> Whether TMR3 counter continues to work when the core stops work <br> 0: Continue to work <br> 1: Stop working |
+| 2 | TMR4_STS | R/W | ConfigureTimer4 Work Status When Core is in Halted <br> Whether TMR4 counter continues to work when the core is halted <br> 0: Continue to work <br> 1: Stop working |
+| 3 | TMR5_STS | R/W | ConfigureTimer5 Work Status When Core is in Halted <br> Whether TMR5 counter continues to work when the core is halted <br> 0: Continue to work <br> 1: Stop working |
+| 5:4 | Reserved |  |  |
+| 6 | TMR12_STS | R/W | ConfigureTimer12 Work Status When Core is in Halted <br> Whether TMR12 counter continues to work when the core is halted <br> 0: Continue to work <br> 1: Stop working |
+| 7 | TMR13_STS | R/W | ConfigureTimer13 Work Status When Core is in Halted <br> Whether TMR13 counter continues to work when the core is halted <br> 0: Continue to work <br> 1: Stop working |
+| 8 | TMR14_STS | R/W | Configure Timer14 Work Status When Core is in Halted <br> Whether TMR14 counter continues to work when the core stops work <br> 0: Continue to work <br> 1: Stop working |
+| 9 | Reserved |  |  |
+| 10 | RTC_STS | R/W | Configure RTC Work Status When Core Is in Halted <br> Whether RTC counter continues to work when the core stops work <br> 0: Continue to work <br> 1: Stop working |
+| 11 | WWDT_STS | R/W | Configure Window Watchdog Work Status When Core Is in Halted<br>Whether WWDT continues to work when the core stops<br>0: Continue to work<br>1: Stop working |
+| 12 | IWDT_STS | R/W | Configure Independent Watchdog Work Status When Core Is in Halted<br>Whether IWDT continues to work when the core stops<br>0: Continue to work<br>1: Stop working <br>Reserved |
+| 21 | I2C1_SMBUS_TIMEOUT_STS | R/W | Configure I2C1_SMBUS_TIMEOUT Work Status When Core Is in Halted<br>Whether I2C1_SMBUS_TIMEOUT continues to work when the core stops<br>0: Work normally<br>1: Freeze the timeout mode of SMBUS |
+| 22 | I2C2_SMBUS_TIMEOUT_STS | R/W | Configure I2C2_SMBUS_TIMEOUT Work Status When Core Is in Halted<br>Whether I2C2_SMBUS_TIMEOUT continues to work when the core is halted<br>0: Work normally<br>1: Freeze the timeout mode of SMBUS |
+| 23 | I2C3_SMBUS_TIMEOUT_STS | R/W | Configure I2C3_SMBUS_TIMEOUT Work Status When Core Is in Halted<br>Whether I2C3_SMBUS_TIMEOUT continues to work when the core stops<br>0: Work normally<br>1: Freeze the timeout mode of SMBUS |
+| 24 |  |  | Reserved |
+| 25 | CAN1_STS | R/W | Configure Controller Area Network 1 Work Status When Core is in Halted<br>Whether CAN1 continues to work when the core is halted<br>0: Work normally<br>1: Freeze CAN1 receive register |
+| 26 | CAN2_STS | R/W | Configure Controller Area Network 2 Work Status When Core is in Halted<br>Whether CAN2 continues to work when the core is halted<br>0: Work normally<br>1: Freeze CAN2 receive register <br>Reserved |
+
+
+### 11.6.4 Debug MCU APB2 freeze register (DBGMCU_APB2F)
+
+This register is used to configure MCU during debugging.<br>Involve some APB peripherals:<br>• Freeze the timer counter
+
+
+
+This register is reset asynchronously by POR (not reset by system) and can be written by the debugger through system reset.  
+Only support 32-bit access  
+Address: 0xE004 200C  
+Reset value: 0x0000 (unaffected by system reset)  
+
+
+| Field | Name | R/W | Description |
+| ------- | ----------- | ----- | ------------------------------------------------------------------------- |
+| 0 | TMR1_STS | R/W | Configure Timer1 Work Status When Core is in Halted<br>Whether TMR1 counter continues to work when the core stops<br>0: Continue to work<br>1: Stop working |
+| 1 | TMR8_STS | R/W | ConfigureTimer8 Work Status When Core is in Halted<br>Whether TMR8 counter continues to work when the core is halted<br>0: Continue to work<br>1: Stop working |
+| 15:2 | Reserved |  |  |
+| 16 | TMR9_STS | R/W | ConfigureTimer9 Work Status When Core is in Halted<br>Whether TMR9 counter continues to work when the core is halted<br>0: Continue to work<br>1: Stop working |
+| 17 | TMR10_STS | R/W | ConfigureTimer10 Work Status When Core is in Halted<br>Whether TMR10 counter continues to work when the core is halted<br>0: Continue to work<br>1: Stop working |
+| 18 | TMR11_STS | R/W | ConfigureTimer11 Work Status When Core is in Halted<br>Whether TMR11 counter continues to work when the core is halted<br>0: Continue to work<br>1: Stop working |
+| 31:19 | Reserved |  |  |
+
+
+# 12 General-Purpose Input/Output Pin (GPIO)
+
+
+
+## 12.1 Full Name and Abbreviation of Terms
+
+
+
+Table 53 Full Name and Abbreviation Description of Terms
+
+
+
+| Full name in English | English abbreviation |
+| ----------------------------------------- | ---------------------- |
+| P-channel Metal Oxide Semiconductor | P-MOS |
+| N-channel Metal Oxide Semiconductor | N-MOS |
+
+
+## 12.2 Main characteristics
+
+
+GPIO port can configure the following functions through 32-bit configuration register (GPIOx_CFGLW/GPIOx_CFHG) and two 32-bit data registers GPIOx_IDATA/GPIOx_ODATA:
+
+(1) Input mode  
+&nbsp;&nbsp;&nbsp;&nbsp;● Analog input<br>
+&nbsp;&nbsp;&nbsp;&nbsp;● Floating input<br>
+&nbsp;&nbsp;&nbsp;&nbsp;● Pull-up input<br>
+&nbsp;&nbsp;&nbsp;&nbsp;● Pull-down input
+
+(2) Output mode  
+&nbsp;&nbsp;&nbsp;&nbsp;● Push-pull output<br>
+&nbsp;&nbsp;&nbsp;&nbsp;● Open-drain output<br>
+&nbsp;&nbsp;&nbsp;&nbsp;● Configurable maximum output rate
+
+(3) Multiplexing mode  
+&nbsp;&nbsp;&nbsp;&nbsp;● Push-pull multiplexing function<br>
+&nbsp;&nbsp;&nbsp;&nbsp;● Open-drain multiplexing function
+
+(4) Analog function  
+
+(5) GPIO can be used as external interrupt/wakeup line  
+
+(6) Support locking I/O configuration function
+
+
+
+
+## 12.3 Structure block diagram
+
+
+Figure 13 5V-compatible GPIO Structure Block Diagram
+
+
+| Write | Bit set/clear register | Output data register |
+| ------- | ------------------------- | ---------------------- |
+| Read | From on-chip peripheral | Multiplexing function output <br>Output control<br>Push-pull, open-drain, disable |
+| ------------------------------------ | ------------------------------ |  |
+| VDD (1) | N-MOS | <br>VOP<br>I/O pin<br>VSS |
+
+
+(1)  VDD_FT is different from VDD, and VDD_FT is special for FT GPIO pin.  
+
+
+## 12.4 Functional Description
+
+
+Each pin of GPIO can be configured as pull-up, pull-down, floating and analog input, or push-pull/open-drain output and input mode and multiplexing function by software. All GPIO interfaces have external interrupt capability.
+
+
+### 12.4.1 IO status during reset and just after reset
+
+
+If the multiplexing function is not enabled during and just after GPIO reset, the I/O port will be configured as floating input mode, and in such case the pull-up/pull-down resistor is disabled in input mode. After reset, the JTAG pin is put in the input pull-up or pull-down mode, and the specific configuration is as follows:
+
+- PA15: JTDI in pull-up mode  
+- PA14: JTCK in pull-down mode  
+- PA13: JTMS in pull-up mode  
+- PB4: JNTRST in pull-up mode  
+- PB3: JTDO is put in floating mode  
+
+
+### 12.4.2 Input mode
+
+
+In the input mode, it can be set as pull-up, pull-down, floating and analog input.
+
+When GPIO is configured as input mode, all GPIO pins have an internal weak pull-up and pull-down resistor, which can be activated or broken.
+
+Pull-up, pull-down, and floating modes
+
+In (pull-up, pull-down, floating) input mode
+
+
+
+
+### 12.4.3 Output mode
+
+
+In the output mode, it can be set as push-pull output and open-drain output.
+
+When GPIO is configured as the output pin, the output speed of the port can be configured and the output drive mode (push-pull/open-drain) can be selected.
+
+In output mode  
+- Schmitt trigger is enabled  
+- Activate output buffer  
+- Weak pull-up and pull-down resistors are disabled  
+
+
+Analog input mode
+
+
+In analog input mode  
+- Disable output buffer  
+- The input of Schmitt trigger is disabled, and the output value of Schmitt trigger is forced to be 0  
+- Weak pull-up and pull-down resistors are disabled  
+- The value of port input state register is 0  
+
+Figure 14 Input Mode Structure  
+
+
+| Analog input |  |  |
+| -------------------------- | ---------------------- | ---------- |
+| To on-chip peripheral | Multiplexing function input |  |
+| Read | Input data register |  |
+| TTL Schmitt trigger |  |  |
+| V<sub>DD</sub> | V<sub>SS</sub> | I/O pin |
+|  | V<sub>SS</sub> |  |
+
+
+### 12.4.4 Multiplexing mode
+
+
+In multiplexing mode, it can be set as push-pull multiplexing and open-drain multiplexing
+
+In push-pull/open-drain multiplexing mode
+- Enable the output buffer
+- Output buffer is driven by peripheral
+- Activate Schmitt trigger input
+- Weak pull-up and pull-down resistors are disabled
+- The data on the I/O pin is sampled in each AHB1 clock cycle and stored in the port input state register
+- In open-drain mode, the actual state of I/O can be read through input data register GPIOx_IDATA
+- In push-pull mode, the last written value is read through output data register GPIOx_ODATA
+
+
+Push-pull mode:
+
+- Double MOS transistor works by turns and the output data register can control the high and low level of I/O output 
+- Read the finally written value through the output data register GPIOx_ODATA
+
+
+Open-drain mode:
+
+- Only N-MOS works, and the output data register can control I/O output high-resistance state or low level 
+- Read the actual I/O state through the input data register GPIOx_IDATA
+
+Figure 15 Output Mode I/O Structure
+
+
+
+![](https://www.geehy.com)  
+
+Figure 16 Multiplexing Mode I/O Structure
+
+
+Multiplexing function output  
+V_DD Push-pull, open-drain, disable  
+Output control  
+P-MOS  
+N-MOS  
+V_SS  
+Multiplexing function input  
+TTL Schmitt trigger  
+
+
+### 12.4.5 External interrupt/wake-up line
+
+All GPIO ports have external interrupt function. If you want to use external interrupt line, the port must be configured as input mode.
+
+
+### 12.4.6 Bit set and bit clear
+
+Software does not need to disable interrupt when programming some bits of GPIOx_IDATA. By setting the bit to be changed in GPIOx_BSC and BSC registers to 1, the function of changing one or more bits in AHB1 write operation can be served.
+
+
+### 12.4.7 GPIO locking function
+
+Locking function can be used in power driver module. The locking mechanism of GPIO can protect the configuration of I/O port. I/O configuration can be locked by configuring the lock register (GPIOx_LOCK). When a port bit executes the locking program, the configuration of port bit cannot be modified before the next reset.
+
+
+### 12.4.8 OSC32_IN/OSC32_OUT pin
+
+Only when LSECLK oscillator is disabled, can OSC32_IN and OSC32_OUT pins be used as general-purpose PC14 I/O and PC15 I/O. It is controlled by RCC_BDCTRL[LSEEN] bit. The priority of LSECLK is higher than GPIO function.
+
+
+### 12.4.9 OSC_IN/OSC_OUT pin
+
+Only when HSECLK oscillator is disabled, can OSC_IN and OSC_OUT pins be used as general-purpose PH0 I/O and PH1 I/O. It is controlled by RCC_BDCTRL[HSEN] bit. The priority of HSECLK is higher than GPIO function.
+
+
+
+
+## 12.5 Register address mapping
+
+
+Table 54 GPIO Register Address Mapping
+
+
+| Register name | Description | Offset Address |
+| ------------------ | ------------------------------------- | ---------------- |
+| GPIOx_MODE | Port mode register | 0x00 |
+| GPIOx_OMODE | Port output mode register | 0x04 |
+| GPIOx_OSSSEL | Port output speed register | 0x08 |
+| GPIOx_PUPD | Port pull-up/pull-down register | 0x0C |
+| GPIOx_IDATA | Port bit input data register | 0x10 |
+| GPIOx_ODATA | Port bit output clear register | 0x14 |
+| GPIOx_BSC | Port set/reset register | 0x18 |
+| GPIOx_LOCK | Port lock register | 0x1C |
+| GPIOx_ALFL | Port multiplexing function low-bit register | 0x20 |
+| GPIOx_ALFH | Port multiplexing function high-bit register | 0x24 |
+
+
+## 12.6 Register functional description
+
+
+These peripheral registers must be operated by word (32 bits).
+
+
+### 12.6.1 Port mode register (GPIOx_MODE) (x=A...E, H)
+
+
+Offset address: 0x00  
+Reset value: 0xA800 0000 (Port A)  
+# 0x0000 0280 (Port B)
+# 0x0000 0000 (for other ports)
+
+
+| Field | Name | R/W | Description |
+| ------------------ | ----------------- | ----- | --------------------------------------------- |
+| 2+y+1:2 | MODEY[1:0] | R/W | PortxPin y Mode Configure (v=0...15)<br>00: Input mode (state after reset)<br>01: General output mode<br>10: Multiplexing function mode<br>11: Analog mode |
+
+
+### 12.6.2 Port output mode register (GPIOx_OMODE) (x=A...E, H)
+
+
+Offset address: 0x04  
+Reset value: 0x0000 0000  
+
+
+| Field | Name | R/W | Description |
+| ------------------ | ----------------- | ----- | --------------------------------------------- |
+| 15:0 | OMODEY | R/W | PortxPin y Output Mode Configure (v=0...15)<br>0: Push-pull output (reset state)<br>1: Open-drain output |
+| 31:16 |  |  | Reserved |
+
+
+### 12.6.3 Port output speed register (GPIOx_OSSEL) (x=A…E, H)
+
+Offset address: 0x08  
+Reset value: 0x0C00 0000 (Port A)  
+# 0x0000 00C0 (Port B)
+# 0x0000 0000 (for other ports)
+
+
+| Field | Name | R/W | Description |
+| ------------ | --------------- | ----- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 2y+1:2y | OSSELY[1:0] | R/W | PortPin y Output Speed Select (y=0…15) <br> 00: Low speed <br> 01: Medium speed <br> 10: Fast speed <br> 11: High speed <br> The speed of I/O port is written by software |
+
+
+### 12.6.4 GPIO port pull-up/pull-down register (GPIOx_PUPD) (x=A…E, H)
+
+Offset address: 0x0C  
+Reset value: 0x6400 0000 (Port A)  
+# 0x0000 0100 (Port B)
+# 0x0000 0000 (for other ports)
+
+
+| Field | Name | R/W | Description |
+| ------------ | --------------- | ----- | --------------------------------------------------------------------------------------------------------------------- |
+| 2y+1:2y | PUPDy[1:0] | R/W | PortPin y Pull-up/Pull-down Configure (y=0…15) <br> These bits are written by software to configure pull-up/pull-down of the port bit <br> 00: Pull-up/Pull-down is disabled <br> 01: Pull up <br> 10: Pull down <br> 11: Reserved |
+
+
+### 12.6.5 GPIO port input data register (GPIOx_IDATA) (x=A…E, H)
+
+Offset address: 0x10  
+Reset value: 0x0000 XXXX  
+
+
+| Field | Name | R/W | Description |
+| ------------ | --------------- | ----- | --------------------------------------------------------------------------------------------------- |
+| 15:0 | IDATAy | R | PortPin y Input Data (y=0…15) <br> These bits can only be read to store the input values of the corresponding I/O ports |
+| 31:16 | Reserved |  |  |
+
+
+### 12.6.6 GPIO port output data register (GPIOx_ODATA) (x=A…E, H)
+
+Offset address: 0x14  
+Reset value: 0x0000 0000  
+
+
+| Field | Name | R/W | Description |
+| ------------ | --------------- | ----- | --------------------------------------------------------------------------------------------------- |
+| 15:0 | ODATAy | R/W | PortPin y Output Data (y=0…15) <br> Read and write operation can be performed by software <br> For atomic bit setting/clearing, the ODATAy bit can be set separately by writing to GPIOx_BSC register |
+| 31:16 | Reserved |  |  |
+
+
+### 12.6.7 GPIO port set/reset register (GPIOx_BSC) (x=A…E, H)
+
+Offset address: 0x18  
+Reset value: 0x0000 0000  
+
+
+| Field | Name | R/W | Description |
+| ------- | ------ | ----- | ------------- |
+| 15:0 | Bsy | W | PortxPin y Set Bit (y=0…15)<br>These bits can only be written, and the value of 0x0000 is returned when reading these bits.<br>These bits are used to affect the corresponding ODATAy bits<br>0: No effect<br>1: Set the corresponding ODATAy bit |
+| 31:16 | Bcy | W | PortxPin y Reset Bit (y=0…15)<br>These bits can only be written, and the value of 0x0000 is returned when reading these bits.<br>These bits are used to affect the corresponding ODATAy bits<br>0: No effect<br>1: Clear corresponding ODATAy bit to 0<br>If Bsy bit and Bcy bit are set at the same time, Bsy has the priority |
+
+
+### 12.6.8 GPIO port lock register (GPIOx_LOCK) (x=A…E, H)
+
+This register protects the configuration of GPIO from being modified by mistake during the running of the program. If the GPIO configuration needs to be modified again, it can be modified only after the system is reset. When configuring GPIO locking function, it is necessary to execute the specified sequence to the register to enable the GPIO locking function.  
+Offset address: 0x1C  
+Reset value: 0x0000 0000  
+
+
+| Field | Name | R/W | Description |
+| ------- | ------- | ----- | ------------- |
+| 15:0 | LOCKy | R/W | PortxLock bit y Configure (y=0…15)<br>0: The configuration of Port x Pin y is not locked<br>1: The configuration of Port x Pin y is locked<br>These bits can be read and written, but can only be written when LOCKKEY=0. |
+| 16 | LOCKKEY | R/W | Lock Key<br>This bit determines whether the port configuration lock key bit is activated<br>0: Not activated<br>1: Activate: GPIOx_LOCK register is locked until the next MUC reset is generated.<br>Lock key write sequence:<br>Write LOCK[16]=1+LOCK[15:0]<br>Write LOCK[16]=0+LOCK[15:0]<br>Write LOCK[16]=1+LOCK[15:0]<br>Read LOCK<br>Read LOCK[16]=1 (this read operation can be selected to confirm whether to activate the lock key)<br>Note:<br>The value of LOCKy cannot be changed in the write sequence of operation lock key.<br>Any error in the write sequence of operation lock key will abort the lock.<br>After the first lock sequence on any bit of the port, any read access on the LOCKKEY bit will return “1” until the next MCU is reset or the peripheral is reset. |
+| 31:17 | Reserved |  |  |
+
+
+### 12.6.9 GPIO multiplexing function low 8-bit register (GPIOx_ALFL) (x=A...E, H)
+
+Offset address: 0x20<br>
+Reset value: 0x0000 0000
+
+
+| Field | Name | R/W | Description |
+| ------- | ---------- | ----- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 31:0 | ALFSELy | R/W | Port x Pin y Alternate Function Select (y=0....7)<br>These bits can be read by software to configure the multiplexing function of the port.<br>ALFSELy selection:<br>0000: AF0<br>0001: AF1<br>0010: AF2<br>0011: AF3<br>0100: AF4<br>0101: AF5<br>0110: AF6<br>0111: AF7<br>1000: AF8<br>1001: AF9<br>1010: AF10<br>1011: AF11<br>1100: AF12<br>1101: AF13<br>1110: AF14<br>1111: AF15 |
+
+
+### 12.6.10 GPIO multiplexing function high 8-bit register (GPIOx_ALFH) (x=A…E, H)
+
+
+Offset address: 0x24  
+Reset value: 0x0000 0000  
+
+
+| Field | Name | R/W | Description |
+| ------------ | ---------- | ----- | ------------------------------------------------------------------------------------------------------------------- |
+| 31:0 | ALFSELy | R/W | Port x Pin y Alernate Function Select (y=8…15) <br> These bits can be read by software to configure the multiplexing function of the port. <br> ALFSELy selection: <br> 0000:AF0 <br> 0001:AF1 <br> 0010:AF2 <br> 0011:AF3 <br> 0100:AF4 <br> 0101:AF5 <br> 0110:AF6 <br> 0111:AF7 <br> 1000:AF8 <br> 1001:AF9 <br> 1010:AF10 <br> 1011:AF11 <br> 1100:AF12 <br> 1101:AF13 <br> 1110:AF14 <br> 1111:AF15 |
+
+
+# 13 Timer overview
+
+
+
+## 13.1 Full Name and Abbreviation of Terms
+
+
+Table 55 Full Name and Abbreviation Description of Terms
+
+
+| Full name in English | English abbreviation |
+| ---------------------- | --------------------- |
+| Timer | TMR |
+| Update | U |
+| Request | R |
+| Event | EV |
+| Compare | C |
+| Compare | C |
+| Length | LEN |
+
+
+## 13.2 Timer category and main difference
+
+
+This series of products contains two types of timers: advanced timer and general-purpose timer (watchdog timer is described in other chapter).
+
+The advanced timer includes the functions of general-purpose timer and basic timer. The advanced timer has four capture/compare channels, supports timing function, input capture and output compare function, braking and complementary output function, and is a 16-bit timer that can count up/down.
+
+The function of general-purpose timer is simpler than that of advanced timer. The main differences are the total number of channels, the number of complementary output channel groups and the braking function.
+
+The main differences of timers included in the products are shown in the table below:
+
+Table 56 Main Differences among Timers Included in the Products
+
+
+| Item | Specific content/Category | Advanced timer | General-purpose timer | General-purpose timer |
+| -------------------- | --------------------------- | ---------------- | ----------------------- | ----------------------- |
+
+| Name | — | TMR1 | TMR8 | TMR3/4 | TMR2/5 | TMR13/14 | TMR10/11 | TMR12 | TMR9 |
+| Timebase unit | Counter | 16 bits | 16 bits | 32 bits | 16 bits | 16 bits | 16 bits | 16 bits | 16 bits |
+| Counting mode | UP | UP | UP | Down | Center-aligned | Down | Center-aligned |  |  |
+| Channel | Input channel | 4 | 4 | 1 | 2 |  |  |  |  |
+| Capture/Compare channel |  | 4 | 4 | 1 | 2 |  |  |  |  |
+| Output channel |  | 7 | 4 | 1 | 2 |  |  |  |  |
+| Complementary output channel |  | 3 | 0 | 0 | 0 |  |  |  |  |
+| Function |  |  |  |  |  |  |  |  |  |
+| Generate DMA request | Can | Can | No |  |  |  |  |  |  |
+| PWM mode | Yes | Yes | Yes | Yes |  |  |  |  |  |
+| Single-pulse mode | Yes | Yes | Yes | Yes |  |  |  |  |  |
+| Forced output mode | Yes | Yes | Yes | Yes |  |  |  |  |  |
+| Dead zone insertion | Yes | N/A | N/A | N/A |  |  |  |  |  |
+
+
+Timer term
+
+
+
+Table 57 Definitions and Terms of Pins
+
+| Name | Description |
+| --------------------- | -------------------------------------------------- |
+| TMRx_ETR | External trigger signal of Timer x |
+| TMRx_CH1, TMRx_CH2, TMRx_CH3, TMRx_CH4 | Channel 1/2/3/4 of Timer x |
+| TMRx_ChyN | Complementary output channel y of Timer x |
+| TMRx_BKIN | Braking signal of Timer x |
+
+
+Table 58 Definitions and Terms of Internal Signals
+
+| Name | Description |
+| --------------------- | -------------------------------------------------- |
+| ETR | TMRx_ETR external trigger signal |
+| ETRF | External trigger filter |
+| ETRP | External trigger prescaler                        <br> |
+| ITR, ITR0, ITR1 | Internal trigger |
+| TRGI | Clock/Trigger/Slave mode controller trigger input |
+| TIF_ED | Timer input filter edge detection                 <br> |
+| CK_PSC | Prescaler clock |
+| CK_CNT | Counter clock |
+| PSC | Prescaler |
+| CNT | Counter |
+| AUTORLD | Autoload register |
+| Tix, T1I | Timer input |
+| TixF, T1F | Timer input filter |
+| TI1_ED | Timer input edge detection |
+| TixFPx, T1IFP1 | Timer input filter polarity |
+| IcX, IC1 | Input capture |
+| IcXPS, IC1PS | Input capture prescaler |
+| TRC | Trigger capture |
+| BRK | Braking signal                               <br>- |
+| OcX, OC1 | Timer output compare channel |
+| OCxREF, OC1REF | Output compare reference signal          <br>- |
+| TGI | Trigger interrupt |
+| BI | Braking interrupt |
+| CcxI, CC11 | Capture/Compare interrupt |
+| UEV | Update event |
+| UIFLG | Update interrupt flag |
+
+
+# 14 Advanced Timers (TMR1/8)
+
+
+
+## 14.1 Introduction
+
+
+The advanced timer takes the time base unit as the core, and has the functions of input capture, output compare and braking input, including a 16-bit automatic loading counter. Compared with other timers, the advanced timer supports complementary output, repeat count and programmable dead zone insertion function, and is more suitable for motor control.
+
+
+## 14.2 Main characteristics
+
+
+(1) Timebase unit  
+   ● Counter: 16-bit counter, count-up, count-down and center-aligned count  
+   ● Prescaler: 16-bit programmable prescaler  
+   ● Repeat counter: 16-bit repeat counter  
+   ● Autoreload function  
+
+(2) Clock source selection  
+   ● Internal clock  
+   ● External input  
+   ● External trigger  
+   ● Internal trigger  
+
+(3) Input capture function  
+   ● Counting function  
+   ● PWM input mode (measurement of pulse width, frequency and duty cycle)  
+   ● Encoder interface mode  
+
+(4) Output compare function  
+   ● PWM output mode  
+   ● Forced output mode  
+   ● Single-pulse mode  
+   ● Complementary output and dead zone insertion  
+
+(5) Timing function
+
+(6) Braking function
+
+(7) Master/Slave mode controller of timer  
+   ● Timers can be synchronized and cascaded  
+   ● Support multiple slave modes and synchronization signals  
+
+(8) Interrupt output and DMA request event  
+   ● Update event (counter overrun/underrun, counter initialization)
+
+
+
+- Trigger event (counter start, stop, internal/external trigger)  
+- Capture/Compare event  
+- Braking signal input event  
+
+(9) Support incremental (quadrature) encoder and Hall sensor circuits for positioning  
+
+
+## 14.3 Structure block diagram
+
+
+Figure 17 Advanced Timer Structure Block Diagram
+
+
+
+
+External clock mode 1
+
+
+The trigger signal generated from the input channel TI1/2/3/4 of the timer after polarity selection and filtering is connected to the slave mode controller to control the work of the counter. Besides, the pulse signal generated by the input of Channel 1 after double-edge detection of the rising edge and the falling edge is logically equal or the future signal is TI1F_ED signal, namely double-edge signal of TIF_ED. Especially the PWM input can only be input by TI1/2.
+
+
+External clock mode 2
+
+
+After polarity selection, frequency division and filtering, the signal from external trigger interface (ETR) is connected to the slave mode controller through trigger input selector to control the work of the counter.
+
+
+Internal trigger input
+
+
+The timer is set to work in slave mode, and the clock source is the output signal of other timers. At this time, the clock source has no filtering, and the synchronization or cascading between timers can be realized. The master mode timer can reset, start, stop or provide clock for the slave mode timer.
+
+
+### 14.4.2 Timebase unit
+
+
+The timebase unit in the advanced timer contains four registers  
+● 16-bit counter register (CNT)  
+● 16-bit auto reload register (AUTORLD)  
+● 16-bit prescaler register (PSC)  
+● 8-bit repetition count register (REPCNT)  
+
+Repetition register is unique to advanced timer.
+
+
+Counter CNT
+
+
+There are three count modes for the counter in the advanced timer  
+● Count-up mode  
+● Count-down mode  
+● Center-aligned mode  
+
+
+Count-up mode
+
+
+Set to the count-up mode by configuring CNTDIR bit of control register (TMRx_CTRL1).
+
+When the counter is in count-up mode, the counter will count up from 0; every time a pulse is generated, the counter will increase by 1 and when the value of the counter (TMRx_CNT) is equal to the value of the auto reload (TMRx_AUTORLD), the counter will start to count from 0 again, a count-up overrun event will be generated, and the value of the auto reload
+
+
+
+(TMRx_AUTORLD) is written in advance. If a repeat counter is used, an update event will be generated when the number of count-up repetitions reaches the number in the repeat counter register plus one time (TMRx_REPCNT+1). Otherwise, an update event will be generated every time the counter overruns. At this time, the repeat count shadow register, the auto reload shadow register and the prescaler buffer will be updated. The update event can be disabled by configuring UD bit of control register TMRx_CTRL1.
+
+The figure below is the timing diagram of count-up mode when the division factor is 1 or 2
+
+
+Figure 18 Timing Diagram of Count-up Mode when Division Factor is 1 or 2
+
+
+
+| CK_PSC |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| ----------- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| CNT_EN |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| CK_CNT | 21 | 22 | 23 | 24 | 25 | 26 | 27 | 00 | 01 | 02 | 03 | 04 | 05 | 06 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| Counter register | 21 | 22 | 23 | 24 | 25 | 26 | 27 | 00 | 01 | 02 | 03 | 04 | 05 | 06 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| Counter overrun |  |  |  |  |  |  |  |  | ⎯ |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| Update event |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | ⎯ |  |  |  |  |  |  |  |
+| CK_CNT | 0024 | 0025 | 0026 | 0000 | 0001 | 0002 | 0003 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| Counter register | 0024 | 0025 | 0026 | 0000 | 0001 | 0002 | 0003 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| Counter overrun |  |  |  |  |  |  |  |  | ⎯ |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| Update event |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | ⎯ |  |  |  |  |  |  |  |
+
+
+Count-down mode
+
+Set to the count-down mode by configuring CNTDIR bit of control register (TMRx_CTRL1).
+
+When the counter is in count-down mode, it will start to count down from the value of the auto reload (TMRx_AUTORLD); every time a pulse is generated, the counter will decrease by 1 and when it becomes 0, the counter will start to count again from (TMRx_AUTORLD), meanwhile, a count-down overrun event will be generated, and the value of the auto reload (TMRx_AUTORLD) is written in advance. If a repeat counter is used, an update event will be generated when the number of count-down repetitions reaches the number in the repeat counter register plus one time (TMRx_REPCNT+1). Otherwise, an update event will be generated every time the counter underruns. At this time, the repeat count shadow register, the auto reload shadow register and the prescaler buffer will be updated. The update event can be disabled by configuring the UD bit of the TMRx_CTRL1 register. 
+
+
+
+![Figure 19 Timing Diagram of Count-down Mode when Division Factor is 1 or 2](https://www.geehy.com)
+
+CK_PSC
+CNT_EN
+CK_CNT
+
+PSC=1
+Counter register
+# 06 05 04 03 02 01 00 26 25 24 23 22 21 20
+Counter overrun
+Update event
+
+PSC=2
+CK_CNT
+Counter register
+# 0002 0001 0000 0006 0005 0004 0003
+Counter overrun
+Update event
+
+
+Center-aligned mode
+
+Set to center-aligned mode by configuring CAMSEL bit of control register (TMRx_CTRL1).
+
+When the counter is in center-aligned mode, the counter counts up from 0 and when it reaches the value of auto reload (TMRx_AUTORLD), it counts down to 0 from the value of the auto reload (TMRx_AUTORLD), which will repeat; in counting up, when the counter value is (AUTORLD-1), a counter overrun event will be generated; in counting down, when the counter value is 1, a counter underrun event will be generated.
+
+
+
+![Figure 20 Timing Diagram of Center-aligned Mode when Division Factor is 1 or 2](https://www.geehy.com)
+
+
+Repeat counter REPCNT
+
+
+There is no repeat counter REPCNT in the general-purpose timer, which means that when an overrun event or underrun event occurs in the general-purpose timer, an update event will be generated directly; while in the advanced timer, because of the existence of the repeat counter, when an overrun/unerrrun event occurs to the advanced timer, the update event will be generated only when the value of the repeat counter is 0.
+
+For example, if the advanced timer needs to generate an update event when an overrun/underrun event occurs, the value of the repeat counter should be set to 0.
+
+If the repeat counter function is used in the count-up mode, every time the counter counts up to AUTORLD, an overrun event will occur. At this time, the value of the repeat counter will decrease by 1, and an update event will be generated when the value of the repeat counter is 0.
+
+That is, when N+1 (N is the value of repeat counter) overrun/underrun events occur, an update event will be generated.
+
+
+
+![Figure 21 Timing Diagram of Count-up Mode when Setting REPCNT=2](https://www.geehy.com)
+
+
+Prescaler PSC
+
+
+The prescaler is 16 bits and programmable, and it can divide the clock frequency of the counter to any value within 1~65536 (controlled by TMRx_PSC register), and after frequency division, the clock will drive the counter CNT to count. The prescaler has a buffer, which can be changed during running.
+
+
+### 14.4.3 Input capture
+
+
+
+Input capture channel
+
+
+The advanced timer has four independent capture/compare channels, each of which is surrounded by a capture/compare register.
+
+In the input capture, the measured signal will enter from the external pin T1/2/3/4 of the timer, first pass through the edge detector and input filter, and then enter the capture channels. Each capture channel has a corresponding capture register. When the capture occurs, the value of the counter CNT will be latched in the capture register CCx. Before entering the capture register, the signal will pass through the prescaler to set how many events to capture at a time.
+
+
+Input capture application
+
+
+Input capture is used to capture external events, and can give the time flag to indicate the occurrence time of the event and measure the pulse jump edge events (measure the frequency or pulse width), for example, if the selected edge appears on the input pin, the TMRx_CCx register will capture the current value of the counter and the CCxIFLG bit of the status register TMRx_STS will be set to 1; if CCxIEN=1, an interrupt will be generated.
+
+
+
+In capture mode, the timing, frequency, cycle and duty cycle of a waveform can be measured. In the input capture mode, the edge selection is set to rising edge detection. When the rising edge appears on the capture channel, the first capture occurs; at this time, the value of the counter CNT will be latched in the capture register CCx; at the same time, it will enter the capture interrupt, a capture will be recorded in the interrupt service program and the value will be recorded. When the next rising edge is detected, the second capture occurs, the value of counter CNT will be latched in capture register CCx again, at this time, it will enter the capture interrupt again; read the value of capture register and the cycle of this pulse signal will be obtained by capture.
+
+
+### 14.4.4 Output compare
+
+
+There are eight modes of output compare: freeze, channel x is valid level when matching, channel x is invalid level when matching, flip, force is invalid, force is valid, PWM mode 1 and PWM mode 2, which are configured by OCxMOD bit in TMRx_CCMx register and can control the waveform of output signal in output compare mode.
+
+Output compare application
+
+In the output compare mode, the position, polarity, frequency and time of the pulse generated by the timer can be controlled.
+
+When the value of the counter is equal to that of the capture/compare register, the channel output can be set as high level, low level or flip by configuring the OCxMOD bit in TMRx_CCMx register and the CCxPOL bit in the output polarity TMRx_CCEN register.
+
+When CCxIFLG=1 in TMRx_STS register, if CCxIEN=1 in TMRx_DIEN register, an interrupt will be generated; if CCDSEL=1 in TMRx_CTRL2 register, a DMA request will be generated.
+
+
+### 14.4.5 PWM output mode
+
+
+PWM mode is pulse signal that can be adjusted by external output of the timer. The pulse width of the signal is determined by the value of the compare register CCx, and the cycle is determined by the value of the auto reload AUTORLD.
+
+PWM output mode contains PWM mode 1 and PWM mode 2; PWM mode 1 and PWM mode 2 are divided into count-up, count-down and center alignment counting; in PWM mode 1, if the value of the counter CNT is less than the value of the compare register CCx, the output level will be valid; otherwise, it will be invalid.
+
+Set the timing diagram of PWM mode 1 when CCx=5, AUTORLD=7
+
+
+
+
+Figure 22 Timing Diagram of PWM1 Count-up Mode
+
+
+
+
+![Geehy Semiconductor](https://www.geehy.com)  
+
+
+Figure 25 Timing Diagram of PWM2 Count-up Mode
+
+
+
+
+In the PWM input mode, the PWM signal enters from TMRx_CH1, and the signal will be divided into two channels, one can measure the cycle and the other can measure the duty cycle. In the configuration, it is only required to set the polarity of one channel, and the other will be automatically configured with the opposite polarity.
+
+In this mode, the slave mode controller should be configured as the reset mode (SMFSEL bit of TMRx_SMCTRL register)
+
+
+Figure 28 Timing Diagram in PWM Input Mode
+
+
+
+
+
+Figure 29 Timing Diagram of Single-pulse Mode
+
+
+
+### 14.4.8 Impact of the register on output waveform
+
+
+The following registers will affect the level of the timer output waveform. For details, please refer to "Register Functional Description".
+
+1. CcxEN and CCxNEN bits in TMRx_CCEN register  
+   ● CCxNEN=0 and CCxEN=0: The output is disabled (output disabled, invalid)  
+   ● CCxNEN=1 and CCxEN=1: The output is enabled (output enabled, normal output)  
+
+2. MOEN bit in TMRx_BDT register  
+   ● MOEN=0: Idle mode  
+   ● MOEN=1: Run mode  
+
+3. OCxOIS and OCxNOIS bits in TMRx_CTRL2 register  
+   ● OCxOIS=0 and OCxNOIS=0: When idle (MOEN=0), the output level after the dead zone is 0  
+   ● OCxOIS=1 and OCxNOIS=1: When idle (MOEN=0), the output level after the dead zone is 1  
+
+4. RMOS bit in TMRx_BDT register  
+   ● Application environment of RMOS: In run mode of corresponding complementary channel and timer (MOEN=1), the timer is not working (CCxEN=0, CCxNEN=0) or is working (CCxEN=1, CCxNEN=1)  
+
+5. IMOS bit in TMRx_BDT register  
+   ● Application environment of IMOS: In idle mode of corresponding complementary channel and timer (MOEN=0), the timer is not working (CCxEN=0, CCxNEN=0) or is working (CCxEN=1, CCxNEN=1)  
+
+6. CCxPOL and CCxNPOL bits of TMRx_CCEN register  
+   ● CCxPOL=0 and CCxNPOL=0: Output polarity, valid at high level
+
+
+
+
+CCxPOL=1 and CCxNPOL=1: Output polarity, valid at low level
+
+
+The following figure lists the register structural relationships that affect the output waveform
+
+
+Figure 30 Register Structural Relationship Affecting Output Waveform
+
+
+
+
+![Figure 31 Braking Event Timing Diagram](attachment:Braking_Event_Timing_Diagram)
+
+
+| OCx:REF |  |  |  |
+| ------------- | --------- | --------- | --------- |
+| OCx | CxPOL=0, Cx0IS=0 |  |  |
+| OCx | CxPOL=0, Cx0IS=1 |  |  |
+| OCx | CxPOL=1, Cx0IS=0 |  |  |
+| OCx | CxPOL=1, Cx0IS=1 |  |  |
+
+
+### 14.4.10 Complementary output and dead zone insertion
+
+
+Complementary output is particular output of advanced timer, and the advanced timer has three groups of complementary output channels. The insertion dead time is used to generate complementary output signals to ensure that the two-way complementary signals of channels will not be valid at the same time. The dead time is set according to the output device connected to the timer and its characteristics. The duration of the dead zone can be controlled by configuring DTS bit of TMRx_BDT register.
+
+![Figure 32 Complementary Output with Dead Zone Insertion](attachment:Complementary_Output_with_Dead_Zone_Insertion)
+
+
+| AUTOLOAD | OCx | OC:REF | OCx | OCXN |
+| ------------- | ----------- | ----------- | ----------- | ----------- |
+|  |  |  | Delay time |  |
+|  |  |  | Delay time |  |
+|  |  |  | Delay time |  |
+|  |  |  | Delay time |  |
+
+
+### 14.4.11 Forced output mode
+
+
+In the forced output mode, the comparison result is ignored, and the corresponding level is directly output according to the configuration instruction.
+- CCxSEL=00 for TMRx_CCMx register, set CCx channel as output
+- OCxMOD=100/101 for TMRx_CCMx register, set to force OCxREF signal to invalid/valid
+
+In this mode, the corresponding interrupt and DMA request will still be generated.
+
+
+### 14.4.12 Encoder interface mode
+
+
+The encoder interface mode is equivalent to an external clock with direction selection. In the encoder interface mode, the content of the timer can always indicate the position of the encoder.
+
+The method of selecting encoder interface is as follows:
+- By setting SMFSEL bit of TMRx_SMCTRL register, set the counter to count on the edge of T1 channel /T2 channel, or count on the edge of T1 and T2 at the same time.
+- Select the polarity of T1 and T2 by setting the CC1POL and CC2POL bits of TMRx_CCEN register.
+- Select to filter or not by setting the IC1F and IC2F bits of TMRx_CCM1 register.
+
+The two input T1 and T2 can be used as the interface of incremental encoder. The counter is driven by the effective jump of the signals T1IFP1 and T2IFP2 after filtering and edge selection in T1 and T2. The count pulse and direction signal are generated according to the input signals of T1 and T2.
+- The counter will count up/down according to the jumping sequence of the input signal.
+- Set CNTDIR of control register TMRx_CTRL1 to be read-only (CNTDIR will be re-calculated due to jumping of any input end).
+
+The change mechanism of counter count direction is shown in the figure below.
+
+
+| Effective edge | Count only in T1 | Count only in T2 | Count in both T1 and T2 |
+| ---------------- | ------------------- | ------------------- | -------------------------- |
+
+| Level of relative signal | High | Low | High | Low | High | Low |
+| T1IFP1 | Rising edge | — | Count down | Count up | Count down | Count up |
+|  | Falling edge | Count up | Count down | Count up | Count up | Count down |
+| T2IFP2 | Rising edge | Count up | Count down | — | Count up | Count down |
+| Falling edge | Count down | Count up | Count down |  |  | <br>Count up |
+
+
+The external incremental encoder can be directly connected with MCU, not needing external interface logic, so the comparator is used to convert the differential output of the encoder to digital signal to increase the immunity to noise interference.  
+
+Among the following examples:  
+- IC1FP1 is mapped to TI1  
+- IC2FP2 is mapped to TI2  
+- Neither IC1FP1 nor IC2FP2 is phase-inverting  
+- The input signal is valid at the rising edge and falling edge  
+- Enable the counter  
+
+
+Figure 33 Counter Operation Example in Encoder Mode
+
+
+
+| TI1 |  |
+| ------- | ----- |
+| Counter | <br><br><br> |
+
+
+For example, when TI1 is at low level, and TI2 is in rising edge state, the counter will count up.
+
+
+
+![Figure 34 Example of Encoder Interface Mode of IC1FP1 Reversed Phase](Figure%2034%20Example%20of%20Encoder%20Interface%20Mode%20of%20IC1FP1%20Reversed%20Phase)
+
+For example, when TI1 is at low level, and the rising edge of TI2 jumps, the counter will count down.
+
+
+### 14.4.13 Slave Mode
+
+TMRx timer can synchronize external trigger  
+● Reset mode  
+● Gated mode  
+● Trigger mode  
+
+SMFSEL bit in TMRx_SMCTRL register can be set to select the mode.  
+
+SMFSEL=100 set the reset mode, SMFSEL=101 set the gated mode, and SMFSEL=110 set the trigger mode.  
+
+In the reset mode, when a trigger input event occurs, the counter and prescaler will be initialized, and the rising edge of the selected trigger input (TRGI) will reinitialize the counter and generate a signal to update the register.  
+
+In the gated mode, the enable of the counter depends on the high level of the selected input end. When the trigger input is high, the clock of the counter will be enabled. Once the trigger input becomes low, the counter will stop (but not be reset). The start and stop of the counter are controlled.  
+
+In the trigger mode, the enable of the counter depends on the event on the selected input, the counter will be enabled at the rising edge of the trigger input (but not be reset), and only the start of the counter is controlled.  
+
+
+### 14.4.14 Timer interconnection
+
+Each timer of TMRx can be connected with each other to realize synchronization or cascading between timers. It is required to configure one timer in master mode and the other timer in slave mode.  
+
+When the timer is in master mode, it can reset, start, stop and provide clock
+
+
+
+source for the counter of the slave mode timer.
+
+
+Figure 35 Timer 1 Master/Slave Mode Example
+
+
+
+| Master timer |  | Slave timer |
+| ------------------ | ------ | --------------------- |
+| TMR5 | TRGO | ITR0  → TS-000 |
+| TMR2 | TRGO | ITR1  → TS-001 |
+| TMR3 | TRGO | ITR2  → TS-010 |
+| TMR4 | TRGO | ITR3  → TS-011 |
+
+
+When the timers are interconnected:
+- A timer can be used as the prescaler of other register
+- Start the other register by the enable signal of a timer
+- Start the other register by the update event of a timer
+- Select the other register by the enable of a timer
+- Two timers can be synchronized by an external trigger
+
+
+### 14.4.15 Interrupt and DMA request
+
+
+The timer can generate an interrupt when an event occurs during operation
+- Update event (counter overrun/underrun, counter initialization)
+- Trigger event (counter start, stop, internal/external trigger)
+- Capture/Compare event
+- Braking signal input event
+
+Some internal interrupt events can generate DMA requests, and special interfaces can enable or disable trigger DMA requests.
+
+
+### 14.4.16 Debug mode
+
+
+The TMR1/8 can be configured in debug mode and choose to stop or continue to work. It depends on the TMRx_STS bit of DBGMCU_APB2F register in DBGMCU module.
+
+
+### 14.4.17 Clear OCxREF signal when an external event occurs
+
+
+This function is used for output compare and PWM mode.
+
+In one channel, the high level of ETRF input port will reduce the signal of OCxREF to low level, and the OCxCEN bit in capture/compare register TMRx_CCMx is set to 1, and OCxREF signal will remain low until the next update event occurs.
+
+
+
+Set TMRx to PWM mode, disable the external trigger prescaler, and disable the external trigger mode 2; when ETRF input is high, set OCxCEN=0, and the output OCxREF signal is shown in the figure below.
+
+Figure 36 OCxREF Timing Diagram
+
+
+
+
+Register functional description
+
+
+
+Control register 1 (TMRx_CTRL1)
+
+Offset address: 0x00  
+Reset value: 0x0000  
+
+
+| Field | Name | R/W | Description |
+| ------- | ------- | ----- | -------------- |
+| 0 | CNTEN | R/W | Counter Enable <br> 0: Disable <br> 1: Enable <br> When the timer is configured as external clock, gated mode and encoder mode, it is required to write 1 to the bit by software to start regular work; when it is configured as the trigger mode, it can write 1 by hardware. |
+| 1 | UD | R/W | Update Disable <br> Update event can cause AUTORLD, PSC and CCx to generate the value of update setting. <br> 0: Enable update event (UEV) <br> An update event can occur in any of the following situations: <br> The counter overruns/underruns; <br> Set UEG bit; <br> Update generated by slave mode controller. <br> 1: Disable update event |
+| 2 | URSSEL | R/W | Update Request Source Select<br>If interrupt or DMA is enabled, the update event can generate update interrupt or DMA request. Different update request sources can be selected by this bit.<br>0: The counter overruns or underruns<br>Set UEG bit;<br>Update generated by slave mode controller.<br>1: The counter overruns or underruns |
+| 3 | SPMEN | R/W | Single Pulse Mode Enable<br>When an update event is generated, the output level of the channel can be changed; in this mode, the CNTEN bit will be cleared, the counter will stop, and the subsequent output level of the channel will no long be changed.<br>0: Disable<br>1: Enable |
+| 4 | CNTDIR | R/W | Counter Direction<br>This bit is read-only when the counter is configured as center-aligned mode or encoder mode.<br>0: Count up<br>1: Count down |
+| 6:5 | CAMSEL | R/W | Center Aligned Mode Select<br>In the center-aligned mode, the counter counts up and down alternately; otherwise, it will only count up or down. Different center-aligned modes affect the timing of setting the output compare interrupt flag bit of the output channel to 1; when the counter is disabled (CNTEN=0), select the center-aligned mode.<br>00: Edge-aligned mode<br>01: Center-aligned mode 1 (the output compare interrupt flag bit of output channel is set to 1 when counting down)<br>10: Center-aligned mode 2 (the output compare interrupt flag bit of output channel is set to 1 when counting up)<br>11: Center-aligned mode 3 (the output compare interrupt flag bit of output channel is set to 1 when counting up/down |
+| 7 | ARPEN | R/W | Auto-reload Preload Enable<br>When the buffer is disabled, modification of TMRx_AUTORLD by program will immediately lead to modification of the values loaded to the counter; when the buffer is enabled, modification of TMRx_AUTORLD by program will lead to modification of the values loaded to the counter at the next update event.<br>0: Disable<br>1: Enable |
+| 9:8 | CLKDIV | R/W | Clock Division<br>For the configuration of dead zone and digital filter, CK_INT provides the clock, and the dead time and the clock of the digital filter can be adjusted by this bit.<br>00: tbrs=tck_INT<br>01: tbrs=2*tck_INT<br>10: tbrs=4*tck_INT<br>11: Reserved |
+
+
+### 14.6.2 Control register 2 (TMRx_CTRL2)
+
+Offset address: 0x04  
+Reset value: 0x0000  
+
+
+| Field | Name | R/W | Description |
+| ------- | -------- | ----- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| 0 | CCPEN | R/W | Capture/Compare Preloaded Enable<br>This bit affects the change of CcxEN, CCxNEN and OCxMOD values.<br>When preloading is disabled, the program modification will immediately affect the timer setting; when preloading is enabled, it is only updated after COMG is set, so as to affect the setting of the timer; this bit only works on channels with complementary output.<br>0: Disable<br>1: Enable |
+| 1 |  |  | Reserved |
+| 2 | CCUSEL | R/W | Capture/compare Control Update Select<br>It works only when the capture/compare preload is enabled (CCPEN=1), and it works only for complementary output channel.<br>0: It can only be updated by setting COMG bit<br>1: It can be updated by setting COMG bit or rising edge on TRGI |
+| 3 | CCDSEL | R/W | Capture/Compare DMA Select<br>0: Transmit DMA request of CCx when CCx event occurs<br>1: Transmit DMA request of CCx when an update event occurs |
+| 6:4 | MMSEL | R/W | Master Mode Signal Select<br>The signals of timers working in master mode can be used for TRGO, so as to affect the work of timers in slave mode and cascaded with the master timer, and the specific impact is related to the configuration of slave mode timer.<br>000: Reset; the reset signal of master mode timer is used for TRGO<br>001: Enable; the counter enable signal of master mode timer is used for TRGO<br>010: Update; the update event of master mode timer is used for TRGO<br>011: Compare pulses; when the master mode timer captures/comparers successfully (CCxFLG=1), a pulse signal is output for TRGO<br>100: Compare mode 1; OC1REF is used to trigger TRGO<br>101: Compare mode 2; OC2REF is used to trigger TRGO<br>110: Compare mode 3; OC3REF is used to trigger TRGO<br>111: Compare mode 4; OC4REF is used to trigger TRGO |
+| 7 | TI1SEL | R/W | Timer Input 1 Selection<br>0: TMRx_CH1 pin is connected to TI1 input<br>1: TMRx_CH1, TMRx_CH2 and TMRx_CH3 pins are connected to TI1 input after exclusive |
+
+
+### 14.6.3 Slave mode control register (TMRx_SMCTRL)
+
+Offset address: 0x08  
+Reset value: 0x0000  
+
+
+| Field | Name | R/W | Description |
+| ------- | --------- | ----- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| 8 | OC1OIS | R/W | OC1 Output Idle State Configure<br>Only the level state after the dead time of OC1 is affected when MOEN=0 and OC1N is realized.<br>0: OC1N=0<br>1: OC1N=1<br>Note: When LOCKCFG bit in TMRx_BDT register is at the Level 1, 2 or 3, this bit cannot be modified. |
+| 9 | OC1NOIS | R/W | OC1N Output Idle State Configure<br>Only the level state after the dead time of OC1 is affected when MOEN=0 and OC1N is realized.<br>0: OC1N=0<br>1: OC1N=1<br>Note: When PLOCKCFG bit in TMRx_BDT register is at the Level 1, 2 or 3, this bit cannot be modified. |
+| 10 | OC2OIS | R/W | Configure OC2 output idle state. Refer to OC1OIS bit |
+| 11 | OC2NOIS | R/W | Configure OC2N output idle state. Refer to OC1NOIS bit |
+| 12 | OC3OIS | R/W | Configure OC3 output idle state. Refer to OC1OIS bit |
+| 13 | OC3NOIS | R/W | Configure OC3N output idle state. Refer to OC1NOIS bit |
+| 14 | OC4OIS | R/W | Configure OC4 output idle state. Refer to OC1OIS bit |
+| 15 | Reserved |  |  |
+| 2:0 | SMFSEL | R/W | Slave Mode Function Select<br>000: Disable the slave mode, the timer can be used as master mode timer to affect the work of slave mode timer; if CTRL1_CNTEN=1, the prescaler is directly driven by the internal clock.<br>001: Encoder mode 1; according to the level of T1FFP1, the counter counts at the edge of T2FP2.<br>010: Encoder mode 2; according to the level of T1FFP2, the counter counts at the edge of T1FFP1.<br>011: Encoder mode 3; according to the input level of the other signal, the counter counts at the edge of T1FFP1 and T2FP2.<br>100: Reset mode; the slave mode timer resets the counter after receiving the rising edge signal of TRGI and generates the signal to update the register.<br>101: Gated mode; when the slave mode timer receives the TRGI high level signal, the counter will start to work; when it receives TRGI low level signal, the counter will stop working; when it receives TRGI high level signal again, the timer will continue to work; the counter is not reset during the whole period.<br>110: Trigger mode; the slave mode timer drives the counter to work after receiving the rising edge signal of TRGI.<br>111: External clock 1; select the rising edge signal of TRGI as the clock source to drive the counter to work. |
+| 3 | Reserved |  |  |
+| 6:4 | TRGSEL | R/W | Trigger Input Signal Select<br>In order to avoid generating false edge detection when changing the value of this bit, it must be changed when SMFSEL=0.<br>000: Internal trigger ITR0<br>001: Internal trigger ITR1<br>010: Internal trigger ITR2<br>011: Internal trigger ITR3<br>100: Channel 1 input edge detector TIF_ED<br>101: Channel 1 post-filtering timer input T1FFP1<br>110: Channel 2 post-filtering timer input T2IFP2<br>111: External trigger input (ETRF) |
+| 7 | MSMEN | R/W | Master/slave Mode Enable<br>0: Invalid<br>1: Enable the master/slave mode |
+| 11:8 | ETFCFG | R/W | External Trigger Filter Configure<br>0000: Disable filter, sampled by ftrs<br>0001:DIV=1, N=2<br>0010:DIV=1, N=4<br>0011:DIV=1, N=8<br>0100:DIV=2, N=6<br>0101:DIV=2, N=8<br>0110:DIV=4, N=6<br>0111:DIV=4, N=8<br>1000:DIV=8, N=6<br>1001:DIV=8, N=8<br>1010:DIV=16, N=5<br>1011:DIV=16, N=6<br>1100:DIV=16, N=8<br>1101:DIV=32, N=5<br>1110:DIV=32, N=6<br>1111:DIV=32, N=8<br>Sampling frequency=timer clock frequency/DIV; the filter length=N, and a jump is generated by every N events. |
+| 13:12 | ETPCFG | R/W | External Trigger Prescaler Configure<br>The ETR (external trigger input) signal becomes ETRP after frequency division. The signal frequency of ETRP is at most 1/4 of TMRxCLK frequency; when ETR frequency is too high, the ETRP frequency must be reduced through frequency division.<br>00: Disable the prescaler;<br>01: ETR signal 2 divided frequency<br>10: ETR signal 4 divided frequency<br>11: ETR signal 8 divided frequency |
+| 14 | ECEN | R/W | External Clock Enable Mode2<br>0: Disable<br>1: Enable<br>Setting ECEN bit has the same function as selecting external clock mode 1 to connect TRGI to ETRF; slave mode (reset, gating, trigger) can be used at the same time with external clock mode 2, but TRGI cannot be connected to ETRF in such case; when external clock mode 1 and external clock mode 2 are enabled at the same time, the input of external clock is ETRF. |
+| 15 | ETPOL | R/W | External Trigger Polarity Configure<br>This bit decides whether the external trigger ETR is phase-inverting.<br>0: The external trigger ETR is not phase-inverting, and the high level or rising edge is valid<br>1: The external trigger ETR is phase-inverting, and the low level or falling edge is valid <br><br>**Table 61 TMRx Internal Trigger Connection**<br>Slave timer / ITR1 (TS=000) / ITR1 (TS=001) / ITR2 (TS=010) / ITR3 (TS=011)<br>TMR1 / TMR5 / TMR2 / TMR3 / TMR4 |
+
+
+### 14.6.4 DMA/Interrupt enable register (TMRx_DIEN)
+
+Offset address: 0x0C  
+Reset value: 0x0000  
+
+
+| Field | Name | R/W | Description |
+| ------- | -------- | ----- | ---------------------------------------------- |
+| 0 | UIEN | R/W | Update Interrupt Enable                       <br>0: Disable<br>1: Enable |
+| 1 | CC1IEN | R/W | Capture/Compare Channel1 Interrupt Enable     <br>0: Disable<br>1: Enable |
+| 2 | CC2IEN | R/W | Capture/Compare Channel2 Interrupt Enable     <br>0: Disable<br>1: Enable |
+| 3 | CC3IEN | R/W | Capture/Compare Channel3 Interrupt Enable     <br>0: Disable<br>1: Enable |
+| 4 | CC4IEN | R/W | Capture/Compare Channel4 Interrupt Enable     <br>0: Disable<br>1: Enable |
+| 5 | COMIEN | R/W | COM Interrupt Enable                          <br>0: Disable<br>1: Enable |
+| 6 | TRGIEN | R/W | Trigger Interrupt Enable                      <br>0: Disable<br>1: Enable |
+| 7 | BRIKEN | R/W | Break Interrupt Enable                        <br>0: Disable<br>1: Enable |
+| 8 | UDIEN | R/W | Update DMA Request Enable                     <br>0: Disable<br>1: Enable |
+| 9 | CC1DEN | R/W | Capture/Compare Channel1 DMA Request Enable   <br>0: Disable<br>1: Enable |
+| 10 | CC2DEN | R/W | Capture/Compare Channel2 DMA Request Enable   <br>0: Disable<br>1: Enable |
+| 11 | CC3DEN | R/W | Capture/Compare Channel3 DMA Request Enable   <br>0: Disable<br>1: Enable |
+| 12 | CC4DEN | R/W | Capture/Compare Channel4 DMA Request Enable   <br>0: Disable<br>1: Enable |
+
+
+### 14.6.5 Status register (TMRx_STS)
+
+Offset address: 0x10  
+Reset value: 0x0000  
+
+
+| Field | Name | R/W | Description |
+| ------- | --------- | ------- | -------------------------------------------------------------------------------------------------------------- |
+| 13 | COMDEN | R/W | COM DMA Request Enable<br>0: Disable<br>1: Enable |
+| 14 | TRGDEN | R/W | Trigger DMA Request Enable<br>0: Disable<br>1: Enable |
+| 15 | Reserved |  |  |
+| 0 | UIFLG | RC_W0 | Update Event Interrupt Generate Flag<br>0: No update event interrupt occurs<br>1: Update event interrupt occurred<br>When the counter value is reloaded or reinitialized, an update event will be generated. The bit is set to 1 by hardware and cleared to 0 by software; update events are generated in the following situations:<br>(1) UD=0 on TMRx_CTRL1 register, and when the value of the repeat counter overflows/underruns, an update event will be generated;<br>(2) URSSEL=0 and UD=0 on TMRx_CTRL1 register, configure UEG=1 on TMRx_CEG register to generate an update event, and the counter needs to be initialized by software;<br>(3) URSSEL=0 and UD=0 on TMRx_CTRL1 register, and an update event will be generated when the counter is initialized by trigger event. |
+| 1 | CC1IFLG | RC_W0 | Capture/Compare Channel1 Interrupt Flag<br>When the capture/compare channel 1 is configured as output:<br>0: No matching occurs<br>1: The value of TMRx_CNT matches the value of TMRx_CC1<br>When the capture/compare channel 1 is configured as input:<br>0: No input capture occurs<br>1: Input capture occurs<br>When a capture event occurs, it is set to 1 by hardware; it can be cleared to 0 by software or cleared to 0 when reading TMRx_CC1 register. |
+| 2 | CC2IFLG | RC_W0 | Capture/Compare Channel2 Interrupt Flag<br>Refer to STS_CC1IFLG |
+| 3 | CC3IFLG | RC_W0 | Capture/Compare Channel3 Interrupt Flag<br>Refer to STS_CC1IFLG |
+| 4 | CC4IFLG | RC_W0 | Capture/Compare Channel4 Interrupt Flag<br>Refer to STS_CC1IFLG |
+| 5 | COMIFLG | RC_W | COM Event Interrupt Generate Flag<br>0: No COM event occurs<br>1: COM interrupt waits for response<br>After COM event is generated, this bit is set to 1 by hardware and cleared to 0 by software. |
+| 6 | TRGIFLG | RC_W | Trigger Event Interrupt Generate Flag<br>0: No trigger event interrupt occurs<br>1: Trigger event interrupt occurs<br>When a trigger event is generated, this bit is set to 1 by hardware and cleared to 0 by software. |
+| 7 | BRKIFLG | RC_W | Brake Event Interrupt Generate Flag<br>0: No brake event occurs<br>1: Brake event occurs<br>When brake input is valid, this bit is set to 1 by hardware; when brake input is invalid, this bit can be cleared to 0 by software. |
+| 8 | Reserved |  |  |
+| 9 | CC1RCFLG | RC_W | Captuer/Compare Channel1 Repetition Capture Flag<br>0: Repeated capture does not occur<br>1: Repeated capture occurs<br>The value of the counter is captured to TMRx_CC1 register, and CC1IFLG=1; this bit can be set to 1 by hardware and cleared to 0 by software only when the channel is configured as input capture. |
+| 10 | CC2RCFLG | RC_W | Captuer/Compare Channel2 Repetition Capture Flag<br>Refer to STS_CC1RCFLG |
+| 11 | CC3RCFLG | RC_W | Captuer/compare Channel3 Repetition Capture Flag<br>Refer to STS_CC1RCFLG |
+| 12 | CC4RCFLG | RC_W | Captuer/Compare Channel4 Repetition Capture Flag<br>Refer to STS_CC1RCFLG |
+| 15:13 | Reserved |  |  |
+
+
+### 14.6.6 Control event generation register (TMRx_CEG)
+
+Offset address: 0x14<br>
+Reset value: 0x0000
+
+
+| Field | Name | R/W | Description |
+| ------- | ---------- | ------ | ---------------------------------------------------------------------------------------------------------------------- |
+| 0 | UEG | W | Update Event Generate<br>0: Invalid<br>1: Initialize the counter and generate an update event<br>This bit is set to 1 by software, and cleared to 0 by hardware.<br>Note: When an update event is generated, the counter of the prescaler will be cleared to 0, but the prescaler factor remains unchanged. In the count-down mode, the counter will read the value of TMRx_AUTORLD; in center-aligned mode or count-up mode, the counter will be cleared to 0. |
+| 1 | CC1EG | W | Capture/Compare Channel1 Event Generation<br>0: Invalid<br>1: Generate capture/compare event<br>This bit is set to 1 by software and cleared to 0 automatically by hardware.<br>If Channel 1 is in output mode,<br>When CC1IFLG=1, if CC1EN and CC1DEN bits are set, the corresponding interrupt and DMA request will be generated.<br>If Channel 1 is in input mode<br>The value of the capture counter is stored in TMRx_CC1 register; configure CC1IFLG=1, and if CC1IEN and CC1DEN bits are also set, the corresponding interrupt and DMA request will be generated; at this time, if CC1IFLG=1, it is required to configure CC1RCFLG=1. |
+| 2 | CC2EG | W | Capture/Compare Channel2 Event Generation<br>Refer to CC1EG description |
+| 3 | CC3EG | W | Capture/Compare Channel3 Event Generation<br>Refer to CC1EG description |
+| 4 | CC4EG | W | Capture/Compare Channel4 Event Generation<br>Refer to CC1EG description |
+| 5 | COMG | W | Capture/Compare Control Update Event Generate<br>0: Invalid<br>1: Generate capture/compare event<br>This bit is set to 1 by software and cleared to 0 automatically by hardware.<br>Note: COMG bit is valid only in complementary output channel. |
+| 6 | TEG | W | Trigger Event Generate<br>0: Invalid<br>1: Generate trigger event<br>This bit is set to 1 by software and cleared to 0 automatically by hardware. |
+| 7 | BEG | W | Generate brake event (Brake Event Generate)<br>0: Invalid<br>1: Generate brake event<br>This bit is set to 1 by software and cleared to 0 automatically by hardware. |
+| 15:8 | Reserved |  |  |
+
+
+### 14.6.7 Capture/Compare mode register 1 (TMRx_CCM1)
+
+Offset address: 0x18<br>Reset value: 0x0000<br>The timer can be configured as input (capture mode) or output (compare mode) by CCxSEL bit. The functions of other bits of the register are different in input and output modes, and the functions of the same bit are different in output mode and input mode. The OCx in the register describes the function of the channel in the output mode, and the ICx in the register describes the function of the channel in the input mode.
+
+
+
+
+Output compare mode:
+
+
+
+| Field | Name | R/W | Description |
+| ------- | -------- | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1:0 | CC1SEL | R/W | Capture/Compare Channel 1 Selection<br>This bit defines the input/output direction and selects the input pin.<br>00: CC1 channel is output<br>01: CC1 channel is input, and IC1 is mapped on TI1<br>10: CC1 channel is input, and IC1 is mapped on TI2<br>11: CC1 channel is input, and IC1 is mapped on TRC, and only works in internal trigger input<br>Note: This bit can be written only when the channel is closed (TMRx_CCEN register CC1EN=0). |
+| 2 | OC1FEN | R/W | Output Compare Channel1 Fast Enable<br>0: Disable<br>1: Enable<br>This bit is used to improve the response of the capture/compare output to the trigger input event. |
+| 3 | OC1PEN | R/W | Output Compare Channel1 Preload Enable<br>0: Disable preloading function; write the value of TMRx_CC1 register through the program and it will work immediately.<br>1: Enable preloading function; write the value of TMRx_CC1 register through the program and it will work after an update event is generated.<br>Note: When the protection level is 3 and the channel is configured as output, this bit cannot be modified. When the preload register is uncertain, PWM mode can be used only in single-pulse mode (SPMEN=1); otherwise, the following output compare result is uncertain. |
+| 6:4 | OC1MOD | R/W | Output Compare Channel1 Mode Configure<br>000: Freeze The output compare has no effect on OC1REF<br>001: The output value is high when matching. When the value of counter CNT matches the value CCx of capture compare register, OC1REF will be forced to be at high level<br>010: The output value is low when matching. When the value of the counter matches the value of the capture/compare register, OC1REF will be forced to be low<br>011: Output flaps when matching. When the value of the counter matches the value of the capture compare register, flap the level of OC1REF<br>100: The output is forced to be low. Force OC1REF to be low<br>101: The output is forced to be high. Force OC1REF to be high<br>110: PWM mode 1 (set to high when the counter value<output compare value; otherwise, set to low)<br>111: PWM mode 2 (set to high when the counter value>output compare value; otherwise, set to low)<br>Note: When the protection level is 3 and the channel is configured as output, this bit cannot be modified. In PWM modes 1 and 2, the OC1REF level changes when the comparison result changes or when the output compare mode changes from freeze mode to PWM mode. |
+| 7 | OC1EN | R/W | Output Compare Channel1 Clear Enable<br>0: OC1REF is unaffected by ETRF input.<br>1: When high level of ETRF input is detected, OC1REF=0 |
+
+
+9:8 CC2SEL
+
+R/W  
+Capture/Compare Channel2 Select  
+This bit defines the input/output direction and selects the input pin.  
+00: CC2 channel is output  
+01: CC2 channel is input, and IC2 is mapped on TI2  
+10: CC2 channel is input, and IC2 is mapped on TI1  
+11: CC2 channel is input, and IC2 is mapped on TRC, and only works in internal trigger input  
+Note: This bit can be written only when the channel is closed (TMRx_CCEN register CC2EN=0).  
+
+
+# 10 OC2FEN
+
+R/W  
+Output Compare Channel2 Preload Enable  
+
+
+# 11 OC2PEN
+
+R/W  
+Output Compare Channel2 Buffer Enable  
+
+
+14:12 OC2MOD  
+
+R/W  
+Output Compare Channel2 Mode  
+
+
+# 15 OC2CEN
+
+R/W  
+Output Compare Channel2 Clear Enable  
+
+
+Input capture mode:  
+
+
+
+1:0 CC1SEL  
+
+R/W  
+Capture/Compare Channel 1 Select  
+00: CC1 channel is output  
+01: CC1 channel is input, and IC1 is mapped on TI1  
+10: CC1 channel is input, and IC1 is mapped on TI2  
+11: CC1 channel is input, and IC1 is mapped on TRC, and only works in internal trigger input  
+Note: This bit can be written only when the channel is closed (TMRx_CCEN bit CC1EN=0).  
+
+
+3:2 IC1PSC  
+
+R/W  
+Input Capture Channel1 Prescaler Configure  
+00: PSC=1  
+01: PSC=2  
+10: PSC=4  
+11: PSC=8  
+PSC is prescaler factor; capture is triggered once by every PSC events.
+
+
+
+
+Field
+
+| Field | Name | R/W | Description |
+| ------- | ------ | ----- | ------------- |
+| 7:4 | IC1F | R/W | Input Capture Channel 1 Filter Configuration<br>0000: Disable filter, sampled by fbrs<br>0001: DIV=1, N=2<br>0010: DIV=1, N=4<br>0011: DIV=1, N=8<br>0100: DIV=2, N=6<br>0101: DIV=2, N=8<br>0110: DIV=4, N=6<br>0111: DIV=4, N=8<br>1000: DIV=8, N=6<br>1001: DIV=8, N=8<br>1010: DIV=16, N=5<br>1011: DIV=16, N=6<br>1100: DIV=16, N=8<br>1101: DIV=32, N=5<br>1110: DIV=32, N=6<br>1111: DIV=32, N=8<br>Sampling frequency=timer clock frequency/DIV; the filter length=N, indicating that a jump is generated by every N events. |
+| 9:8 | CC2SEL | R/W | Capture/Compare Channel 2 Select<br>00: CC2 channel is output<br>01: CC2 channel is input, and IC2 is mapped on TI2<br>10: CC2 channel is input, and IC2 is mapped on TI1<br>11: CC2 channel is input, and IC2 is mapped on TRC, and only works in internal trigger input<br>Note: This bit can be written only when the channel is closed (TMRx_CCEN register CC2EN=0). |
+| 11:10 | IC2PSC | R/W | Input Capture Channel2 Prescaler Configuration |
+| 15:12 | IC2F | R/W | Input Capture Channel 2 Filter Configuration |
+
+
+### 14.6.8 Capture/Compare mode register 2 （TMRx_CCM2）
+
+Offset address: 0x1C<br>
+Reset value: 0x0000<br>
+Refer to the description of the above CCM1 register.<br>
+Output compare mode:
+
+
+| Field | Name | R/W | Description |
+| ------- | ------ | ----- | ------------- |
+| 1:0 | CC3SEL | R/W | Capture/Compare Channel 3 Selection<br>This bit defines the input/output direction and selects the input pin.<br>00: CC3 channel is output<br>01: CC3 channel is input, and IC3 is mapped on TI3<br>10: CC3 channel is input, and IC3 is mapped on TI4<br>11: CC3 channel is input, and IC3 is mapped on TRC, and only works in internal trigger input<br>Note: This bit can be written only when the channel is closed (TMRx_CCEN register CC3EN=0). |
+| 2 | OC3FEN | R/W | Output Compare Channel3 Fast Enable <br> 0: Disable <br> 1: Enable <br> This bit is used to improve the response of the capture/compare output to the trigger input event. |
+| 3 | OC3PEN | R/W | Output Compare Channel3 Preload Enable |
+| 6:4 | OC3MOD | R/W | Output Compare Channel3 Mode Configure |
+| 7 | OC3CEN | R/W | Output Compare Channel3 Clear Enable <br> 0: OC3REF is unaffected by ETRF input. <br> 1: When high level of ETRF input is detected, OC1REF=0 |
+| 9:8 | CC4SEL | R/W | Capture/Compare Channel 4 Selection <br> This bit defines the input/output direction and selects the input pin. <br> 00: CC4 channel is output <br> 01: CC4 channel is input, and IC4 is mapped on TI4 <br> 10: CC4 channel is input, and IC4 is mapped on TI3 <br> 11: CC4 channel is input, and IC4 is mapped on TRC, and only works in internal trigger input <br> Note: This bit can be written only when the channel is closed (TMRx_CCEN register CC4EN=0). |
+| 10 | OC4FEN | R/W | Output Compare Channel4 Preload Enable |
+| 11 | OC4PEN | R/W | Output Compare Channel4 Buffer Enable |
+| 14:12 | OC4MOD | R/W | Output Compare Channel4 Mode Configure |
+| 15 | OC4CEN | R/W | Output Compare Channel4 Clear Enable |
+
+
+Input capture mode:
+
+
+
+| Field | Name | R/W | Description |
+| ------- | --------- | ----- | ------------------------------------------------------------------------------------------------- |
+| 1:0 | CC3SEL | R/W | Capture/Compare Channel 3 Select <br> 00: CC3 channel is output <br> 01: CC3 channel is input, and IC3 is mapped on TI3 <br> 10: CC3 channel is input, and IC3 is mapped on TI4 <br> 11: CC3 channel is input, and IC3 is mapped on TRC, and only works in internal trigger input <br> Note: This bit can be written only when the channel is closed (TMRx_CCEN register CC3EN=0). |
+| 3:2 | IC3PSC | R/W | Input Capture Channel 3 Prescaler Configuration <br> 00: PSC=1 <br> 01: PSC=2 <br> 10: PSC=4 <br> 11: PSC=8 <br> PSC is prescaler factor; capture is triggered once by every PSC events. |
+| 7:4 | IC3F | R/W | Input Capture Channel 3 Filter Configuration |
+
+
+### 14.6.9 Capture/Compare enable register (TMRx_CCEN)
+
+Offset address: 0x20  
+Reset value: 0x0000  
+
+
+| Field | Name | R/W | Description |
+| ------- | -------- | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 9:8 | CC4SEL | R/W | Capture/Compare Channel 4 Select<br>00: CC4 channel is output<br>01: CC4 channel is input, and IC4 is mapped on TI4<br>10: CC4 channel is input, and IC4 is mapped on TI3<br>11: CC4 channel is input, and IC4 is mapped on TRC, and only works in internal trigger input<br>Note: This bit can be written only when the channel is closed (TMRx_CCEN register CC4EN=0). |
+| 11:10 | IC4PSC | R/W | Input Capture Channel4 Prescaler Configuration |
+| 15:12 | IC4F | R/W | Input Capture Channel 4 Filter Configuration |
+| 0 | CC1EN | R/W | Capture/Compare Channel1 Output Enable<br>When the capture/compare channel 1 is configured as output:<br>0: Disable output<br>1: Enable output<br>When the capture/compare channel 1 is configured as input:<br>This bit determines whether the value CNT of the counter can be captured and enter TMRx_CC1 register<br>0: Disable capture<br>1: Enable capture |
+| 1 | CC1POL | R/W | Capture/Compare Channel1 Output Polarity Configure<br>When CC1 channel is configured as output:<br>0: OC1 is active high<br>1: OC1 is active low<br>When CC1 channel is configured as input:<br>0: Phase not reversed: capture at the rising edge of IC1; phase not reversed when IC1 is used as external trigger.<br>1: Phase reversed: capture at the falling edge of IC1; phase reversed when IC1 is used as external trigger.<br>Note: When the protection level is 2 or 3, this bit cannot be modified. |
+| 2 | CC1NEN | R/W | Capture/Compare Channel1 Complementary Output Enable<br>0: Disable<br>1: Enable |
+| 3 | CC1NPOL | R/W | Capture/Compare Channel1 Complementary Output Polarity<br>0: OC1N is active high<br>1: OC1N is active low<br>Note: When the protection level is 2 or 3, this bit cannot be modified. |
+| 4 | CC2EN | R/W | Capture/Compare Channel2 Output Enable<br>Refer to CCEN_CC1EN |
+| 5 | CC2POL | R/W | Capture/Compare Channel2 Output Polarity Configure<br>Refer to CCEN_CC1POL |
+| 6 | CC2EN | R/W | Capture/Compare Channel2 Complementary Output Enable<br>Refer to CCEN_CC1EN |
+| 7 | CC2NPOL | R/W | Capture/Compare Channel2 Complementary Output Polarity Configure<br>Refer to CCEN_CC1NPOL |
+| 8 | CC3EN | R/W | Capture/Compare Channel3 Output Enable<br>Refer to CCEN_CC1EN |
+| 9 | CC3POL | R/W | Capture/Compare Channel3 Output Polarity Configure<br>Refer to CCEN_CC1POL |
+| 10 | CC3EN | R/W | Capture/Compare Channel3 Complementary Output Enable<br>Refer to CCEN_CC1EN |
+| 11 | CC3NPOL | R/W | Capture/Compare Channel3 Complementary Output Polarity Configure<br>Refer to CCEN_CC1NPOL |
+| 12 | CC4EN | R/W | Capture/Compare Channel4 Output Enable<br>Refer to CCEN_CC1EN |
+| 13 | CC4POL | R/W | Capture/Compare Channel4 Output Polarity Configure<br>Refer to CCEN_CC1POL |
+| 15:14 | Reserved |  |  |
+
+
+### 14.6.10 Counter register (TMRx_CNT)
+
+Offset address: 0x24<br>
+Reset value: 0x0000
+
+
+| Field | Name | R/W | Description |
+| ------- | ------ | ----- | ----------------------- |
+| 15:0 | CNT | R/W | Counter Value |
+
+
+### 14.6.11 Prescaler register (TMRx_PSC)
+
+Offset address: 0x28<br>
+Reset value: 0x0000
+
+
+| Field | Name | R/W | Description |
+| ------- | ------ | ----- | ----------------------- |
+| 15:0 | PSC | R/W | Prescaler Value<br>Clock frequency of counter (CK_CNT)=fck_psc/(PSC+1) |
+
+
+### 14.6.12 Auto reload register (TMRx_AUTORLD)
+
+Offset address: 0x2C<br>
+Reset value: 0xFFFF FFFF
+
+
+| Field | Name | R/W | Description |
+| ------- | --------- | ----- | ------------------------------------------------------ |
+| 15:0 | AUTORLD | R/W | Auto Reload Value<br>When the value of auto reload is empty, the counter will not count. |
+
+
+### 14.6.13 Repeat count register (TMRx_REPCNT)
+
+Offset address: 0x30<br>
+Reset value: 0x0000
+
+
+
+
+### 14.6.14 Channel 1 capture/compare register (TMRx_CC1)
+
+Offset address: 0x34  
+Reset value: 0x0000  
+
+
+| Field | Name | R/W | Description |
+| ------- | ------ | ----- | ------------- |
+| 7:0 | REPCNT | R/W | Repetition Counter Value<br>When the count value of the repeat counter is reduced to 0, an update event will be generated, and the counter will start counting again from the REPCNT value; the new value newly written to this register is valid only when an update event occurs in next cycle. |
+| 15:8 | Reserved |  |  |
+
+
+### 14.6.15 Channel 2 capture/compare register (TMRx_CC2)
+
+Offset address: 0x38  
+Reset value: 0x0000  
+
+
+| Field | Name | R/W | Description |
+| ------- | ------ | ----- | ------------- |
+| 15:0 | CC2 | R/W | Capture/Compare Channel2 Value<br>Refer to TMRx_CC1 |
+
+
+### 14.6.16 Channel 3 capture/compare register (TMRx_CC3)
+
+Offset address: 0x3C  
+Reset value: 0x0000  
+
+
+| Field | Name | R/W | Description |
+| ------- | ------ | ----- | ------------- |
+| 15:0 | CC3 | R/W | Capture/Compare Channel 3 Value<br>Refer to TMRx_CC1 |
+
+
+### 14.6.17 Channel 4 capture/compare register (TMRx_CC4)
+
+Offset address: 0x40  
+Reset value: 0x0000  
+
+
+| Field | Name | R/W | Description |
+| ------- | ------ | ----- | ------------- |
+| 15:0 | CC4 | R/W | Capture/Compare Channel 4 Value<br>Refer to TMRx_CC1 |
+
+
+### 14.6.18 Brake and dead zone register (TMRx_BDT)
+
+**Offset address:** 0x44  
+**Reset value:** 0x0000  
+**Note:** According to the lock setting, AOEN, BRKPOL, BRKEN, IMOS, RMOS and DTS[7:0] bits can be write-protected, and it is necessary to configure them when writing to TMRx_BDT register for the first time.  
+
+
+| Field | Name | R/W | Description |
+| ------- | --------- | ----- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| 7:0 | DTS | R/W | **Dead Time Setup**<br>DT is the dead zone duration, and the relationship between DT and register DTS is as follows:<br>DTS[7:5]=0x=>DT=DTS[7:0]×TDTS. TDTS=TDTS:<br>DTS[7:5]=10=>DT=(64+DTS[5:0])×TDTS, TDTS=2×TDTS:<br>DTS[7:5]=110=>DT=(32+DTS[4:0])×TDTS, TDTS=8×TDTS:<br>DTS[7:5]=111=>DT=(32+DTS[4:0])×TDTS, TDTS=16×TDTS:<br>For example: assuming TDTS =125ns (8MHz), the dead time setting is as follows:<br>If the step time is 125ns, the dead time can be set from 0 to 1587ns;<br>If the step time is 250ns, the dead time can be set from 16us to 3175ns;<br>If the step time is 1us, the dead time can be set from 32us to 63us;<br>If the step time is 2us, the dead time can be set from 64us to 126us;<br>Note: Once LOCK level (LOCKCFG bit in TMRx_BDT register) is set to 1, 2 or 3, these bits cannot be modified. |
+| 9:8 | LOCKCFG | R/W | **Lock Write Protection Mode Configuration**<br>00: No Lock write protection; it cannot be written to the register directly<br>01: Lock write protection level 1<br>It cannot be written to DTS, BRKEN, BRKPOL and AOEN bits of TMRx_BDT, and OCxOIS and OCxNOIS bits of TMRx_CTRL2 register.<br>10: Lock write protection level 2<br>It cannot be written to all bits of protection level 1, CCxPOL and OCxNPOL bits in TMRx_CCEN register, and RMOS and IMOS bits in TMRx_BDT register.<br>11: Lock write protection level 3<br>It cannot be written to all bits of protection level 2, and OCxMOD and OCxPEN bits of TMRx_CCMx register.<br>Note: After system reset, the lock write protect bit can only be written once. |
+| 10 | IMOS | R/W | **Idle Mode Off-state Configure**<br>Idle mode means MOEN=0; disable means CcxEN=0; this bit describes the impact of different values for this bit on the output waveform when MOEN=0 and CxEN changes from 0 to 1.<br>0: Disable Ocx/OcN output<br>1: If CCxEN=1, the invalid level is output during the dead time (the specific level value is affected by the polarity configuration), and the idle level is output after the dead time. |
+| 11 | RMOS | R/W | Run Mode Off-state Configure<br>Run mode means MOEN=1; disable means CcxEN=0; this bit describes the impact of different values for this bit on the output waveform when MOEN=1 and CcxN changes from 0 to 1.<br>0: Disable Ocx/OcxN output<br>1: Ocx/OcxN first outputs invalid level (the specific level value is affected by the polarity configuration) |
+| 12 | BRKEN | R/W | Brake Function Enable<br>0: Disable<br>1: Enable<br>Note: When the protection level is 1, this bit cannot be modified. |
+| 13 | BRKPOL | R/W | Brake Polarity Configure<br>0: The brake input BRK is valid at low level<br>1: The brake input BRK is valid at high level<br>Note: When the protection level is 1, this bit cannot be modified. Writing to this bit requires an APB clock delay before use. |
+| 14 | AOEN | R/W | Automatic Output Enable<br>0: MOEN can only be set to 1 by software<br>1: MOEN can be set to 1 by software or be automatically set to 1 at the next update event (braking input is invalid)<br>Note: When the protection level is 1, this bit cannot be modified. |
+| 15 | MOEN | R/W | PWM Main Output Enable<br>0: Disable the output of Ocx and OcxN or force the output of idle state<br>1: When CcxEN and CcxNEN bits of the TMRx_CCEN register are set, enable Ocx and OcxN output<br>When the brake input is valid, it is cleared to 0 by hardware asynchronously.<br>Note: Setting 1 by software or setting 1 automatically depends on AOEN bit of the TMRx_BDT register. |
+
+
+### 14.6.19 DMA control register (TMRx_DCTRL)
+
+Offset address: 0x48<br>
+Reset value: 0x0000
+
+
+| Field | Name | R/W | Description |
+| ------- | -------- | ----- | ----------------------------------------------------------------------------------------------------------- |
+| 4:0 | DBADDR | R/W | DMA Base Address Setup<br>These bits define the base address of DMA in continuous mode (when reading or writing TMRx_DMADDR register), and DBADDR is defined as the offset from the address of TMRx_CTRL1 register:<br>00000: TMRx_CTRL1<br>00001: TMRx_CTRL2<br>00010: TMRx_SMCTRL<br>……. |
+| 7:5 |  |  | Reserved |
+| 12:8 | DBLEN | R/W | DMA Burst Transfer Length Setup<br>These bits define the transmission length and transmission times of DMA in continuous mode. The data transmitted can be 16 bits and 8 bits.<br>When reading/writing TMRx_DMADDR register, the timer will conduct a continuous transmission;<br>00000: Transmission once<br>00001: Transmission twice<br>00010: Transmission for three times<br>……<br>10001: Transmission for 18 times<br>The transmission address formula is as follows:<br>Transmission address=TMRx_CTRL1 address (slave address)<br>+DBADDR+DMA index; DMA index=DBLEN<br>For example: DBLEN=7, DBADDR=TMR2_CTRL1 (slave address) means the address of the data to be transmitted, while the address +DBADDR+7 of TMRx_CTRL1 means the address of the data to be written/read,<br>Data transmission will occur to: TMRx_CTRL1 address + seven registers starting from DBADDR.<br>The data transmission will change according to different DMA data length:<br>(1) When the transmission data is set to 16 bits, the data will be transmitted to seven registers<br>(2) When the transmission data is set to 8 bits, the data of the first register is the MSB bit of the first data, the data of the second register is the LSB bit of the first data, and the data will still be transmitted to seven registers. |
+| 15:13 | Reserved |  |  |
+
+
+### 14.6.20 DMA address register of continuous mode (TMRx_DMADDR)
+
+Offset address: 0x4C<br>
+Reset value: 0x0000
+
+
+| Field | Name | R/W | Description |
+| -------- | ---------- | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 31:0 | DMADDR | R/W | DMA Register for Burst Transfer<br>Read or write operation access of TMRx_DMADDR register may lead to access to the register in the following address:<br>TMRx_CTRL1 address + (DBADDR+DMA index) x4<br>Where:<br>"TMRx_CTRL1 address" is the address of control register 1 (TMRx_CTRL1);<br>"DBADDR" is the base address defined in TMRx_DCTRL register;<br>"DMA index" is the offset automatically controlled by DMA, and it depends on DBLEN defined in TMRx_DCTRL register. |
+
+
+# 15 General-purpose timer (TMR2/3/4/5)
+
+
+
+## 15.1 Introduction
+
+
+The general-purpose timer takes the time base unit as the core, and has the functions of input capture and output compare, and can be used to measure the pulse width, frequency and duty cycle, and generate the output waveform. It includes a 16-bit or 32-bit auto reload counter (realize count-up, count-down and center-aligned count).
+
+The timers are independent of each other, and they can achieve synchronization and cascading.
+
+
+## 15.2 Main characteristics
+
+
+(1) Timebase unit  
+   ● Counter: 16-bit or 32-bit counter, supporting count-up, count-down and center-aligned count.  
+   ● Prescaler: 16-bit programmable prescaler  
+   ● Autoreload function  
+
+(2) Clock source selection  
+   ● Internal clock  
+   ● External input  
+   ● External trigger  
+   ● Internal trigger  
+
+(3) Input capture function  
+   ● Counting function  
+   ● PWM input  
+   ● Encoder interface mode  
+
+(4) Output compare function  
+   ● PWM output mode  
+   ● Forced output mode  
+   ● Single-pulse mode  
+
+(5) Master/Slave mode controller of timer  
+   ● Timers can be synchronized and cascaded  
+   ● Support multiple slave modes and synchronization signals  
+
+(6) Interrupt and DMA request event  
+   ● Update event (counter overrun/underrun, counter initialization)  
+   ● Trigger event (counter start, stop, internal/external trigger)  
+   ● Input capture  
+   ● Output compare
+
+
+
+(7) Support incremental (quadrature) encoder and Hall sensor circuits for positioning
+
+
+## 15.3 Structure block diagram
+
+
+Figure 38 General-purpose Timer Structure Block Diagram
+
+
+
+is logically equal or the future signal is T1F_ED signal, namely double-edge signal of TIF_ED. Especially the PWM input can only be input by T1/2.
+
+
+External clock mode 2
+
+
+After polarity selection, frequency division and filtering, the signal from external trigger interface (ETR) is connected to the slave mode controller through trigger input selector to control the work of the counter.
+
+
+Internal trigger input
+
+
+The timer is set to work in slave mode, and the clock source is the output signal of other timers. At this time, the clock source has no filtering, and the synchronization or cascading between timers can be realized. The master mode timer can reset, start, stop or provide clock for the slave mode timer.
+
+
+### 15.4.2 Timebase unit
+
+
+The time base unit in the general-purpose timer contains three registers
+- 16-bit counter register (CNT)
+- 16-bit auto reload register (AUTORLD)
+- 16-bit prescaler register (PSC)
+
+
+Counter CNT
+
+
+There are three counting modes for the counter in the general-purpose timer
+- Count-up mode
+- Count-down mode
+- Center-aligned mode
+
+
+Count-up mode
+
+
+Set to the count-up mode by configuring CNTDIR bit of control register (TMRx_CTRL1).
+
+When the counter is in count-up mode, the counter will count up from 0; every time a pulse is generated, the counter will increase by 1 and when the value of the counter (TMRx_CNT) is equal to the value of the auto reload (TMRx_AUTORLD), the counter will start to count from 0 again, a count-up overrun event will be generated, and the value of the auto reload (TMRx_AUTORLD) is written in advance.
+
+When the counter overruns, an update event will be generated. At this time, the auto reload shadow register and the prescaler buffer will be updated. The update event can be disabled by configuring UD bit of control register TMRx_CTRL1.
+
+The figure below is the timing diagram of count-up mode when the division factor is 1 or 2
+
+
+
+![Figure 39 Timing Diagram of Count-up Mode when Division Factor is 1 or 2](https://www.geehy.com)
+
+---
+
+
+PSC=1
+
+CK_PSC  
+CNT_EN  
+CK_CNT  
+Counter register  
+# 21<br>22<br>23<br>24<br>25<br>26<br>27<br>00<br>01<br>02<br>03<br>04<br>05<br>06
+Counter overrun  
+Update event  
+
+
+PSC=2
+
+CK_CNT  
+Counter register  
+# 0024<br>0025<br>0026<br>0000<br>0001<br>0002<br>0003
+Counter overrun  
+Update event  
+
+---
+
+
+Count-down mode
+
+Set to the count-down mode by configuring CNTDIR bit of control register (TMRx_CTRL1).
+
+When the counter is in count-down mode, it will start to count down from the value of the auto reload (TMRx_AUTORLD); every time a pulse is generated, the counter will decrease by 1 and when it becomes 0, the counter will start to count again from (TMRx_AUTORLD), meanwhile, a count-down overrun event will be generated, and the value of the auto reload (TMRx_AUTORLD) is written in advance.
+
+When the counter overruns, an update event will be generated. At this time, the auto reload shadow register and the prescaler buffer will be updated. The update event can be disabled by configuring the UD bit of the TMRx_CTRL1 register.
+
+
+
+
+Figure 40 Timing Diagram of Count-down Mode when Division Factor is 1 or 2
+
+
+
+
+![Figure 41 Timing Diagram of Center-aligned Mode when Division Factor is 1 or 2](attachment)
+
+CK_PSC  
+CNT_EN  
+CK_CNT  
+PSC=1  
+
+Counter register  
+# 04  03  02  01  00  01  02  03  04
+Counter underrun  
+Counter overrun  
+Update event  
+
+PSC=2  
+CK_CNT  
+Counter register  
+# 0003  0002  0001  0000  0001  0002  0003
+Counter overrun  
+Update event  
+
+
+Prescaler PSC  
+
+The prescaler is 16 bits and programmable, and it can divide the clock frequency of the counter to any value within 1~65536 (controlled by TMRx_PSC register), and after frequency division, the clock will drive the counter CNT to count. The prescaler has a buffer, which can be changed during running.  
+
+
+### 15.4.3 Input capture
+
+
+
+Input capture channel  
+
+The general-purpose timer has four independent capture/compare channels, each of which is surrounded by a capture/compare register.  
+
+In the input capture, the measured signal will enter from the external pin T1/2/3/4 of the timer, first pass through the edge detector and input filter, and then enter the capture channels. Each capture channel has a corresponding capture register. When the capture occurs, the value of the counter CNT will be latched in the capture register CCx. Before entering the capture register, the signal will pass through the prescaler to set how many events to capture at a
+
+
+
+time.
+
+
+Input capture application
+
+
+Input capture is used to capture external events, and can give the time flag to indicate the occurrence time of the event and measure the pulse jump edge events (measure the frequency or pulse width), for example, if the selected edge appears on the input pin, the TMRx_CCx register will capture the current value of the counter and the CCxIFLG bit of the status register TMRx_STS will be set to 1; if CCxIEN=1, an interrupt will be generated.
+
+In capture mode, the timing, frequency, cycle and duty cycle of a waveform can be measured. In the input capture mode, the edge selection is set to rising edge detection. When the rising edge appears on the capture channel, the first capture occurs, at this time, the value of the counter CNT will be latched in the capture register CCx; at the same time, it will enter the capture interrupt, a capture will be recorded in the interrupt service program and the value will be recorded. When the next rising edge is detected, the second capture occurs, the value of counter CNT will be latched in capture register CCx again, at this time, it will enter the capture interrupt again; read the value of capture register and the cycle of this pulse signal will be obtained by capture.
+
+
+### 15.4.4 Output compare
+
+
+There are eight modes of output compare: freeze, channel x is valid level when matching, channel x is invalid level when matching, flip, force is invalid, force is valid, PWM mode 1 and PWM mode 2, which are configured by OCxMOD bit in TMRx_CCMx register and can control the waveform of output signal in output compare mode.
+
+
+Output compare application
+
+
+In the output compare mode, the position, polarity, frequency and time of the pulse generated by the timer can be controlled.
+
+When the value of the counter is equal to that of the capture/compare register, the channel output can be set as high level, low level or flip by configuring the OCxMOD bit in TMRx_CCMx register and the CCxPOL bit in the output polarity TMRx_CCEN register.
+
+When CCxIFLG=1 in TMRx_STS register, if CCxIEN=1 in TMRx_DIEN register, an interrupt will be generated; if CCDSEL=1 in TMRx_CTRL2 register, a DMA request will be generated.
+
+
+### 15.4.5 PWM output mode
+
+
+PWM mode is pulse signal that can be adjusted by external output of the timer. The pulse width of the signal is determined by the value of the compare register CCx, and the cycle is determined by the value of the auto reload AUTORLD.
+
+
+
+PWM output mode contains PWM mode 1 and PWM mode 2; PWM mode 1 and PWM mode 2 are divided into count-up, count-down and center alignment counting; in PWM mode 1, if the value of the counter CNT is less than the value of the compare register CCx, the output level will be valid; otherwise, it will be invalid.
+
+Set the timing diagram in PWM mode 1 when CCx=5, AUTORLD=7:
+
+
+Figure 42 Timing Diagram of PWM1 Count-up Mode
+
+
+
+| AUTORLD= |  |  |  |  |
+| ---------- | --------- | --------- | --------- | --------- |
+|  | CCx |  |  | <br> |
+| OXREF |  |  |  |  |
+
+
+Figure 43 Timing Diagram of PWM1 Count-down Mode
+
+
+
+| AUTORLD= |  |  |  |  |
+| ---------- | --------- | --------- | --------- | --------- |
+|  | CCx |  |  | <br> |
+| OXREF |  |  |  |  |
+
+
+Figure 44 Timing Diagram of PWM1 Center-aligned Mode
+
+
+
+| AUTORLD= |  |  |  |  |
+| ---------- | --------- | --------- | --------- | --------- |
+|  | CCx |  |  | <br> |
+| OXREF |  |  |  |  |
+
+
+In PWM mode 2, if the value of the counter CNT is less than that of the compare register CCx, the output level will be invalid; otherwise, it will be valid.
+
+
+
+Set the timing diagram of PWM mode 2 when CCx=5, AUTORLD=7
+
+Figure 45 Timing Diagram of PWM2 Count-up Mode
+
+
+| AUTORLD | CCx |
+| ------------- | -------------- |
+|  | <br> |
+| OCx:REF | <br><br><br><br><br><br><br><br> |
+
+
+Figure 46 Timing Diagram of PWM2 Count-down Mode
+
+
+| AUTORLD | CCx |
+| ------------- | -------------- |
+|  |  |
+| OCx:REF | <br><br><br><br><br><br> |
+
+
+Figure 47 Timing Diagram of PWM2 Center-aligned Mode
+
+
+| AUTORLD | CCx |
+| ------------- | -------------- |
+|  |  |
+| OCx:REF | <br><br><br><br><br> |
+
+
+### 15.4.6 PWM input mode
+
+PWM input mode is a particular case of input capture.
+
+In PWM input mode, as only TI1FP1 and TI1FP2 are connected to the slave mode controller, input can be performed only through the channels TMRx_CH1
+
+
+
+and TMRx_CH2, which need to occupy the capture registers of CH1 and CH2.
+
+In PWM input mode, the PWM signal enters from TMRx_CH1, and the signal will be divided into two channels, one can measure the period, and the other can measure the duty cycle. In the configuration, it is only required to set the polarity of one channel, and the other will be automatically configured with the opposite polarity.
+
+In this mode, the slave mode controller should be configured as the reset mode (SMFSEL bit of TMRx_SMCTRL register)
+
+
+Figure 48 Timing Diagram of PWM Input Mode
+
+
+
+| T1 | TMRx_CNT | 0005 | 0000 | 0001 | 0002 | 0005 | 0004 | 0005 | 0000 |
+| ----- | ---------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- |
+|  | TMRx_CC1 | 0003 |  |  |  |  |  |  |  |
+|  | TMRx_CC2 | 0005 |  |  |  |  |  |  |  |
+|  | IC1 capture | IC2 capture | Counter reset |  |  |  |  |  |  |
+
+
+### 15.4.7 Single-pulse mode
+
+
+The single-pulse mode is a special case of timer compare output, and is also a special case of PWM output mode.
+
+Set SPMEN bit of TMRx_CTRL1 register, and select the single-pulse mode. After the counter is started, a certain number of pulses will be output before the update event occurs. When an update event occurs, the counter will stop counting, and the subsequent PWM waveform output will no longer be changed.
+
+After a certain controllable delay, a pulse with controllable pulse width is generated in single-pulse mode through the program. The delay time is defined by the value of TMRx_CCx register; in the count-up mode, the delay time is CCx and the pulse width is AUTORLD-CCx; in the count-down mode, the delay time is AUTORLD-CCx and the pulse width is CCx.
+
+
+
+
+Figure 49 Timing Diagram of Single-pulse Mode
+
+
+
+### 15.4.8 Forced output mode
+
+In the forced output mode, the comparison result is ignored, and the corresponding level is directly output according to the configuration instruction.  
+- CCxSEL=00 for TMRx_CCMx register, set CCx channel as output  
+- OCxMOD=100/101 for TMRx_CCMx register, set to force OCxREF signal to invalid/valid  
+
+In this mode, the corresponding interrupt and DMA request will still be generated.
+
+
+### 15.4.9 Encoder interface mode
+
+The encoder interface mode is equivalent to an external clock with direction selection. In the encoder interface mode, the content of the timer can always indicate the position of the encoder.
+
+The method of selecting encoder interface is as follows:  
+- By setting SMFSEL bit of TMRx_SMCTRL register, set the counter to count on the edge of TI1 channel /TI2 channel, or count on the edge of TI1 and TI2 at the same time.  
+- Select the polarity of TI1 and TI2 by setting the CC1POL and CC2POL bits of TMRx_CCEN register.  
+- Select to filter or not by setting the IC1F and IC2F bits of TMRx_CCM1 register.  
+
+The two input TI1 and TI2 can be used as the interface of incremental encoder. The counter is driven by the effective jump of the signals TI1FP1 and TI2FP2 after filtering and edge selection in TI1 and TI2.  
+The count pulse and direction signal are generated according to the input signals of TI1 and TI2.  
+- The counter will count up/down according to the jumping sequence of the input signal
+
+
+
+- Set CNTDIR of control register TMRx_CTRL1 to be read-only (CNTDIR will be re-calculated due to jumping of any input end)
+
+The change mechanism of counter count direction is shown in the figure below:
+
+
+Table 62 Relationship between Count Direction and Encoder
+
+
+
+| Effective edge | Count only in TI1 | Count only in TI2 | Count in both TI1 and TI2 |
+| ------------------ | --------------------- | --------------------- | ---------------------------- |
+
+|  | High | Low | High | Low |
+| T1IFP1 |  |  |  |  |
+| Rising edge | Count down | Count up | Count down | Count up |
+| Falling edge | Count up | Count down | Count up | Count down |
+| T2IFP2 |  |  |  |  |
+| Rising edge | Count up | Count down | Count up | Count down |
+| Falling edge | Count down | Count up | Count down | Count up |
+
+
+The external incremental encoder can be directly connected with MCU, not needing external interface logic, so the comparator is used to convert the differential output of the encoder to digital signal to increase the immunity to noise interference.
+
+Among the following examples:
+- IC1FP1 is mapped to TI1
+- IC2FP2 is mapped to TI2
+- Neither IC1FP1 nor IC2FP2 is phase-inverting
+- The input signal is valid at the rising edge and falling edge
+- Enable the counter
+
+
+Figure 50 Counter Operation Example in Encoder Mode
+
+
+For example, when TI1 is at low level, and TI2 is in rising edge state, the counter will count up.
+
+
+
+![Figure 51 Example of Encoder Interface Mode of IC1FP1 Reversed Phase](https://www.geehy.com)
+
+T11  
+T12  
+Counter  
+
+For example, when T11 is at low level, and the rising edge of T12 jumps, the counter will count down.
+
+
+### 15.4.10 Slave Mode
+
+TMRx timer can synchronize external trigger  
+● Reset mode  
+● Gated mode  
+● Trigger mode  
+
+SMFSEL bit in TMRx_SMCTRL register can be set to select the mode  
+
+SMFSEL=100 set the reset mode, SMFSEL=101 set the gated mode, and SMFSEL=110 set the trigger mode.  
+
+In the reset mode, when a trigger input event occurs, the counter and prescaler will be initialized, and the rising edge of the selected trigger input (TRGI) will reinitialize the counter and generate a signal to update the register.  
+
+In the gated mode, the enable of the counter depends on the high level of the selected input end. When the trigger input is high, the clock of the counter will be enabled. Once the trigger input becomes low, the counter will stop (but not be reset). The start and stop of the counter are controlled.  
+
+In the trigger mode, the enable of the counter depends on the event on the selected input, the counter will be enabled at the rising edge of the trigger input (but not be reset), and only the start of the counter is controlled.
+
+
+### 15.4.11 Timer interconnection
+
+See the chapter of "14.4.14 Timer Interconnection" for details.
+
+
+### 15.4.12 Interrupt and DMA request
+
+The timer can generate an interrupt when an event occurs during operation
+
+
+
+- Update event (counter overrun/underrun, counter initialization)  
+- Trigger event (counter start, stop, internal/external trigger)  
+- Capture/Compare event  
+
+Some internal interrupt events can generate DMA requests, and special interfaces can enable or disable trigger DMA requests.
+
+
+### 15.4.13 Debug mode
+
+
+The TMR2/3/4/5 can be configured in debug mode and choose to stop or continue to work. It depends on the TMRx_STS bit of DBGMCU_APB1F register in DBGMCU module.
+
+
+### 15.4.14 Clear OCxREF signal when an external event occurs
+
+
+This function is used for output compare and PWM mode.
+
+In one channel, the high level of ETRF input port will reduce the signal of OCxREF to low level, and the OCxCEN bit in capture/compare register TMRx_CCMx is set to 1, and OCxREF signal will remain low until the next update event occurs.
+
+Set TMRx to PWM mode, disable the external trigger prescaler, and disable the external trigger mode 2; when ETRF input is high, set OCxCEN=0, and the output OCxREF signal is shown in the figure below.
+
+
+Figure 52 OCxREF Timing Diagram
+
+
+
+| OCx |  |  |  |
+| --------- | --------- | ------ | --------- |
+| ETRF |  |  |  |
+| OCx:REF | OCxCEN=0 |  |  |
+
+
+Set TMRx to PWM mode, disable the external trigger prescaler, and disable the external trigger mode 2; when ETRF input is high, set OCxCEN=1, and the output OCxREF signal is shown in the figure below.
+
+
+
+
+## 15.5 Register address mapping
+
+
+In the following table, all registers of the general-purpose timer are mapped to a 16-bit addressable (address) space.
+
+
+Table 63 General-purpose Timer Register Address Mapping
+
+
+
+| Register name | Description | Offset Address |
+| ------------------ | --------------------------------------------- | ---------------- |
+| TMRx_CTRL1 | Control register 1 | 0x00 |
+| TMRx_CTRL2 | Control register 2 | 0x04 |
+| TMRx_SMCTRL | Slave mode control register | 0x08 |
+| TMRx_DIEN | DMA/Interrupt enable register | 0x0C |
+| TMRx_STS | Status register | 0x10 |
+| TMRx_CEG | Control event generation register | 0x14 |
+| TMRx_CCM1 | Capture/Compare mode register 1 | 0x18 |
+| TMRx_CCM2 | Capture/Compare mode register 2 | 0x1C |
+| TMRx_CCEN | Enable the capture/compare channel register | 0x20 |
+| TMRx_CNT | Counter register | 0x24 |
+| TMRx_PSC | Prescaler register | 0x28 |
+| TMRx_AUTORLD | Auto reload register | 0x2C |
+| TMRx_CC1 | Channel 1 capture/compare register | 0x34 |
+| TMRx_CC2 | Channel 2 capture/compare register | 0x38 |
+| TMRx_CC3 | Channel 3 capture/compare register | 0x3C |
+| TMRx_CC4 | Channel 4 capture/compare register | 0x40 |
+| TMRx_DCTRL | DMA control register | 0x48 |
+| TMRx_DMADDR | DMA address register of continuous mode | 0x4C |
+| TMR2_OPT | TMR2 option register | 0x50 |
+| TMR5_OPT | TMR5 option register | 0x50 |
+
+
+## 15.6 Register functional description
+
+
+
+### 15.6.1 Control register 1 (TMRx_CTRL1)
+
+Offset address: 0x00  
+Reset value: 0x0000  
+
+
+| Field | Name | R/W | Description |
+| ------- | -------- | ----- | ------------------------------------------------------------------------------------------------------- |
+| 0 | CNTEN | R/W | Counter Enable<br>0: Disable<br>1: Enable<br>When the timer is configured as external clock, gated mode and encoder mode, it is required to write 1 to the bit by software to start regular work; when it is configured as the trigger mode, it can write 1 by hardware. |
+| 1 | UD | R/W | Update Disable<br>Update event can cause AUTORLD, PSC and CCx to generate the value of update setting.<br>0: Enable update event (UEV)<br>An update event can occur in any of the following situations:<br>The counter overruns/underruns;<br>Set UEG bit;<br>Update generated by slave mode controller.<br>1: Disable update event |
+| 2 | URSSEL | R/W | Update Request Source Select<br>If interrupt or DMA is enabled, the update event can generate update interrupt or DMA request. Different update request sources can be selected by this bit.<br>0: The counter overruns or underruns<br>Set UEG bit<br>Update generated by slave mode controller<br>1: The counter overruns or underruns |
+| 3 | SPMEN | R/W | Single Pulse Mode Enable<br>When an update event is generated, the output level of the channel can be changed; in this mode, the CNTEN bit will be cleared, the counter will stop, and the subsequent output level of the channel will no long be changed.<br>0: Disable<br>1: Enable |
+| 4 | CNTDIR | R/W | Counter Direction<br>This bit is read-only when the counter is configured as center-aligned mode or encoder mode.<br>0: Count up<br>1: Count down |
+| 6:5 | CAMSEL | R/W | Center Aligned Mode Select<br>In the center-aligned mode, the counter counts up and down alternately; otherwise, it will only count up or down. Different center-aligned modes affect the timing of setting the output compare interrupt flag bit of the output channel to 1; when the counter is disabled (CNTEN=0), select the center-aligned mode.<br>00: Edge-aligned mode<br>01: Center-aligned mode 1 (the output compare interrupt flag bit of output channel is set to 1 when counting down)<br>10: Center-aligned mode 2 (the output compare interrupt flag bit of output channel is set to 1 when counting up)<br>11: Center-aligned mode 3 (the output compare interrupt flag bit of output channel is set to 1 when counting up/down) |
+| 7 | ARPEN | R/W | Auto-reload Preload Enable<br>When the buffer is disabled, modification of TMRx_AUTORLD by program will immediately lead to modification of the values loaded to the counter; when the buffer is enabled, modification of TMRx_AUTORLD by program will lead to modification of the values loaded to the counter at the next update event.<br>0: Disable<br>1: Enable |
+| 9:8 | CLKDIV | R/W | Clock Division<br>For the configuration of dead zone and digital filter, CK_INT provides the clock, and the dead time and the clock of the digital filter can be adjusted by this bit.<br>00: tprs=tck_INT<br>01: tprs=2*tck_INT<br>10: tprs=4*tck_INT<br>11: Reserved |
+| 15:10 | Reserved |  |  |
+
+
+### 15.6.2 Control register 2 (TMRx_CTRL2)
+
+Offset address: 0x04  
+Reset value: 0x0000  
+
+
+| Field | Name | R/W | Description |
+| ------- | --------- | ------ | ---------------------------------------------------------------------------------------------- |
+| 2:0 | Reserved |  |  |
+| 3 | CCDSEL | R/W | Capture/Compare DMA Select<br>0: Transmit DMA request of CCx when CCx event occurs<br>1: Transmit DMA request of CCx when an update event occurs |
+| 6:4 | MMSEL | R/W | Master Mode Signal Select <br> The signals of timers working in master mode can be used for TRGO, so as to affect the work of timers in slave mode and cascaded with the master timer, and the specific impact is related to the configuration of slave mode timer.<br> 000: Reset; the reset signal of master mode timer is used for TRGO <br> 001: Enable; the counter enable signal of master mode timer is used for TRGO <br> 010: Update; the update event of master mode timer is used for TRGO <br> 011: Compare pulses; when the master mode timer captures/compares successfully (CCxIFLG=1), a pulse signal is output for TRGO <br> 100: Compare mode 1; OC1REF is used to trigger TRGO <br> 101: Compare mode 2; OC2REF is used to trigger TRGO <br> 110: Compare mode 3; OC3REF is used to trigger TRGO <br> 111: Compare mode 4; OC4REF is used to trigger TRGO |
+| 7 | TI1SEL | R/W | Timer Input 1 Selection <br> 0: TMRx_CH1 pin is connected to TI1 input <br> 1: TMRx_CH1, TMRx_CH2 and TMRx_CH3 pins are connected to TI1 input after exclusive |
+| 15:8 |  |  | Reserved |
+| -------- | --------- | ----- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 15.6.3 |  |  | Slave mode control register (TMRx_SMCTRL) |
+| Offset address: | 0x08 |  |  |
+| Reset value: | 0x0000 |  |  |
+| 2:0 | SMFSEL | R/W | Slave Mode Function Select <br> 000: Disable the slave mode, the timer can be used as the master mode timer to affect the work of slave mode timer; if CTRL1_CNTEN=1, the prescaler is directly driven by the internal clock. <br> 001: Encoder mode 1; according to the level of TI1FP1, the counter counts at the edge of TI2FP2.<br> 010: Encoder mode 2; according to the level of TI2FP2, the counter counts at the edge of TI1FP1.<br> 011: Encoder mode 3; according to the input level of the other signal, the counter counts at the edge of TI1FP1 and TI2FP2.<br> 100: Reset mode; the slave mode timer resets the counter after receiving the rising edge signal of TRGI and generates the signal to update the register.<br> 101: Gated mode; when the slave mode timer receives the TRGI high level signal, the counter will start to work; when it receives TRGI low level signal, the counter will stop working; when it receives TRGI high level signal again, the timer will continue to work; the counter is not reset during the whole period.<br> 110: Trigger mode; the slave mode timer starts the counter to work after receiving the rising edge signal of TRGI.<br> 111: External clock mode 1; select the rising edge signal of TRGI as the clock source to drive the counter to work. |
+| 3 |  |  | Reserved |
+| 6:4 | TRGSEL | R/W | Trigger Input Signal Select<br>In order to avoid generating false edge detection when changing the value of this bit, it must be changed when SMFSEL=0.<br>000: Internal trigger ITR0<br>001: Internal trigger ITR1<br>010: Internal trigger ITR2<br>011: Internal trigger ITR3<br>100: Channel 1 input edge detector TIF_ED<br>101: Channel 1 post-filtering timer input TI1FP1<br>110: Channel 2 post-filtering timer input TI2FP2<br>111: External trigger input (ETRF) |
+| 7 | MSMEN | R/W | Master/slave Mode Enable<br>0: Invalid<br>1: Enable the master/slave mode |
+| 11:8 | ETFCFG | R/W | External Trigger Filter Configure<br>0000: Disable filter, sampled by fbrts<br>0001: DIV=1, N=2<br>0010: DIV=1, N=4<br>0011: DIV=1, N=8<br>0100: DIV=2, N=6<br>0101: DIV=2, N=8<br>0110: DIV=4, N=6<br>0111: DIV=4, N=8<br>1000: DIV=8, N=6<br>1001: DIV=8, N=8<br>1010: DIV=16, N=5<br>1011: DIV=16, N=6<br>1100: DIV=16, N=8<br>1101: DIV=32, N=5<br>1110: DIV=32, N=6<br>1111: DIV=32, N=8<br>Sampling frequency=timer clock frequency/DIV; the filter length=N, and a jump is generated by every N events. |
+| 13:12 | ETPCFG | R/W | External Trigger Prescaler Configure<br>The ETR (external trigger input) signal becomes ETRP after frequency division. The signal frequency of ETRP is at most 1/4 of TMRxCLK frequency; when ETR frequency is too high, the ETRP frequency must be reduced through frequency division.<br>00: Disable the prescaler;<br>01: ETR signal 2 divided frequency<br>10: ETR signal 4 divided frequency<br>11: ETR signal 8 divided frequency |
+| 14 | ECEN | R/W | External Clock Enable Mode2<br>0: Disable<br>1: Enable<br>Setting ECEN bit has the same function as selecting external clock mode 1 to connect TRG1 to ETRF; slave mode (reset, gating, trigger) can be used at the same time with external clock mode 2, but TRGI cannot be connected to ETRF in such case; when external clock mode 1 and external clock mode 2 are enabled at the same time, the input of external clock is ETRF. |
+| 15 | ETPOL | R/W | External Trigger Polarity Configure<br>This bit decides whether the external trigger ETR is phase-inverting.<br>0: The external trigger ETR is not phase-inverting, and the high level or rising edge is valid<br>1: The external trigger ETR is phase-inverting, and the low level or falling edge is valid |
+
+
+Table 64 TMRx Internal Trigger Connection
+
+
+
+| Slave timer | ITR0 (TS=000) | ITR1 (TS=001) | ITR2 (TS=010) | ITR3 (TS=011) |
+| ------------- | --------------- | ---------------- | ---------------- | ---------------- |
+| TMR2 | TMR1 | TMR8 | TMR3 | TMR4 |
+| TMR3 | TMR1 | TMR2 | TMR5 | TMR4 |
+| TMR4 | TMR1 | TMR2 | TMR3 | TMR8 |
+| TMR5 | TMR2 | TMR3 | TMR4 | TMR8 |
+
+
+### 15.6.4 DMA/Interrupt enable register (TMRx_DIEN)
+
+Offset address: 0x0C<br>
+Reset value: 0x0000
+
+
+| Field | Name | R/W | Description |
+| ------- | ------ | ----- | ------------- |
+| 0 | UIEN | R/W | Update Interrupt Enable<br>0: Disable<br>1: Enable |
+| 1 | CC1IEN | R/W | Capture/Compare Channel1 Interrupt Enable<br>0: Disable<br>1: Enable |
+| 2 | CC2IEN | R/W | Capture/Compare Channel2 Interrupt Enable<br>0: Disable<br>1: Enable |
+| 3 | CC3IEN | R/W | Capture/Compare Channel3 Interrupt Enable<br>0: Disable<br>1: Enable |
+| 4 | CC4IEN | R/W | Capture/Compare Channel4 Interrupt Enable<br>0: Disable<br>1: Enable |
+| 5 |  |  | Reserved |
+
+
+### 15.6.5 Status register (TMRx_STS)
+
+Offset address: 0x10  
+Reset value: 0x0000  
+
+
+| Field | Name | R/W | Description |
+| ------- | -------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------- |
+| 0 | UIFLG | RC_W | Update Event Interrupt Generate Flag<br>0: No update event interrupt occurs<br>1: Update event interrupt occurred<br>When the counter value is reloaded or reinitialized, an update event will be generated. The bit is set to 1 by hardware and cleared to 0 by software; update events are generated in the following situations:<br>(1) UD=0 on TMRx_CTRL1 register, and when the overruns/underruns, an update event will be generated;<br>(2) URSEL=0 and UD=0 on TMRx_CTRL1 register, configure UG = 1 on TMRx_CEG register to generate update event, and the counter needs to be initialized by software;<br>(3) URSEL=0 and UD=0 on TMRx_CTRL1 register, generate update event when the counter is initialized by trigger event. |
+| 6 | TRGIEN | R/W | Trigger Interrupt Enable<br>0: Disable<br>1: Enable |
+| 7 |  |  | Reserved |
+| 8 | UDIEN | R/W | Update DMA Request Enable<br>0: Disable<br>1: Enable |
+| 9 | CC1DEN | R/W | Capture/Compare Channel1 DMA Request Enable<br>0: Disable<br>1: Enable |
+| 10 | CC2DEN | R/W | Capture/Compare Channel2 DMA Request Enable<br>0: Disable<br>1: Enable |
+| 11 | CC3DEN | R/W | Capture/Compare Channel3 DMA Request Enable<br>0: Disable<br>1: Enable |
+| 12 | CC4DEN | R/W | Capture/Compare Channel4 DMA Request Enable<br>0: Disable<br>1: Enable |
+| 13 |  |  | Reserved |
+| 14 | TRGDEN | R/W | Trigger DMA Request Enable<br>0: Disable<br>1: Enable |
+| 15 |  |  | Reserved |
+| 1 | CC1IFLG | RC_W | Captuer/Compare Channel1 Interrupt Flag<br>When the capture/compare channel 1 is configured as output:<br>0: No matching occurs<br>1: The value of TMRx_CNT matches the value of TMRx_CC1<br>When the capture/compare channel 1 is configured as input:<br>0: No input capture occurs<br>1: Input capture occurs<br>When a capture event occurs, it is set to 1 by hardware; it can be cleared to 0 by software or cleared to 0 when reading TMRx_CC1 register. |
+| 2 | CC2IFLG | RC_W | Capture/Compare Channel2 new Interrupt Flag<br>Refer to STS_CC1IFLG |
+| 3 | CC3IFLG | RC_W | Captuer/Compare Channel3 Interrupt Flag<br>Refer to STS_CC1IFLG |
+| 4 | CC4IFLG | RC_W | Captuer/Compare Channel4 Interrupt Flag<br>Refer to STS_CC1IFLG |
+| 5 |  |  | Reserved |
+| 6 | TRGIFLG | RC_W | Trigger Event Interrupt Generate Flag<br>0: No trigger event interrupt occurs<br>1: Trigger event interrupt occurs<br>When a trigger event is generated, this bit is set to 1 by hardware and cleared to 0 by software. |
+| 7:8 |  |  | Reserved |
+| 9 | CC1RCFLG | RC_W | Captuer/Compare Channel1 Repetition Capture Flag<br>0: Repeated capture does not occur<br>1: Repeated capture occurs<br>The value of the counter is captured to TMRx_CC1 register, and CC1IFLG=1; this bit can be set to 1 by hardware and cleared to 0 by software only when the channel is configured as input capture. |
+| 10 | CC2RCFLG | RC_W | Captuer/compare Channel2 Repetition Capture Flag<br>Refer to STS_CC1RCFLG |
+| 11 | CC3RCFLG | RC_W | Captuer/compare Channel3 Repetition Capture Flag<br>Refer to STS_CC1RCFLG |
+| 12 | CC4RCFLG | RC_W | Captuer/compare Channel4 Repetition Capture Flag<br>Refer to STS_CC1RCFLG |
+| 15:13 |  |  | Reserved |
+
+
+### 15.6.6 Control event generation register (TMRx_CEG)
+
+Offset address: 0x14  
+Reset value: 0x0000
+
+
+
+
+| Field | Name | R/W | Description |
+| ------- | ------ | ----- | ------------- |
+| 0 | UEG | W | Update Event Generate<br>0: Invalid<br>1: Initialize the counter and generate an update event<br>This bit is set to 1 by software and cleared to 0 by hardware.<br>Note: When an update event is generated, the counter of the prescaler will be cleared to 0, but the prescaler factor remains unchanged. In the countdown mode, the counter will read the value of TMRx_AUTORLD; in center-aligned mode or count-up mode, the counter will be cleared to 0. |
+| 1 | CC1EG | W | Capture/Compare Channel1 Event Generation<br>0: Invalid<br>1: Generate capture/compare event<br>This bit is set to 1 by software and cleared to 0 automatically by hardware.<br>If Channel 1 is in output mode<br>When CC1IFLG=1, if CC1IEN and CC1DEN bits are set, the corresponding interrupt and DMA request will be generated.<br>If Channel 1 is in input mode<br>The value of the capture counter is stored in TMRx_CCR1 register; configure CC1IFLG=1, and if CC1IEN and CC1DEN bits are also set, the corresponding interrupt and DMA request will be generated; at this time, if CC1IFLG=1, it is required to configure CC1RCFLG=1. |
+| 2 | CC2EG | W | Capture/Compare Channel2 Event Generation<br>Refer to CC1EG description |
+| 3 | CC3EG | W | Capture/Compare Channel3 Event Generation<br>Refer to CC1EG description |
+| 4 | CC4EG | W | Capture/Compare Channel4 Event Generation<br>Refer to CC1EG description |
+| 5 |  | Reserved |  |
+| 6 | TEG | W | Trigger Event Generate<br>0: Invalid<br>1: Generate trigger event<br>This bit is set to 1 by software and cleared to 0 automatically by hardware. |
+| 15:7 |  | Reserved |  |
+
+
+### 15.6.7 Capture/Compare mode register 1 (TMRx_CCM1)
+
+Offset address: 0x18<br>
+Reset value: 0x0000<br>
+The timer can be configured as input (capture mode) or output (compare mode) by CCxSEL bit. The functions of other bits of the register are different in input and output modes, and the functions of the same bit are different in output mode and input mode. The OCX in the register describes the function of the channel in the output mode, and the lcx in the register describes the function of the channel in the input mode.<br>
+Output compare mode:
+
+
+
+
+| Field | Name | R/W | Description |
+| ------- | -------- | ----- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1:0 | CC1SEL | R/W | Capture/Compare Channel 1 Selection<br>This bit defines the input/output direction and selects the input pin.<br>00: CC1 channel is output<br>01: CC1 channel is input, and IC1 is mapped on T1<br>10: CC1 channel is input, and IC1 is mapped on T2<br>11: CC1 channel is input, and IC1 is mapped on TRC, and only works in internal trigger input<br>Note: This bit can be written only when the channel is closed (TMRx_CCEN register CC1EN=0). |
+| 2 | OC1FEN | R/W | Output Compare Channel1 Fast Enable<br>0: Disable<br>1: Enable<br>This bit is used to improve the response of the capture/compare output to the trigger input event. |
+| 3 | OC1PEN | R/W | Output Compare Channel1 Preload Enable<br>0: Disable preloading function; write the value of TMRx_CC1 register through the program and it will work immediately.<br>1: Enable preloading function; write the value of TMRx_CC1 register through the program and it will work after an update event is generated.<br>Note: When the protection level is 3 and the channel is configured as output, this bit cannot be modified. When the preload register is uncertain, PWM mode can be used only in single-pulse mode (SPMEN=1); otherwise, the following output compare result is uncertain. |
+| 6:4 | OC1MOD | R/W | Output Compare Channel1 Mode Configure<br>000: Freeze The output compare has no effect on OC1REF<br>001: The output value is high when matching. When the value of counter CNT matches the value CCx of capture/compare register, OC1REF will be forced to be high<br>010: The output value is low when matching. When the value of the counter matches the value of the capture/compare register, OC1REF will be forced to be low<br>011: Output flaps when matching. When the value of the counter matches the value of the capture/compare register, flap the level of OC1REF<br>100: The output is forced to be low. Force OC1REF to be low<br>101: The output is forced to be high. Force OC1REF to be high<br>110: PWM mode 1 (set to high when the counter value<output compare value; otherwise, set to low)<br>111: PWM mode 2 (set to high when the counter value>output compare value; otherwise, set to low)<br>Note: When the protection level is 3 and the channel is configured as output, this bit cannot be modified. In PWM modes 1 and 2, the OC1REF level changes when the comparison result changes or when the output compare mode changes from freeze mode to PWM mode. |
+| 7 | OC1CEN | R/W | Output Compare Channel1 Clear Enable<br>0: OC1REF is unaffected by ETRF input.<br>1: When high level of ETRF input is detected, OC1REF=0 |
+
+
+9:8 CC2SEL
+
+**R/W**  
+Capture/Compare Channel2 Select  
+This bit defines the input/output direction and selects the input pin.  
+00: CC2 channel is output  
+01: CC2 channel is input, and IC2 is mapped on TI2  
+10: CC2 channel is input, and IC2 is mapped on TI1  
+11: CC2 channel is input, and IC2 is mapped on TRC, and only works in internal trigger input  
+Note: This bit can be written only when the channel is closed (TMRx_CCEN register CC2EN=0).
+
+
+# 10 **R/W**
+
+Output Compare Channel2 Preload Enable  
+
+
+# 11 **R/W**
+
+Output Compare Channel2 Buffer Enable  
+
+
+14:12 OC2MOD
+
+**R/W**  
+Output Compare Channel1 Mode  
+
+
+# 15 **R/W**
+
+Output Compare Channel2 Clear Enable  
+
+
+Input capture mode:
+
+
+
+1:0 CC1SEL
+
+**R/W**  
+Capture/Compare Channel 1 Select  
+00: CC1 channel is output  
+01: CC1 channel is input, and IC1 is mapped on TI1  
+10: CC1 channel is input, and IC1 is mapped on TI2  
+11: CC1 channel is input, and IC1 is mapped on TRC, and only works in internal trigger input  
+Note: This bit can be written only when the channel is disabled (TMRx_CCEN register CC1EN=0).
+
+
+3:2 IC1PSC
+
+**R/W**  
+Input Capture Channel1 Prescaler Configure  
+00: PSC=1  
+01: PSC=2  
+10: PSC=4  
+11: PSC=8  
+PSC is prescaler factor; capture is triggered once by every PSC events.
+
+
+
+
+| Field | Name | R/W | Description |
+| ------- | ------ | ----- | ------------- |
+| 7:4 | IC1F | R/W | Input Capture Channel 1 Filter Configuration<br>0000: Disable filter, sampled by ftrs<br>0001: DIV=1, N=2<br>0010: DIV=1, N=4<br>0011: DIV=1, N=8<br>0100: DIV=2, N=6<br>0101: DIV=2, N=8<br>0110: DIV=4, N=6<br>0111: DIV=4, N=8<br>1000: DIV=8, N=6<br>1001: DIV=8, N=8<br>1010: DIV=16, N=5<br>1011: DIV=16, N=6<br>1100: DIV=16, N=8<br>1101: DIV=32, N=5<br>1110: DIV=32, N=6<br>1111: DIV=32, N=8<br>Sampling frequency=timer clock frequency/DIV; the filter length=N, indicating that a jump is generated by every N events. |
+| 9:8 | CC2SEL | R/W | Capture/Compare Channel 2 Select<br>00: CC2 channel is output<br>01: CC2 channel is input, and IC2 is mapped on TI2<br>10: CC2 channel is input, and IC2 is mapped on TI1<br>11: CC2 channel is input, and IC2 is mapped on TRC, and only works in internal trigger input<br>Note: This bit can be written only when the channel is closed (TMRx_CCEN register CC2EN=0). |
+| 11:10 | IC2PSC | R/W | Input Capture Channel2 Prescaler Configuration |
+| 15:12 | IC2F | R/W | Input Capture Channel 2 Filter Configuration |
+
+
+### 15.6.8 Capture/Compare mode register 2 (TMRx_CCM2)
+
+Offset address: 0x1C<br>Reset value: 0x0000<br>Refer to the description of the above CCM1 register.<br>Output compare mode:
+
+
+| Field | Name | R/W | Description |
+| ------- | ------ | ----- | ------------- |
+| 1:0 | CC3SEL | R/W | Capture/Compare Channel 3 Selection<br>This bit defines the input/output direction and selects the input pin.<br>00: CC3 channel is output<br>01: CC3 channel is input, and IC3 is mapped on TI3<br>10: CC3 channel is input, and IC3 is mapped on TI4<br>11: CC3 channel is input, and IC3 is mapped on TRC, and only works in internal trigger input<br>Note: This bit can be written only when the channel is closed (TMRx_CCEN register CC3EN=0). |
+| 2 | OC3FEN | R/W | Output Compare Channel3 Fast Enable<br>0: Disable<br>1: Enable<br>This bit is used to improve the response of the capture/compare output to the trigger input event. |
+| 3 | OC3PEN | R/W | Output Compare Channel3 Preload Enable |
+| 6:4 | OC3MOD | R/W | Output Compare Channel3 Mode Configure |
+| 7 | OC3CEN | R/W | Output Compare Channel3 Clear Enable<br>0: OC3REF is unaffected by ETRF input.<br>1: When high level of ETRF input is detected, OC1REF=0 |
+| 9:8 | CC4SEL | R/W | Capture/Compare Channel 4 Selection<br>This bit defines the input/output direction and selects the input pin.<br>00: CC4 channel is output<br>01: CC4 channel is input, and IC4 is mapped on TI4<br>10: CC4 channel is input, and IC4 is mapped on TI3<br>11: CC4 channel is input, and IC4 is mapped on TRC, and only works in internal trigger input<br>Note: This bit can be written only when the channel is closed (TMRx_CCEN register CC4EN=0). |
+| 10 | OC4FEN | R/W | Output Compare Channel4 Preload Enable |
+| 11 | OC4PEN | R/W | Output Compare Channel4 Buffer Enable |
+| 14:12 | OC4MOD | R/W | Output Compare Channel4 Mode Configure |
+| 15 | OC4CEN | R/W | Output Compare Channel4 Clear Enable |
+
+
+Input capture mode:
+
+
+
+| Field | Name | R/W | Description |
+| ------- | --------- | ----- | -------------------------------------------------------------------------------------------------- |
+| 1:0 | CC3SEL | R/W | Capture/Compare Channel 3 Select<br>00: CC3 channel is output<br>01: CC3 channel is input, and IC3 is mapped on TI3<br>10: CC3 channel is input, and IC3 is mapped on TI4<br>11: CC3 channel is input, and IC3 is mapped on TRC, and only works in internal trigger input<br>Note: This bit can be written only when the channel is closed (TMRx_CCEN register CC3EN=0). |
+| 3:2 | IC3PSC | R/W | Input Capture Channel 3 Prescaler Configuration<br>00: PSC=1<br>01: PSC=2<br>10: PSC=4<br>11: PSC=8<br>PSC is prescaler factor; capture is triggered once by every PSC events. |
+| 7:4 | IC3F | R/W | Input Capture Channel 3 Filter Configuration |
+
+
+## 9.8 CC4SEL
+
+**R/W**  
+Capture/Compare Channel 4 Select  
+00: CC4 channel is output  
+01: CC4 channel is input, and IC4 is mapped on TI4  
+10: CC4 channel is input, and IC4 is mapped on TI3  
+11: CC4 channel is input, and IC4 is mapped on TRC, and only works in internal trigger input  
+Note: This bit can be written only when the channel is closed (TMRx_CCEN register CC4EN=0).
+
+
+11:10 IC4PSC
+
+**R/W**  
+Input Capture Channel4 Perscaler Configuration
+
+
+15:12 IC4F
+
+**R/W**  
+Input Capture Channel 4 Filter Configuration
+
+
+### 15.6.9 Enable capture/compare channel register (TMRx_CCEN)
+
+**Offset address:** 0x20  
+**Reset value:** 0x0000  
+
+
+| Field | Name | R/W | Description |
+| ------- | ------ | ----- | ------------- |
+| 0 | CC1EN | R/W | Capture/Compare Channel1 Output Enable <br> When the capture/compare channel 1 is configured as output:<br> 0: Disable output<br> 1: Enable output<br> When the capture/compare channel 1 is configured as input:<br> This bit determines whether the value CNT of the counter can be captured and enter TMRx_CC1 register<br> 0: Disable capture<br> 1: Enable capture |
+| 1 | CC1POL | R/W | Capture/Compare Channel1 Output Polarity Configure <br> When CC1 channel is configured as output:<br> 0: OC1 is active high<br> 1: OC1 is active low<br> When CC1 channel is configured as input:<br> 0: Phase not reversed: capture at the rising edge of IC1; phase not reversed when IC1 is used as external trigger.<br> 1: Phase reversed, capture at the falling edge of IC1; phase reversed when IC1 is used as external trigger.<br> Note: When the protection level is 2 or 3, this bit cannot be modified. |
+| 2 | Reserved |  |  |
+| 3 | CC1NPOL | R/W | Capture/Compare Channel1 Output Polarity Configure <br> When CC1 channel is configured as output:<br> CC1NPOL remains in cleared state all the time <br> When CC1 channel is configured as input:<br> This bit and CC1POL control the polarity of the triggered or captured signals T1FFP1 and T2FFP1 at the same time. |
+| 4 | CC2EN | R/W | Capture/Compare Channel2 Output Enable <br> Refer to CCEN_CC1N |
+| 5 | CC2POL | R/W | Capture/Compare Channel2 Output Polarity Configure <br> Refer to CCEN_CC1POL |
+
+
+Table 65 Output Control Bit of Standard OCx Channel
+
+
+
+| Field | Name | R/W | Description |
+| ------- | -------- | ----- | -------------------------------------------------------------------- |
+| 6 |  |  | Reserved |
+| 7 | CC2NPOL | R/W | Capture/Compare Channel2 Output Polarity Configure<br>Refer to CCEN_CC1NPOL |
+| 8 | CC3EN | R/W | Capture/Compare Channel3 Output Enable<br>Refer to CCEN_CC1EN |
+| 9 | CC3POL | R/W | Capture/Compare Channel3 Output Polarity Configure<br>Refer to CCEN_CC1POL |
+| 10 |  |  | Reserved |
+| 11 | CC3NPOL | R/W | Capture/Compare Channel3 Output Polarity Configure<br>Refer to CCEN_CC1POL |
+| 12 | CC4EN | R/W | Capture/Compare Channel4 Output Enable<br>Refer to CCEN_CC1EN |
+| 13 | CC4POL | R/W | Capture/Compare Channel4 Output Polarity<br>Refer to CCEN_CC1POL |
+| 14 |  |  | Reserved |
+| 15 | CC4NPOL | R/W | Capture/Compare Channel4 Output Polarity Configure<br>Refer to CCEN_CC1NPOL |
+| CcxEN bit | Ocx output state |  |  |
+| ---------- | -------------------------- |  |  |
+| 0 | Disable output (OCx=0, Ocx_EN=0) |  |  |
+| 1 | Ocx=OcxREF+ polarity, Ocx_EN=1 |  |  |
+
+
+Note: The state of external I/O pin connected to the standard Ocx channel depends on the state of the Ocx channel and the GPIO and AFIO registers.
+
+
+### 15.6.10 Counter register (TMRx_CNT)
+
+Offset address: 0x24<br>
+Reset value: 0x0000
+
+
+| Field | Name | R/W | Description |
+| -------- | ------ | ----- | -------------------------------------------------------------------- |
+| 15:0 | CNT | R/W | Counter Value |
+| 31:16 | CNT | R/W | Counter Value (only for TMR2/TMR5) |
+
+
+### 15.6.11 Prescaler register (TMRx_PSC)
+
+Offset address: 0x28<br>
+Reset value: 0x0000
+
+
+| Field | Name | R/W | Description |
+| -------- | ------ | ----- | -------------------------------------------------------------------- |
+| 15:0 | PSC | R/W | Prescaler Value<br>Clock frequency of counter (CK_CNT)=fck_psc/(PSC+1) |
+
+
+### 15.6.12 Auto reload register (TMRx_AUTORLD)
+
+Offset address: 0x2C<br>
+Reset value: 0xFFFF FFFF(TMR2/5) |
+
+
+
+# 0x0000 FFFF (TMR3/4)
+
+
+| Field | Name | R/W | Description |
+| ------- | --------- | ----- | ------------------------------------------------------------------------------------------------------------------- |
+| 15:0 | AUTORLD | R/W | Auto Reload Value<br>When the value of auto reload is empty, the counter will not count. |
+| 31:16 | AUTORLD | R/W | Auto Reload Value (only for TMR2/TMR5) |
+
+
+### 15.6.13 Channel 1 capture/compare register (TMRx_CC1)
+
+Offset address: 0x34<br>
+Reset value: 0x0000
+
+
+| Field | Name | R/W | Description |
+| ------- | ------ | ----- | ------------------------------------------------------------------------------------------------------------------- |
+| 15:0 | CC1 | R/W | Capture/Compare Channel 1 Value<br>When the capture/compare channel 1 is configured as input mode:<br>CC1 contains the counter value transmitted by the last input capture channel 1 event.<br>When the capture/compare channel 1 is configured as output mode:<br>CC1 contains the value currently loaded in the capture/compare register.<br>Compare the value CC1 of the capture and compare channel 1 with the value CNT of the counter to generate the output signal on OC1.<br>When the output compare preload is disabled (OC1PEN=0 for TMRx_CCM1 register), the written value will immediately affect the output comparison results;<br>If the output compare preload is enabled (OC1PEN=1 for TMRx_CCM1 register), the written value will affect the output compare result when an update event is generated. |
+| 31:16 | CC1 | R/W | Capture/Compare Channel 1 Value (only for TMR2/TMR5) |
+
+
+### 15.6.14 Channel 2 capture/compare register (TMRx_CC2)
+
+Offset address: 0x38<br>
+Reset value: 0x0000
+
+
+| Field | Name | R/W | Description |
+| ------- | ------ | ----- | ------------------------------------------------------------------------------------------------------------------- |
+| 15:0 | CC2 | R/W | Capture/Compare Channel2 Value<br>Refer to TMRx_CC1 |
+| 31:16 | CC2 | R/W | Capture/Compare Channel2 Value (only for TMR2/TMR5)<br>Refer to TMRx_CC1 |
+
+
+### 15.6.15 Channel 3 capture/compare register (TMRx_CC3)
+
+Offset address: 0x3C<br>
+Reset value: 0x0000
+
+
+| Field | Name | R/W | Description |
+| ------- | ------ | ----- | ------------------------------------------------------------------------------------------------------------------- |
+| 15:0 | CC3 | R/W | Capture/Compare Channel 3 Value<br>Refer to TMRx_CC1 |
+| 31:16 | CC3 | R/W | Capture/Compare Channel3 Value (only for TMR2/TMR5)<br>Refer to TMRx_CC1 |
+
+
+### 15.6.16 Channel 4 capture/compare register (TMRx_CC4)
+
+Offset address: 0x40<br>
+Reset value: 0x0000
+
+
+| Field | Name | R/W | Description |
+| ------- | ------ | ----- | ------------------------------------------------------------------------------------------------------------------- |
+| 15:0 | CC4 | R/W | Capture/Compare Channel 4 Value<br>Refer to TMRx_CC1 |
+| 31:16 | CC4 | R/W | Capture/Compare Channel4 Value (only for TMR2/TMR5)<br>Refer to TMRx_CC1 |
+
+
+### 15.6.17 DMA control register (TMRx_DCTRL)
+
+Offset address: 0x48  
+Reset value: 0x0000  
+
+
+| Field | Name | R/W | Description |
+| --------- | --------- | ----- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| 15:0 | CC4 | R/W | Capture/Compare Channel 4 Value<br>Refer to TMRx_CC1 |
+| 31:16 | CC4 | R/W | Capture/Compare Channel4 Value (only for TMR2/TMR5)<br>Refer to TMRx_CC1 |
+| 4:0 | DBADDR | R/W | DMA Base Address Setup<br>These bits define the base address of DMA in continuous mode (when reading or writing TMRx_DMADDR register), and DBADDR is defined as the offset from the address of TMRx_CTRL1 register:<br>00000: TMRx_CTRL1<br>00001: TMRx_CTRL2<br>00010: TMRx_SMCTRL<br>....... |
+| 7:5 |  |  | Reserved |
+| 12:8 | DBLEN | R/W | DMA Burst Transfer Length Setup<br>These bits define the transmission length and transmission times of DMA in continuous mode. The data transmitted can be 16 bits and 8 bits.<br>When reading/writing TMRx_DMADDR register, the timer will conduct a continuous transmission;<br>00000: Transmission once<br>00001: Transmission twice<br>00010: Transmission for three times<br>.......<br>10001: Transmission for 18 times<br>The transmission address formula is as follows:<br>Transmission address=TMRx_CTRL1 address (slave address) +DBADDR+DMA index; DMA index=DBLEN<br>For example: DBLEN=7, DBADDR=TMR2_CTRL1 (slave address) means the address of the data to be transmitted, while the address +DBADDR+7 of TMRx_CTRL1 means the address of the data to be written/read,<br>Data transmission will occur to: TMRx_CTRL1 address + seven registers starting from DBADDR.<br>The data transmission will change according to different DMA data length:<br>1) When the transmission data is set to 16 bits, the data will be transmitted to seven registers<br>2) When the transmission data is set to 8 bits, the data of the first register is the MSB bit of the first data, the data of the second register is the LSB bit of the first data, and the data will be transmitted to seven registers. |
+| 15:13 |  |  | Reserved |
+
+
+### 15.6.18 DMA address register of continuous mode (TMRx_DMADDR)
+
+Offset address: 0x4C
+
+
+
+
+Reset value: 0x0000
+
+
+
+### 15.6.19 TMR2 option register (TMR2_OPT)
+
+Offset address: 0x50
+
+Reset value: 0x0000
+
+
+
+| Field | Name | R/W | Description |
+| ------- | --------- | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 9:0 |  |  | Reserved |
+| 11:10 | RMPSSEL | R/W | Timer2 Internal Trigger 1 Remap Select <br> 00: TMR8_TRGOUT <br> 01: PTP trigger output is connected to TMR2_ITR1 <br> 10: OTG_FS SOF is connected to TMR2_ITR1 input <br> 11: Reserved <br> Note: Clear through software |
+| 15:12 |  |  | Reserved |
+
+
+### 15.6.20 TMR5 option register (TMR5_OPT)
+
+Offset address: 0x50
+
+Reset value: 0x0000
+
+
+
+| Field | Name | R/W | Description |
+| ------- | --------- | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 5:0 |  |  | Reserved |
+| 7:6 | RMPSSEL | R/W | Timer5 Channel4 Input Remap Select <br> 00: TMR5 Channel 4 is connected to GPIO <br> 01: LSICLK internal clock is connected to TMR5_CH 4 input for calibration <br> 10: LSECLK internal clock is connected to TMR5_CH4 input for calibration <br> 11: RTC wake-up interrupt is connected to TMR5_CH4 input for calibration <br> Note: Clear through software |
+| 15:8 |  |  | Reserved |
+
+
+# 16 General-purpose timers (TMR9/10/11/12/13/14)
+
+
+
+## 16.1 Introduction
+
+
+The general-purpose timer takes the time base unit as the core, and has the functions of input capture and output compare, and can be used to measure the pulse width, frequency and duty cycle, and generate the output waveform. It includes a 16-bit auto reload counter (realize count-up count).
+
+
+## 16.2 Main characteristics of TMR9/12
+
+
+(1) Timebase unit  
+● Counter: 16-bit counter, which can count up  
+● Prescaler: 16-bit programmable prescaler  
+● Autoreload function  
+
+(2) Clock Source  
+● Internal clock  
+● External input  
+● Internal trigger  
+
+(3) Timer function  
+● Input capture  
+● Output compare  
+● PWM output mode  
+● Forced output mode  
+● Single-pulse mode output  
+
+(4) Master/Slave mode controller of timer  
+● Timers can be synchronized and cascaded  
+● Support multiple slave modes and synchronization signals  
+
+(5) Interrupt and DMA request event  
+● Update event (counter overrun/underrun, counter initialization)  
+● Trigger event (counter start, stop,internal/external trigger)  
+● Input capture  
+● Output compare  
+
+
+## 16.3 Main characteristics of TMR10/11/13/14
+
+
+(1) Timebase unit  
+● Counter: 16-bit counter, which can count up  
+● Prescaler: 16-bit programmable prescaler  
+● Autoreload function  
+
+(2) Clock Source
+
+
+
+- Internal clock
+
+(3) Timer function
+- Input capture
+- Output compare
+- PWM output mode
+- Forced output mode
+- Single-pulse mode output
+
+(4) Interrupt event
+- Update event (counter overrun, counter initialization)
+- Input capture
+- Output compare
+
+
+## 16.4 TMR9/12 structure block diagram
+
+
+Figure 54 General-purpose Timer TMR9/12 Structure Block Diagram
+
+
+| TMRK_CH2 |  |  |  |  |  |  | TMRK_CH1 |
+| ----------- | ------ | --------- | -------- | ------- | --------- | -------- | ----------- |
+| T12 |  | Filter | edge | detector |  |  | T11 |
+|  | T12PF1 | LCP2 | Prescaler | LCP2S | OC2BFF | Output | control |
+|  |  | TRC |  |  | TMRK_CH2 |  |  |
+|  |  | Filter | edge | detector |  | LCL1 |  |
+|  | T12PF1 | LCP1 | Prescaler | LCP1S | Channel |  |  |
+|  |  | capture | compare | register |  | OC1BFF | Output  <br>TMRK_CH1 |
+|  |  | Auto reload | register |  |  |  |  |
+|  |  | CNT counter |  | OK_CNT | External clock mode |  | <br>Internal clock mode |
+
+
+## 16.5 TMR10/11/13/14 structure block diagram
+
+Figure 55 General-purpose Timer TMR10/11/13/14 Structure Block Diagram
+
+
+| TMRx_CH1 |  |  |  |
+| ---------- | -------------------------------- | -------------- | ------------------------------ |
+| T11 | Filter edge detector | T11F1P1 | IG1 |
+|  | prescaler | IG1PS | Channel 1 capture/compara |
+|  |  | register | Output control               <br>TMRx_CH1 |
+|  | Auto reload register | CNT counter | CK_CNT |
+| Internal clock CK_INT | Trigger controller | CK_PSC | Enable, count |
+|  | Prescaler |  |  |
+
+
+## 16.6 Functional Description
+
+
+
+### 16.6.1 Clock Source
+
+The general-purpose timer has three clock sources.
+
+
+Internal clock
+
+It is TMRx_CLK from RCM, namely the driving clock of the timer; when the slave mode controller is disabled, the clock source CK_PSC of the prescaler is driven by the internal clock CK_INT.
+
+
+External clock mode 1 (only applicable to TMR9/12)
+
+The trigger signal generated from the input channel T1/2/3/4 of the timer after polarity selection and filtering is connected to the slave mode controller to control the work of the counter. Besides, the pulse signal generated by the input of Channel 1 after double-edge detection of the rising edge and the falling edge is logically equal or the future signal is T1F_ED signal, namely double-edge signal of TIF_ED. Especially the PWM input can only be input by T1/2.
+
+
+Internal trigger input (only applicable to TMR9/12)
+
+The timer is set to work in slave mode, and the clock source is the output signal of other timers. At this time, the clock source has no filtering, and the synchronization or cascading between timers can be realized. The master mode timer can reset, start, stop or provide clock for the slave mode timer.
+
+
+### 16.6.2 Timebase unit
+
+The time base unit in the general-purpose timer contains three registers
+
+
+
+- 16-bit counter register (CNT)
+- 16-bit auto reload register (AUTORLD)
+- 16-bit prescaler register (PSC)
+
+
+Counter CNT
+
+
+There is only count-up mode for the counter in the general-purpose timer.
+
+
+Count-up mode
+
+
+When the counter is in count-up mode, the counter will count up from 0; every time a pulse is generated, the counter will increase by 1 and when the value of the counter (TMRx_CNT) is equal to the value of the auto reload (TMRx_AUTORLD), the counter will start to count from 0 again, a count-up overrun event will be generated, and the value of the auto reload (TMRx_AUTORLD) is written in advance.
+
+When the counter overruns, an update event will be generated. At this time, the auto reload register and the prescaler register will be updated. The update event can be disabled by configuring UD bit of control register TMRx_CTRL1.
+
+The figure below is the timing diagram of count-up mode when the division factor is 1 or 2.
+
+
+
+![Figure 56 Timing Diagram of Count-up Mode when Division Factor is 1 or 2](attachment)
+
+
+PSC=1
+
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| 21 | 22 | 23 | 24 | 25 | 26 | 27 | 00 | 01 | 02 | 03 | 04 | 05 | 06 |  |
+
+
+PSC=2
+
+|  |  |  |  |  |  |  |  |  |  |  |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+
+| 0024 | 0025 | 0026 | 0000 | 0001 | 0002 | 0003 |  |
+
+
+**Prescaler PSC**
+
+The prescaler is 16 bits and programmable, and it can divide the clock frequency of the counter to any value within 1–65536 (controlled by TMRx_PSC register), and after frequency division, the clock will drive the counter CNT to count. The prescaler has a buffer, which can be changed during running.
+
+
+### 16.6.3 Input capture
+
+
+**Input capture channel**
+
+The general-purpose timer has two independent capture/compare channels, each of which is surrounded by a capture/compare register.
+
+In the input capture, the measured signal will enter from the external pin T1/2/3/4 of the timer, first pass through the edge detector and input filter, and then enter the capture channels. Each capture channel has a corresponding capture register. When the capture occurs, the value of the counter CNT will be latched in the capture register CCx. Before entering the capture register, the signal will pass through the prescaler to set how many events to capture at a time.
+
+
+
+
+Input capture application
+
+
+Input capture is used to capture external events, and can give the time flag to indicate the occurrence time of the event and measure the pulse jump edge events (measure the frequency or pulse width), for example, if the selected edge appears on the input pin, the TMRx_CCx register will capture the current value of the counter and the CCxIFLG bit of the status register TMRx_STS will be set to 1; if CCxIEN=1, an interrupt will be generated.
+
+In capture mode, the timing, frequency, cycle and duty cycle of a waveform can be measured. In the input capture mode, the edge selection is set to rising edge detection. When the rising edge appears on the capture channel, the first capture occurs, at this time, the value of the counter CNT will be latched in capture register CCx; at the same time, it will enter the capture interrupt, a capture will be recorded in the interrupt service program and the value will be recorded. When the next rising edge is detected, the second capture occurs, the value of counter CNT will be latched in capture register CCx again, at this time, it will enter the capture interrupt again; read the value of capture register and the cycle of this pulse signal will be obtained by capture.
+
+
+### 16.6.4 Output compare
+
+
+There are eight modes of output compare: freeze, channel x is valid level when matching, channel x is invalid level when matching, flip, force is invalid, force is valid, PWM mode 1 and PWM mode 2, which are configured by OCxMOD bit in TMRx_CCMx register and can control the waveform of output signal in output compare mode.
+
+
+Output compare application
+
+
+In the output compare mode, the position, polarity, frequency and time of the pulse generated by the timer can be controlled.
+
+When the value of the counter is equal to that of the capture/compare register, the channel output can be set as high level, low level or flip by configuring the OCxMOD bit in TMRx_CCMx register and the CCxPOL bit in the output polarity TMRx_CCEN register.
+
+When CCxIFLG=1 in TMRx_STS register, if CCxIEN=1 in TMRx_DIEN register, an interrupt will be generated; if CCDSEL=1 in TMRx_CTRL2 register, a DMA request will be generated.
+
+
+### 16.6.5 PWM input mode (only applicable to TMR9/12)
+
+
+PWM input mode is a particular case of input capture.
+
+In PWM input mode, as only T1IFP1 and T1IFP2 are connected to the slave mode controller, input can be performed only through the channels TMRx_CH1 and TMRx_CH2, which need to occupy the capture registers of CH1 and CH2.
+
+
+
+In the PWM input mode, the PWM signal enters from TMRx_CH1, and the signal will be divided into two channels, one can measure the cycle and the other can measure the duty cycle. In the configuration, it is only required to set the polarity of one channel, and the other will be automatically configured with the opposite polarity.
+
+In this mode, the slave mode controller should be configured as the reset mode (SMFSEL bit of TMRx_SMCTRL register).
+
+
+Figure 57 Timing Diagram of PWM Input Mode
+
+
+
+
+In PWM mode 2, if the value of the counter CNT is less than that of the compare register CCx, the output level will be invalid; otherwise, it will be valid.
+
+Set the timing diagram in PWM mode 2 when CCx=5, AUTORLD=7
+
+Figure 59 PWM2 Count-up Mode Timing Diagram
+
+
+| AUTORLD | CCx |
+| -------- | --- |
+
+          | O
+
+# 0xREF    | 0x
+|  |
+
+
+### 16.6.7 Single-pulse mode
+
+
+The single-pulse mode is a special case of timer compare output, and is also a special case of PWM output mode.
+
+Set SPMEN bit of TMRx_CTRL1 register, and select the single-pulse mode. After the counter is started, a certain number of pulses will be output before the update event occurs. When an update event occurs, the counter will stop counting, and the subsequent PWM waveform output will no longer be changed.
+
+After a certain controllable delay, a pulse with controllable pulse width is generated in single-pulse mode through the program. The delay time is defined by the value of TMRx_CCx register; in the count-up mode, the delay time is CCx and the pulse width is AUTORLD-CCx; in the count-down mode, the delay time is AUTORLD-CCx and the pulse width is CCx.
+
+
+
+
+Figure 60 Timing Diagram of Single-pulse Mode
+
+
+### 16.6.8 Forced output mode
+In the forced output mode, the comparison result is ignored, and the corresponding level is directly output according to the configuration instruction.  
+● CCxSEL=00 for TMRx_CCMx register, set CCx channel as output  
+● OCxMOD=100/101 for TMRx_CCMx register, set to force OCxREF signal to invalid/valid  
+
+In this mode, the corresponding interrupt and DMA request will still be generated.
+
+### 16.6.9 Debug mode
+The TMR9/10/11/12/13/14 can be configured in debug mode and choose to stop or continue to work. It depends on the TMRx_STS bit of DBGMCU_APB1F register or DBGMCU_APB2F register in DBGMCU module.
+
+## 16.7 TMR9/12 register address mapping
+In the following table, all registers of TMR9/12 are mapped to a 16-bit addressable (address) space.
+
+
+| Register name | Description | Offset Address |
+| ------------------ | -------------------------------------- | ----------------- |
+| TMRx_CTRL1 | Control register 1 | 0x00 |
+| Reserved | - | 0x04 |
+| TMRx_SMCTRL | Slave mode control register | 0x08 |
+| TMRx_DIEN | DMA/Interrupt enable register | 0x0C |
+| TMRx_STS | Status register | 0x10 |
+| TMRx_CEG | Control event generation register | 0x14 |
+
+
+Register name
+
+| Description | Offset Address |
+| ----------------------------------- | ---------------- |
+| TMRx_CCM1 | 0x18 |
+| TMRx_CCEN | 0x20 |
+| TMRx_CNT | 0x24 |
+| TMRx_PSC | 0x28 |
+| TMRx_AUTORLD | 0x2C |
+| TMRx_CC1 | 0x34 |
+| TMRx_CC2 | 0x38 |
+
+
+## 16.8 TMR9/12 register functional description
+
+
+
+### 16.8.1 Control register 1 (TMRx_CTRL1)
+
+- Offset address: 0x00
+- Reset value: 0x0000
+
+
+| Field | Name | R/W | Description |
+| ------- | ---------- | ----- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| 0 | CNTEN | R/W | Counter Enable<br>0: Disable<br>1: Enable<br>When the timer is configured as external clock, gated mode and encoder mode, it is required to write 1 to the bit by software to start regular work; when it is configured as the trigger mode, it can write 1 by hardware. |
+| 1 | UD | R/W | Update Disable<br>Update event can cause AUTORLD, PSC and CCx to generate the value of update setting.<br>0: Enable update event (UEV)<br>An update event can occur in any of the following situations:<br>The counter overruns;<br>Set UEG bit;<br>1: Disable update event |
+| 2 | URssel | R/W | Update Request Source Select<br>If interrupt is enabled, the update event can generate update interrupt.<br>Different update request sources can be selected by this bit.<br>0: The counter overruns<br>Set UEG bit<br>1: The counter overruns |
+| 3 | SPMEN | R/W | Single Pulse Mode Enable<br>When an update event is generated, the output level of the channel can be changed; in this mode, the CNTEN bit will be cleared, the counter will stop, and the subsequent output level of the channel will no long be changed.<br>0: Disable<br>1: Enable |
+| 6:4 | Reserved |  |  |
+| 7 | ARPEN | R/W | Auto-reload Preload Enable<br>When the buffer is disabled, modification of TMRx_AUTORLD by program will immediately lead to modification of the values loaded to the counter; when the buffer is enabled, modification of TMRx_AUTORLD by program will lead to modification of the values loaded to the counter at the next update event.<br>0: Disable.<br>1: Enable. |
+| 9:8 | CLKDIV | R/W | Clock Division<br>For the configuration of dead zone and digital filter, CK_INT provides the clock, and the dead time and the clock of the digital filter can be adjusted by this bit.<br>00: tors=t_clk_INT<br>01: tors=2*t_clk_INT<br>10: tors=4*t_clk_INT<br>11: Reserved |
+| 15:10 |  |  | Reserved |
+
+
+### 16.8.2 Slave mode control register (TMRx_SMCTRL)
+
+Offset address: 0x08  
+Reset value: 0x0000  
+
+
+| Field | Name | R/W | Description |
+| ------- | --------- | ----- | ------------------------------------------------------------------------------------------------------------------------ |
+| 2:0 | SMFSEL | R/W | Slave Mode Function Select<br>000: Disable the slave mode, the timer can be used as the master mode timer to affect the work of slave mode timer; if CTRL1_CNTEN=1, the prescaler is directly driven by the internal clock.<br>001: Reserved<br>010: Reserved<br>011: Reserved<br>100: Reset mode; the slave mode timer resets the counter after receiving the rising edge signal of TRGI and generates the signal to update the register.<br>101: Gated mode; when the slave mode timer receives the TRGI high level signal, the counter will start to work; when it receives TRGI low level signal, the counter will stop working; when it receives TRGI high level signal again, the timer will continue to work; the counter is not reset during the whole period.<br>110: Trigger mode, the slave mode timer starts the counter to work after receiving the rising edge signal of TRGI.<br>111: External clock mode 1; select the rising edge signal of TRGI as the clock source to drive the counter to work. |
+| 3 |  |  | Reserved |
+| 6:4 | TRGSEL | R/W | Trigger Input Signal Select<br>In order to avoid generating false edge detection when changing the value of this bit, it must be changed when SMFSEL=0.<br>000: Internal trigger ITR0<br>001: Internal trigger ITR1<br>010: Internal trigger ITR2<br>011: Internal trigger ITR3<br>100: Channel 1 input edge detector TIF_ED<br>101: Channel 1 post-filtering timer input T1IFP1<br>110: Channel 2 post-filtering timer input T2IFP2<br>111: Reserved |
+| 7 | MSMEN | R/W | Master/slave Mode Enable<br>0: Invalid<br>1: Enable the master/slave mode |
+| 15:8 |  |  | Reserved |
+
+
+### 16.8.3 DMA/interrupt enable register (TMRx_DIEN)
+
+Offset address: 0x0C<br>
+Reset value: 0x0000
+
+
+| Field | Name | R/W | Description |
+| ------- | --------- | ----- | --------------------------------------------------------------------------------------------------------- |
+| 0 | UIEN | R/W | Update Interrupt Enable<br>0: Disable<br>1: Enable |
+| 1 | CC1IEN | R/W | Capture/Compare Channel1 Interrupt Enable<br>0: Disable<br>1: Enable |
+| 2 | CC2IEN | R/W | Capture/Compare Channel2 Interrupt Enable<br>0: Disable<br>1: Enable |
+| 5:3 |  |  | Reserved |
+| 6 | TRGIEN | R/W | Trigger Interrupt Enable<br>0: Disable<br>1: Enable |
+| 15:7 |  |  | Reserved |
+
+
+### 16.8.4 Status register (TMRx_STS)
+
+Offset address: 0x10<br>
+Reset value: 0x0000
+
+
+
+
+| Field | Name | R/W | Description |
+| ------- | ---------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 0 | UIFLG | RC_W | Update Event Interrupt Generate Flag<br>0: No update event interrupt occurs<br>1: Update event interrupt occurred<br>When the counter value is reloaded or reinitialized, an update event will be generated. The bit is set to 1 by hardware and cleared to 0 by software; update events are generated in the following situations:<br>(1) UD=0 on TMRx_CTRL1 register, and when the value of the repeat counter overruns, an update event will be generated;<br>(2) URSEL=0 and UD=0 on TMRx_CTRL1 register, configure UG = 1 on TMRx_CEG register to generate update event, and the counter needs to be initialized by software;<br>(3) URSEL=0 and UD=0 on TMRx_CTRL1 register, generate update event when the counter is initialized by trigger event. |
+| 1 | CC1IFLG | RC_W | Capture/Compare Channel1 Interrupt Flag<br>When the capture/compare channel 1 is configured as output:<br>0: No matching occurs<br>1: The value of TMRx_CNT matches the value of TMRx_CC1<br>When the capture/compare channel 1 is configured as input:<br>0: No input capture occurs<br>1: Input capture occurs<br>When a capture event occurs, set 1 by hardware; clear 0 by software or clear 0 when reading TMRx_CC1 register. |
+| 2 | CC2IFLG | RC_W | Capture/Compare Channel2 new Interrupt Flag<br>Refer to STS_CC1IFLG |
+| 5:3 |  |  | Reserved |
+| 6 | TRGIFLG | RC_W | Trigger Event Interrupt Generate Flag<br>0: No trigger event interrupt occurs<br>1: Trigger event interrupt occurs<br>When a trigger event is generated, this bit is set to 1 by hardware and cleared to 0 by software. |
+| 8:7 |  |  | Reserved |
+| 9 | CC1RCFLG | RC_W | Capture/Compare Channel1 Repetition Capture Flag<br>0: Repeated capture does not occur<br>1: Repeated capture occurs<br>The value of the counter is captured to TMRx_CC1 register, and CC1IFLG=1; this bit is set to 1 by hardware and cleared to 0 by software only when the channel is configured as input capture. |
+| 10 | CC2RCFLG | RC_W | Capture/compare Channel2 Repetition Capture Flag<br>Refer to STS_CC1RCFLG |
+| 15:11 |  |  | Reserved |
+
+
+16.8.5 Control event generation register (TMRx_CEG)<br>Offset address: 0x14<br>Reset value: 0x0000
+
+
+
+
+| Field | Name | R/W | Description |
+| ------- | ------ | ----- | ------------- |
+| 0 | UEG | W | Update Event Generate <br> 0: Invalid <br> 1: Initialize the counter and generate an update event <br> This bit is set to 1 by software, and cleared to 0 by hardware. <br> Note: When an update event is generated, the counter of the prescaler will be cleared to 0, but the prescaler factor remains unchanged. In the countdown mode, the counter reads the value of TMRx_AUTOLD; in center-aligned mode or count-up mode, the counter will be cleared to 0. |
+| 1 | CC1EG | W | Capture/Compare Channel1 Event Generation <br> 0: Invalid <br> 1: Generate capture/compare event <br> This bit is set to 1 by software and cleared to 0 automatically by hardware. <br> If Channel 1 is in output mode: <br> When CC1FLG=1, if CC1IEN bit are set, the corresponding interrupt will be generated. <br> If Channel 1 is in input mode: <br> The value of the capture counter is stored in TMRx_CC1 register; configure CC1FLG=1, and if CC1IEN bit are also set, the corresponding interrupt will be generated; at this time, if CC1FLG=1, it is required to configure CC1RCFG=1. |
+| 2 | CC2EG | W | Capture/Compare Channel2 Event Generation <br> Refer to CC1EG description |
+| 5:3 |  |  | Reserved |
+| 6 | TEG | W | Trigger Event Generate <br> 0: Invalid <br> 1: Generate trigger event <br> This bit is set to 1 by software and cleared to 0 automatically by hardware. |
+| 15:7 |  |  | Reserved |
+
+
+### 16.8.6 Capture/Compare mode register 1 (TMRx_CCM1)
+
+Offset address: 0x18 <br>
+Reset value: 0x0000 <br>
+The timer can be configured as input (capture mode) or output (compare mode) by CCxSEL bit. The functions of other bits of the register are different in input and output modes, and the functions of the same bit are different in output mode and input mode. The OCX in the register describes the function of the channel in the output mode, and the ICx in the register describes the function of the channel in the input mode. <br>
+Output compare mode:
+
+
+
+
+| Field | Name | R/W | Description |
+| ------- | -------- | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1:0 | CC1SEL | R/W | Capture/Compare Channel 1 Select<br>This bit defines the input/output direction and selects the input pin.<br>00: CC1 channel is output<br>01: CC1 channel is input, and IC1 is mapped on TI1<br>10: CC1 channel is input, and IC1 is mapped on TI2<br>11: CC1 channel is input, and IC1 is mapped on TRC, and only works in internal trigger input<br>Note: This bit can be written only when the channel is closed (TMRx_CCEN register CC1EN=0). |
+| 2 | OC1FEN | R/W | Output Compare Channel1 Fast Enable<br>0: Disable<br>1: Enable<br>This bit is used to improve the response of the capture/compare output to the trigger input event. |
+| 3 | OC1PEN | R/W | Output Compare Channel1 Preload Enable<br>0: Disable preloading function; write the value of TMRx_CC1 register through the program and it will work immediately.<br>1: Enable preloading function; write the value of TMRx_CC1 register through the program and it will work after an update event is generated.<br>Note: When the protection level is 3 and the channel is configured as output, this bit cannot be modified. When the preload register is uncertain, PWM mode can be used only in single-pulse mode (SPMEN=1); otherwise, the following output compare result is uncertain. |
+| 6:4 | OC1MOD | R/W | Output Compare Channel1 Mode Configure<br>000: Freeze The output compare has no effect on OC1REF<br>001: The output value is high when matching. When the value of counter CNT matches the value CCx of capture/compare register, OC1REF will be forced to be high<br>010: The output value is low when matching. When the value of the counter matches the value of the capture/compare register, OC1REF will be forced to be low<br>011: Output flaps when matching. When the value of the counter matches the value of the capture/compare register, flap the level of OC1REF<br>100: The output is forced to be low. Force OC1REF to be low<br>101: The output is forced to be high. Force OC1REF to be high<br>110: PWM mode 1 (set to high when the counter value<output compare value; otherwise, set to low)<br>111: PWM mode 2 (set to high when the counter value>output compare value; otherwise, set to low)<br>Note: When the protection level is 3 and the channel is configured as output, this bit cannot be modified. In PWM modes 1 and 2, the OC1REF level changes when the comparison result changes or when the output compare mode changes from freeze mode to PWM mode. |
+| 7 |  |  | Reserved |
+| 9:8 | CC2SEL | R/W | Capture/Compare Channel2 Select<br>This bit defines the input/output direction and selects the input pin.<br>00: CC2 channel is output<br>01: CC2 channel is input, and IC2 is mapped on TI2<br>10: CC2 channel is input, and IC2 is mapped on TI1<br>11: CC2 channel is input, and IC2 is mapped on TRC, and only works in internal trigger input<br>Note: This bit can be written only when the channel is closed (TMRx_CCEN register CC2EN=0). |
+| 10 | OC2FEN | R/W | Output Compare Channel2 Preload Enable |
+| 11 | OC2PEN | R/W | Output Compare Channel2 Buffer Enable |
+| 14:12 | OC2MOD | R/W | Output Compare Channel2 Mode |
+| 15 | Reserved |  |  |
+
+
+Input capture mode:
+
+
+
+| Field | Name | R/W | Description |
+| -------- | --------- | ----- | ------------------------------------------------------------------------------------------------------ |
+| 1:0 | CC1SEL | R/W | Capture/Compare Channel 1 Select<br>00: CC1 channel is output<br>01: CC1 channel is input, and IC1 is mapped on TI1<br>10: CC1 channel is input, and IC1 is mapped on TI2<br>11: CC1 channel is input, and IC1 is mapped on TRC, and only works in internal trigger input<br>Note: This bit can be written only when the channel is closed (TMRx_CCEN bit CC1EN=0). |
+| 3:2 | IC1PSC | R/W | Input Capture Channel1 Prescaler Configure<br>00: PSC=1<br>01: PSC=2<br>10: PSC=4<br>11: PSC=8<br>PSC is prescaler factor; capture is triggered once by every PSC events. |
+| 7:4 | IC1F | R/W | Input Capture Channel1 Filter Configure<br>0000: Disable filter, sampled by fts<br>0001: DIV=1, N=2<br>0010: DIV=1, N=4<br>0011: DIV=1, N=8<br>0100: DIV=2, N=6<br>0101: DIV=2, N=8<br>0110: DIV=4, N=6<br>0111: DIV=4, N=8<br>1000: DIV=8, N=6<br>1001: DIV=8, N=8<br>1010: DIV=16, N=5<br>1011: DIV=16, N=6<br>1100: DIV=16, N=8<br>1101: DIV=32, N=5<br>1110: DIV=32, N=6<br>1111: DIV=32, N=8<br>Sampling frequency=timer clock frequency/DIV; the filter length=N, indicating that a jump is generated by every N events. |
+| 9:8 | CC2SEL | R/W | Capture/Compare Channel 2 Select<br>00: CC2 channel is output<br>01: CC2 channel is input, and IC2 is mapped on TI2<br>10: CC2 channel is input, and IC2 is mapped on TI1<br>11: CC2 channel is input, and IC2 is mapped on TRC, and only works in internal trigger input<br>Note: This bit can be written only when the channel is closed (TMRx_CCEN register CC2EN=0). |
+| 11:10 | IC2PSC | R/W | Input Capture Channel 2 Prescaler Configuration |
+| 15:12 | IC2F | R/W | Input Capture Channel 2 Filter Configuration |
+
+
+### 16.8.7 Capture/Compare enable register (TMRx_CCEN)
+
+Offset address: 0x20<br>Reset value: 0x0000
+
+
+| Field | Name | R/W | Description |
+| ------- | ------ | ----- | ------------------------------------------------------------------------------------------ |
+| 0 | CC1EN | R/W | Capture/Compare Channel1 Output Enable<br>When the capture/compare channel 1 is configured as output:<br>0: Disable output<br>1: Enable output<br>When the capture/compare channel 1 is configured as input:<br>This bit determines whether the value CNT of the counter can be captured and enter TMRx_CC1 register<br>0: Disable capture<br>1: Enable capture |
+| 1 | CC1POL | R/W | Capture/Compare Channel1 Output Polarity Configure <br> When CC1 channel is configured as output: <br> 0: OC1 is active high <br> 1: OC1 is active low <br> When CC1 channel is configured as input: <br> CC1POL and CC1NPOL control the polarity of the triggered or captured signals TI1FP1 and TI2FP1 at the same time <br> 00: Non-phase-inverting/rising edge: <br> TIxFP1 is not phase-inverting (triggered in gated and encoder mode), and is captured at the rising edge of TIxFP1 (reset trigger, capture, external clock and trigger mode). <br> 01: Phase inverting/falling edge: <br> TIxFP1 is phase-inverting (triggered in gated and encoder mode), and is captured at the rising edge of TIxFP1 (reset trigger, capture, external clock and trigger mode). <br> 10: Reserved <br> 11: Non-phase-inverting/Rising and falling edges: <br> TIxFP1 is not phase-inverting (triggered in gated mode, cannot be used in encoder mode), and is captured at the rising edge of TIxFP1 (reset trigger, capture, external clock and trigger mode). |
+| 2 | Reserved |  |  |
+| 3 | CC1NPOL | R/W | Capture/Compare Channel1 Output Polarity Configure <br> When CC1 channel is configured as output: <br> CC1NPOL remains in cleared state all the time <br> When CC1 channel is configured as input: <br> This bit and CC1POL control the polarity of the triggered or captured signals TI1FP1 and TI2FP1 at the same time. |
+| 4 | CC2EN | R/W | Capture/Compare Channel2 Output Enable <br> Refer to CCEN_CC1EN |
+| 5 | CC2POL | R/W | Capture/Compare Channel2 Output Polarity Configure <br> Refer to CCEN_CC1POL |
+| 6 | Reserved |  |  |
+| 7 | CC2NPOL | R/W | Capture/Compare Channel2 Output Polarity Configure <br> Refer to CCEN_CC1NPOL |
+| 15:8 | Reserved |  |  |
+
+
+Table 67 Output Control Bit of Standard Ocx Channel
+
+
+| CcxEN bit | Ocx output state |
+| ----------- | ---------------------------------------------------- |
+| 0 | Disable output (Ocx=0, Ocx_EN=0) |
+| 1 | Ocx=OcxREF+ polarity, Ocx_EN=1 |
+
+
+Note: The state of external I/O pin connected to the standard Ocx channel depends on the state of the Ocx channel and the GPIO and AFIO registers.
+
+
+### 16.8.8 Counter register (TMRx_CNT)
+
+Offset address: 0x24 <br>
+Reset value: 0x0000
+
+
+
+
+### 16.8.9 Prescaler register (TMRx_PSC)
+
+Offset address: 0x28  
+Reset value: 0x0000  
+
+
+| Field | Name | R/W | Description |
+| ------- | ------ | ----- | ------------- |
+| 15:0 | CNT | R/W | Counter Value |
+
+
+### 16.8.10 Auto reload register (TMRx_AUTORLD)
+
+Offset address: 0x2C  
+Reset value: 0xFFFF  
+
+
+| Field | Name | R/W | Description |
+| ------- | --------- | ----- | ------------- |
+| 15:0 | AUTORLD | R/W | Auto Reload Value<br>When the value of auto reload is empty, the counter will not count. |
+
+
+### 16.8.11 Channel 1 capture/compare register (TMRx_CC1)
+
+Offset address: 0x34  
+Reset value: 0x0000  
+
+
+| Field | Name | R/W | Description |
+| ------- | ------ | ----- | ------------- |
+| 15:0 | CC1 | R/W | Capture/Compare Channel 1 Value<br>When the capture/compare channel 1 is configured as input mode:<br>CC1 contains the counter value transmitted by the last input capture channel 1 event.<br>When the capture/compare channel 1 is configured as output mode:<br>CC1 contains the value currently loaded in the capture/compare register.<br>Compare the value CC1 of the capture and compare channel 1 with the value CNT of the counter to generate the output signal on OC1.<br>When the output compare preload is disabled (OC1PEN=0 for TMRx_CCM1 register), the written value will immediately affect the output comparison results;<br>If the output compare preload is enabled (OC1PEN=1 for TMRx_CCM1 register), the written value will affect the output comparison result when an update event is generated. |
+
+
+### 16.8.12 Channel 2 capture/compare register (TMRx_CC2)
+
+Offset address: 0x38  
+Reset value: 0x0000  
+
+
+| Field | Name | R/W | Description |
+| ------- | ------ | ----- | ------------- |
+| 15:0 | CC2 | R/W | Capture/Compare Channel2 Value<br>Refer to TMRx_CC1 |
+
+
+## 16.9 TMR10/11/13/14 register address mapping
+
+In the following table, all registers of TMR10/11/13/14 are mapped to a 16-bit
+
+
+
+addressable (address) space.
+
+
+Table 68 TMR10/11/13/14 Register Address Mapping
+
+
+
+| Register name | Description | Offset Address |
+| ------------------ | ------------------------------------ | ----------------- |
+| TMRx_CTRL1 | Control register 1 | 0x00 |
+| TMRx_DIEN | DMA/Interrupt enable register | 0x0C |
+| TMRx_STS | Status register | 0x10 |
+| TMRx_CEG | Control event generation register | 0x14 |
+| TMRx_CCM1 | Capture/Compare mode register 1 | 0x18 |
+| TMRx_CCEN | Capture/Compare enable register | 0x20 |
+| TMRx_CNT | Counter register | 0x24 |
+| TMRx_PSC | Prescaler register | 0x28 |
+| TMRx_AUTORLD | Auto reload register | 0x2C |
+| TMRx_CC1 | Channel 1 capture/compare register | 0x34 |
+| TMR11_OPT | Option register | 0x50 |
+
+
+## 16.10 TMR10/11/13/14 register functional description
+
+
+
+### 16.10.1 Control register 1 (TMRx_CTRL1)
+
+Offset address: 0x00  
+Reset value: 0x0000
+
+
+| Field | Name | R/W | Description |
+| ------- | --------- | ----- | ----------------------------------------------------------------------------------------------- |
+| 0 | CNTEN | R/W | Counter Enable                                                                               <br>0: Disable<br>1: Enable |
+| 1 | UD | R/W | Update Disable                                                                               <br>Update event can cause AUTORLD, PSC and CCx to generate the value of update setting.<br>0: Enable update event (UEV)<br>An update event can occur in any of the following situations:<br>The counter overruns;<br>Set UEG bit;<br>1: Disable update event |
+| 2 | URSSEL | R/W | Update Request Source Select                                                                  <br>If interrupt or DMA is enabled, the update event can generate update interrupt or DMA request.<br>Different update request sources can be selected by this bit.<br>0: The counter overruns<br>Set UEG bit<br>1: The counter overruns |
+| 3 | SPMEN | R/W | Single Pulse Mode Enable                                                                  <br>When an update event is generated, the output level of the channel can be changed; in this mode, the CNTEN bit will be cleared, the counter will stop, and the subsequent output level of the channel will no long be changed.<br>0: Disable<br>1: Enable |
+| 6:4 |  |  | Reserved |
+| 7 | ARPEN | R/W | Auto-reload Preload Enable                                                                <br>When the buffer is disabled, modification of TMRx_AUTORLD by program will immediately lead to modification of the values loaded to the counter; when the buffer is enabled, modification of TMRx_AUTORLD by program will lead to modification of the values loaded to the counter at the next update event.<br>0: Disable<br>1: Enable |
+| 9:8 | CLKDIV | R/W | Clock Division                                                                            <br>For the configuration of dead zone and digital filter, CK_INT provides the clock, and the dead time and the clock of the digital filter can be adjusted by this bit.<br>00: torsi=tCK_INT<br>01: torsi=2*tCK_INT<br>10: torsi=4*tCK_INT<br>11: Reserved |
+| 15:10 |  |  | Reserved |
+
+
+### 16.10.2 DMA/Interrupt enable register (TMRx_DIEN)
+
+Offset address: 0x0C<br>
+Reset value: 0x0000
+
+
+| Field | Name | R/W | Description |
+| ------- | -------- | ----- | ------------------------------------------------------------------------------------------- |
+| 0 | UIEN | R/W | Update Interrupt Enable                                                                    <br>0: Disable<br>1: Enable |
+| 1 | CC1IEN | R/W | Capture/Compare Channel1 Interrupt Enable                                                  <br>0: Disable<br>1: Enable |
+| 15:2 |  |  | Reserved |
+
+
+### 16.10.3 Status register (TMRx_STS)
+
+Offset address: 0x10<br>
+Reset value: 0x0000
+
+
+
+
+### 16.10.4 Control event generation register (TMRx_CEG)
+
+Offset address: 0x14  
+Reset value: 0x0000  
+
+
+| Field | Name | R/W | Description |
+| ------- | ------ | ----- | ------------- |
+| 0 | UEG | W | Update Event Generate<br>0: Invalid<br>1: Initialize the counter and generate an update event<br>This bit is set to 1 by software, and cleared to 0 by hardware.<br>Note: When an update event is generated, the counter of the prescaler will be cleared to 0, but the prescaler factor remains unchanged. In the countdown mode, the counter reads the value of TMRx_AUTOLD; in center-aligned mode or count-up mode, the counter will be cleared to 0. |
+| 0 | UIFLG | RC_W | Update Event Interrupt Generate Flag<br>0: No update event interrupt occurs<br>1: Update event interrupt occurred<br>When the counter value is reloaded or reinitialized, an update event will be generated. The bit is set to 1 by hardware and cleared to 0 by software; update events are generated in the following situations:<br>(1) UD=0 on TMRx_CTRL1 register, and when the value of the repeat counter overruns, an update event will be generated;<br>(2) URSEL=0 and UD=0 on TMRx_CTRL1 register, configure UG = 1 on TMRx_CEG register to generate update event, and the counter needs to be initialized by software. |
+| 1 | CC1IFLG | RC_W | Capture/Compare Channel1 Interrupt Flag<br>When the capture/compare channel 1 is configured as output:<br>0: No matching occurs<br>1: The value of TMRx_CNT matches the value of TMRx_CC1<br>When the capture/compare channel 1 is configured as input:<br>0: No input capture occurs<br>1: Input capture occurs<br>When a capture event occurs, set 1 by hardware; clear 0 by software or clear 0 when reading TMRx_CC1 register. |
+| 8:2 | Reserved |  |  |
+| 9 | CC1RCFLG | RC_W | Capture/Compare Channel1 Repetition Capture Flag<br>0: Repeated capture does not occur<br>1: Repeated capture occurs<br>The value of the counter is captured to TMRx_CC1 register, and CC1IFLG=1; this bit is set to 1 by hardware and cleared to 0 by software only when the channel is configured as input capture. |
+| 15:10 | Reserved |  |  |
+
+
+### 16.10.5 Capture/Compare mode register 1 (TMRx_CCM1)
+
+Offset address: 0x18  
+Reset value: 0x0000  
+
+The timer can be configured as input (capture mode) or output (compare mode) by CCxSEL bit. The functions of other bits of the register are different in input and output modes, and the functions of the same bit are different in output mode and input mode. The Ocx in the register describes the function of the channel in the output mode, and the Icx in the register describes the function of the channel in the input mode.  
+
+Output compare mode:  
+
+
+| Field | Name | R/W | Description |
+| ---------- | ---------- | ----- | -------------------------------------------------------- |
+| 1 | CC1EG | W | Capture/Compare Channel1 Event Generation<br>0: Invalid<br>1: Generate capture/compare event<br>This bit is set to 1 by software and cleared to 0 automatically by hardware.<br>If Channel 1 is in output mode:<br>When CC1IFLG=1, if CC1IEN bit are set, the corresponding interrupt will be generated.<br>If Channel 1 is in input mode:<br>The value of the capture counter is stored in TMRx_CC1 register; configure CC1IFLG=1, and if CC1IEN bit are also set, the corresponding interrupt will be generated; at this time, if CC1IFLG=1, it is required to configure CC1RCFLG=1. |
+| 15:2 | Reserved |  |  |
+| 1:0 | CC1SEL | R/W | Capture/Compare Channel 1 Select<br>This bit defines the input/output direction and selects the input pin.<br>00: CC1 channel is output<br>01: CC1 channel is input, and IC1 is mapped on T1<br>10: Reserved<br>11: Reserved<br>Note: This bit can be written only when the channel is closed (TMRx_CCEN register CC1EN=0). |
+| 2 | OC1FEN | R/W | Output Compare Channel1 Fast Enable<br>0: Disable<br>1: Enable<br>This bit is used to improve the response of the capture/compare output to the trigger input event. |
+| 3 | OC1PEN | R/W | Output Compare Channel1 Preload Enable<br>0: Disable preloading function; write the value of TMRx_CC1 register through the program and it will work immediately.<br>1: Enable preloading function; write the value of TMRx_CC1 register through the program and it will work after an update event is generated.<br>Note: When the protection level is 3 and the channel is configured as output, this bit cannot be modified. When the preload register is uncertain, PWM mode can be used only in single-pulse mode (SPMEN=1); otherwise, the following output compare result is uncertain. |
+
+
+6:4 OC1MOD
+
+**R/W**  
+**Description**  
+Output Compare Channel1 Mode Configure  
+000: Freeze The output compare has no effect on OC1REF  
+001: The output value is high when matching. When the value of counter CNT matches the value CCx of capture/compare register, OC1REF will be forced to be high  
+010: The output value is low when matching. When the value of the counter matches the value of the capture/compare register, OC1REF will be forced to be low  
+011: Output flaps when matching. When the value of the counter matches the value of the capture/compare register, flap the level of OC1REF  
+100: The output is forced to be low. Force OC1REF to be low  
+101: The output is forced to be high. Force OC1REF to be high  
+110: PWM mode 1 (set to high when the counter value<output compare value; otherwise, set to low)  
+111: PWM mode 2 (set to high when the counter value>output compare value; otherwise, set to low)  
+Note: When the protection level is 3 and the channel is configured as output, this bit cannot be modified. In PWM modes 1 and 2, the OC1REF level changes when the comparison result changes or when the output compare mode changes from freeze mode to PWM mode.  
+
+
+15:7 Reserved  
+
+
+
+Input capture mode:  
+
+
+
+1:0 CC1SEL
+
+**R/W**  
+**Description**  
+Capture/Compare Channel 1 Select  
+00: CC1 channel is output  
+01: CC1 channel is input, and IC1 is mapped on TI1  
+10: Reserved  
+11: Reserved  
+Note: This bit can be written only when the channel is closed (TMRx_CCEN bit CC1EN=0).  
+
+
+3:2 IC1PSC
+
+**R/W**  
+**Description**  
+Input Capture Channel1 Prescaler Configure  
+00: PSC=1  
+01: PSC=2  
+10: PSC=4  
+11: PSC=8  
+PSC is prescaler factor; capture is triggered once by every PSC events.
+
+
+
+
+| Field | Name | R/W | Description |
+| -------- | ------- | ----- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| 7:4 | IC1F | R/W | Input Capture Channel1 Filter Configure<br>0000: Disable filter, sampled by forts<br>0001: DIV=1, N=2<br>0010: DIV=1, N=4<br>0011: DIV=1, N=8<br>0100: DIV=2, N=6<br>0101: DIV=2, N=8<br>0110: DIV=4, N=6<br>0111: DIV=4, N=8<br>1000: DIV=8, N=6<br>1001: DIV=8, N=8<br>1010: DIV=16, N=5<br>1011: DIV=16, N=6<br>1100: DIV=16, N=8<br>1101: DIV=32, N=5<br>1110: DIV=32, N=6<br>1111: DIV=32, N=8<br>Sampling frequency=timer clock frequency/DIV; the filter length=N, indicating that a jump is generated by every N events. |
+| 15:8 |  |  | Reserved |
+
+
+### 16.10.6 Capture/Compare enable register (TMRx_CCEN)
+
+Offset address: 0x20<br>
+Reset value: 0x0000
+
+
+| Field | Name | R/W | Description |
+| -------- | -------- | ----- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| 0 | CC1EN | R/W | Capture/Compare Channel1 Output Enable<br>When the capture/compare channel 1 is configured as output:<br>0: Disable output<br>1: Enable output<br>When the capture/compare channel 1 is configured as input:<br>This bit determines whether the value CNT of the counter can be captured and enter TMRx_CC1 register<br>0: Disable capture<br>1: Enable capture |
+| 2 | Reserved |  |  |
+| 3 | CC1NPOL | R/W | Capture/Compare Channel1 Output Polarity Configure <br> When CC1 channel is configured as output: <br> CC1NPOL remains in cleared state all the time <br> When CC1 channel is configured as input: <br> This bit and CC1POL control the polarity of the triggered or captured signals T1IFP1 at the same time. |
+| 15:4 | Reserved |  | <br>Table 69 Output Control Bit of Standard Ocx Channel |
+| CcxEN bit | Ocx output state |  |  |
+| 0 | Disable output (Ocx=0, Ocx_EN=0) |  |  |
+| 1 | Ocx=OcxREF+ polarity, Ocx_EN=1 |  |  |
+
+
+Note: The state of external I/O pin connected to the standard Ocx channel depends on the state of the Ocx channel and the GPIO and AFIO registers.
+
+
+### 16.10.7 Counter register (TMRx_CNT)
+
+Offset address: 0x24 <br> Reset value: 0x0000
+
+
+| Field | Name | R/W | Description |
+| ------ | ---- | --- | ----------- |
+| 15:0 | CNT | R/W | Counter Value |
+
+
+### 16.10.8 Prescaler register (TMRx_PSC)
+
+Offset address: 0x28 <br> Reset value: 0x0000
+
+www.geehy.com
+Page 244
+
+
+
+
+
+
+### 16.10.9 Auto reload register (TMRx_AUTORLD)
+
+Offset address: 0x2C  
+Reset value: 0xFFFF  
+
+
+| Field | Name | R/W | Description |
+| ------- | ------ | ----- | ------------- |
+| 15:0 | PSC | R/W | Prescaler Value<br>Clock frequency of counter (CK_CNT)=fck_psc/(PSC+1) |
+
+
+### 16.10.10 Channel 1 capture/compare register (TMRx_CC1)
+
+Offset address: 0x34  
+Reset value: 0x0000  
+
+
+| Field | Name | R/W | Description |
+| ------- | ------ | ----- | ------------- |
+| 15:0 | CC1 | R/W | Capture/Compare Channel 1 Value<br>When the capture/compare channel 1 is configured as input mode:<br>CC1 contains the counter value transmitted by the last input capture channel 1 event.<br>When the capture/compare channel 1 is configured as output mode:<br>CC1 contains the value currently loaded in the capture/compare register<br>Compare the value CC1 of the capture and compare channel 1 with the value CNT of the counter to generate the output signal on OC1.<br>When the output compare preload is disabled (OC1PEN=0 for TMRx_CCM1 register), the written value will immediately affect the output comparison results;<br>If the output compare preload is enabled (OC1PEN=1 for TMRx_CCM1 register), the written value will affect the output comparison result when an update event is generated. |
+
+
+### 16.10.11 Option register (TMR11_OPT)
+
+Offset address: 0x50  
+Reset value: 0x0000  
+
+
+| Field | Name | R/W | Description |
+| ------- | ------ | ----- | ------------- |
+| 1:0 | RMPSEL | R/W | Timer11 Input 1 Remap Select<br>00: TMR11 channel 1 is connected to GPIO<br>01: TMR11 channel 1 is connected to GPIO<br>10: HSECLK_RTC clock is connected to TMR11_CH1 input<br>11: TMR11 channel 1 is connected to GPIO |
+| 15:2 |  |  | Reserved |
+
+
+# 17 Watchdog timer (WDT)
+
+
+
+## 17.1 Introduction
+
+
+The watchdog is used to monitor system faults caused by software errors. There are two watchdog devices on the chip: independent watchdog and window watchdog, which improve the security, and make the time more accurate and the use more flexible.
+
+The independent watchdog will reset only when the counter is reduced to 0, and the value of refresh counter will not be reset until it is not reduced to 0.
+
+The window watchdog will reset when the counter decreases to 0x3F. When the count value of the counter is before the window value of the configuration register, the counter will be reset after refresh.
+
+
+## 17.2 Independent watchdog timer (IWDT)
+
+
+
+### 17.2.1 Introduction
+
+
+The independent watchdog consists of an 8-bit prescaler IWDT_PSC, 12-bit count-down counter, 12-bit reload register IWDT_CNTRLD, key register IWDT_KEY and state register IWDT_STS.
+
+The independent watchdog has an independent clock source, and even if the master clock fails, it is still valid.
+
+The independent watchdog is applicable when an independent environment is required but the accuracy requirement is not high.
+
+
+### 17.2.2 Structure block diagram
+
+
+Figure 61 Independent Watchdog Structure Block Diagram
+
+
+| Reload register | Reload value | Down counter |
+| ------------------ | --------------- | -------------- |
+|  |  |  |
+| State register | Prescaler |  |
+| Key register | Prescaler register IWDT_PSC |  |
+
+
+Note: The watchdog function is in the Vdd power supply area and can work normally in stop or standby mode.
+
+
+### 17.2.3 Functional Description
+
+
+
+#### 17.2.3.1 Key register
+
+
+Write 0xCCCC in the key register to enable the independent watchdog, then the counter starts to count down, and when the counter counts to 0x000, a reset will be generated.
+
+Write 0xAAAA in the key register, and the value of the reload register will be reloaded to the counter to prevent the watchdog from resetting.
+
+Write 0x5555 to the key register to rewrite the value of the prescaler register and the reload register.
+
+
+#### 17.2.3.2 Register access protection
+
+
+The prescaler register and reload register have write protection function. To rewrite these two registers, it is necessary to write 0x5555 to the key register. If other value is written to the key register, the protection of the register will be enabled again.
+
+Write 0xAAAA to the key register and the write protection function will also be enabled.
+
+
+#### 17.2.3.3 Hardware watchdog
+
+
+After the "hardware watchdog" function is enabled, and the system is powered on and reset, the watchdog will run automatically. If 0xAAAA is not written to the key register, reset will be generated after the counter finishes counting.
+
+
+#### 17.2.3.4 Debug mode
+
+
+The independent watchdog can be configured in debug mode and choose to stop or continue to work. This depends on the IWDT_STS bit of DBGMCU_APB1F register.
+
+
+Table 70 Minimum/Maximum timeout value when LSICLK=32kHz
+
+
+
+| PSC | Minimum timeout value | Maximum timeout value |
+| ----- | ---------------------- | ----------------------- |
+| 0 | 0.125ms | 512ms |
+| 1 | 0.25ms | 1024ms |
+| 2 | 0.5ms | 2048ms |
+| 3 | 1ms | 4096ms |
+| 4 | 2ms | 8192ms |
+| 5 | 4ms | 16384ms |
+| 6 | 32768ms |  |
+
+
+## 17.3 Window watchdog timer (WWDT)
+
+
+
+### 17.3.1 Introduction
+
+
+The window watchdog contains a 7-bit free-running down counter, prescaler and control register WWDT_CTRL, configuration register WWDT_CFG and status register WWDT_STS.
+
+The window watchdog clock comes from PCLK1, and the counter clock is obtained from the CK counter clock through frequency division by prescaler (configured by the configuration register).
+
+The window watchdog is applicable when precise timing is needed.
+
+
+### 17.3.2 Structure block diagram
+
+
+
+Figure 62 Window Watchdog Structure Block Diagram
+
+
+
+
+generated.
+
+
+Figure 63 Window Watchdog Timing Diagram
+
+
+
+
+
+## 17.5 IWDT register functional description
+
+
+These peripheral registers can be operated by half word (16 bits) or word (32 bits).
+
+
+### 17.5.1 Key register (IWDT_KEY)
+
+Offset address: 0x00  
+Reset value: 0x0000 0000 (reset in standby mode)  
+
+
+| Field | Name | R/W | Description |
+| ---------- | ------ | ----- | -------------------------------------------------------------------------------------------------- |
+| 15:0 | KEY | W | Allow Access IWDT Register Key Value<br>Writing 0x5555 means enabled access to IWDT_PSC and IWDT_CNTRLD registers;<br>When the software writes 0xAAAA, it means to execute the reload counter, and a certain interval is required to prevent the watchdog from resetting.<br>Write 0xCCCC and the watchdog will be enabled (the hardware watchdog is unrestricted by this command);<br>This register is write-only and the read-out value is 0x0000. |
+| 31:16 | Reserved |  |  |
+
+
+### 17.5.2 Prescaler register (IWDT_PSC)
+
+Offset address: 0x04  
+Reset value: 0x0000 0000  
+
+
+| Field | Name | R/W | Description |
+| ---------- | ------ | ----- | -------------------------------------------------------------------------------------------------- |
+| 2:0 | PSC | R/W | Prescaler Factor Configure<br>Support write protection function; when writing 0x5555 to the IWDT_KEY register, it is allowed to access the register; in the process of writing to this register, only when PSCUFLG=0 for IWDT_STS register, can the prescaler factor be changed; in the process of reading this register, only when PSCUFLG=0, can the read-out value of PSC register be valid.<br>000: PSC=4<br>001: PSC=8<br>010: PSC=16<br>011: PSC=32<br>100: PSC=64<br>101: PSC=128<br>110: PSC=256<br>111: PSC=256 |
+| 31:3 | Reserved |  |  |
+
+
+### 17.5.3 Counter reload register (IWDT_CNTRLD)
+
+Offset address: 0x08  
+Reset value: 0x0000 0FFF (reset in standby mode)
+
+
+
+
+### 17.5.4 Status register (IWDT_STS)
+
+Offset address: 0x0C  
+Reset value: 0x0000 0000 (not reset in standby mode)
+
+
+| Field | Name | R/W | Description |
+| ------- | ---------- | ----- | -------------------------------------------------------------------------------------------------- |
+| 0 | PSCUFLG | R | Watchdog Prescaler Factor Update Flag<br>When the prescaler factor is updated, it will be set to 1 by hardware; after the prescaler factor is updated, it will be cleared to 0 by hardware; the prescaler factor is updated only when the PSCUFLG bit is cleared to 0. |
+| 1 | CNTUFLG | R | Watchdog Counter Reload Value Update Flag<br>When the counter reload value is updated, it will be set to 1 by hardware; after the counter reload value is updated, it will be cleared to 0 by hardware; the counter reload value is updated only when the CNTUFLG bit is cleared to 0. |
+| 31:2 | Reserved |  |  |
+
+
+## 17.6 WWDT register address mapping
+
+
+Table 73 WWDT Register Address Mapping
+
+
+| Register name | Description | Offset Address |
+| --------------- | ------------------- | ---------------- |
+| WWDT_CTRL | Control register | 0x00 |
+| WWDT_CFG | Configuration Register | 0x04 |
+| WWDT_STS | Status register | 0x08 |
+
+
+## 17.7 WWDT register functional description
+
+
+These peripheral registers can be operated by half word (16 bits) or word (32 bits).
+
+
+#### 17.7.1.1 Control register (WWDT_CTRL)
+
+Offset address: 0x00  
+Reset value: 0x0000 007F
+
+
+
+
+| Field | Name | R/W | Description |
+| ------- | ------ | ----- | ------------- |
+| 6:0 | CNT | R/W | Counter Value Setup<br>This counter is 7 bits, and CNT6 is the most significant bit<br>These bits are used to store the counter value of the watchdog.<br>When the count value decreases from 0x40 to 0x3F, WWDT reset will be generated. |
+| 7 | WWDTEN | R/S | Window Watchdog Enable<br>This bit is set to 1 by software and can be cleared by hardware only after reset. When WWDTEN=1, WWDT can generate a reset.<br>0: Disable<br>1: Enable |
+| 31:8 | Reserved |  |  |
+
+
+#### 17.7.1.2 Configuration register (WWDT_CFG)
+
+Offset address: 0x04  
+Reset value: 0x0000 007F  
+
+
+| Field | Name | R/W | Description |
+| ------- | ------ | ----- | ------------- |
+| 6:0 | WIN | R/W | Window Value Setup<br>This window value is 7 bits, which is used to compare with the down counter. |
+| 8:7 | TBPSC | R/W | Timer Base Prescaler Factor Configure<br>Divide the frequency on the basis of PCLK1/4096<br>00: No frequency division<br>01: 2 divided frequency<br>10: 4 divided frequency<br>11: 8 divided frequency |
+| 9 | EWIEN | R/S | Early Wakeup Interrupt Enable<br>0: No effect<br>1: When the counter value reaches 0x40, an interrupt will be generated; this interrupt is cleared by hardware after reset. |
+| 31:10 | Reserved |  |  |
+
+
+#### 17.7.1.3 Status register (WWDT_STS)
+
+Offset address: 0x08  
+Reset value: 0x0000 0000  
+
+
+| Field | Name | R/W | Description |
+| ------- | ------ | ----- | ------------- |
+| 0 | EWIFLG | RC_W0 | Early Wakeup Interrupt Occur Flag<br>0: Not occur<br>1: When the counter value reaches 0x40, it is set to 1 by hardware; if the interrupt is not enabled, the bit will also be set to 1; it can be cleared by writing 0 by software. |
+| 31:1 | Reserved |  |  |
+
+
+# 18 Real-time clock (RTC)
+
+
+
+## 18.1 Full Name and Abbreviation of Terms
+
+
+**Table 74 Full Name and Abbreviation Description of Terms**
+
+
+| Full name in English | English abbreviation |
+| ---------------------- | --------------------- |
+| Second | SEC |
+| Alarm | ALR |
+| Prescaler | PSC |
+
+
+## 18.2 Introduction
+
+
+It has sub-second, time and date registers with BCD coding, as well as corresponding alarm registers, and can realize timestamp function together with external pins. It supports clock calibration function and time compensation.
+
+
+## 18.3 Main characteristics
+
+
+(1) Timebase unit  
+(2) Clock calibration  
+(3) Subsecond, time and date  
+(4) Time error compensation  
+(5) Alarm (subsecond, time and date mask)  
+(6) Timestamp  
+(7) Tamper detection  
+(8) 2 kinds of RTC outputs  
+(9) Backup domain  
+(10) Multiple interrupt control  
+(11) Automatic wakeup of low power  
+
+
+## 18.4 Structure block diagram
+
+
+
+
+![Figure 64 RTC Structure Block Diagram](attachment)
+
+Note:
+(1) Multiplexing function output: RTC_OUT is output in one of the following two forms  
+● RTC_CALIB: This output is enabled through CALOEN bit of RTC_CTRL register, and when the frequency of LSECLK is 32.768kHz, the clock output is 512Hz or 1Hz.  
+● RTC_ALARM: This output, alarm A, is enabled by OUTSEL bit of RTC_CTRL register.  
+(2) Multiplexing function input:  
+● RTC_TS: Timestamp event  
+● RTC_TAMP1: Tamper event detection 1  
+(3) The multiplexing function of RTC_AF1 is connected to PC13  
+
+
+## 18.5 Functional Description
+
+
+
+### 18.5.1 Timebase unit
+
+
+
+Clock Source
+
+
+RTC has three clock sources:  
+● External LSECLK crystal oscillator  
+● External HSECLK crystal oscillator  
+● Internal LSICLK  
+
+Select different clock sources by configuring the register of the clock controller RCM.  
+
+
+Prescaler
+
+
+When backup power supply is used, the power consumption of RTC peripherals should be as low as possible. Considering power consumption, RTC internally adopts dual prescaler, 7-bit asynchronous prescaler APSC and 15-bit synchronous prescaler SPSC.  
+
+RTCCLK first passes through the asynchronous prescaler, and the clock after
+
+
+
+frequency division reaches the synchronous prescaler. Two prescalers can be reasonably configured to generate a 1Hz clock for date use.
+
+When the prescaler is used, it is suggested that the asynchronous prescaler should be adjusted as high as possible to reduce power consumption.
+
+The synchronous prescaled value can also be used as the reload value of the subsecond counter.
+
+
+### 18.5.2 Clock calibration
+
+
+
+Clock synchronization
+
+
+RTC can realize clock synchronization according to external high-precision clock and the register RTC_SHIFT. The deviation between RTC clock and external clock is detected mainly by acquiring the timestamps of subsecond time period twice. Since the synchronous prescaled value is used as the reload value of the subsecond counter, and the SFSEC bit of register RTC_SHIFT only works in the subsecond counter, the SFSEC bit can be adjusted to finely tune the RTC clock and increase or decrease several cycles artificially.
+
+
+Reference clock
+
+
+RTC supports internal reference clock detection, which can be used to compensate the deviation of external LSECLK crystal oscillator. Set RCLKDEN bit to enable the reference clock detection, compare the external 50Hz or 60Hz reference clock with the internal 1Hz clock of RTC through RTC_REFIN pin, and through this mechanism, the 1Hz clock after LSECLK frequency division is automatically compensated.
+
+After the reference clock detection is enabled, the synchronous and asynchronous prescalers of the clock unit must be configured as the default value.
+
+The reference clock detection cannot be used simultaneously with the clock synchronization, and it should be disabled in standby mode.
+
+
+RTC coarse digital calibration
+
+
+RTC_DCAL register can be configured as positive or negative calibration to update the date in advance or with delay, so the effective frequency can be adjusted.
+
+
+RTC precision digital calibration
+
+
+RTC uses 220 RTCCLK as a calibration cycle by default. In addition, 219 and 218 RTCCLK can be set as a calibration cycle through the registers CALW16 and CALW8. When LSECLK is used as RTCCLK clock source, the calibration cycle of RTC is 32s, 16s, and 8s.
+
+
+
+- 16s calibration cycle; the hardware sets RECALF[0] to "0"
+- 8s calibration cycle; the hardware sets RECALF[1:0] to "00"
+
+Taking 32s calibration cycle as an example, the calibration mechanism is to add or reduce some RTCCLK signals in the calibration cycle.
+- When RECALF is used, RECALF RTCCLK are reduced every 22° RTCCLK
+- When ICALFEN is used and ICALFEN=1, one RTCCLK is added every 211 RTCCLK
+- When RECALF and ICALFEN are used, (512*ICALFEN - RECALF) RTCCLK are added every 22° RTCCLK
+
+
+### 18.5.3 RTC write protection
+
+
+In order to prevent counting exception caused by accidental write, RTC register adopts write protection mechanism. Only when the write protection is removed, can the register with write protection function be operated.
+
+After power-on, RTC register will enter the write protection state and the protection cannot be removed by system reset. The write protection can be removed by writing special keywords '0xCA' and '0x53' to the register RTC_WRPROT. If wrong keyword is written, RTC will immediately enable write protection.
+
+
+### 18.5.4 Date register
+
+
+RTC has subsecond, time and date shadow registers encoded by BCD, which are RTC_SUBSEC, RTC_TIME and RTC_DATE respectively. The current date can be obtained by accessing the shadow register or obtained directly from the date register. The time system of 24 hours and 12 hours can be selected by TIMEFCFG bit of configuration register RTC_CTRL.
+
+RTC updates the shadow register every two RTCCLK cycles, and sets the flag bit RSFLG. When it wakes up from stop or standby mode, generally the shadow register will not be updated, which requires waiting for up to 1-2 RTCCLK cycles. The reset of shadow register is caused by system reset.
+
+The shadow register is synchronized with fAPB1.
+
+The way to read the date can be selected by RCMCFG bit of configuration register RTC_CTRL.
+
+RCMCFG=0, read the date from the shadow register
+
+In this mode, it is recommended that fAPB1 should be greater than 7*fRTCCLK. If fAPB1 is too small, to ensure the normal reading of date value, it is required to read the shadow register twice. If the date obtained twice is the same, the date is read successfully.
+
+After the shadow register is updated, the flag bit RSFLG will be set. The
+
+
+
+software can read the date only after the bit RSFLG is set. Every time the date is read, the RSFLG flag should be cleared manually.
+
+When waking up from stop or standby mode, since the shadow register is not updated, the RSFLG flag should be cleared immediately.
+
+
+RCMCFG=1, read the date from the date register
+
+
+When fAPB1 is less than 7*fRTCCLK or the system wakes up from low-power mode, it is recommended to read the date directly from the date register.
+
+If RSFLG flag bit is not set to 1 when reading the date just at the stage of change of date register, it is required to read the date twice. Therefore, it is also advised to read the date register twice. When the read date value is the same twice, it means that the date is read successfully.
+
+
+### 18.5.5 Time compensation
+
+
+Due to seasonal changes, time compensation is sometimes needed to make it more suitable for daily needs. RTC integrates time compensation unit and its summer time flag. Users can choose whether to enable time compensation according to their own needs.
+
+By setting STCCFG bit of the register RTC_CTRL, the summer time will increase by 1 hour; by setting WTCFG bit of the register RTC_CTRL, the winter time will decrease by 1 hour. BAKP flag is used to record whether the summer time is set.
+
+
+### 18.5.6 Programmable alarm
+
+
+As a real-time clock, RTC integrates alarm function, and it runs mainly through alarm configuration register and alarm mask in combination with date register.
+
+Configure the alarm and alarm mask through the registers RTC_ALMRA/RTC_ALRMASS and RTC_ALRMB/RTC_ALRMBSS, and the alarm mask informs RTC to pay attention to the time period of the alarm. After the alarm function is enabled, the alarm will be triggered only when the concerned time period reaches the set value. At this time, the alarm flag is set. If the alarm interrupt is enabled, the interrupt processing will be triggered.
+
+Select "seconds" as the time period of the alarm, and only when the synchronous prescaler value is greater than 3, can the alarm operate normally.
+
+
+### 18.5.7 Timestamp
+
+
+RTC supports timestamp function and the RTC_TS pin works in combination with the timestamp register.
+
+The timestamp polarity is detected through TSETECFG bit of the register RTC_CTRL. When RTC_TS pin recognizes the external timestamp edge signal, RTC will automatically latch the current date in the subsecond, time and date
+
+
+
+timestamp registers, and the timestamp flag bit TSFLG will be set to 1. If the timestamp interrupt is enabled, the timestamp interrupt processing will be triggered.
+
+When TSFLG flag bit is set to 1, and another timestamp event occurs, the timestamp will overrun, and the flag bit TSOVRFLG will be set to 1. If another timestamp event is detected once TSFLG flag is cleared, both TSFLG and TSOVRFLG flags will be set to 1.
+
+
+TAMper multiplexing function
+
+
+RTC_TAMP1 multiplexing function can be mapped to RTC_AF1, and it is determined by TP1MSEL bit of RTC_TACFG register. After TP1MSEL is modified, clear TP1EN bit to zero to avoid accidental setting of TP1FLG.
+
+
+### 18.5.8 Backup domain
+
+
+After the main power supply \( V_{DD} \) is powered off, the backup domain register will be powered by \( V_{BAT} \) automatically. System reset, NRST pin reset, and reset after the low-power mode is awakened will not affect the backup domain register. When \( V_{BAT} \) is powered off or tamper event occurs, the backup domain register will be reset.
+
+The backup domain register can be used to cache user data, and be used as a state flag to realize some function application by using its characteristics that the data will remain unchanged after system reset.
+
+
+### 18.5.9 Tamper detection
+
+
+Tamper detection is a kind of data self-destruction protection device to prevent data leakage caused by tamper. Through the hardware circuit design, the tamper detection signal is transmitted to the tamper detection pin.
+
+Tamper detection has multiple tamper detection pins, and each pin is enabled by a register bit separately. In order to detect real tamper events better, signal filtering can be configured, and tamper detection polarity can be configured for each pin.
+
+
+Tamper detection polarity
+
+
+The low level/rising edge and high level/falling edge can be selected as tamper detection polarity through TPxAL bit of the register RTC_TACFG.
+
+
+Tamper signal filter
+
+
+TPSFSEL bit of the register RTC_TACFG is used to configure the sampling frequency of tamper detection, and TPFGCSEL bit of RTC_TACFG is used to configure after how many valid tamper signals are detected continuously, a tamper event can be generated.
+
+
+
+In particular, if a tamper signal has been generated on the tamper detection pin before the tamper detection pin is enabled, a tamper event will be immediately generated by enabling the tamper detection pin.
+
+
+Tamper timestamp
+
+
+At some times, in order to record the tamper detection events, RTC can latch the current tamper timestamp and this function can be enabled quickly through TPTSEN bit of the register RTC_TACFG, not needing to enable the timestamp function additionally.
+
+
+### 18.5.10 Automatic wake-up
+
+
+Compared with RTC alarm, the automatic wake-up has a simple hardware structure, and has no complicated configuration process of RTC alarm, so it is a good scheme to use it to wake up the low power.
+
+There is a 16-bit self-decrement reload counter in RTC, which is used to wake up the device automatically.
+
+The clock of this counter is selected by WUCLKSEL bit of the register RTC_CTRL, and by selecting different clocks, the automatic wake-up cycle can be configured from 122μs to 36h. First disable the automatic wake-up, namely, clear WUTEN; when WUTWFLG flag bit is set to 1, configure WUCLKSEL bit of the RTC_CTRL register and the reload register RTC_AUTORLD.
+
+When the counter decreases to 0 automatically, a wake-up event will be generated, WUTFLG flag bit will be set to 1, and before entering the next round of automatic wake-up, this flag bit must be cleared.
+
+
+### 18.5.11 RTC output
+
+
+RTC output transmits the internal RTC calibration clock, alarm signal, and automatic wake-up signal to the outside.
+
+
+RTC calibration clock
+
+
+Calibration clock output is generally used to observe the accuracy of RTC clock source, and the observed value is used to calibrate the clock source. 512Hz and 1Hz signal output sources can be selected through CALOSEL bit of RTC_CTRL register, and CALOEN bit of RTC_CTRL register can enable the calibration output.
+
+
+Calibration multiplexing function output
+
+
+When CALOEN bit of RTC_CTRL register is set, RTC_AF1 will enable the calibration multiplexing function.
+
+
+Alarm and automatic wake-up signal
+
+
+
+
+When the alarm or automatic wake-up is running, these two events can be output as pulse signals. OUTSEL bit of RTC_CTRL register is used to select the signal output source, and POLCFG bit is used to configure the output polarity.
+
+
+## 18.6 Register address mapping
+
+
+
+Table 75 RTC Register Address Mapping
+
+
+
+| Register name | Description | Offset Address |
+| --------------- | ----------------------------------------------- | ---------------- |
+| RTC_TIME | RTC time register | 0x00 |
+| RTC_DATE | RTC date register | 0x04 |
+| RTC_CTRL | RTC control register | 0x08 |
+| RTC_STS | RTC status register | 0x0C |
+| RTC_PSC | RTC prescaler register | 0x10 |
+| RTC_AUTORLD | RTC auto reload register | 0x14 |
+| RTC_DCAL | RTC coarse calibration register | 0x18 |
+| RTC_ALRMA | RTC alarm A register | 0x1C |
+| RTC_ALRMB | RTC alarm B register | 0x20 |
+| RTC_WRPPOT | RTC write protection register | 0x24 |
+| RTC_SUBSEC | RTC subsecond register | 0x28 |
+| RTC_SHIFT | RTC shift register | 0x2C |
+| RTC_TSTIME | RTC timestamp time register | 0x30 |
+| RTC_TSDATE | RTC timestamp date register | 0x34 |
+| RTC_TSSUBSEC | RTC timestamp subsecond register | 0x38 |
+| RTC_CAL | RTC calibration register | 0x3C |
+| RTC_TACFG | RTC tamper and multiplexing configuration reg | 0x40 |
+| RTC_ALRMASS | RTC alarm A subsecond register | 0x44 |
+| RTC_ALRMBSS | RTC alarm B subsecond register | 0x48 |
+| RTC_BAKPx | RTC backup register | 0x50-0x9C |
+
+
+## 18.7 Register functional description
+
+
+
+### 18.7.1 RTC time register (RTC_TIME)
+
+RTC_TIME is time shadow register, and this register can be written only in initialization mode to be put in write protection state.  
+Offset address: 0x00<br>
+Reset value of backup domain: 0x0000 0000<br>
+System reset: RCMCFG =0: 0x0000 0000; RCMCFG =1: 0xXXXX XXXX
+
+
+
+
+| Field | Name | R/W | Description |
+| ---------- | ------- | ----- | ------------------------------------------------- |
+| 3:0 | SECU | R/W | Second Ones Unit in BCD Format Setup |
+| 6:4 | SECT | R/W | Second Ten's Place Unit in BCD Format Setup |
+| 7 |  |  | Reserved |
+| 11:8 | MINU | R/W | Minute Ones Unit in BCD Format Setup |
+| 14:12 | MINT | R/W | Minute Ten's Place Unit in BCD Format Setup |
+| 15 |  |  | Reserved |
+| 19:16 | HRU | R/W | Hour Ones Unit in BCD Format Setup |
+| 21:20 | HRT | R/W | Hour Ten's Place Unit in BCD Format Setup |
+| 22 | TIMEFCFG | R/W | Time Format Configure                          <br>0: AM or 24-hour system<br>1: PM |
+| 31:23 |  |  | Reserved |
+
+
+### 18.7.2 RTC date register (RTC_DATE)
+
+RTC_DATE is date shadow register, and this register can be written only in initialization mode to be put in write protection state.  
+Offset address: 0x04  
+Reset value of backup domain: 0x0000 2101  
+System reset: RCMCFG =0: 0x0000 0000; RCMCFG =1: 0xXXXXX XXXX  
+
+
+| Field | Name | R/W | Description |
+| ---------- | ------- | ----- | ------------------------------------------------- |
+| 3:0 | DAYU | R/W | Day Ones Unit in BCD Format Setup |
+| 5:4 | DAYT | R/W | Day Ten's Place Unit in BCD Format Setup |
+| 7:6 |  |  | Reserved |
+| 11:8 | MONU | R/W | Month Ones Unit in BCD Format Setup |
+| 12 | MONT | R/W | Month Ten's Place Unit in BCD Format Setup |
+| 15:13 | WEEKSEL | R/W | Week Day Units Select                          <br>000: Disable<br>001: Monday<br>...<br>111: Sunday |
+| 19:16 | YRU | R/W | Year Ones Unit in BCD Format Setup |
+| 23:20 | YRT | R/W | Year Ten's Place Unit in BCD Format Setup |
+| 31:24 |  |  | Reserved |
+
+
+### 18.7.3 RTC control register (RTC_CTRL)
+
+(1) The bits 7, 6 and 4 of this register can be written only in initialization mode.
+
+
+
+(2) It is not recommended to rewrite this register when the number of hours in the date increases, which is because the correct increment of hours may be masked.
+
+(3) The written values of STCCFG and WTCCFG will take effect from next second. 
+
+(4) This register is under write protection.  
+Offset address: 0x08  
+Reset value of backup domain: 0x0000 0000  
+System reset: 0xXXXX XXXX  
+
+
+| Field | Name | R/W | Description |
+| ------- | ----------- | ----- | --------------------------------------------------------------------------------------------------------- |
+| 2:0 | WUCLKSEL | R/W | Wakeup Clock Select<br>000: RTC/16<br>001: RTC/8<br>010: RTC/4<br>011: RTC/2<br>10x: clk_spre (usually 1Hz)<br>11x: clk_spre (usually 1Hz) and add 2<sup>16</sup> to WUAUTORE counter value |
+| 3 | TSETECFG | R/W | Time Stamp Event Trigger Edge Configure<br>This bit indicates that RTC_TS generates a timestamp event on rising edge or falling edge.<br>0: Rising edge<br>1: Falling edge<br>This bit can be changed only when TSEN=0. |
+| 4 | RCLKDEN | R/W | RTC_REF_IN reference clock detection enable<br>0: Disable<br>1: Enable<br>SPSC must be 0x00FF. |
+| 5 | RCMCFG | R/W | Read Calendar Value Mode Configure<br>0: The date value is read from the shadow register, and the shadow register is updated every RTCCLK cycles<br>1: Read the date value from the date register<br>If the clock frequency of APB1 is lower than seven times of RTCCLK frequency, RCMCFG must be set to 1. |
+| 6 | TIMEFCFG | R/W | Time Format Configure<br>0: 24-hour/day format<br>1: AM/PM time format |
+| 7 | DCALEN | R/W | Coarse Digital Calibration Enable<br>0: Disable<br>1: Enable<br>Require APSC<6 |
+| 8 | ALRAEN | R/W | Alarm A Function Enable<br>0: Disable<br>1: Enable |
+| 9 | ALRBEN | R/W | Alarm B Function Enable<br>0: Disable<br>1: Enable |
+| 10 | WUTIEN | R/W | Wakeup Timer Enable<br>0: Disable<br>1: Enable |
+| 11 | TSEN | R/W | Time Stamp Enable<br>0: Disable<br>1: Enable |
+| 12 | ALRAIEN | R/W | Alarm A Interrupt Enable<br>0: Disable<br>1: Enable |
+| 13 | ALRBIEN | R/W | Alarm B Interrupt Enable<br>0: Disable<br>1: Enable |
+| 14 | WUTIEN | R/W | Wakeup Timer Interrupt Enable<br>0: Disable<br>1: Enable |
+| 15 | TSEN | R/W | Time Stamp Interrupt Enable<br>0: Disable<br>1: Enable |
+| 16 | STCCFG | R/W | Summer Time Change Configure<br>The bit will always be 0 in the reading process; if this bit is set not in the initialization mode, the date time will increase by 1.<br>0: Invalid<br>1: The current time increases by 1 hour to calibrate the summer time change |
+| 17 | WTCCFG | R/W | Winter Time Change Configure<br>The bit will always be 0 in the reading process; if this bit is set not in the initialization mode, and HRx of RCT_TIME register is 0, this bit is invalid, and if HRx is not 0, the date time will decrease by 1.<br>0: Invalid<br>1: The current time increases by 1 hour to calibrate the winter time change |
+| 18 | BAKP | R/W | Backup Value Setup<br>This bit indicates whether the summer time has changed and is written by the user. |
+| 19 | CALOSEL | R/W | Calibration Output Value Select<br>When CALOEN=1, this bit is used to select the output signal of RTC_CALIB.<br>0: 512Hz<br>1: 1Hz<br>The above frequency is valid when RTCCLK is 32.768kHz and the prescaler is at the default value (APSC=127, SPSC=255). |
+| 20 | POLCFG | R/W | Output Polarity Configure<br>This bit indicates the level state of the pin when ALRAFLG/ALRBFLG/WUTFLG bit is set to 1 (depending on OUTSEL bit).<br>0: High level<br>1: Low level |
+| 22:21 | OUTSEL | R/W | Output Way Select<br>This bit is used to select the flag bit associated with RTC_ALARM output<br>00: Disable<br>01: Alarm A output<br>10: Alarm B output<br>11: Wake-up output |
+| 23 | CALOEN | R/W | Calibration Output Enable<br>This bit is used to enable RTC_CAL output<br>0: Disable<br>1: Enable |
+| 31:24 |  |  | Reserved |
+
+
+### 18.7.4 RTC status register (RTC_STS)
+
+This register (except RTC_STS[13:8] bit) is in write protection state.<br>
+Offset address: 0x0C<br>
+Reset value of backup domain: 0x0000 0007<br>
+System reset: 0xXXXXX XXXX
+
+
+| Field | Name | R/W | Description |
+| ------- | ---------- | ----- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 0 | ALRAWFLG | R | Alarm A Write Occur Flag<br>When ALRAEN=0 for RTC_CTRL, the value of alarm A will change and this bit will be set to 1 by hardware; this bit will be cleared by hardware in initialization mode.<br>0: The alarm A cannot be updated<br>1: The alarm A can be updated |
+| 1 | ALRBWFLG | R | Alarm B Write Occur Flag<br>When ALRBEN=0 for RTC_CTRL, the value of alarm B will change and this bit will be set to 1 by hardware; this bit will be cleared by hardware in initialization mode.<br>0: The alarm B cannot be updated<br>1: The alarm B can be updated |
+| 2 | WUTFLG | R | Wakeup Timer Write Occur Flag<br>When WUTEN=0 and the value of wake-up timer can be changed, this bit can be set by hardware.<br>0: It is not allowed to update the wake-up timer configuration<br>1: It is allowed to update the wake-up timer configuration |
+| 3 | SOPFLG | R | Shift Operation Pending Occur Flag<br>0: Not occur<br>1: Occurred<br>When a shift operation is generated by writing to RTC_SHIFT register, this bit will be set to 1 by hardware immediately. After corresponding shift operation is performed, this bit will be cleared to 0 by software. It is invalid to write to SOPFLG. |
+| 4 | INITSFLG | R | Initialization State Occur Flag<br>When the "year" field in the date is not "0", this bit will be set by hardware.<br>0: Not occur<br>1: Occurred |
+| 5 | RSFLG | RC_W0 | Registers Synchronization Occur Flag<br>When the content in the date register is copied to the shadow registers (RTC_SUBSEC, RTC_TIME and RTC_DATE), this bit is set to 1 by hardware; when shifting operation is pending (SOPFLG=1) or is in the mode that the shadow register is ignored (RCMCFG=1), this bit is cleared to 0 by hardware in initialized mode; this bit can also be cleared by software.<br>This bit is cleared by hardware/software in initialization mode.<br>0: Not synchronize<br>1: Synchronize |
+| 6 | RINITFLG | R | Register Initialization Occur Flag<br>This bit is set to "1", RTC is in initialization state, and the time, date and prescaler registers can be updated.<br>0: Cannot initialize<br>1: Initialize |
+| 7 | INITEN | R/W | Initialization Mode Enable<br>0: Free running mode<br>1: Initialization mode; it can be used to program RTC_TIME, RTC_DATE and RTC_PSC. The counter stops counting, and after INITEN is reset, the counter will start counting from a new value. |
+| 8 | ALARFLG | RC_W0 | Alarm A Match Occur Flag<br>When RTC_TIME and RTC_DATE match the alarm A register RTC_ALRMA, this flag is set by hardware.<br>This flag can be cleared by writing 0 by software. |
+| 9 | ALRBFLOG | RC_W0 | Alarm B Match Occur Flag<br>When RTC_TIME and RTC_DATE match the alarm B register RTC_ALRMB, this flag is set by hardware.<br>This flag can be cleared by writing 0 by software. |
+| 10 | WUTFLG | RC_W0 | Wakeup Timer Occur Flag<br>When the auto refresh counter counts to 0, this bit will be set to 1 by hardware; it can be cleared by writing 0 by software.<br>Clear this flag 1.5 RTCCLK cycles before WUTFLG is set to 1 again. |
+| 11 | TSFLG | RC_W0 | Time Stamp Occur Flag<br>When a timestamp event occurs, this flag is set to 1 by hardware; it can be cleared by writing 0 by software. |
+
+
+# 12
+
+TSOVRFLG  
+
+R/W  
+Time Stamp Overflow Occur Flag  
+When TSFLG=1 and a timestamp event is generated, this flag bit is set to 1 by hardware; it can be cleared by writing 0 by software.  
+It is recommended to clear this bit after TSFLG flag bit is cleared.  
+
+# 13
+
+TP1FLG  
+
+R/W  
+RTC_TP1FLG Detection Occur Flag  
+When a tamper event is detected in RTC_TP1FLG input, this flag is set to 1 by hardware; it can be cleared by writing 0 by software.  
+
+15:14  
+
+Reserved  
+
+
+# 16
+
+RCALPFLG  
+
+R  
+Recalibration Pending Occur Flag  
+When the software writes to RTC_CAL, this bit is set to 1 automatically, and the RTC_CAL register is locked.  
+This bit will return 0 when other new calibration setting is performed.  
+
+31:17  
+
+Reserved  
+
+
+### 18.7.5
+
+RTC prescaler register (RTC_PSC)  
+
+The register can only be written in the initialization mode, and the initialization must be completed by two independent write accesses, and the register is in write protection state.  
+Offset address: 0x10  
+Reset value of backup domain: 0x007F 00FF  
+System reset: 0xXXXX XXXX  
+
+14:0  
+
+SPSC  
+
+R/W  
+Synchronous Prescaler Coefficient  
+ck_spre frequency=ck_apre frequency/(SPSC+1)  
+
+# 15
+
+Reserved  
+
+
+22:16  
+
+APSC  
+
+R/W  
+Asynchronous Prescaler Coefficient  
+ck_apre frequency=RTCCLK frequency/(APSC+1)  
+
+31:23  
+
+Reserved  
+
+
+### 18.7.6
+
+RTC auto reload register (RTC_AUTORLD)  
+
+This register can be written only when WUTEFLG of RTC_STS is set to 1, and it is in write protection state.  
+Offset address: 0x14  
+Reset value of backup domain: 0x0000 FFFF  
+System reset: 0xXXXX XXXX
+
+
+
+
+### 18.7.7 RTC coarse calibration register (RTC_DCAL)
+
+Offset address: 0x18  
+Reset value of backup domain: 0x0000 0000  
+System reset: 0xXXXXX XXXX  
+
+
+| Field | Name | R/W | Description |
+| ------- | ------- | ----- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 15:0 | WUAUTORE | R/W | Wakeup Auto-reload Value Setup <br> When the wake-up timer is activated (WUTEN=1), this flag bit will be set to 1 in each CLK_WUAUTORE cycle, and the CLK_WUAUTORE cycle can be set by WUCLKSEL bit of RTC_CTRL register. <br> When WUCLKSEL[2]=1, the wake-up timer will be set to 17 bits, WUCLKSEL[1] is WUAUTORE[16], and is the most critical bit related to the timer. <br> After WUTEN is set, CLK_WUAUTORE cycle will appear to the first assertion of WUTFLG. <br> Disable using WUCLKSEL[2:0]=011(RTCCLK/2) from WUAUTORE[15:0] to 0x0000. |
+| 31:16 | Reserved |  |  |
+| 4:0 | DCAL | R/W | Digital Calibration <br> DCALCFG=0 (positive calibration) <br> 00000: + 0 ppm <br> 00001: + 4 ppm (rounded-off value) <br> 00010: + 8 ppm (rounded-off value) <br> .. <br> 11111: + 126 ppm (rounded-off value) <br> DCALCFG=1 (negative calibration) <br> 00000: - 0 ppm <br> 00001: - 2 ppm (rounded-off value) <br> 00010: - 4 ppm (rounded-off value) <br> .. <br> 11111: - 63 ppm (rounded-off value) |
+| 6:5 | Reserved |  |  |
+| 7 | DCALCFG | R/W | Digital Calibration Configure <br> 0: Positive calibration - increase the date update frequency <br> 1: Negative calibration - decrease the date update frequency |
+| 31:8 | Reserved |  |  |
+
+
+### 18.7.8 RTC alarm A register (RTC_ALRMA)
+
+This register can be written only when ALRWF lg of RTC_STS is set to 1 or in initialization mode, and it is in write protection state.  
+Offset address: 0x1C  
+Reset value of backup domain: 0x0000 0000  
+System reset: 0xXXXXX XXXX  
+
+
+| Field | Name | R/W | Description |
+| ------- | ------ | ----- | ---------------------------------------------------- |
+| 3:0 | SECU | R/W | Second Ones Unit in BCD Format Setup |
+| 31:0 | Reserved |  |  |
+| 6:4 | SECT | R/W | Second Ten's Place Unit in BCD Format Setup |
+| 7 | SECME | R/W | Alarm A Seconds Mask Enable                          <br>0: If the "second" matches, set Alarm A<br>1: Mask the effect of the "second" value on Alarm A |
+| 11:8 | MINU | R/W | Minute Ones Unit in BCD Format Setup |
+| 14:12 | MINT | R/W | Minute Ten's Place Unit in BCD Format Setup |
+| 15 | MINMEN | R/W | Alarm A Minutes Mask Enable                          <br>0: If the "minute" matches, set Alarm A<br>1: Mask the effect of the "minute" value on Alarm A |
+| 19:16 | HRU | R/W | Hour Ones Unit in BCD Format Setup |
+| 21:20 | HRT | R/W | Hour Ten's Place Unit in BCD Format Setup |
+| 22 | TIMEFCFG | R/W | Time Format Configure                               <br>0: AM or 24-hour system<br>1: PM |
+| 23 | HRMEN | R/W | Alarm A Hours Mask Enable                           <br>0: If the "hour" matches, set Alarm A<br>1: Mask the effect of the "hour" value on Alarm A |
+| 27:24 | DAYU | R/W | Day Ones Unit in BCD Format Setup |
+| 29:28 | DAYT | R/W | Day Ten's Place Unit in BCD Format Setup |
+| 30 | WEEKSEL | R/W | Week Day Select                                    <br>0: DAYU means date<br>1: DAYU means the number of weeks. DAYT has no effect. |
+| 31 | DATEMEN | R/W | Alarm A Date Mask Enable                           <br>0: If the date/week matches, set Alarm A<br>1: Mask the effect of the date/week value on Alarm A |
+
+
+### 18.7.9 RTC alarm B register (RTC_ALRMB)
+
+This register can be written only when ALRWFLG of RTC_STS is set to 1 or in initialization mode, and it is in write protection state.
+Offset address: 0x20  
+Reset value of backup domain: 0x0000 0000  
+System reset: 0xXXXX XXXX  
+
+
+| Field | Name | R/W | Description |
+| ------- | ------- | ----- | ----------------------------------------------------- |
+| 3:0 | SECU | R/W | Second Ones Unit in BCD Format Setup |
+| 6:4 | SECT | R/W | Second Ten's Place Unit in BCD Format Setup |
+| 7 | SECME | R/W | Alarm B Seconds Mask Enable                          <br>0: If the "second" matches, set Alarm B<br>1: Mask the effect of the "second" value on Alarm B |
+| 11:8 | MINU | R/W | Minute Ones Unit in BCD Format Setup |
+| 14:12 | MINT | R/W | Minute Ten's Place Unit in BCD Format Setup |
+| 15 | MINMEN | R/W | Alarm B Minutes Mask Enable<br>0: If the "minute" matches, set Alarm B<br>1: Mask the effect of the "minute" value on Alarm B |
+| 19:16 | HRU | R/W | Hour Ones Unit in BCD Format Setup |
+| 21:20 | HRT | R/W | Hour Ten's Place Unit in BCD Format Setup |
+| 22 | TIMEFCFG | R/W | Time Format Configure<br>0: AM or 24-hour system<br>1: PM |
+| 23 | HRMEN | R/W | Alarm B Hours Mask Enable<br>0: If the "hour" matches, set Alarm B<br>1: Mask the effect of the "hour" value on Alarm B |
+| 27:24 | DAYU | R/W | Day Ones Unit in BCD Format Setup |
+| 29:28 | DAYT | R/W | Day Ten's Place Unit in BCD Format Setup |
+| 30 | WEEKSEL | R/W | Week Day Select<br>0: DAYU means date<br>1: DAYU means the number of weeks. DAYT has no effect. |
+| 31 | DATEMEN | R/W | Alarm B Date Mask Enable<br>0: If the date/week matches, set Alarm B<br>1: Mask the effect of the date/week value on Alarm B |
+
+
+### 18.7.10 RTC write protection register (RTC_WRPROT)
+
+Offset address: 0x24<br>
+Reset value: 0x0000 0000
+
+
+| Field | Name | R/W | Description |
+| ------- | ------ | ----- | -------------------------------------------------------------------------- |
+| 7:0 | KEY | W | Write Protection Key Value Setup<br>This byte is written by software; read this byte and it is always 0x00. |
+| 31:8 |  |  | Reserved |
+
+
+### 18.7.11 RTC subsecond register (RTC_SUBSEC)
+
+Offset address: 0x28<br>
+Reset value of backup domain: 0x0000 0000<br>
+System reset: 0xXXXX XXXX
+
+
+| Field | Name | R/W | Description |
+| ------- | -------- | ----- | ----------------------------------------------------------------------------------------------------------------------- |
+| 15:0 | SUBSEC | R | Sub Second Value Setup<br>SUBSEC is the value of synchronous prescaler counter. It is determined by the following formula:<br>Subsecond value=(SPSC-SUBSEC)/(SPSC+1)<br>After one shift operation is performed, SUBSEC may be greater than SPSC. The correct time/date is one second less than RTC_TIME/RTC_DATE. |
+| 31:16 |  |  | Reserved |
+
+
+### 18.7.12 RTC shift register (RTC_SHIFT)
+
+This register is in write protection state.  
+Offset address: 0x2C  
+Reset value of backup domain: 0x0000 0000  
+System reset: 0xXXXX XXXX  
+
+
+| Field | Name | R/W | Description |
+| ---------- | ---------- | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 14:0 | SFSEC | W | Subtract a Fraction of a Second Setup<br>This bit field can only be written; read this byte and it is always 0. Writing to this bit is invalid while an operation is being executed.<br>The set SFSEC value will be added to the synchronous prescaler counter. If the counter counts down, the clock will be delayed, and the delay time is determined by the following formula:<br>Delay (seconds)=SFSEC/(SPSC+1)<br>When it takes effect at the same time with ADD1SECEN, advance the clock and a fraction of a second will be added; the specific added value is determined by the following formula:<br>Advance(seconds)=(1-(SFSEC/(SPSC+1)))<br>Conduct write operation to this bit and RSFLG bit can be cleared. The software keeps running until RSFLG is set to 1 to ensure that the value of the shadow register is synchronized with the shift time. |
+| 30:15 | Reserved |  |  |
+| 31 | ADD1SECEN | W | Add One Second Enable<br>0: Not add<br>1: The clock/date increases by one second<br>This bit can only be written; read this byte and it is always 0. Writing to this bit is invalid while an operation is being executed.<br>When it takes effect at the same time with SFSEC, it can increase the value of the clock by several tenths of a second. |
+
+
+### 18.7.13 RTC timestamp time register (RTC_TSTIME)
+
+This register is valid only when TSFLG of RTC_STS is set to 1. When TSFLG bit is reset, the content of this register will be cleared.  
+Offset address: 0x30  
+Reset value of backup domain: 0x0000 0000  
+System reset: 0xXXXX XXXX  
+
+
+| Field | Name | R/W | Description |
+| ---------- | ---------- | ----- | ----------------------------------------------------------------------------------------------- |
+| 3:0 | SECU | R | Second Ones Unit in BCD Format Setup |
+| 6:4 | SECT | R | Second Ten's Place Unit in BCD Format Setup |
+| 7 | Reserved |  |  |
+| 11:8 | MINU | R | Minute Ones Unit in BCD Format Setup |
+| 14:12 | MINT | R | Minute Ten's Place Unit in BCD Format Setup |
+| 15 | Reserved |  |  |
+| 19:16 | HRU | R | Hour Ones Unit in BCD Format Setup |
+| 21:20 | HRT | R | Hour Ten's Place Unit in BCD Format Setup |
+| 22 | TIMEFCFG | R | Time Format Configure<br>0: AM or 24-hour system<br>1: PM <br>31:23 |
+
+
+### 18.7.14 RTC timestamp date register (RTC_TSDATE)
+
+This register is valid only when TSFLG bit of RTC_STS is set to 1. When TSFLG bit is reset, this register will be cleared.<br>
+Offset address: 0x34<br>
+Reset value of backup domain: 0x0000 0000<br>
+System reset: 0xXXXX XXXX<br>
+
+
+| Field | Name | R/W | Description |
+| ------- | --------- | ----- | ---------------------------------------------- |
+| 3:0 | DAYU | R | Day Ones Unit in BCD Format Setup |
+| 5:4 | DAYT | R | Day Ten's Place Unit in BCD Format Setup |
+| 7:6 |  |  | Reserved |
+| 11:8 | MONU | R | Month Ones Unit in BCD Format Setup |
+| 12 | MONT | R | Month Ten's Place Unit in BCD Format Setup |
+| 15:13 | WEEKSEL | R | Week Day Units Select<br>000: Disable<br>001: Monday<br>...<br>111: Sunday <br>31:16 |
+
+
+### 18.7.15 RTC timestamp subsecond register (RTC_TSSUBSEC)
+
+This register is valid only when TSFLG bit of RTC_STS register is set to 1.<br>
+When TSFLG bit is reset, the content of this register will be cleared.<br>
+Offset address: 0x38<br>
+Reset value of backup domain: 0x0000 0000<br>
+System reset: 0xXXXX XXXX<br>
+
+
+| Field | Name | R/W | Description |
+| ------- | --------- | ----- | ---------------------------------------------- |
+| 15:0 | SUBSEC | R | Sub Second Value Setup<br>When a timestamp event occurs, SUBSEC[15:0] is the value in synchronous prescaler counter. <br>31:16 |
+
+
+### 18.7.16 RTC precision calibration register (RTC_CAL)
+
+This register is in write protection state.<br>
+Offset address: 0x3C<br>
+Reset value of backup domain: 0x0000 0000<br>
+System reset: 0xXXXX XXXX<br>
+
+
+
+
+
+
+### 18.7.17 RTC tamper and multiplexing configuration register (RTC_TACFG)
+
+
+Offset address: 0x40  
+Reset value of backup domain: 0x0000 0000  
+System reset: 0xXXXXX XXXX  
+
+
+| Field | Name | R/W | Description |
+| ------- | ------- | ----- | ----------------------------------------------------------------------------------------------------- |
+| 0 | TP1EN | R/W | RTC_TAMP1 Input Detection Enable<br>0: Disable<br>1: Enable |
+| 1 | TP1ALCFG | R/W | RTC_TAMP1 Input Active Level Configure<br>When TPFCSEL=00, this bit determines that RTC_TAMP1 input will trigger a tamper detection event when it remains high/low.<br>0: Low level<br>1: High level<br>When TPFCSEL=00, this bit determines that RTC_TAMP1 input will trigger a tamper detection event when it is on rising/falling edge.<br>0: Rising edge<br>1: Falling edge |
+| 2 | TPIEN | R/W | Tamper Interrupt Enable<br>0: Disable<br>1: Enable |
+| 6:3 | Reserved |  |  |
+
+
+# 7 **TPTSEL**
+
+**R/W**  
+Tamper Detection Event Timestamp Enable  
+This bit determines whether the timestamp generated by the tamper detection event is saved  
+0: Not save  
+1: Save  
+This bit is still valid when TSEN=0 for RTC_CTRL register.
+
+
+10:8
+
+**TPSSEL**  
+**R/W**  
+Tamper Sampling Frequency Select  
+These bits determine the sampling frequency of each RTC_TAMP1 input.  
+0x0: RTCCLK/32768  
+0x1: RTCCLK/16384  
+0x2: RTCCLK/8192  
+0x3: RTCCLK/4096  
+0x4: RTCCLK/2048  
+0x5: RTCCLK/1024  
+0x6: RTCCLK/512  
+0x7: RTCCLK/256  
+
+
+12:11
+
+**TP1FCSEL**  
+**R/W**  
+RTC_TAMP1 Filter Count Select  
+These bits determine the number of sampling times after which a tamper event is activated at specific level (TAMP*TRG).  
+TPFCSEL is valid for each RTC_TAMP1 input.  
+0x0: Activate the tamper event on the edge where RTC_TAMP1 input is converted into valid level  
+0x1: Continuous sampling twice  
+0x2: Continuous sampling for four times  
+0x3: Continuous sampling for eight times  
+
+
+14:13
+
+**TP1PRDUSEL**  
+**R/W**  
+RTC_TAMP1 Precharge Duration Select  
+These bits determine the number of RTCCLK cycles which are enabled by pull-up resistor before sampling; which is valid in each RTC_TAMP1 input.  
+0x0: 1  
+0x1: 2  
+0x2: 4  
+0x3: 8  
+
+
+# 15 **TP1PUDIS**
+
+**R/W**  
+RTC_TAMP1 Pull-up Function Disable  
+This bit determines whether all RTC_TAMP1 pins are precharged before sampling.  
+0: Enable (enable internal pull-up)  
+1: Disable  
+
+
+# 16 **TP1MSEL**
+
+**R/W**  
+RTC_TAMP1 Mapping Select  
+0: RTC_AF1 is used as RTC_TAMP1  
+1: Reserved  
+Note: When this bit is changed, TP1EN must be reset, so as to avoid unnecessary setting of TP1FLG.
+
+
+
+
+### 18.7.18 RTC alarm A subsecond register (RTC_ALRMASS)
+
+This register can be written only when ALRAEN bit of RTC_CTRL is reset or in initialization mode, and it will be in write protection state.  
+This register is in write protection state.  
+Offset address: 0x44  
+Reset value of backup domain: 0x0000 0000  
+System reset: 0xXXXX XXXX  
+
+
+| Field | Name | R/W | Description |
+| ------- | -------- | ----- | ------------------------------------------------------------------------------------------------------ |
+| 17 | TSMSEL | R/W | Timestamp Mapping Select<br>0: RTC_AF1 is used as timestamp<br>1: Reserved |
+| 18 | ALRMOT | R/W | RTC_ALARM Output Type Configure<br>0: Open-drain output<br>1: Push-pull output                      <br>31:19<br>Reserved |
+| 14:0 | SUBSEC | R/W | Sub Second Value Setup<br>The subsecond value is compared with the value in the synchronous prescaler counter to determine whether to activate the alarm A, and only the bits from 0 to MASKSEL-1 are compared. <br>23:15<br>Reserved |
+| 27:24 | MASKSEL | R/W | Mask the Most-significant Bits Starting at This Bit Select<br>0x0: Alarm A is not compared. The alarm is set when the second unit increases by 1<br>0x1: When comparing with alarm A, SUBSEC[14:1] is not involved, and only SUBSEC[0] is involved<br>0x2: When comparing with alarm A, SUBSEC[14:2] is not involved, and only SUBSEC[1:0] is involved<br>0x3: When comparing with alarm A, SUBSEC[14:3] is not involved, and only SUBSEC[2:0] is involved<br>...<br>0xC: When comparing with alarm A, SUBSEC[14:12] is not involved, and only SUBSEC[11:0] is involved<br>0xD: When comparing with alarm A, SUBSEC[14:13] is not involved, and only SUBSEC[12:0] is involved<br>0xE: When comparing with alarm A, SUBSEC[14] is not involved, and only SUBSEC[13:0] is involved<br>0xF: When comparing the alarm A, 15 SUBSEC bits all take part in, and the alarm can be activated only when all of them match.<br>The synchronous counter overrun bit (Bit 15) is never compared. This bit is not 0 only after shift operation. <br>31:28<br>Reserved |
+
+
+### 18.7.19 RTC alarm B subsecond register (RTC_ALRMBSS)
+
+This register can be written only when ALRBNEN bit of RTC_CTRL is reset or in initialization mode, and it will be in write protection state.
+
+
+
+Offset address: 0x48  
+Reset value of backup domain: 0x0000 0000  
+System reset: 0xXXXXX XXXX  
+
+
+14:0  
+
+**Field**: SUBSEC  
+**R/W**: R/W  
+**Description**: Sub Second Value Setup  
+The subsecond value is compared with the value in the synchronous prescaler counter to determine whether to activate the alarm B, and only the bits from 0 to MASKSEL-1 are compared.  
+
+
+23:15  
+
+**Field**: Reserved  
+
+
+27:24  
+
+**Field**: MASKSEL  
+**R/W**: R/W  
+**Description**: Mask the Most-significant Bits Starting at This Bit Select  
+0x0: Alarm B is not compared. The alarm is set when the second unit increases by 1  
+0x1: When comparing with alarm B, SUBSEC[14:1] is not involved, and only SUBSEC[0] is involved  
+0x2: When comparing with alarm B, SUBSEC[14:2] is not involved, and only SUBSEC[1:0] is involved  
+3: When comparing with alarm B, SUBSEC[14:3] is not involved, and only SUBSEC[2:0] is involved  
+...  
+0xC: When comparing with alarm B, SUBSEC[14:12] is not involved, and only SUBSEC[11:0] is involved  
+0xD: When comparing with alarm B, SUBSEC[14:13] is not involved, and only SUBSEC[12:0] is involved  
+0xE: When comparing with alarm B, SUBSEC[14] is not involved, and only SUBSEC[13:0] is involved  
+0xF: When comparing with alarm B, 15 SUBSEC bits all are involved, and the alarm can be activated only when all of them match.  
+The synchronous counter overrun bit (Bit 15) is never compared. This bit is not 0 only after shift operation.  
+
+
+31:28  
+
+**Field**: Reserved  
+
+
+### 18.7.20 **RTC backup register (RTC_BAKPx) (x=0-19)**
+
+Offset address: 0x50-0x9C  
+Reset value of backup domain: 0x0000 0000  
+Reset value: 0xXXXXX XXXX  
+
+
+31:0  
+
+**Field**: BAKP  
+**R/W**: R/W  
+**Description**: Backup Value Setup  
+Vbat will supply power after VDD power supply is cut off, so this bit is unaffected by system reset; when a tamper detection event occurs or the flash memory read protection is disabled, this register will be reset, and it will remain reset as long as TP1FLG=1.  
+The contents of this bit field are valid even if the device is running in low-power mode.
+
+
+
+
+# 19 Universal synchronous/asynchronous transceiver (USART)
+
+
+
+## 19.1 Full Name and Abbreviation of Terms
+
+
+
+Table 76 Full Name and Abbreviation Description of Terms
+
+
+
+| Full name in English | English abbreviation |
+| ---------------------------------- | --------------------- |
+| Clear to Send | CTS |
+| Request to Send | RTS |
+| Most Significant Bit | MSB |
+| Least Significant Bit | LSB |
+| Guard | GRD |
+| Overrun | OVR |
+
+
+## 19.2 Introduction
+
+
+USART (universal synchronous/asynchronous receiver transmitter) is a serial communication device that can flexibly exchange full-duplex and half-duplex data with external devices, and meets the requirements of external devices for industry standard NRZ asynchronous serial data format. USART also provides a wide range of baud rate and supports multiprocessor communication.
+
+USART not only supports standard asynchronous transceiver mode, but also supports some other serial data exchange modes, such as LIN protocol, smart card protocol, IrDA SIR ENDEC specification and hardware flow control mode.
+
+USART also supports DMA function to realize high-speed data communication.
+
+
+## 19.3 Main characteristics
+
+
+(1) Full-duplex asynchronous communication
+
+(2) Single-line half-duplex communication
+
+(3) NRZ standard format
+
+(4) Characteristics of programmable serial port:
+- Data bit: 8 or 9 bits
+- Check bits: Even parity check, odd parity check, no check
+- Support 0.5, 1, 1.5 and 2 stop bits
+
+(5) Check control
+- Transmit the check bit
+
+
+
+- Check the received data
+
+(6) Select speed and clock tolerance with programmable 8 or 16-time oversampling rate  
+(7) Independent transmitter and receiver enable bit  
+(8) Programmable baud rate generator  
+(9) Multiprocessor communication:  
+  - If the address does not match, enter the mute mode  
+  - Wake up from mute mode through idle bus detection or address flag detection  
+(10) Synchronous transmission mode  
+(11) Generation and detection of LIN break frame  
+(12) Support smart card interface of ISO7816-3 standard  
+(13) Support IrDA protocol  
+(14) Support hardware flow control  
+(15) DMA can be used for continuous communication  
+(16) Status flag bit:  
+  - Transmission detection flag: The transmit register is empty, the receive register is not empty, and transmission is completed  
+  - Error detection flag: Overrun error, noise error, parity error, frame error  
+(17) Multiple interrupt sources:  
+  - The transmit register is empty  
+  - Transmission Completed  
+  - CTS changed  
+  - The receive register is not empty  
+  - Overrun error  
+  - Bus idle  
+  - Parity check error  
+  - LIN break detection  
+  - Noise error  
+  - Overrun error  
+  - Frame error
+
+
+
+
+## 19.4 Functional Description
+
+
+
+Table 77 USAR Pin Description
+
+
+
+| Pin | Type | Description |
+| -------------- | --------- | ------------------------------------------------------------- |
+| USART_RX | Input | Data receiving |
+| USART_TX | Output | Data transmission <br> I/O (single-line mode/smart card mode) <br> When the transmitter is enabled and does not transmit data, the default is high |
+| USART_CK | Output | Clock output |
+| USART_nRTS | Input | Request to transmit in hardware flow control mode |
+| USART_nCTS | Output | Clear to send in hardware flow control mode |
+| IrDA_RDI | Input | Data input in IrDA mode |
+| IrDA_TDO | Output | Data output in IrDA mode |
+
+
+### 19.4.1 Single-line half-duplex communication
+
+
+HDEN bit of USART_CTRL3 register determines whether to enter the single-line half-duplex mode.
+
+When USART enters single-line half-duplex mode:
+- The CLKEN and LINMEN bits of USART_CTRL2 register, and IREN and SCEN bits of USART_CTRL3 register must be cleared to 0.
+- RX pin is disabled.
+- TX pin should be configured as open-drain output and connected with RX pin inside the chip.
+- Transmitting data and receiving data can not be carried out at the same time. The data cannot be received before they are transmitted. If needing to receive data, enable receiving can be turned on only after TXCFLG bit of USART_STS register is set to 1.
+- If there is data collision on the bus, software is required to manage the distributed communication process.
+
+
+### 19.4.2 Frame format
+
+
+The frame format of data frame is controlled by USART_CTRL1 register:
+- DBLCFG bit controls the character length, which can be set to 8 or 9 bits.
+- PCEN bit controls whether to enable the check bit or not.
+- PCFG bit controls whether the parity bit is odd or even.
+
+
+Table 78 Frame Format
+
+
+
+| DBLCFG bit | PCEN bit | USART data frame |
+| ------------ | ---------- | ---------------------------------------- |
+| 0 | 0 | Start bit+8-bit data+stop bit |
+| 1 | 0 | Start bit+9-bit data+stop bit |
+| 1 | 1 | Start bit+8-bit data+parity check bit+stop bit |
+
+
+Configurable stop bit
+
+
+Four different stop bits can be configured through STOPCFG bit of USART_CTRL2 register.
+- **1 stop bit:** Default stop bit.
+- **0.5 stop bit:** Used when receiving data in smart card mode.
+- **2 stop bits:** Used in normal mode, single-line mode and hardware flow control mode.
+- **1.5 stop bits:** Used when transmitting and receiving data in smart card mode.
+
+
+Check bit
+
+
+PCFG bit of USART_CTRL1 determines the parity check bit; when PCFG=0, it is even parity check, on the contrary, it is odd parity check.
+- **Even parity check:** When the number of frame data and check bit 1 is even, the even parity check bit is 0; otherwise it is 1.
+- **Odd parity check:** When the number of frame data and check bit 1 is even, the odd parity check bit is 1; otherwise it is 0.
+
+
+### 19.4.3 Transmitter
+
+
+When TXEN bit of the register USART_CTRL1 is set, the transmit shift register will output data through TX pin and the corresponding clock pulses will be output through CK pin.
+
+
+#### 19.4.3.1 Character transmission
+
+
+During transmission period of USART, the least significant bit of the data will be moved out by TX pin first. In this mode, USART_DATA register has a buffer between the internal bus and the transmit shift register.
+
+A data frame is composed of the start bit, character and stop bit, so there is a low-level start bit in front of each character; then there is a high-level stop bit who number is configurable.
+
+
+Transmission configuration steps
+
+- Set UEN bit of USART_CTRL1 register to enable USART.
+- Decide the word length by setting DBLCFG bit of USART_CTRL1 register.
+- Decide the number of stop bits by setting STOPCFG bit of USART_CTRL2 register.
+
+
+
+
+#### 19.4.3.2 Single-byte communication
+
+
+- If multi-buffer communication is selected, DMA should be enabled in USART_CTRL3 register.
+- Set the baud rate of communication in USART_BR register.
+- Enable TXEN bit in USART_CTRL1 register, and transmit an idle frame.
+- Wait for TXBEFLG bit of USART_STS register to be set to 1.
+- Write data to USART_DATA register (if DMA is not enabled, repeat steps 7-8 for each byte to be transmitted).
+- Wait for TXCFLG bit of USART_STS register to be set to 1, indicating transmission completion.
+
+Note: TXEN bit cannot be reset during data transmission; otherwise, the data on TX pin will be destroyed, which is because if the baud rate generator stops counting, the data being transmitted will be lost.
+
+
+#### 19.4.3.2 Single-byte communication
+
+
+TXBEFLG bit can be cleared to 0 by writing USART_DATA register. When the TXBEFLG bit is set by hardware, the shift register will receive the data transferred from the data transmit register, then the data will be transmitted, and the data transmit register will be emptied. The next data can be written in the data register without overwriting the previous data.
+
+1. If TXBIEEN in USART_CTRL1 register is set to 1, an interrupt will be generated.
+
+2. If USART is in the state of transmitting data, write to the data register to save the data to the DATA register, and transfer the data to the shift register at the end of the current data transmission.
+
+3. If USART is in idle state, write to the data register, put the data into the shift register, start transmitting data, and set TXBEFLG bit to 1.
+
+4. When a data transmission is completed and TXBEFLG bit is set, TXCFLG bit will be set to 1; at this time if TXCIEN in USART_CTRL1 register is set to 1, an interrupt will be generated.
+
+5. After the last data is written in the USART_DATA register, before entering the low-power mode or before disabling the USART module, wait to set TXCFLG to 1.
+
+
+#### 19.4.3.3 Break frame
+
+
+The break frames are considered to receive 0 in a frame period. Setting TXBF bit of USART_CTRL1 register can transmit a break frame, and the length of the break frame is determined by DBLCFG bit of USART_CTRL1 register. If the TXBF bit is set, after completion of transmission of current data, the TX line will transmit a break frame, and after completion of transmission of break frame, the TXBF bit will be reset. At the end of the break frame, the transmitter inserts one or two stop bits to respond to the start bit.
+
+
+
+Note: If the TXBF bit is reset before transmission of the break frame starts, the break frame will not be transmitted. To transmit two consecutive break frames, the TXBF bit should be set after the stop bit of the previous break symbol.
+
+
+#### 19.4.3.4 Idle frame
+
+The idle frame is regarded as a complete data frame composed entirely of 1, followed by the start bit of the next frame containing the data. Set TXEN bit of USART_CTRL1 register to 1 and one idle frame can be transmitted before the first data frame.
+
+
+### 19.4.4 Receiver
+
+
+
+#### 19.4.4.1 Character receiving
+
+During receiving period of USART, RX pin will first introduce the least significant bit of the data. In this mode, USART_DATA register has a buffer between the internal bus and the receive shift register. The data is transmitted to the buffer bit by bit. When the data is fully received, the corresponding receive register is not empty, then the user can read USART_DATA.
+
+Receiving configuration steps
+- Set UEN bit of USART_CTRL1 register to enable USART.
+- Decide the word length by setting DBLCFG bit of USART_CTRL1 register.
+- Decide the number of stop bits by setting STOPCFG bit of USART_CTRL2 register.
+- If multi-buffer communication is selected, DMA should be enabled in USART_CTRL3 register.
+- Set the baud rate of communication in USART_BR register.
+- Set RXEN bit of USART_CTRL1 to enable receiving.
+
+Note:
+(1) RXEN bit cannot be reset during data receiving period; otherwise, the bytes being received will be lost.
+(2) In the process of the receiver receiving a data frame, if an overrun error, noise error or frame error is detected, the error flag will be set to 1.
+(3) When data is transferred from the shift register to USART_DATA register, the RXBNEFLG bit of USART_STS will be set by hardware.
+(4) An interrupt will be generated if RXBIEN bit is set.
+(5) In single buffer mode, the RXBNEFLG bit can be cleared by reading USART_DATA register by software or by writing 0.
+(6) In multi-buffer mode, after each byte is received, the RXBNEFLG bit of USART_STS register will be set to 1, and can be cleared to 0 by reading the data register by DMA.
+
+
+#### 19.4.4.2 Break frame
+
+When the receiver receives a break frame, USART will handle it as receiving a frame error.
+
+
+
+
+#### 19.4.4.3 Idle frame
+
+
+When the receiver receives an idle frame, USART will handle it as receiving an ordinary data frame; if IDLEIEN bit of USART_CTRL1 is set, an interrupt will be generated.
+
+
+#### 19.4.4.4 Oversampling rate
+
+
+OSMCFG bit of USART_CTRL1 register determines the oversampling rate.
+
+If the oversampling rate is 8 times the baud rate, the speed is higher, but the clock tolerance is smaller. If it is 16 times, the speed is lower, but the clock tolerance is bigger.
+
+
+#### 19.4.4.5 Overrun error
+
+
+When RXBNEFLG bit of USART_STS register is set to 1 and a new character is received at the same time, an overrun error will be caused. Only after RXEN is reset, can the data be transferred from the shift register to DATA register. RXBNEFLG bit will be set to 1 after receiving the byte. This bit needs to be reset before receiving the next data or serving the previous DMA request; otherwise, an overrun error will be caused.
+
+
+When an overrun error occurs
+
+- USART_STS OVREFLG bit is set to 1.
+- The data in DATA register will not be lost.
+- The data in the shift register received before will be overwritten, but the data received later will not be saved.
+- If RXBNEIEN bit of USART_CTRL1 is set to 1, an interrupt will be generated.
+- When OVREFLG bit is set to 1, it means that the data has been lost. There are two possibilities:
+  - When RXBNEFLG=1, the previous valid data is still on DATA register, and can be read.
+  - When RXBNEFLG=0, there is no valid data in DATA register.
+- The OVREFLG bit can be reset by reading USART_STS and USART_DATA registers successively.
+
+
+#### 19.4.4.6 Noise error
+
+
+When noise is detected in receiving process of the receiver:
+- Set NE flag on the rising edge of RXBNEFLG bit of USART_STS register.
+- Invalid data is transmitted from the shift register to USART_DATA register.
+
+> Note: 8-time oversampling ratio cannot be used in LIN, smart card and IrDA modes.
+
+
+
+
+#### 19.4.4.7 Frame error
+
+
+If the stop bit is not received and recognized at the expected receiving time due to excessive noise or lack of synchronization, a frame error will be detected.
+
+When a frame error is detected in the receiving process of the receiver:
+
+(1) Set the FEFLG bit of USART_STS register.  
+(2) Invalid data is transmitted from the shift register to USART_DATA register.  
+(3) In single byte communication, there is no interrupt, but in multi-buffer communication, an interrupt will be generated by setting the ERRIEN bit of USART_CTRL3 register.
+
+
+### 19.4.5 Baud rate generator
+
+
+The baud rate division factor (USARTDIV) is a 16-digit number consisting of 12-digit integer part and 4-digit decimal part. Its relationship with the system clock:
+
+Baud rate=PCLK/16×(USARTDIV)
+
+The system clock of USART2/3 is PCLK1, and that of USART1 is PCLK2. USART can be enabled only after the clock control unit enables the system clock.
+
+
+### 19.4.6 Multiprocessor communication
+
+
+In multiprocessor communication, multiple USART are connected to form a network. In this network, two devices communicate with each other, and the mute mode can be enabled for other devices not participating in the communication to reduce the burden of USART. In mute mode, no receive state bit will be set and all receive interrupts are disabled.
+
+When mute mode is enabled, there are two ways to exit the mute mode:  
+● Exit the mute mode when WUPMCFG bit is cleared and the bus is idle.  
+● Exit the mute mode when WUPMCFG bit is set and the address flag is received.
+
+Idle bus detection (WUPMCFG=0)
+
+When RXMUTEEN is set to 1, USART enters the mute mode, and it can be waken up from the mute mode when an idle frame is detected, meanwhile, the RXMUTEEN bit will be cleared to 0 by hardware. RXMUTEEN can also be cleared to 0 by software.
+
+
+
+![Figure 65 Idle Bus Exits Mute Mode](https://www.geehy.com)
+
+RX
+
+| Data 1 | Data 2 | Data 3 | Idle frame | Data 4 |
+| -------- | -------- | -------- | ------------ | --------- |
+
+| RXBMFLG set to 1 by hardware | RXMUTEEN | Silent mode | Normal mode |
+
+| RXMUTEEN set to 1 | Idle frame is detected |
+
+
+Address flag detection (WUPMCFG=1)
+
+
+If the address flag bit is 1, this byte is regarded as the address. The address bytes are low four-byte storage address. When the receiver receives the address byte, it will be compared with its own address. If the addresses do not match, the receiver will enter the mute mode. If the addresses match, the receiver will wake up from the mute mode and be ready to receive the next byte. If the address byte is received again after exiting the mute mode, but the address does not match its own address, the receiver will enter the mute mode again.
+
+![Figure 66 Address Flag Exits Mute Mode](https://www.geehy.com)
+
+RX
+
+| Data 1 | Address 1 | Data 2 | Address 2 | Data 3 | Address 3 | Data 4 |
+| -------- | ------------ | -------- | ------------ | -------- | ------------ | --------- |
+
+| RXBMFLG set to 1 by hardware | RXMUTEEN | Silent mode | Normal mode | Silent mode |
+
+| RXMUTEEN set to 1 | Unmatched address | Matched address | Unmatched address |
+
+
+### 19.4.7 Synchronous mode
+
+
+The synchronous mode supports full-duplex synchronous serial communication in master mode, and has one more signal line USART_CK which can output synchronous clock than the asynchronous mode.
+
+CLKEN bit of USART_CTRL2 register decides whether to enter the synchronous mode.
+
+When USART enters the synchronous mode:
+
+
+
+- The LINMEN bit of USART_CTRL2 register, and IREN, HDEN and SCEN bits of USART_CTRL3 register must be cleared to 0.
+- The start bit and stop bit of data frame have no clock output.
+- Whether the last data bit of data frame generates USART_CK clock is decided by the LBCPOEN bit of USART_CTRL2 register.
+- The clock polarity of USART_CK is decided by CPOL bit of USART_CTRL2 register.
+- The phase of USART_CK is decided by the CPHA bit of USART_CTRL2 register.
+- The external CK clock cannot be activated when the bus is idle or the break frame appears.
+
+
+Figure 67 USART Synchronous Transmission Example
+
+
+
+| USART |  |  |
+| ------- | -------- | ------- |
+| CK | Clock input |  |
+| TX | Data input |  |
+| RX | Data output |  |
+
+
+Figure 68 USART Synchronous Transmission Timing Diagram (DBLCFG=0)
+
+
+
+| DBLCFG=0(8-bit data) |
+| --------------------------- |
+| CK (CPOL=0, CPHA=0)      <br>CK (CPOL=0, CPHA=1)<br>CK (CPOL=1, CPHA=0)<br>CK (CPOL=1, CPHA=1)<br><br>TX (from master device)<br>Start bit<br>Bit 0 Bit 1 Bit 2 Bit 3 Bit 4 Bit 5 Bit 6 Bit 7<br>Stop bit<br>RX (from slave device)<br>Bit 0 Bit 1 Bit 2 Bit 3 Bit 4 Bit 5 Bit 6 Bit 7 |
+
+
+![Figure 69 USART Synchronous Transmission Timing Diagram (DBLCFG=1)](https://www.geehy.com)
+
+
+### 19.4.8 LIN mode
+
+LINMEN bit of USART_CTRL2 register decides whether to enter LIN mode.
+
+When entering LIN mode:  
+- All data frames are 8 data bits and 1 stop bit.  
+- The CLKEN bit and STOPCF bit of USART_CTRL2 register and IREN bit, HDEN bit and SCEN bit of USART_CTRL3 register need to be cleared to 0.  
+
+In LIN master mode, USART can generate break frame, and the detection length of break frame can be set to 10 or 11 bits through LBDLCFG bit of USART_CTRL2. The break frame detection circuit is independent of USART receiver, and no matter in idle state or in data transmission state, RX pin can detect the break frame, and LBDflag bit of USART_STS register is set to 1; at this time, if LBDIEN bit of USART_CTRL2 is enabled, an interrupt will be generated.  
+
+
+Detection of break frame in idle state  
+
+In idle state, if a break frame is detected on RX pin, the receiver will receive a data frame of 0 and generate FEFLG.
+
+
+
+![Figure 70 Break Frame Detection in Idle State](#)
+
+
+
+
+### 19.4.10 Infrared (IrDA SIR) function mode
+
+IrDA mode is a half-duplex protocol, transmitting and receiving data can not be carried out at the same time, and the delay between data transmitting and receiving should be more than 10ms.
+
+IREN bit of USART_CTRL3 register decides whether to enter the IrDA mode.
+
+When USART enters the IrDA mode:
+- The CLKEN bit, STOPCF bit and LINMEN bit of USART_CTRL2 register and HDEN bit and SCEN bit of USART_CTRL3 register must be cleared to 0.
+- The data frame uses 1 stop bit and the baud rate is less than 115200Hz.
+- Using infrared pulse (RZI) indicates logic 0, so in normal mode, its pulse width is 3/16 baud rate cycle. In IrDA low-power mode, it is recommended that the pulse width be greater than 3 DIV frequency division clocks to ensure that this pulse can be detected by IrDA normally.
+
+
+
+![Figure 73 IrDA Mode Block Diagram](https://www.geehy.com)
+
+
+### 19.4.11 Hardware flow control
+
+
+The function of hardware flow control is to control the serial data stream between two devices through nCTS pin and nRTS pin.
+
+![Figure 74 Hardware Flow Control between Two USART](https://www.geehy.com)
+
+
+CTS flow control
+
+
+CTSEn bit of USART_CTRL3 register determines whether to enable CTS flow control. If CTS flow control is enabled, the transmitter will detect whether the data frame of nCTS pin can be transmitted. If TXBEFLG bit=0 for USART_STS register and nCTS is pulled to low, the data frame can be transmitted. If nCTS becomes high during transmission, the transmitter will stop transmitting after the current data frame is transmitted.
+
+
+RTS flow control
+
+
+
+
+RTSEN bit of USART_CTRL3 register determines whether to enable RTS flow control. If RTS flow control is enabled, when the receiver receives data, nRTS will be pulled to low. When a data frame is received, nRTS will become high to inform the transmitter to stop transmitting data frame.
+
+
+### 19.4.12 DMA multi-buffer communication
+
+
+USART can access the data buffer in DMA mode to reduce the burden of processors.
+
+
+Transmission in DMA mode
+
+
+DMATXEN bit of USART_CTRL3 register determines whether to transmit in DMA mode. When transmitting by DMA, the data in the designated SRAM will be transmitted to the buffer by DMA.
+
+Configuration steps of transmission by DMA:
+- Clear the TXCFLG bit of USART_STS register to zero.
+- Set the address of SRAM memory storing data as DMA source address.
+- Set the address of USART_DATA register as DMA destination address.
+- Set the number of data bytes to be transmitted.
+- Set channel priority.
+- Set interrupt enable.
+- Enable DMA channel.
+- Wait for TXCFLG bit of USART_STS register to be set to 1, indicating transmission completion.
+
+
+Receive by DMA
+
+
+DMARXEN bit of USART_CTRL3 register determines whether to use DMA mode to receive; when DMA is used to receive, every time one byte is received, the data of receive buffer will be transmitted to the specified SRAM area by DMA.
+
+Configuration steps of receiving by DMA:
+- Set the address of USART_DATA register as DMA source address.
+- Set the address of SRAM memory storing data as DMA destination address.
+- Set the number of data bytes to be transmitted.
+- Set channel priority.
+- Set interrupt enable.
+- Enable DMA channel.
+
+
+
+
+### 19.4.13 Interrupt request
+
+
+
+Table 79 USART Interrupt Request
+
+
+
+| Interrupt event | Event flag bit | Enable bit |
+| ----------------------------------- | ---------------- | ------------- |
+| The receive register is not empty | RXBNEFLG | RXBNEIEN |
+| Overrun error | OVREFLG |  |
+| Idle line is detected | IDLEFLG | IDLEIEN |
+| Parity check error | PEFLG | PEIEN |
+| LIN break frame flag | LBDFLG | LBDIEN |
+| Receiving error in DMA mode |  |  |
+| Noise error | NEFLG |  |
+| Overrun error | OVREFLG | ERRIEN |
+| Frame error | FEFLG |  |
+| Data transmit register is empty | TXBEFLG | TXBEIEN |
+| Transmission Completed | TXCFLG | TXCIEN |
+| CTS flag | CTSFLG | CTSIEN |
+
+
+All interrupt requests of USART are connected to the same interrupt controller, and the interrupt requests have logical or relation before they are transmitted to the interrupt controller.
+
+
+Figure 75 USART Interrupt Mapping
+
+
+
+
+
+### 19.4.14 Comparison of USART supporting functions
+
+
+
+Table 80 Comparison of USART Supporting Functions
+
+
+
+| USART mode | USART1 | USART2 | USART3 | UART4 | UART5 | USART6 |
+| ------------------------------------ | -------- | -------- | -------- | ------- | ------- | -------- |
+| Half duplex (single-line mode) | √ | √ | √ | √ | √ | √ |
+| Multi-processor communication | √ | √ | √ | √ | √ | √ |
+| Synchronize | √ | √ | √ | — | — | √ |
+| Asynchronous mode | √ | √ | √ | √ | √ | √ |
+| LIN | √ | √ | √ | √ | √ | √ |
+| Smart card | √ | √ | √ | — | — | √ |
+| IrDA | √ | √ | √ | — | — | √ |
+| Hardware flow control | √ | √ | √ | — | — | √ |
+| Multi-buffer communication (DMA) | √ | √ | √ | √ | √ | √ |
+
+
+Note: "√" means this function is supported, while "—" means that this function is not supported.
+
+
+## 19.5 Register address mapping
+
+
+
+Table 81 USART Register Address Mapping
+
+
+
+| Register name | Description | Offset Address |
+| --------------------- | ---------------------------------- | ---------------- |
+| USART_STS | Status register | 0x00 |
+| USART_DATA | Data register | 0x04 |
+| USART_BR | Baud rate register | 0x08 |
+| USART_CTRL1 | Control register 1 | 0x0C |
+| USART_CTRL2 | Control register 2 | 0x10 |
+| USART_CTRL3 | Control register 3 | 0x14 |
+| USART_GTPSC | Protection time and prescaler register | 0x18 |
+
+
+## 19.6 Register functional description
+
+
+
+### 19.6.1 State register (USART_STS)
+
+Offset address: 0x00<br>
+Reset value: 0x00C0
+
+
+
+
+| Field | Name | R/W | Description |
+| ------- | ----------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| 0 | PEFLG | R | Parity Error Occur Flag<br>0: No error<br>1: Parity check error occurs<br>In the receiving mode, when a parity check error occurs, set to 1 by hardware;<br>This bit can be cleared to 0 by software; after setting of RXBNFLG, first read USART_STS register, and then read USART_DATA register to clear to 0. |
+| 1 | FEFLG | R | Frame Error Occur Flag<br>0: No frame error<br>1: A frame error or break symbol appears<br>When there is synchronous dislocation, too much noise or break symbol, set to 1 by hardware;<br>This bit can be cleared to 0 by software; first read USART_STS register, and then read USART_DATA register to clear to 0. |
+| 2 | NEFLG | R | Noise Error Occur Flag<br>0: No noise<br>1: There is noise error<br>When there is noise error, set to 1 by hardware;<br>This bit can be cleared to 0 by software; first read USART_STS register, and then read USART_DATA register to clear to 0. |
+| 3 | OVREFLG | R | Overrun Error Occur Flag<br>0: Overrun error<br>1: Overrun error occurs<br>When the RXBNFLG bit is set and the data in the shift register is to be transmitted to the receive register, it will be set to 1 by hardware;<br>This bit can be cleared to 0 by software; first read USART_STS register, and then read USART_DATA register to clear to 0. |
+| 4 | IDLEFLG | R | IDLE Line Detected Flag<br>0: Idle bus is not detected<br>1: Idle bus is detected<br>When idle bus is detected, it will be set to 1 by hardware;<br>This bit can be cleared to 0 by software; first read USART_STS register, and then read USART_DATA register to clear to 0. |
+| 5 | RXBNFLG | RC_W | Receive Data Buffer Not Empty Flag<br>0: The receive data buffer is empty<br>1: The receive data buffer is not empty<br>When the data register receives the data transmitted by the receive shift register, it will be set to 1 by hardware;<br>This bit can be cleared to 0 by software; read USART_DATA to clear to 0, or write 0 to this bit to clear it. |
+| 6 | TXCFLG | RC_W0 | Transmit Data Complete Flag<br>0: Transmitting data is not completed<br>1: Transmitting data is completed<br>After the last frame of data is transmitted and the TXBEFLG is set, it will be set to 1 by hardware;<br>This bit can be cleared to 0 by software; first read USART_STS register, and then write USART_DATA register to clear to 0; or this bit can be cleared by writing 0 to it. |
+| 7 | TXBEFLG | R | Transmit Data Buffer Empty Flag<br>0: The transmit data buffer is not empty<br>1: The transmit data buffer is empty<br>When the shift register receives the data transmitted by the transmit data register, it will be set to 1 by hardware;<br>This bit can be cleared to 0 by software; write USART_DATA register to clear to 0. |
+| 8 | LBDFLG | RC_W0 | LIN Break Detected Flag<br>0: LIN break is not detected<br>1: LIN break is detected<br>When LIN disconnection is detected, set to 1 by hardware;<br>This bit can be cleared to 0 by software; or cleared by writing 0 to this bit. |
+| 9 | CTSFLG | RC_W0 | CTS Change Flag<br>0: No change on nCTS state line<br>1: There is change on nCTS state line<br>If the CTSEN bit is set, when switching to the nCTS input, set to 1 by hardware;<br>This bit can be cleared to 0 by software; or cleared by writing 0 to this bit.                                                   <br>31:10 Reserved |
+
+
+### 19.6.2 Data register (USART_DATA)
+
+Offset address: 0x04<br>
+Reset value: 0xXXXXX XXXX, X=undefined bit
+
+
+| Field | Name | R/W | Description |
+| ------- | ------ | ----- | ---------------------------------------------------------------------------------------------------------- |
+| 8:0 | DATA | R/W | Data Value<br>Transmit or receive the data value; read data when receiving data, and write data to the register when transmitting data.<br>When the parity bit is enabled, for 9 data bits, the 8 bit of DATA is parity bit; for 8 data bits, the 7 bit of DATA is parity bit. <br>31:9 Reserved |
+
+
+### 19.6.3 Baud rate register (USART_BR)
+
+Offset address: 0x08<br>
+Reset value: 0x0000
+
+
+
+
+### 19.6.4 Control register 1 (USART_CTRL1)
+
+Offset address: 0x0C  
+Reset value: 0x0000  
+
+
+| Field | Name | R/W | Description |
+| ------------ | ------------- | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 3:0 | FBR[3:0] | R/W | Fraction of USART Baud Rate Divider factor<br>The decimal part of USART baud rate division factor is determined by these four bits. |
+| 15:4 | IBR[15:4] | R/W | Integer of USART Baud Rate Divider factor<br>The integral part of USART baud rate division factor is determined by these 12 bits. |
+| 31:16 |  |  | Reserved |
+| 0 | TXBF | R/W | Transmit Break Frame<br>0: Not transmit<br>1: Will transmit<br>This bit can be set by software and cleared to 0 by hardware when the stop bit of the break frame is transmitted. |
+| 1 | RXMUTEEN | R/W | Receive Mute Mode Enable<br>0: Normal working mode<br>1: Mute mode<br>This bit is set or cleared to 0 by software, or cleared to 0 by hardware when wakeup sequence is detected.<br>USART must receive a data before it is put in the mute mode, so that it can be detected and awakened by idle bus.<br>In the wake-up of address flag detection, if the RXBNFLG bit is set, the RXMUTEEN bit cannot be modified by software. |
+| 2 | RXEN | R/W | Receive Enable<br>0: Disable<br>1: Enable, and start to detect the start bit on RX pin |
+| 3 | TXEN | R/W | Transmit Enable<br>0: Disable<br>1: Enable<br>Except in smart card mode, if there is a 0 pulse on this bit at any time of transmitting data, an idle bus will be transmitted after the current data is transmitted.<br>After this bit is set, the data will be transmitted after delay of one-bit time. |
+| 4 | IDLEIEN | R/W | IDLE Interrupt Enable<br>0: Disable<br>1: An interrupt will be generated when IDLEFLG is set |
+| 5 | RXBNIEN | R/W | Receive Buffer Not Empty Interrupt Enable<br>0: Disable<br>1: An interrupt will be generated when OVREFLG or RXBNFLG is set |
+| 6 | TXCIEN | R/W | Transmit Complete Interrupt Enable<br>0: Disable<br>1: An interrupt will be generated when TXCFLG is set |
+| 7 | TXBEIEN | R/W | Transmit Buffer Empty Interrupt Enable<br>0: Disable interrupt generation<br>1: An interrupt will be generated when TXBEFLG is set |
+| 8 | PEIEN | R/W | Parity Error interrupt Enable<br>0: Disable interrupt generation<br>1: An interrupt will be generated when PEFLG is set |
+| 9 | PCFG | R/W | Odd/Even Parity Configure<br>0: Even parity check<br>1: Odd parity check<br>The selection will not take effect until the current transmission of bytes is completed. |
+| 10 | PCEN | R/W | Parity Control Enable<br>0: Disable<br>1: Enable<br>If this bit is set, a check bit will be inserted in the most significant bit when transmitting data; when receiving data, check whether the check bit of the received data is correct.<br>The check control will not take effect until the current transmission of bytes is completed. |
+| 11 | WUPMCFG | R/W | Wakeup Method Configure<br>0: Idle bus wakeup<br>1: Address tag wakeup |
+| 12 | DBLCFG | R/W | Data Bits Length Configure<br>0: 1 start bit, 8 data bits, n stop bits<br>1: 1 start bit, 9 data bits, n stop bits<br>This bit cannot be modified during transmission of data. |
+| 13 | UEN | R/W | USART Enable<br>0: Disable USART frequency divider and output<br>1: Enable USART module |
+| 14 |  |  | Reserved |
+| 15 | OSMCFG | R/W | Oversampling Mode Configure<br>0: 16-time oversampling<br>1: 8-time oversampling<br>This bit can be set only when USART is not enabled. |
+| 31:16 |  |  | Reserved |
+
+
+### 19.6.5 Control register 2 (USART_CTRL2)
+
+Offset address: 0x10<br>
+Reset value: 0x0000 0000
+
+
+| Field | Name | R/W | Description |
+| ------- | ------------ | ----- | ----------------------------------------------- |
+| 3:0 | ADDR[3:0] | R/W | USART Device Node Address Setup |
+
+
+### 19.6.6 Control register 3 (USART_CTRL3)
+
+Offset address: 0x14
+
+
+| Field | Name | R/W | Description |
+| --------- | ---------- | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 4 |  |  | Reserved |
+| 5 | LBDLCFG | R/W | LIN Break Detection Length Configure<br>0: 10 bits<br>1: 11 bits |
+| 6 | LBDIEN | R/W | LIN Break Detection Interrupt Enable<br>0: Disable<br>1: An interrupt is generated when LBDFLG bit is set |
+| 7 |  |  | Reserved |
+| 8 | LBCPOEN | R/W | Last Bit Clock Pulse Output Enable<br>0: Not output from CK<br>1: Output from CK<br>This bit is valid only in synchronous mode; this bit does not exist on UART4 or UART5. |
+| 9 | CPHA | R/W | Clock Phase Configure<br>This bit indicates on the edge of which clock sampling is conducted<br>0: The first<br>1: The second<br>This bit is valid only in synchronous mode; this bit does not exist on UART4 or UART5. |
+| 10 | CPOL | R/W | Clock Polarity Configure<br>The state of CK pin when USART is in idle state<br>0: Low level<br>1: High level<br>This bit is valid only in synchronous mode; this bit does not exist on UART4 or UART5. |
+| 11 | CLKEN | R/W | Clock Enable (CK pin)<br>0: Disable<br>1: Enable<br>This bit does not exist on UART4 or UART5. |
+| 13:12 | STOPCFG | R/W | STOP Bit Configure<br>00: 1 stop bit<br>01: 0.5 stop bit<br>10: 2 stop bits<br>11: 1.5 stop bits<br>This bit does not exist on UART4 or UART5. |
+| 14 | LINMEN | R/W | LIN Mode Enable<br>0: Disable<br>1: Enable |
+| 31:15 |  |  | Reserved |
+
+
+Note: These three bits (CPOL, CPHA and LBCPOEN) cannot be changed after transmission is enabled.
+
+
+
+
+Reset value: 0x0000
+
+
+
+| Field | Name | R/W | Description |
+| ------- | --------- | ----- | -------------------------------------------------------------------------------------------------- |
+| 0 | ERRIEN | R/W | Error interrupt Enable<br>0: Disable<br>1: Enable; when DMARXEN is set and one among FEFLG, OVREFLG or NEFLG is set, an interrupt will be generated. |
+| 1 | IREN | R/W | IrDA Function Enable<br>0: Disable<br>1: Enable |
+| 2 | IRLPEN | R/W | IrDA Low-power Mode Enable<br>0: Normal mode<br>1: Low-power mode |
+| 3 | HDEN | R/W | Half-duplex Mode Enable<br>0: Disable<br>1: Enable |
+| 4 | SCNACKEN | R/W | NACK Transmit Enable During Parity Error in Smartcard Function<br>0: Not transmit NACK<br>1: Transmit NACK<br>This bit does not exist on UART4 or UART5. |
+| 5 | SCEN | R/W | Smartcard Function Enable<br>0: Disable<br>1: Enable<br>This bit does not exist on UART4 or UART5. |
+| 6 | DMARXEN | R/W | DMA Receive Enable<br>0: Disable<br>1: Enable<br>This bit does not exist on UART4 or UART5. |
+| 7 | DMATXEN | R/W | DMA Transmit Enable<br>0: Disable<br>1: Enable<br>This bit does not exist on UART4 or UART5. |
+| 8 | RTSEN | R/W | RTS Hardware Flow Control Function Enable<br>0: Disable<br>1: Enable RTS interrupt<br>RTS: Require To Send, which is output signal, indicating it has been ready to receive.<br>Request is made to receive data only when there is space in the receive buffer; when data can be received, RTS output is pulled to low.<br>This bit does not exist on UART4 or UART5. |
+| 9 | CTSEN | R/W | CTS Hardware Flow Control Function Enable<br>0: Disable<br>1: Enable<br>CTS: Clear To Send, which is input signal<br>Only when CTS input signal is low, the data can be transmitted; otherwise, the data cannot be transmitted; if CTS signal is pulled high during data transmission, the data transmission will be stopped after the data transmission is completed; if write operation is performed for the data register when CTS is high, the data will not be transmitted until CTS is valid.<br>This bit does not exist on UART4 or UART5. |
+| 10 | CTSIEN | R/W | CTS Interrupt Enable<br>0: Disable<br>1: An interrupt will be generated when CTSFLG is set<br>This bit does not exist on UART4 or UART5. |
+| 11 | SAMCFG | R/W | Sample Method Configure<br>0: Sampling for three times<br>1: Single sampling; flag of noise detection disabled<br>This bit can be set only when USART is not enabled. |
+
+
+31:12 Reserved
+
+
+### 19.6.7 Protection time and prescaler register (USART_GTPSC)
+
+Offset address: 0x18  
+Reset value: 0x0000
+
+
+| Field | Name | R/W | Description |
+| ------- | -------- | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 7:0 | PSC | R/W | Prescaler Factor Setup<br>Divide the frequency of the system clock and provide the clock; in different working modes, the significant bits of PSC have difference, specifically as follows:<br>In infrared low-power mode:<br>PSC[7:0] is significant.<br>00000000: Reserved<br>00000001: 1 divided frequency<br>00000010: 2 divided frequency<br>.......<br>11111111: 255 divided frequency<br>In infrared normal mode:<br>PSC can only be set to 00000001<br>In smart card mode:<br>PSC[7:5] is insignificant, PSC[4:0] is significant<br>00000: Reserved<br>00001: 2 divided frequency<br>00010: 4 divided frequency<br>00011: 6 divided frequency<br>.......<br>11111: 62 divided frequency<br>This bit does not exist on UART4 or UART5. |
+| 15:8 | GRDT | R/W | Guard Time Value Setup <br> After transmitting data, TXCFLG can be set only after the protection time; the time unit is baud clock; it can be applied to smart card mode; this bit does not exist on UART4 and UART5. |
+| 31:16 |  |  | Reserved |
+
+
+# 20 Internal integrated circuit interface (I2C)
+
+
+
+## 20.1 Full Name and Abbreviation of Terms
+
+
+
+Table 82 Full Name and Abbreviation Description of Terms
+
+
+
+| Full name in English | English abbreviation |
+| ------------------------------------------ | ---------------------- |
+| Serial Data | SDA |
+| Serial Clock | SCL |
+| System Management Bus | SMBus |
+| Clock | CLK |
+| Serial Clock High | SCLH |
+| Serial Clock Low | SCLL |
+| Address Resolution Protocol | ARP |
+| Negative Acknowledgement | NACK |
+| Packet Error Checking | PEC |
+| Address Resolution Protocol | ARP |
+
+
+## 20.2 Introduction
+
+
+I2C is a short-distance bus communication protocol. In physical implementation, I2C bus is composed of two signal lines (SDA and SCL) and a ground wire. These two signal lines can be used for bidirectional transmission.
+- Two signal lines, SCL clock line and SDA data line. SCL provides timing for SDA, and SDA transmits/receives data in series
+- Both SCL and SDA signal lines are bidirectional
+- The ground is common when the two systems use I2C bus for communication
+
+
+## 20.3 Main characteristics
+
+
+(1) Multi-master function  
+(2) The master can generate the clock, start bit and stop bit  
+(3) Slave function  
+  - Programmable I2C address detection  
+  - Double-address mode  
+  - Detection of stop bit  
+(4) 7-bit and 10-bit addressing mode  
+(5) Response to broadcast
+
+
+
+(6) Three communication speeds  
+   ● Standard mode  
+   ● Fast mode  
+   ● Fast mode plus  
+
+(7) Programmable clock extension  
+
+(8) State flag  
+   ● Transmitter/Receiver mode flag  
+   ● Flag for end of byte transmission  
+   ● Busy bus flag  
+
+(9) Error flag  
+   ● Arbitration loss  
+   ● Acknowledgment error  
+   ● Detection of wrong start bit or stop bit  
+
+(10) Interrupt source  
+   ● Address/Data communication succeeded  
+   ● Error interrupt  
+
+(11) Support DMA function  
+
+(12) Programmable digital noise filter  
+
+(13) Programmable PEC  
+   ● Final transmission in transmission mode  
+   ● PEC error check after the last byte is received  
+
+(14) SMBus specific function  
+   ● Hardware PEC  
+   ● Address resolution protocol
+
+
+
+
+## 20.4 Structure block diagram
+
+
+Figure 76 I2C Function Structure Diagram
+
+
+
+
+### 20.5.1 I2C physical layer
+
+
+The commonly used connection modes between I2C communication devices are shown in the figure below:
+
+Figure 77 Common I2C Communication Connection Diagram
+
+
+| Multiple masters | Multiple masters that control the bus at the same time without destroying information |
+| ------------------- | ----------------------------------------------------------------------------------------- |
+| Synchronize | The process of synchronizing the clock signals between two or more devices |
+| Arbitration | If more than one master tries to control the bus at the same time, only one master can control the bus, and the information of the controlled master will not be destroyed |
+
+
+Characteristics of physical layer:
+
+(1) It supports the buses of multiple devices (signal line shared by multiple devices), which, in I2C communication bus, can connect multiple communication masters and communication slaves.
+
+(2) An I2C bus only uses two bus lines, namely, a bidirectional serial data line (SDA) and a serial clock line (SCL). The data line is used for data transmission, and the clock line is used for synchronous receiving and transmission of data.
+
+(3) Each device connected to the bus has an independent address (seven or ten bits), and the master addresses and accesses the slave devices according to the address of the device.
+
+(4) The bus needs to connect the pull-up resistor to the power supply. When I2C bus is idle, the output is in high-impedance state. When all devices are idle, the output is in high-impedance state, and the pull-up resistor pulls the bus to high.
+
+
+
+(5) Three communication modes: Standard mode (up to 100KHz), fast mode (up to 400KHz), and fast mode plus (up to 1MHz).
+
+(6) When the bus is used by multiple masters at the same time, to prevent data collision, the bus arbitration mode is adopted to determine which device occupies the bus.
+
+(7) Able to program the setup and hold time, and program the high-level time and low-level time of SCL in I2C.
+
+
+### 20.5.2 I2C protocol layer
+
+
+
+Characteristics of protocol layer
+
+
+(1) Data is transmitted in the form of frame, and each frame is composed of 1 byte (8 bits).
+
+(2) In the rising edge phase of SCL, SDA needs to keep stable and SDA changes when SCL is low.
+
+(3) In addition to data frame, I2C bus also has start signal, stop signal and acknowledgment signal.
+   - Start bit: During the stable high level period of SCL, a falling edge of SDA starts transmission.
+   - Stop bit: During the stable high level period of SCL, a rising edge of SDA stops transmission.
+   - Acknowledge bit: Used to indicate successful transmission of one byte. After the bus transmitter (regardless of the master or slave) transmits 8-bit data, SDA will release (from output to input). During the ninth clock pulse period, the receiver will pull down SDA to acknowledge receiving of data.
+
+
+I2C communication reading and writing process
+
+
+Figure 78 Master Writes Data to Slave
+
+
+| S | SLAVE ADDRESS | w | DATA | A | DATA | A | DATA | P |
+| ----- | --------------- | --- | ------ | --- | ------ | --- | ------ | --- |
+
+
+Figure 79 Master Reads Data from Slave
+
+
+| S | SLAVE ADDRESS | R | DATA | A | DATA | A | DATA | P |
+| ----- | --------------- | --- | ------ | --- | ------ | --- | ------ | --- |
+
+
+Remarks:
+
+
+
+(1) ⮞: This data is transmitted from master to slave  
+(2) S: Start signal  
+(3) SLAVE ADDRESS: Slave address  
+(4) ⮜: This data is transmitted from slave to master  
+(5) R/W: Selection bit of transmission direction  
+(6) 1 means read  
+(7) 0 means write  
+(8) P: Stop signal  
+
+After the start signal is generated, all slaves will wait for the slave address signal transmitted by the master. In I2C bus, the address of each device is unique. When the address signal matches the device address, the slave will be selected, and the unselected slave will ignore the future data signal.  
+
+When the master direction is writing data  
+After broadcasting the address and receiving the acknowledge signal, the master will transmit data to the slave, the data length is one byte, and every time the master transmits one byte of data, it needs to wait for the acknowledge signal transmitted by the slave. After all the bytes have been transmitted, the master will transmit a stop signal (STOP) to the slave, indicating that the transmission is completed.  
+
+When the master direction is reading data  
+After broadcasting the address and receiving the acknowledge signal, the slave will transmit the data to the master. The size of the data package is 8 bits. Every time the slave transmits one byte of data, it needs to wait for the acknowledge signal of the master. When the master needs to stop receiving data, it needs to return a non-acknowledge signal to the slave, then the slave will stop transmitting the data automatically.  
+
+
+### 20.5.3 Data validity
+
+In the process of data transmission, the data on SDA line must be stable when the clock signal SCL is at high level. Only when the SCL is at the low level, can the level state of SDA be changed, and the bit transmission of each data needs a clock pulse.
+
+
+
+![Figure 80 SDA Timing Diagram](https://www.geehy.com)
+
+### 20.5.4 Start and stop signals
+All data transmission must have start signal (START) and stop signal (STOP).
+
+Figure 81 START signal is defined as: when SCL is at high level, SDA will convert from high level to low level
+
+
+| SDA | START |
+| ------- | -------------- |
+| SCL |  |
+
+
+Figure 82 STOP signal is defined as: when SCL is at high level, SDA will convert from low level to high level
+
+
+| SDA | STOP |
+| ------- | -------------- |
+| SCL |  |
+
+
+### 20.5.5 Arbitration
+Arbitration is also used to solve the bus control conflict in case of multiple masters. The arbitration process takes place on the master and has nothing to do with the slave.
+
+The master can start transmission only when the bus is idle. Two masters may generate an effective START signal on the bus within the shortest hold time of the START signal. In this situation, it is required that arbitration should decide which master completes the transmission.
+
+Arbitration is conducted by bit. During each arbitration, when SCL is high, each master will check whether the SDA level is the same as that transmitted by itself. The arbitration process needs to last for many bits. Theoretically, if two masters transmit exactly the same content, they can successfully transmit.
+
+
+
+without arbitration failure. If one master transmits high level, but it is detected that SDA is at low level, an arbitration failure error will occur, the SDA output of the master will be disabled, and the other master will complete its own transmission.
+
+Figure 83 SDA Timing Diagram
+
+
+| Master1 SDA | 1 | 0 | 1 | 1 |
+| ------------- | ------- | --- | --- | --- |
+| Master2 SDA | 1 | 0 | 1 | 0 |
+| SDA | 1 | 0 | 1 | 0 |
+| SCL | 1 | 0 | 1 | 0 |
+
+
+Note: Master1 arbitration failure
+
+
+### 20.5.6 SMBus specific function
+
+
+System management bus (SMBus) is a simple single-end double-wire bus, which can meet the requirements of lightweight communication.
+
+SMBus is commonly used in computer motherboard, mainly for power transmission ON/OFF instructions. SMBus is the derivative bus of I2C. It is mainly used for communication of low-bandwidth devices on computer motherboard, and power-related chip.
+
+
+Address resolution protocol
+
+
+SMBus specification includes an address resolution protocol, which can realize dynamic address assignment. Dynamic recognition hardware and software enable the bus to support hot plugging, and the bus devices will be automatically identified and assigned with a unique address.
+
+
+SMBus alarm
+
+
+SMBus alarm is an optional signal with an interrupt line. It is used for pins that are sacrificed to extend their control ability.
+
+
+
+
+### 20.5.7 Error flag bit
+
+
+Table 84 The following several error flag bits exist in I2C communication  
+
+
+| Error flag bit | Description of error flag bit |
+| ---------------------------------- | --------------------------------------------------------------------- |
+| Answer error flag bit (AEFLG) | No acknowledgment received |
+| Bus error flag bit (BERRFLG) | An external stop or start condition is detected |
+| Arbitration loss flag bit (ALFLG) | Arbitration loss is detected by the interface |
+| Overrun/Underrun error flag bit (OVRURFLG) | In slave mode, the received data is not read out, the next data has arrived, and an overrun error occurs. The transmitting data clock has arrived, but the data has not been written to the DATA register, and an underrun error occurs. |
+| Timeout or Tlow error flag bit (TTEFLG) | SCL is pulled down for more than a certain time |
+| PEC comparison error flag bit (PECEFLG) | CRC values are not equal |
+
+
+### 20.5.8 Packet error check (PEC)
+
+
+I2C module has a PEC module, which checks the message of I2C data by CRC-8 calculator. The CRC-8 polynomial used by the calculator is: C(x)= X8+X2+X+1.
+
+When PECEN bit is set to 1 and PEC function is enabled, PEC module will calculate all data transmitted by I2C bus, including address data.
+
+
+### 20.5.9 DMA mode
+
+
+According to the software process of I2C, when the transmit register is empty or the receiver register is full, MCU needs to write or read bytes, then we can complete the operation more quickly through the DMA function of I2C.
+
+
+DMA transmission
+
+
+Set the DMAEN bit in I2C_CTRL2 register to enable the DMA mode. When the transmit register is empty (TXBEFLG is set to 1), the data will be directly loaded from the memory area to the DATA register through DMA.
+
+
+DMA receiving
+
+
+Set DMAEN bit in I2C_CTRL2 register to enable DMA mode. When the receive register is full (RXBNEFLG is set to 1), DMA will transmit DATA register data to the set storage area.
+
+
+### 20.5.10 Programmable noise filter
+
+
+In Fm mode, the I2C standard requires that the spikes on SDA and SCL lines should be suppressed to a length of 50ns.
+
+
+
+The analog noise filter is implemented by SDA and SCL I/O. The analog noise filter is enabled by default and can be disabled by setting ANFEN bit of I2C_FILTER register.
+
+The digital noise filter can be enabled and its filtering capability can be configured by DNFCFG bit of I2C_FILTER register.
+
+
+### 20.5.11 I2C interrupt
+
+
+
+Table 85 I2C Interrupt Request
+
+
+
+| Interrupt event | Event flag bit | Interrupt control bit |
+| ----------------------------------------------------- | ---------------- | ----------------------- |
+| Start bit transmission completed | STARTFLG |  |
+| Transmission completed/Address matching address signal | ADDRFLG |  |
+| 10-bit address head segment transmission completed | ADDR10FLG | EVIEN |
+| Stop signal received | STOPFLG |  |
+| Data byte transmission completed | BTCFLG |  |
+| Receive buffer not empty | RXBNFLG |  |
+| Transmit buffer empty | TXBEFLG | EVIEN and BUFEN |
+| Bus error | BERRFLG |  |
+| Arbitration loss | ALFLG |  |
+| Answer failed | AEFLG |  |
+| Overrun/Underrun | OVRURFLG | ERRIEN |
+| PEC error | PECEFLG |  |
+| Timeout or Tlow error | TTEFLG |  |
+| SMBus reminder | ALERTEN |  |
+
+
+## 20.6 Register address mapping
+
+
+
+Table 86 I2C Register Address Mapping
+
+
+
+| Register name | Description | Offset Address |
+| --------------------- | ---------------------------------------- | ---------------- |
+| I2C_CTRL1 | Control register 1 | 0x00 |
+| I2C_CTRL2 | Control register 2 | 0x04 |
+| I2C_SADDR1 | Slave address register 1 | 0x08 |
+| I2C_SADDR2 | Slave address register 2 | 0x0C |
+| I2C_DATA | Data register | 0x10 |
+| I2C_STS1 | State register 1 | 0x14 |
+| I2C_STS2 | State register 2 | 0x18 |
+| I2C_CLKCTRL | Master clock control register | 0x1C |
+
+
+## 20.7 Register functional description
+
+
+
+### 20.7.1 Control register 1 (I2C_CTRL1)
+
+Offset address: 0x00  
+Reset value: 0x0000  
+
+
+| Field | Name | R/W | Description |
+| ------- | ----------- | ----- | ----------------------------------------------------------------------------- |
+| 0 | I2CEN | R/W | I2C Enable<br>0: Disable<br>1: Enable |
+| 1 | SMBEN | R/W | SMBus Mode Enable<br>0: I2C mode<br>1: SMBus mode |
+| 2 | - | - | Reserved |
+| 3 | SMBTCFG | R/W | SMBus Type Configure<br>0: SMBus device<br>1: SMBus master |
+| 4 | ARPEN | R/W | ARP Enable<br>0: Disable<br>1: Enable<br>If SMBTCFG=0, use the default address of SMBus device<br>If SMBTCFG=1, use the master address of SMBus |
+| 5 | PECEN | R/W | PEC Enable<br>0: Disable<br>1: Enable |
+| 6 | SRBEN | R/W | Slave Responds Broadcast Enable<br>0: Disable<br>1: Enable<br>Note: The broadcast address is 0X00 |
+| 7 | CLKSTRETCHD | R/W | Slave Mode Clock Stretching Disable<br>0: Enable<br>1: Disable<br>In slave mode, enabling extending the low-level time of the clock can avoid overrun and underrun errors. |
+| 8 | START | R/W | Start Bit Transfer<br>This bit can be set to 1 and cleared to 0 by software; when transmitting the start bit or 2CEN=0, it is cleared to 0 by hardware.<br>0: Not transmit<br>1: Transmit |
+| 9 | STOP | R/W | Stop Bit Transfer<br>This bit can be set to 1 or cleared to 0 by software; when transmitting the stop bit, it is cleared to 0 by hardware; when timeout error is detected, it is set to 1 by hardware.<br>0: Not transmit<br>1: Transmit |
+| 10 | ACKEN | R/W | Acknowledge Transfer Enable<br>This bit can be set to 1 or cleared to 0 by software; when I2CEN=0, it is cleared by hardware.<br>0: Not transmit<br>1: Transmit |
+| 11 | ACKPOS | R/W | Acknowledge /PEC Position Configure<br>This bit can be set to 1 or cleared to 0 by software; when I2CEN=0, it is cleared by hardware.<br>0: When receiving current byte, whether transmitting NACK/ACK, whether PEC is in shift register<br>1: When receiving next byte, whether transmitting NACK/ACK and whether PEC is in the next byte of shift register |
+| 12 | PEC | R/W | Packet Error Check Transfer Enable<br>This bit can be set to 1 or cleared to 0 by software; after PEC, start bit or stop bit is transmitted, or when I2CEN=0, it is cleared to 0 by hardware.<br>0: Disable<br>1: Enable |
+| 13 | ALERTEN | R/W | SMBus Alert Enable<br>This bit can be set to 1 or cleared to 0 by software; when I2CEN=0, it is cleared to 0 by hardware.<br>0: Release the SMBAlert pin to make it higher, and transmit the response address header immediately after prompt is given to transmit the NACK signal<br>1: Drive SMBAlert pin to make it lower, and transmit the response address header immediately after prompt is given to transmit the ACKEN signal |
+| 14 | Reserved |  |  |
+| 15 | SWRST | R/W | Software Configure I2C under Reset State<br>0: Not reset<br>1: Reset; before I2C is reset, ensure that I2C pin is released and the bus is in idle state. |
+
+
+### 20.7.2 Control register 2 (I2C_CTRL2)
+
+Offset address: 0x04<br>
+Reset value: 0x0000
+
+
+
+
+5:0 CLKFCFG  RW
+
+I2C Clock Frequency Configure<br>
+The clock frequency is frequency of the clock of I2C module, namely, the clock input from APB bus.<br>
+0: Disable<br>
+1: Disable<br>
+2: 2MHz<br>
+...<br>
+50: 50MHz<br>
+Greater than 100100: Disable.<br>
+Minimum clock frequency of I2C bus: 1MHz in standard mode, and 4MHz in fast mode.
+
+
+7:6 Reserved
+
+
+
+# 8 ERRIEN  RW
+
+Error Interrupt Enable<br>
+0: Disable<br>
+1: Enable; when the bit of any of the following state registers is set to 1, this interrupt will be generated: SMBALTFLG, TTEFLG, PECEFLG, OVURFLG, AEFLG, ALFLG, and STS1_BERRFLG
+
+
+# 9 EVIEN  RW
+
+Event Interrupt Enable<br>
+0: Disable<br>
+1: Enable; when the bit of any of the following state registers is set to 1, the interrupt will be generated: STARTFLG, ADDRFLG, ADDR10FLG, STOPFLG, BTCFLG, TXBEFLG is set to 1 and BUFIEN is set to 1, RXBNFLG is set to 1 and BUFIEN is set to 1.
+
+
+# 10 BUFEN  RW
+
+Buffer Interrupt Enable<br>
+0: Disable<br>
+1: Enable; when the bit of any of the following state registers is set to 1, the interrupt will be generated: TXBEFLG and RXBNFLG
+
+
+# 11 DMAEN  RW
+
+DMA Requests Enable<br>
+0: Disable<br>
+1: When TXBEFLG=1 or RXBNFLG=1, enable DMA request
+
+
+# 12 LTCFG  RW
+
+DMA Last Transfer Configure<br>
+Configure whether the EOT of the next DMA is the last transmission received, and only used for the master receiving mode.<br>
+0: No<br>
+1: Yes
+
+
+15:13 Reserved
+
+
+
+### 20.7.3 Slave mode address register 1 (I2C_SADDR1)
+
+Offset address: 0x08<br>
+Reset value: 0x0000
+
+
+# 0 ADDR[0]  RW
+
+Slave Address Setup<br>
+When the address mode is 7 bits, the bit is invalid; when the address mode is 10 bits, this bit is the 0 bit of the address.
+
+
+7:1 ADDR[7:1]  RW
+
+Slave Address Setup<br>
+The 7:1 bit of slave address
+
+
+
+
+### 20.7.4 Slave address register 2 (I2C_SADDR2)
+
+Offset address: 0x0C  
+Reset value: 0x0000  
+
+
+| Field | Name | R/W | Description |
+| ---------- | ---------- | ----- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 9:8 | ADDR[9:8] | R/W | Slave Address Setup<br>When the address mode is 7 bits, the bit is invalid; when the address mode is 10 bits, this bit is the 9:8 bit of the address. |
+| 14:10 | Reserved |  |  |
+| 15 | ADDRLEN | R/W | Slave Address Length Configure<br>0: 7-bit address mode<br>1: 10-bit address mode |
+
+
+### 20.7.5 Data register (I2C_DATA)
+
+Offset address: 0x10  
+Reset value: 0x0000  
+
+
+| Field | Name | R/W | Description |
+| ---------- | ---------- | ----- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 7:0 | DATA | R/W | Data Register<br>In I2C transmission mode, write the data to be transmitted to this register; in I2C receiving mode, read the received data from this register. |
+| 15:8 | Reserved |  |  |
+
+
+### 20.7.6 State register 1 (I2C_STS1)
+
+Offset address: 0x14  
+Reset value: 0x0000  
+
+
+| Field | Name | R/W | Description |
+| ---------- | ---------- | ----- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 0 | STARTFLG | R | Start Bit Sent Finished Flag<br>0: Not transmit<br>1: Transmitted<br>When the start bit is transmitted, this bit can be set to 1 by hardware; this bit can be cleared after the software first reads STS1 register and then writes the DATA register; when I2CEN=0, it can be cleared to 0 by hardware. |
+| 1 | ADDRFLG | R | Address Transfer Complete /Receive Match Flag<br>Whether the matching address is received in slave mode:<br>0: Not received<br>1: Received<br>Whether master mode address transmission is completed:<br>0: Not completed<br>1: Completed<br>The bit can be set to 1 by hardware; this bit can be cleared after the software first reads STS1 register and then reads STS2 register; when I2CEN=0, it can be cleared to 0 by hardware. |
+| 2 | BTCFLG | R | Byte Transfer Complete Flag<br>0: Not completed<br>1: Completed<br>When receiving data, if the data received in DATA register fails to be read , and a new data is received then, it will be set to 1 by hardware;<br>When transmitting data, if the DATA register is empty, it will be set to 1 by hardware to transmit the data in the shift register.<br>This bit can be cleared after the software first reads STS1 register, and then reads or writes the DATA register; this bit can be cleared to 0 by hardware by transmitting a start bit and stop bit during the transmission, or when I2CEN=0. |
+| 3 | ADDR10FLG | R | 10-Bit Address Header Transmission Flag<br>0: Not transmit<br>1: Transmitted<br>The bit can be set to 1 by hardware; this bit can be cleared after the software first reads STS1 register and then writes the DATA register; when I2CEN=0, it can be cleared to 0 by hardware. |
+| 4 | STOPFLG | R | Stop Bit Detection Flag<br>0: Not detected<br>1: Detected<br>If ACKEN=1, after one answer, when the slave detects the stop bit on the bus, it will be set to 1 by hardware;<br>This bit can be cleared after the software first reads STS1 register and then writes the CTRL1 register; when I2CEN=0, it can be cleared to 0 by hardware. |
+| 5 | Reserved |  |  |
+| 6 | RXBNEFLG | R | Receive Buffer Not Empty Flag<br>0: The receive buffer is empty<br>1: The receive buffer is not empty<br>This bit can be set to 1 by hardware when there is data in DATA register;<br>When BTCFLG is set to 1, since the data register is still full, the RXBNEFLG bit cannot be cleared by reading DATA register;<br>This bit can be cleared after the software reads and writes DATA register; when I2CEN=0, it can be cleared to 0 by hardware. |
+| 7 | TXBEFLG | R | Transmit Buffer Empty Flag<br>0: The transmit buffer is not empty<br>1: The transmit buffer is empty<br>This bit can be set to 1 by hardware when the content of DATA register is empty;<br>When the software writes the first data to the DATA register, it will immediately move the data to the shift register, then the data in the DATA register is empty and this bit cannot be cleared;<br>This bit can be cleared after the software writes data to DATA register; after transmitting the start bit and stop bit, or when I2CEN=0, it can be cleared to 0 by hardware. |
+| 8 | BERRFLG | RC_W | Bus Error Flag<br>0: No bus error<br>1: Bus error occurred<br>Bus error means exception of start bit or stop bit; when an error is detected, this bit can be set to 1 by hardware; this bit can be cleared by writing 0 by software; when I2CEN=0, it can be cleared to 0 by hardware. |
+| 9 | ALFLG | RC_W | Master Mode Arbitration Lost Flag<br>0: No arbitration loss<br>1: In case of arbitration loss, I2C interface will automatically switch back to slave mode<br>"Arbitration loss in master mode" means the master loses the control of buses; this bit can be set to 1 by hardware; this bit can be cleared by writing 0 by software; when I2CEN=0, it can be cleared to 0 by hardware. |
+| 10 | AEFLG | RC_W | Acknowledge Error Flag<br>0: No acknowledgment error<br>1: Acknowledgment error occurred<br>This bit is set to 1 by hardware; this bit can be cleared by writing 0 by software; when I2CEN=0, it can be cleared to 0 by hardware. |
+| 11 | OVRURFLG | RC_W | Overrun/Underrun Flag<br>0: Not occur<br>1: Occurred<br>This bit can be set to 1 by hardware when CLKSTRETCHD=1 and any of the following conditions is met:<br>(1) In the slave receiving mode, when the data in the DATA register is not read out, but a new data is received (this data will be lost), overrun occurs;<br>(2) In the slave transmission mode, no data is written in the data register but data still needs to be transmitted (the same data is transmitted twice), and then underrun occurs.<br>This bit can be cleared by writing 0 by software; and be cleared to 0 by hardware when I2CEN=0. |
+
+
+12. PECFLG  
+
+| Field | Name | R/W | Description |
+| ----------- | --------- | ------- | ----------------------------------------------------------------------------- |
+| 12 | PECFLG | RC_W0 | PEC Error in Reception Flag                                                  <br>0: No PEC error: when ACKEN=1, after PEC is received, the receiver will return ACKEN<br><br>1: There is PEC error: regardless of the value of ACKEN, as long as PEC is received, the receiver will return NACK<br><br>This bit can be cleared by writing 0 by software; and be cleared to 0 by hardware when I2CEN=0. |
+
+
+13. Reserved  
+
+| Field | Name | R/W | Description |
+| ----------- | --------- | ------- | ----------------------------------------------------------------------------- |
+| 13 | Reserved |  |  |
+
+
+14. TTEFLG  
+
+| Field | Name | R/W | Description |
+| ----------- | --------- | ------- | ----------------------------------------------------------------------------- |
+| 14 | TTEFLG | RC_W0 | Timeout or Tlow Error Flag                                                  <br>0: No timeout error<br><br>1: When a timeout error occurs, in slave mode, the slave is reset and the bus is released; in master mode, the hardware transmits the stop bit.<br><br>This bit can be set to 1 by hardware when timeout error occurs in any of the following situations:<br><br>(1) SCL maintains low level for more than 25ms;<br><br>(2) SCL low-level extension time of the master device is more than 10ms;<br><br>(3) SCL low-level extension time of the slave device is more than 25ms.<br><br>This bit can be cleared by writing 0 by software; and be cleared to 0 by hardware when I2CEN=0. |
+
+
+15. SMBALTFLG  
+
+| Field | Name | R/W | Description |
+| ----------- | ----------- | ------- | ----------------------------------------------------------------------------- |
+| 15 | SMBALTFLG | RC_W0 | SMBus Alert Occur Flag                                                      <br>0: SMBus master mode, without alarm;<br><br>SMBus slave mode, without alarm, SMBAlert pin level unchanged<br><br>1: SMBus master mode, with an alarm generated on the pin;<br><br>SMBus slave mode, receiving an alarm, causing SMBAlert pin level to become low<br><br>This bit is set to 1 by hardware; this bit can be cleared by writing 0 by software; when I2CEN=0, it can be cleared to 0 by hardware. |
+
+
+### 20.7.7 State register 2 (I2C_STS2)
+
+| Field | Name | R/W | Description |
+| ----------- | --------- | ------- | ----------------------------------------------------------------------------- |
+|  |  |  | Offset address: 0x18<br>                                                  <br>Reset value: 0x0000 |
+
+
+0. MSFLG  
+
+| Field | Name | R/W | Description |
+| ----------- | --------- | ------- | ----------------------------------------------------------------------------- |
+| 0 | MSFLG | R | Master Slave Mode Flag                                                      <br>0: Slave mode<br><br>1: Master mode<br><br>This bit can be set to 1 by hardware when I2C is configured as master mode;<br><br>This bit can be cleared to 0 by hardware when any of the following conditions is met:<br><br>(1) Stop bit is generated<br><br>(2) Bus arbitration is lost<br><br>(3) I2CEN=0<br> |
+| 1 | BUSSYFLG | R | Bus Busy Flag<br>0: The bus is idle (no communication)<br>1: The bus is busy (in the progress of communication)<br>This bit can be set to 1 by hardware when SDA or SCL is at low level; and cleared to 0 by hardware after the stop bit is generated. |
+| 2 | TRFLG | R | Transmitter / Receiver Mode Flag<br>0: The device is in receiver mode (read)<br>1: The device is in transmitter mode (write)<br>Decide the bit value according to R/W bit;<br>This bit can be cleared to 0 by hardware when any of the following conditions is met:<br>(1) Stop bit is generated<br>(2) Repeated start bit is generated<br>(3) Bus arbitration is lost<br>(4) I2CEN=0 |
+| 3 |  |  | Reserved |
+| 4 | GENCALLFLG | R | Slave Mode Received General Call Address Flag<br>0: Failed to receive the broadcast address<br>1: Received the Broadcast address<br>This bit can be set to 1 by hardware; and cleared to 0 by hardware when any of the following conditions is met:<br>(1) Stop bit is generated<br>(2) Repeated start bit is generated<br>(3) I2CEN=0 |
+| 5 | SMBDADDRFLG | R | SMBus Device Received Default Address Flag in Slave Mode<br>0: Failed to receive the default address<br>1: Received the default address when ARPEN=1<br>This bit can be set to 1 by hardware; and cleared to 0 by hardware when any of the following conditions is met:<br>(1) Stop bit is generated<br>(2) Repeated start bit is generated<br>(3) I2CEN=0 |
+| 6 | SMMHADDR | R | SMBus Device Received Master Header Flag in Slave Mode<br>0: Failed to receive the master head address<br>1: Received the master head address when SMBTSEL=1 and ARPEN=1<br>This bit can be set to 1 by hardware; and cleared to 0 by hardware when any of the following conditions is met:<br>(1) Stop bit is generated<br>(2) Repeated start bit is generated<br>(3) I2CEN=0 |
+| 7 | DUALADDRFLG | R | Slave Mode Received Dual Address Match Flag<br>0: The received address matches the content of ADDR1 register<br>1: The received address matches the content of ADDR2 register<br>This bit can be set to 1 by hardware; and cleared to 0 by hardware when any of the following conditions is met:<br>(1) Stop bit is generated<br>(2) Repeated start bit is generated<br>(3) I2CEN=0 |
+| 15:8 | PECVALUE | R | Save Packet Error Checking Value<br>When PECEN=1, the internal PEC value is saved in PECVALUE. |
+
+
+### 20.7.8 Master clock control register (I2C_CLKCTRL)
+
+Offset address: 0x1C<br>
+Reset value: 0x0000
+
+
+| Field | Name | R/W | Description |
+| ----------- | -------------- | ----- | ------------------------------------------------------------------------------------------------------ |
+| 11:0 | CLKS [11:0] | R/W | Clock Setup in Fast/Standard Master Mode<br>In I2C standard mode or SMBus mode:<br>T_high=CLKS × T_PCLK1<br>T_low=CLKS × T_PCLK1<br>In I2C fast mode:<br>When FDUTYCFG=0:<br>T_high=CLKS×T_PCLK1<br>T_low=2×CLKS×T_PCLK1<br>When FDUTYCFG=1:<br>T_high=9 × CLKS × T_PCLK1<br>T_low=16 × CLKS × T_PCLK1 |
+| 13:12 | Reserved |  |  |
+| 14 | FDUTYCFG | R/W | Fast Mode Duty Cycle Configure<br>Duty cycle = t_low/t_high<br>0: SCLK duty cycle is 2<br>1: SCLK duty cycle is 16/9 |
+| 15 | SPEEDCFG | R/W | Master Mode Speed Configure<br>0: Standard mode<br>1: Fast mode |
+
+
+### 20.7.9 Maximum rising time register (I2C_RISETMAX)
+
+Offset address: 0x20<br>
+Reset value: 0x0002
+
+
+| Field | Name | R/W | Description |
+| ----------- | -------------- | ----- | ------------------------------------------------------------------------------------------------------ |
+| 5:0 | RISETMAX | R/W | Master Mode Maximum Rise Time in Fast/Standard Mode<br>The time is in T_PCLK1, and RISETMAX is the maximum rising time unit of SCL plus 1. |
+| 15:6 | Reserved |  |  |
+
+
+### 20.7.10 Filter control register (I2C_FILTER)
+
+Offset address: 0x24  
+Reset value: 0x0000  
+
+
+| Field | Name | R/W | Description |
+| ------- | --------- | ----- | --------------------------------------------------------------------------------------------- |
+| 3:0 | DNFCFG | R/W | Digital Noise Filter Filtering Capability Configure<br>0000: Disable<br>0001: 1 × TPCLK1<br>.......<br>1111: 15 × TPCLK1<br>Note: These bits can be configured only when I2CEN=1. |
+| 4 | ANFDIS | R/W | Analog Noise Filter Disable<br>0: Enable<br>1: Disable |
+| 15:5 |  |  | Reserved |
+
+
+# 21 Serial peripheral interface/Inter-IC sound interface (SPI/I2S)
+
+
+
+## 21.1 Full Name and Abbreviation of Terms
+
+
+
+Table 87 Full Name and Abbreviation Description of Terms
+
+
+
+| Full name in English | English abbreviation |
+| ---------------------------------- | --------------------- |
+| Most Significant Bit | MSB |
+| Least Significant Bit | LSB |
+| Master Out Slave In | MOSI |
+| Master In Slave Out | MISO |
+| Serial Clock | SCK |
+| Serial Data | SD |
+| Master Clock | MCK |
+| Word Select | WS |
+| Pulse-code Modulation | PCM |
+| Inter-IC Sound | I2S |
+| Transmit | TX |
+| Receive | RX |
+| Busy | BSY |
+
+
+## 21.2 Introduction
+
+
+SPI interface can be configured to support SPI protocol and I2S audio protocol. It works in SPI mode by default, and the functions can be switched in I2S mode by software.
+
+Serial peripheral interface (SPI) provides data transmitting and receiving functions based on SPI protocol, which allows chips to communicate with external devices in half duplex, full duplex, synchronous and serial modes, and can work in master or slave mode.
+
+The inter-IC sound interface (I2S) supports four audio standards: Philips I2S standard, MSB alignment standard, LSB alignment standard and PCM standard. It can work in master/slave mode during half-duplex communication.
+
+
+
+
+## 21.3 Main characteristics
+
+
+
+### 21.3.1 Main characteristics of SPI
+
+
+1. Master and slave operation with 3-wire full duplex synchronous transmission and receiving
+2. Simplex synchronous transmission can be realized by two wires (the third bidirectional data line can be included/not included)
+3. Select 8-bit or 16-bit transmission frame format
+4. Support multi-master device mode
+5. Support special transmission and receiving mark and can trigger interrupts
+6. Have SPI bus busy state flag
+7. The communication rate of SPI is up to 50mbit/s
+8. Clock polarity and phase are programmable
+9. Data sequence is programmable; select MSB or LSB in front
+10. An interrupt can be triggered by master mode fault, overrun and CRC error flag
+11. Have DMA transmit and receive buffers
+12. SPI TI mode
+13. Calculate, transmit and verify by hardware CRC
+
+
+### 21.3.2 Main characteristics of I2S
+
+
+1. Have master/slave mode of simplex communication (transmit/receive only)
+2. Four audio standards<br> 
+   ● I2S Philips standard<br> 
+   ● MSB alignment standard<br> 
+   ● LSB alignment standard<br> 
+   ● PCM standard
+3. 16/24/32-bit data length can be selected
+4. 16-bit or 32-bit channel length
+5. Clock polarity is programmable
+6. 16-bit data register is used for transmitting and receiving
+7. MSB is always the first in the data direction
+
+
+
+
+## 21.4 SPI functional description
+
+
+
+### 21.4.1 Description of SPI signal line
+
+
+
+Table 88 SPI Signal Line Description
+
+
+
+| Pin Name | Description |
+| ---------- | ------------------------------------------------------------------------------------------------------ |
+| SCK | Master device: SPI clock outputs<br>Slave device: SPI clock inputs |
+| MISO | Master device: Input the pin and receive data<br>Slave device: Output the pin and transmit data<br>Data direction: From slave device to master device |
+| MOSI | Master device: Output the pin and transmit data<br>Slave device: Input the pin and receive data<br>Data direction: From master device to slave device |
+| NSS | Software NSS mode: NSS pin can be used for other purposes.<br>NSS mode of master device hardware: NSS output, single master mode.<br>Disable NSS output: Operation of multiple master environments is allowed.<br>NSS mode of slave device hardware: NSS signal is set to low level as chip selection signal of slave. |
+
+
+### 21.4.2 Phase and polarity of clock signal
+
+
+The clock polarity and clock phase are CPOL and CPHA bits of SPI_CTRL1 register.
+
+Clock polarity CPOL means the level signal of SCK signal line when SPI is in idle state.
+- When CPOL=0, SCK signal line is low in idle state
+- When CPOL=1, SCK signal line is high in idle state
+
+Clock phase CPHA means the sampling moment of data
+- When CPHA=0, the signal on MOSI or MISO data line will be sampled by the "odd edge" on SCK clock line.
+- When CPHA=1, the signal on MOSI or MISO data line will be sampled by the "even edge" on SCK clock line.
+
+SPI can be divided into four modes according to the states of clock phase CPHA and clock polarity CPOL.
+
+
+Table 89 Four Modes of SPI
+
+
+
+| SPI mode | CPHA | CPOL | Sampling moment | Idle SCK clock |
+| ---------- | ------ | ------ | ------------------ | ---------------- |
+| 0 | 0 | 0 | Odd edge | Low level |
+| 1 | 0 | 1 | Odd edge | High Level |
+| 2 | 1 | 0 | Even edge | Low level |
+
+
+### 21.4.3 Data frame format
+
+Set MSB or LSB to be first by configuring LSBSEL bit of SPI_CTRL1 register.  
+Select to transmit/receive in 8/16-bit data frame format by configuring DFLSEL bit of SPI_CTRL1 register.
+
+
+### 21.4.4 NSS mode
+
+Software NSS mode: Select to enable or disable this mode by configuring SSEN bit of SPI_CTRL1 register, and the internal NSS signal level is driven by ISSEL bit of SPI_CTRL1 register.
+
+Hardware NSS mode:
+- Enable NSS output: When SPI is in master mode, enable SSOEN bit, NSS pin will be pulled to low and SPI will automatically enter the slave mode.
+- Disable NSS output: Operation is allowed in multi-master environments.
+
+
+### 21.4.5 SPI mode
+
+#### 21.4.5.1 SPI master mode
+
+In master mode, generate serial clock on SCK pin
+
+Master mode configuration
+- Configure MSMSEL=1 in SPI_CTRL1 register
+- Select the polarity and phase by configuring CPOL and CPHA bits of SPI_CTRL1 register.
+- Select 8/16-bit data frame format by configuring DFLSEL bit of SPI_CTRL1 register
+- Select LSB or MSB first by configuring LSBSEL in SPI_CTRL1 register
+- NSS configuration:
+  - NSS pin works in input mode: in hardware mode, it is required to connect NSS pin to high level during the entire data frame transmission; in software mode, it is required to set SSEN bit and ISSEL bit in SPI_CTRL1 register
+  - NSS works in output mode and it is required to configure SSOEN bit of SPI_CTRL2 register
+- Configure FRFCFG bit of SPI_CTRL2 register to select TI mode protocol for serial communication
+- Enable SPI by configuring SPIEN bit in SPI_CTRL1 register
+
+In master mode: MOSI pin is data output, while MISO is data input
+
+
+
+
+TI protocol
+
+
+In slave mode, SPI interface supports TI protocol. It is controlled by FRFCFG bit of SPI_CTRL2 register. Both clock polarity and phase conform to TI protocol. NSS management is specific to TI protocol, not needing to configure SPI_CTRL1 and SPI_CTRL2 registers.
+
+
+#### 21.4.5.2 SPI slave mode
+
+
+In slave mode, SCK pin receives the serial clock transmitted from the master device
+
+
+Configuration of slave mode
+
+- Configure MSMSSEL=0 in SPI_CTRL1 register
+- Select the polarity and phase by configuring CPOL and CPHA bits of SPI_CTRL1 register.
+- Select 8/16-bit data frame format by configuring DFLSEL bit of SPI_CTRL1 register
+- Select LSB or MSB first by configuring LSBSEL in SPI_CTRL1 register
+- NSS configuration:
+  - In hardware mode: NSS pin must be low in the whole data frame transmission process
+  - In software mode: Set SSEN bit in SPI_CTRL1 register and clear ISSEL bit (this step is not required for TI mode)
+- Configure FRFCFG bit of SPI_CTRL2 register to select TI mode protocol for serial communication
+- Enable SPI by configuring SPIEN bit in SPI_CTRL1 register
+
+In slave mode: MOSI pin is data input, while MISO is data output
+
+
+TI protocol
+
+
+In slave mode, SPI interface supports TI protocol. It is controlled by FRFCFG bit of SPI_CTRL2 register. Both clock polarity and phase conform to TI protocol. NSS management is specific to TI protocol, not needing to configure SPI_CTRL1 and SPI_CTRL2 registers.
+
+In slave mode, SPI baud rate prescaler can use any baud rate to control the moment of switching MISO pin state to high-impedance state, so it can determine this moment very flexibly. The baud rate is generally the baud rate of external master clock. The baud rate value set by BRSEL[2:0] of SPI_CTRL1 register and the internal circuit of the chip synchronously determine the time when the MISO pin state changes to high-impedance state.
+
+
+#### 21.4.5.3 Half-duplex communication of SPI
+
+
+
+One clock line and one bidirectional data line
+
+- Enable this mode by setting BMEN of SPI_CTRL1 register
+
+
+
+
+### 21.4.6 Data transmission and receiving process in different modes of SPI
+
+
+
+Table 90 Run Mode of SPI
+
+
+
+| Mode | Configure | Data pin |
+| ------------------------------------------------ | ---------------------- | -------------------------------------------------- |
+| Full-duplex mode of master device | BMEN=0, RXOMEN=0 | MOSI transmits; MISO receives |
+| Unidirectional receiving mode of master device | BMEN=0, RXOMEN=1 | MOSI is not used; MISO receives |
+| Bidirectional transmitting mode of master device | BMEN=1, BMOEN=1 | MOSI transmits; MISO is not used |
+| Bidirectional receiving mode of master device | BMEN=1, BMOEN=0 | MOSI is not used; MISO receives |
+| Full-duplex mode of slave device | BMEN=0, RXOMEN=0 | MOSI receives, and MISO transmits |
+| Unidirectional receiving mode of slave device | BMEN=0, RXOMEN=1 | MOSI receives, and MISO is not used |
+| Bidirectional transmitting mode of slave device | BMEN=1, BMOEN=1 | MOSI is not used, and MISO transmits |
+| Bidirectional receiving mode of slave device | BMEN=1, BMOEN=0 | MOSI receives, and MISO is not used |
+
+
+Figure 84 Connection in Full-duplex Mode
+
+
+
+
+![Figure 85 Connection in Half-duplex Mode (the master receives, while the slave transmits)](https://www.geehy.com)
+
+
+Figure 85 Connection in Half-duplex Mode (the master receives, while the slave transmits)
+
+| Master device |  | Slave device |
+| --------------- | -------- | -------------- |
+| SCK | <--> | SCK |
+| MISO | <--> | MISO |
+| MOSI | <--> | MOSI |
+| NSS | <--> | NSS |
+
+
+Figure 86 Connection in Half-duplex Mode (the master only transmits, while the slave receives)
+
+| Master device |  | Slave device |
+| --------------- | -------- | -------------- |
+| SCK | <--> | SCK |
+| MISO | <--> | MISO |
+| MOSI | <--> | MOSI |
+| NSS | <--> | NSS |
+
+
+Figure 87 Bidirectional Line Connection
+
+| Master device |  | Slave device |
+| --------------- | -------- | -------------- |
+| SCK | <--> | SCK |
+| MISO | <--> | MISO |
+| MOSI | <--> | MOSI |
+| NSS | <--> | NSS |
+
+
+#### 21.4.6.1 Transmitting and receiving of processed data
+
+
+Data transmission
+
+After the mode configuration is completed, the SPI module is enabled to remain idle.
+
+Master mode: The software writes a data frame to the transmit buffer, and the transmission process starts.
+
+
+
+Slave mode: The SCK signal on the SCK pin starts to jump, while the NSS pin level is low, and the transmission process starts (before starting data transmission, make sure that the data has been written to the transmit buffer in advance).
+
+When SPI is transmitting a data frame, it will load the data frame from the data buffer to the shift register, and then start to transmit data. After one bit of data frame is transmitted, TXBEFLG is set to 1. To continue to transmit data, the software needs to wait and when TXBEFLG=1 data will be written to the SPI_DATA register. (TXBEFLG flag is set to 1 by hardware and cleared to 0 by software).
+
+
+Data receiving
+
+
+BSYFLG flag is always set to 1 in the data receiving process.
+
+At the last edge of the sampling clock, the received data is transmitted from the shift register to the receive buffer; set the RXBNEFLG flag, and the software reads the data in data register (SPI_DATA) to obtain the content of the receive buffer; if RXBNEIEN bit of SPI_CTRL2 register is set, an interrupt will be generated, and after data is read, the BSYFLG flag will be automatically cleared.
+
+
+#### 21.4.6.2 Full duplex transmitting and receiving mode under master/slave device
+
+
+
+Full duplex mode under master device  
+
+- After writing data to SPI_DATA register (transmit buffer), data transmission starts.  
+- When SPI transmits the first bit of data, the data is transmitted from the transmit buffer to the shift register and then transmitted to the MOSI pin serially according to the sequence.  
+- The data received on MISO pin is serially transmitted to SPI_DATA register (receive buffer) according to the sequence.  
+
+Transmitting and receiving are synchronous.
+
+
+Full duplex mode under slave device  
+
+- When the slave device receives the clock signal and the first data bit appears on the MOSI pin, data transmission starts, and the subsequent data bits will be transmitted to the shift register in turn.  
+- When SPI transmits the first bit of data, the data is transmitted from the transmit buffer to the shift register and then transmitted to the MISO pin serially according to the sequence.  
+- The software must ensure that the data to be transmitted has been written before the SPI master device starts to transmit data.  
+
+Transmitting and receiving are synchronous.
+
+
+
+
+Full duplex transmitting and receiving process under master/slave device
+
+
+(1) Enable SPI module: Configure SPIEN=1 for SPI_CTRL1 register.
+
+(2) Write the first data to be transmitted to SPI_DATA register, and the TXBEFLG flag will be cleared.
+
+(3) Wait until TXBEFLG flag bit is set to 1 (controlled by hardware), and write the second data bit to be transmitted.
+
+(4) Wait until RXBNEFLG flag bit is set to 1 (controlled by hardware), read the first received data in the SPI_DATA register, at the same time, clear the RXBNEFLG flag (cleared to 0 by software). Repeat the operation, and transmit and receive data at the same time.
+
+(5) Wait until RXBNEFLG=1 and receive the last data.
+
+(6) Wait until TXBEFLG=1 and disable SPI module after BSYFLG=0.
+
+
+#### 21.4.6.3 Bidirectional transmission mode under master/slave device
+
+
+
+Bidirectional transmission under master device
+
+- After the data is written to SPI_DATA register, start transmission
+- The data in the transmit buffer is transmitted to the shift register in parallel, and then transmitted to the MOSI pin serially according to the sequence.
+
+
+Bidirectional transmission under slave device
+
+- When the slave device receives the clock signal and the first data bit appears on the MISO pin, data transmission starts.
+- At the same time, the data to be transmitted by the transmit buffer is transmitted to the shift register in parallel, and then transmitted to the MISO pin serially (before data transmission, make sure that the data has been written to the transmit buffer in advance).
+
+
+Bidirectional transmission process under master/slave device
+
+
+(1) Enable SPI module: Configure SPIEN=1 for SPI_CTRL1 register.
+
+(2) Write the first data to be transmitted to SPI_DATA register, and the TXBEFLG flag will be cleared.
+
+(3) Wait until TXBEFLG=1, write the second data, repeat the operation and transmit the subsequent data.
+
+(4) After the last data is written, wait until TXBEFLG=1 and BSYFLG=0 and transmission is completed.
+
+
+#### 21.4.6.4 Unidirectional/Bidirectional receiving mode under master/slave device
+
+
+(1) Enable SPI module: Configure SPIEN=1 for SPI_CTRL1 register.
+
+
+
+(2) In the master device: Generate SCK clock immediately, and
+continuously receive data before SPI is disabled.
+
+(3) Slave device: When SPI master device pulls down NSS and generates a clock, receive data.
+
+(4) Wait until the RXBNEFLG flag is set to 1, read data through SPI_DATA, and repeat the operation to receive data.
+
+
+### 21.4.7 CRC functions
+
+
+SPI module contains two CRC computing units, which are used for data receiving and data transmission respectively.
+
+CRC computing unit is used to define polynomials in SPI_CRCPOLY register.
+
+Enable CRC computing by configuring CRCEN bit in SPI_CTRL1 register; at the same time, reset the CRC register (SPI_RXCRC and SPI_TXCRC).
+
+To obtain the CRC value of transmission calculation, after the last data is written to the transmit buffer, it is required to set CRCNXT bit of SPI_CTRL1; indicate that the hardware transmits the CRC value after the last data is transmitted, and the CRCNXT bit will be cleared; at the same time, compare the values of CRC and SPI_RXCRC, and if they do not match, it is required to set CRCFLE bit of SPI_STS register, and after ERRIEN bit of SPI_CTRL2 register is set, an interrupt will occur.
+
+**Note:**
+
+(1) If SPI is under slave device and CRC function is used, CRC computing will continue when NSS pin is at high level. For example, when the master device communicates with multiple slave devices alternately, the above situation will occur, so it is necessary to avoid faulty operation of CRC.
+
+(2) In the process of a slave device from being unselected (NSS is at high level) to being selected (NSS is at low level 0), it is required to clear the CRC value at both ends of the master and slave devices to keep the next CRC computing results of the master and slave devices synchronized.
+
+(3) When SPI is in slave mode, CRC computing can be enabled after the clock becomes stable.
+
+(4) When the SPI clock frequency is too high, the CPU operation will affect the SPI bandwidth. It is recommended to use DMA mode to avoid reduction of SPI speed.
+
+(5) When the SPI clock frequency is too high, during the CRC transmission period, the CPU utilization frequency will be reduced, and the function call is disabled in the CRC transmission process to avoid errors when receiving the last data and CRC.
+
+(6) When NSS hardware mode is used in slave mode, NSS pin should be kept low during data transmission and CRC transmission period.
+
+
+Sequence of clearing CRC values
+
+
+(1) Disable SPI (SPIEN=0)  
+(2) Clear CRCEN bit
+
+
+
+
+### 21.4.8 DMA function
+
+
+The request/response DMA mechanism in SPI facilitates high-speed data transmission, improves the system efficiency and enable to transfer data to SPI transmit buffer promptly, and the receive buffer can read the data in time to prevent overrun.
+
+When SPI only transmits data, it is only necessary to enable DMA transmission channel; when SPI only receives data, it is only necessary to enable DMA receiving channel.
+
+DMA function of SPI mode can be enabled by configuring TXDEN and RXDEN bits of SPI_CTRL2 register.
+- During transmitting: When TXBEFLG flag bit is set to 1, issue the DMA request, DMA controller writes data to SPI_DATA register, and then the TXBEFLG flag bit will be cleared.
+- When receiving: When setting RXBNEFLG flag bit to 1, issue the DMA request, DMA controller reads data from SPI_DATA register, and then RXBNEFLG flag bit is cleared.
+
+By monitoring BSYFLG flag bit, confirm whether SPI communication is over after DMA has transferred all data to be transmitted in transmitting mode, which can avoid damaging the transmission of last data.
+
+
+DMA function with CRC
+
+
+By the end of communication, if SPI enables both CRC operation and DMA function, transmitting and receiving of CRC bytes will be completed automatically.
+
+At the end of data and CRC transmission, if CRCEFLG flag bit of SPI_STS register is set to 1, it indicates that an error occurred during transmission.
+
+
+### 21.4.9 Disable SPI
+
+
+After data transmission is over, end the communication by disabling SPI module. In some configurations, if SPI is disabled before data transmission is completed, a data transmission error may be caused. Different methods are required in different operation modes to disable SPI.
+
+
+Maser mode/Full-duplex slave mode
+
+
+(1) Wait until RXBNEFLG flag bit is set to 1, and receive the last data  
+(2) Wait until TXBEFLG flag bit is set to 1  
+(3) Wait for clearing BSYFLG flag bit to 0
+
+
+
+(4) Disable SPI (set SPIEN=0 for SPI_CTRL1 register)
+
+
+Unidirectional transmit-only/Bidirectional transmitting mode of master mode/slave mode
+
+
+After the last data is written into SPI_DATA register:
+
+(1) Wait until TXBEFLG flag bit is set to 1  
+(2) Wait for clearing BSYFLG flag bit to 0  
+(3) Disable SPI (set SPIEN=0 for SPI_CTRL1 register)  
+
+
+Unidirectional receive-only/bidirectional receiving mode of master mode/slave mode
+
+
+(1) Wait until No. n-1 RXBNEFLG flag bit is set to 1  
+(2) Wait for one SPI clock cycle before SPI is disabled (set SPIEN=0 for SPI_CTRL1 register)  
+(3) Before entering the stop mode, wait until the last RXBNEFLG flag bit is set to 1  
+
+
+Receive-only/bidirectional receiving mode in slave mode
+
+
+SPI can be disabled at any time (set SPIEN=0 for SPI_CTRL1 register) and it will be disabled when the transmission is over. To enter the stop mode, wait until BSYFLG flag bit is cleared to 0.  
+
+
+### 21.4.10 SPI interrupt
+
+
+
+#### 21.4.10.1 Status flag bit
+
+
+
+Transmit buffer idle flag TXBEFLG
+
+
+TXBEFLG=1 indicates that the transmit buffer bit is empty, and the next data to be transmitted can be written. When the data is written to SPI_DATA register, clear the TXBEFLG flag bit.  
+
+
+Receive buffer non-empty flag RXBNEFLG
+
+
+RXBNEFLG=1 indicates that the receive buffer contains valid data and the data can be read through SPI_DATA register; and the RXBNEFLG flag can be cleared.  
+
+
+Busy flag BSYFLG
+
+
+BSYFLG flag is set and cleared by hardware, which can indicate the state of SPI communication layer. BSYFLG=1 indicates SPI is communicating, but in the two-line receiving mode under the master device, BSYFLG=0 during the period
+
+
+
+of receiving data.
+
+BSYFLG flag can be used to detect whether transmission is over to avoid destroying the last transmitted data.
+
+BSYFLG flag bit can be used to avoid conflict when writing data in multi-master mode.
+
+BSYFLG flag will be cleared to 0 when the transmission ends (except for continuous communication in master mode), SPI is disabled and the master mode fails.
+
+BSYFLG=0 between data item and data item when communication is discontinuous.
+
+When communication is continuous:
+- In master mode: BSYFLG=1 in the whole transmission process<br>
+- In save mode: BSYFLG is kept low within one SCK clock cycle between transmission of data<br>
+Note: It is better to use TXBEFLG and RXBNEFLG flags to process the transmitting and receiving of each data item.
+
+
+#### 21.4.10.2 Error flag bit
+
+
+
+Master mode error MEFLG
+
+
+MEFLG is an error flag bit. The master mode error occurs when: in hardware NSS mode, the NSS pin of the master device is pulled down; in software NSS mode, ISSEL bit is cleared to 0; MEFLG bit is set automatically.
+
+Influence of master mode failure: MEFLG is set to 1, and SPI interrupt is generated when ERRIEN is set; SPIEN is cleared to 0 (output stops, and SPI interface is disabled); MSMSSEL is cleared to 0 and the device is forced to enter the slave mode.
+
+Operation of clearing the MEFLG flag bit: When MEFLG bit is set to 1, it is required to read or write SPI_STS register, and then write to SPI_CTRL1 register.
+
+When MEFLG flag bit is 1, it is not allowed to set SPIEN and MSMSSEL bits.
+
+
+Overrun error OVRFLG
+
+
+Overrun error: After the master device transmits the data, the RXBNEFLG flag bit is still 1, which indicates that an overrun error occurred. Then OVRFLG bit is set to 1, and if the ERRIEN bit is also set, an interrupt will be generated.
+
+After an overrun error occurs, the data in the receive buffer is not the data transmitted by the master device, then the read data in SPI_DATA register is the data not read before, while the data transmitted later will not be read.
+
+
+
+OVRFLG flag can be cleared by reading SPI_DATA register and SPI_STS register according to the sequence.
+
+
+CRC error flag CRCEFLG
+
+
+By setting CRCEN bit of SPI_CTRL1 register, enable CRC computing, and CRC error flag can be used to check whether the received data is valid.
+
+When the value transmitted by SPI_TXCRC register does not match the value in SPI_RXCRC register, a CRC error will be generated, and CRCEFLG flag bit in SPI_STS register will be set to 1.
+
+CRCEFLG can be cleared by writing 0 to CRCEFLG bit of SPI_STS register.
+
+
+TI frame format error flag FREFLG
+
+
+If SPI supports TI protocol in slave mode, TI frame format error will be detected when NSS pulse occurs during communication. When this error appears, SPI_STS[FREFLG]=1, SPI will not be disabled, but NSS pulse will be ignored, and SPI will start new transmission when next NSS pulse arrives. As the error detection may cause the loss of two data bytes, the data may be damaged.
+
+FREFLG flag will be cleared to 0 when reading SPI_STS register. If ERRIEN=1, and a frame format error is detected, an interrupt will be generated. The continuity of data cannot be guaranteed at this time, the SPI shall be disabled and after the slave SPI is enabled again, the master will restart the communication.
+
+
+| Interrupt flag | Interrupt event | Enable control bit | Clearing method |
+| ---------------- | ------------------------------------- | --------------------- | ------------------------------------------------ |
+| TXBEFLG | Transmit buffer empty flag | TXBEIEN | Write SPI_DATA register |
+| RXBNEFLG | Receive buffer non-empty flag | RXBNEIEN | Read SPI_DATA register |
+| MEFLG | Master mode failure event |  | Read/Write SPI_STS register, and then write SPI_CTRL1 register |
+| OVRFLG | Overrun error | ERRIEN | Read SPI_DATA register, and then read SPI_STS register |
+| CRCEFLG | CRC error flag |  | Write 0 to CRCEFLG bit |
+| FREFLG | TI frame format error |  | Read SPI_STS register |
+
+
+## 21.5 I2S functional description
+
+
+Enable I2S function by setting I2SMOD bit of SPI_I2SCFG.
+
+
+
+I2S and SPI share four pins:
+- SD: Serial data, transmitting and receiving the data of 2-way time division multiplexing channel
+- WS: Chip selection, switching the data of left and right channels
+- CK: Serial clock; the clock signal is output in master mode, and is input in slave mode
+- MCK: Master clock; in master mode, when MCOEN bit of SPI_I2SPSC register is set to 1, it can be used as the pin for outputting the extra clock signal.
+
+
+### 21.5.1 I2S full duplex
+
+
+In addition to I2S2 and I2S3, two extended I2S can also be used to support I2S full-duplex mode. Therefore, the first I2S full-duplex interface is based on I2S2 and I2S2_ext, and the second is based on I2S3 and I2S3_ext.
+
+I2Sx can work in master mode:
+
+(1) Output SCK and WS in half-duplex mode
+
+(2) Provide SCK and WS for I2S2_ext and I2S3_ext in full-duplex mode
+
+Extended I2S is only used for full-duplex mode and always works in slave mode. Both I2Sx and I2S3_ext can be used for transmitting and receiving.
+
+
+### 21.5.2 I2S audio standard
+
+
+I2S audio standard is selected by setting I2SSSEL bit and PFSSEL bit of SPI_I2SCFG register, and four audio standards can be selected in total: I2S Philips standard, MSB alignment standard, LSB alignment standard and PCM standard. Except PCM standard, other audio standards have two channels: left and right channels.
+
+The data length and channel length can be configured by DATALEN and CHLEN bits in SPI_I2SCFG register. The channel length must be greater than or equal to the data length. There are four data formats to transmit data: 16-bit data packed into 16-bit frame, 16-bit data packed into 32-bit frame, 24-bit data packed into 32-bit frame, and 32-bit data packed into 32-bit frame.
+
+When the 16-bit data is extended to 32 bits, the first 16 bits are valid data, and the last 16 bits are forced to be 0. No external intervention is needed in this process.
+
+Since the data buffers used for transmitting and receiving are all 16 bits, SPI_DATA needs to read/write twice when 24-bit and 32-bit data are transmitted. If DMA is used, DMA transmission twice is required.
+
+For all communication standards and data formats, the most significant bit of data is always transmitted first.
+
+For time division multiplexing, the left channel is always transmitted first, and
+
+
+
+
+#### 21.5.2.1 I2S Philips standard
+
+
+In I2S Philips standard, the pin WS can indicate the data being transmitted comes from the left channel or the right channel.
+
+In I2S Philips standard, both WS and SD change on the falling edge of CK clock signal.
+
+The sender will change the data on the falling edge of the clock signal CK, while the receiver will change the data on the rising edge of the clock signal CK.
+
+
+Figure 88 I2S Philips Protocol Waveform (16/32 bits)
+
+
+
+| SPI_CLK | SPI_WS | SPI_SD |
+| --------- | -------- | -------- |
+|  |  | <br>16-bit/32-bit data<br>High bit<br>Low bit |
+| Right channel | Left channel | <br> |
+
+
+Figure 89 I2S Philips Protocol Waveform (24 bits)
+
+
+
+| SPI_CLK | SPI_WS | SPI_SD |
+| --------- | -------- | -------- |
+|  |  | <br>24-bit data<br>High bit<br>Low bit |
+| Right channel | Left channel | The remaining 8 bits are forced to 0 |
+
+
+In I2S Philips standard, if you want to transmit/receive 24-bit and 32-bit data, the SPI_DATA register needs to read/write twice; for example:
+- If you need to transmit 0x9FB8B8 (24-bit data), write 0x9FB to SPI_DATA register for the first time, and write 0x88XX to the register for the second time.
+- If you need to receive 0x9FB8B8 (24-bit data), read out 0x9FB from SPI_DATA register for the first time and read out 0x800 from the register for the second time.
+
+In I2S configuration, when selecting the frame format of extending 16-bit data to 32-bit data frame, it is required to access SPI_DATA register, and the remaining 16-bit data will be set to 0x0000 by hardware by force; for example:
+
+
+
+● The data to be received or transmitted is 0x62d8, which becomes 0x62D80000 after it is extended to 32 bits, and it is necessary to write 0x62D2B to SPI_DATA register or read out from SPI_DATA register.
+
+Figure 90 I2S Philips Protocol Waveform (extending from 16 bits to 32 bits)
+
+
+
+![Figure 92 MSB Alignment Standard Waveform (24-bit data)](image)
+
+![Figure 93 MSB Alignment Standard Waveform (extending from 16 bits to 32 bits)](image)
+
+
+#### 21.5.2.3 LSB alignment standard
+
+
+In the transmission process of LSB alignment standard, the data is changed on the falling edge of the clock signal; in the receiving process, the data is read on the rising edge of the clock signal. When the channel length is the same as the data length, the LSB alignment standard is the same as the MSB alignment standard. If the channel length is larger than the data length, the valid data of the LSB alignment standard is aligned with the least significant bit.
+
+![Figure 94 LSB Alignment Standard Waveform (16/32-bit data)](image)
+
+
+
+![Figure 95 LSB Alignment Standard Waveform (24-bit data)](image-link)
+
+In the transmission process, if you want to transmit/receive 24-bit data, it is required to read/write the SPI_DATA register twice; for example:
+- When 0x56EA98 needs to be transmitted, first write 0xXX56 to SPI_DATA register, and then write 0xEA98 to SPI_DATA register.
+- When you need to receive 0x56EA98, read out 0x0056 from SPI_DATA register for the first time, and read out 0xEA98 from SPI_DATA register for the second time.
+
+In I2S configuration, when selecting the frame format of extending from 16-bit data to 32-bit data frame, it is required to access SPI_DATA register, and the high 16-bit data will be set to 0x0000 by hardware by force; for example:
+- The data to be received or transmitted is 0x98A5, which becomes 0x000098A5 after it is extended to 32 bits, and it is necessary to write 0x98A5 to SPI_DATA register or read out from SPI_DATA register.
+
+![Figure 96 Under LSB Alignment Standard (extending from 16 bits to 32 bits)](image-link)
+
+#### 21.5.2.4 PCM standard
+There is no sound channel selection in PCM standard. Short frame and long frame of PCM standard are selected by configuring PFSSSEL bit in SPI_I2SCFG register.
+
+In the master mode, the valid time of synchronous WS signal of the long frame structure is 13 bits.
+
+
+
+![Figure 97 PCM Standard Waveform](https://www.geehy.com)
+
+In the master mode, the length of the synchronous WS signal of the short frame structure is 1 bit.
+
+![Figure 98 PCM Standard Waveform](https://www.geehy.com)
+
+
+### 21.5.3 I2S clock
+
+
+The clock source of I2SxCLK is PLL2CLK or external clock projected to I2S_CK pin.
+
+The bit rate of I2S determines the data stream on I2S data line and the clock signal frequency of I2S.
+
+- I2S bit rate = the number of bits per channel × the number of sound channels × audio sampling frequency
+- There are two channels of 16-bit audio signal: I2S bit rate=16×2×Fs
+
+The relationship between audio sampling frequency (Fs) and I2S bit rate (I2S) is defined by the following formula:
+
+
+| MCOEN | CHLEN | Audio sampling frequency (Fs) |
+| ------- | ------- | ------------------------------------------------------------- |
+
+| 1 | 0 | I2SxCLK[ (16*2) * ((2' | SPSC) +ODDSPC) *8] |
+| 1 | 1 | I2SxCLK[ (32*2) * ((2' | SPSC) +ODDSPC) *4] |
+| 0 | 0 | I2SxCLK[ (16*2) * ((2' | SPSC) +ODDSPC) ] |
+
+
+### 21.5.4 I2S mode
+
+
+I2S can be configured as follows:
+
+(1) Transmit master or receive master which uses I2Sx in half-duplex mode  
+(2) Master that receives and transmits concurrently in full-duplex mode
+
+
+Table 93 I2S Run Mode
+
+
+
+| Operation Modes | SD | WS | CK | MCK |
+| ------------------------- | -------- | -------- | -------- | ------------------ |
+| Master transmitting | Output | Output | Output | Output/Not use |
+| Master receiving | Input | Output | Output | Output/Not use |
+| Slave transmitting | Output | Input | Input | Output/Not use |
+| Slave receiving | Input | Input | Input | Output/Not use |
+
+
+#### 21.5.4.1 I2S master mode
+
+
+When I2S works in master mode, the serial clock is output by pin CK, and the word selection signal is generated by pin WS. SPI_I2SPSC[MCOEN] controls whether to output master clock.
+
+Configuration process:
+
+(1) Configure I2SPSC bit and ODDPSC bit of SPI_I2SPSC register to define the baud rate of serial clock and the actual frequency division factor corresponding to the audio sampling frequency.  
+(2) Configure CPOL bit of SPI_I2SCFG register to define the clock polarity of SPI in idle state.  
+(3) Configure I2SMOD bit of SPI_I2SCFG register to activate I2S function and configure I2SMOD and PFSSEL bits of SPI_I2SCFG register to select I2S standard; configure DATALEN bit of SPI_I2SCFG register to select the data bits of the sound channel, and configure I2SMOD bit to select I2S master mode and transmitting terminal/receiving terminal.  
+(4) Configure SPI_CTRL2 register to select to enable the interrupt and DMA function or not (select required or not).  
+(5) Configure WS pin and CK pin to output mode; when MCOEN bit of SPI_I2SPSC is set to 1, the MCK pin should also be configured to output mode.  
+(6) Set the running mode of I2S by configuring the I2SMOD bit of SPI_I2SCFG.  
+(7) Set I2SEN bit of SPI_I2SCFG register to 1.
+
+
+
+
+I2S master mode transmission process
+
+
+When the data is written to the transmit buffer, the transmission will start, and the data will be transmitted from the transmit buffer to the shift register, the TXBEFLG flag position is set to 1, and the SCHDIR flag bit indicates the corresponding sound channel of the currently transmitted data. The value of SCHDIR flag bit will be updated when TXBEFLG flag bit is 1.
+
+When transmitting the first bit of data, 16-bit data will be transmitted to the 16-bit shift register in parallel, and then transmitted from the pin MISO/SD in serial. The next data needs to be written to SPI_DATA register when TXBEFLG flag bit is 1. If TXBEIEN bit of SPI_CTRL2 is 1, an interrupt will be generated.
+
+Before the completion of the current data transmission, write the next data to be transmitted to ensure continuous transmission of audio data.
+
+When I2S is disabled, I2SEN can be cleared to 0 only when the flag bit TXBEFLG is 1 and BSYFLG is 0.
+
+
+I2S master mode receiving process
+
+
+RXBNEFLG flag is used to control the receiving sequence. RXBNEFLG flag indicates whether the receive buffer is empty; when the receive buffer is full, the RXBNEFLG flag bit will be set to 1. If RXBNEIEN bit of SPI_CTRL2 is configured, an interrupt will occur and after the user reads out the data from SPI_DATA register, the RXBNEFLG flag bit will be cleared to 0. Make sure to receive new data after reading operation; otherwise, overrun will occur and the OVRFLG flag bit will be set to 1.
+
+The value of SCHDIR should be updated immediately after receiving data, and it depends on the WS signal generated by I2S.
+
+Regardless of the data type and the channel length, the audio data is always received in the form of 16 bits. According to the configured data and the length of the channel, the data needs to be transmitted to the receive buffer once or twice.
+
+Disable the I2S function, and for different audio protocols, the data length and channel length operation steps are as follows:
+
+# 16-bit data length, 32-bit channel length (DATALEN=00, CHLEN=1, I2SSSEL=10), in LSB alignment mode
+● Wait until the penultimate RXBNEFLG is set to 1  
+● Wait for 17 I2S clock cycles (software delay)  
+● I2SEN=0  
+
+# 16-bit data length, 32-bit channel length (DATALEN=00, CHLEN=1, I2SSSEL=10), in MSB alignment mode
+● Wait until the last RXBNEFLG is set to 1
+
+
+
+- Wait for 1 I2S clock cycle (software delay)
+- I2SEN=0
+
+All the other situations
+- Wait until the penultimate RXBNEFLG is set to 1
+- Wait for 1 I2S clock cycle (software delay)
+- I2SEN=0
+
+BSYFLG flag clock is low during data transmission.
+
+
+#### 21.5.4.2 I2S slave mode
+
+
+The configuration method of slave mode is basically the same as that of master mode. In slave mode, the clock signal and WS signal are provided by external I2S device instead of I2S.
+
+Configuration process:
+1. Configure I2SMOD bit of SPI_I2SCFG register to activate I2S function.
+2. Configure I2SSEL bit of SPI_I2SCFG register to select the I2S standard; configure DATALEN[1:0] bit of SPI_I2SCFG register to select the bits of data; configure CHLEN bit of SPI_I2SCFG register to select the data bits per channel; configure I2SMOD bit of SPI_I2SCFG register to select I2S slave mode as transmitting terminal/receiving terminal.
+3. Configure SPI_CTRL2 register to select to enable the interrupt and DMA function or not (select required or not).
+4. Set I2SEN bit of SPI_I2SCFG register to 1.
+
+
+I2S slave mode transmission process
+
+
+Enable the slave device, write the data to the I2S data register, the external master device will start to communicate, and the external master device will transmit the clock signal, and when the data transmission starts, the transmitting process will begin.
+
+When the first bit data is transmitted, the 16-bit data will be transmitted to the 16-bit shift register in parallel, and then transmitted from the pin MOSI/SD in series. When the data is transmitted from the data register to the shift register, the TXBEFLG flag bit will be set to 1; at this time if TXBIEN bit of SPI_CTRL2 register is set, an interrupt will be generated. In order to ensure the continuity of data transmission, before the data transmission is completed, the next data should be written to SPI_DATA register; otherwise, "underrun" will occur, and the UDRFLG bit will be set to 1.
+
+SCHDIR bit of SPI_STS register indicates the channel corresponding to the transmitted data. In the slave mode, the SCHDIR bit is determined by the WS signal of the external master device.
+
+In MSB and LSB alignment mode of I2S, the first data written to the data register corresponds to the data of the left channel.
+
+
+
+To disable I2S, wait until TXBEFLG flag bit is set to 1 and BSYFLG flag bit is cleared to 0.
+
+
+I2S slave mode receiving process
+
+RXBNEFLG bit is used to control the receiving sequence. The RXBNEFLG bit indicates whether the receive buffer is empty; after the receive buffer is full, the RXBNEFLG bit will be set to 1; if RXBNEIEN bit of SPI_CTRL2 register is configured, an interrupt will occur, and after the data is read out from SPI_DATA register, RXBNEFLG bit will be cleared to 0; make sure to receive new data after read operation; otherwise, "overrun" will occur, and the OVRFLG flag bit will be set to 1.
+
+The value of SCHDIR should be updated immediately after receiving data, and it depends on the WS signal generated by I2S.
+
+Regardless of the data type and the channel length, the audio data is always received in the form of 16 bits. According to the configured data and the length of the channel, the data needs to be transmitted to the receive buffer once or twice.
+
+To disable I2S, I2SEN flag bit shall be cleared to 0 when the last RXBNEFLG received is set to 1.
+
+
+## 21.5 I2S interrupt
+
+### 21.5.1 Status flag bit
+
+There are three state flag bits in I2S to monitor the state of I2S bus.
+
+
+Transmit buffer empty flag bit TXBEFLG
+
+When the TXBEFLG bit is 1, it indicates that the transmit buffer is empty, and the data to be transmitted can be written to the transmit buffer; after data is written, the TXBEFLG bit will be cleared to 0. (When I2S is disabled, the TXBEFLG bit is 0).
+
+
+Receive buffer non-empty flag bit RXBNEFLG
+
+When the RXBNEFLG flag bit is 1, it indicates that the receive buffer has data to be received; after read operation is performed on the SPI_DATA register, RXBNEFLG flag bit will be cleared to 0.
+
+
+Busy flag bit BSYFLG
+
+When the BSYFLG bit is 1, it indicates that I2S is in communication state (set and cleared to 0 by hardware), but in the master receiving mode, the BSYFLG flag bit is always 0 during the receiving period.
+
+When I2S is disabled and data transmission is over, the BSYFLG flag bit will be...
+
+
+
+cleared to 0.
+
+During continuous communication:
+- In the master transmitting mode, the BSYFLG flag bit is always high during the transmission period
+- In the slave mode, during transmission of each data item, the BSYFLG flag bit is set to 0 within one I2S clock cycle
+
+
+Channel flag bit SCHDIR
+
+
+In the transmitting mode, the SCHDIR flag bit indicates whether the data transmitted on the SD pin is in the left channel or the right channel. This flag bit will be refreshed when TXBEFLG=1.
+
+In the transmitting process of slave mode, if an underrun error occurs, the value of SCHDIR flag bit will be invalid. If communication needs to be restarted, the I2S function shall be disabled and then enabled.
+
+In the receiving mode, the SCHDIR flag bit indicates whether the received data is from the left channel or the right channel. This flag bit is refreshed when SPI_DATA register receives data.
+
+If an underrun error occurs in the receiving mode, the SCHDIR flag bit will be invalid. If communication needs to be restarted, the I2S function shall be disabled and then enabled.
+
+As there is no channel selection in PCM standard, the SCHDIR flg bit is meaningless.
+
+When OVRFLG and UDRFLG flag bits of SPI_STS register are 1 and ERRIEN=1 for SPI_CTRL2, an interrupt will be generated. The interrupt flag can be cleared by reading the value of SPI_STS register.
+
+
+#### 21.5.5.2 Error flag bit
+
+
+
+Underrun flag bit UDRFLG
+
+
+In the transmitting mode, if new data to be transmitted is written to SPI_DATA register before the data is transmitted, UDRFLG bit will be set to 1; at this time if ERRIEN bit of SPI_CTRL2 register is set to 1, an interrupt will be generated.
+
+This flag bit will take effect only after I2SMOD bit of SPI_I2SCFG is set to 1. Clear the UDRFLG bit by reading SPI_STS register.
+
+
+Overrun flag bit OVRFLG
+
+
+In the receiving mode, if a new data is received before the data is read, OVRFLG flag bit will be set to 1. At this time if ERRIEN bit of SPI_CTRL2 register is set to 1, an interrupt will be generated, indicating the occurrence of the error.
+
+
+
+Read SPI_DATA register to return the last correctly received data, and all the other newly received data will be lost. OVRFLG bit can be cleared by first reading SPI_STS register and then reading SPI_DATA register.
+
+
+Frame error flag FREFLG
+
+
+When I2S is configured in slave mode, this flag will be set to 1 by hardware. If the external maser arbitrarily changes the WS signal, this flag will be set to 1. When synchronization is lost, to recover from this state and resynchronize the external master with the I2S slave, first disable the I2S, and then re-enable it when correct level is detected on the WS line.
+
+The loss of synchronization between the master and the slave may be caused by noise interference on the SCK communication clock or WS frame synchronization signal line. If ERRIEN bit is set, an error interrupt will be generated. When reading SPI_STS register, this flag will be cleared to 0 by software.
+
+
+Table 94 I2S Interrupt Request
+
+
+
+| Interrupt flag | Interrupt event | Enable control bit | Clearing method |
+| ---------------- | ----------------------------------------- | --------------------- | -------------------------------------- |
+| TXBEFLG | Transmit buffer empty flag | TXBIEN | Write SPI_DATA register |
+| RXBNEFLG | Receive buffer non-empty flag | RXBNEIEN | Read SPI_DATA register |
+| OVRFLG | Underrun flag bit |  | Read SPI_STS register |
+| UDRFLG | Overrun flag bit | ERRIEN | Read SPI_STS register<br>Read SPI_DATA register again |
+| FREFLG | Frame error flag |  | Read SPI_STS register |
+
+
+### 21.5.3 DMA function
+
+
+In I2S mode, the work mode of DMA is the same as that in SPI mode, except that it does not support CRC function.
+
+
+## 21.6 Register address mapping
+
+
+
+Table 95 SPI and I2S Register Address Mapping
+
+
+
+| Register name | Description | Offset Address |
+| ---------------- | ---------------------------- | ---------------- |
+| SPI_CTRL1 | SPI control register 1 | 0x00 |
+| SPI_CTRL2 | SPI control register 2 | 0x04 |
+| SPI_STS | SPI status register | 0x08 |
+| SPI_DATA | SPI data register | 0x0C |
+| SPI_CRCPOLY | SPI CRC polynomial register | 0x10 |
+| SPI_RXCRC | SPI receive CRC register | 0x14 |
+| SPI_TXCRC | SPI transmit CRC register | 0x18 |
+| SPI_I2SCFG | SPI I2S configuration register | 0x1C |
+| SPI_I2PSC | SPI I2S prescaler register | 0x20 |
+
+
+## 21.7 Register functional description
+
+
+These peripheral registers can be operated by half word (16 bits) or word (32 bits).
+
+
+### 21.7.1 SPI control register 1 (SPI_CTRL1) (not used in I2S mode)
+
+Offset address: 0x00  
+Reset value: 0x0000  
+
+
+| Field | Name | R/W | Description |
+| ------- | ----------- | ----- | -------------------------------------------------------------------------------------------------- |
+| 0 | CPHA | R/W | Clock Phase Configure <br> This bit indicates on the edge of which clock to start sampling <br> 0: On the edge of the first clock <br> 1: On the edge of the second clock <br> Note: This bit cannot be modified during communication. |
+| 1 | CPOL | R/W | Clock Polarity Configure <br> The level state maintained by SCK when SPI is in idle state. <br> 0: Low level <br> 1: High level <br> Note: This bit cannot be modified during communication. |
+| 2 | MSMCFG | R/W | Master/Slave Mode Configure <br> 0: Configure as slave mode <br> 1: Configure as master mode <br> Note: This bit cannot be modified during communication. |
+| 5:3 | BRSEL | R/W | Baud Rate Divider Factor Select <br> 000: DIV=2 <br> 001: DIV=4 <br> 010: DIV=8 <br> 011: DIV=16 <br> 100: DIV=32 <br> 101: DIV=64 <br> 110: DIV=128 <br> 111: DIV=256 <br> Baud rate=FCLK/DIV <br> Note: This bit cannot be modified during communication. |
+| 6 | SPIEN | R/W | SPI Device Enable<br>0: Disable<br>1: Enable<br>Note: When SPI device is disabled, please operate according to the process of disabling SPI. |
+| 7 | LSBSEL | R/W | LSB First Transfer Select<br>0: First transmit the most significant bit (MSB)<br>1: First transmit the least significant bit (LSB) |
+| 8 | ISSSEL | R/W | Internal Slave Device Select<br>When CTRL1_SSEL=1 (software NSS mode), configure this bit to select internal NSS level<br>0: Internal NSS is low<br>1: Internal NSS is high |
+| 9 | SSEN | R/W | Software Slave Device Enable<br>0: Software NSS mode is disabled, and the internal NSS level is determined by external NSS pin<br>1: Software NSS mode is enabled, and the internal NSS level is determined by external NSS pin |
+| 10 | RXOMEN | R/W | Receive Only Mode Enable<br>0: Transmit and receive at the same time<br>1: Receive-only mode<br>RXOMEN bit and BMEN bit together determine the transmission direction in the two-line and two-way mode. In the configuration of multiple slave devices, in order to avoid data transmission collision, it is necessary to set RXOMEN bit to 1 on the slave devices that are not accessed. |
+| 11 | DFLSSEL | R/W | Data Frame Length Format Select<br>0: 8-bit data frame format<br>1: 16-bit data frame format<br>Only when SPIEN=0, can this bit be written to change the data frame length. |
+| 12 | CRCNXT | R/W | CRC Transfer Next Enable<br>0: The next transmitted data is from transmit buffer<br>1: The next transmitted data is from CRC register<br>Note: After the last data is written to SPI_DATA register, set CRCNXT bit immediately. |
+| 13 | CRCEN | R/W | CRC Calculate Enable<br>0: Disable<br>1: Enable<br>CRC check function only applies to full-duplex mode; only when SPIEN=0, can this bit be changed. |
+| 14 | BMEN | R/W | Bidirectional Mode Output Enable<br>0: Disable, namely, receive-only mode<br>1: Enable, namely, transmit-only mode<br>When BMEN=1, namely, in single-line/double-line mode, this bit decides the transmission direction of transmission line. |
+
+
+### 21.7.2 SPI control register 2 (SPI_CTRL2)
+
+Offset address: 0x04  
+Reset value: 0x0000  
+
+
+| Field | Name | R/W | Description |
+| ------- | ----------- | ----- | -------------------------------------------------------------------------- |
+| 15 | BMEN | R/W | Bidirectional Mode Enable<br>0: Double-line unidirectional mode<br>1: Single-line bidirectional mode<br>Single-line bidirectional transmission means: the transmission between MOSI pin of data master and MISO pin of slave |
+| 0 | RXDEN | R/W | Receive Buffer DMA Enable<br>When RXDEN=1, once RXBNEFLG flag is set, DMA request will be issued.<br>0: Disable<br>1: Enable |
+| 1 | TXDEN | R/W | Transmit Buffer DMA Enable<br>When this bit is set, once TXBEFLG flag is set, DMA request will be issued.<br>0: Disable<br>1: Enable |
+| 2 | SSOEN | R/W | SS Output Enable<br>SS output in master mode<br>0: Disable SS output, and it can work in multi-master mode.<br>1: Enable SS output, and it cannot work in multi-master mode.<br>Note: Not available in I2S mode. |
+| 3 | Reserved |  |  |
+| 4 | FRFCFG | R/W | Frame Format Configure<br>0: SPI Motorola mode<br>1: SPI TI mode<br>Note: Not available in I2S mode. |
+| 5 | ERRIEN | R/W | Error interrupt Enable<br>0: Disable<br>1: Enable<br>When an error occurs, ERRIEN bit controls whether to generate the interrupt. |
+| 6 | RXBNEIEN | R/W | Receive Buffer Not Empty Interrupt Enable<br>0: Disable<br>1: Enable<br>When RXBNEFLG flag bit is set to 1, an interrupt request will be generated |
+| 7 | TXBIEN | R/W | Transmit Buffer Empty Interrupt Enable<br>0: Disable<br>1: Enable<br>When TXBEFLG flag bit is set to 1, an interrupt request will be generated |
+
+
+### 21.7.3 SPI status register (SPI_STS)
+
+Offset address: 0x08  
+Reset value: 0x0002  
+
+
+| Field | Name | R/W | Description |
+| ------- | ---------- | ----- | --------------------------------------------------------------------------------------------------------------- |
+| 0 | RXBNEFLG | R | Receive Buffer Not Empty Flag<br>0: Empty<br>1: Not empty |
+| 1 | TXBEFLG | R | Transmit Buffer Empty Flag<br>0: Not empty<br>1: Empty |
+| 2 | SCHDIR | R | Sound Channel Direction Flag<br>0: Indicate that the left channel is transmitting or receiving the required data<br>1: Indicate that the right channel is transmitting or receiving the required data<br>Note: Not used in SPI mode, without left and right channels in PCM mode. |
+| 3 | UDRFLG | R | Underrun Occur Flag<br>0: Not occur<br>1: Occurred<br>This flag bit is set by hardware, and it can be cleared by writing 0 to this bit by software.<br>Note: It is not used in SPI mode |
+| 4 | CRCEFLG | RC_W0 | CRC Error Occur Flag<br>This bit indicates whether the received CRC value matches the value of RXCRC register<br>0: Match<br>1: Not match<br>This bit is set by hardware, can be cleared by writing 0 to this bit by software, and is not used in I2S mode. |
+| 5 | MEFLG | R | Mode Error Occur Flag<br>0: Not occur<br>1: Occurred<br>This bit is set by hardware, can be cleared by writing 0 to this bit by software, and is not used in I2S mode. |
+| 6 | OVRFLG | R | Overrun Occur Flag<br>0: Not occur<br>1: Occurred<br>This bit is set by hardware, and can be cleared by writing 0 to this bit by software. |
+| 7 | BSYFLG | R | SPI Busy Flag<br>0: SPI is idle<br>1: SPI is communicating<br>It is set or cleared by hardware. |
+
+
+### 21.7.4 SPI data register (SPI_DATA) (not used in I2S mode)
+
+Offset address: 0x0C  
+Reset value: 0x0000  
+
+
+| Field | Name | R/W | Description |
+| ------- | ------ | ----- | ------------- |
+| 15:0 | DATA | R/W | Transmit Receive Data register<br>When writing this register, the data will be written to the transmit buffer; when reading this register, the data in receive buffer will be read.<br>The size of the buffer is consistent with the length of the data frame, that is, for 8-bit data, only DATA[7:0] will be used when transmitting and receiving data, and DATA[15:8] is invalid; for 16-bit data, DATA[15:0] will be used when transmitting and receiving data. |
+| 15:9 | Reserved |  |  |
+
+
+### 21.7.5 SPI CRC polynomial register (SPI_CRCPOLY) (not used in I2S mode)
+
+Offset address: 0x10  
+Reset value: 0x0007  
+
+
+| Field | Name | R/W | Description |
+| ------- | ------ | ----- | ------------- |
+| 15:0 | CRCPOLY | R/W | CRC Polynomial Value Setup<br>This register contains CRC polynomial of CRC computing, which can be modified, and the reset value is 0x0007. |
+
+
+### 21.7.6 SPI receive CRC register (SPI_RXCRC) (not used in I2S mode)
+
+Offset address: 0x14  
+Reset value: 0x0000  
+
+
+| Field | Name | R/W | Description |
+| ------- | ------ | ----- | ------------- |
+| 15:0 | RXCRC | R | Receive Data CRC Value<br>The CRC data of the data received and calculated by hardware are stored in this register; the bits and the length of data frames are consistent, that is, if the received data are 8 bits, the CRC computing is made based on CRC8; if the received data are 16 bits, the CRC computing is made based on CRC16.<br>When CRCEN is set, the hardware clears the register.<br>Note: When BSYFLG bit is set to 1, the value of reading RXCRC register may be wrong. |
+
+
+### 21.7.7 SPI transmit CRC register (SPI_TXCRC) (not used in I2S mode)
+
+Offset address: 0x18  
+Reset value: 0x0000
+
+
+
+15:0 TXCRC  
+R  
+Transmit Data CRC Value  
+The CRC data of transmitted data calculated by hardware is stored in this register; the bits and the length of data frames are consistent, that is, if the transmitted data are 8 bits, the CRC computing is made based on CRC8; if the transmitted data are 16 bits, the CRC computing is made based on CRC16.  
+When CRCEN is set, the hardware clears the register.  
+Note: When BSYFLG bit is set to 1, the value of reading RXCRC register may be wrong.  
+
+
+### 21.7.8 SPI_I2S configuration register (SPI_I2SCFG)
+
+Offset address: 0x1C  
+Reset value: 0x0000  
+
+
+| Field | Name | R/W | Description |
+| ------- | ---------- | ----- | ---------------------------------------------------- |
+| 0 | CHLEN | R/W | Channel Length Configure<br>The channel length refers to the data bits per audio channel<br>0: 16-bit width<br>1: 32-bit width<br>The sound channel length can be configured successfully only when the sound channel length is greater than the data length; otherwise, the hardware will automatically adjust the sound channel length; this bit can only be configured when I2SEN=0, and is not used in SPI mode. |
+| 2:1 | DATALEN | R/W | Configure the Length of the Data to Be Transferred<br>00: 16-bit data length<br>01: 24-bit data length<br>10: 32-bit data length<br>11: Disable<br>This bit can only be configured when I2SEN=0, and is not used in SPI mode. |
+| 3 | CPOL | R/W | Idle State Clock Polarity Configure<br>0: Low level<br>1: High level<br>This bit can only be configured when I2SEN=0, and is not used in SPI mode. |
+| 5:4 | I2SSSEL | R/W | I2S Standard Select<br>00: I2S Philips standard<br>01: High-byte alignment standard (left alignment)<br>10: Low-byte alignment standard (right alignment)<br>11: PCM standard<br>This bit can only be configured when I2SEN=0, and is not used in SPI mode. |
+| 6 | Reserved |  |  |
+| 7 | PFSSEL | R/W | PCM Frame Synchronization Mode Select<br>0: Synchronization of short frames<br>1: Synchronization of long frames<br>Apply only to PCM standard (I2SSSEL=11); this bit can only be configured when I2SEN=0, and is not used in SPI mode. |
+| 9:8 | I2SMOD | R/W | I2S Master/Slave Transmit/Receive Mode Configure<br>00: Slave device transmits<br>01: Slave device receives<br>10: Master device transmits<br>11: Master device receives<br>This bit can only be configured when I2SEN=0, and is not used in SPI mode. |
+| 10 | I2SEN | R/W | I2S Enable<br>0: Disable I2S<br>1: Enable I2S<br>Note: It is not used in SPI mode. |
+| 11 | MODESEL | R/W | SPI/I2C Mode Select<br>0: Select SPI mode<br>1: Select I2S mode<br>Note: This bit can be set only when SPI or I2S is disabled. |
+| 15:12 |  |  | Reserved |
+
+
+### 21.7.9 SPI_I2S prescaler register (SPI_I2SPSC) (not used in SPI mode)
+
+Offset address: 0x20  
+Reset value: 0x0002  
+
+
+| Field | Name | R/W | Description |
+| ------- | --------- | ----- | --------------------------------------------------------------------------------------------------------------------------- |
+| 7:0 | I2SPSC | R/W | I2S Linear Prescaler Factor Configure<br>I2SPSC cannot be set to 0 and 1; this bit can be configured only when I2SEN=0, and is not used in SPI mode. |
+| 8 | ODDPSC | R/W | Configure the prescaler factor to be odd<br>0: Actual division factor=I2SPSC*2<br>1: Actual division factor=(I2SPSC*2)+1<br>This bit can only be configured when I2SEN=0, and is not used in SPI mode. |
+| 9 | MCOEN | R/W | Master Device Clock Output Enable<br>0: Disable<br>1: Enable<br>This bit can only be configured when I2SEN=0, and is not used in SPI mode. |
+| 15:10 |  |  | Reserved |
+
+
+# 22 Quad serial peripheral interface (QSPI)
+
+
+
+## 22.1 Introduction
+
+
+QSPI is a serial data bus interface, which consists of clock (SCLK), chip selection signal (CS), and four data lines (IO[0:3]). It connects single, double or four-line external SPI Flash memory media. The interface has four transmission modes: transmit and receive, transmit only, receive only, and EEPROM read. The transmission mode is controlled by software.
+
+
+## 22.2 Main characteristics
+
+
+QSPI has programmable clock polarity and clock phase. Integrate FIFO used for transmitting and receiving, with FIFO depth of 8, and FIFO bit width of 32-bit, with four transmission modes, support transmission of data frame from 1 bit to 16 bits, support hardware or software to control the chip selection signal line; in the four-line transmission mode, support clock extension, variable instruction length, address length, wait cycle, and data frame size; when receiving serial data, the programmable delay of sampling time can achieve higher sampling ratio of serial data bits.
+
+
+## 22.3 Functional Description
+
+
+
+### 22.3.1 Transmission mode
+
+
+This chapter discusses the operation of QSPI in different modes when data are transmitted on the serial bus. The transmission mode (TXMODE) is determined by TXMODE of the control register 1 (QSPI_CTRL1).
+
+
+### 22.3.2 Transmitting and receiving
+
+
+When TXMODE=2'b00, both transmit and receive logic are valid. When the data is written to the transmit FIFO and the number of data is greater than the FIFO transmitting threshold (TFTH of QSPI_TFTL register), the transmission will start. The serial data is transmitted to the transmitting data line and reaches the target device. Meanwhile, the data on the receive data line will be transmitted from the receive shift register to the receive FIFO.
+
+
+
+![Figure 99 QSPI Transmit FIFO State in Transmitting and Receiving State](https://www.geehy.com)
+
+
+Transmit only
+
+When TXMODE=2'b01, only the transmitting logic unit is effective. The receiving logic unit is ineffective, when the data is written to the transmit FIFO and the number of data is greater than the FIFO transmitting threshold (TFTH of QSPI_TFTL register), the transmission will start, and the serial data will be transmitted to the transmitting data line and reach the target device. Data on the receive data line will be ignored. Therefore, no data is stored in the receive FIFO.
+
+The following figure shows the FIFO level before the serial transfer starts and after the transfer is completed respectively. In this example, two data words are transferred from QSPI in a continuous transfer form to an external serial device.
+
+![Figure 100 QSPI Transmit FIFO State in Transmitting State](https://www.geehy.com)
+
+
+Receive only
+
+When TXMODE=2'b10, only the receiving logic unit is effective, and the transmitting logic unit is ineffective. No data will be transmitted. The data on the
+
+
+
+#### 22.3.2.1 EEPROM (electrically erasable programmable read-only memory) read
+
+When TXMODE=2'b11, the transmitted data is used to transmit the instruction/address to the corresponding external device. Three data frames (8-bit instruction code, 8-bit high address, and 8-bit low address.) are usually required. In the process of transmitting data, the receiving logic unit will not capture any data on the receiving data line until the transmit FIFO is empty. Namely, when the transmit FIFO is empty, the receive logic unit starts to become effective and starts to receive data until the number of data frames received by QSPI is equal to the value of NDF field in QSPI_CTRL2 register plus one.
+
+The following figure shows the FIFO level before the serial transfer starts and after the transfer is completed respectively. In this example, QSPI continuously receives two data from an external serial device.
+
+
+
+
+### 22.3.3 Data transfer
+
+
+Data transfer is started by external master. After entering the transmit FIFO, the number of valid data will be more than the TFTH number of QSPI_TFTL register, and an external slave device will be selected. When data is being transmitted, the register state is set as the BUSY flag. A new external transfer can be tried only after the BUSY flag is cleared.
+
+
+### 22.3.4 Clock ratio
+
+
+
+Overview of clock ratio
+
+
+QSPI works in an oversampling structure. For the master mode of operation, the clock (sclk_out) cycle of peripheral device is a multiple core clock (qspi_clk).
+
+
+Description of clock ratio
+
+
+When the QSPI macro cell is set as a master device, the maximum frequency (sclk_out) of the bit rate clock is half the qspi_clk frequency. This allows shift control logic to capture data at one clock edge of sclk_out and derive data at the opposite edge.
+
+Sclk_out frequency can be obtained from the following formula:
+
+F_sclk_out = F_ssi_clk / SCKDIV
+
+The SCKDIV programmable register is kept within a range with an average value of 0-65,534. Assuming SCKDIV=0, sclk_out will be disabled.
+
+sclk_out line can be switched only when an active transfer is in progress. During the rest of the time, as defined by the serial protocol of its operation, it will stay idle.
+
+
+
+The figure below shows the maximum ratio between sclk_out and qspi_clk.
+
+
+Figure 103 Maximum Ratio between sclk_out and qspi_clk
+
+
+
+
+
+### 22.3.6 Receive data (RXD) sampling delay
+
+
+
+Overview of receive data (RXD) sample delay
+
+
+When QSPI is set as the master, other logs can be included in the design to delay the default sampling time of the received data signal. Additional logic helps to increase the maximum achievable frequency of the serial bus.
+
+
+Description of receive data (RXD) sample delay
+
+
+The delay on the round-trip route between the sclk_out signal issued by the master and the RXD signal transmitted by the slave can be considered as the timing of the received signal-as seen by the master-has left the normal sampling time. This is illustrated by the following figure:
+
+Figure 104 Description of Receive Data (RXD) Sample Delay
+
+
+| **dly=0** | **dly=5** | **dly=6** | **dly=7** | **baud-rate=4** |
+| ----------- | ----------- | ----------- | ----------- | ------------------ |
+|  |  |  |  | <br><br><br><br> |
+
+
+The slave uses the sclk_out signal issued by the master as the gate in order to obtain the data of the RXD signal mapped to the serial bus. The routing and sampling delay of the slave device for the signal issued by sclk_out can mean that the RXD bit is not stable to a correct value before the master collects the RXD signal sample. The following figure shows how the routing delay of an RXD signal generates an incorrect RXD value at the default time of the master acquisition port. If there is no received sample delay logic, it is required to improve the baud rate of transfer to ensure that the installation time of the
+
+
+
+received data signal is within the range, which will result in reduction of the frequency of the serial interface.
+
+When the RXD sample delay logic is included, the delay value can be dynamically edited to change the sampling time of RXD signal from the default value to the number of cycles of qspi_clk. RXD sample delay logic can be set to use both the positive and negative edges of qspi_clk to collect RXD signal samples. This will increase the number of sampling points in one sclk_out cycle, and help to satisfy the need for timing of higher frequency. QSPI uses QSPI_RSD register to change the sampling point of RXD signal.
+
+Figure 105 Collection of RXD Signal Samples with QSPI
+
+
+| ssi_clk |  |  |  |  |  |
+| --------- | --------- | -------- | ----------- | -------- | --------- |
+|  |  |  |  |  | <br><br><br><br><br> |
+
+
+### 22.3.7 QSPI interrupt
+#### 22.3.7.1 QSPI interrupt description
+
+
+qspi_txe_intr  
+
+It is set when the transmit FIFO is less than or equal to its threshold. The threshold that is set by the programmable register QSPI_RFTL determines the level of FIFO entries that generate interrupts. When data is written to the transmit FIFO buffer, the interrupt will be cleared by hardware to exceed the threshold level.
+
+
+qspi_txo_intr
+
+
+
+
+It is set when an AHB access attempts to write to a fully written transmit FIFO. After set, the data written from AHB will be ignored. Before the transmit FIFO overrun interrupt clear register (QSPI_TFOIC) is read, the interrupt still remains set.
+
+
+qspi_rxf_intr
+
+When the receive FIFO is equal to or greater than its threshold, it will be set and the lower prevention service is required. The threshold that is set by the programmable register QSPI_RFTL determines the level of FIFO entries that generate interrupts. When data is read from the receive FIFO buffer, the interrupt will be cleared by hardware to exceed the threshold level.
+
+
+qspi_rxo_intr
+
+It is set when the receive logic attempts to put data in the fully written receive FIFO. When set, the newly received data will be ignored. Before the receive FIFO overrun interrupt clear register (QSPI_RFOIC) is read, the interrupt still remains set.
+
+
+qspi_rxu_intr
+
+It is set when an AHB access attempts to read from an empty receive FIFO. After set, it is read as zero from the receive FIFO. Before the receive FIFO underrun interrupt clear register (QSPI_RFUIC) is read, the interrupt still remains set.
+
+
+qspi_mst_intr
+
+Displayed only when the QSPI component is set as a serial master device. When the serial master on another serial bus selects the QSPI master as the serial slave and actively transfers data, the interrupt is set. This will notify the processor of possible contention on the serial bus. Before the multi-master interrupt clear register (QSPI_MIC) is read, the interrupt still remains set.
+
+
+### 22.3.8 Enhanced SPI mode
+
+#### 22.3.8.1 Enhanced SPI mode write operation
+
+QSPI write operation can be divided into three phases, namely, instruction phase, address phase and data phase.
+
+The following register locations are used for a write operation
+- Specified frame transmission format of QSPI_CTRL1 FRF bit
+- Specified instruction length of QSPI_CTRL3 INSLEN bit
+- Specified address length of QSPI_CTRL3 ADDRLEN bit
+
+
+
+Specified data length of QSPI_CTRL1 DFS bit
+
+Only when both the instruction and address are written to the data register, will QSPI start a write transmission.
+
+To initiate a Quad write operation, FRF of QSPI_CTRL1 must be set to 10, which means that the type of transfer is set. For each write instruction, the data will be transferred in the specified format of FRF bit of QSPI_CTRL1.
+
+The followings are some possible situations of enhanced SPI mode write operation:
+- Case A: Both the instruction and address are transmitted in standard SPI format
+- Case B: The instruction is transmitted in standard format, while the address is transmitted in enhanced SPI format
+- Case C: Both the instruction and address are transmitted in enhanced SPI format
+
+
+Enhanced SPI mode read operation
+
+
+QSPI read operation can be divided into four phases, namely, instruction phase, address phase, wait cycle and data phase.
+
+The wait cycle can be programmed with WAITCYC of QSPI_CTRL3. The wait cycle is used to lock and change the slave mode, from input to output, and can vary with the devices. For a read operation, QSPI transmits the instruction and control data at one time, and after receiving the NDF (QSPI_CTRL2 register) number of data frame, disable the slave selection signal. To initiate a Quad read operation, FRF of QSPI_CTRL1 is set to 00/01/10 respectively. This will set the type of transfer, and the data of each read instruction will be transferred in the specified form in FRF of QSPI_CTRL1.
+
+The followings are four possible situations of enhanced SPI mode write operation:
+- Case A: Both the instruction and address are transmitted in standard SIP format
+- Case B: The instruction is transmitted in standard format, while the address is transmitted in enhanced SPI format
+- Case C: Both the instruction and address are transmitted in enhanced SPI format
+- Case D: There is no instruction read and address read transmission
+
+
+Clock extension function
+
+
+When QSPI and external SPI devices are transmitting data, since the software may not guarantee the timeliness of transmission, the transmit FIFO may be empty when QSPI is transmitting data, so no valid data can be transmitted and overrun error will occur. When receiving, the receive FIFO may be full, the
+
+
+
+subsequent data could not be received normally and overrun error will occur. To avoid the above problems, the software must abandon the transmission and restart a transmission. To handle the above problems, QSPI provides clock extension function. If the transmit FIFO is empty by the end of one transmission of transmitting data, QSPI will close the clock signal. When there are enough data (the data volume is higher than the transmit data threshold TFTH) in the transmit FIFO, QSPI will output the clock signal again and continue the transmission. If the receive FIFO has been full by the end of receiving of data, QSPI will close the clock signal until the data in the receive FIFO is read (the data volume is lower than the receive data threshold value QSPI_RFTL). Set the No. 30 bit of QSPI_CTRL3 register and the clock extension function can be enabled or disabled. If the clock extension function is enabled, the length of the transmitted data frame must be filled out in the QSPI_CTRL2 register.
+
+
+### 22.3.9 DMA function
+
+
+This function is only applicable to APM32F103VBT6 E version and APM32F103V8T6 E version products.
+
+The request/response DMA mechanism in QSPI facilitates high-speed data transmission and improves system efficiency.
+
+DMA function of QSPI mode can be enabled by configuring RDMAEN and TDMAEN bits of QSPI_DMACTRL register.
+- When transmitting: When the valid data in the transmit FIFO level register QSPI_TFL is equal to or lower than the value configured by the DMATDL bit, a DMA transmitting data request will be generated.
+- When receiving: When the valid data in the receive FIFO level register QSPI_RFL is equal to or higher than the value configured by the DMARDL bit, a DMA receiving data request will be generated.
+
+
+## 22.4 Register address mapping
+
+
+
+| Register name | Description | Offset Address |
+| --------------------- | ---------------------------------------------- | ---------------- |
+| QSPI_CTRL1 | Control register 1 | 0x0 |
+| QSPI_CTRL2 | Control register 2 | 0x4 |
+| QSPI_SSIEN | Enable register | 0x8 |
+| QSPI_SLAEN | Slave enable register | 0x10 |
+| QSPI_BR | Baud rate register | 0x14 |
+| QSPI_TFTL | Transmit FIFO threshold level register | 0x18 |
+| QSPI_RFTL | Receive FIFO threshold level register | 0x1C |
+| QSPI_TFL | Transmit FIFO level register | 0x20 |
+| QSPI_RFL | Receive FIFO level register | 0x24 |
+| QSPI_STS | Status register | 0x28 |
+| QSPI_INTEN | Interrupt enable register | 0x2C |
+| QSPI_ISTS | Interrupt state register | 0x30 |
+| QSPI_RIS | Original interrupt state register | 0x34 |
+| QSPI_TFOIC | Transmit FIFO overrun interrupt clear register | 0x38 |
+| QSPI_RFOIC | Receive FIFO overrun interrupt clear register | 0x3C |
+| QSPI_RFUIC | Receive FIFO underrun interrupt clear register | 0x40 |
+| QSPI_MIC | Multi-master interrupt clear register | 0x44 |
+| QSPI_ICF | Interrupt clear register | 0x48 |
+| QSPI_DMACTRL | DMA control register | 0x4C |
+| QSPI_DMADTL | DMA transmitting data level register | 0x50 |
+| QSPI_DMARDL | DMA receive data level register | 0x54 |
+| QSPI_DATA | Data register | 0x60 |
+| QSPI_RSD | RX sample delay register | 0xF0 |
+| QSPI_CTRL3 | Control register | 0xF4 |
+| QSPI_IOSW | IO shift register | 0x200 |
+
+
+## 22.5 Register functional description
+
+
+
+### 22.5.1 Control register 1 (QSPI_CTRL1)
+
+**Offset address:** 0x00 <br>  
+**Reset value:** 0x0000 4007 <br>  
+**Description:** This register controls the transmission of serial data. When QSPI is started, it is not possible to write to this register. Enable or disable QSPI by writing QSPI_CTRL2 register.
+
+
+
+
+4:0 DFS  
+
+R/W  
+Data frame size  
+Select the data frame length. When the data frame size is programmed to be less than 32 bits, the receive data will be automatically right aligned by the receiving logic, and the high bit will be filled with the receive FIFO zero. Before writing the transmit FIFO, the transmission data must be right adjusted. The transmission logic ignores the unused high bits when transferring data.  
+If SPI_FRF = 01, the value of DFS must be a multiple of 2  
+If SPI_FRF = 10, the value of DFS must be a multiple of 4:  
+
+| Field | Name | R/W | Description |
+| -------------- | -------------- | ----- | ------------------------------------- |
+| 0x0 (DFS_01_BIT): | Reserved |  |  |
+| 0x1 (DFS_02_BIT): | Reserved |  |  |
+| 0x2 (DFS_03_BIT): | Reserved |  |  |
+| 0x3 (DFS_04_BIT): | 04-bit serial data transmission |  |  |
+| 0x4 (DFS_05_BIT): | 05-bit serial data transmission |  |  |
+| 0x5 (DFS_06_BIT): | 06-bit serial data transmission |  |  |
+| 0x6 (DFS_07_BIT): | 07-bit serial data transmission |  |  |
+| 0x7 (DFS_08_BIT): | 08-bit serial data transmission |  |  |
+| 0x8 (DFS_09_BIT): | 09-bit serial data transmission |  |  |
+| 0x9 (DFS_10_BIT): | 10-bit serial data transmission |  |  |
+| 0xa (DFS_11_BIT): | 11-bit serial data transmission |  |  |
+| 0xb (DFS_12_BIT): | 12-bit serial data transmission |  |  |
+| 0xc (DFS_13_BIT): | 13-bit serial data transmission |  |  |
+| 0xd (DFS_14_BIT): | 14-bit serial data transmission |  |  |
+| 0xe (DFS_15_BIT): | 15-bit serial data transmission |  |  |
+| 0xf (DFS_16_BIT): | 16-bit serial data transmission |  |  |
+| 0x10 (DFS_17_BIT): | 17-bit serial data transmission |  |  |
+| 0x11 (DFS_18_BIT): | 18-bit serial data transmission |  |  |
+| 0x12 (DFS_19_BIT): | 19-bit serial data transmission |  |  |
+| 0x13 (DFS_20_BIT): | 20-bit serial data transmission |  |  |
+| 0x14 (DFS_21_BIT): | 21-bit serial data transmission |  |  |
+| 0x15 (DFS_22_BIT): | 22-bit serial data transmission |  |  |
+| 0x16 (DFS_23_BIT): | 23-bit serial data transmission |  |  |
+| 0x17 (DFS_24_BIT): | 24-bit serial data transmission |  |  |
+| 0x18 (DFS_25_BIT): | 25-bit serial data transmission |  |  |
+| 0x19 (DFS_26_BIT): | 26-bit serial data transmission |  |  |
+| 0x1a (DFS_27_BIT): | 27-bit serial data transmission |  |  |
+| 0x1b (DFS_28_BIT): | 28-bit serial data transmission |  |  |
+| 0x1c (DFS_29_BIT): | 29-bit serial data transmission |  |  |
+| 0x1d (DFS_30_BIT): | 30-bit serial data transmission |  |  |
+| 0x1e (DFS_31_BIT): | 31-bit serial data transmission |  |  |
+| 0x1f (DFS_32_BIT): | 32-bit serial data transmission |  |  |
+
+
+7:5 Reserved  
+
+
+
+# 8 CPHA
+
+R/W  
+Clock phase  
+0x0: Data sampling starts from the edge of the first clock  
+0x1: Data sampling starts from the edge of the second clock
+
+
+
+
+| Field | Name | R/W | Description |
+| ------- | ------ | ----- | ------------- |
+| 9 | CPOL | R/W | Clock polarity<br>0x0: In idle state, the clock is effective at low level<br>0x1: In idle state, the clock is effective at high level |
+| 11:10 | TXMODE | R/W | Transport Mode<br>Select the transmission mode of serial communication. This field does not affect the repeatability of the transmission, and only indicates whether the receive or transmit data is valid.<br>In the transmit-only mode, the data received from external device is invalid and is not stored in the receive FIFO memory.<br>In the receive-only mode, the data transmitted is invalid. After the first write to the transmit FIFO, the same word will be retransmitted during transmission.<br>In the transmit and receive mode, both the transmit and receive data are valid. The data received from the external device are stored in the receive FIFO memory.<br>0x0 (TX_AND_RX): Transmit and receive; not applicable to enhanced SPI operation mode<br>0x1 (TX_ONLY): Transmit-only mode; or write in enhanced SPI operation mode<br>0x2 (RX_ONLY): Receive-only mode; or read in enhanced SPI operation mode<br>0x3 (EEPROM_READ): EEPROM read mode; not applicable to enhanced SPI operation mode |
+| 13:12 | Reserved |  |  |
+| 14 | SSTEN | R/W | Enable chip selection reversal<br>When working in normal SPI mode and the clock phase (SCPH) is 0, this register controls the chip selection signal line between data frames<br>1: Between continuous frames, the chip selection signal line will be reversed; when the chip selection signal line is at high level, the level of CLK signal will be default value. |
+| 21:15 | Reserved |  |  |
+| 23:22 | FRF | R/W | Frame format<br>Select the data frame format to transmit/receive data<br>00 (SPI_STANDARD): Standard SPI mode<br>01 (SPI_DUAL): Dual SPI mode<br>10 (SPI_QUAD): Quad SPI mode<br>11: Reserved |
+
+
+### 22.5.2 Control register 2 (QSPI_CTR2)
+
+Offset address: 0x04<br>Reset value: 0x0000 0000
+
+
+
+
+### 22.5.3 Enable register (QSPI_SSIEN)
+
+Offset address: 0x08<br>
+Reset value: 0x0000 0000
+
+
+| Field | Name | R/W | Description |
+| ------- | ------ | ----- | ------------- |
+| 15:0 | NDF | R/W | Number of data frames<br>When TXMODE=10 or TXMODE=11, the register field sets the number of data frames continuously received by QSPI. QSPI continues to receive serial data until the number of data frames received equals the register value plus 1, so that you can receive up to 64kb data in continuous transmission. |
+| 31:16 | Reserved |  |  |
+
+
+### 22.5.4 Slave enable register (QSPI_SLAEN)
+
+Offset address: 0x10<br>
+Reset value: 0x0000 0000
+
+
+| Field | Name | R/W | Description |
+| ------- | ------- | ----- | ------------- |
+| 0 | SLAEN | R/W | Enable the slave<br>0: Disable<br>1: Enable |
+| 31:1 | Reserved |  |  |
+
+
+### 22.5.5 Baud rate register (QSPI_BR)
+
+Offset address: 0x14<br>
+Reset value: 0x0000 0000
+
+
+| Field | Name | R/W | Description |
+| ------- | -------- | ----- | ------------- |
+| 15:0 | CLKDIV | R/W | SSI clock divider<br>The LSB of this field is always set to 0, unaffected by write operation, which ensures that an even number is stored in this register. If this value is 0, the serial output clock (sclk_out) will be disabled. Output frequency of Sclk_out is obtained by the following equation:<br>Fsclk_out=Fqspi_clk/SKCDIV<br>SKCDIV is any even number between 2 and 65534.<br>For example:<br>When Fqspi_clk=3.6864MHz and SKCDIV=2<br>Fsclk_out=3.6864/2=1.8432MHz |
+| 31:16 | Reserved |  |  |
+
+
+### 22.5.6 Transmit FIFO threshold level register (QSPI_TFTL)
+
+Offset address: 0x18
+
+
+
+Reset value: 0x0000 0000
+
+
+| Field | Name | R/W | Description |
+| ---------- | ------ | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 2:0 | TFT | R/W | Transmit FIFO threshold<br>Transmit FIFO controller triggers the control of interrupt entry level (or lower). FIFO depth can be set within the range of 8-256; the size of this register is the same as the number of address bits needed to access FIFO. If you attempt to set this value to be greater than or equal to the depth of the FIFO, this field will not be written and will stay at its current value. When the number of transmit FIFO entries is less than or equal to this value, the transmit FIFO empty interrupt will be triggered. |
+| 15:3 |  |  | Reserved |
+| 18:16 | TFTH | R/W | Transmit triggering FIFO level<br>Used to control the entry level in the transmit FIFO, above which the transmission will start on the serial line. This register can be used to ensure that there are enough data in the transmit FIFO before the write operation starts on the serial line. These fields are only valid for the master operation mode. |
+| 31:19 |  |  | Reserved |
+
+
+### 22.5.7 Receive FIFO threshold level register (QSPI_RFTL)
+
+Offset address: 0x1C<br>
+Reset value: 0x0000 0000
+
+
+| Field | Name | R/W | Description |
+| ---------- | ------ | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 2:0 | RFT | R/W | Receive FIFO threshold<br>Receive FIFO controller triggers the control of interrupt entry level (or higher). FIFO depth can be set within the range of 8-256; the size of this register is the same as the number of address bits needed to access FIFO. If you attempt to set this value to be greater than the depth of the FIFO, this field will not be written and will stay at its current value. When the number of receive FIFO entries is greater than or equal to this value plus 1, the receive FIFO full interrupt will be triggered. |
+| 31:3 |  |  | Reserved |
+
+
+### 22.5.8 Transmit FIFO level register (QSPI_TFL)
+
+Offset address: 0x20<br>
+Reset value: 0x0000 0000
+
+
+| Field | Name | R/W | Description |
+| ---------- | ------ | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 2:0 | TFL | R/W | Transmit FIFO level<br>Include the quantity of valid data entries in transmit FIFO. |
+| 31:3 |  |  | Reserved |
+
+
+### 22.5.9 Receive FIFO level register (QSPI_RFL)
+
+Offset address: 0x24<br>
+Reset value: 0x0000 0000
+
+
+| Field | Name | R/W | Description |
+| ---------- | ------ | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 2:0 | RFL | R/W | Receive FIFO level<br>Include the quantity of valid data entries in receive FIFO. |
+| 31:3 |  |  | Reserved |
+
+
+### 22.5.10 State register (QSPI_STS)
+
+Offset address: 0x28  
+Reset value: 0x0000 0006  
+
+
+| Field | Name | R/W | Description |
+| ------- | ------- | ----- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 0 | BUSYF | R/W | SSI Busy flag<br>When it is set, it means serial transmission is in progress; when it is cleared, it means QSPI is in idle or disabled state.<br>0x1 (ACTIVE): QSP is actively transmitting data<br>0x0 (INACTIVE): QSP is in idle or disabled state |
+| 1 | TNF | R/W | Flag that transmit FIFO is not full<br>Set when the transmit FIFO contains one or more idle positions; clear when FIFO is full.<br>0x1 (NOT_FULL): Transmit FIFO is not full<br>0x0 (FULL): Transmit FIFO is full |
+| 2 | TEEF | R/W | Flag that the transmit FIFO is empty<br>When the transmit FIFO is completely empty, set this bit. When the transmit FIFO contains one or more valid entries, clear this bit. This bit field does not request interrupt.<br>0x1 (EMPTY): Transmit FIFO has been empty<br>0x0 (NOT_EMPTY): Transmit FIFO is not empty |
+| 3 | RFNEF | R/W | Flag that the receive FIFO is not empty<br>Set when the receive FIFO contains one or more entries; clear when the receive FIFO is empty. The software can poll this bit to completely clear the receive FIFO.<br>0x1 (NOT_EMPTY): Receive FIFO is not empty<br>0x1 (EMPTY): Receive FIFO has been empty |
+| 4 | RFFF | R/W | Flag that the receive FIFO is full<br>When the receive FIFO is completely full, set this bit. When the receive FIFO contains one or more empty positions, clear this bit.<br>0x1 (FULL): Receive FIFO is full<br>0x1 (NOT_FULL): Receive FIFO is not full |
+| 5 |  | R/W | Reserved |
+| 6 | DCEF | R/W | Data conflict error flag<br>Related only when QSPI is configured as the master. When the QSPI master is in the process of transmission, if other master enables ss_in_n input, the bit will be set. This will inform the processor that the last data transmission is stopped before it is completed. This bit is cleared when read.<br>0x1 (TX_COLLISION_ERROR): Transmit data conflict error<br>0x0 (NO_ERROR_CONDITION): No error |
+| 31:7 |  | R/W | Reserved |
+
+
+### 22.5.11 Interrupt enable register (QSPI_INTEN)
+
+Offset address: 0x2C
+
+
+
+
+Reset value: 0x0000 007F
+
+
+
+| Field | Name | R/W | Description |
+| ------- | -------- | ------ | ----------------------------------------------------------------------------- |
+| 0 | TFEIE | R/W | Transmit FIFO interrupt enable<br>0 (MASKED): qspi_txe_intr interrupt masked<br>1 (UNMASKED): qspi_txe_intr interrupt enabled |
+| 1 | TFOIE | R/W | Transmit FIFO overrun_interrupt enable<br>0 (MASKED): qspi_txo_intr interrupt masked<br>1 (UNMASKED): qspi_txo_intr interrupt enables |
+| 2 | RFUIE | R/W | Receive FIFO underrun interrupt enable<br>0 (MASKED): qspi_rxu_intr interrupt masked<br>1 (UNMASKED): qspi_rxu_intr enabled |
+| 3 | RFOIE | R/W | Receive FIFO overrun interrupt enable<br>0 (MASKED): qspi_rxo_intr interrupt masked<br>1 (UNMASKED): qspi_rxo_intr enabled |
+| 4 | RFFIE | R/W | Receive FIFO full interrupt enable<br>0 (MASKED): qspi_rxf_intr interrupt masked<br>1 (UNMASKED): qspi_rxf_intr enabled |
+| 5 | MSTIE | R/W | Multi-master contention interrupt enable<br>If QSPI is set to serial master, this bit field does not exist.<br>0 (MASKED): qspi_mst_intr masked<br>1 (UNMASKED): qspi_mst_intr enabled |
+
+
+31:6 Reserved
+
+
+### 22.5.12 Interrupt state register (QSPI_ISTS)
+
+Offset address: 0x30  
+Reset value: 0x0000 0000
+
+
+| Field | Name | R/W | Description |
+| ------- | -------- | ------ | -------------------------------------------------------------------------------- |
+| 0 | TFEIF | R | Transmit FIFO empty interrupt state<br>0 (INACTIVE): Interrupt unactivated after qspi_txe_intr is masked<br>1 (ACTIVE): Interrupt activated after qspi_txe_intr is masked |
+| 1 | TFOIF | R | Transmit FIFO overrun interrupt state<br>0 (INACTIVE): Interrupt unactivated after qspi_txo_intr is masked<br>1 (ACTIVE): Interrupt activated after qspi_txo_intr is masked |
+| 2 | RFUIF | R | Receive FIFO underrun interrupt state<br>0 (INACTIVE): Interrupt unactivated after qspi_rxu_intr is masked<br>1 (ACTIVE): Interrupt activated after qspi_rxu_intr is masked |
+| 3 | RFOIF | R | Receive FIFO overrun interrupt state<br>0 (INACTIVE): Interrupt is unactivated after qspi_rxo_intr is masked<br>1 (ACTIVE): Interrupt activated after qspi_rxo_intr is masked |
+| 4 | RFFIF | R | Receive FIFO full interrupt state<br>0 (INACTIVE): Interrupt unactivated after qspi_rxf_intr is masked<br>1 (ACTIVE): Interrupt activated after qspi_rxf_intr is masked |
+| 5 | MSTIF | R | Multi-master contention interrupt state<br>0 (INACTIVE): Interrupt unactivated after qspi_mst_intr is masked<br>1 (ACTIVE): Interrupt activated after qspi_mst_intr is masked |
+
+
+### 22.5.13 Original interrupt state register (QSPI_RIS)
+
+Offset address: 0x34  
+Reset value: 0x0000 0000  
+
+
+| Field | Name | R/W | Description |
+| ------- | -------- | ----- | -------------------------------------------------------------------------------------------------- |
+| 0 | TFEIF | R | Transmit FIFO empty original interrupt state<br>0 (INACTIVE): qspi_txe_intr interrupt unactivated before masked<br>1 (ACTIVE): qspi_txe_intr interrupt activated before masked |
+| 1 | TFOIF | R | Transmit FIFO overrun original interrupt state<br>0 (INACTIVE): qspi_txo_intr interrupt is unactivated before masked<br>1 (ACTIVE): qspi_txo_intr interrupt is activated before masked |
+| 2 | RFUIF | R | Receive FIFO underrun original interrupt state<br>0 (INACTIVE): qspi_rxi_intr interrupt is unactivated before masked<br>1 (ACTIVE): qspi_rxi_intr interrupt is activated before masked |
+| 3 | RXOIF | R | Receive FIFO overrun original interrupt state<br>0 (INACTIVE): qspi_rxo_intr interrupt is unactivated before masked<br>1 (ACTIVE): qspi_rxo_intr interrupt is activated before masked |
+| 4 | RXFIF | R | Receive FIFO full original interrupt state<br>0 (INACTIVE): Interrupt unactivated after qsqi_rxf_intr is masked<br>1 (ACTIVE): Interrupt activated after qsqi_rxf_intr is masked |
+| 5 | MSTIF | R | Multi-master contention original interrupt state<br>0 (INACTIVE): Interrupt is unactivated after qsqi_mst_intr is masked<br>1 (ACTIVE): Interrupt activated after qsqi_mst_intr is masked |
+| 31:6 |  |  | Reserved |
+
+
+### 22.5.14 Transmit FIFO overrun interrupt clear register (QSPI_TFOIC)
+
+Offset address: 0x38  
+Reset value: 0x0000 0000  
+
+
+| Field | Name | R/W | Description |
+| ------- | -------- | ----- | ------------------------------------------------------------------ |
+| 0 | TFOIC | R | Clear transmit FIFO overrun interrupt<br>This register reflects the state of the interrupt and reads and clears the qsqi_txo_intr interrupt from this register, and write is invalid. |
+| 31:1 |  |  | Reserved |
+
+
+### 22.5.15 Receive FIFO overrun interrupt clear register (QSPI_RFOIC)
+
+Offset address: 0x3C  
+Reset value: 0x0000 0000  
+
+
+| Field | Name | R/W | Description |
+| ------- | -------- | ----- | ------------------------------------------------------------------ |
+| 0 | RFOIC | R | Clear receive FIFO overrun interrupt<br>This register reflects the state of the interrupt. Read from this register and qsqi_rxo_intr interrupt will be cleared; write is invalid. |
+| 31:1 |  |  | Reserved |
+
+
+### 22.5.16 Receive FIFO underrun interrupt clear register (QSPI_RFUIC)
+
+Offset address: 0x40  
+Reset value: 0x0000 0000  
+
+
+| Field | Name | R/W | Description |
+| ------- | -------- | ----- | ------------------------------------------------------------------------------------------------------------------- |
+| 0 | RFUIC | R | Clear receive FIFO underrun interrupt<br>This register reflects the state of the interrupt. Read from this register<br>and qspi_rxu_intr interrupt will be cleared; write is invalid. |
+| 31:1 |  |  | Reserved |
+
+
+### 22.5.17 Multi-master interrupt clear register (QSPI_MIC)
+
+Offset address: 0x44  
+Reset value: 0x0000 0000  
+
+
+| Field | Name | R/W | Description |
+| ------- | -------- | ----- | ------------------------------------------------------------------------------------------------------------------- |
+| 0 | MIC | R | Clear multi-master contention interrupt<br>This register reflects the state of the interrupt. Read from this register<br>and qspi_mst_intr interrupt will be cleared; write is invalid. |
+| 31:1 |  |  | Reserved |
+
+
+### 22.5.18 Interrupt clear register (QSPI_ICF)
+
+Offset address: 0x48  
+Reset value: 0x0000 0000  
+
+
+| Field | Name | R/W | Description |
+| ------- | -------- | ----- | ------------------------------------------------------------------------------------------------------------------- |
+| 0 | ICF | R | Clear interrupt<br>If any interrupt below is in active state, set this register.<br>Read and qspi_tx_intr, qspi_rxu_intr, qspi_rxo_intr and qspi_mst_intr<br>interrupts will be cleared; write is invalid. |
+| 31:1 |  |  | Reserved |
+
+
+### 22.5.19 DMA control register (QSPI_DMACTRL)
+
+Offset address: 0x4C  
+Reset value: 0x0000 0000  
+
+
+| Field | Name | R/W | Description |
+| ------- | --------- | ----- | ----------------------------------------- |
+| 0 | RDMAEN | R/W | Receive DMA enable<br>0: Disable<br>1: Enable |
+| 1 | TDMAEN | R/W | Transmit DMA enable<br>0: Disable<br>1: Enable |
+| 31:2 |  |  | Reserved |
+
+
+### 22.5.20 DMA transmit data level register (QSPI_DMATDL)
+
+Offset address: 0x50  
+Reset value: 0x0000 0000
+
+
+
+
+### 22.5.21 DMA receive data level register (QSPI_DMARDL)
+
+Offset address: 0x54  
+Reset value: 0x0000 0000  
+
+
+| Field | Name | R/W | Description |
+| ------- | -------- | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 2:0 | DMARDL | R/W | Receiving data level line: When the valid data in the receive FIFO is equal to or higher than the value configured by the DMADTL, a DMA receiving data request will be generated, and it is valid when RDMAEN=1.<br>The configuration range is 0~7 |
+| 31:3 |  |  | Reserved |
+
+
+### 22.5.22 Data register (QSPI_DATA)
+
+Offset address: 0x60  
+Reset value: 0x0000 0000  
+
+
+| Field | Name | R/W | Description |
+| ------- | ------ | ----- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 31:0 | DATA | R/W | Data<br>When writing this register, the data must be right adjusted; read data and the data will be right aligned automatically.<br>Read=Receive FIFO buffer<br>Write=Transmit FIFO buffer |
+
+
+### 22.5.23 RX sample delay register (QSPI_RSD)
+
+Offset address: 0xF0  
+Reset value: 0x0000 0000  
+
+
+| Field | Name | R/W | Description |
+| ------- | ------ | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 7:0 | RSD | R/W | Receive data (RXD) sample delay<br>This register is used for delaying the sampling of RXD input port. Each value represents the single qspi_clk delay on RXD sample. |
+| 15:8 |  |  | Reserved |
+| 16 | RSE | R/W | Receive data (RXD) sampling edge<br>This register is used to confirm the sampling edge of RXD signal with qspi_clk. Then set this bit to 1, and use the negative edge of qspi_clk to sample the input data; otherwise, use the positive edge for sampling. |
+| 31:17 |  |  | Reserved |
+
+
+### 22.5.24 Control register 3 (QSPI_CTRL3)
+
+Offset address: 0xF4  
+Reset value: 0x0000 0000
+
+
+
+
+| Field | Name | R/W | Description |
+| ------- | ------- | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1:0 | IAT | R/W | Address and instruction of transmission format<br>Choose whether QSPI transmits the instruction/address in standard SPI mode or the SPI mode selected in the ctrl0.spi_frf field.<br>00 (TT0): Transmit the instruction and address in standard SPI mode<br>01 (TT1): Transmit the instruction in standard SPI mode<br>Transmit the address in QSPI_CTRL1.SPI_FRF specified mode<br>10 (TT2): Transmit the instruction and address in SPI_FRF specified mode<br>11 (TT3): Reserved |
+| 5:2 | ADDRLEN | R/W | Address length of transmission<br>Transmission will start only after these bits have been compiled to FIFO.<br>0x0 (ADDR_L0): No address.<br>0x1 (ADDR_L4): 4-bit address length.<br>0x2 (ADDR_L8): 8-bit address length.<br>0x3 (ADDR_L12): 12-bit address length.<br>0x4 (ADDR_L16): 16-bit address length.<br>0x5 (ADDR_L20): 20-bit address length.<br>0x6 (ADDR_L24): 24-bit address length.<br>0x7 (ADDR_L28): 28-bit address length.<br>0x8 (ADDR_L32): 32-bit address length.<br>0x9 (ADDR_L36): 36-bit address length.<br>0xA (ADDR_L40): 40-bit address length.<br>0xB (ADDR_L44): 44-bit address length.<br>0xC (ADDR_L48): 48-bit address length.<br>0xD (ADDR_L52): 52-bit address length.<br>0xE (ADDR_L56): 56-bit address length.<br>0xF (ADDR_L60): 60-bit address length. |
+| 7:6 |  |  | Reserved |
+| 9:8 | INSLEN | R/W | Length of instructions in four-line mode<br>00 (INST_L0): No instruction<br>01 (INST_L4): 4-bit instruction<br>10 (INST_L8): 8-bit instruction<br>11 (INST_L16): 16-bit instruction |
+| 10 |  |  | Reserved |
+| 15:11 | WAITCY | R/W | The number of clocks to wait before transmitting/receiving data in four-line mode. |
+| 29:16 |  |  | Reserved |
+| 30 | CSEN | R/W | Enable clock stretching<br>SPI transmission capacity. If written, FIFO will become empty, and QSPI will extend the clock until FIFO has enough data to continue to transmit.<br>If read, receive FIFO will become full, and QSPI will stop the clock until data is read from FIFO. |
+| 31 |  |  | Reserved |
+
+
+### 22.5.25 IO shift register (QSPI_IOSW)
+
+Offset address: 0x200
+
+
+
+
+Reset value: 0x0000 0000
+
+
+
+| Field | Name | R/W | Description |
+| ------- | ------- | ----- | ----------------------------------------------------------------------------------------------------- |
+| 0 | IOSW | R/W | If this bit is set to "1", IO will be remapped to spi2 and USART3 will switch to remap to QSPI. |
+| 31:1 |  |  | Reserved |
+
+
+# 23 Controller area network (CAN)
+
+
+
+## 23.1 Full Name and Abbreviation Description of Terms
+
+
+
+| Full name in English | English abbreviation |
+| -------------------------------- | ---------------------- |
+| First Input First Output | FIFO |
+| Request | REQ |
+
+
+## 23.2 Introduction
+
+
+CAN is abbreviation of Controller Area Network, and is serial communication protocol of ISO international standardization and supports CAN Protocol 2.0A and 2.0B. In CAN protocol, the sender transmits the message to all receivers in the form of broadcast. When the node receives the message, it will go through the filter group and decide whether the message is needed according to the identifier. This design saves the CPU overhead.
+
+
+## 23.3 Main Features
+
+
+(1) Support CAN protocol 2.0A and 2.0B  
+(2) The maximum baud rate of communication is 1Mbit/s  
+(3) Transmitting function  
+   ● There are three transmit mailboxes  
+   ● The priority of transmitting message can be configured  
+   ● Record the transmission time  
+(4) Receiving function  
+   ● Have two receive FIFO with three depth levels  
+   ● Have 28 filter groups  
+   ● Record the receiving time  
+
+
+## 23.4 Functional Description
+
+
+
+### 23.4.1 Characteristics of CAN physical layer
+
+
+Multiple communication nodes can be designed on the CAN bus, and each node consists of a CAN controller and a transceiver. The controller and the transceiver are connected through CAN_TX and CAN_RX to transmit logic signals; the transceiver and the bus are connected through CAN_High and CAN_Low to transmit differential signals.
+
+
+
+
+### 23.4.2 Message structure
+
+
+Figure 106 Standard Data Frame
+
+
+| SOF | 11-bit ID | RTR | IDE | DLC | Data field | CRC | ACK | EOF |
+| ----- | ----------- | ----- | ----- | ----- | ------------ | ----- | ----- | ----- |
+
+| Frame start | Arbitration field | Control field | Data field | CRC field | ACK field | End of frame |
+
+
+Figure 107 Extended Data Frame
+
+
+| SOF | 11-bit ID | SRR | IDE | 18-bit ID | RTR | DLC | Data | CRC | ACK | EOF |
+| ----- | ----------- | ----- | ----- | ----------- | ----- | ----- | ------ | ----- | ----- | ----- |
+
+| Frame start | Arbitration field | Control field | Data field | CRC field | ACK field | End of frame |
+
+
+Note:
+(1) Frame start: It is used to inform each node that there will be data for transmission.  
+(2) Arbitration segment: It is used to decide which message can be transmitted when multiple messages are transmitted. Main content of this segment is ID information, the ID in standard format is 11 bits, and the ID in extended format is 29 bits.  
+(3) Control segment: The main content of this segment is data length code (DLC), which is used to indicate the number of bytes in the data segment of the message. The data segment has up to 8 bytes.  
+(4) Data segment: Include the data information to be transmitted by the node.  
+(5) CRC segment: CRC check code is used to ensure correct transmission of the messages.  
+(6) ACK segment: This segment includes ACK slot bit and ACK delimiter bit. The transmitting node in ACK slot transmits recessive bits, while the receiving node transmits the dominant bit in this bit to acknowledge.  
+(7) Frame end: Seven recessive bits transmitted by the transmitting nodes are used to indicate the end.  
+
+
+### 23.4.3 Working mode
+
+
+CAN has three main working modes: initialization mode, normal mode and sleep mode.  
+
+
+#### 23.4.3.1 Initialization mode
+
+
+Set the INITREQ bit of the configuration register CAN_MCTRL to 1 to request to enter the initialization mode; clear the INITFLG bit to 0 to confirm entering the initialization mode.  
+
+Clear the INITREQ bit of the configuration register CAN_MCTRL to 0 to request exiting the initialization mode; clear the INITFLG bit to 0 to confirm exiting the initialization mode.  
+
+Message receiving and transmitting is disabled in initialization mode.
+
+
+
+
+#### 23.4.3.2 Normal Mode
+
+Clear the INITREQ bit of the configuration register CAN_MCTRL to 0 by software to request to enter the normal mode from the initialization mode; wait for the hardware to clear the INITFLG bit to 0 to confirm entering the normal mode.
+
+Message receiving and transmitting is allowed in normal mode.
+
+
+#### 23.4.3.3 Sleep mode
+
+Set the SLEEPREQ bit of the configuration register CAN_MCTRL to 1 to request to enter the sleep mode.
+
+The clock of CAN stops work in sleep mode, the software can normally access the mailbox register, and the CAN is in low-power state.
+
+
+### 23.4.4 Communication mode
+
+There are four communication modes: mute mode, loopback mode, mute loopback mode and normal mode. Different communication modes can be selected only in initialization mode.
+
+
+#### 23.4.4.1 Mute mode
+
+Set the SILMEN bit of the configuration register CAN_BITTIM to 1 and select the mute mode.
+
+In this mode, only the recessive bit (logic 1) can be transmitted to the bus, the dominant bit (logic 0) cannot be transmitted, and data can be received from the bus.
+
+Figure 108 CAN Works in Mute Mode
+
+
+#### 23.4.4.2 Loopback mode
+
+Set the LBKMEN bit of the configuration register CAN_BITTIM to 1 and select the loopback mode.
+
+In this mode, the transmitted data are directly transmitted to the input end for receiving, the data are not received from the bus, and all data can be
+
+
+
+transmitted to the bus.
+
+Figure 109 CAN Works in Loopback Mode
+
+
+
+
+### 23.4.5 Data transmission
+
+
+
+#### 23.4.5.1 Conversion of transmit mailbox state
+
+
+Conversion process of transmit mailbox state:
+(1) First select an empty mailbox to set, submit the transmission request to the CAN bus controller by setting the TXMREQ bit of the configuration register CAN_TXMIDx to 1, and then the mailbox immediately enters the registration state.
+(2) When multiple mailboxes are in the registered state, conduct priority scheduling. When a mailbox has the highest priority, it will enter the predetermined state.
+(3) When the message in the transmit mailbox is transmitted to the bus, it will enter the transmitting state.
+(4) After the message is transmitted successfully, the mailbox will become idle again.
+
+
+#### 23.4.5.2 Transmitting priority
+
+
+When multiple messages are waiting for transmitting, determine the transmitting sequence by the TXFPFCFG bit of the configuration register CAN_MCTRL:
+- When the TXFPFCFG bit is set to 0, the priority is determined by the message identifier, the identifier is the lowest, and the priority is the highest; if the identifier is equal, the message with small mailbox number will be transmitted first.
+- When the TXFPFCFG bit is set to 1, the priority will be determined by the sequence of transmitting requests.
+
+
+#### 23.4.5.3 Abort
+
+
+Transmit the abort request by setting the ABREQFLG bit of the configuration register CAN_TXSTS to 1.
+
+If the mailbox is in registered or predetermined state, stop transmitting the request immediately; if the mailbox is in the transmitting state, there are two situations: one is that the mailbox is successfully transmitted, and the mailbox becomes empty; in such case, the TXSUSFLG bit of the CAN_TXSTS register is
+
+
+
+
+#### 23.4.5.4 Disable automatic retransmission
+
+
+Generally, in time triggered communication mode, automatic retransmission should be disabled.
+
+In the mode that the automatic retransmission is disabled, the message is transmitted only once, and no matter what the result is (success, error or arbitration loss), the hardware will not transmit the message again automatically.
+
+When the transmission process is finished, set the REQCFGL bit of the CAN_TXSTS register to 1, and the transmission result will be on the TXSUSFLG, ARBLSTFLG and TXERRFLG bits.
+
+
+### 23.4.6 Data receiving
+
+
+
+#### 23.4.6.1 Receive FIFO
+
+
+CAN has two receive FIFO, and each FIFO has three mailboxes. The FMNUM[1:0] bit of the register CAN_RXF reflects the number of messages currently stored; set the RFOM bit to 1 to release the output mailbox of receive FIFO; FFULLFLG is the full state flag bit; FOVRFLG is overrun state flag bit.
+
+
+#### 23.4.6.2 Receive FIFO state conversion
+
+
+At the beginning FIFO is in empty state, and after receiving the message, it will become registered.
+
+When FIFO is in registered state and three mailboxes are full, the next effective message received will enter overrun state, and there are two situations for loss of messages in overrun state:
+- If FIFO lock function is disabled, the finally received message will be overwritten by new message
+- If FIFO lock function is enabled, the newly received message will be discarded
+
+
+### 23.4.7 Filtering mechanism
+
+
+Function of the filter: The receiving node decides whether the message is required according to the message identifier, and only the required message will be received after filtering. CAN controller has 28 filter groups.
+
+
+#### 23.4.7.1 Bit width
+
+
+Each group of filters can configure two kinds of bit width.
+
+
+
+
+Figure 112 One 32-bit Filter
+
+
+
+| ID | Mapping |
+| ------------------------------ | ------------------------- |
+| CAN_FiBANK1[31:24] | CAN_FiBANK1[23:16] |
+| CAN_FiBANK1[15:8] | CAN_FiBANK1[7:0] |
+| STDID[10:3] | STDID[2:0] |
+| EXTID[17:13] | EXTID[12:5] |
+| EXTID[4:0] | IDTyVTRxFR ESEL         <br>0 |
+
+
+Figure 113 Two 16-bit Filters
+
+
+
+| ID | Mapping |
+| ------------------------------ | ------------------------- |
+| CAN_FiBANK1[15:8] | CAN_FiBANK1[7:0] |
+| CAN_FiBANK2[15:8] | CAN_FiBANK2[7:0] |
+| STDID[10:3] | STDID[2:0] |
+| TXRF REQ | IDTyV ESEL |
+| EXTID[17:15] | STDID[12:5] |
+| STDID[2:0] | IDTyV REQ              <br>EXTID[17:15] |
+
+
+#### 23.4.7.2 Filtering mode
+
+
+
+Mask bit mode
+
+
+In this mode, it is only required to list some bits of the message identifier to form the mask, and the message ID should be the same as the mask, and then the message can be received.
+
+
+| Table 98 Mask Bit Mode Example |  |  |  |  |  |
+| -------------------------------- | --------- | ------- | -------- | ------- | ------- |
+
+| ID | 1 | 0 | 1 | 1 | 0 | 0 | 1 | 0 | ....... |
+| Mask | 1 | 0 | 1 | 1 | 1 | 0 | 0 | 0 | ....... |
+| Screened ID | 1 | X | 1 | 1 | 0 | X | X | 0 | ....... |
+
+
+Identifier list mode
+
+
+In this mode, each bit of the message ID needs to be the same as the filter identifier, and then the message can be received.
+
+
+| Table 99 Identifier List Mode Example |  |  |  |  |  |
+| --------------------------------------- | --------- | ------- | -------- | ------- | ------- |
+
+| ID | 1 | 1 | 1 | 0 | 1 | 0 | 0 | 1 | 1 |
+| ID | 1 | 1 | 1 | 0 | 1 | 0 | 0 | 1 | 1 |
+| Screened ID | 1 | 1 | 1 | 0 | 1 | 0 | 0 | 1 | 1 |
+
+
+#### 23.4.7.3 Filter priority
+
+
+The priority rules are as follows:
+- The priority of the filter with bit width of 32 bits is higher than that with bit width of 16 bits
+- Under the condition of the same bit width, the priority of the identifier list mode is higher than that of mask bit mode
+- Under the condition of the same bit width and mode, the priority of the small filtering number is high
+
+
+
+
+### 23.4.8 Bit timing and baud rate
+
+
+
+#### 23.4.8.1 Bit timing
+
+
+The CAN peripheral bit timing of APM32 contains three segments: synchronization segment (SYNC_SEG), time segment 1 (BS1) and time segment 2 (BS2), and the sampling points are at the junction of BS1 and BS2 segments.
+
+- **Synchronization segment (SYNC_SEG)**: This bit occupies one time cell
+- **Time segment 1 (BS1)**: This segment occupies 1 to 16 time cells, and it contains PROP_SEG and PHASE_SEG1 in CAN standard
+- **Time segment 2 (BS2)**: This segment occupies 1 to 8 time cells, and it represents PHASE_SEG2 in CAN standard
+
+
+#### 23.4.8.2 Calculation of baud rate
+
+
+Time of BS1 segment: Ts1=Tq* (TIMSEG1[3:0]+1)<br>
+Time of BS2 segment: Ts2=Tq* (TIMSEG2[2:0]+1)<br>
+Time of one data bit: T1bit=1Tq+Ts1+Ts2<br>
+Baud rate=1/ T1bit<br>
+Tq = (BRP+1) * TPCLK
+
+
+### 23.4.9 Error management
+
+
+Transmit the error counter through the TXERRCNT bit of the configuration register CAN_ERRSTS and receive the error counter through the RXERRCNT bit of the register CAN_ERRSTS to reflect the error management of CAN bus.
+
+Control the generation of interrupts in error state through the ERRIEN bit of the configuration register CAN_INTEN.
+
+
+#### 23.4.9.1 Bus-off recovery
+
+
+When the TXERRCNT of the CAN error status register is greater than 255, the CAN bus controller will enter the bus-off state, then the BOFLG bit of the register CAN_ERRSTS will be set to 1, and in this state, the CAN bus controller cannot receive and transmit messages.
+
+Decide the bus-off recovery mode through the ALBOFFM bit of the configuration register CAN_MCTRL:
+- If the ALBOFFM bit is set to 1, once the hardware detects 11 continuous recessive bits for 128 times, it will exit the bus-off state automatically;
+- If the ALBOFFM bit is set to 0, after the software requests entering and then exiting the initialization mode, it will exit the bus-off state.
+
+
+
+
+### 23.4.10 Interrupt
+
+
+
+Events generating transmission interrupt:
+
+- The hardware sets REQCFLG0 bit of the register CAN_TXSTS to 1, and the transmit mailbox 0 becomes empty
+- The hardware sets REQCFLG1 bit of the register CAN_TXSTS to 1, and the transmit mailbox 1 becomes empty
+- The hardware sets REQCFLG2 bit of the register CAN_TXSTS to 1, and the transmit mailbox 2 becomes empty
+
+
+Events generating FIFO0 interrupt:
+
+- Set the FMNUM0[1:0] bit of the register CAN_RXF0 to a number rather than 0 by the hardware, and FIFO0 will receive a new message
+- Set the FFULLFLG0 bit of the register CAN_RXF0 to 1 by hardware, and FIFO0 will be full
+- Set the FOVRFLG0 bit of the register CAN_RXF0 to 1 by hardware and FIFO0 will overrun
+
+
+Events generating FIFO1 interrupt:
+
+- Set the FMNUM1[1:0] bit of the register CAN_RXF1 to a number rather than 0 by hardware, and FIFO1 will receive a new message
+- Set the FFULLFLG1 bit of the register CAN_RXF1 to 1 by hardware, and FIFO1 will be full
+- Set the FOVRFLG1 bit of the register CAN_RXF1 to 1 by hardware and FIFO1 will overrun
+
+
+Events generating state change and error interrupt:
+
+- Set the SLEEPIEN bit of the register CAN_INTEN to 1 by hardware and it will enter the sleep mode
+- Set the WUPIEN bit of the register CAN_INTEN to 1 by hardware and interrupt enable will wake up
+- Set the ERRWFLG bit of the register CAN_ERRSTS to 1 by hardware, and it means that the number of errors has reached the threshold
+- Set the ERRPFLG bit of the register CAN_ERRSTS to 1 by hardware, and it means that the number of errors has reached the threshold of passive error
+- Set the LERRC[2:0] bit of the register CAN_ERRSTS by the hardware, and it indicates the condition of last error
+
+
+
+![Figure 114 Event Flag and Interrupt Generation](https://www.geehy.com)
+
+
+## 23.5 Register address mapping
+
+
+CAN1 base address: 0x4000_6400  
+CAN2 base address: 0x4000_6800  
+
+Note: Except base address, the register and offset addresses of CAN1 and CAN2 are exactly the same.
+
+
+
+
+Table 100 CAN Register Address Mapping
+
+
+
+| Register name | Description | Offset Address |
+| --------------------- | ----------------------------------------------- | ------------------------------------- |
+| CAN_MCTRL | CAN main control register | 0x00 |
+| CAN_MSTS | CAN main status register | 0x04 |
+| CAN_TXSTS | CAN transmit status register | 0x08 |
+| CAN_RXF0 | CAN receive FIFO 0 register | 0x0C |
+| CAN_RXF1 | CAN receive FIFO 1 register | 0x10 |
+| CAN_INTEN | CAN interrupt enable register | 0x14 |
+| CAN_ERRSTS | CAN error status register | 0x18 |
+| CAN_BITTIM | CAN bit timing register | 0x1C |
+| CAN_TXMIDx | Transmitting mailbox identifier register | 0x180, 0x190, 0x1A0 |
+| CAN_TXDLENx | Transmit mailbox data length register | 0x184, 0x194, 0x1A4 |
+| CAN_TXMDx | Transmit mailbox low-byte data register | 0x188, 0x198, 0x1A8 |
+| CAN_TXMDHx | Transmit mailbox high-byte data register | 0x18C, 0x19C, 0x1AC |
+| CAN_RXMIDx | Receive FIFO mailbox identifier register | 0x1B0, 0x1C0 |
+| CAN_RXDLENx | Receive FIFO mailbox data length register | 0x1B4, 0x1C4 |
+| CAN_RXMDx | Receive FIFO mailbox low-byte data register | 0x1B8, 0x1C8 |
+| CAN_RXMDHx | Receive FIFO mailbox high-byte data register | 0x1BC, 0x1CC |
+| CAN_FCTRL | CAN filter control register | 0x200 |
+| CAN_FMCFG | CAN filter mode register | 0x204 |
+| CAN_FSCFG | CAN filter bit width configuration register | 0x20C |
+| CAN_FASS | CAN filter FIFO association register | 0x214 |
+| CAN_FACT | CAN filter activation register | 0x21C |
+| CAN_FiBANKx | Register x of CAN filter group i | 0x240..0x31C |
+
+
+## 23.6 Register functional description
+
+
+
+### 23.6.1 CAN control and status register
+
+
+
+#### 23.6.1.1 CAN main control register (CAN_MCTRL)
+
+
+Offset address: 0x00  
+Reset value: 0x0001 0002  
+
+
+| Field | Name | R/W | Description |
+| ------- | --------- | ----- | ------------------------------------------------------------------------ |
+| 0 | INITREQ | R/W | Request to Enter Initialization Mode<br>0: Enter the normal work mode from the initialization mode<br>1: Enter the initialization mode from the normal work mode |
+| 1 | SLEEPRQ | R/W | Request to Enter Sleep Mode <br> 1: Exit the sleep mode <br> 1: Request to enter the sleep mode. <br> If the AWUPCFG bit is set to 1, when the RX signal detects CAN message, this bit will be cleared to 0 by hardware; after reset, reset this bit to 1, and enter the sleep mode. |
+| 2 | TXFPCFG | R/W | Transmit FIFO Priority Configure <br> This bit is used to determine which parameters determine the transmission priority when multiple messages are waiting for transmission. <br> 0: Determine by the message identifier <br> 1: Determine by the sequence of transmission request |
+| 3 | RXFLOCK | R/W | Receive FIFO Locked Mode Configure <br> This bit is used to determine whether FIFO is locked when receiving overrun, and how to deal with the next received message when the message of the receive FIFO has not been read out. <br> 0: Unlocked; if the message of the receive FIFO is not read out, the next received message will overwrite the original message <br> 1: Locked; when the message of the receive FIFO is not read out, the next received message will be discarded |
+| 4 | ARTXMD | R/W | Automatic Retransmission Message Disable <br> 0: Enable automatic retransmission, and the message will be retransmitted automatically until it is transmitted successfully <br> 1: Disable automatic retransmission and the message will be transmitted only once |
+| 5 | AWUPCFG | R/W | Automatic Wakeup Mode Configure <br> 0: Software wakes up the sleep mode by clearing the SLEEPRQ bit of the CAN_MCTRL register <br> 1: Hardware wakes up the sleep mode by detecting CAN message |
+| 6 | ALBOFFM | R/W | Automatic Leaving Bus-Off Status Condition Management <br> 0: After the software resets the INITREQ bit of the CAN_MCTRL register to 1 and then clears it, when the hardware detects 11 continuous recessive bits for 128 times, it will exit from the bus-off state <br> 1: When the hardware detects 11 continuous recessive bits for 128 times, it will exit from the bus-off state automatically |
+| 14:7 |  |  | Reserved |
+| 15 | SWRST | R/S | Software Reset CAN <br> 0: Work normally <br> 1: CAN is reset by force, and after reset, CAN enters the sleep mode; the hardware will clear this bit to 0 automatically |
+| 16 | DBGFRZE | R/W | Debug Freeze <br> 0: Invalid <br> 1: During debugging, CAN cannot receive/transmit, but it still can read and write and control the receive FIFO normally |
+| 31:17 |  |  | Reserved |
+
+
+23.6.1.2 CAN main status register (CAN_MSTS) <br> Offset address: 0x04
+
+
+
+Reset value: 0x0000 0C02
+
+
+| Field | Name | R/W | Description |
+| -------- | ----------- | ----- | ------------------------------------------------------------------------------------------------------------------ |
+| 0 | INITFLG | R | Being Initialization Mode Flag<br>This bit is set to 1 and cleared to 0 by hardware.<br>1: Exit the initialization mode<br>1: Being in the initialization mode; this bit is confirmation for initialization request bit of the CAN_MCTL register. |
+| 1 | SLEEPFLG | R | Being Sleep Mode Flag<br>This bit is set to 1 or cleared to 0 by hardware<br>1: Exit the sleep mode<br>1: Being in the sleep mode; this bit is confirmation for sleep mode request bit of the CAN_MCTL register. |
+| 2 | ERRIFLG | RC_W1 | Error Interrupt Occur Flag<br>This bit is set to 1 by hardware and cleared to 0 by writing 1 by software.<br>0: Not occur<br>1: Occurred |
+| 3 | WUPIFLG | RC_W1 | Wakeup Interrupt Occur Flag<br>When entering the sleep mode and detecting SOP wake-up, the bit is set to 1 by hardware; it can be cleared to 0 by writing 1 by software.<br>0: Fail to wake up from the sleep mode<br>1: Wake up from the sleep mode |
+| 4 | SLEEPIFLG | RC_W1 | Being Sleep Mode Interrupt Flag<br>When entering the sleep mode, this bit is set to 1 by hardware and corresponding interrupt will be triggered; when exiting the sleep mode, this bit is cleared to 0 by hardware and cleared to 0 by writing 1 by software.<br>0: Fail to enter the sleep mode<br>1: Enter the sleep mode |
+| 7:5 | Reserved |  |  |
+| 8 | TXMFLG | R | Being Transmit Mode Flag<br>0: CAN is not in transmission mode<br>1: CAN is in transmission mode |
+| 9 | RXMFLG | R | Being Receive Mode Flag<br>0: CAN is not in receiving mode<br>1: CAN is in receiving mode |
+| 10 | LSAMVALUE | R | CAN Rx Pin Last Sample Value |
+| 11 | RXSIGL | R | CAN Rx Pin Signal Level |
+| 31:12 | Reserved |  |  |
+
+
+#### 23.6.1.3 CAN transmitting status register (CAN_TXSTS)
+Offset address: 0x08  
+Reset value: 0x1C00 0000
+
+
+
+
+| Field | Name | R/W | Description |
+| ------- | ------------- | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 0 | REQCFLG0 | RC_W1 | Mailbox 0 Request Completed Flag<br>When the last transmission or abortion request of mailbox 0 is completed, this bit is set to 1 by hardware; when receiving the transmission request, this bit is cleared to 0 by writing 1 by software.<br>0: Being transmitted<br>1: Transmission completed |
+| 1 | TXSUSFLG0 | RC_W1 | Mailbox 0 Transmission Success Flag<br>When mailbox 0 attempts to transmit successfully, this bit is set to 1 by hardware; it can be cleared to 0 by writing 1 by software.<br>0: Last transmission attempt failed<br>1: Last transmission attempt succeeded |
+| 2 | ARBLSTFLG0 | RC_W1 | Mailbox 0 Arbitration Lost Flag<br>When the mailbox 0 loses arbitration, this bit is set to 1 by hardware; this bit can be cleared to 0 by writing 1 by software.<br>0: Meaningless<br>1: Lost |
+| 3 | TXERRFLG0 | RC_W1 | Mailbox 0 Transmission Error Flag<br>When mailbox 0 fails to transmit, this bit is set to 1 by hardware; this bit can be cleared to 0 by writing 1 by software.<br>0: Meaningless<br>1: Failed to transmit |
+| 6:4 | Reserved |  |  |
+| 7 | ABREQFLG0 | R/S | Mailbox 0 Abort Request Flag<br>If there is no message waiting for transmission in mailbox 0, this bit is invalid.<br>0: The transmitting message of mailbox 0 is cleared, and this bit is cleared to 0 by hardware<br>1: Set this bit to 1 to abort the transmission request of mailbox 0 |
+| 8 | REQCFLG1 | RC_W1 | Mailbox 1 Request Completed Flag<br>When the last transmission or abortion request of mailbox 1 is completed, this bit is set to 1 by hardware; when receiving the transmission request, this bit is cleared to 0 by hardware; it can be cleared to 0 by writing 1 by software.<br>0: Being transmitted<br>1: Transmission completed |
+| 9 | TXSUSFLG1 | RC_W1 | Mailbox 1 Transmission Success Flag<br>When mailbox 1 attempts to transmit successfully, this bit is set to 1 by hardware; and cleared to 0 by writing 1 by software.<br>0: Last transmission attempt failed<br>1: Last transmission attempt succeeded |
+| 10 | ARBLSTFLG1 | RC_W1 | Mailbox 1 Arbitration Lost Flag<br>When the mailbox 1 loses arbitration, this bit is set to 1 by hardware; and cleared to 0 by writing 1 by software.<br>0: Meaningless<br>1: Lost |
+| 11 | TXERRFLG1 | RC_W1 | Mailbox 1 Transmission Error Flag<br>When mailbox 1 fails to transmit, this bit is set to 1 by hardware; and cleared to 0 by writing 1 by software.<br>0: Meaningless<br>1: Failed to transmit |
+| 14:12 | Reserved |  |  |
+| 15 | ABREQFLG1 | R/S | Mailbox 1 Abort Request Flag<br>If there is no message waiting for transmitting in mailbox 1, this bit is invalid.<br>0: The transmitting message of mailbox 1 is cleared, and this bit is cleared to 0 by hardware<br>1: Set this bit to 1 to abort the transmission request of mailbox 1 |
+| 16 | REQCFLG2 | RC_W1 | Mailbox 2 Request Completed Flag<br>When the last transmission or abortion request of mailbox 2 is completed, this bit is set to 1 by hardware; when receiving the transmission request, this bit is cleared to 0 by writing 1 by software.<br>0: Being transmitted<br>1: Transmission completed |
+| 17 | TXUSFLG2 | RC_W1 | Mailbox 2 Transmission Success Flag<br>When mailbox 2 attempts to transmit successfully, this bit is set to 1 by hardware; it can be cleared to 0 by writing 1 by software.<br>0: Last transmission attempt failed<br>1: Last transmission attempt succeeded |
+| 18 | ARBLSTFLG2 | RC_W1 | Mailbox 2 Arbitration Lost Flag<br>When the mailbox 2 loses arbitration, this bit is set to 1 by hardware; it can be cleared to 0 by writing 1 by software.<br>0: Meaningless<br>1: Lost |
+| 19 | TXERRFLG2 | RC_W1 | Mailbox 2 Transmission Error Flag<br>When mailbox 2 fails to transmit, this bit is set to 1 by hardware; it can be cleared to 0 by writing 1 by software.<br>0: Meaningless<br>1: Failed to transmit |
+| 22:20 | Reserved |  |  |
+| 23 | ABREQFLG2 | R/S | Mailbox 2 Abort Request Flag<br>If there is no message waiting for transmitting in mailbox 2, this bit is invalid.<br>0: The transmitting message of mailbox 2 is cleared, and this bit is cleared to 0 by hardware<br>1: Set this bit to 1 to abort the transmission request of mailbox 2 |
+| 25:24 | ENUMM[1:0] | R | Empty Mailbox Number<br>This bit is applicable when there is empty mailbox. When all the transmit mailboxes are empty, it means the number of the transmit mailbox with the lowest priority; when the mailbox is not empty but not all empty, it means the number of next mailbox to be transmitted. |
+| 26 | TXMEFLG0 | R | Transmit Mailbox 0 Empty Flag<br>When the transmit mailbox 0 is empty, this bit is set to 1 by hardware.<br>0: There is message to be transmitted in mailbox 0<br>1: There is no message to be transmitted in mailbox 0 |
+| 27 | TXMEFLG1 | R | Transmit Mailbox 1 Empty Flag<br>When the transmit mailbox 1 is empty, this bit is set to 1 by hardware.<br>0: There is message to be transmitted in mailbox 1<br>1: There is no message to be transmitted in mailbox 1 |
+| 28 | TXMEFLG2 | R | Transmit Mailbox 2 Empty Flag<br>When the transmit mailbox 2 is empty, this bit is set to 1 by hardware.<br>0: There is message to be transmitted in mailbox 2<br>1: There is no message to be transmitted in mailbox 2 |
+| 29 | LOWESTP0 | R | The Lowest Transmission Priority Flag For Mailbox 0<br>0: Meaningless<br>1: The priority of mailbox 0 is the lowest among those mailboxes waiting to transmit messages<br>Note: If there is only one mailbox waiting, LOWESTP[2:0] is cleared to 0. |
+| 30 | LOWESTP1 | R | The Lowest Transmission Priority Flag For Mailbox 1<br>0: Meaningless<br>1: The priority of mailbox 1 is the lowest among those mailboxes waiting to transmit messages |
+| 31 | LOWESTP2 | R | The Lowest Transmission Priority Flag For Mailbox 2<br>0: Meaningless<br>1: The priority of mailbox 2 is the lowest among those mailboxes waiting to transmit messages |
+
+
+#### 23.6.1.4 CAN receive FIFO 0 register (CAN_RXF0)
+
+Offset address: 0x0C  
+Reset value: 0x00  
+
+
+| Field | Name | R/W | Description |
+| ------- | -------------- | -------- | ------------------------------------------------------------------------------------------------- |
+| 1:0 | FMNUM0[1:0] | R | The number of Message in receive FIFO0<br>These bits are used to reflect the number of messages stored in current receive FIFO0. Every time a new message is received, add 1 to FMNUM0 bit; every time the mailbox message is released and output, subtract 1 from FMNUM0 bit. |
+| 2 | Reserved |  |  |
+| 3 | FFULLFLG0 | RC_W1 | Receive FIFO0 full flag (Receive FIFO Full Flag)<br>When there are three messages in FIFO0, it means the FIFO has been full; this bit is set to 1 by hardware and cleared to 0 by writing 1 by software.<br>0: Not full<br>1: Full |
+
+
+#### 23.6.1.5 CAN receive FIFO 0 register (CAN_RXF0)
+
+Offset address: 0x10  
+Reset value: 0x00  
+
+
+| Field | Name | R/W | Description |
+| ------- | ---------- | ------- | ----------------------------------------------------------------------------------------------------------- |
+| 4 | FOVRFLG0 | RC_W1 | Receive FIFO 0 Overrun Flag<br>When there are three messages in FIFO0 and then a new message is received, it means the FIFO0 overruns; this bit is set to 1 by hardware and cleared to 0 by writing 1 by software.<br>0: No overrun<br>1: Generate overrun |
+| 5 | RFOM0 | R/S | Release Receive FIFO Output Mailbox to Receive Massage<br>This bit is set to 1 by hardware and cleared to 0 by software. If there is no message in FIFO, this bit is invalid. When FIFO contains more than two messages, the output mailbox must be first released to access the second message.<br>0: Meaningless<br>1: Release the output mailbox of receive FIFO |
+| 31:6 | Reserved |  |  |
+
+
+#### 23.6.1.5 CAN receive FIFO 1 register (CAN_RXF1)
+
+Offset address: 0x10  
+Reset value: 0x00  
+
+
+| Field | Name | R/W | Description |
+| ------- | ---------- | ------- | ----------------------------------------------------------------------------------------------------------- |
+| 1:0 | FMNUM1[1:0] | R | The number of Message in receive FIFO1<br>These bits are used to reflect the number of messages stored in current receive FIFO1. Every time a new message is received, add 1 to FMNUM1 bit; every time the mailbox message is released and output, subtract 1 from FMNUM1 bit. |
+| 2 | Reserved |  |  |
+| 3 | FFULLFLG1 | RC_W1 | Receive FIFO1 Full Flag<br>When there are three messages in FIFO1, it means the FIFO1 has been full; this bit is set to 1 by hardware and cleared to 0 by writing 1 by software.<br>0: Not full<br>1: Full |
+| 4 | FOVRFLG1 | RC_W1 | Receive FIFO1 Overrun Flag<br>When there are three messages in FIFO1 and then a new message is received, it means the FIFO1 overruns; this bit is set to 1 by hardware and cleared to 0 by writing 1 by software.<br>0: No overrun<br>1: Generate overrun |
+| 5 | RFOM1 | R/S | Release Receive FIFO1 Output Mailbox to Receive Massage<br>This bit is set to 1 by hardware and cleared to 0 by software. If there is no message in FIFO, this bit is invalid. When FIFO contains more than two messages, the output mailbox must be first released to access the second message.<br>0: Meaningless<br>1: Release the output mailbox of receive FIFO1 |
+| 31:6 | Reserved |  |  |
+
+
+#### 23.6.1.6 CAN interrupt enable register (CAN_INTEN)
+
+Offset address: 0x14  
+Reset value: 0x0000 0000  
+
+
+| Field | Name | R/W | Description |
+| ------- | --------- | ----- | ------------------------------------------------------------------ |
+| 0 | TXMIEN | R/W | Transmit Mailbox Empty Interrupt Enable<br>When REQCFGLGx bit is set to 1, it means transmission has been completed, and the transmit mailbox is empty; if this bit is set to 1, an interrupt will be generated.<br>0: No interrupt is generated<br>1: Generate interrupt |
+| 1 | FMIEEN0 | R/W | Generate an interrupt when enabling the number of messages in FIFO0 to be not 0<br> ( Interrupt Enable When The Number Of FIFO0 Message Is Not 0 )<br>When FMNUM0[1:0] bit of FIFO 0 is not zero, it means that the number of messages in FIFO0 is not 0; if this bit is set to 1, an interrupt will be generated.<br>0: No interrupt is generated<br>1: Generate interrupt |
+| 2 | FFULLIEN0 | R/W | FIFO Full Interrupt Enable<br>When the FFULLFLGO bit of FIFO0 is set to 1, it means that the message of FIFO0 is full; if this bit is set to 1, an interrupt will be generated.<br>0: No interrupt is generated<br>1: Generate interrupt |
+| 3 | FOVRIEN0 | R/W | FIFO Overrun Interrupt Enable<br>When the FOVRFLG0 bit of FIFO0 is set to 1, it means that the FIFO0 has overrun; if this bit is set to 1, an interrupt will be generated.<br>0: No interrupt is generated<br>1: Generate interrupt |
+| 4 | FMPIEN1 | R/W | Generate an interrupt when enabling the number of messages in FIFO1 to be not 0<br> ( Interrupt Enable when the number of FIFO1 Message is not 0 )<br>When FMNUM1[1:0] bit of FIFO 1 is not zero, it means that the number of messages in FIFO1 is not 0; if this bit is set to 1, an interrupt will be generated.<br>0: No interrupt is generated<br>1: Generate interrupt |
+| 5 | FFULLIEN1 | R/W | FIFO1 Full Interrupt Enable<br>When the FFULLFLG1 bit of FIFO1 is set to 1, it means that the message of FIFO1 is full; if this bit is set to 1, an interrupt will be generated.<br>0: No interrupt is generated<br>1: Generate interrupt |
+| 6 | FOVRIEN1 | R/W | FIFO1 Overrun Interrupt Enable<br>When the FOVRFLG1 bit of FIFO1 is set to 1, it means that the FIFO1 has overrun; if this bit is set to 1, an interrupt will be generated.<br>0: No interrupt is generated<br>1: Generate interrupt |
+| 7 | Reserved |  |  |
+| 8 | ERRWIEN | R/W | Error Warning Interrupt Enable<br>When ERRWFLG bit is set to 1, an error warning will occur; if this bit is set to 1, ERRIFLG shall be set and a warning error interrupt will be generated.<br>0: ERRIFLG bit is not set<br>1: ERRIFLG bit is set to 1 |
+| 9 | ERRPIEN | R/W | Error Passive Interrupt Enable<br>When ERRPFLG bit is set to 1, a passive error will occur; if this bit is set to 1, ERRIFLG shall be set and a passive error interrupt will be generated.<br>0: ERRIFLG bit is not set<br>1: ERRIFLG bit is set to 1 |
+| 10 | BOFFIEN | R/W | Bus-Off Interrupt Enable<br>When BOFFFLG bit is set to 1, bus-off will occur; if this bit is set to 1, ERRIFLG shall be set and a bus-off interrupt will be generated.<br>0: ERRIFLG bit is not set<br>1: ERRIFLG bit is set to 1 |
+| 11 | LECIEN | R/W | Last Error Code Interrupt Enable<br>When an error is detected and the LERRC[2:0] is set by hardware, the last error code is recorded. If this bit is set to 1, the ERRIFLG is set to generate the last error interrupt.<br>0: ERRIFLG bit is not set<br>1: ERRIFLG bit is set to 1 |
+| 12 | Reserved |  |  |
+| 13:12 |  |  |  |
+| 14 | ERRIEN | R/W | Error interrupt Enable<br>When the corresponding error status register is set to 1, if this bit is set to 1, an error interrupt will be generated.<br>0: No interrupt is generated<br>1: Generate interrupt |
+| 15 | WUPIEN | R/W | Wakeup interrupt Enable<br>When WUPINT bit is set to 1, if this bit is set to 1, a wake-up interrupt will be generated.<br>0: No interrupt is generated<br>1: Generate interrupt |
+| 16 | SLEEPIN | R/W | Sleep Interrupt Enable<br>When SLEEPIFLG bit is set to 1, if this bit is set to 1, a sleep interrupt will be generated.<br>0: No interrupt is generated<br>1: Generate interrupt |
+| 17 | Reserved |  | <br><br> |
+| 23.6.1.7 | CAN error status register (CAN_ERRSTS) |  | <br>Offset address: 0x18 <br>Reset value: 0x0000 0000 |
+| 0 | ERRWFLG | R | Error Warning Occur Flag<br>When the value of the receiving error counter or transmitting error counter ≥96, this bit is set to 1 by hardware.<br>0: No error warning occurred<br>1: Error warning occurred |
+| 1 | ERRPFLG | R | Error Passive Occur Flag<br>When the value of the receiving error counter or transmitting error counter >127, this bit is set to 1 by hardware.<br>0: No passive error occurred<br>1: Passive error occurred |
+| 2 | BOFLG | R | Enter Bus-Off Flag<br>When the value of the transmitting error counter TXERRCNT is greater than 255, CAN will enter the bus-off state and this bit is set to 1 by hardware.<br>0: CAN not in bus-off state<br>1: CAN in bus-off state |
+| 3 |  |  | Reserved |
+| 6:4 | LERRC | R/W | Record Last Error Code<br>When an error is detected on CAN bus, it is set by hardware according to the error category; when the message is transmitted or received correctly, this bit is cleared to 0 by hardware.<br>000: No error<br>001: Bit stuffing error<br>010: Form (Form) error<br>011: Acknowledgment (ACK) error<br>100: Recessive bit error<br>101: Dominant bit error<br>110: CRC error<br>111: Set by software |
+| 15:7 |  |  | Reserved |
+| 23:16 | TXERRCNT | R | Least Significant Byte Of The 9-Bit Transmit Error Counter<br>The counter is implemented according to the transmission part of fault definition mechanism of CAN protocol. |
+| 31:24 | RXERRCNT | R | Receive Error Counter<br>The receiving error counter is implemented according to the receiving part of fault definition mechanism of CAN protocol. When a receiving error occurs, according to the condition of the error, add 1 or 8 to the counter, and subtract 1 after receiving successfully. When the value of the counter is greater than 127, set the counter value to 120. |
+
+
+#### 23.6.1.8 CAN bit timing register (CAN_BITTIM)
+
+Offset address: 0x1C<br>
+Reset value: 0x0123 0000
+
+
+| Field | Name | R/W | Description |
+| ------- | -------- | ----- | ------------------------------------------------------------- |
+| 9:0 | BRPSC | R/W | Baud Rate Prescaler Factor Setup<br>Time unit tqd = (BRPSC+1) × tPCLK |
+
+
+15:10  Reserved
+
+19:16  TIMSEG1  R/W  
+Set the time segment 1 (Time Segment 1 Setup)  
+Time occupied by time period 1 tBS1 = tCAN x (TIMSEG1+1).  
+
+22:20  TIMSEG2  R/W  
+Time Segment 2 Setup  
+Time occupied by time period 2 tBS2 = tCAN x (TIMSEG2+1).  
+
+# 23  Reserved
+
+25:24  RSYNJWI  R/W  
+Resynchronization Jump Width  
+Time that CAN hardware can extend or shorten in this bit: tR/W = tCAN x (RSYNJWI+1).  
+
+29:26  Reserved  
+
+# 30  LBKMEN  R/W
+Loop Back Mode Enable  
+0: Disable  
+1: Enable  
+
+# 31  SILMEN  R/W
+Silent Mode Enable  
+0: Normal state  
+1: Mute mode  
+
+Note: When CAN is in initialization mode, this register can be accessed only by software
+
+
+### 23.6.2  CAN mailbox register
+
+This section describes the transmit and receive mailbox registers.  
+The transmit and receive mailboxes are almost the same except the following examples:  
+- FMIDX domain of CAN_RXDLENx register;  
+- The receive mailbox is read-only;  
+- The transmit mailbox is writable only when it is empty, and if the corresponding TXMFLG bit of CAN_TXSTS register is 1, it means the transmit mailbox is empty.  
+
+There are three transmit mailboxes and two receive mailboxes in total. Each receive mailbox is FIFO with level-3 depth, and can only access the message that is received first in FIFO.
+
+
+#### 23.6.2.1  Transmit mailbox identifier register (CAN_TXMIDx) (x=0..2)
+
+Offset address: 0x180, 0x190, 0x1A0  
+Reset value: 0xXXXX XXXX, X=undefined bit (except Bit 0, TXMREQ=0 after reset)  
+
+
+| Field | Name | R/W | Description |
+| ------- | ---------- | ----- | ------------------------------------------------ |
+| 0 | TXMREQ | R/W | Transmit Mailbox Data Request                   <br>0: When the data in the mailbox is transmitted, the mailbox is empty and this bit is cleared to 0 by hardware<br>1: Software writes 1, to enable request to transmit mailbox data |
+| 1 | TXRFREQ | R/W | Transmit Remote Frame Request                   <br>0: Data frame<br>1: Remote frame |
+| 2 | IDTYPESEL | R/W | Identifier Type Select<br>0: Standard identifier<br>1: Extended identifier |
+| 20:3 | EXTID | R/W | Extended Identifier Setup<br>Low byte of extended identifier label. |
+| 31:21 | STDID | R/W | Standard Identifier Or Extended Identifier<br>According to the content of IDTYPESEL bit, see whether these bits are standard identifier STDID[10:0] or high byte EXTID[28:18] of extended identifier. |
+
+
+Note: 1. When its mailbox is in the state of waiting for transmission, this register is write-protected  
+2. This register realizes transmission request control function (No. 0 bit) - the reset value is 0  
+
+
+#### 23.6.2.2 Transmit mailbox data length register (CAN_TXDLENx) (x=0..2)
+
+When the mailbox is not idle, all bits of this register are write-protected.  
+Offset address: 0x184, 0x194, 0x1A4  
+Reset value: 0xXXXX XXXX  
+
+
+| Field | Name | R/W | Description |
+| ------- | ---------- | ----- | ----------------------------------------- |
+| 3:0 | DLCODE | R/W | Transmit Data Length Code Setup |
+| 31:4 |  |  | Reserved |
+
+
+#### 23.6.2.3 Transmit mailbox low-byte data register (CAN_TXMDLx) (x=0..2)
+
+When the mailbox is not idle, all bits of this register are write-protected, and the message contains 0 to 7-byte data and starts from the byte 0.  
+Offset address: 0x188, 0x198, 0x1A8  
+Reset value: 0xXXXX XXXX  
+
+
+| Field | Name | R/W | Description |
+| -------- | ----------- | ----- | -------------------------------------- |
+| 7:0 | DATBYTE0 | R/W | Data Byte 0 of the Message |
+| 15:8 | DATBYTE1 | R/W | Data Byte 1 of the Message |
+| 23:16 | DATBYTE2 | R/W | Data Byte 2 of the Message |
+| 31:24 | DATBYTE3 | R/W | Data Byte 3 of the Message |
+
+
+#### 23.6.2.4 Transmit mailbox high-byte data register (CAN_TXMDHx) (x=0..2)
+
+When the mailbox is not idle, all bits of this register are write-protected.  
+Offset address: 0x18C, 0x19C, 0x1AC  
+Reset value: 0xXXXX XXXX, X=undefined bit  
+
+
+| Field | Name | R/W | Description |
+| -------- | ----------- | ----- | -------------------------------------- |
+| 7:0 | DATBYTE4 | R/W | Data Byte 4 of the Message |
+| 15:8 | DATBYTE5 | R/W | Data Byte 5 of the Message |
+| 23:16 | DATBYTE6 | R/W | Data Byte 6 of the Message |
+| 31:24 | DATBYTE7 | R/W | Data Byte 7 of the Message |
+
+
+#### 23.6.2.5 Receive FIFO mailbox identifier register (CAN_RXMIDx) (x=0..1)
+
+Offset address: 0x1B0, 0x1C0  
+Reset value: 0xXXXXX XXXXX, X=undefined bit
+
+
+| Field | Name | R/W | Description |
+| -------- | ------------ | ----- | ---------------------------------------------------------------------------------------------------------------------- |
+| 0 |  |  | Reserved |
+| 1 | RFTXREQ | R | Remote Frame Transmission Request <br> 0: Data frame <br> 1: Remote frame |
+| 2 | IDTYPESEL | R | Identifier Type Select <br> 0: Standard identifier <br> 1: Extended identifier |
+| 20:3 | EXTID[17:0] | R | Extended Identifier Setup <br> Low byte of extended identifier. |
+| 31:21 | STDID[10:0]/EXTID[28:18] | R | Standard Identifier Or Extended Identifier <br> According to the content of IDTYPESEL bit, see whether these bits are standard identifier STDID[10:0] or high byte EXTID[28:18] of extended identifier. |
+
+
+Notes: All receive mailbox registers are read-only.
+
+
+#### 23.6.2.6 Receive FIFO mailbox data length register (CAN_RXDLENx) (x=0..1)
+
+Offset address: 0x1B4, 0x1C4  
+Reset value: 0xXXXXX XXXX  
+
+
+| Field | Name | R/W | Description |
+| -------- | -------- | ----- | ---------------------------------------------------------------------------------------------------------- |
+| 3:0 | DLCODE | R | Receive Data Length Code Setup <br> This bit represents the data length in the frame; for remote frame, DLCODE is constantly 0. |
+| 7:4 |  | R | Reserved |
+| 15:8 | FMIDX | R | Filter Match Index Setup |
+| 31:16 |  | R | Reserved |
+
+
+Notes: All receive mailbox registers are read-only.
+
+
+#### 23.6.2.7 Receive FIFO mailbox low-byte data register (CAN_RXMDLx) (x=0..1)
+
+Offset address: 0x1B8, 0x1C8; the message contains 0 to 8-byte data, which starts from the byte 0.  
+Reset value: 0xXXXXX XXXX  
+
+
+| Field | Name | R/W | Description |
+| -------- | ----------- | ----- | ----------------------------------- |
+| 7:0 | DATBYTE0 | R | Data Byte 0 of the Message |
+| 15:8 | DATBYTE1 | R | Data Byte 1 of the Message |
+| 23:16 | DATBYTE2 | R | Data Byte 2 of the Message |
+| 31:24 | DATBYTE3 | R | Data Byte 3 of the Message |
+
+
+Notes: All receive mailbox registers are read-only.
+
+
+
+
+#### 23.6.2.8 Receive FIFO mailbox high-byte data register (CAN_RXMDHx) (x=0..1)
+
+Offset address: 0x1BC, 0x1CC  
+Reset value: 0xXXXXX XXXX, X=undefined bit  
+
+
+| Field | Name | R/W | Description |
+| ------------- | ------------ | ----- | --------------------------------- |
+| 7:0 | DATABYTE4 | R | Data Byte 0 of the Message |
+| 15:8 | DATABYTE5 | R | Data Byte 0 of the Message |
+| 23:16 | DATABYTE6 | R | Data Byte 0 of the Message |
+| 31:24 | DATABYTE7 | R | Data Byte 0 of the Message |
+
+
+Notes: All receive mailbox registers are read-only.
+
+
+### 23.6.3 CAN filter register
+
+
+
+#### 23.6.3.1 CAN filter control register (CAN_FCTRL)
+
+Offset address: 0x200  
+Reset value: 0x2A1C 0E01  
+
+
+| Field | Name | R/W | Description |
+| ------------- | ------------ | ----- | --------------------------------- |
+| 0 | FINITEN | R/W | Filter Init Mode Enable         <br>0: Normal mode<br>1: Initialization mode |
+| 7:1 |  |  | Reserved |
+| 13:8 | CAN2SB | R/W | CAN2 Start Bank                <br>This bit is used to define the start memory area of CAN2, within a range of 0-27<br>Note: When CAN2SB=28d, all filters can be used by CAN1; when CAN2SB=0, all filters can be used by CAN2. |
+| 31:14 |  |  | Reserved |
+
+
+Notes: The non-reserved bit of this register is completely controlled by software.
+
+
+#### 23.6.3.2 CAN filter mode configuration register (CAN_FMCFG)
+
+Offset address: 0x204  
+Reset value: 0x0000 0000  
+
+
+| Field | Name | R/W | Description |
+| ------------- | ------------ | ----- | --------------------------------- |
+| 27:0 | FMCFGx | R/W | Filter Mode Configure           <br>The value of x is 0-27.<br>0: Identifier mask bit mode<br>1: Identifier list mode |
+| 31:28 |  |  | Reserved |
+
+
+Note: Only when CAN_FCTRL (FINITEN =1) is set to put the filter in initialization mode, can this register be written.
+
+
+#### 23.6.3.3 CAN filter bit width configuration register (CAN_FSCFG)
+
+Offset address: 0x20C  
+Reset value: 0x0000 0000
+
+
+
+
+27:0
+
+**Field**  
+FSCFGx  
+**R/W**  
+R/W  
+**Description**  
+Filterx Scale Configure  
+The value of x is 0-27.<br>  
+0: 2 16 bits<br>  
+1: Single 32 bits  
+
+
+31:28
+
+**Field**  
+Reserved  
+
+Note: Only when CAN_FCTRL (FINTEN =1) is set to make the filter in initialization mode, can this register be written.  
+
+
+#### 23.6.3.4 CAN filter FIFO association register (CAN_FFASS)
+
+Offset address: 0x214  
+Reset value: 0x0000 0000  
+
+
+| Field | Name | R/W | Description |
+| --------- | -------- | ----- | ----------------------------------------- |
+| 0 | FFASS0 | R/W | Configure Filter0 Associated with FIFO0<br>0: The filter is associated with FIFO0<br>1: The filter is associated with FIFO1 |
+| 1 | FFASS1 | R/W | Configure Filter1 Associated with FIFO<br>Refer to FFASS0 for specific description. |
+| 2 | FFASS2 | R/W | Configure Filter2 Associated with FIFO<br>Refer to FFASS0 for specific description. |
+| 3 | FFASS3 | R/W | Configure Filter3 Associated with FIFO<br>Refer to FFASS0 for specific description. |
+| 4 | FFASS4 | R/W | Configure Filter4 Associated with FIFO<br>Refer to FFASS0 for specific description. |
+| 5 | FFASS5 | R/W | Configure Filter5 Associated with FIFO<br>Refer to FFASS0 for specific description. |
+| 6 | FFASS6 | R/W | Configure Filter6 Associated with FIFO<br>Refer to FFASS0 for specific description. |
+| 7 | FFASS7 | R/W | Configure Filter7 Associated with FIFO<br>Refer to FFASS0 for specific description. |
+| 8 | FFASS8 | R/W | Configure Filter8 Associated with FIFO<br>Refer to FFASS0 for specific description. |
+| 9 | FFASS9 | R/W | Configure Filter9 Associated with FIFO<br>Refer to FFASS0 for specific description. |
+| 10 | FFASS10 | R/W | Configure Filter10 Associated with FIFO<br>Refer to FFASS0 for specific description. |
+| 11 | FFASS11 | R/W | Configure Filter11 Associated with FIFO<br>Refer to FFASS0 for specific description. |
+| 12 | FFASS12 | R/W | Configure Filter12 Associated with FIFO<br>Refer to FFASS0 for specific description. |
+| 13 | FFASS13 | R/W | Configure Filter13 Associated with FIFO<br>Refer to FFASS0 for specific description. |
+| 14 | FFASS14 | R/W | Configure Filter14 Associated with FIFO<br>Refer to FFASS0 for specific description. |
+| 15 | FFASS15 | R/W | Configure Filter15 Associated with FIFO<br>Refer to FFASS0 for specific description. |
+| 16 | FFASS16 | R/W | Configure Filter16 Associated with FIFO<br>Refer to FFASS0 for specific description. |
+| 17 | FFASS17 | R/W | Configure Filter17 Associated with FIFO<br>Refer to FFASS0 for specific description. |
+| 18 | FFASS18 | R/W | Configure Filter18 Associated with FIFO<br>Refer to FFASS0 for specific description. |
+| 19 | FFASS19 | R/W | Configure Filter19 Associated with FIFO<br>Refer to FFASS0 for specific description. |
+| 20 | FFASS20 | R/W | Configure Filter20 Associated with FIFO<br>Refer to FFASS0 for specific description. |
+| 21 | FFASS21 | R/W | Configure Filter21 Associated with FIFO<br>Refer to FFASS0 for specific description. |
+| 22 | FFASS22 | R/W | Configure Filter22 Associated with FIFO<br>Refer to FFASS0 for specific description. |
+| 23 | FFASS23 | R/W | Configure Filter23 Associated with FIFO<br>Refer to FFASS0 for specific description. |
+| 24 | FFASS24 | R/W | Configure Filter24 Associated with FIFO<br>Refer to FFASS0 for specific description. |
+| 25 | FFASS25 | R/W | Configure Filter25 Associated with FIFO<br>Refer to FFASS0 for specific description. |
+| 26 | FFASS26 | R/W | Configure Filter26 Associated with FIFO<br>Refer to FFASS0 for specific description. |
+| 27 | FFASS27 | R/W | Configure Filter27 Associated with FIFO<br>Refer to FFASS0 for specific description. |
+| 31:28 |  |  | Reserved |
+
+
+Notes: Only when CAN_FCTRL (FINITEN =1) is set to put the filter in initialization mode, can this register be written.
+
+
+#### 23.6.3.5 CAN filter activation register (CAN_FACT)
+
+Offset address: 0x21C<br>
+Reset value: 0x0000 0000
+
+
+| Field | Name | R/W | Description |
+| ------- | ---------- | ----- | ----------------------------------------------------- |
+| 0 | FACT0 | R/W | Filter0 Active<br>0: Disable<br>1: Active |
+| 1 | FACT1 | R/W | Filter1 Active<br>Refer to FACT0 for specific description. |
+| 2 | FACT2 | R/W | Filter2 Active<br>Refer to FACT0 for specific description. |
+| 3 | FACT3 | R/W | Filter3 Active<br>Refer to FACT0 for specific description. |
+| 4 | FACT4 | R/W | Filter4 Active<br>Refer to FACT0 for specific description. |
+| 5 | FACT5 | R/W | Filter5 Active<br>Refer to FACT0 for specific description. |
+| 6 | FACT6 | R/W | Filter6 Active<br>Refer to FACT0 for specific description. |
+| 7 | FACT7 | R/W | Filter7 Active<br>Refer to FACT0 for specific description. |
+| 8 | FACT8 | R/W | Filter8 Active<br>Refer to FACT0 for specific description. |
+| 9 | FACT9 | R/W | Filter9 Active<br>Refer to FACT0 for specific description. |
+| 10 | FACT10 | R/W | Filter10 Active<br>Refer to FACT0 for specific description. |
+| 11 | FACT11 | R/W | Filter11 Active<br>Refer to FACT0 for specific description. |
+| 12 | FACT12 | R/W | Filter12 Active<br>Refer to FACT0 for specific description. |
+| 13 | FACT13 | R/W | Filter13 Active<br>Refer to FACT0 for specific description. |
+| 14 | FACT14 | R/W | Filter14 Active<br>Refer to FACT0 for specific description. |
+| 15 | FACT15 | R/W | Filter15 Active<br>Refer to FACT0 for specific description. |
+| 16 | FACT16 | R/W | Filter16 Active<br>Refer to FACT0 for specific description. |
+| 17 | FACT17 | R/W | Filter17 Active<br>Refer to FACT0 for specific description. |
+| 18 | FACT18 | R/W | Filter18 Active<br>Refer to FACT0 for specific description. |
+| 19 | FACT19 | R/W | Filter19 Active<br>Refer to FACT0 for specific description. |
+| 20 | FACT20 | R/W | Filter20 Active<br>Refer to FACT0 for specific description. |
+| 21 | FACT21 | R/W | Filter21 Active<br>Refer to FACT0 for specific description. |
+| 22 | FACT22 | R/W | Filter22 Active<br>Refer to FACT0 for specific description. |
+| 23 | FACT23 | R/W | Filter23 Active<br>Refer to FACT0 for specific description. |
+| 24 | FACT24 | R/W | Filter24 Active<br>Refer to FACT0 for specific description. |
+| 25 | FACT25 | R/W | Filter25 Active<br>Refer to FACT0 for specific description. |
+| 26 | FACT26 | R/W | Filter26 Active<br>Refer to FACT0 for specific description. |
+| 27 | FACT27 | R/W | Filter27 Active<br>Refer to FACT0 for specific description. |
+| 31:28 |  |  | Reserved |
+
+
+#### 23.6.3.6 Register x of CAN filter group i (CAN_FiBANKx) (i=0..27;x=1..2)
+
+Offset address: 0x240..0x31C<br>
+CAN_F0BANK1 offset address: 0x240 CAN_F0BANK2 offset address: 0x244<br>
+CAN_F1BANK1 offset address: 0x248 CAN_F1BANK2 offset address: 0x24C<br>
+The following offset addresses can be obtained in the same way<br>
+Reset value: 0xXXXXX XXXX<br>
+
+
+| Field | Name | R/W | Description |
+| --------- | -------------- | ----- | ------------------------------------------------------ |
+| 31:0 | FBIT[31:0] | R/W | Filter Bits Setup<br>Identifier list mode:<br>0: FBITx bit is dominant bit<br>1: FBITx bit is recessive bit<br>Identifier mask bit mode:<br>0: FBITx is not used for comparison<br>1: FBITx must match<br>Note: The value of x is 0~31, indicating the bit number of FBIT. |
+
+
+Note: There are 28 sets of filters in product: i=0..27. Each set of filters consists of two 32-bit registers and CAN_FiBANK[2:1]. The corresponding filter registers can be modified only when the corresponding FACTx bit of CAN_FACT register is cleared to 0 or the FINITEN bit of CAN_FCTRL register is 1.
+
+
+
+
+# 24 Secure digital input/output interface (SDIO)
+
+
+
+## 24.1 Full Name and Abbreviation of Terms
+
+
+
+| Full name in English | English abbreviation |
+| -------------------------------- | ---------------------- |
+| First Input First Output | FIFO |
+| Command Path State Machine | CPSM |
+| Data Path State Machine | DPSM |
+
+
+## 24.2 Introduction
+
+
+The secure digital input/output interface can connect SD card, SD I/O card, multi-media card (MMC) and CE-ATA card master interfaces, and provide data transmission between APB2 system bus and SD memory card, SD I/O card, MMC and CE-ATA device.
+
+
+## 24.3 Main characteristics
+
+
+(1) SD card: Compatible with SD memory card specification version 2.0:  
+(2) SD I/O card: Compatible with SD I/O card specification version 2.0: support two different bus modes: 1 bit (default) and four bits.  
+(3) MMC: Compatible with multimedia card system specification 4.2 and previous versions. Three different data bus modes are supported: 1 bit (default), 4 bits and 8 bits.  
+(4) CE-ATA: Compatible with CE-ATA digital protocol version 1.1.  
+(5) The data transmission rate in 8-bit bus mode is up to 50MHz  
+(6) Interrupt and DMA request  
+(7) Data and command output enable signal, used for controlling bidirectional driver.  
+
+*Note: SDIO of current version only supports one SD/SD I/O/MMC 4.2 card at the same time; however, it supports multiple MMC4.1 or cards of previous version.*
+
+
+## 24.4 Functional Description
+
+
+SDIO structure mainly contains two parts:  
+
+SDIO adapter: It realizes the related functions of MMC/SD/SD I/O cards, and consists of control unit, data unit and command unit. The control unit manages
+
+
+
+the clock signal, the data unit manages the data transmission, and the command unit manages the command transmission.
+
+APB2 bus interface: Operate the registers in SDIO adapter, used for FIFO unit for data transmission, generate an interrupt and DMA request signal.
+
+
+Figure 115 SDIO Structure Block Diagram
+
+
+
+
+- Data: It can be transmitted from the master to the card or from the card to the master. Transmit through data cable. The number of data cables for data transmission can be 1 (D0), 4 (D0-D3), or 8 (D0-D7).
+
+The basic operation on the multimedia card/SD/SD I/O bus is command/response structure.
+
+The data transmitted on SD/SD I/O memory card is transmitted in the form of data block; the data transmitted on MMC is transmitted in the form of data block or data stream; the data transmitted on CE-ATA device is also transmitted in the form of data block.
+
+
+Figure 116 SDIO "No-response" and "No-data" Operation
+
+
+
+
+
+Figure 118 SDIO (Multi-) Data Block Write Operation
+
+
+
+
+- **SDIO_CLK**: Clock provided by SDIO controller to the card. Each clock cycle directly transmits 1-bit command or data on the command line (SDIO_CMD) and all data lines (SDIO_D). SDIO_CLK frequency is 0-20MHz for MMC card V3.31, 0-48MHz for MMC card V4.2, and 0-25MHz for SD or SD I/O card.  
+- **SDIO_CMD**: The signal is a bidirectional command channel, which is used for card initialization and command transmission. Command is transmitted from SDIO controller to the card, and the response is transmitted from the card to the master. There are two operation modes of CMD signal: the open-drain mode of initialization (used for MMC card V3.31 and previous versions) and the push-pull modes of command transmitting (SD, SD I/O, and MMC card V4.2 initialization are also push-pull mode).  
+- **SDIO_D[7:0]**: The signal lines are bidirectional data channels and in push-pull mode. By default, after power-on or reset, only D0 is used for data transmission. SDIO adapter can be configured with wider data bus for data transmission, using D0-D3 and D0-D7 (only on MMC V4.2).  
+
+
+Control unit
+
+The control unit includes power management and clock management functions.  
+
+
+Command unit
+
+The command unit realizes transmitting commands to the card and receiving commands from the card, and the data transmission is controlled by the command path state machine (CPSM).  
+
+
+Command state machine
+
+CS_Idle gets ready to transmit the command after reset
+
+1. CPSM is enabled and WAITIDEN is enabled → CS_Pend  
+2. CPSM is enabled and WAITIDEN is disabled → CS_Send  
+3. CPSM is turned off → CS_Idle  
+
+Note: The idle state of command state machine is maintained for at least 8 SDIO_CLK cycles, so as to meet the timing restriction of N0 and N1.  
+N0: Minimum time interval between two host commands  
+N1: Minimum time interval between host command and card response  
+
+
+CS_Pend waits for the end of data transmission
+
+1. Data transmission is completed → CS_Send  
+2. CPSM is turned off → CS_Idle
+
+
+
+
+CS_Send transmits commands
+
+1. There is response after the command is transmitted  ➜ CS_Wait  
+2. There is no response after the command is transmitted  ➜ CS_Idle  
+3. CPSM is turned off  ➜ CS_Idle  
+
+
+CS_Wait waits for response start bit
+
+1. Received the response (the start bit is detected)  ➜ CS_Wait  
+2. Receiving response times out  ➜ CS_Idle  
+3. CPSM is turned off  ➜ CS_Idle  
+   
+Note: The command timeout period is fixed as 64 Sdio_clk clock cycles  
+
+
+CS_Receive receives response and detects CRC
+
+1. Receive the response in CE-ATA mode, disable CE-ATA interrupt and wait for enabling of CE-ATA device command completion signal  ➜ CS_Waitcompl  
+2. Receive the response in CE-ATA mode, disable CE-ATA interrupt and wait for disabling of CE-ATA device command completion signal  ➜ CS_Pend  
+3. CPSM is turned off  ➜ CS_Idle  
+4. Receive the response  ➜ CS_Idle  
+5. The command CRC detection fails  ➜ CS_Idle  
+
+
+CS_Waitcompl waits for CE-ATA device command completion signal
+
+1. Receive CE-ATA command completion signal  ➜ CS_Idle  
+2. CPSM is turned off  ➜ CS_Idle  
+3. The command CRC detection fails  ➜ CS_Idle  
+
+
+Data unit
+
+The data unit realizes the data transmission between the master and the card. When the data width is 8 bits, SDIO_D[7:0] signal line is used for data transmission. When the data width is 4 bits, SDIO_D[3:0] signal line is used for data transmission. When the data width is 1 bit, SDIO_D[0] signal line is used for data transmission.
+
+Data transmission stream is controlled by data path state machine (DPSM).
+
+
+Data state machine
+
+
+
+
+
+DS_Idle data unit is idle, waiting for transmitting and receiving data
+
+1. DPSM is enabled and the data are transmitted from host to card → DS_WaitS  
+2. DPSM is enabled and the data are transmitted from card to host → DS_WaitR  
+3. DPSM is enabled, read wait has started and S/D mode is enabled → DS_Readwait  
+
+
+DS_WaitS waits that the empty data FIFO flag is invalid or data transmission ends
+
+1. Data transmission ends → DS_Idle  
+2. DPSM is turned off → DS_Idle  
+3. The empty data FIFO flag is invalid → DS_Send  
+
+
+DS_Send transmits data to the card
+
+1. The data have been transmitted → DS_Busy  
+2. DPSM is turned off → DS_Idle  
+3. Data FIFO underrun error is transmitted → DS_Idle  
+4. Internal CRC error → DS_Idle  
+
+
+DS_Busy waits for CRC state flag
+
+1. The data have been transmitted → DS_Busy  
+2. DPSM is turned off → DS_Idle  
+3. Data FIFO underrun error is transmitted → DS_Idle  
+4. Internal CRC error → DS_Idle  
+
+
+DS_WaitR waits for the start bit of received data
+
+1. Data receiving ends → DS_Idle  
+2. DPSM is turned off → DS_Idle  
+3. Data timeout → DS_Idle  
+4. Receive the start bit before timeout → DS_Receive  
+
+
+DS_Receive receives the card data and writes them to data FIFO
+
+1. The data block has been received → DS_WaitR  
+2. The data transmission ends → DS_Idle  
+3. The data FIFO underrun is transmitted → DS_Idle  
+4. The data have been received, read wait starts and S/D mode is enabled → DS_Read  
+5. DPSM is turned off or CRC error occurs → DS_Idle
+
+
+
+
+### 24.4.3 APB2 interface
+
+
+APB2 interface realizes access to SDIO register, data FIFO and generation of interrupt and DMA request. It includes data FIFO unit, register unit and interrupt/DMA request control logic.
+
+
+SDIO interrupt
+
+
+When at least one of the selected state flags is high, the interrupt logic will generate an interrupt request. Interrupt enable register enables the interrupt logic to generate corresponding interrupt.
+
+
+Data FIFO
+
+
+The data FIFO unit has a data buffer area for receive and transmit FIFO. FIFO includes a data buffer with 32-bit width for each word and with depth of 32 words. The transmit FIFO is used when data needs to be written to the card; the data to be transmitted is written to the transmit FIFO through APB2 bus, and the data unit in SDIO adapter reads data from the transmit FIFO and then transmits the data to the card. The receive FIFO is used to read data from the card, and then write the data to be transmitted to the receive FIFO.
+
+
+Register unit
+
+
+The register unit includes all system registers and generates signals for communication between the control card and the controller.
+
+
+### 24.4.4 Card Function Description
+
+
+
+#### 24.4.4.1 Card register
+
+
+The card internally defines the interface registers: OCR, CID, CSD, EXT_CSD, RCA, DSR and SCR. These registers can access only through corresponding commands. OCR, CID, CSD and SCR registers include the specific information of the card. RCA and DSR registers are configuration registers for storing the actual configuration parameters. EXT_CSD register includes both the specific information of the card and the actual structure parameters.
+
+OCR register: 32-bit operating condition register stores Vₑₒ voltage description and memory mode indication (MMC) of the card. In addition, the register includes a state information bit. If the card power-on process has been completed, this state bit will be set. This register is slightly different between
+
+
+
+MMC and SD card. The master can use CMD1 (MMC), ACMD41 (SD memory card), and CMD5 (SD I/O) to capture the content of this register.
+
+CID register: The card identification register (CID) is 128-bit wide. It contains the card identification information used in the card identification phase. Each read/write (RW) card shall have a unique identification number.
+
+CSD register: The specific card data register provides the content information in the access card. CSD defines data format, error correction type, maximum data access time, and data transmission speed.
+
+Extended CSD register: Only MMC4.2 has this register. Extended CSD register defines the card attributes and selection mode. Its length is 512 bytes. At most 320 bytes are the attribute section, which defines the function of the card and cannot be modified by the master. At least 192 bytes are the mode section, which defines under which configuration the card works.
+
+RCA register: The writable 16-bit relative card address register stores the card address, which is released by the card during card initialization. This address is used for communication between the addressing master and the card after the card identification process.
+
+DSR register: 16-bit drive stage register, which can be used to improve bus performance in extended operating conditions (depending on bus length, transmission rate and other parameters).
+
+SCR register: Only SD/SD I/O has this register.
+
+
+#### 24.4.4.2 Commands
+
+
+The command for the control card consists of four different types:
+
+
+| Command type | Meaning |
+| --------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| Broadcast command (BC) | Transmit to all cards, but there is no response returned |
+| Broadcast command with response (BCR) | Transmit to all cards and receive response from all cards |
+| Addressing (point-to-point) command (AC) | Transmit to addressing card, and there is no data transmission on SDIO_D line |
+| Addressing (point-to-point) data transmission command (ADTC) | Transmit to addressing card, and there is data transmission on SDIO_D line |
+
+
+Command format
+
+All command formats are 48-bit fixed code length, which requires 1.92us (25MHz), 0.96us (50MHz) and 0.92us (52MHz) transmission time.
+
+
+
+
+Table 104 Command Format
+
+
+
+| Bit. | 47 | 46 | [45:40] | [39:8] | [7:1] | 0 |
+| ------ | ----- | ---- | --------- | -------- | ------- | --- |
+| Width | 1 | 1 | 6 | 32 | 7 | 1 |
+| Value | 0 | 1 | - | - | - | 1 |
+| Description | Start bit | Transmission bit | Command index | Parameter | CRC7 | End bit |
+
+
+SD I/O supports two types of response, both of which support CRC error detection.
+- 48-bit short response
+- 136-bit long response
+
+
+Table 105 Short Response Format
+
+
+
+| Bit. | 47 | 46 | [45:40] | [39:8] | [7:1] | 0 |
+| ------ | ----- | ---- | --------- | -------- | ------- | --- |
+| Width | 1 | 1 | 6 | 32 | 7 | 1 |
+| Value | 0 | 0 | - | - | - | 1 |
+| Description | Start bit | Transmission bit | Command index | Parameter | CRC7 or (1111111) | End bit |
+
+
+Table 106 Long Response Format
+
+
+
+| Bit. | 135 | 134 | [133:128] | [127:1] | 0 |
+| ------ | ----- | ----- | ----------- | --------- | --- |
+| Width | 1 | 1 | 6 | 127 | 1 |
+| Value | 0 | 0 | 111111 | - | 1 |
+| Description | Start bit | Transmission bit | Reserved | CID or CSD | End bit |
+
+
+Command description
+
+
+
+Table 107 Basic Command
+
+
+
+| Command index | Type | Parameter | Response format | Abbreviation | Description |
+| --------------- | ------ | ------------------ | ----------------- | -------------- | --------------------------------------------- |
+| CMD0 | bc | [31:0] Stuffing bit | - | GO_IDLE_STATE | Reset all cards to the idle state. |
+| CMD1 | bc | [31:0] OCR | R3 | SEND_OP. COND | In the idle state, request the card to transmit the response (including the content of the operating <br>condition register) through the CMD line |
+| CMD2 | bcr | [31:0] Stuffing bit | R2 | ALL_SEND_CID | Request any card to transmit CID data through the CMD line (all cards connected to the master will respond) |
+| CMD3 | bcr | [31:0] Stuffing bit | R6 | SEND_RELATIVE_ADDR | Request the card to release new relative card address (RCA) |
+| CMD4 | bc | 31:16 | DSR [15:0]Stuffing bit | - | SET_DSR / Set DSR registers of all cards |
+| CMD5 | bcr | [31:25]Reserved bit [24]S18R [23:0]I/O OCR | R4 | IO_SEND_OP_COND | Only apply to I/O card. Query voltage range of all I/O cards. |
+| CMD6 | ac | [31:26]Set to 0 [25:24]Access [23:16]Index [15:8]Value [7:3]Set to 0 [2:0]Command set | R1b | SWITCH | Only apply to MMC card. Switch the operation mode of the selected card or modify EXT_CSD register. |
+| index |  |  |  |  |  |
+| CMD7 | ac | [31:16]RCA [15:0]Stuffing bit | R1b | SELECT/DESELECT_CARD | Used for switching of the card state. |
+| CMD8 | bcr | [31:12]Reserved bit |  | R7 | SEND_IF_COND |
+|  |  | [11:8]Operating voltage (VHS) |  |  | Transmit interface conditions to SD card, including master power supply voltage information, |
+|  |  | [7:0]Inspection mode |  |  | and query whether the card supports the voltage. The reserved bit should be set to 0. |
+| CMD9 | ac | [31:16]RCA [15:0]Stuffing bit | R2 | SEND_CSD | The selected card transmits to its card specific data (CSD) through CMD |
+| CMD10 | ac | [31:16]RCA [15:0]Stuffing bit | R2 | SEND_CID | The selected card transmits to its card identification (CID) through CMD |
+| CMD12 | ac | [31:0] Stuffing bit | R1b | STOP_TRANSMISSION | Force the card to stop. |
+
+
+Command index
+
+
+
+| Command index | Type | Parameter | Response format | Abbreviation | Description |
+| --------------- | ------ | -------------------------- | ------------------ | ------------------ | ------------------------------------------------------------------------- |
+| CMD13 | ac | [31:16]RCA [15:0]Stuffing bit | R1 | SEND_STATUS | The selected card transmits its state register. |
+| CMD14 | adtc | [31:0] Stuffing bit | R1 | BUSTEST_R | The master reads the reverse bus test data mode from the card. |
+| CMD15 | ac | [31:16]RCA [15:0]Stuffing bit | - | GO_INACTIVE_STATE | Convert the selected card to inactive state. |
+| CMD19 | adtc | [31:0] Stuffing bit | R1 | BUSTEST_W | The master transmits the bus test mode to the card. |
+
+
+Table 108 Block-oriented Write Command
+
+
+
+| Command index | Type | Parameter | Response format | Abbreviation | Description |
+| --------------- | ------ | -------------------------------- | ------------------ | -------------------- | ---------------------------------------------------------------------- |
+| CMD23 | ac | [31:16]Set to 0 [15:0]Number of blocks | R1 | SET_BLOCK_COUNT | Define the number of blocks to be transferred in subsequent blocks or write commands. |
+| CMD24 | adtc | [31:0]Data address | R1 | WRITE_BLOCK | Write a block according to the selected length of SET_BLOCKLEN command. |
+| CMD25 | adtc | [31:0]Data address | R1 | WRITE_MULTIPLE_BLOCK | Continue to write the data block until STOP_TRANSMISSION command is received. |
+| CMD26 | adtc | [31:0] Stuffing bit | R1 | PROGAM_CID | Program the card identification register. This command can be transmitted to each card once only. The programming involves hardware changes to prevent subsequent operations after the first programming. Reserved to the manufacturer through this command. |
+| CMD27 | adtc | [31:0] Stuffing bit | R1 | PROGAM_CSD | Program the programmable bits in the card CSD. |
+| CMD28 | ac | [31:0]Data address | R1b | SET_WRITE_PROT | If the card has write protection function, this command will set the write protection bit of the specified group. The write protection characteristic is set in the special data area of the card (WP_GRP_SIZE) |
+| CMD29 | ac | [31:0]Data address | R1b | CLR_WRITE_PROT | If the card has write protection function, this command will clear the write protection bit of the addressing group. |
+| CMD30 | adtc | [31:0]Write protection data address | R1 | SEND_WRITE_PROT | If the card has write protection function, the command requests the card to transmit write protection bit state. |
+
+
+### 24.4.5 Specific Operations
+
+
+
+#### 24.4.5.1 SD I/O card operations
+
+
+SD I/O card (including IO card and combined card) supports the following specific operations:
+- Read wait operation
+- Pause/Recovery operation
+- Interrupt
+
+SDIO supports these operations only when setting SDIO_DCTRL SDIOEN bit; except for read pause, it does not require special hardware operation.
+
+
+SD I/O read wait operation
+
+
+Read wait (RW) is only used for SD I/O 1-bit and 4-bit modes. Read wait operation allows a master to transmit a signal to stop data transmission when performing the operation of reading multiple blocks for the card, and allows the master to transmit commands to any function in the SD I/O card.
+
+Before receiving the first data block, it is allowed to start the read wait process, enable the data channel (DTEN bit is set to 1), enable SDIO specific operation (SDIOEN bit is set to 1), and start read wait. At the same time, the data are transmitted from the card to the SDIO master, and DPSM will directly enter the read wait state from idle state.
+
+In the read wait state, after 2 SDIO_CK clock cycles, DPSM drive SDIO_D2 is 0. In this state, if RWSTOP bit is set, DPSM will stay for 2 more SDIO_CK clock cycles in the waiting state, and (according to SDIO specification) the drive SDIO_D2 is 1 in one clock cycle. Then DPSM starts to wait to receive data from the card. When receiving data block, DPSM will not enter the read wait state even if the start wait is set.
+
+SDIO card cannot perform the above read wait operation, SDIO can stop SDIO_CK entering the read wait and two SDIO_CK cycles later after receiving the current data block, DPSM stops the clock and recovers the clock after setting the read wait start bit.
+
+
+
+![Figure 121 Read Wait Operation Using SDIO_D2 Signal Line](https://www.geehy.com)  
+![Figure 122 Read Wait Operation through Stop SDIO_CLK](https://www.geehy.com)  
+
+
+SDIO interrupt
+
+
+When the SDIOEN bit is set, the SDIO master detects SDIO interrupt on SDIO_D1 signal line.
+
+
+#### 24.4.5.2 CE-ATA specific operation
+
+
+CE-ATA device supports the following specific operation:  
+- Receive command completion signal  
+- Transmit command completion and closing signal  
+
+SDIO supports these operations only when SDIO_CMD ATACMD bit is set.
+
+
+Command completion signal
+
+
+CE-ATA defines the command completion signal. The device uses this signal to notify the master that the ATA command is completed or encounters an error, and ATA command is terminated.
+
+
+Command completion and closing signal
+
+
+The master can transmit a command to complete the function of closing the signal and canceling the device return command to complete the signal.
+
+
+
+If the "Enable CMD end bit" of ATACMD is not set and the "Non-terminal enable bit" of INTDIS is set, the command completion and closing signal will be transmitted 8-bit cycle later after receiving a short response.
+
+
+### 24.4.6 Card state register functional description
+
+
+The response format R1 contains a 32-bit card state field, which is used to transmit the card state information to the card master (the information may be stored in the local state register). Unless otherwise specified, the state returned by the card is always related to the previous command.
+
+The following table defines different state information:
+
+
+| Abbreviations | Definitions |
+| --------------- | --------------------------------------------------------- |
+| E | Error bit |
+| S | Status Bit |
+| R | Detection bit, set according to the actual command response |
+| X | Detection bit, set during the execution of command. The master of SDIO card reads these bits and queries the card state by transmitting the state command. |
+
+
+Table 109 Different State Information Types
+
+
+
+| Abbreviations | Definitions |
+| --------------- | ------------------------------------------------------------ |
+| A | According to current state of the card |
+| B | Always related to previous command. Able to be cleared once correct command is received (with delay of one command). |
+| C | Clear once read |
+
+
+Table 110 Clear Conditions
+
+
+
+| Bit. | Name | Type | Value | Description | Clear Conditions |
+| ------ | ---------------- | ------ | --------------- | ---------------------------------------------- | ------------------ |
+
+| 1:0 | Reserved |  |  | Reserved for the test mode of the manufacturer. |
+| 2 | Reserved |  |  | Reserved for the command related to application. |
+
+| 3 | AKE_SEQ_ERROR | ER | 0=No error<br>1=Error | Verification sequence error. | C |
+
+| 4 | Reserved |  |  | Reserved for SD I/O card |
+
+| 5 | APP_CMD | SR | 0=Not allowed<br>1=Allowed | The card expects ACMD, or the instruction command has been interpreted as an ACMD command. | C |
+
+| 6 | Reserved |  |  |  |
+
+
+Table 111 Card State
+
+
+
+
+
+| Bit. | Name | Type | Value | Description | Clear Conditions |
+| ------ | ------------------------ | ------ | ------------------------------------------ | --------------------------------------------------------------------------------------------- | ----------------- |
+| 7 | SWITCH_ERROR | EX | 0=No error<br>1=Conversion error | The card is not switched to the desired mode according to the requirements of SWITCH command. | B |
+| 8 | READY_FOR_DATA | SR | 0=Not ready<br>1=Ready | Corresponding to the empty signal of the buffer on the bus. |  |
+| 12:9 | CURRENT_STATE | SR | 0=Idle<br>1=Ready<br>2=Identify<br>3=Standby<br>4=Transmit<br>5=Data<br>6=Receive<br>7=Program<br>8=Disconnect<br>9=Busy test<br>10-15=Reserved | The state of the state machine in the card when receiving a command. If the execution of a command causes a state change, the change will be reflected in the response of next command. These four bits are interpreted by decimal numbers 0 to 15. | B |
+| 13 | ERASE_RESET | SX | 0=Clear<br>1=Set | Because a command other than the erase sequence (rather than CMD35, CMD36, CMD38 or CMD13 command) is received, the sequence of entering the erase process is aborted. | C |
+| 14 | CARD_ECC_DISABLED | SX | 0=Allowed<br>1=Not allowed | Internal ECC is not used during execution of the command. | A |
+| 15 | WP_ERASE_SKIP | EX | 0=Not protected<br>1=Protected | Existing write protection data block is encountered, and only part of address space is erased. | C |
+| 16 | CID/CSD_OVERWRITE | EX | 0=No error<br>1=Error | It can be any of the following errors: It has been written into the CID register and cannot be overridden | C |
+| 17 | Reserved |  |  |  |  |
+| 18 | Reserved |  |  |  |  |
+| 19 | ERROR | EX | 0=No error<br>1=Error | Error inside the card (e.g. read or write error) related to execution of the previous master command (not defined in the standard) is generated . | C |
+| 20 | CC_ERROR | ER | 0=No error<br>1=Error | Error inside the card (not defined in the standard), which has nothing to do with the command of the master. | C |
+| 21 | CARD_ECC_FAILED | EX | 0=Succeeded<br>1=Failed | ECC check is implemented in the card, but it fails when correcting the data. | C |
+| 22 | ILLEGAL_COMMAND | ER | 0=No error<br>1=Error | The command is illegal for current card state. | B |
+| 23 | COM_CRC_ERROR | ER | 0=No error<br>1=Error | CRC parity error in previous command. | B |
+| 24 | LOCK_UNLOCK_FAILED | EX | 0=No error<br>1=Error | Sequence error of command or wrong password detected in lock/unlock. | C |
+| 25 | CARD_IS_LOCKED | SR | 0=Card unlocked<br>1=Card locked | When this bit is set, it means the card has been locked. | A |
+| 26 | WP_VIOLATION | EX | 0=No error<br>1=Error | Attempt to program the data block of a write protection. | C |
+| 27 | ERASE_PARAM | EX | 0=No error<br>1=Error | Illegal erase group selected when erasing. | C |
+| 28 | ERASE_SEQ_ERROR |  | 0=No error<br>1=Error | The sequence of transmitting erase command is wrong. | C |
+| 29 | BLOCK_LEN_ERROR |  | 0=No error<br>1=Error | The parameters of SET_BLOCKLEN command is beyond the maximum allowable range of the card, or the previously defined data<br>block length is illegal for the current command (for example, the master transmits a write command, and the current block length is less than the minimum allowable length of the card, while some data blocks are not allowed to be written). | C |
+| 30 | ADDRESS_MISALIGN |  | 0=No error<br>1=Error | The first block defined by the address parameter in the command (compared with the current block length) is not aligned with the physical block of the card.<br>A multi-data block or data stream read/write operation (even starting from a legal address) attempts to read or write a data block that is not aligned with the physical block. | C |
+| 31 | ADDRESS_OUT_OF_RANGE | ERX | 0=No error<br>1=Error | The address parameter in the command is beyond the allowed range of the card. | C |
+
+
+#### 24.4.6.1 SD state register functional description
+
+
+The SD state includes the state bits related to the specific functions of the SD memory card and some state bits related to future applications. The length of the SD state is a 512-bit data block. After receiving the ACMD13 command (CMD55, then CMD13), the content of this register will be transmitted to the SDIO card host. The ACMD13 command can be transmitted only when the card is in transmission state (the card has been selected).
+
+The following table defines different SD state register information.
+
+
+| Abbreviations | Definitions |
+| --------------- | ------------------------------------------------------------ |
+| E | Error bit |
+| S | Status Bit |
+| R | Detection bit, set according to the actual command response |
+| X | Detection bit, set during the execution of command. The master of SDIO card reads these bits and queries the card state by transmitting the state command. |
+
+
+Table 112 SD State Register Information
+
+
+
+| Abbreviations | Definitions |
+| --------------- | ------------------------------------------------------------ |
+| A | According to current state of the card |
+| B | Always related to previous command. Able to be cleared once correct command is received (with delay of one command). |
+| C | Clear once read |
+
+
+Table 113 Clear Conditions
+
+
+
+| Bit. | Name | Type | Value | Description | Clear Conditions |
+| ------ | ------- | ------ | ------- | -------------------------------------------- | -------------------------------- |
+| 311:0 |  |  |  | Reserved to the manufacturer |  |
+| 399:312 |  |  |  | Reserved |  |
+| 401:400 | ERASE_OFFSET |  |  |  |  |
+
+
+Table 114 SD State
+
+
+
+
+
+| Bit | Name | Type | Value | Description | Clear Conditions |
+| ------------ | -------------------------- | ------ | ------- | --------------------------------------------------------------------------------------------------- | ------------------ |
+| 407:402 | ERASE_TIMEOUT | S R |  | Fixed offset value added in erase | A |
+| 423:408 | ERASE_SIZE | S R |  | Erase the timeout value of specified range of UNIT_OF_ERASE _AU | A |
+| 427:424 | Reserved | S R |  | The number of AU that can be erased at a time | A |
+| 431:428 | AU_SIZE | S R |  | AU size (see the instructions below) | A |
+| 439:432 | PERFORMANCE_MOVE | S R |  | Transmission performance in 1MB/s (see the instructions below) | A |
+| 447:440 | SPEED_CLASS | S R |  | Speed type of the card (see the instructions below) | A |
+| 479:448 | SIZE_OF_PROTECTED_AREA | S R |  | Size of protected area (see the instructions below) | A |
+| 495:480 | SD_CARD_TYPE | S R |  | '00xxh' = SD memory card in physical specification version 1.01~2.00 ('x' means any value). The defined cards are: '0000' = Universal SD read-write card '0001' = SD ROM card | A |
+| 508:496 | Reserved |  |  | physical layer specification. |  |
+| 509 | SECURED_MODE | S R | 0=Not in the secret mode <br> 1=In the secret mode | The card is in secret operation mode (see "SD Confidentiality Specification"). | A |
+| 511:510 | DAT_BUS_WIDTH | S R | 00=1 (default) <br> 01=Reserve <br> 10=4-bit width <br> 11=Reserved | Current data bus width defined by SET_BUS_WIDTH command. | A |
+
+
+Note: For the abbreviations and definitions of related types and clear condition fields in the table, see SD state register information and SD state.
+
+
+SIZE_OF_PROTECTED_AREA
+
+
+The way of setting this bit is different between standard-capacity card and high-capacity card:
+- For the standard-capacity card, the capacity of the protected area is calculated as follows:
+  Protected area=SIZE_OF_PROTECTED_AREA * MULT * BLOCK_LEN  
+  The unit of SIZE_OF_PROTECTED_AREA is MULT * BLOCK_LEN.
+- For the high-capacity card, the capacity of the protected area is calculated as follows:
+  Protected area=SIZE_OF_PROTECTED_AREA  
+  The unit of SIZE_OF_PROTECTED_AREA is byte.
+
+
+SPEED_CLASS
+
+
+These 8 bits indicate the type of speed and can be used for calculating the value of PW/2 (PW is the performance of write).
+
+
+| SPEED_CLASS | Definition of Numerical Value |
+| ------------- | ------------------------------ |
+| 00h | Type 0 |
+| 01h | Type 2 |
+| 02h | Type 4 |
+| 03h | Type 6 |
+| 04h-FFh | Reserved |
+
+
+PERFORMANCE_MOVE
+
+
+These 8 bits indicate mobility performance (Pm) in 1MB/s. If the card does not use RU (record unit) mobile data, Pm should be considered to be infinitely great. Setting this field for FFh means infinitely great.
+
+
+Table 116 Mobility Performance Codes
+
+
+
+| PERFORMANCE_MOVE | Definition of Numerical Value |
+| ------------------- | ------------------------------ |
+| 00h | Undefined |
+| 01h | 1MB/s |
+| 02h | 2MB/s |
+| ……. | ……. |
+| Feh | 254MB/s |
+| FFh | Infinitely great |
+
+
+AU_SIZE
+
+
+These four bits indicate the length of AU, and the value is the multiple of the power of 2 in 16K bytes.
+
+
+Table 117 AU_SIZE Codes
+
+
+
+| AU_SIZE | Definition of Numerical Value |
+| --------- | ------------------------------ |
+| 00h | Undefined |
+| 01h | 16KB |
+| 02h | 32KB |
+| 03h | 64KB |
+| 04h | 128KB |
+| 05h | 256KB |
+| 06h | 512KB |
+| 07h | 1MB |
+| 08h | 2MB |
+| 09h | 4MB |
+| Ah-Fh | Reserved |
+
+
+According to the capacity of the card, the maximum AU length is defined by the following table. The card can set any AU length between the RU length and the maximum AU length.
+
+
+Table 118 Maximum AU Length
+
+
+
+| Capacity | Maximum AU length |
+| --------------- | ------------------- |
+| 16MB=64MB | 512KB |
+| 128MB~256MB | 1MB |
+| 512MB | 2MB |
+| 1GB~32GB | 4MB |
+
+
+ERASE_SIZE
+
+
+This 16-bit field gives the value of NERASE, and when NERASE number of AU is erased, ERASE_TIMEOUT defines the timeout period.
+
+If the master can determine the value of NERASE in a certain erase, the erase progress can be displayed.
+
+
+| ERASE_SIZE | Definition of Numerical Value |
+| ------------ | ----------------------------------------------------- |
+| 0000h | Overtime calculation not supporting erase |
+| 0001h | One AU |
+| 0002h | Two AUs |
+| 0003h | Three AUs |
+| …… | …… |
+| FFFFh | 65535 AUs |
+
+
+ERASE_TIMEOUT
+
+
+These 6 bits give TERASE. When multiple AU are erased, TERASE gives the erase timeout calculated from offset.
+
+
+| ERASE_TIMEOUT | Definition of Numerical Value |
+| --------------- | --------------------------------------------------- |
+| 00 | Overtime calculation not supporting erase |
+| 01 | 1s |
+| 02 | 2s |
+| 03 | 3 s |
+| …… | …… |
+| 63 | 63 seconds |
+
+
+ERASE_OFFSET
+
+
+These two bits give TOFFSET, and when both ERASE_SIZE and ERASE_TIMEOUT are 0, this value is meaningless.
+
+
+
+
+Table 121 Erase Offset Codes
+
+
+
+| ERASE_OFFSET | Definition of Numerical Value |
+| -------------- | ------------------------------- |
+| 0 | 0s |
+| 1 | 1s |
+| 2 | 2s |
+| 3 | 3 s |
+
+
+## 24.5 Register address mapping
+
+
+
+Table 122 SDIO Register Address Mapping
+
+
+
+| Register name | Description | Offset Address |
+| ------------------- | --------------------------------- | --------------------------- |
+| SDIO_PWRCTRL | SDIO power control register | 0x00 |
+| SDIO_CLKCTRL | SDIO clock control register | 0x04 |
+| SDIO_ARG | SDIO parameter register | 0x08 |
+| SDIO_CMD | SDIO command register | 0x0C |
+| SDIO_CMDRES | SDIO command response register | 0x10 |
+| SDIO_RESX | SDIO response x register | 0x14 + 4* (x-1), wherein x=1...4 |
+| SDIO_DATATIME | SDIO data timer register | 0x24 |
+| SDIO_DATALEN | SDIO data length register | 0x28 |
+| SDIO_DCTRL | SDIO data control register | 0x2C |
+| SDIO_DCNT | SDIO data counter register | 0x30 |
+| SDIO_STS | SDIO state register | 0x34 |
+| SDIO_ICF | SDIO clear interrupt register | 0x38 |
+| SDIO_MASK | SDIO interrupt mask register | 0x3C |
+| SDIO_FIFOCNT | SDIO counter register | 0x48 |
+| SDIO_FIFODATA | SDIO data FIFO register | 0x80 |
+
+
+## 24.6 Register functional description
+
+
+The device communicates with the system through the 32-bit control registers that can be operated on APB2. These peripheral registers must be operated in word (32-bit) mode.
+
+
+### 24.6.1 SDIO power control register (SDIO_PWRCTRL)
+
+Offset address: 0x00  
+Reset value: 0x0000 0000
+
+
+
+
+### 24.6.2 SDIO clock control register (SDIO_CLKCTRL)
+
+Offset address: 0x04  
+Reset value: 0x0000 0000  
+SDIO_CLKCTRL register controls the output clock SDIO_CLK .
+
+
+| Field | Name | R/W | Description |
+| ------- | ---------- | ----- | ----------------------------------------------------------------------------------------------------- |
+| 7:0 | CLKDIV | R/W | Clock Divide Factor<br>This domain defines the division factor between input clock (SDIOCLK) and output clock (SDIO_CLK):<br>SDIO_CLK frequency=SDIOCLK/[CLKDIV + 2]. |
+| 8 | CLKEN | R/W | Clock Enable<br>0: Disable<br>1: Enable |
+| 9 | PWRSAV | R/W | Power Saving Mode Configuration<br>Reduce power consumption by disabling SDIO_CLK outputs beyond the bus activity.<br>0: Enable<br>1: Disable |
+| 10 | BYPASSEN | R/W | Clock Divider Bypass Enable<br>Before driving SDIO_CLK to output signals, it is required to divide the frequency of SDIOCLK; however, if the divider is bypassed, SDIOCLK will directly drive SDIO_CLK to output signals.<br>0: Disable<br>1: Enable |
+| 12:11 | WBSEL | R/W | Wide Bus Mode Select<br>Select bus mode for different bits, corresponding to different SDIO_D bits.<br>00: Default, using SDIO_D0.<br>01: 4 bits, using SDIO_D[3:0]<br>10: 8 bits, using SDIO_D[7:0]<br>11: Reserved |
+| 13 | DEPSEL | R/W | SDIO_CLK Dephasing Select<br>Select SDIOCLK rising edge or falling edge to generate SDIO_CLK.<br>0: Rising edge<br>1: Falling edge |
+| 14 | HFCEN | R/W | HW Flow Control Enable<br>0: Disable<br>1: Enable |
+
+
+Notes:
+
+1. When SD/SD I/O card or multimedia card is in identification mode, the frequency of SDIO_CLK must be less than 400kHz.
+2. When all cards have been assigned the corresponding address, the clock frequency can be changed to the maximum frequency allowed by the card bus.
+3. This register cannot be written within 7 HCLK clock cycles after writing data. For SD I/O card, SDIO_CLK can be stopped during read wait period, and then SDIO_CLKCTRL register does not control SDIO_CLK.
+
+
+### 24.6.3 SDIO parameter register (SDIO_ARG)
+
+Offset address: 0x08  
+Reset value: 0x0000 0000  
+Command parameters are also part of the command, and SDIO_ARG register contains 32-bit command parameters and is transmitted to the card together with the command.
+
+
+| Field | Name | R/W | Description |
+| ------- | -------- | ----- | ----------------------------------------- |
+| 31:0 | CMDARG | R/W | Command Argument<br>Store the command argument. |
+
+
+### 24.6.4 SDIO command register (SDIO_CMD)
+
+Offset address: 0x0C  
+Reset value: 0x0000 0000  
+SDIO_CMD register contains command index and command type bit.
+
+
+| Field | Name | R/W | Description |
+| ------- | ----------- | ----- | ----------------------------------------- |
+| 5:0 | CMDINDEX | R/W | Command Index<br>The command index, as part of the command, is transmitted to the card together with the command. |
+| 7:6 | WAITRES | R/W | Wait for Response<br>Indicate whether CPSM needs to wait for the response, and if it needs to wait for the response, the response type will be indicated.<br>00: No response, expecting CMDSENT flag<br>01: Short response, expecting CMDREND or CCRCFAIL flag<br>10: No response, expecting CMDSENT flag<br>11: Long response, expecting CMDREND or CCRCFAIL flag |
+| 8 | WAITINT | R/W | CPSM Waits for Interrupt Request<br>CPSM enables or disables the command timeout control and waits for interrupt request.<br>0: Enable<br>1: Disable |
+| 9 | WENDDATA | R/W | (CPSM Waits for Ends of Data Transfer (CmdPend Internal Signal)<br>0: Invalid<br>1: CPSM waits for the end of data transmission before starting to transmit a command. |
+
+
+10  CPSMEN   R/W   Command Path State Machine (CPSM) Enable<br>Enable CPSM.<br>0: Disable<br>1: Enable
+
+11  SDIOSC   R/W   SD I/O Suspend Command<br>0: Invalid<br>1: The command to be transmitted is a suspend command (only used for SD I/O card).
+
+12  CMDCPE   R/W   Enable CMD Completion<br>Enable command completion signal.<br>0: Disable<br>1: Enable
+
+13  INTEN    R/W   Interrupt Enable<br>0: Enable<br>1: Disable
+
+14  ATACMD   R/W   CE-ATA Command<br>0: Invalid<br>1: Switch CPSM to CMD61
+
+31:15       Reserved
+
+Notes:<br>
+(1) This register cannot be written within 7 HCLK clock cycles after writing data.<br>
+(2) The multimedia card can transmit two kinds of responses: 48-bit short response or 136-bit long response. The SD card and SD I/O card can only transmit short response, parameters can be changed according to the type of response, and the software will distinguish the type of response according to the command transmitted. CE-ATA devices only transmit short responses.
+
+
+24.6.5 SDIO command response register (SDIO_CMDRES)<br>Offset address: 0x10<br>Reset value: 0x0000 0000
+
+
+Field   Name      R/W   Description<br>
+5:0     CMDRES   R     Response Command Index<br>Store the command index in the finally received command response.<br>
+31:6    Reserved
+
+
+## 24.6.6 SDIO response x register (SDIO_RESx)<br>Offset address: 0x14 + 4* (x-1), wherein x=1...4<br>Reset value: 0x0000 0000<br>SDIO_RES1/2/3/4 register contains the card state, namely, some information about the received response.
+
+
+Field   Name       R/W   Description<br>
+31:0   CARDSTx   R     See the table below.<br>The state length of the card is 32 bits or 127 bit according to the response state.
+
+
+
+
+Table 123 Response Type and SDIO_RESPx Register
+
+
+
+| Register | Short response | Long response |
+| --------------- | ---------------- | --------------------------------------------- |
+| SDIO_RES1 | Card state [31:0] | Card state [127:96] |
+| SDIO_RES2 | Unused | Card state [95:64] |
+| SDIO_RES3 | Unused | Card state [63:32] |
+| SDIO_RES4 | Unused | Card state [31:1] |
+
+
+Always receive the most significant bit of card state first, and the lowest bit of SDIO_RES3 register is always 0.
+
+
+### 24.6.7 SDIO data timer register (SDIO_DATATIME)
+
+Offset address: 0x24  
+Reset value: 0x0000 0000  
+
+
+| Field | Name | R/W | Description |
+| ----------- | ---------- | ----- | ---------------------------------------------------- |
+| 31:0 | DATATIME | R/W | Data Timeout Period<br>Record the data timeout period in card bus clock cycle. |
+
+
+Note: Before writing the data control register for data transmission, first write the data timer register and data length register.
+
+
+### 24.6.8 SDIO data length register (SDIO_DATALEN)
+
+Offset address: 0x28  
+Reset value: 0x0000 0000  
+
+
+| Field | Name | R/W | Description |
+| ----------- | ---------- | ----- | -------------------------------------------------- |
+| 24:0 | DATALEN | R/W | Data Length<br>Byte length of data to be transmitted. |
+| 31:25 | Reserved |  |  |
+
+
+Note: For block data transfer, the value in SDIO_DATALEN must be a multiple of the data block length. Before writing SDIO_DCTRL for data transmission, first write SDIO_DATATIME and SDIO_DATALEN.
+
+
+### 24.6.9 SDIO data control register (SDIO_DCTRL)
+
+Offset address: 0x2C  
+Reset value: 0x0000 0000  
+SDIO_DCTRL register control data path state machine (DPSM).
+
+
+| Field | Name | R/W | Description |
+| ----------- | ---------- | ----- | --------------------------------------------------- |
+| 0 | DTEN | R/W | Data Transfer Enabled<br>0: Disable<br>1: Enable |
+| 1 | DTRCFG | R/W | Data Transfer Direction Configuration<br>0: From controller to card<br>1: From card to controller |
+| 2 | DTSEL | R/W | Data Transfer Mode Select<br>0: Block data transfer<br>1: Stream data transfer |
+| 3 | DMAEN | R/W | DMA Enable<br>0: Disable<br>1: Enable |
+| 7:4 | DBSIZE | R/W | Data Block Size<br>Define the data block size:<br>0000: Block length=20=1 byte<br>0001: Block length=21=2 bytes<br>0010: Block length=22=4 bytes<br>0011: Block length=23=8 bytes<br>0100: Block length=24=16 bytes<br>0101: Block length=25=32 bytes<br>0110: Block length=26=64 bytes<br>0111: Block length=27=128 bytes<br>1000: Block length=28=256 bytes<br>1001: Block length=29=512 bytes<br>1010: Block length=210=1024 bytes<br>1011: Block length=211=2048 bytes<br>1100: Block length=212=4096 bytes<br>1101: Block length=213=8192 bytes<br>1110: Block length=214=16384 bytes<br>1111: Reserved |
+| 8 | RWSTR | R/W | Read Wait Start<br>0: Invalid<br>1: Start read wait operation |
+| 9 | RWSTOP | R/W | Read Wait Stop Enable<br>If RWSTR is set, stop read operation can be enabled.<br>0: Disable<br>1: Enable |
+| 10 | RDWAIT | R/W | Read Wait Mode<br>0: Control stop SDIO_D2<br>1: Control use SDIO_DK |
+| 11 | SDIOF | R/W | SD I/O Enable Functions<br>If this bit is set, DPSM will execute specific operation of SD I/O card. |
+| 31:12 |  |  | Reserved |
+
+
+### 24.6.10 SDIO data counter register (SDIO_DCNT)
+
+Offset address: 0x30<br>
+Reset value: 0x0000 0000<br>
+When DPSM enters Wait_R or Wait_S state from the idle state, SDIO_DCNT loads values from SDIO_DATALEN, and in the data transmission process, the counter will count down to 0, and then DPSM will enter the idle state and set DATAEND flag.
+
+
+| Field | Name | R/W | Description |
+| ------- | --------- | ----- | -------------------------------------------------------------- |
+| 24:0 | DATACNT | R | Data Count Number<br>Store the number of data bytes to be transmitted. |
+
+
+### 24.6.11 SDIO state register (SDIO_STS)
+
+Offset address: 0x34  
+Reset value: 0x0000 0000  
+SDIO_STS is a read-only register, and it contains two kinds of flags:  
+(1) Static flag (bit [23:22, 10:0]): Write SDIO interrupt clear register to clear these bits.  
+(2) Dynamic flag (bits [21:11]): The state of these bits changes according to the logic of corresponding part.
+
+
+| Field | Name | R/W | Description |
+| ------- | --------- | ----- | -------------------------------------------------------------------------- |
+| 0 | COMRESP | R | Command Response Received (CRC detection failure) |
+| 1 | DBDR | R | Data Block Sent/Received (CRC detection failure) |
+| 2 | CMDRESTO | R | Command Response Timeout<br>Command timeout period is 64 SDIO_CLK clock cycles. |
+| 3 | DATATO | R | Data Timeout |
+| 4 | TXUDRER | R | Transmit FIFO Underrun Error |
+| 5 | RXOVRER | R | Received FIFO Overrun Error |
+| 6 | CMDRES | R | Command Response (CRC detection success) |
+| 7 | CMDSENT | R | Command Sent (No Response Required) |
+| 8 | DATAEND | R | Data end (data counter, SDIO_DCNT=0) |
+| 9 | SBE | R | Start Bit Not Detected On All Data Signals In Wide Bus Mode |
+| 10 | DBCP | R | Data Block Sent/Received |
+| 11 | CMDACT | R | Command Transfer In Progress |
+| 12 | TXACT | R | Data Transmit In Progress |
+| 13 | RXACT | R | Data Receive In Progress |
+| 14 | TXHFH | R | Transmit FIFO Half Empty<br>At least more 8 words can be written in FIFO. |
+| 15 | RXHFH | R | Receive FIFO Half Full<br>There are at least eight words in FIFO. |
+| 16 | TXFF | R | Transmit FIFO Full |
+| 17 | RXFF | R | Receive FIFO Full<br>If the hardware flow control is used, the RXFF signal will become effective when the FIFO is still 2 words short. |
+| 18 | TXFE | R | Transmit FIFO Empty<br>If the hardware flow control is used, the TXFE signal will become effective when the FIFO contains 2 words. |
+| 19 | RXFE | R | Receive FIFO Empty |
+| 20 | TXDA | R | Data Available In Transmit FIFO |
+| 21 | RXDA | R | Data Available In Receive FIFO |
+| 22 | SDIOINT | R | SDIO Interrupt Received |
+| 23 | ATAEND | R | CE-ATA Command Completion Signal Received For CMD61 |
+| 31:24 | Reserved |  |  |
+
+
+### 24.6.12 SDIO clear interrupt register (SDIO_ICF)
+
+Offset address: 0x38  
+Reset value: 0x0000 0000  
+SDIO_ICF is a write-only register, and the corresponding bit in SDIO_STS state register will be cleared in corresponding register bit.
+
+
+| Field | Name | R/W | Description |
+| ------- | -------- | ----- | ------------------------------------------------------------------- |
+| 0 | CRCE | R/W | COMRESP Flag Clear<br>Clear COMRESP flag<br>0: Invalid<br>1: Clear |
+| 1 | DBCE | R/W | DBDR Flag Clear<br>Clear DBDR flag<br>0: Invalid<br>1: Clear |
+| 2 | CRTO | R/W | CMDRESTO Flag Clear<br>Clear CMDRESTO flag.<br>0: Invalid<br>1: Clear |
+| 3 | DTO | R/W | DATATO Flag Clear<br>Clear DATATO flag.<br>0: Invalid<br>1: Clear |
+| 4 | TXFUE | R/W | TXUDRER Flag Clear<br>Clear TXUDRER flag.<br>0: Invalid<br>1: Clear |
+| 5 | RXFOE | R/W | RXOVRER Flag Clear<br>Clear RXOVRER flag.<br>0: Invalid<br>1: Clear |
+| 6 | CMDRES | R/W | CMDRES Flag Clear<br>Clear CMDRES flag.<br>0: Invalid<br>1: Clear |
+
+
+### 24.6.12 SDIO interrupt clear register (SDIO_CLR)
+
+Offset address: 0x3A  
+Reset value: 0x0000 0000  
+Set or clear by software.  
+When the corresponding bit is set to 1, SDIO_CLR interrupt clear register clears the corresponding interrupt flag.  
+
+
+| Field | Name | R/W | Description |
+| ------- | ---------- | ----- | ----------------------------------------------------------------------------------- |
+| 7 | CMD SENT | R/W | CMDSENT Flag Clear<br>Clear CMDSENT flag.<br>0: Invalid<br>1: Clear |
+| 8 | DATAEND | R/W | DATAEND Flag clear<br>Clear DATAEND flag.<br>0: Invalid<br>1: Clear |
+| 9 | SBE | R/W | SBE Flag Clear<br>Clear SBE flag.<br>0: Invalid<br>1: Clear |
+| 10 | DBCP | R/W | DBCP Flag Clear<br>Clear DBCP flag.<br>0: Invalid<br>1: Clear                   <br>21:11<br>Reserved |
+| 22 | SDIOIT | R/W | SDIOIT flag clear bit<br>Clear SDIOIT flag.<br>0: Invalid<br>1: Clear |
+| 23 | ATAEND | R/W | ATAEND flag clear bit<br>Clear ATAEND flag.<br>0: Invalid<br>1: Clear            <br>31:24<br>Reserved |
+
+
+### 24.6.13 SDIO interrupt mask register (SDIO_MASK)
+
+Offset address: 0x3C  
+Reset value: 0x0000 0000  
+Set or clear 0 by software.  
+When the corresponding bit is set to 1, SDIO_MASK interrupt mask register decides which state bit generates an interrupt.  
+
+
+| Field | Name | R/W | Description |
+| ------- | ---------- | ----- | ----------------------------------------------------------------------------------- |
+| 0 | CCRCFail | R/W | Command CRC Fail Interrupt Enable<br>Enable/Disable command block CRC detection failure interrupt.<br>0: Disable<br>1: Enable |
+| 1 | DCRCFail | R/W | Data CRC Fail Interrupt Enable<br>Enable/Disable data block CRC detection failure interrupt.<br>0: Disable<br>1: Enable |
+| 2 | CMDTO | R/W | Command Timeout Interrupt Enable<br>Enable/Disable command timeout interrupt.<br>0: Disable<br>1: Enable |
+| 3 | DATATO | R/W | Data timeout interrupt enable<br>Enable/Disable data timeout interrupt.<br>0: Disable<br>1: Enable |
+| 4 | TXURER | R/W | Tx FIFO Underrun Error Interrupt Enable<br>Enable/Disable transmit FIFO underrun error interrupt.<br>0: Disable<br>1: Enable |
+| 5 | RXORER | R/W | Rx FIFO Overrun Error Interrupt Enable<br>Enable/Disable receive FIFO overrun error interrupt.<br>0: Disable<br>1: Enable |
+| 6 | CMDRSRC | R/W | Command Response Received Interrupt Enable<br>Enable/Disable receiving response interrupt.<br>0: Disable<br>1: Enable |
+| 7 | CMDSENT | R/W | Command Sent Interrupt Enable<br>Enable/Disable command transmitted interrupt since the software has set/cleared this bit.<br>0: Disable<br>1: Enable |
+| 8 | DATAEND | R/W | Data End Interrupt Enable<br>Enable/Disable data transmission end interrupt.<br>0: Disable<br>1: Enable |
+| 9 | STRTER | R/W | Start Bit Error Interrupt Enable<br>Enable/Disable start bit error interrupt.<br>0: Disable<br>1: Enable |
+| 10 | DBEND | R/W | Data Block End Interrupt Enable<br>Enable/Disable data block transmission end interrupt.<br>0: Disable<br>1: Enable |
+| 11 | CMDACT | R/W | Command Acting Interrupt Enable<br>Enable/Disable transmitting command interrupt.<br>0: Disable<br>1: Enable |
+| 12 | TXACT | R/W | Data Transmit Acting Interrupt Enable<br>Enable/Disable transmitting data interrupt.<br>0: Disable<br>1: Enable |
+| 13 | RXACT | R/W | Data receive acting interrupt enable<br>Enable/Disable receiving data interrupt.<br>0: Disable<br>1: Enable |
+| 14 | TXHFERT | R/W | Tx FIFO Half Empty Interrupt Enable<br>Enable/Disable transmit FIFO half empty interrupt.<br>0: Disable<br>1: Enable |
+| 15 | RXHFFUL | R/W | Rx FIFO Half Full Interrupt Enable<br>Enable/Disable receive FIFO half full interrupt.<br>0: Disable<br>1: Enable |
+| 16 | TXFUL | R/W | Tx FIFO Full Interrupt Enable<br>Enable/Disable transmit FIFO full interrupt.<br>0: Disable<br>1: Enable |
+| 17 | RXFUL | R/W | Rx FIFO Full Interrupt Enable<br>Enable/Disable receive FIFO full interrupt.<br>0: Disable<br>1: Enable |
+| 18 | TXEPT | R/W | Tx FIFO Empty Interrupt Enable<br>Enable/Disable transmit FIFO empty interrupt.<br>0: Disable<br>1: Enable |
+| 19 | RXFEIE | R/W | Rx FIFO Empty Interrupt Enable<br>Enable/Disable receive FIFO empty interrupt.<br>0: Disable<br>1: Enable |
+| 20 | TXDAVB | R/W | Data Available in Tx FIFO Interrupt Enable<br>Enable/Disable transmit FIFO data available interrupt.<br>0: Disable<br>1: Enable |
+| 21 | RXDAVB | R/W | Data Available in Rx FIFO Interrupt Enable<br>Enable/Disable receive FIFO data available interrupt.<br>0: Disable<br>1: Enable |
+| 22 | SDIOINTREC | R/W | SDIO Mode Interrupt Received Interrupt Enable<br>Enable/Disable SDIO mode interrupt received.<br>0: Disable<br>1: Enable |
+| 23 | ATACLPREC | R/W | CE-ATA Command Completion Signal Received Interrupt Enable<br>Enable/Disable receiving CE-ATA command completion signal interrupt.<br>0: Disable<br>1: Enable |
+| 31:24 |  |  | Reserved |
+
+
+### 24.6.14 SDIO FIFO counter register (SDIO_FIFOCNT)
+
+Offset address: 0x48<br>
+Reset value: 0x0000 0000
+
+
+| Field | Name | R/W | Description |
+| --- | --- | --- | --- |
+| 23:0 | FIFOCNT | R | Receive And Transmit FIFO Number<br>The number of data words to be written into FIFO or read out from FIFO.<br>Note: If the data length is not a multiple of 4, the last remaining bytes can be treated as one word. |
+| 31:24 |  |  | Reserved |
+
+
+### 24.6.15 SDIO data FIFO register (SDIO_FIFODATA)
+
+Offset address: 0x80<br>
+Reset value: 0x0000 0000
+
+
+| Field | Name | R/W | Description |
+| --- | --- | --- | --- |
+| 31:0 | DATA | R/W | Receive And Transmit FIFO Data<br>Data to be written into FIFO or read out from FIFO. |
+
+
+# 25 USB_OTG
+
+
+
+## 25.1 Introduction
+
+
+One USB_OTG_FS controller is embedded in this chip. It supports both host and slave functions and complies with the On-The-Go supplementary standard of USB 2.0 specification. It can also be configured as "Host only" or "Slave only" mode, fully complies with USB 2.0 specification, and supports host negotiation protocol (HNP) and session request protocol (SRP). In host mode, it supports full-speed (FS, 12Mb/s) and low-speed (LS, 1.5Mb/s) transmission, and in slave mode, it only supports full-speed (FS, 12Mb/s) transmission.
+
+
+## 25.2 OTG_FS global register address mapping
+
+
+
+| Register name | Description | Offset Address |
+| -------------------- | ------------------------------------------------------ | ---------------- |
+| OTG_FS_GCNTLSTS | Full-speed OTG control state register | 0x00 |
+| OTG_FS_GINT | Full-speed OTG interrupt register | 0x04 |
+| OTG_FS_GAHBCFG | Full-speed OTG AHB configuration register | 0x08 |
+| OTG_FS_GUSBBC | Full-speed OTG USB configuration register | 0x0C |
+| OTG_FS_GRSTCTRL | Full-speed OTG reset control register | 0x10 |
+| OTG_FS_GCINT | Full-speed OTG module interrupt register | 0x14 |
+| OTG_FS_GINTMASK | Full-speed OTG module interrupt mask register | 0x18 |
+| OTG_FS_GRXSTS | Full-speed OTG read debug receive state register | 0x1C |
+| OTG_FS_GRXSTSP | Full-speed OTG state read and pop register | 0x20 |
+| OTG_FS_GRXFIFO | Full-speed OTG receive FIFO size register | 0x24 |
+| OTG_FS_GTXFCFG | Full-speed OTG TXFIFO configuration register | 0x28 |
+| OTG_FS_GNPTXFSQS | Full-speed OTG non-periodic TXFIFO queue state | 0x2C |
+| OTG_FS_GCCCFG | Full-speed OTG general module configuration register | 0x38 |
+| OTG_FS_GCID | Full-speed OTG module ID register | 0x3C |
+| OTG_FS_GHPTXFSIZE | Full-speed OTG host periodic TXFIFO size register | 0x100 |
+| OTG_FS_DTXFIFO1 | Full-speed OTG device IN endpoint TXFIFO size register 1 | 0x104 |
+| OTG_FS_DTXFIFO2 | Full-speed OTG device IN endpoint TXFIFO size register 2 | 0x108 |
+
+
+Register name
+
+
+
+| Description | Offset Address |
+| --------------------------------------------- | ---------------- |
+| OTG_FS_DTXFIFO3 | 0x10C |
+| Full-speed OTG device IN endpoint TXFIFO size register 3 |  |
+
+
+## 25.3 OTG_FS global register functional description
+
+
+
+### 25.3.1 Full-speed OTG control state register (OTG_FS_GCTRLSTS)
+
+
+Offset address: 0x00  
+Reset value: 0x0001 0000  
+
+
+| Field | Name | R/W | Description |
+| ------- | ---------- | ----- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| 0 | SREQSUC | R | Session Request Success<br>0: Session request fails<br>1: Session request succeeds<br>Note: It can be used only in device mode |
+| 1 | SREQ | R/W | Session Request<br>0: No request session<br>1: Request session<br>When HNSUCCHG bit of OTG_FS_GINT register is set, this bit will be cleared by writing 0. This bit will be cleared to 0 when HNSUCCHG is cleared to 0.<br>When USB 1.1 full-speed serial transceiver interface is used for session request, wait for Vbus to discharge to 0.2V after the BSVDB bit of the register is cleared to 0.<br>Note: It can be used only in device mode |
+| 7:2 |  |  | Reserved |
+| 8 | HNSUC | R | Host Negotiation Success<br>This bit will be cleared to 0 when HNPREQ of this register is set to 1<br>0: Host negotiation fails<br>1: Host negotiation succeeds<br>Note: It can be used only in device mode |
+| 9 | HNPREQ | R/W | Host Negotiation Protocol Request (HNP Request)<br>0: Not transmit HNP request<br>1: Transmit HNP request<br>When HNSUCCHG bit of OTG_FS_GINT register is set, this bit will be cleared by writing 0. This bit will be cleared to 0 when HNSUCCHG is cleared to 0.<br>Note: It can be used only in device mode |
+| 10 | HNPEN | R/W | Host Set HNP Enable<br>0: Disable<br>1: Enable<br>Note: It can be used only in master mode |
+| 11 | DHNPEN | R/W | Device HNP Enable<br>0: Disable<br>1: Enable<br>Note: It can be used only in device mode |
+
+
+
+# 16 **CIDSTS**  R
+
+Connector ID Status  
+0: OTG_FS controller is in Device A mode  
+1: OTG_FS controller is in Device B mode  
+Note: It can be used in both device and master modes  
+
+
+# 17 **LSDEBT**  R
+
+Long/Short Debounce Time  
+Indicate the detected debounce time. The long debounce time is used for physical connection, and the short debounce time is used for software (program) connection.  
+0: Long debounce time (100ms+2.5µs)  
+1: Short debounce time (2.5µs)  
+Note: It can be used only in master mode  
+
+
+# 18 **ASVD**  R
+
+A-Session Valid  
+0: Invalid  
+1: Valid  
+Note: It can be accessed only in master mode  
+
+
+# 19 **BSVD**  R
+
+B-Session Valid  
+In OTG mode, this bit is used to confirm whether the device is in connected status.  
+0: Invalid  
+1: Valid  
+Note: It can be accessed only in device mode  
+
+
+31:20  
+
+Reserved  
+
+
+### 25.3.2 Full-speed OTG interrupt register (OTG_FS_GINT)
+
+Offset address: 0x04  
+Reset value: 0x0000 0000  
+
+
+1:0  
+
+Reserved  
+
+
+# 2 **SEFLG**  RC_W1
+
+Session End Flag  
+When Vbus <0.8V, it means that Vusus is not used for B-session, and this bit will be set to 1.  
+
+
+7:3  
+
+Reserved  
+
+
+# 8 **SREQSUCHG**  RC_W1
+
+Session Request Success Bit Change  
+If the value of SREQSUC bit changes, this bit will be set to 1.  
+
+
+# 9 **HNSUCCHG**  RC_W1
+
+Host Negotiation Success Bit Change  
+If the value of HNSUC bit changes, this bit will be set to 1.  
+
+
+16:10  
+
+Reserved  
+
+
+# 17 **HNFLG**  RC_W1
+
+Host Negotiation Flag  
+When USB host negotiation request is detected, this bit will be set to 1.  
+
+
+# 18 **ADTOFLG**  RC_W1
+
+A-Device Timeout Flag  
+If this bit is set to 1, it indicates timeout when A-device is waiting for B-device to connect.
+
+
+
+
+### 25.3.3 Full-speed OTG AHB configuration register (OTG_FS_GAHBCFG)
+
+Offset address: 0x08  
+Reset value: 0x0000 0000  
+
+
+| Field | Name | R/W | Description |
+| ------- | ----------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 0 | GINTMASK | R/W | Global Interrupt Mask<br>0: Mask global interrupt<br>1: Unmask global interrupt |
+| 6:1 |  |  | Reserved |
+| 7 | TXFEL | R/W | TXFIFO Empty Level<br>In device mode:<br>0: TXFE interrupt means that IN endpoint TXFIFO is half-empty<br>1: TXFE interrupt means that IN endpoint TXFIFO is all-empty<br>In master mode:<br>0: NPTXFEM interrupt means that non-periodic TXFIFO is half-empty<br>1: NPTXFEM interrupt means that non-periodic TXFIFO is all-empty |
+| 8 | PTXFEL | R/W | Periodic TXFIFO Empty Level<br>0: PTKFE interrupt means that periodic TXFIFO is half-empty<br>1: PTKFE interrupt means that periodic TXFIFO is all-empty<br>Note: It can be accessed only in master mode |
+| 31:9 |  |  | Reserved |
+
+
+### 25.3.4 Full-speed OTG USB configuration register (OTG_FS_GUSBCFG)
+
+Offset address: 0x0C  
+Reset value: 0x0000 1440  
+
+
+| Field | Name | R/W | Description |
+| ------- | ----------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 2:0 | SEFLG | R/W | FS Timeout Calibrate<br>The additional delay of PHY includes the number of PHY clocks and FS timeout interval. The status of data line may be different for different PHY.<br>The timeout value of OTG_FS is 16~18-bit time. |
+| 5:3 |  |  | Reserved |
+| 6 | FSSTSEL | W | Full-Speed Serial Transceiver Select<br>0: Reserved<br>1: USB1.1 full-speed serial transceiver<br>This bit is always 1. |
+| 7 | Reserved |  |  |
+| 8 | SRPEN | R/W | SRP Enable                                      <br>0: Disable<br>1: Enable<br>If the SRP function is disabled, connecting the device cannot be requested to activate V_BUS and the session cannot be started. |
+| 9 | HNPEN | R/W | HNP Enable                                      <br>0: Disable<br>1: Enable |
+| 13:10 | TRTIM | R/W | USB Turnaround Time                            <br>f_PHYCLK ≤48MHZ, in f_PHYCLK .<br>TRTIM=4*f_APBCLK+f_PHYCLK<br>Example:<br>When f_APBCLK=72MHz, TRTIM will be set to 7. |
+| 28:14 | Reserved |  |  |
+| 29 | FHMODE | R/W | Forced Host Mode                                <br>0: Normal mode<br>1: Master mode |
+| 30 | FDMODE | R/W | Forced Device Mode                              <br>0: Normal mode<br>1: Device mode |
+| 31 | CTXP | R/W | Corrupt TX Packet                               <br>Debug bit, which cannot be set to 1<br>Note: It can be accessed in both device and master mode<br> |
+
+
+### 25.3.5 Full-speed OTG reset register (OTG_FS_GRSTCTRL)
+
+Offset address: 0x10  
+Reset value: 0x8000 0000
+
+
+
+
+| Field | Name | R/W | Description |
+| ------- | -------- | ----- | ------------------------------------------------------------------------------------------------------------------ |
+| 0 | CSRST | R/S | Core Soft Reset<br>This bit controls HCLK and PCLK reset<br>Clear each interrupt and all control state register bits to 0 except the followings:<br>- GCLK bit in OTG_FS_PCCTRL<br>- PCLKSTOP bit in OTG_FS_PCCTRL<br>- PHYCLKSEL bit in OTG_FS_HCFG<br>- DSPDSEL bit in OTG_FS_DCFG<br>Reset the AHB slave to the idle state and clear TXFIFO and RXFIFO. When the AHB transmission ends, all transactions of AHB shall be terminated as soon as possible and all transactions on USB shall be aborted immediately.<br>Software reset is used generally in either of the following situations:<br>● Software development period.<br>● After the user dynamically changes the PHY selection bit in the USB configuration register listed above. When the user changes the PHY, the corresponding clock will be selected for the PHY and used in the PHY domain. Once a new clock is selected, the PHY domain must be reset so as to ensure normal operation. |
+| 1 | HSTRST | R/S | HCLK Soft Reset<br>This bit is used to refresh the control logic of AHB clock domain.<br>When clearing this interrupt, the corresponding mask interrupt state control bit shall be cleared; when the interrupt state bit is not cleared to zero, the event state after this bit is set to 1 can be read. |
+| 2 | HFCNTRS | R/S | Host Frame Counter Reset<br>Reset the frame counter in the host by writing this bit, and the SOF frame number transmitted subsequently is 0.<br>Note: It can be accessed only in master mode. |
+| 3 | Reserved | R/S |  |
+| 4 | RXFFLU | R/S | RXFIFO Flush<br>This bit is used to refresh the whole RXFIFO. Before writing to this bit, it is required to ensure that the module does not perform read and write operation on RXFIFO.<br>Only after this bit is cleared to 0, can other operations be performed (usually need to wait for 8 clock cycles). |
+| 5 | TXFFLU | R/S | TXFIFO Flush<br>This bit is used to refresh one or the whole TXFIFO. Before writing to this bit, it is required to ensure that the module does not perform read and write operation on TXFIFO. |
+
+
+### 25.3.6 Full-speed OTG module interrupt register (OTG_FS_GCINT)
+
+Offset address: 0x14  
+Reset value: 0x0400 0020  
+In order to avoid generating interrupts before initialization, the software must clear this register to zero before enabling the interrupt bit.
+
+
+| Field | Name | R/W | Description |
+| ------- | ---------- | ------- | --------------------------------------------------------------------------------------- |
+| 0 | CURMOSEL | R | Current Mode of Operation Select <br> 0: Device mode <br> 1: Master mode |
+| 1 | MMIS | RC_W1 | Mode Mismatch Interrupt <br> This bit will be set to 1 when accessing the following registers: <br> ● Access the master mode register in device mode <br> ● Access the device mode register in master mode |
+| 2 | OTG | R | OTG Interrupt <br> When this bit is set to 1, it indicates that an OTG protocol event has occurred. <br> By reading OTG_FS_GINT register, determine the event that causes the OTG interrupt. This bit can be cleared to zero only after the corresponding bit of the register is cleared. |
+| 3 | SOF | RC_W1 | Start of Frame Interrupt <br> When this bit is set: <br> ● In master mode, it indicates that USB has transmitted one SOF (FS) or Keep-Alive (LS); <br> ● In device mode, it indicates that USB has received one SOF, and the current frame number can be obtained by reading the device state register. An interrupt will be generated only when running in FS mode. |
+| 10:6 | TXFNUM | R/W | TXFIFO Number <br> Refresh the FIFO number with TXFIFO refresh bits, and these bits can only be changed after the refresh TXFIFO is cleared to 0. <br> In master mode: <br> 00000: Refresh non-periodic TXFIFO <br> 00001: Refresh periodic TXFIFO <br> 10000: Refresh all TXFIFO <br> In device mode: <br> 00000: Refresh TXFIFO 0 <br> 00001: Refresh TXFIFO 1 <br> …… <br> 00101: Refresh TXFIFO 15 <br> 10000: Refresh all TXFIFO |
+| 30:11 | Reserved |  |  |
+| 31 | AHBMIDL | R | AHB Master Idle <br> This bit indicates whether the AHB master device is idle. |
+| 4 | RXFNONE | R | RXFIFO Non-empty Interrupt<br>This bit indicates that there are still packets in RXFIFO that have not been read. |
+| 5 | NPTXFEM | R | Non-periodic TXFIFO Empty Interrupt<br>This interrupt will be triggered when the non-periodic TXFIFO is not empty and there is space for writable entries in the request queue.<br>Note: It can be accessed only in master mode. |
+| 6 | GINNPNAKE | R | Global IN Non-periodic NAK Effective Interrupt<br>This bit indicates that GINAKSET bit of OTG_FS_DCTRL register is valid; this bit can be cleared by clearing GINAKCLR bit of OTG_FS_DCTRL register.<br>As the priority of STALL is higher than that of NAK bit, generation of this interrupt does not mean that USB has transmitted NAK signal.<br>Note: It can be accessed only in device mode. |
+| 7 | GONAKE | R | Global OUT NAK Effective Interrupt<br>This bit indicates that GONAKSET bit of OTG_FS_DCTRL register is valid; this bit can be cleared by clearing GONALCLR bit of OTG_FS_DCTRL.<br>Note: It can be accessed only in device mode. |
+
+
+|  |  |
+| ----- | ----- |
+
+| ESUS | RC_W1 | Early Suspend Interrupt<br>When USB has been idle for 3ms, this bit will be set to 1.<br>Note: It can be accessed only in device mode. |
+| USBSUS | RC_W1 | USB Suspend Interrupt<br>When USB pending is detected, this bit will be set to 1; when USB has been idle for 3ms, it will enter pending state.<br>Note: It can be accessed only in device mode. |
+| USBRST | RC_W1 | USB Reset Interrupt<br>This bit will be set to 1 when reset is detected on USB.<br>Note: It can be accessed only in device mode. |
+| ENUMD | RC_W1 | Enumeration Done Interrupt<br>This bit will be set to 1 when speed enumeration is completed.<br>Note: It can be accessed only in device mode. |
+| ISOPD | RC_W1 | Isochronous OUT Packet Dropped Interrupt<br>When the RXFIFO space is insufficient and the module cannot write synchronous OUT data packet to RXFIFO, this bit will be set to 1.<br>Note: It can be accessed only in device mode. |
+| EOPF | RC_W1 | End of Periodic Frame Interrupt<br>This bit indicates that the current frame has reached the period specified by PFITV bit of OTG_FS_DCFG register.<br>Note: It can be accessed only in device mode. |
+
+
+|  |  |
+| ----- | ----- |
+| Reserved |  |
+| Field | Name / R/W / Description |
+| ------- | --------- / ----- / --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 18 | INEP / R / IN Endpoint Interrupt<br>This bit will be set to 1 when a pending interrupt occurs to one IN endpoint<br>Determine the serial number of IN endpoint to which an interrupt occurs by reading OTG_FS_DAEPIINT register, and identify the causes of the interrupt by reading OTG_FS_DIEPINTx register.<br>To clear this bit, first clear the corresponding state bit of OTG_FS_DIEPINTx register.<br>Note: It can be accessed only in device mode |
+| 19 | ONEP / R / OUT Endpoint Interrupt<br>This bit will be set to 1 when a suspend interrupt occurs to one OUT endpoint<br>Determine the serial number of OUT endpoint to which an interrupt occurs by reading OTG_FS_DAEPIINT register, and identify the causes of the interrupt by reading OTG_FS_DOEPIINTx register.<br>To clear this bit, first clear the corresponding state bit of OTG_FS_DOEPIINTx register.<br>Note: It can be accessed only in device mode |
+| 20 | IIINTX / RC_W / Incomplete Isochronous IN Transfer Interrupt<br>This bit will be set to 1 when the transmission on at least one synchronous IN endpoint in the current frame is not completed.<br>This interrupt is triggered at the same time with EOPF.<br>Note: It can be accessed only in device mode |
+| 21 | IP_OUTTX / RC_W / Incomplete Periodic Transfer Interrupt<br> When this bit is set to 1, the interrupts indicated by it are different in different modes.<br>In master mode, if the periodic transaction scheduled to be completed in the current frame is still suspending (i.e., incomplete), the incomplete periodic transfer interrupt will be triggered.<br>In device mode, when the transmission on at least one synchronous OUT endpoint in the current frame is not completed, interrupt of incomplete OUT synchronous transmission will be triggered, and this interrupt will be triggered at the same time with EOPF. |
+| 24 | HPORT / R / Host Port Interrupt<br>This bit will be set to 1 when the state of full-speed OTG controller port changes in master mode.<br>Note: It can be accessed only in master mode |
+| 25 | HCHAN / R / Host Channels Interrupt<br>This bit will be set to 1 when a suspended interrupt is generated on host channel.<br>Note: It can be accessed only in master mode |
+| 26 | PTXFE / R / Periodic TXFIFO Empty Interrupt<br>This interrupt will be triggered when the periodic TXFIFO is empty and there is space for writable entries in the request queue. Note: It can be accessed only in master mode |
+
+
+### 25.3.7  Full-speed OTG module interrupt mask register (OTG_FS_GINTMASK)
+
+Offset address: 0x18  
+Reset value: 0x0000 0000  
+This register is used to mask the interrupt, but the corresponding bit of the interrupt register will still be set to 1.
+
+
+| Field | Name | R/W | Description |
+| ------- | ----------- | ------ | ----------------------------------------------------- |
+| 0 |  |  | Reserved |
+| 1 | MMISM | R/W | Mode Mismatch Interrupt Mask<br>0: Mask<br>1: Not mask |
+| 2 | OTGM | R/W | OTG Interrupt Mask<br>0: Mask<br>1: Not mask |
+| 3 | SOFM | R/W | Frame Start Interrupt Mask<br>0: Mask<br>1: Not mask |
+| 4 | RXFNONEM | R/W | RXFIFO Nonempty Interrupt Mask<br>0: Mask<br>1: Not mask |
+| 5 | NPTXFEMM | R/W | Nonperiodic TXFIFO Empty Interrupt Mask<br>0: Mask<br>1: Not mask<br>Note: It can be accessed only in master mode |
+| 27 |  |  | Reserved |
+| 28 | CINSTSCHG | RC_W1 | Connector ID Status Change Interrupt<br>This bit will be set to 1 when the state of connector ID line changes.<br>Note: It can be accessed in both master and device mode |
+| 29 | DEDIS | RC_W1 | Device Disconnect Interrupt<br>This bit will be set to 1 when device disconnection is detected.<br>Note: It can be accessed only in master mode |
+| 30 | SREQ | RC_W1 | Session Request/New Session Interrupt<br>The conditions for triggering this interrupt in different modes are:<br>● Session request is detected in master mode<br>● In device mode, Vbus is within the range of B-device |
+| 31 | RWAKE | RC_W1 | Resume/Remote Wakeup Interrupt<br>The conditions for triggering this interrupt in different modes are:<br>● Remote wakeup signal is detected on USB in master mode<br>● Resume signal is detected on USB bus in device mode |
+| 6 | GINNPNAKEM | R/W | Global IN Nonperiodic NAK Effective Interrupt Mask            <br>0: Mask<br>1: Not mask<br>Note: It can be accessed only in device mode |
+| 7 | GONAKEM | R/W | Global OUT NAK Effective Interrupt Mask                       <br>0: Mask<br>1: Not mask<br>Note: It can be accessed only in device mode |
+| 9:8 | Reserved |  |  |
+| 10 | ESUSM | R/W | Early Suspend Interrupt Mask                                   <br>0: Mask<br>1: Not mask<br>Note: It can be accessed only in device mode |
+| 11 | USBSUM | R/W | USB Suspend Interrupt Mask                                     <br>0: Mask<br>1: Not mask<br>Note: It can be accessed only in device mode |
+| 12 | USBRSTM | R/W | USB Reset Interrupt Mask                                      <br>0: Mask<br>1: Not mask<br>Note: It can be accessed only in device mode |
+| 13 | ENUMDM | R/W | Enumeration Done Interrupt Mask                                <br>0: Mask<br>1: Not mask<br>Note: It can be accessed only in device mode |
+| 14 | ISOPDM | R/W | Isochronous OUT Packet Dropped Interrupt Mask                 <br>0: Mask<br>1: Not mask<br>Note: It can be accessed only in device mode |
+| 15 | EOPFM | R/W | End of Periodic Frame Interrupt Mask                           <br>0: Mask<br>1: Not mask<br>Note: It can be accessed only in device mode |
+| 17:16 | Reserved |  |  |
+| 18 | INEPM | R/W | IN Endpoint Interrupt Mask                                     <br>0: Mask<br>1: Not mask<br>Note: It can be accessed only in device mode |
+| 19 | OUTEPM | R/W | OUT Endpoint Interrupt Mask                                    <br>0: Mask<br>1: Not mask<br>Note: It can be accessed only in device mode |
+| 20 | IIINTXM | R/W | Incomplete Isochronous IN Transfer Interrupt Mask             <br>0: Mask<br>1: Not mask<br>Note: It can be accessed only in device mode |
+| 21 | IP_OUTTXM | R/W | Incomplete Periodic Transfer Interrupt Mask                   <br>In master mode, this bit controls whether to mask incomplete periodic transfer interrupt.<br>In device mode, this bit controls whether to mask the incomplete isochronous OUT Transfer interrupt.<br>0: Mask<br>1: Not mask |
+| 23:22 | Reserved |  |  |
+| 24 | HPORTM | R/W | Host Port Interrupt Mask                                      <br>0: Mask<br>1: Not mask<br>Note: It can be accessed only in master mode |
+| 25 | HCHM | R/W | Host Channels Interrupt Mask                                   <br>0: Mask<br>1: Not mask<br>Note: It can be accessed only in master mode |
+| 26 | PTXFEM | R/W | Periodic TXFIFO Empty Interrupt Mask                          <br>0: Mask<br>1: Not mask<br>Note: It can be accessed only in master mode |
+| 27 | Reserved |  |  |
+| 28 | CIDSTSCM | R/W | Connector ID Status Change Interrupt Mask                     <br>0: Mask<br>1: Not mask<br>Note: It can be accessed in both master and device mode |
+| 29 | DEDISM | R/W | Device Disconnect Interrupt Mask                               <br>0: Mask<br>1: Not mask<br>Note: It can be accessed only in device mode |
+| 30 | SREQM | R/W | Session Request/New Session Interrupt Mask                    <br>0: Mask<br>1: Not mask |
+| 31 | RWAKEM | R/W | Resume/Remote Wakeup Interrupt Mask                           <br>0: Mask<br>1: Not mask<br>Note: It can be accessed in both master and device mode |
+
+
+### 25.3.8 Full-speed OTG read debug receive state register/full-speed OTG state read and pop register (OTG_FS_GRXSTS/OTG_FS_GRXSTSP)
+
+Read offset address: 0x1C<br>
+Pop offset address: 0x20
+
+
+
+Reset value: 0x0000 0000
+
+
+Master mode
+
+
+
+| Field | Name | R/W | Description |
+| -------- | ------- | ----- | --------------------------------------------------------------------------------------------- |
+| 3:0 | CHNUM | R | Channel Number<br>This bit indicates by which channel the received data is transmitted. |
+| 14:4 | BCNT | R | Byte Count<br>This bit indicates the byte count of received IN data packet. |
+| 16:15 | DPID | R | Data Packet ID<br>This bit indicates the received data packet ID (PID)<br>00: DATA0<br>10: DATA1<br>01: DATA2<br>11: MDATA |
+| 20:17 | PSTS | R | Packet Status<br>This bit indicates the status of the received data packet.<br>0010: Received IN data packet<br>0011: IN transmission completed<br>0101: Data synchronization error<br>0111: Channel stop<br>Others: Reserved |
+| 31:21 |  |  | Reserved |
+
+
+Device mode
+
+
+
+| Field | Name | R/W | Description |
+| -------- | ------- | ----- | --------------------------------------------------------------------------------------------- |
+| 3:0 | EPNUM | R | Endpoint Number<br>This bit indicates by which endpoint the received data is transmitted. |
+| 14:4 | BCNT | R | Byte Count<br>This bit indicates the byte count of received data packet. |
+| 16:15 | DPID | R | Data PID<br>This bit indicates the received data packet ID (PID)<br>00: DATA0<br>10: DATA1<br>01: DATA2<br>11: MDATA |
+| 20:17 | PSTS | R | Packet Status<br>This bit indicates the status of received data packet.<br>0001: Global OUT NAK<br>0010: Received OUT data packet<br>0011: OUT transmission completed<br>0100: SETUP event completed<br>0110: Received SETUP data packet<br>Others: Reserved |
+| 24:21 | FNUN | R | Frame Number<br>These bits are valid when synchronous OUT endpoint is supported.<br>These bits are the 4 least significant bits of the packet frame number received on the USB |
+| 31:25 |  |  | Reserved |
+
+
+### 25.3.9 Full-speed OTG receive FIFO size register (OTG_FS_GRXFIFO)
+
+Offset address: 0x24  
+Reset value: 0x0000 0200  
+
+
+| Field | Name | R/W | Description |
+| --------- | ------- | ----- | ------------------------------------------------------------------------------------------------------ |
+| 15:0 | RXFDEP | R/W | RXFIFO Depth<br>RXFIFO is in word, and the depth range is: 16-256. |
+| 31:16 |  |  | Reserved |
+
+
+### 25.3.10 Full-speed OTG TXFIFO configuration register (OTG_FS_GTXFCFG)
+
+Offset address: 0x28  
+Reset value: 0x0000 0200  
+
+
+Master mode  
+
+| Field | Name | R/W | Description |
+| --------- | ------- | ----- | ----------------------------------------------------------------------------------------------------- |
+| 15:0 | NPTXSA | R/W | Nonperiodic TXFIFO RAM Start Address<br>This bit indicates the start address of non-periodic TXFIFO RAM. |
+| 31:16 | NPTXFDEP | R/W | Nonperiodic TXFIFO Depth<br>TXFIFO is in word, and the depth range is: 16-256. |
+
+
+Device mode  
+
+| Field | Name | R/W | Description |
+| --------- | ------- | ----- | ----------------------------------------------------------------------------------------------------- |
+| 15:0 | EPTXSA | R/W | Endpoint0 TXFIFO RAM Start Address<br>This bit indicates the start address of TXFIFO RAM of endpoint 0. |
+| 31:16 | EPTXFDEP | R/W | Endpoint0 TXFIFO Depth<br>TXFIFO is in word, and the depth range is: 16-256. |
+
+
+### 25.3.11 Full-speed OTG non-periodic TXFIFO queue state register (OTG_FS_GNPTXFQSTS)
+
+Offset address: 0x2C  
+Reset value: 0x0008 0200
+
+
+
+
+| Field | Name | R/W | Description |
+| --------- | ---------- | ----- | ---------------------------------------------------------------------------------------------- |
+| 15:0 | NPTXFSA | R | Nonperiodic TXFFIO Space Available<br>These bits indicate the size of available space of non-periodic TXFIFO. (In 32-bit words)<br>0x0: Non-periodic TXFIFO is full<br>0x1: 1 word<br>0x2: 2 words<br>.....<br>0xn: n words are available (0≤n≤256)<br>Others: Reserved |
+| 23:16 | NPTXRSA | R | Non-periodic Transmit Request Space Available<br>This bit indicates the available space size of non-periodic transmit request queue.<br>In master mode: Save IN and OUT requests<br>In device mode: There is only IN request<br>0x0: The queue is full<br>0x1: 1 position<br>0x2: 2 positions<br>.....<br>0xn: n positions are available (0≤n≤8)<br>Others: Reserved |
+| 30:24 | NPTXRQ | R | Nonperiodic Transmit Request Queue<br>Bit 24: Terminate (last data selected for channel/endpoint)<br>Bit [26:25]:<br>00: IN/OUT token<br>01: The transmit data packet length is 0 (IN in device mode/OUT in master mode)<br>10: PING/CPLIT token<br>11: Stop channel instruction<br>Bit [30:27]: Channel/endpoint number |
+| 31 |  |  | Reserved |
+
+
+### 25.3.12 Full-speed OTG general module configuration register (OTG_FS_GCCCFG)
+
+| Field | Name | R/W | Description |
+| --------- | ---------- | ----- | --------------------------------------- |
+| 15:0 |  |  | Reserved |
+| 16 | PWEN | R/W | Power Down Enable<br>This bit is used to activate the transceiver.<br>0: Power down is activated<br>1: Power down is inactivated (activate the transceiver) |
+| 17 |  |  | Reserved |
+| 18 | ADVBSEN | R/W | A Device Vbus Sensing Enable<br>0: Disable<br>1: Enable |
+| 19 | BDVBSEN | R/W | B Device V<sub>bus</sub> Sensing Enable<br>0: Disable<br>1: Enable |
+| 20 | SOFFOUT | R/W | SOF Pulse Available on PAD Output<br>This bit selects whether SOF pulse can be output from PAD.<br>0: No<br>1: Yes |
+| 21 | VBSDIS | R/W | V<sub>bus</sub> Sensing Disable<br>0: Enable V<sub>bus</sub> sensing<br>1: Disable V<sub>bus</sub> sensing |
+| 31:22 | Reserved |  |  |
+
+
+### 25.3.13 Full-speed OTG module ID register (OTG_FS_GCID)
+
+Offset address: 0x3C<br>Reset value: 0x0000 1200
+
+
+| Field | Name | R/W | Description |
+| ------- | ------ | ----- | -------------------------------------------------------------------- |
+| 31:0 | PID | R/W | Product ID<br>Product ID can be programmed by this bit. |
+
+
+### 25.3.14 Full-speed OTG host periodic TXFIFO size register (OTG_FS_GHPTXFSIZE)
+
+Offset address: 0x100<br>Reset value: 0x0200 0400
+
+
+| Field | Name | R/W | Description |
+| ------- | ------------ | ----- | -------------------------------------------- |
+| 15:0 | HPDTXFSA | R/W | Host Periodic TXFIFO Start Address |
+| 31:16 | HPDTXDEP | R/W | Host Periodic TXFIFO Depth<br>TXFIFO is in word, and the minimum value is 16. |
+
+
+### 25.3.15 Full-speed OTG device IN endpoint TXFIFO size register x (OTG_FS_DIEPTXFIFOx) (x=1~3)
+
+Offset address: 0x104+(x-1)<br>Reset value: 0x0200 0200<br>x is FIFO number.
+
+
+| Field | Name | R/W | Description |
+| ------- | ------------ | ----- | ---------------------------------------------------------------- |
+| 15:0 | INEPTXFRSA | R/W | IN Endpoint TXFIFO<sub>x</sub> Transmit RAM Start Address<br>These bits indicate the start address of the IN endpoint TXFIFO<sub>x</sub> RAM and need to be aligned with the 32-bit memory. |
+| 31:16 | INEPTXFDEP | R/W | IN Endpoint TXFIFO Depth<br>TXFIFO is in word, and the minimum value is 16. |
+
+
+## 25.4 OTG_FS master mode register address mapping
+
+
+
+Table 125 Register Address Mapping of OTG_FS Master Mode
+
+
+
+| Register name | Description | Offset Address |
+| ----------------------- | --------------------------------------------------------- | ------------------ |
+| OTG_FS_HCFG | Full-speed OTG host configuration register | 0x400 |
+| OTG_FS_HFIVL | Full-speed OTG host frame interval register | 0x404 |
+| OTG_FS_HFIM | Full-speed OTG host frame information register | 0x408 |
+| OTG_FS_HPTXSTS | Full-speed OTG host periodic transmission state register | 0x410 |
+| OTG_FS_HACHINT | Full-speed OTG host all-channel interrupt register | 0x414 |
+| OTG_FS_HACHIMASK | Full-speed OTG host all-channel interrupt mask register | 0x418 |
+| OTG_FS_HPORTCSTS | Full-speed OTG host port control state register | 0x440 |
+| OTG_FS_HCHX | Full-speed OTG host channel-X characteristics register (X=0..7) | 0x500*20*X |
+| OTG_FS_HCHINTX | Full-speed OTG host channel-X interrupt register (X=0..7) | 0x508*20*X |
+| OTG_FS_HCHIMASKX | Full-speed OTG host channel-X interrupt mask register (X=0..7) | 0x50C*20*X |
+| OTG_FS_HCHTSIZE | Full-speed OTG host channel-X transmission size register (X=0..7) | 0x510*20*X |
+
+
+## 25.5 OTG_FS host mode register functional description
+
+
+
+### 25.5.1 Full-speed OTG host configuration register (OTG_FS_HCFG)
+
+
+Offset address: 0x400  
+Reset value: 0x0000 0000  
+
+
+| Field | Name | R/W | Description |
+| -------------- | ------------- | ----- | -------------------------------------------------------------- |
+| 1:0 | PHYCLKSEL | R/W | FS/LS PHY Clock Select                                      <br>● In FS mode:<br>01: PHY clock is 48MHz<br>Others: Reserved<br>● In LS mode:<br>00: Reserved<br>01: PHY clock is 48MHz<br>10: PHY clock is 6MHz<br>11: Reserved<br>Note: Software reset is required after the value of this bit is changed. |
+| 2 | FSSPT | R | FS Support<br>After the host is connected to the device, select whether the host follows the maximum speed supported by the device. If this bit is set to 1, even if the device supports HS mode, the host supports FS at most.<br>0: Reserved<br>1: The host only supports FS/LS |
+| 31:3 |  |  | Reserved |
+
+
+### 25.5.2 Full-speed OTG host frame interval register (OTG_FS_HFIVL)
+
+Offset address: 0x404<br>Reset value: 0x0000 EA60<br>This register can be edited only after the port (PEN bit of OTG_FS_HPORTCSTS register is set to 1) is enabled.
+
+
+| Field | Name | R/W | Description |
+| ------ | ------- | ----- | ------------ |
+| 15:0 | FIVL | R/W | Frame Interval<br>This bit is used to control the time interval between two continuous SOF (FS) and Keep-Alive (LS).<br>Time interval=frame duration×PHY clock |
+| 31:16 |  |  | Reserved |
+
+
+### 25.5.3 Full-speed OTG host frame information register (OTG_FS_HFIFM)
+
+Offset address: 0x408<br>Reset value: 0x0000 3FFF
+
+
+| Field | Name | R/W | Description |
+| ------ | ------- | ----- | ------------ |
+| 15:0 | FNUM | R | Frame Number<br>This bit is used to indicate the current frame number. This bit will be cleared to zero when reaching 0x3FFF. |
+| 31:16 | FRTIME | R | Frame Remaining Time<br>This bit is used to indicate the current remaining time of frame. The initial value is the value of OTG_FS_HFIVL, and every time one PHY clock is passed, the value of this bit will decrease by 1, and when 0 is reached, this bit will reload the value of frame interval. |
+
+
+### 25.5.4 Full-speed OTG host periodic transmission state register (OTG_FS_HPTXSTS)
+
+Offset address: 0x410<br>Reset value: 0x0008 0100
+
+
+
+
+### 25.5.5 Full-speed OTG host all-channel interrupt register (OTG_FS_HACHINT)
+
+Offset address: 0x414  
+Reset value: 0x0000 0000  
+
+
+| Field | Name | R/W | Description |
+| ------- | -------- | ----- | ----------------------------------------------- |
+| 15:0 | ACHINT | R | All Channels Interrupts                         <br>No. X bit represents interrupt of Channel X. Up 16 channels. |
+| 31:16 |  |  | Reserved |
+
+
+### 25.5.6 Full-speed OTG host all-channel interrupt mask register (OTG_FS_HACHIMASK)
+
+Offset address: 0x418  
+Reset value: 0x0000 0000  
+
+
+| Field | Name | R/W | Description |
+| ------- | --------- | ----- | ----------------------------------------------- |
+| 15:0 | ACHINT | R | All Channels Interrupts                        <br>No. X bit represents interrupt of Channel X. Up 16 channels. |
+| 31:16 |  |  | Reserved |
+
+
+
+ACHIMASK 
+
+R/W 
+All Channels Interrupts Mask  
+No. X bit represents interrupt mask of Channel X. Up 16 channels.  
+0: Mask  
+1: Not mask  
+
+31:16  
+Reserved  
+
+
+### 25.5.7 Full-speed OTG host port control state register (OTG_FS_HPORTCSTS)
+
+Offset address: 0x440  
+Reset value: 0x0000 0000  
+
+
+| Field | Name | R/W | Description |
+| ------- | --------- | ------- | ---------------------------------------------------- |
+| 0 | PCNNFLG | R | Port Connect Flag                                  <br>0: The port is not connected<br>1: Port connected |
+| 1 | PCINTFLG | RC_W1 | Port Connect Interrupt Flag                         <br>This bit will be set to 1 when the port is connected to the device. |
+| 2 | PEN | RC_W0 | Port Enable                                        <br>After the port resets the sequence, the program cannot write to this bit, and can only enable the port through the module. If this bit is cleared to zero, the port will be disabled.<br>0: Disable<br>1: Enable |
+| 3 | PENCHG | RC_W1 | PEN Bit Change                                      <br>This bit will be set to 1 when PEN bit of this register changes. |
+| 4 | POVC | R | Port Overcurrent                                   <br>This bit indicates whether this port is overloaded.<br>0: No overload<br>1: Overload |
+| 5 | POVCCHG | RC_W1 | POVC Bit Change                                    <br>This bit will be set to 1 when POVC bit changes. |
+| 6 | PRS | R/W | Port Resume                                        <br>0: Resume signal is not driven<br>1: Resume signal is driven |
+| 7 | PSUS | R/S | Port Suspend                                       <br>0: Port is not suspended<br>1: Port is suspended |
+| 8 | PRST | R/W | Port Reset                                         <br>The port can start reset only when this bit is set to 1 and maintained for over 10ms.<br>0: Not in reset state<br>1: In reset state |
+| 9 |  |  | Reserved |
+
+
+### 25.5.8  Full-speed OTG host channel-X characteristics register (OTG_FS_HCHX) (X=0...7)
+
+Offset address: 0x500+20*X  
+Reset value: 0x0000 0000  
+
+
+| Field | Name | R/W | Description |
+| -------- | ------------ | ----- | -------------------------------------------------------------------------------------------------- |
+| 10:0 | MAXPSIZE | R/W | Maximum Data Packet Size<br>This bit indicates the maximum data packet size of the device endpoint connected to the host. |
+| 14:11 | EDPNUM | R/W | Endpoint Number<br>This bit indicates the serial number of the device endpoint connected to the host. |
+| 15 | EDPRT | R/W | Endpoint Direction<br>0: OUT<br>1: IN |
+| 16 |  |  | Reserved |
+| 17 | LSDV | R/W | Low-speed Device<br>This bit indicates the low-speed device is connected. |
+| 19:18 | EDPTYP | R/W | Endpoint Type<br>This bit is used to select the transmission type of endpoint.<br>00: Control<br>01: Synchronous<br>10: Batch<br>11: Interrupt |
+| 21:20 | CNTSEL | R/W | Count Function Select<br>In this register, this bit is only used to indicate the number of transactions that must be executed by the periodic endpoint per frame.<br>00: Reserved<br>01: 1<br>10: 2<br>11: 3 |
+| 28:22 | DVADDR | R/W | Device Address<br>This bit indicates the device address connected to the host. |
+| 29 | ODDF | R/W | Odd Frame<br>This bit controls whether the OTG host transmits in odd frame.<br>0: Even frame<br>1: Odd frame<br>Note: It applies only to periodic transactions. |
+| 30 | CHINT | R/S | Channel Interrupt<br>0: Not interrupt<br>1: Stop transmitting data through the channel |
+| 31 | CHEN | R/S | Channel Enable<br>0: Disable<br>1: Enable |
+
+
+### 25.5.9 Full-speed OTG host channel-X interrupt register
+
+(OTG_FS_HCHINTX) (X=0...7)  
+Offset address: 0x508+20*X  
+Reset value: 0x0000 0000  
+
+
+| Field | Name | R/W | Description |
+| --------- | --------- | ------ | ------------------------------------------- |
+| 0 | TSFCMPN | RC_W1 | Transfer Complete Normally |
+| 1 | TSFCMPAN | RC_W1 | Transfer Complete Abnormally |
+| 2 |  | Reserved |  |
+| 3 | RXSTALL | RC_W1 | STALL Response Received Interrupt |
+| 4 | RXNAK | RC_W1 | NAK Response Received Interrupt |
+| 5 | RXTACK | RC_W1 | ACK Response Received/Transmitted Interrupt |
+| 6 |  | Reserved |  |
+
+
+### 25.5.10 Full-speed OTG host channel-X interrupt mask register (OTG_FS_HCHIMASKX) (X=0…7)
+
+Offset address: 0x50C+20*X  
+Reset value: 0x0000 0000  
+
+
+| Field | Name | R/W | Description |
+| ------- | ----------- | ------ | ----------------------------------------------------- |
+| 0 | TSFCMPNM | R/W | Transfer Complete Normally Mask<br>0: Mask<br>1: Not mask |
+| 1 | TSFCMPANM | R/W | Transfer Complete Abnormally Mask<br>0: Mask<br>1: Not mask |
+| 2 |  |  | Reserved |
+| 3 | RXSTALLM | R/W | STALL Response Received Interrupt Mask<br>0: Mask<br>1: Not mask |
+| 4 | RXNAKM | R/W | NAK Response Received Interrupt Mask<br>0: Mask<br>1: Not mask |
+| 5 | RXTXACKM | R/W | ACK Response Received/Transmitted Interrupt<br>0: Mask<br>1: Not mask |
+| 6 |  |  | Reserved |
+| 7 | TERRM | R/W | Transaction Error Mask<br>0: Mask<br>1: Not mask |
+| 8 | BABBLEM | R/W | Babble Error Mask<br>0: Mask<br>1: Not mask |
+| 9 | FOVRM | R/W | Frame Overrun Error Mask<br>0: Mask<br>1: Not mask |
+| 7 | TERR | RC_W1 | Transaction Error<br>Indicate that one of the following errors occurs:<br>CRC failure<br>Timeout<br>Bit stuffing error<br>EOP error |
+| 8 | BABBLE | RC_W1 | Babble Error |
+| 9 | FOVR | RC_W1 | Frame Overrun Error |
+| 10 | DTOG | RC_W1 | Data Toggle Error |
+| 31:11 |  |  | Reserved |
+
+
+### 25.5.11 Full-speed OTG host channel-X transmission size register (OTG_FS_HCTSIZEX) (X=0...7)
+
+Offset address: 0x510+20*X  
+Reset value: 0x0000 0000  
+
+
+| Field | Name | R/W | Description |
+| ------------ | ---------- | ----- | --------------------------------------------------------------------------------------------------------------------------- |
+| 10 | DTOGM | R/W | Data Toggle Error Mask<br>0: Mask<br>1: Not mask |
+| 31:11 | Reserved |  |  |
+| 18:0 | TSFSIZE | R/W | Transfer Size<br>● For IN: The value of this bit is the size reserved for the transmission buffer, which is generally an integer multiple of the maximum data packet.<br>● For OUT: The value of this bit determines the number of bytes to be transmitted by the host. |
+| 28:19 | PCKTCNT | R/W | Packet Count<br>This bit indicates the value of the transmitted or received data packet. For each data packet transmitted, the value of this bit decreases by 1. When it decreases to 0, it means that the transmission is completed. |
+| 30:29 | DATAPID | R/W | Data PID<br>This bit is initial PID of data communication.<br>00: DATA0<br>01: DATA2<br>10: DATA1<br>11: MDATA (controlled transmission)/SETUP (uncontrolled transmission) |
+| 31 | Reserved |  |  |
+
+
+## 25.6 OTG_FS device mode register address mapping
+
+Table 126 Address Mapping of OTG_FS Device Mode Register  
+
+
+| Register name | Description | Offset Address |
+| ------------------------------ | -------------------------------------------------------------------- | ---------------- |
+| OTG_FS_DCFG | Full-speed OTG device configuration register | 0x800 |
+| OTG_FS_DCTRL | Full-speed OTG device control register | 0x804 |
+| OTG_FS_DSTS | Full-speed OTG device state register | 0x808 |
+| OTG_FS_DINIMASK | Full-speed OTG device IN endpoint interrupt mask register | 0x810 |
+| OTG_FS_DOUTIMASK | Full-speed OTG device OUT endpoint interrupt mask register | 0x814 |
+| OTG_FS_DAEPINT | Full-speed OTG device all-endpoint interrupt register | 0x818 |
+| OTG_FS_DAEPIMASK | Full-speed OTG device all-endpoint interrupt mask register | 0x81C |
+| OTG_FS_DVBUSDTIM | Full-speed OTG device VBUS release time register | 0x828 |
+| OTG_FS_DVBUSPTIM | Full-speed OTG device VBUS pulse time register | 0x82C |
+| OTG_FS_DIEMMASK | Full-speed OTG device IN endpoint FIFO empty interrupt mask register | 0x834 |
+| OTG_FS_DIPECTRL0 | Full-speed OTG device IN endpoint 0 control register | 0x900 |
+| OTG_FS_DIPECTRLx | Full-speed OTG device IN endpoint x control register | 0x900+20 |
+| OTG_FS_DIPEINTx | Full-speed OTG device IN endpoint x interrupt register (x=0…3) | 0x908+20 |
+| OTG_FS_DIPEPTR0 | Full-speed OTG device IN endpoint 0 transmission size register | 0x910 |
+| OTG_FS_DIPEPTRx | Full-speed OTG device IN endpoint x transmission size register (x=1…3) | 0x910+20 |
+| OTG_FS_DTXFSTSx | Full-speed OTG device IN endpoint x TXFIFO state register (x=0…3) | 0x918+20 |
+| OTG_FS_DOEPCTRL0 | Full-speed OTG device OUT endpoint 0 control register | 0xB00 |
+| OTG_FS_DOEPCTRLx | Full-speed OTG device OUT endpoint x control register (x=1…3) | 0xB00+20 |
+| OTG_FS_DOEPINTx | Full-speed OTG device OUT endpoint x interrupt register (x=0…3) | 0xB08+20 |
+| OTG_FS_DOEPTR0 | Full-speed OTG device OUT endpoint 0 transmission size register | 0xB10 |
+| OTG_FS_DOEPTRx | Full-speed OTG device OUT endpoint x transmission size register (x=1…3) | 0xB10+20 |
+
+
+## 25.7 OTG_FS device mode register functional description
+
+
+
+### 25.7.1 Full-speed OTG device configuration register (OTG_FS_DCFG)
+
+Offset address: 0x800  
+Reset value: 0x0220 0000  
+
+
+| Field | Name | R/W | Description |
+| ------- | ---------- | ------ | -------------------------------------------------------------- |
+| 1:0 | DSPDSEL | R/W | Device Speed Select<br>This bit selects the maximum enumeration speed of the device connected to the host,<br>11: FS (48MHz)<br>Others: Reserved |
+
+
+### 25.7.2 Full-speed OTG device control register (OTG_FS_DCTRL)
+
+Offset address: 0x804  
+Reset value: 0x0000 0000  
+
+
+| Field | Name | R/W | Description |
+| ------- | ---------- | ----- | ----------------------------------------------------------------------------------------------------- |
+| 0 | RWKUPS | R/W | Remote Wakeup Signaling<br>The program wakes up the USB host by setting this bit to 1 to make the module exit the suspended state.<br>Note: According to the protocol, after this bit is set to 1, it should be cleared to 0 within 1~15ms. |
+| 1 | SDCNNT | R/W | Soft Disconnect<br>Soft disconnect means that the host cannot receive the signal of "Device connected", and the device cannot receive the signal.<br>0: Normal. The host can receive device connection event<br>1: Soft disconnection |
+| 2 | GINAKTS | R | Global IN NAK Status<br>This bit determines whether to reply to the handshake signal according to the data availability in TXFIFO.<br>0: Yes<br>1: No, all non-periodic IN endpoints reply to handshake signal |
+| 3 | GONAKTS | R | Global OUT NAK Status<br>0: Transmit the handshake signal according to FIFO state and NAK and STALL bit state<br>1: No data is received, and all data packets except the SETUP transaction reply to the NAK signal |
+
+
+
+TESTSEL
+
+| Field | Name | R/W | Description |
+| ------------- | ----------- | ----- | --------------------------------------------------- |
+| 6:4 | TESTSEL | R/W | Test Mode Select.<br>000: Disable the test<br>001: Test_J<br>010: Test_K<br>011: Test_SE0_NAK<br>100: Test_Packet<br>101: Test_Force_Enable<br>Others: Reserved |
+
+
+Global IN NAK Setup
+
+# 7
+
+| Field | Name | R/W | Description |
+| ------------- | ----------- | ----- | --------------------------------------------------- |
+| 7 | GINAKSET | W | Set the global non-periodic IN NAK to 1 to make the non-periodic IN endpoint transmit NAK signal.<br>This bit can be set to 1 only when GINNPNAKE bit of OTG_FS_GCINT register is cleared to 0. |
+
+
+Global IN NAK Clear
+
+# 8
+
+| Field | Name | R/W | Description |
+| ------------- | ----------- | ----- | --------------------------------------------------- |
+| 8 | GINAKCLR | W | Clear the global non-periodic IN NAK to 0. |
+
+
+Global OUT NAK Setup
+
+# 9
+
+| Field | Name | R/W | Description |
+| ------------- | ----------- | ----- | --------------------------------------------------- |
+| 9 | GONAKSET | W | Set the global OUT NAK to 1 to make OUT endpoint transmit NAK signal.<br>This bit can be set to 1 only when GONAKE bit of OTG_FS_GCINT register is cleared to 0. |
+
+
+Global OUT NAK Clear
+
+# 10
+
+| Field | Name | R/W | Description |
+| ------------- | ----------- | ----- | --------------------------------------------------- |
+| 10 | GONACKLR | W | Clear the global OUT NAK to 0. |
+
+
+Power-on Programming Complete
+
+# 11
+
+| Field | Name | R/W | Description |
+| ------------- | ----------- | ----- | --------------------------------------------------- |
+| 11 | POPROGCM | R/W | This bit indicates that the programming operation is completed after the register is awakened. |
+
+
+| Field | Description |
+| ------------- | -------------- |
+| 31:12 | Reserved |
+
+
+### 25.7.3 Full-speed OTG device state register (OTG_FS_DSTS)
+
+Offset address: 0x808<br>
+Reset value: 0x0000 0010
+
+
+| Field | Name | R/W | Description |
+| ------------- | ----------- | ----- | --------------------------------------------------- |
+| 0 | SUSSTS | R | Suspend Status<br>When the USB bus has been idle for more than 3ms, the module will enter the suspending state, and this bit will be set to 1. When there is an activity on the USB line or the module receives a remote wake-up signal, the module will exit the suspended state. |
+| 2:1 | ENUMSPD | R | Enumerated Speed<br>Enumeration speed of full-speed OTG after chirp sequence detection.<br>11: Full speed (48MHz)<br>Others: Reserved |
+| 3 | ERRERR | R | Erratic Error<br>If any irregular error occurs, this bit will be set to 1. At this time, communication can be resumed only by performing soft disconnection. |
+| 7:4 | Reserved |  |  |
+
+
+### 25.7.4 Full-speed OTG device IN endpoint interrupt mask register (OTG_FS_DINIMASK)
+
+Offset address: 0x810  
+Reset value: 0x0000 0000  
+
+
+| Field | Name | R/W | Description |
+| ------- | --------- | ----- | ------------------------------------------ |
+| 21:8 | SOFNUM | R | Frame Number of the Received SOF |
+| 31:22 |  |  | Reserved |
+| 0 | TSFCMPM | R/W | Transfer Completed Interrupt Mask        <br>0: Mask<br>1: Not mask |
+| 1 | EPDISM | R/W | Endpoint Disable Interrupt Mask          <br>0: Mask<br>1: Not mask |
+| 2 |  |  | Reserved |
+| 3 | TOM | R/W | Timeout Interrupt Mask                   <br>0: Mask<br>1: Not mask |
+| 4 | ITXEMPM | R/W | IN Token Received when TxFIFO Empty Mask <br>0: Mask<br>1: Not mask |
+| 5 | IEPMMM | R/W | IN Token Received with Endpoint Mismatch Mask <br>0: Mask<br>1: Not mask |
+| 6 | IEPNAKEM | R/W | IN Endpoint NAK Effective Mask          <br>0: Mask<br>1: Not mask |
+| 12:7 |  |  | Reserved |
+| 13 | NAKM | R/W | NAK Interrupt Mask                      <br>0: Mask<br>1: Not mask |
+| 31:14 |  |  | Reserved |
+
+
+### 25.7.5 Full-speed OTG device OUT endpoint interrupt mask register (OTG_FS_DOUTIMASK)
+
+Offset address: 0x814  
+Reset value: 0x0000 0000  
+
+
+| Field | Name | R/W | Description |
+| ------- | --------- | ----- | ------------------------------------------ |
+| 0 | TSFCMPM | R/W | Transfer Completed Interrupt Mask        <br>0: Mask<br>1: Not mask |
+
+
+### 25.7.6 Full-speed OTG device all-endpoint interrupt register (OTG_FS_DAEPOINT)
+
+Offset address: 0x818  
+Reset value: 0x0000 0000  
+
+
+| Field | Name | R/W | Description |
+| ------- | ---------- | ----- | ---------------------------------------------------------- |
+| 1 | EPDISM | R/W | Endpoint Disable Interrupt Mask                           <br>0: Mask<br>1: Not mask |
+| 2 |  |  | Reserved |
+| 3 | SETPCPM | R/W | SETUP Phase Complete Mask                                 <br>0: Mask<br>1: Not mask |
+| 4 | OTXEMP | R/W | OUT Token Received when Endpoint Disabled Mask            <br>0: Mask<br>1: Not mask |
+| 5 | RXIWCTRL | R/W | Received Interrupt when Write Control Mask                <br>0: Mask<br>1: Not mask |
+| 7:6 |  |  | Reserved |
+| 8 | OUTPM | R/W | OUT Packet Error Interrupt Mask                           <br>0: Mask<br>1: Not mask |
+| 11:9 |  |  | Reserved |
+| 12 | BABBLEM | R/W | Babble Error Interrupt Mask                               <br>0: Mask<br>1: Not mask |
+| 13 | NAKM | R/W | NAK Interrupt Mask                                       <br>0: Mask<br>1: Not mask |
+| 31:14 |  |  | Reserved |
+
+
+### 25.7.7 Full-speed OTG device all-endpoint interrupt mask register (OTG_FS_DAEPIMASK)
+
+Offset address: 0x81C  
+Reset value: 0x0000 0000  
+
+
+| Field | Name | R/W | Description |
+| ------- | ---------- | ----- | ---------------------------------------------------------- |
+| 15:0 | INEPINT | R | All IN Endpoint Interrupts                                <br>No. X bit indicates interrupt of IN endpoint X. Up to 16 IN endpoints. |
+| 31:16 | OUTEPINT | R | All OUT Endpoint Interrupts                               <br>No. X bit indicates interrupt of OUT endpoint (X-16). Up to 16 OUT endpoints. |
+
+
+### 25.7.8 Full-speed OTG device Vbus release time register (OTG_FS_DVBUSDTIM)
+
+Offset address: 0x828  
+Reset value: 0x0000 17D7  
+
+
+| Field | Name | R/W | Description |
+| -------- | --------- | ----- | ----------------------------------------------------------------------------------------------- |
+| 15:0 | VBUSDTIM | R/W | Device Vbus Discharge Time<br> Discharge time after Vbus impulses during SRP period.<br>Value=Discharge time (number of PHY clocks)/1024 |
+| 31:16 |  |  | Reserved |
+
+
+### 25.7.9 Full-speed OTG device Vbus pulse time register (OTG_FS_DVBUSPTIM)
+
+Offset address: 0x82C  
+Reset value: 0x0000 058B  
+
+
+| Field | Name | R/W | Description |
+| -------- | --------- | ----- | ------------------------------------------------------------------------------- |
+| 11:0 | VBUSPTIM | R/W | Device Vbus Pulsing Time<br> Vbus pulse time during SRP.<br>Value=Pulse time (number of PHY clocks)/1024 |
+| 31:12 |  |  | Reserved |
+
+
+### 25.7.10 Full-speed OTG device IN endpoint FIFO empty interrupt mask register (OTG_FS_DIEIMASK)
+
+Offset address: 0x834  
+Reset value: 0x0000 0000  
+
+
+| Field | Name | R/W | Description |
+| -------- | --------- | ----- | ----------------------------------------------------------------------------------------------- |
+| 15:0 | INEM | R/W | IN Endpoint Tx FIFO Empty Interrupt Mask<br> No. X bit indicates TXFE interrupt mask of IN endpoint X. Up to 16 IN endpoints.<br>0: Mask<br>1: Not mask |
+| 31:16 |  |  | Reserved |
+
+
+### 25.7.11 Full-speed OTG device IN endpoint 0 control register (OTG_FS_DIEPCTRL0)
+
+Offset address: 0x900  
+Reset value: 0x0000 0000  
+
+
+| Field | Name | R/W | Description |
+| ------- | --------- | ----- | ------------------------------------------------------------------------------------------------------------------- |
+| 1:0 | MAXPS | R/W | Maximum Packet Size<br>This bit configures the maximum data packet size of endpoint.<br>00: 64 bytes<br>01: 32 bytes<br>10: 16 bytes<br>11: 8 bytes <br>Reserved |
+| 15 | USBAEP | R | USB Active Endpoint<br>This bit indicates whether the endpoint is activated in the current configuration and interface.<br>This bit is always set to 1. |
+| 16 |  |  | Reserved |
+| 17 | NAKSTS | R | NAK Status<br>0: The module replies to non-NAK handshake signal according to the FIFO state<br>1: The module replies to the NAK handshake signal on this endpoint. At this time, even if there is space in TXFIFO, the module will still stop transmitting data. |
+| 19:18 | EPTYPE | R | Endpoint Type<br>This bit is set to 00 by hardware, indicating control type of the endpoint. |
+| 20 |  |  | Reserved |
+| 21 | STALLH | R/S | STALL Handshake<br>The program can only set this bit to 1 and when the endpoint receives the SETUP token, this bit will be cleared to 0. The priority of STALL is higher than that of NAK. |
+| 25:22 | TXFNUM | R/W | TXFIFO Number<br>Set a separate FIFO number for IN endpoint 0. |
+| 26 | NAKCLR | W | NAK Clear<br>When performing write operation to this bit, the NAK bit of the endpoint 0 will be cleared to 0. |
+| 27 | NAKSET | W | NAK Set<br>When performing write operation to this bit, the NAK bit will be set to 1. |
+| 29:28 |  |  | Reserved |
+| 30 | EPDIS | R | Endpoint Disable<br>Data transmission on the endpoint can be stopped by setting this bit to 1.<br>This bit needs to be cleared to 0 before the endpoint disable interrupt bit is set to 1; this bit can only be set to 1 after EPEN is set to 1. |
+
+
+### 25.7.12 Full-speed OTG device IN endpoint x control register
+
+(OTG_FS_DIEPCTRLx) (x=1~3, endpoint number)  
+Offset address: 0x900+0x20*x; x=1~3  
+Reset value: 0x0000 0000  
+
+
+| Field | Name | R/W | Description |
+| ------- | --------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 10:0 | MAXPS | R/W | Maximum Packet Size<br>This bit configures the maximum data packet size of endpoint (in byte). |
+| 14:11 | Reserved |  |  |
+| 15 | USAEAP | R/W | USB Active Endpoint<br>This bit indicates whether the endpoint is activated in the current configuration and interface.<br>After USB is reset, this bit will be cleared to 0 (except endpoint 0). |
+| 16 | EOF_PID | R | Even Odd Frame<br>This bit is used to indicate the frame number transmitted/received by the endpoint (for synchronization IN) or the PID of data packet (for interrupt/batch IN).<br>Used for synchronous IN endpoints:<br>0: Even frame<br>1: Odd frame<br>Endpoint Data PID<br>Used for interrupt/batch IN endpoints:<br>0: DATA0<br>1: DATA1 |
+| 17 | NAKSTS | R | NAK Status<br>0: The module replies to non-NAK handshake signal according to the FIFO state<br>1: The module replies to the NAK handshake signal on this endpoint; at this time, for asynchronous IN: even if there is data available in TXFIFO, the module will still stop transmitting data; for synchronous IN, the module will transmit zero-length data packet even if there is data available in TXFIFO. Note: The module always responds to the SETUP data packet through ACK handshake. |
+| 19:18 | EPTYPE | R/W | Endpoint Type <br> 00: Control <br> 01: Synchronous <br> 10: Batch <br> 11: Interrupt                                         <br>Reserved |
+| 21 | STALLH | RW/RS | STALL Handshake <br> ● For uncontrolled and non-synchronous IN endpoints (read/write mode is R/W): <br> When this bit is set to 1, the device will reply STALL to all tokens from the USB host. This bit can only be cleared to 0 by software. <br> ● Used for control endpoints (read/write mode is R/W): <br> When this bit is set to 1, it means that the module receives SETUP token. |
+| 25:22 | TXFNUM | R/W | These bits indicate the FIFO number associated with the endpoint, and a separate FIFO number needs to be set for each valid IN endpoint |
+| 26 | NAKCLR | W | NAK Clear <br> When performing write operation to this bit, the NAK bit of the endpoint will be cleared to 0. |
+| 27 | NAKSET | W | NAK Set <br> When performing write operation to this bit, the NAK bit of the endpoint will be set to 1. <br> This bit can control the transmission of NAK handshake signal. |
+| 28 | DPIDSET | W | DATA0 PID Set <br> ● Used for interrupt/batch IN endpoints: <br> When performing write operation to this bit, PID will be set to DATA0. <br> Even Frame Set <br> ● Used for synchronous IN endpoints: <br> When performing write operation to this bit, EOF_PID will be set to even frame. |
+| 29 | OFSET | W | Odd Frame Set <br> It is used for synchronous IN endpoints. When performing write operation to this bit, EOF_PID will be set to odd frame. |
+| 30 | EPDIS | R/S | Endpoint Disable <br> Data transmission on the endpoint can be stopped by setting this bit to 1. <br> This bit needs to be cleared to 0 before the endpoint disable interrupt bit is set to 1; this bit can only be set to 1 after EPEN is set to 1. |
+
+
+### 25.7.13 Full-speed OTG device IN endpoint x interrupt register (OTG_FS_DIEPINTx) (x=0~3, endpoint number)
+
+
+Offset address: 0x908+0x20*x; x=0~3  
+Reset value: 0x0000 0080  
+Read this register when ONEP bit of OTG_FS_GCINT register is set to 1;  
+Read OTG_FS_DAEPOINT register to obtain the accurate endpoint number of the device endpoint x interrupt register, and then read the register; only when the corresponding bit of the register is cleared to 0, can the corresponding bit of OTG_FS_DAEPOINT register and OTG_FS_GCINT register be cleared to 0.
+
+
+| Field | Name | R/W | Description |
+| ------- | -------- | ----- | -------------------------------------------------------------- |
+| 0 | TSFCMP | RC_W1 | Transfer Complete Interrupt<br>This bit indicates that the transmission on the endpoint has been completed. |
+| 1 | EPDIS | RC_W1 | Endpoint Interrupt Disable<br>This bit means that the endpoint is disabled. |
+| 2 |  |  | Reserved |
+| 3 | TO | RC_W1 | Timeout Interrupt<br>This bit is only applicable to the control IN endpoints, indicating that the response to the recently received IN token has timed out. |
+| 4 | ITXEMP | RC_W1 | Receive IN Token Interrupt when FIFO is empty<br>This bit is only applicable to non-periodic IN endpoints, indicating that IN token is received when the corresponding TXFIFO of the endpoint is empty. |
+| 5 | TXTMEPI | RC_W1 | Receive IN Token does not Match EP Interrupt<br>This bit indicates the endpoint outside of the non-periodic TxFIFO IN token received by the module. |
+| 6 | IEPNAKE | RC_W1 | IN Endpoint NAK Effective<br>This bit indicates that the module samples NAK, namely, the NAK bit of the IN endpoint has taken effect.<br>This bit will be cleared to 0 when NAKCLR bit of OTG_FS_DIEPCTRLx register is written. |
+| 7 | TXFE | R | TXFIFO Empty Interrupt<br>The interrupt will be generated when TXFIFO of this endpoint is empty. |
+| 10:8 |  |  | Reserved |
+| 11 | PDSTS | RC_W | Packet Dropped Status<br>This bit indicates to the module that ISOC OUT data packet has been dropped. |
+| 12 | Reserved |  |  |
+| 13 | INNAK | RC_W | Input NAK Interrupt<br>An interrupt will be generated when the module transmits or receives NAK. |
+| 31:14 | Reserved |  |  |
+
+
+### 25.7.14 Full-speed OTG device IN endpoint 0 transmission size register (OTG_FS_DIEPTRS0)
+
+Offset address: 0x910<br>
+Reset value: 0x0000 0000<br>
+This register can be modified only after EPEN bit of OTG_FS_DIEPCTRLx register is set to 1; this register can be read only when EPEN bit of OTG_FS_DIEPCTRLx register is cleared to 0
+
+
+| Field | Name | R/W | Description |
+| ------- | -------- | ------ | ----------------------------------------------------------------------------- |
+| 6:0 | EPTRS | R/W | Endpoint Transfer Size<br>This bit indicates the data size contained by endpoint 0 in one data transmission. |
+| 18:7 | Reserved |  |  |
+| 20:19 | EPPCNT | R/W | Endpoint Packet Count<br>This bit indicates the number of data packets contained by endpoint 0 in one data transmission. |
+| 31:21 | Reserved |  |  |
+
+
+### 25.7.15 Full-speed OTG device IN endpoint x transmission size register (OTG_FS_DIEPTRSx) (x=1~3, endpoint number)
+
+Offset address: 0x910+0x20*x; x=1~3<br>
+Reset value: 0x0000 0000<br>
+This register can be modified only after EPEN bit of OTG_FS_DIEPCTRLx register is set to 1; this register can be read only when EPEN bit of OTG_FS_DIEPCTRLx register is cleared to 0
+
+
+| Field | Name | R/W | Description |
+| ------- | -------- | ------ | ----------------------------------------------------------------------------- |
+| 18:0 | EPTRS | R/W | Endpoint Transfer Size<br>This bit indicates the data size contained by endpoint x in one data transmission (in byte). |
+| 28:19 | EPPCNT | R/W | Endpoint Packet Count<br>This bit indicates the number of data packets contained by endpoint x in one data transmission. |
+| 31:29 | Reserved |  |  |
+
+
+### 25.7.16 Full-speed OTG device IN endpoint x TXFIFO state register (OTG_FS_DITXFSTSx) (x=0~3, endpoint number)
+
+Offset address: 0x918+0x20*x; x=0~3
+
+
+| Field | Name | R/W | Description |
+| ------------ | ------------ | ----- | -------------------------------------------------------------------------------------------------- |
+| 15:0 | INEPTXFSA | R | IN Endpoint TXFIFO Space Available<br>This bit indicates the available space of the IN endpoint TXFIFO (in word).<br>0x0: IN endpoint TXFIFO is full<br>0x1: 1 byte<br>0x2: 2 bytes<br>0xn: n bytes are available (0<n<256)<br>Other value: Reserved |
+| 31:16 | Reserved |  |  |
+
+
+### 25.7.17 Full-speed OTG device OUT endpoint 0 control register (OTG_FS_DOEPCTRL0)
+
+Offset address: 0xB00<br>Reset value: 0x0000 8000
+
+
+| Field | Name | R/W | Description |
+| ------------ | ------------ | ----- | -------------------------------------------------------------------------------------------------- |
+| 1:0 | MAXPS | R | Maximum Packet Size<br>This bit configures the maximum data packet size of endpoint.<br>00: 64 bytes<br>01: 32 bytes<br>10: 16 bytes<br>11: 8 bytes |
+| 14:2 | Reserved |  |  |
+| 15 | USBAEP | R | USB Active Endpoint<br>This bit indicates whether the endpoint is activated in the current configuration and interface.<br>This bit is always set to 1. |
+| 16 | Reserved |  |  |
+| 17 | NAKSTS | R | NAK Status<br>0: The module replies to non-NAK handshake signal according to the FIFO state<br>1: The module replies to the NAK handshake signal on this endpoint.<br>At this time, even if there is space in RXFIFO, the module will still stop receiving data. |
+| 19:18 | EPTYPE | R | Endpoint Type<br>This bit is set to 00 by hardware, indicating control type of the endpoint. |
+| 20 | SMEN | R/W | Snoop Mode Enable<br>In snoop mode, the correctness of OUT data packets is not checked before they are transmitted to the storage area. |
+| 21 | STALLH | R/S | STALL Handshake<br>The program can only set this bit to 1 and when the endpoint receives the SETUP token, this bit will be cleared to 0. The priority of STALL is higher than that of NAK. |
+| 25:22 |  |  | Reserved |
+| 26 | NAKCLR | W | NAK Clear<br>When performing write operation to this bit, the NAK bit of the endpoint 0 will be cleared to 0. |
+| 27 | NAKSET | W | NAK Set<br>When performing write operation to this bit, the NAK bit will be set to 1. |
+| 29:28 |  |  | Reserved |
+| 30 | EPDIS | R | Endpoint Disable<br>Data transmission on the endpoint can be stopped by setting this bit to 1.<br>This bit needs to be cleared to 0 before the endpoint disable interrupt bit is set to 1; this bit can only be set to 1 after EPEN is set to 1. |
+| 31 | EPEN | W | Endpoint Enable<br>After this bit is set to 1, the endpoint will start to transmit data.<br>When any of the following interrupts is triggered, this bit will be cleared to 0:<br>● SETUP completed<br>● Disable endpoint<br>● Transmission completed |
+
+
+### 25.7.18 Full-speed OTG device OUT endpoint x control register (OTG_FS_DOEPCTRLe) (x=1~3, endpoint number)
+
+Offset address: 0xB00+0x20*x; x=1~3<br>
+Reset value: 0x0000 0000
+
+
+| Field | Name | R/W | Description |
+| ------- | --------- | ------ | ----------------------------------------------------------- |
+| 10:0 | MAXPS | R/W | Maximum Packet Size<br>This bit configures the maximum data packet size of endpoint (in byte). |
+| 14:11 |  |  | Reserved |
+| 15 | USBAEP | R/W | USB Active Endpoint<br>This bit indicates whether the endpoint is activated in the current configuration and interface.<br>After USB is reset, this bit will be cleared to 0 (except endpoint 0). |
+| 16 | EOF_PID | R | Even Odd Frame<br>This bit is used to indicate the frame number transmitted/received by the endpoint (for synchronization IN) or the PID of data packet (for interrupt/batch IN).<br>Used for synchronous IN endpoints:<br>0: Even frame<br>1: Odd frame<br>Endpoint Data PID<br>Used for interrupt/batch IN endpoints:<br>0: DATA0<br>1: DATA1 |
+| 17 | NAKSTS | R | NAK Status<br>0: The module replies to non-NAK handshake signal according to the FIFO state<br>1: The module replies to the NAK handshake signal on this endpoint. At this time, for OUT endpoint, even if there is remaining space in RXFIFO, the module will still stop receiving data<br>Note: The module always responds to the SETUP data packet through ACK handshake. |
+| 19:18 | EPTYPE | R/W | Endpoint Type<br>00: Control<br>01: Synchronous<br>10: Batch<br>11: Interrupt |
+| 20 | SMNEN | R/W | Snoop Mode Enable<br>In snoop mode, the correctness of OUT data packets is not checked before they are transmitted to the storage area. |
+| 21 | STALLH | RW/RS | STALL Handshake<br>● For uncontrolled and non-synchronous IN endpoints (read/write mode is R/W):<br>When this bit is set to 1, the device will reply STALL to all tokens from the USB host. This bit can only be cleared to 0 by software.<br>● Used for control endpoints (read/write mode is R/W):<br>When this bit is set to 1, it means that the module receives SETUP token. |
+| 25:22 |  |  | Reserved |
+| 26 | NAKCLR | W | NAK Clear<br>When performing write operation to this bit, the NAK bit of the endpoint will be cleared to 0. |
+| 27 | NAKSET | W | NAK Set<br>When performing write operation to this bit, the NAK bit of the endpoint will be set to 1.<br>This bit can control the transmission of NAK handshake signal. |
+
+
+### 25.7.19 Full-speed OTG device OUT endpoint x interrupt register (OTG_FS_DOEPINTx) (x=0~3, endpoint number)
+
+
+Offset address: 0xB08+0x20*x; x=0~3  
+Reset value: 0x0000 0080  
+Read this register when ONEP bit of OTG_FS_GCINT register is set to 1;  
+Read OTG_FS_DAEPINTx register to obtain the accurate endpoint number of the device endpoint x interrupt register, and then read the register; only when the corresponding bit of the register is cleared to 0, can the corresponding bit of OTG_FS_DAEPINT register and OTG_FS_GCINT register be cleared to 0.
+
+
+| Field | Name | R/W | Description |
+| ------- | --------- | ------- | --------------------------------------------------------------- |
+| 0 | TSFCMP | RC_W1 | Transfer Complete Interrupt<br>This bit indicates that the transmission on the endpoint has been completed. |
+| 1 | EPDIS | RC_W1 | Endpoint Interrupt Disable.<br>This bit means that the endpoint is disabled. |
+| 2 |  |  | Reserved |
+| 28 | DPIDSET | W | DATA0 PID Set<br>● Used for interrupt/batch IN endpoints:<br>When performing write operation to this bit, PID will be set to DATA0.<br>Even Frame Set<br>● Used for synchronous IN endpoints:<br>When performing write operation to this bit, EOF_PID will be set to even frame. |
+| 29 | OFSET | W | Odd Frame Set<br>● Used for synchronous OUT endpoints:<br>When performing write operation to this bit, EOF_PID will be set to odd frame.<br>● Used for interrupt/batch OUT endpoints:<br>When performing write operation to this bit, PID will be set to DATA1. |
+| 30 | EPDIS | R/S | Endpoint Disable<br>Data transmission on the endpoint can be stopped by setting this bit to 1.<br>This bit needs to be cleared to 0 before the endpoint disable interrupt bit is set to 1; this bit can only be set to 1 after EPEN is set to 1. |
+| 31 | EPEN | R/S | Endpoint Enable<br>After this bit is set to 1, the endpoint will start to transmit data.<br>When any of the following interrupts is triggered, this bit will be cleared to 0:<br>● SETUP completed<br>● Disable endpoint<br>● Transmission completed |
+
+
+### 25.7.20 Full-speed OTG device OUT endpoint 0 transmission size register (OTG_FS_DOEPTRS0)
+
+Offset address: 0xB10  
+Reset value: 0x0000 0000  
+This register can be modified only after EPEN bit of OTG_FS_DOEPCTRLx register is set to 1; this register can be read only after EPEN bit of OTG_FS_DOEPCTRLx register is cleared to 0
+
+
+| Field | Name | R/W | Description |
+| ------- | -------- | ------- | ------------------------------------------------------------------------------------------------- |
+| 6:0 | EPTRS | R/W | Endpoint Transfer Size<br>This bit indicates the data size contained by endpoint 0 in one data transmission (in byte). |
+| 18:7 |  |  | Reserved |
+| 19 | EPPcnt | R/W | Endpoint Packet Count<br>This bit will decrease to 0 after RXFIFO is written to a data packet. |
+| 28:20 |  |  | Reserved |
+| 3 | SETPCMP | RC_W1 | SETUP Phase Complete Interrupt<br>This bit is only applicable to the control OUT endpoint, indicating that the SETUP phase has been completed. After an interrupt is generated, the received SETUP data can be decoded. |
+| 4 | RXOTDIS | RC_W1 | Receive OUT Token When Disable Interrupt<br>This bit is only applicable to the control OUT endpoint, indicating that the OUT token is received without enabling the endpoint. |
+| 5 | RXSTSM | RC_W1 | Received Interrupt Status when Write Control Mask<br>This bit indicates to the module that the master has switched from the data phase to the state phase of controlling write transmission. |
+| 7:6 |  |  | Reserved |
+| 8 | OUTPERR | RC_W1 | OUT Packet Error Interrupt Mask<br>When the module detects an error in the OUT data packet or CRC error, an interrupt is generated. |
+| 11:9 |  |  | Reserved |
+| 12 | BABBLE | RC_W1 | Babble Error Interrupt<br>When the module receives garbled code, an interrupt is generated. |
+| 13 | INNAK | RC_W1 | Input NAK Interrupt<br>An interrupt will be generated when the module transmits or receives NAK. |
+| 31:14 |  |  | Reserved |
+
+
+### 25.7.21 Full-speed OTG device OUT endpoint x transmission size register (OTG_FS_DOEPTRS) (x=1~3, endpoint number)
+
+Offset address: 0xB10+0x20*x; x=1~3  
+Reset value: 0x0000 0000  
+This register can be modified only after EPEN bit of OTG_FS_DOEPCTRLx register is set to 1; this register can be read only after EPEN bit of OTG_FS_DOEPCTRLx register is cleared to 0
+
+
+| Field | Name | R/W | Description |
+| ------- | ------ | ----- | ------------- |
+| 18:0 | EPTRS | R/W | Endpoint Transfer Size<br>This bit indicates the data size contained by endpoint x in one data transmission (in byte). |
+| 28:19 | EPPCNT | R/W | Endpoint Packet Count<br>This bit indicates the number of data packets contained by endpoint x in one data transmission. |
+| 30:29 | PID_SPCNT | R/W | Receive Data PID or SETUP Packet Count<br>● For synchronous OUT endpoints, this bit indicates the PID of the last received data packet.<br>00: DATA0<br>01: DATA2<br>10: DATA1<br>11: MDATA<br>● For the control OUT endpoint, this bit indicates the number of SETUP data packets that the endpoint can continuously receive.<br>01: 1<br>10: 2<br>11: 3 |
+| 31 |  |  | Reserved |
+
+
+## 25.8 Full-speed OTG power and clock gating control register (OTG_FS_PCGCTRL)
+
+Offset address: 0xE00  
+Reset value: 0x0000 0000  
+This register is applicable to both master mode and device mode.
+
+
+
+
+| Field | Name | R/W | Description |
+| ------- | ---------- | ----- | ----------------------------------------------------------------------------------------------------- |
+| 0 | PCLKSTOP | R/W | PHy Clock Stop<br>0: The PHY clock is enabled to start when the USB communication is restored or the session is restarted<br>1: Stop the PHY clock when USB communication is suspended, the session is invalid, or the device is disconnected |
+| 1 | GCLK | R/W | Gate HCLK<br>0: When the USB communication is restored or the session is restarted, it is allowed to stop providing the clock to modules other than AHB bus slave interface, main interface and wake-up<br>1: When the USB communication is suspended or the session is invalid, stop providing the clock for the modules other than AHB bus slave interface, main interface and wake-up |
+| 3:2 | Reserved |  |  |
+| 4 | PHYSUS | R/W | PHy Suspend<br>This bit means that PHY is suspended. |
+| 31:5 | Reserved |  |  |
+
+
+# 26 Analog-digital converter (ADC)
+
+
+
+## 26.1 Full Name and Abbreviation of Terms
+
+
+
+Table 127 Full Name and Abbreviation Description of ADC Terms
+
+
+
+| Full name in English | English abbreviation |
+| ---------------------------- | ---------------------- |
+| Analog watchdog | AWD |
+| Conversion | C |
+| Injected | INJ |
+| Regular | REG |
+| Start | S |
+| Scan | SCAN |
+| Single | SINGLE |
+| Automatic | A |
+| Group | G |
+| Discontinuous | DISC |
+| Count | CNT |
+| Dual | DUAL |
+| Continuous | C |
+| Calibration | CAL |
+| Reset | RST |
+| Alignment | ALIGN |
+| External | EXT |
+| Event | E |
+| Trigger | TRG |
+| Temperature | T |
+| Sensor | S |
+| Time | TIM |
+| Sample | SMP |
+| Offset | OF |
+| High | H |
+| Low | L |
+| Threshold | T |
+| Sequence | SEQ |
+| Length | LEN |
+| Regular Channels | REG |
+| Injected Channel | INJ |
+| Injected Group | INJG |
+| Automatic | A |
+| Conversion | C |
+| Analog Watchdog | AWD |
+| Discontinuous Mode | DISC |
+| Scan Mode | SCAN |
+| Continuous Conversion | CONTC |
+| Single Conversion | SINGLEC |
+| External | EXT |
+| External Trigger | EXTRTG |
+| Sample Time | SMPTIM |
+| Sequence | SEQ |
+| Number | NUM |
+
+
+## 26.2 Introduction
+
+
+The series of product has 2 ADC with 12-bit precision. Each ADC has up to 16 external channels and 3 internal channels, and the A/D conversion modes of each channel include single, continuous, scan or discontinuous. ADC conversion results can be left-aligned or right-aligned and stored in 16-bit data register.
+
+
+## 26.3 Main characteristics
+
+
+(1) ADC power supply requirements: From 2.4V to 3.6V during full-speed operation; 1.8V during low-speed operation.
+
+(2) ADC input range: VREF-≤VIN≤VREF+.
+
+(3) 12-bit, 10-bit, 8-bit or 6-bit resolutions are configurable.
+
+(4) ADC conversion time
+- Formula: TCONV=sampling time+12 cycles
+- The sampling time is controlled by SMPYCCFGx[2:0], the minimum sample cycle is 3, and when ADCCLK=30MHz, the sample time is 3 cycles: TCONV=3 cycles+12 cycles=15 cycles=0.5μs.
+
+
+
+(5) Mode input channel category
+- External GPIO input channel
+- One internal temperature sensor (VSENSE) input channel
+- One internal reference voltage (VREFINT) input channel
+- One internal backup voltage (VBAT) input channel
+
+(6) Channel conversion mode
+- Single channel conversion mode: single conversion mode, continuous conversion mode
+- Input channel classification: regular channel, injected channel
+- One-group channel conversion mode: scan mode, discontinuous mode and injected channel management
+- ADC mode: Independent ADC mode, and dual/triple ADC mode
+
+(7) Trigger mode
+- On-chip timer signal trigger
+- External pin
+
+(8) Data register
+- Regular data register
+- Injected data register
+- General regular data register
+
+(9) Interrupt
+- End of conversion interrupt
+- Analog watchdog interrupt
+- Overrun interrupt
+
+(10) DMA request supporting regular data conversion
+
+(11) Data alignment
+- Configurable data alignment of DALIGNCFG bit of data register ADC_CTRL2 is left or right alignment.
+
+## 26.4 Functional Description
+
+### 26.4.1 ADC pins
+
+
+| Name | Description | Signal type |
+| -------- | ------------------------------------------------------------------ | ------------------------------------------ |
+| VREF+ | High-end/Positive electrode reference voltage used by ADC, 1.8V | Input, analog reference positive electrode |
+|  | SVREF+ & SVDA |  |
+| V_DDA | Equivalent to analog power supply of V_DD and:<br>2.4V≤V_DDA≤V_DD (3.6V) during full-speed operation,<br>1.8V≤V_DDA≤V_DD (3.6V) during low-speed operation | Input, analog power supply |
+| V_REF- | Low-end/Negative reference voltage used by ADC, V_REF- = V_SSA | Input, analog reference negative electrode |
+| V_SSA | Equivalent to analog power ground of V_SS | Input, analog power ground |
+| ADCX_IN[15:0] | 16 analog input channels | Analog input signal |
+
+
+### 26.4.2 ADC conversion mode
+
+
+The product has multiple built-in ADC and channels (refer to the data manual for the specific number), which can be combined into a variety of conversion modes.
+
+Multiple ADC are built in; according to the number of ADC, the conversion mode can be classified into independent ADC mode and dual-ADC mode; multiple channels are built-in, and they can be classified into two groups, namely regular channel and injected channel. The internal conversion mode of each group can be divided into scan mode and discontinuous mode; for the internal channels of each group, the conversion mode is divided into single conversion mode and continuous conversion mode.
+
+In the application, according to the actual application requirements, the number of ADC, the number of conversion channels and the conversion mode of each channel, the ADC conversion mode meeting the requirements can be designed.
+
+
+#### 26.4.2.1 Conversion mode of single ADC and single channel
+
+
+
+Single ADC single channel
+
+
+Single ADC single channel is not enabled by external trigger software. The conversion mode is single and continuous concurrent disabling of scan. The result of data conversion is right alignment. After the single ADC conversion is completed, the interrupt is triggered, and data is read in the interrupt service function, not using DMA transmission.
+
+
+Single conversion mode
+
+
+In this mode, for single channel, only one conversion is performed for this channel, and for multiple channels, only one conversion is performed for this group of channels.
+
+This mode is started by the ADCEN bit of configuration register ADC_CTRL2 or is started by external trigger.
+
+
+
+After one conversion of regular channel is over, the converted data will be stored in 16-bit ADC_REGDATA register, and EOCFLG bit will be set to 1. If configuration EOCIEN bit is set to 1, an interrupt will be generated.
+
+After one conversion of injected channel is over, the converted data will be stored in 16-bit ADC_INJDATA1 register, and INJEOCFLG bit will be set to 1. If configuration INJEOCIEN bit is set to 1, an interrupt will be generated.
+
+
+Figure 123 Single Conversion Mode Timing Diagram
+
+
+
+|  |  |
+| --------------------- | ---------------- |
+| CH1 | CH1            <br> |
+| Regular trigger | <br> |
+| EOCFLG |  |
+
+
+Continuous conversion mode
+
+
+In this mode, for single channel, continuous conversion is conducted for this channel.
+
+This mode is started by the ADCEN bit of configuration register ADC_CTRL2 or is started by external trigger.
+
+After the conversion of one regular channel is over, the converted data will be stored in 16-bit ADC_REGDATA register, and EOCFLG bit will be set to 1. If configuration EOCIEN bit is set to 1, an interrupt will be generated.
+
+After the conversion of one injected channel is over, the converted data will be stored in 16-bit ADC_INJDATA1 register, and INJEOCFLG bit will be set to 1. If configuration INJEOCIEN bit is set to 1, an interrupt will be generated.
+
+
+Figure 124 Continuous Conversion Mode Timing Diagram
+
+
+
+|  |  |
+| --------------------- | ---------------- |
+| CH1 | CH1            <br> |
+| Regular trigger | <br> |
+| EOCFLG |  |
+
+
+#### 26.4.2.2 Conversion mode of single ADC and one group of channels
+
+
+
+Single ADC multi-channel
+
+
+Enable the scan mode under single-ADC multi-channel condition, the conversion is triggered by software rather than externally, the result of data conversion is right aligned, and the data of ADC conversion results are transmitted to the memory by DMA.
+
+
+Classification of analog input channels
+
+
+
+Regular channel group
+
+- The regular group consists of 16 channels  
+- Regular channel conversion sequence is determined by the configuration register ADC_REGSEQx  
+- The total number of conversion channels of regular group is determined by REGSEQLEN bit of configuration register ADC_REGSEQ1  
+
+
+Injected channel group
+
+- The injected group consists of 4 channels  
+- Injected channel conversion sequence is determined by the configuration register ADC_INJSEQ  
+- The total number of conversion channels of injected group is determined by INJSEQLEN bit of configuration register ADC_INJSEQ  
+
+
+Internal input channel
+
+
+
+Temperature sensor:
+
+- The temperature sensor is used to measure the internal temperature of the chip  
+- The temperature sensor selects ADC1_IN18 input channel  
+- Start by configuring TSVREFEN bit of the register ADC_CCTRL  
+
+
+Internal reference voltage VREFINT:
+
+- The internal reference voltage is used to provide a stable voltage output for ADC  
+- Internal reference voltage VREFINT selects ADC1_IN17 input channel  
+
+
+Internal backup voltage VBAT:
+
+- Internal backup voltage VBAT is used to select ADC1_IN18 input channel  
+
+Note: The temperature sensor shares ADC1_IN18 channel with VBAT. Only temperature sensor or VBAT can be selected at once. When temperature sensor and VBAT conversion are set at the same time, only VBAT conversion will be executed.
+
+
+
+
+Channel conversion sequence
+
+
+
+Configuration of regular sequence registers:
+
+- Configure REGSEQC1~REGSEQC6 bits of the register ADC_REGSEQ3 to set No. 1~6 conversion channels  
+- Configure REGSEQC7~REGSEQC12 bits of the register ADC_REGSEQ2 to set No. 7~12 conversion channels  
+- Configure REGSEQC13~REGSEQC16 bits of the register ADC_REGSEQ1 to set No. 13~16 conversion channels  
+- Configure REGSEQLEN of the register ADC_REGSEQ1 to set the number of channels for conversion  
+
+
+Configuration of injected sequence register:
+
+- Configure INJSEQC1~INJSEQC4 bit of the register ADC_INJSEQ to set No. 1~4 conversion channels  
+- Configure INJSEQLEN of the register ADC_INJSEQ to set the number of channels for conversion  
+- If the value of INJSEQLEN is less than 4, the conversion sequence will be different and start from (4-INJSEQLEN).  
+
+
+Channel conversion mode
+
+
+
+Scan Mode
+
+
+This mode is applicable to one group of channels, which is equivalent to a single conversion on each channel of one group of channels.
+
+This mode is started by SCANEN bit of configuration register ADC_CTRL1, and after startup, ADC scans all channels which are arranged according to the sequence register ADC_REGSEQ or the ADC_INJSEQ, and after each channel conversion is completed, it will be automatically converted to the next channel of the group.
+
+If the configuration CONTCEN bit is set to 1, the conversion will continue from the first channel of the group when the last channel of the group completes conversion.
+
+If the configuration DMAEN bit is set to 1, the DMA controller will transmit the converted data of regular channel to SRAM every time the channel conversion is completed.
+
+
+
+![Figure 125 Scan Mode Timing Diagram](https://www.geehy.com)
+
+
+Discontinuous mode
+
+
+This mode is suitable for a group of channels, which is equivalent to continuous conversion of multiple channels in a group of channels.
+
+For regular groups, this mode is enabled by configuring REGDISCN bit of configuration register ADC_CTRL1; after startup, conduct short sequence conversion of n channels (n≤8), and n is determined by configuring DISCNUMCFG[2:0] of register ADC_CTRL1; next round of conversion of n channels can be started through software control or external trigger source and when the conversion of all channels of this group is completed, EOFCLG bit will be set to 1.
+
+For injected groups, this mode is enabled by INJDISCEN bit of configuration register ADC_CTRL1; after startup, one channel will be converted according to the configuration sequence of the sequence register; conversion of next channels can be started in sequence by software control or external trigger source, and when the conversion of all channels of this group is completed, EOFCLG bit and INJEOCFLG bit will be set to 1.
+
+
+
+
+Figure 126 Discontinuous Mode Timing Diagram
+
+
+Regular trigger  
+
+| CH0 | CH3 | CH4 | CH2 | CH1 | CH0 | CH3 |
+| ------ | ------ | ------ | ------ | ------ | ------ | ------ |
+| EOFLG |  |  |  |  |  |  |
+
+
+Injection trigger  
+
+| CH5 | CH7 | CH6 | CH5 | CH7 |  |  |
+| ------ | ------ | ------ | ------ | ------ | ------ | ------ |
+| EOFLG |  |  |  |  |  |  |
+
+
+Injected channel management
+
+
+Trigger injection: Start by clearing INJGACEN bit of the register ADC_CTRL1 and configuring the SCANEN bit. If a software trigger or external trigger is generated during the conversion of regular group channels, the injected conversion will be triggered. At this time, the regular channel conversion will stop, the injected channel sequence will start conversion, and after the injected group channel conversion is completed, the regular group channel conversion will be recovered.
+
+
+Figure 127 Trigger Injection Timing Diagram
+
+
+Regular group  
+
+| CH0 | CH1 | CH1 | CH2 | CH3 | CH0 | CH1 |
+| ------ | ------ | ------ | ------ | ------ | ------ | ------ |
+
+
+Injected group  
+
+| CH5 | CH5 |  |  |  |  |  |
+| ------ | ------ | ------ | ------ | ------ | ------ | ------ |
+
+
+Injection trigger  
+
+| EOFLG |  |  |  |  |  |  |
+| ------ | ------ | ------ | ------ | ------ | ------ | ------ |
+| EOCIEN |  |  |  |  |  |  |
+
+
+Automatic injection: Start by INJGACEN bit of configuration register ADC_CTRL1; after conversion of the regular group channels is completed, the injected group channels will start conversion automatically; in the automatic injection mode, external trigger of the injected group channels must be disabled; if the CONTEN bit of the register ADC_CTRL2 is also configured, all channels of regular group and injected group will convert continuously.
+
+
+
+![Figure 128 Automatic Injection Timing Diagram](https://www.geehy.com)
+
+
+Regular group
+
+CH0  CH1  CH2  CH3  CH4  
+Injected group  
+CH5
+
+ECONFIG  
+INJEOCFLG  
+
+
+### 26.4.3 External trigger
+
+Register configuration of external trigger is as follows:  
+- The external event trigger of regular group channel is enabled by REGEXTTRGSEL bit of configuration register ADC_CTRL2  
+- The external event trigger of injected group channel is enabled by INJEXTTRGSEL bit of configuration register ADC_CTRL2.  
+
+
+| Trigger source | REGEXTTRGSEL[3:0] | Trigger type |
+| ----------------- | -------------------- | ------------------------------ |
+| TMR1_CC1 | 0000 |  |
+| TMR1_CC2 | 0001 |  |
+| TMR1_CC3 | 0010 |  |
+| TMR2_CC2 | 0011 |  |
+| TMR2_CC3 | 0100 |  |
+| TMR2_CC4 | 0101 |  |
+| TMR2_TRGO | 0110 |  |
+| TMR3_CC1 | 0111 | Internal signal from on-chip timer |
+| TMR3_TRGO | 1000 |  |
+| TMR4_CC4 | 1001 |  |
+| TMR5_CC1 | 1010 |  |
+| TMR5_CC2 | 1011 |  |
+| TMR5_CC3 | 1100 |  |
+| TMR8_CC1 | 1101 |  |
+| TMR8_TRGO | 1110 |  |
+| EINT Line 11 | 1111 | External pin |
+| TMR1_CC4 | 0000 | Internal signal from on-chip timer |
+| TMR1_TRGO | 0001 |  |
+| TMR2_CC1 | 0010 |  |
+| TMR2_TRGO | 0011 |  |
+| TMR3_CC2 | 0100 |  |
+| TMR3_CC4 | 0101 |  |
+| TMR4_CC1 | 0110 |  |
+| TMR4_CC2 | 0111 |  |
+| TMR4_CC3 | 1000 |  |
+| TMR4_TRGO | 1001 |  |
+| TMR5_CC4 | 1010 |  |
+| TMR5_TRGO | 1011 |  |
+| TMR8_CC2 | 1100 |  |
+| TMR8_CC3 | 1101 |  |
+| TMR8_CC4 | 1110 |  |
+| EINT Line 15 | 1111 | External pin |
+
+
+### 26.4.4 Data register
+
+#### 26.4.4.1 Regular data register
+
+ADC_REGDATA is a 32-bit ADC regular data register. In single-ADC mode, only the lower 16 bits are used to store the converted data. In dual-ADC mode, the lower 16 bits are used to store the converted data of ADC1 while the higher 16 bits are used to store the converted data of ADC2. The data are left aligned or right aligned.
+
+Determined whether to use DMA transmission by DALIGNCFG bit of configuration register ADC_CTRL2. There are at most 16 regular channels, but only one regular data register. Therefore, data coverage will occur in multi-channel conversion, and DMA transmission is needed at this time.
+
+
+#### 26.4.4.2 Injection data memory
+
+ADC_INJDATAx (x=1,2,3,4) is ADC injected data register, and there are four 32-bit registers, of which the low 16 bits are effective and the high 16 bits are reserved. There are at most four injected channels and four injection data registers, so data coverage will not occur in multi-channel conversion. The data are left aligned or right aligned.
+
+
+
+
+### 26.4.5  Interrupt
+
+
+
+#### 26.4.5.1  End of conversion interrupt
+
+
+Interrupt of end of conversion of regular group channels
+
+An interrupt will be generated by the end of conversion of regular channels; read the value of the regular data register in the interrupt function.
+
+Determine by EOCFLG bit of configuration register ADC_STS.
+
+Interrupt of end of conversion of injected group channels
+
+An interrupt will be generated after the conversion of injected channels is completed; read the value of the regular data register in the interrupt function.
+
+Determine by INJEOCFLG bit of configuration register ADC_STS.
+
+
+#### 26.4.5.2  Analog watchdog interrupt
+
+
+If the input analog voltage is not within the threshold range, an analog watchdog interrupt will be generated.
+
+Determine by the AWDFLG bit of the configuration register ADC_STS.
+
+
+#### 26.4.5.3  Overrun interrupt
+
+
+When the conversion data is lost (overruns), an overrun interrupt will be generated.
+
+Determine by OVRFLG bit of the configuration register ADC_STS.
+
+
+### 26.4.6  DMA
+
+
+DMA request will be generated after the conversion of regular channels is completed; the converted data result can be transmitted to the memory from the ADC_REGDATA register.
+
+
+## 26.5  Register address mapping
+
+
+
+| Register name | Description | Offset Address |
+| ------------------ | ------------------------------------------- | ---------------- |
+| ADC_STS | ADC status register | 0x00 |
+| ADC_CTRL1 | ADC control register 1 | 0x04 |
+| ADC_CTRL2 | ADC control register 2 | 0x08 |
+| ADC_SMPTIM1 | ADC sampling time register 1 | 0x0C |
+| ADC_SMPTIM2 | ADC sampling time register 2 | 0x10 |
+| ADC_INJDOFx | ADC injected channel data offset register x | 0x14-0x20 |
+
+
+Register name  
+
+| Register name | Description | Offset Address |
+| ------------------- | ---------------------------------------------- | ----------------- |
+| ADC_AWDHT | Analog watchdog high-threshold register | 0x24 |
+| ADC_AWDLT | Analog watchdog low-threshold register | 0x28 |
+| ADC_REGSEQ1 | ADC regular sequence register 1 | 0x2C |
+| ADC_REGSEQ2 | ADC regular sequence register 2 | 0x30 |
+| ADC_REGSEQ3 | ADC regular sequence register 3 | 0x34 |
+| ADC_INJSEQ | ADC injected sequence register | 0x38 |
+| ADC_INJDATAx | ADC injected data register x | 0x3C–0x48 |
+| ADC_REGDATA | ADC regular data register | 0x4C |
+| ADC_CCTRL | ADC general-purpose control register | 0x304 |
+
+
+## 26.6 Register functional description
+
+
+
+### 26.6.1 ADC status register (ADC_STS)
+
+Offset address: 0x00  
+Reset value: 0x0000 0000  
+
+
+| Field | Name | R/W | Description |
+| ------- | ------------- | ------- | ------------------------------------------------- |
+| 0 | AWDFLG | RC_W0 | Analog Watchdog Occur Flag                      <br>This bit is set to 1 by hardware and cleared to 0 by software, indicating whether an analog watchdog event occurs. <br> 0: Not occur <br> 1: Occurred |
+| 1 | EOCCFLG | RC_W0 | Regular Channel End Of Conversion Flag          <br>0: Not completed <br> 1: Completed |
+| 2 | INJEOCFLG | RC_W0 | Injected Channel End Of Conversion Flag         <br>0: Not completed <br> 1: Completed |
+| 3 | INJCSFLG | RC_W0 | Injected Channel Conversion Start Flag          <br>0: Not start <br> 1: Start |
+| 4 | REGCSFLG | RC_W0 | Regular Channel Conversion Start Flag           <br>0: Not start <br> 1: Start |
+| 5 | OVRFLG | RC_W0 | Overrun Flag                                   <br>0: Not occur <br> 1: Occurred |
+| 31:6 |  |  | Reserved |
+
+
+### 26.6.2 ADC control register 1 (ADC_CTRL1)
+
+Offset address: 0x04
+
+
+
+
+Reset value: 0x0000 0000
+
+
+
+| Field | Name | R/W | Description |
+| -------- | ------------ | ----- | ------------------------------------------------------------------ |
+| 4:0 | AWDCHSEL | R/W | Analog Watchdog Channel Select                                    <br>00000: ADC analog input channel 0<br>00001: ADC analog input channel 1<br>......<br>01111: ADC analog input channel 15<br>10000: ADC analog input channel 16<br>Other value: Reserved |
+| 5 | EOCIEN | R/W | EOC Interrupt Enable                                             <br>Used to enable the generation of interrupt after the conversion is<br>completed.<br>0: Disable<br>1: Enable |
+| 6 | AWDIEN | R/W | Analog Watchdog Interrupt Enable                                  <br>If the bit is set and in scan mode, when the watchdog detects that<br>the value exceeds the threshold, an interrupt will be generated and<br>the scan will be aborted.<br>0: Disable<br>1: Enable |
+| 7 | INJEOCIEN | R/W | Interrupt Enable For Injected Channels End Of Conversion Flag     <br>0: Disable<br>1: Enable |
+| 8 | SCANEN | R/W | Scan Mode Enable                                                <br>In the scan mode, convert the channel selected by<br>ADC_REGSEQX or ADC_INJSEQX register.<br>0: Disable<br>1: Enable<br>Note: If EOCIEN or INJEOCIEN bit is set respectively, EOC or<br>INJEOC interrupt will be generated only after the last channel<br>is converted. |
+| 9 | AWDSGLEN | R/W | Enable The Watchdog On A Single Channel In Scan Mode            <br>This channel is specified by AWDCHSEL[4:0] bit.<br>0: Enable on all channels<br>1: Enable on a single channel |
+| 10 | INJACEN | R/W | Automatic Injected Group Conversion Enable                       <br>Used to enable automatic conversion of injected channels after<br>the conversion of regular channel group is completed.<br>0: Disable<br>1: Enable |
+| 11 | REGDISCEN | R/W | Discontinuous Mode On Regular Channels Enable                     <br>0: Disable<br>1: Enable |
+| 12 | INJDISCEN | R/W | Discontinuous Mode On Injected Channels Enable                    <br>0: Disable<br>1: Enable |
+
+
+### 26.6.2 ADC control register 1 (ADC_CTRL1)
+
+Offset address: 0x07<br>
+Reset value: 0x0000 0000
+
+
+| Field | Name | R/W | Description |
+| ----------- | ------------- | ----- | -------------------------------------------------------------------- |
+| 15:13 | DISCNUMCFG | R/W | Discontinuous Mode Channel Number Configure<br>000: One channel<br>001: Two channels<br>.....<br>111: Eight channels |
+| 21:16 |  |  | Reserved |
+| 22 | INJAWDEN | R/W | Enable the Analog Watchdog Function On the Injected Channels<br>0: Disable<br>1: Enable |
+| 23 | REGAWDEN | R/W | Enable the Analog Watchdog Function On the Regular Channels<br>0: Disable<br>1: Enable |
+| 25:24 | RESSEL | R/W | Resolution Selection<br>00: 12 bits<br>01: 10 bits<br>10: 8 bits<br>11: 6 bits |
+| 26 | OVRIEN | R/W | Overrun Interrupt Enable<br>0: Disable<br>1: Enable |
+| 31:27 |  |  | Reserved |
+
+
+### 26.6.3 ADC control register 2 (ADC_CTRL2)
+
+Offset address: 0x08<br>
+Reset value: 0x0000 0000
+
+
+| Field | Name | R/W | Description |
+| ----------- | ------------- | ----- | -------------------------------------------------------------------- |
+| 0 | ADCEN | R/W | ADC Enable<br>0: Disable ADC conversion and enter the power-down mode<br>1: Enable ADC and start conversion |
+| 1 | CONTEN | R/W | Continuous Conversion Mode Enable<br>0: Single conversion mode<br>1: Continuous conversion mode |
+| 7:2 |  |  | Reserved |
+| 8 | DMAEN | R/W | DMA Mode Enable<br>0: Disable<br>1: Enable |
+| 9 | DMADISSEL | R/W | DMA disable selection<br>0: No new DMA request will be issued after the last transmission<br>1: DMA request will be issued whenever data conversion occurs and DMA is enabled |
+| 10 | ECOSEL | R/W | End of conversion selection<br>0: ECOCFLG bit will be set to 1 at the end of each regular<br>conversion sequence<br>1: ECOCFLG bit will be set to 1 at the end of each regular<br>conversion |
+| 11 | DALIGNCFG | R/W | Data Alignment Mode Configure<br>0: Right-aligned<br>1: Left-aligned |
+
+
+15:12 Reserved
+
+
+| 19:16 | INJEXTTRGSEL | R/W | Select the External Trigger Event to Start the Injected Group Conversion<br>0000: CC4 event of timer 1<br>0001: TRGO event of timer 1<br>0010: CC1 event of timer 2<br>0011: TRGO event of timer 2<br>0100: CC2 event of timer 3<br>0101: CC4 event of timer 3<br>0110: CC1 event of timer 4<br>0111: CC2 event of timer 4<br>1000: CC3 event of timer 4<br>1001: TRGO event of timer 4<br>1010: CC4 event of timer 5<br>1011: TRGO event of timer 5<br>1100: CC2 event of timer 8<br>1101: CC3 event of timer 8<br>1110: CC4 event of timer 8<br>1111: EINT Line 15 |
+| 23 |  |  | Reserved |
+
+
+| Field | Name | R/W | Description |
+| ------ | ------------- | --- | ------------- |
+
+| REGEXTRGSEL | R/W | Select the External Trigger Event to Start the Regular Group Conversion<br>0000: CC1 event of timer 1<br>0001: CC2 event of timer 1<br>0010: CC3 event of timer 1<br>0011: CC2 event of timer 2<br>0100: CC3 event of timer 2<br>0101: CC4 event of timer 2<br>0110: TRGO event of timer 2<br>0111: CC1 event of timer 3<br>1000: TRGO event of timer 3<br>1001: CC4 event of timer 4<br>1010: CC1 event of timer 5<br>1011: CC2 event of timer 5<br>1100: CC3 event of timer 5<br>1101: CC1 event of timer 8<br>1110: TRGO event of timer 8<br>1111: EINT Line 11 |
+
+
+| Field | Name | R/W | Description |
+| ------ | ------------- | --- | ------------- |
+
+| REGEXTRGEN | R/W | Enable the External Trigger for Regular Channels<br>00: Trigger detection is disabled<br>01: Trigger detection on rising edge<br>10: Trigger detection on falling edge<br>11: Trigger detection on rising edge and falling edge |
+
+
+# 30 | Field  | Name          | R/W | Description |
+
+| ------ | ------------- | --- | ------------- |
+
+| REGWSCC | R/W | Software Start Conversion Regular Channels<br>0: Reset state<br>1: Start conversion of regular channels |
+
+| 31 |  |  | Reserved |
+
+
+### 26.6.4 ADC sampling time register 1 (ADC_SMTIM1)
+
+Offset address: 0x0C  
+Reset value: 0x0000 0000  
+
+
+| Field | Name | R/W | Description |
+| ------ | ----------------- | --- | ------------- |
+
+| SMPCYCCFGx[2:0] | R/W | Channel x Sample Cycles Configure<br>000: 3 cycles<br>001: 15 cycles<br>010: 28 cycles<br>011: 56 cycles<br>100: 84 cycles<br>101: 112 cycles<br>110: 144 cycles<br>111: 480 cycles |
+
+| 31:27 |  |  | Reserved |
+
+
+### 26.6.5 ADC sampling time register 2 (ADC_SMTIM2)
+
+Offset address: 0x10  
+Reset value: 0x0000 0000
+
+
+
+
+| Field | Name | R/W | Description |
+| -------- | -------------------------- | ----- | ------------------------------------------------------- |
+| 29:0 | SMPCYCCFGx[2:0] | R/W | Channel x Sample Cycles Configure<br>000: 3 cycles<br>001: 15 cycles<br>010: 28 cycles<br>011: 56 cycles<br>100: 84 cycles<br>101: 112 cycles<br>110: 144 cycles<br>111: 480 cycles |
+| 31:30 |  |  | Reserved |
+
+
+### 26.6.6 ADC injected channel data offset register x (ADC_INJDOFx) (x=1..4)
+
+
+Offset address: 0x14-0x20<br>
+Reset value: 0x0000 0000<br>
+
+
+| Field | Name | R/W | Description |
+| -------- | ----------- | ----- | ------------------------------------------------------- |
+| 11:0 | INJDOFx | R/W | Data Offset For Injected Channel x<br>When converting the injected channels, these bits define the values to be subtracted from the original converted data, and the result of the conversion can be read in the ADC_INJDATx register. |
+| 31:12 |  |  | Reserved |
+
+
+### 26.6.7 Analog watchdog high-threshold register (ADC_AWDHT)
+
+
+Offset address: 0x24<br>
+Reset value: 0x0000 0FFF<br>
+
+
+| Field | Name | R/W | Description |
+| -------- | ---------------- | ----- | ---------------------------------- |
+| 11:0 | AWDHT[11:0] | R/W | Analog Watchdog High Threshold |
+| 31:12 |  |  | Reserved |
+
+
+### 26.6.8 Analog watchdog low-threshold register (ADC_AWDLT)
+
+
+Offset address: 0x28<br>
+Reset value: 0x0000 0000<br>
+
+
+| Field | Name | R/W | Description |
+| -------- | ---------------- | ----- | ---------------------------------- |
+| 11:10 | AWDLT[11:0] | R/W | Analog Watchdog Low Threshold |
+| 31:12 |  |  | Reserved |
+
+
+### 26.6.9 ADC regular sequence register 1 (ADC_REGSEQ1)
+
+
+Offset address: 0x2C<br>
+Reset value: 0x0000 0000<br>
+
+
+
+
+| Field | Name | R/W | Description |
+| --------- | ------------ | ----- | ----------------------------------------------------- |
+| 4:0 | REGSEQC13 | R/W | 13th Conversion In Regular Sequence<br>Define the channel number of No. 13 conversion in regular sequence (0–17) |
+| 9:5 | REGSEQC14 | R/W | 14th Conversion In Regular Sequence<br>Refer to the description of REGSEQC13. |
+| 14:10 | REGSEQC15 | R/W | 15th Conversion In Regular Sequence<br>Refer to the description of REGSEQC13. |
+| 19:15 | REGSEQC16 | R/W | 16th Conversion In Regular Sequence<br>Refer to the description of REGSEQC13. |
+| 23:20 | REGSEQLEN | R/W | Regular Channel Sequence Length<br>These bits are defined by software as the number of channels in regular channel conversion sequence.<br>0000: One conversion<br>0001: Two conversions<br>…….<br>1111: 16 conversions |
+| 31:24 |  |  | Reserved |
+
+
+### 26.6.10 ADC regular sequence register 2 (ADC_REGSEQ2)
+
+Offset address: 0x30<br>Reset value: 0x0000 0000
+
+
+| Field | Name | R/W | Description |
+| --------- | ------------ | ----- | ----------------------------------------------------- |
+| 4:0 | REGSEQC7 | R/W | 7th Conversion In Regular Sequence<br>Refer to the description of REGSEQC13. |
+| 9:5 | REGSEQC8 | R/W | 8th Conversion In Regular Sequence<br>Refer to the description of REGSEQC13. |
+| 14:10 | REGSEQC9 | R/W | 9th Conversion In Regular Sequence<br>Refer to the description of REGSEQC13. |
+| 19:15 | REGSEQC10 | R/W | 10th Conversion In Regular Sequence<br>Refer to the description of REGSEQC13. |
+| 24:20 | REGSEQC11 | R/W | 11th Conversion In Regular Sequence<br>Refer to the description of REGSEQC13. |
+| 29:25 | REGSEQC12 | R/W | 12th Conversion In Regular Sequence<br>Refer to the description of REGSEQC13. |
+| 31:30 |  |  | Reserved |
+
+
+### 26.6.11 ADC regular sequence register 3 (ADC_REGSEQ3)
+
+Offset address: 0x34<br>Reset value: 0x0000 0000
+
+
+| Field | Name | R/W | Description |
+| --------- | ------------ | ----- | ----------------------------------------------------- |
+| 4:0 | REGSEQC1 | R/W | 1st Conversion In Regular Sequence<br>Refer to the description of REGSEQC13. |
+
+
+### 26.6.12 ADC injected sequence register (ADC_INJSEQ)
+
+Offset address: 0x38  
+Reset value: 0x0000 0000  
+
+
+| Field | Name | R/W | Description |
+| ----------- | ----------- | ----- | ----------------------------------------------------- |
+| 9:5 | REGSEQC2 | R/W | 2<sup>nd</sup> Conversion In Regular Sequence      <br>Refer to the description of REGSEQC13. |
+| 14:10 | REGSEQC3 | R/W | 3<sup>rd</sup> Conversion In Regular Sequence       <br>Refer to the description of REGSEQC13. |
+| 19:15 | REGSEQC4 | R/W | 4<sup>th</sup> Conversion In Regular Sequence      <br>Refer to the description of REGSEQC13. |
+| 24:20 | REGSEQC5 | R/W | 5<sup>th</sup> Conversion In Regular Sequence      <br>Refer to the description of REGSEQC13. |
+| 29:25 | REGSEQC6 | R/W | 6<sup>th</sup> Conversion In Regular Sequence      <br>Refer to the description of REGSEQC13. |
+| 31:30 |  |  | Reserved |
+
+
+### 26.6.13 ADC injected data register x (ADC_INJDATAx) (x= 1..4)
+
+Offset address: 0x3C-0x48  
+Reset value: 0x0000 0000  
+
+
+| Field | Name | R/W | Description |
+| ----------- | ----------- | ----- | ----------------------------------------------------- |
+| 4:0 | INJSEQ1 | R/W | 1<sup>st</sup> Conversion In Injected Sequence      <br>Define the channel number of 1st conversion in injected sequence (0–17) |
+| 9:5 | INJSEQ2 | R/W | 2<sup>nd</sup> Conversion In Injected Sequence |
+| 14:10 | INJSEQ3 | R/W | 3<sup>rd</sup> Conversion In Injected Sequence |
+| 19:15 | INJSEQ4 | R/W | 4<sup>th</sup> Conversion In Injected Sequence |
+| 21:20 | INJSEQLEN | R/W | Injected Channel Sequence Length                     <br>These bits are defined by software as the number of channels in injected channel conversion sequence, and the conversion sequence is:<br>INJSEQ(4–INJSEQLEN)–INJSEQ(5–INJSEQLEN)–INJSEQ(6–INJSEQLEN)–INJSEQ(7–INJSEQLEN); the details are as follows:<br>00: One conversion, only converting INJSEQ4<br>01: Two conversions; the conversion sequence is INJSEQ3–INJSEQ4<br>10: Three conversions; the conversion sequence is INJSEQ2–INJSEQ3–INJSEQ4<br>11: Four conversions; the conversion sequence is INJSEQ1–INJSEQ2–INJSEQ3–INJSEQ4 |
+| 31:22 |  |  | Reserved |
+
+
+### 26.6.14 ADC regular data register (ADC_REGDATA)
+
+Offset address: 0x4C  
+Reset value: 0x0000 0000  
+
+
+| Field | Name | R/W | Description |
+| ------- | ---------- | ----- | ---------------------------------------------------------------------------------- |
+| 15:0 | INJDATA | R | Injected conversion data (Injected Conversion Data)<br>Conversion result of injected channel, read-only. |
+| 31:16 |  |  | Reserved |
+
+
+### 26.6.15 ADC general-purpose control register (ADC_CCTRL)
+
+ADC1 Offset address: 0x04 (this offset address is only related to ADC1 base address+0x300)  
+ADC2 Offset address: 0x04 (this offset address is only related to ADC2 base address+0x300)  
+Reset value: 0x0000 0000  
+
+
+| Field | Name | R/W | Description |
+| ------- | ---------- | ----- | ---------------------------------------------------------------------------------- |
+| 15:0 |  |  | Reserved |
+| 17:16 | ADCPRE | R/W | ADC Prescaler<br>00: PCLK2 2 divided frequency<br>01: PCLK2 4 divided frequency<br>10: PCLK2 6 divided frequency<br>11: PCLK2 8 divided frequency |
+| 21:18 |  |  | Reserved |
+| 22 | VBATEN | R/W | VBAT Enable<br>0: Disable<br>1: Enable |
+| 23 | TSVREFEN | R/W | Temperature Sensor And VREFINT Enable<br>0: Disable<br>1: Enable |
+| 31:24 |  |  | Reserved |
+
+
+# 27 Comparator (COMP)
+
+
+
+## 27.1 Full Name and Abbreviation of Terms
+
+
+Table 132 Full Name and Abbreviation Description of Terms
+
+
+| Full name in English | English abbreviation |
+| ---------------------- | --------------------- |
+| Comparator | COMP |
+| Invert | INV |
+| Hysteresis | HYS |
+| Input Plus | INP |
+| Input Minus | INM |
+
+
+## 27.2 Introduction
+
+
+Two independent general-purpose comparators (COMP1 and COMP2) are embedded in MCU, and they can be used in combination with the timer.
+
+
+## 27.3 Main characteristics
+
+
+- Comparator 1 supports ultra-low power
+- Comparator 2 supports rail-to-rail input, fast or slow mode
+- Two comparators can be combined to form a window comparator
+- Both the rate and loss are programmable (only applicable to COMP2)
+
+
+
+
+## 27.4 Structure block diagram
+
+
+Figure 129 COMP Structure Block Diagram
+
+
+
+The output polarity can be modified by programming the POLCFGx bit of
+COMPx_CSTS register
+
+
+### 27.5.4 COMP mode
+
+
+The rate and loss of the comparator 2 are programmable. Considering the
+practical application, we can program the SPEEDM2 bit in the register
+COM2_CSTS to reach the most appropriate state.
+
+
+## 27.6 Register address mapping
+
+
+
+Table 133 COMP Register Address Mapping
+
+
+
+| Register name | Description | Offset Address |
+| ---------------- | -------------------------------- | ---------------- |
+| COMP1_CSTS | COMP control state register | 0x18 |
+| COMP2_CSTS | COMP2 control state register | 0x1C |
+
+
+## 27.7 Register functional description
+
+
+
+### 27.7.1 COMP control state register (COMP1_CSTS)
+
+
+Offset address: 0x18  
+Reset value: 0x0000 0000
+
+
+| Field | Name | R/W | Description |
+| -------- | ----------- | ----- | ---------------------------------------------------------------------------------------------- |
+| 0 | EN1 | R/W | Comparator 1 Enable<br>This bit is set and cleared by software (assuming the LOCK1 bit is not set).<br>0: Disable<br>1: Enable |
+| 3:1 | Reserved |  |  |
+| 5:4 | INMCCFG1 | R/W | Comparator 1 Input Minus Connection Configure<br>These bits are set and cleared by software (assuming the LOCK1 bit is not set).<br>00: VREFINT<br>01: PC1<br>1x: Reserved |
+| 7:6 | Reserved |  |  |
+| 8 | WMODESEL1 | R/W | Comparator 1 Window Mode Select<br>This bit is set and cleared by software (assuming the LOCK1 bit is not set). The non-inverting input of the two comparators are connected together to form the window comparator mode.<br>0: The non-inverting input of comparator 1 is connected to PC0<br>1: The non-inverting inputs of two comparators are shorted |
+| 10:9 | Reserved |  |  |
+| 14:11 | OUTSEL1 | R/W | Comparator 1 Output Select<br>0000: No selection<br>0001: Timer 1 disconnect input<br>0010: Timer 1 input capture 1<br>0011: Timer 1 ETRF input<br>0100: Timer 8 disconnect input<br>0101: Timer 8 input capture 1<br>0110: Timer 2 ETRF input<br>100: Timer 2 input capture 4<br>1000: Timer 2 ETRF input<br>1001: Timer 3 input capture 1<br>1010: Timer 3 ETRF input<br>1011: Timer 4 input capture 1 |
+| 15 | POLCFG1 | R/W | Comparator 1 Polarity Configure<br>This bit is set and cleared by software (assuming the LOCK1 bit is not set) to invert the polarity of comparator 1.<br>0: Comparator 1 output value is not inverted<br>1: Comparator 1 output value is inverted |
+| 29:16 | Reserved |  |  |
+| 30 | OUTVAL1 | R | Comparator 1 Output Status<br>This bit is read-only and reflects the current output state of comparator 1 under the influence of POLCFG1 bit. |
+| 31 | LOCK1 | R/S | COMP1_CSTS Register Lock<br>This bit is reset by software and cleared to 0 by hardware system.<br>0: COMP1_CSTS register can read and write<br>1: COMP1_CSTS register is read-only |
+
+
+### 27.7.2 COMP2 control state register (COMP2_CSTS)
+
+Offset address: 0x1C  
+Reset value: 0x0000 0000
+
+
+| Field | Name | R/W | Description |
+| --------- | --------- | ----- | ------------------------------------------------------------------------------------------------------ |
+| 0 | EN2 | R/W | Comparator 2 Enable<br>This bit is set and cleared by software (assuming the LOCK2 bit is not set).<br>0: Disable<br>1: Enable |
+| 2:1 | Reserved |  |  |
+| 3 | SPEEDM2 | R/W | Comparator 2 Speed Mode Select<br>This bit is set and cleared by software (assuming the LOCK2 bit is not set).<br>0: Slow speed<br>1: Fast speed |
+
+
+| Field | Name | R/W | Description |
+| ---------------- | ------------ | ----- | -------------------------------------------------------------- |
+
+| INMCCFG2 | R/W | Comparator 2 Input Minus Connection Configure<br>These bits are set and cleared by software (assuming the LOCK2 bit is not set). Used to select the input connected to the inverting input of comparator 2.<br>000: VREFINT<br>001: PC3<br>100: 1/4 VREFINT<br>101: 1/2 VREFINT<br>110: 3/4 VREFINT<br>Others: Reserved<br>Note: If VREFINT and related inputs are selected, EN_VREFIN bit of SYSCFG_CFRG3 register must be set to 1. |
+
+
+# 7 Reserved
+
+10:8
+
+| Field | Name | R/W | Description |
+| ---------------- | ------------ | ----- | -------------------------------------------------------------- |
+
+| INPCFG2 | R/W | Comparator 2 Input Plus Connection Configure<br>These bits are set and cleared by software (assuming the LOCK2 bit is not set). Used to select the input connected to the non-inverting input of comparator 2.<br>000: PC2<br>Others: Reserved |
+
+
+| Field | Name | R/W | Description |
+| ---------------- | ------------ | ----- | -------------------------------------------------------------- |
+
+| OUTSEL2 | R/W | Comparator 2 output select<br>0000: No selection<br>0001: Timer 1 disconnect input<br>0010: Timer 1 input capture 1<br>0011: Timer 1 ETRF input<br>0100: Timer 8 disconnect input<br>0101: Timer 8 input capture 1<br>0110: Timer 8 ETRF input<br>100: Timer 2 input capture 4<br>1000: Timer 2 ETRF input<br>1001: Timer 3 input capture 1<br>1010: Timer 3 ETRF input<br>1011: Timer 4 input capture 1 |
+
+
+# 15 | Field           | Name       | R/W | Description |
+
+| ---------------- | ------------ | ----- | -------------------------------------------------------------- |
+
+| POLCFG2 | R/W | Comparator 2 Polarity Configure<br>This bit is set and cleared by software (assuming the LOCK2 bit is not set) to invert the polarity of comparator 2.<br>0: Comparator 2 output value is not inverted<br>1: Comparator 2 output value is inverted |
+
+| 29:16 | Reserved |  |  |
+
+
+# 30 | Field           | Name       | R/W | Description |
+
+| ---------------- | ------------ | ----- | -------------------------------------------------------------- |
+
+| OUTVAL2 | R | Comparator 2 Output Status<br>This bit is read-only and reflects the current output state of comparator 2 under the influence of POLCFG2 bit. |
+
+
+# 31 | Field           | Name       | R/W | Description |
+
+| ---------------- | ------------ | ----- | -------------------------------------------------------------- |
+
+| LOCK2 | R/S | COMP2_CSTS Register Lock<br>This bit is reset by software and cleared to 0 by hardware system.<br>0: COMP2_CSTS register can read and write<br>1: COMP2_CSTS register is read-only |
+
+
+# 28 Random number (RNG)
+
+
+
+## 28.1 Introduction
+
+
+RNG is a random number generator, which provides a 32-bit random number in the master reading based on continuous analog noise.
+
+
+## 28.2 Main characteristics
+
+
+1. Provide 32-bit random number generated by the analog generator
+2. The interval between two consecutive random numbers is 40 PLLCLK48 clock signal cycles
+3. Monitor RNG entropy to mark abnormal behaviors
+4. Disabling RNG can reduce the power consumption
+
+
+## 28.3 Functional Description
+
+
+The random number generator is realized by analog circuit. This circuit provides seeds for the linear feedback shift register to generate 32-bit random numbers.
+
+Multiple ring oscillators form an analog circuit, and the seeds are generated by XOR operation through the frequency output by the oscillator. PLLCLK48 is dedicated clock of RNG_LFSR, and it provides clock information for it at a constant frequency, so the quality of random numbers has nothing to do with the frequency of HCLK. After RNG_LFSR introduces a large number of seeds, the content will be transferred to RNG_DATA register. The system will monitor the seed and PLLCLK48. The status bit in RNG_STS register indicates the time when an abnormal sequence occurs on the seed or the PLLCLK48 clock frequency is too low. An interrupt will be generated when an error is detected.
+
+
+### 28.3.1 Enable RNG
+
+
+The setting sequence of enabling RNG is as follows:
+
+1. Enable the interrupt and an interrupt will be generated when the random number is ready or an error occurs.
+2. A random number will be generated when RNG_CTRL[RNGEN]=1. At this time, the analog part, RNG_LFSR and error detector will be activated.
+3. At the time of each interrupt, when CLKERNIT bit and FSINT bit of RNG_STS register are set to 0 and DATARDY=1, RNG_DATA register can be read.
+
+
+
+The first random number generated after RGEN bit is set shall not be used, and it shall be saved for comparison with the next random number. Each random number needs to be compared with the previous one. If any pair is equal, it means that the consecutive random number generator test fails.
+
+
+### 28.3.2 Error state
+
+
+
+#### 28.3.2.1 Clock error
+
+
+When a clock error occurs because the PLLCLK48 clock is incorrect, RNG cannot generate random numbers again. Check whether the clock controller is configured correctly to provide RNG clock and clear CLKERINT bit. RNG can work normally when CLKERCSTS=0. The clock error does not affect the last random number, so the random number in RNG_DATA register can be used.
+
+
+#### 28.3.2.2 Seed error
+
+
+In case of a seed error, the interrupt random number will be generated as long as FSCSTS=1. Since the entropy may be insufficient, if there are already data in RNG_DATA register, the generated interrupt random number cannot be used.
+
+RNGEN bit shall be set after FSINT bit is cleared to reinitialize and restart RNG.
+
+
+## 28.4 Register address mapping
+
+
+
+| Register name | Description | Offset Address |
+| --------------- | ---------------------------- | ----------------- |
+| RNG_CTRL | RNG control register | 0x00 |
+| RNG_STS | RNG state register | 0x04 |
+| RNG_DATA | RNG data register | 0x08 |
+
+
+## 28.5 Register functional description
+
+
+
+### 28.5.1 RNG control register (RNG_CTRL)
+
+
+Offset address: 0x00<br>
+Reset value: 0x0000 0000
+
+
+| Field | Name | R/W | Description |
+| ------- | --------- | ----- | ------------------------------------------------------- |
+| 1:0 | Reserved |  |  |
+| 2 | RGEN | R/W | RNG Enable<br>0: Disable<br>1: Enable |
+| 3 | INTEN | R/W | Interrupt Enable<br>0: Disable<br>1: Enable; when any of DATARDY bit, CLKERINT bit and FSINT bit in RNG_STS register is set to 1, an interrupt will be pending |
+
+
+### 28.5.2 RNG state register (RNG_STS)
+
+Offset address: 0x04  
+Reset value: 0x0000 0000  
+
+
+| Field | Name | R/W | Description |
+| ------- | ----------- | ----- | ----------------------------------------------------------------------------------------------------------------------- |
+| 31:4 |  |  | Reserved |
+| 0 | DATARDY | R | Data Ready<br>0: RNG_DATA register is not ready, and the random data is not available<br>1: RNG_DATA register is ready, and the random data is available<br>An interrupt will be pending when INTEN=1. After reading RNG_DATA register, this bit will be cleared to zero until a new valid value is figured out. |
+| 1 | CLKERCSTS | R | RNGCLK Error Current Status<br>0: PLLCLK48 clock is detected. If CLKERINT bit is set to 1, it means that a clock error is detected and has recovered to normal.<br>1: PLLCLK48 clock is not detected |
+| 2 | FSCESTS | R | Faulty Sequence Current Status<br>0: Sequence error is not detected. If FSINT bit is set to 1, it means that a sequence error is detected and has recovered to normal.<br>1: More than 64 0/1 or more than 32 alternate 0 and 1 are detected |
+| 4:3 |  |  | Reserved |
+| 5 | CLKERINT | RC_W | RNGCLK Error Interrupt Status<br>0: PLLCLK48 clock is detected<br>1: PLLCLK48 clock is not detected<br>This bit is set at the same time with CLKERCSTS bit and can be cleared by writing 0. An interrupt will be pending when INTEN=1. |
+| 6 | FSINT | RC_W | Faulty Sequence Interrupt Status<br>0: Faulty sequence is not detected.<br>1: More than 64 0/1 or more than 32 alternate 0 and 1 are detected<br>This bit can be set at the same time with FSCESTS bit and be cleared by writing 0. An interrupt will be pending when INTEN=1. |
+| 31:7 |  |  | Reserved |
+
+
+### 28.5.3 RNG data register (RNG_DATA)
+
+Offset address: 0x08  
+Reset value: 0x0000 0000  
+This register is read-only and provides 32-bit random number when reading.  
+This register can be read only when DATARDY bit is set to 1; after reading, this register will provide a new random number within 40 RNG_CLK clock cycles.
+
+
+
+
+| Field | Name | R/W | Description |
+| -------- | ------ | ----- | ------------------------------- |
+| 31:0 | DATA | R | Random Data<br>32-bit data number. |
+
+
+# 29 Cyclic redundancy check computing unit (CRC)
+
+
+
+## 29.1 Introduction
+
+
+The cyclic redundancy check (CRC) computing unit can get 32-bit CRC computing result by calculating the input data through a fixed generator polynomial, and is mainly used to detect or verify the correctness and integrity of the data after transmission or saving.
+
+
+## 29.2 Functional Description
+
+
+
+### 29.2.1 Calculation method
+
+
+Use CRC-32 (Ethernet) polynomial: 0x4C11DB7  
+( X^32 + X^26 + X^23 + X^22 + X^16 + X^12 + X^11 + X^10 + X^8 + X^7 + X^5 + X^4 + X^2 + X + 1 )
+
+
+### 29.2.2 Calculating Time
+
+
+The calculation time is four AHB clock cycles.
+
+Every time a new data is written, the result will be a combination of the last calculation result and the new calculation result. (Execute operation for the whole word). Write operation of CPU will be suspended during calculation, so that "Back-to-back" write or continuous "read" - "write" operation can be performed on the register CRC_DATA.
+
+
+## 29.3 Register address mapping
+
+
+
+| Register name | Description | Offset Address |
+| ---------------- | --------------------------------- | ---------------- |
+| CRC_DATA | Data register | 0x00 |
+| CRC_INDATA | Independent data register | 0x04 |
+| CRC_CTRL | Control register | 0x08 |
+
+
+## 29.4 Register functional description
+
+
+
+### 29.4.1 Data register (CRC_DATA)
+
+
+Offset address: 0x00  
+Reset value: 0xFFFF FFFF  
+
+
+| Field | Name | R/W | Description |
+| -------- | ------ | ----- | ------------------------------------------------------------------- |
+| 31:0 | DATA | R/W | 32bit Data<br>As an input register: Store the new data of CRC calculator when writing.<br>As an output register: Return the results of CRC computing when reading. |
+
+
+### 29.4.2 Independent data register (CRC_INDATA)
+
+Offset address: 0x04  
+Reset value: 0x0000 0000  
+
+
+| Field | Name | R/W | Description |
+| --------- | -------- | ----- | --------------------------------------------------------------------------------------------------------------- |
+| 7:0 | INDATA | R/W | Independent 8bit Data<br>Can be used for temporary storage of 1-byte data.<br>CRC rest generated by RST bit of the register CRC_CTRL has no effect on this register. |
+| 31:8 |  |  | Reserved. |
+
+
+Note: This register does not take part in calculation and can store any data.
+
+
+### 29.4.3 Control register (CRC_CTRL)
+
+Offset address: 0x08  
+Reset value: 0x0000 0000  
+
+
+| Field | Name | R/W | Description |
+| --------- | ------ | ----- | --------------------------------------------------------------------------------------------------------------- |
+| 0 | RST | W | Reset CRC Calculation Unit<br>Set CRC_DATA register to 0xFFFF FFFF. It can only set this bit, which will be automatically cleared to 0 by hardware. |
+| 31:1 |  |  | Reserved. |
+
+
+# 30 Chip electronic signature
+
+
+
+## 30.1 Introduction
+
+
+The chip electronic signature is used to match the firmware or external device.
+
+
+## 30.2 Register functional description
+
+
+
+### 30.2.1 96-bit unique chip ID of unique device
+
+Base address: 0x1FFF 7A10  
+Offset address: 0x00  
+
+
+| Field | Name | R/W | Description |
+| ------- | ---------------- | ----- | -------------------------------------- |
+| 31:0 | U_ID[31:0] | R | Unique identity flag 31:0 bits |
+
+
+Offset address: 0x04  
+Read-only, the value has been prepared before leaving the factory
+
+
+| Field | Name | R/W | Description |
+| ------- | ---------------- | ----- | -------------------------------------- |
+| 31:0 | U_ID[63:32] | R | Unique identity flag 63:32 bits |
+
+
+Offset address: 0x08  
+Read-only, the value has been prepared before leaving the factory
+
+
+| Field | Name | R/W | Description |
+| ------- | ---------------- | ----- | -------------------------------------- |
+| 31:0 | U_ID[95:64] | R | Unique identity flag 95:64 bits |
+
+
+### 30.2.2 Main memory area capacity register
+
+This register is used to configure the Flash memory capacity and product ID.  
+Base address: 0x1FFF 7A20  
+Offset address: 0x00  
+Read-only, the value has been prepared before leaving the factory
+
+
+| Field | Name | R/W | Description |
+| ------- | ---------------- | ----- | -------------------------------------- |
+| 7:0 |  | R | Reserved |
+| 11:8 | P_Series | R | 产品系列（Product Series）<br>0000: F411xCxE |
+| 15:12 |  | R | Reserved |
+| 31:16 | F_SIZE | R | Flash memory capacity<br>Indicate the capacity of main memory area of the product (in Kb).<br>For example: 0x0400=1024KB |
+
+
+# 31 Revision
+
+
+
+Table 136 Document Revision History
+
+
+
+| Date | Version | Change History |
+| ------------- | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 2023.10.12 | V1.0 | New |
+| 2023.11.16 | V1.1 | (1) Modify the I/O structure diagram of the GPIO chapter<br>(2) Modify voltage range |
+| 2023.12.5 | V1.2 | (1) Modify the content of the startup configuration chapter |
+| 2024.1.24 | V1.3 | (1) Modify ADC_ CCTRL register offset address description and address mapping<br>(2) Modify the calculation formula of WWDT timeout<br>(3) Modify JTAG ID code |
+| 2024.3.29 | V1.4 | (1) Change the EOF bit domain name in the USL_OTG chapter to EOF_PID<br>(2) Modify I2S clock source description<br>(3) Modify CAN2S8 description<br>(4) Modify Device ID |
+
+
+Statement
+
+
+This document is formulated and published by Geehy Semiconductor Co., Ltd. (hereinafter referred to as “Geehy”). The contents in this document are protected by laws and regulations of trademark, copyright and software copyright. Geehy reserves the right to make corrections and modifications to this document at any time. Please read this document carefully before using Geehy products. Once you use the Geehy product, it means that you (hereinafter referred to as the “users”) have known and accepted all the contents of this document. Users shall use the Geehy product in accordance with relevant laws and regulations and the requirements of this document.
+
+
+1. Ownership
+
+
+This document can only be used in connection with the corresponding chip products or software products provided by Geehy. Without the prior permission of Geehy, no unit or individual may copy, transcribe, modify, edit or disseminate all or part of the contents of this document for any reason or in any form.
+
+The “©” or “Geehy” words or graphics with “®” or “™” in this document are trademarks of Geehy. Other product or service names displayed on Geehy products are the property of their respective owners.
+
+
+2. No Intellectual Property License
+
+
+Geehy owns all rights, ownership and intellectual property rights involved in this document.
+
+Geehy shall not be deemed to grant the license or right of any intellectual property to users explicitly or implicitly due to the sale or distribution of Geehy products or this document.
+
+If any third party’s products, services or intellectual property are involved in this document, it shall not be deemed that Geehy authorizes users to use the aforesaid third party’s products, services or intellectual property, unless otherwise agreed in sales order or sales contract.
+
+
+3. Version Update
+
+
+Users can obtain the latest document of the corresponding models when ordering Geehy products.
+
+If the contents in this document are inconsistent with Geehy products, the agreement in the sales order or the sales contract shall prevail.
+
+www.geehy.com  
+Page 517
+
+
+
+
+4. Information Reliability
+
+
+The relevant data in this document are obtained from batch test by Geehy Laboratory or cooperative third-party testing organization. However, clerical errors in correction or errors caused by differences in testing environment may occur inevitably. Therefore, users should understand that Geehy does not bear any responsibility for such errors that may occur in this document. The relevant data in this document are only used to guide users as performance parameter reference and do not constitute Geehy’s guarantee for any product performance.
+
+Users shall select appropriate Geehy products according to their own needs, and effectively verify and test the applicability of Geehy products to confirm that Geehy products meet their own needs, corresponding standards, safety or other reliability requirements. If losses are caused to users due to the user’s failure to fully verify and test Geehy products, Geehy will not bear any responsibility.
+
+
+5. Legality
+
+
+USERS SHALL ABIDE BY ALL APPLICABLE LOCAL LAWS AND REGULATIONS WHEN USING THIS DOCUMENT AND THE MATCHING GEEHY PRODUCTS. USERS SHALL UNDERSTAND THAT THE PRODUCTS MAY BE RESTRICTED BY THE EXPORT, RE-EXPORT OR OTHER LAWS OF THE COUNTRIES OF THE PRODUCTS SUPPLIERS, GEEHY, GEEHY DISTRIBUTORS AND USERS. USERS (ON BEHALF OR ITSELF, SUBSIDIARIES AND AFFILIATED ENTERPRISES) SHALL AGREE AND PROMISE TO ABIDE BY ALL APPLICABLE LAWS AND REGULATIONS ON THE EXPORT AND RE-EXPORT OF GEEHY PRODUCTS AND/OR TECHNOLOGIES AND DIRECT PRODUCTS.
+
+
+6. Disclaimer of Warranty
+
+
+THIS DOCUMENT IS PROVIDED BY GEEHY "AS IS" AND THERE IS NO WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE, TO THE EXTENT PERMITTED BY APPLICABLE LAW.
+
+GEEHY WILL BEAR NO RESPONSIBILITY FOR ANY DISPUTES ARISING FROM THE SUBSEQUENT DESIGN OR USE BY USERS.
+
+
+7. Limitation of Liability
+
+
+
+
+IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN WRITING WILL GEEHY OR ANY OTHER PARTY WHO PROVIDE THE DOCUMENT "AS IS", BE LIABLE FOR DAMAGES, INCLUDING ANY GENERAL, SPECIAL, DIRECT, INCIDENTAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE USE OR INABILITY TO USE THE DOCUMENT (INCLUDING BUT NOT LIMITED TO LOSS OF DATA OR DATA BEING RENDERED INACCURATE OR LOSSES SUSTAINED BY USERS OR THIRD PARTIES).
+
+
+8. Scope of Application
+
+
+The information in this document replaces the information provided in all previous versions of the document.
+
+©2023-2024 Geehy Semiconductor Co., Ltd. - All Rights Reserved
