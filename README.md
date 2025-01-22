@@ -4,6 +4,7 @@ Several tools exist to convert pdf to markdown: I've tried `pdfplumber` and `mar
 
 ChatGPT does a tremendous job converting pdf page screenshots to markdown. The beauty of a screenshot is that it rules out any problems related to internal pdf buildup: a screenshot is a screenshot - period. However, it isn't feasible to feed 500 screenshots manually to ChatGPT. So I created this `convertpdf-gpt` project to do that automatically.
 
+&nbsp;
 ## 1. Quick Start Guide
 
 The `convertpdf-gpt` project lets you convert a pdf file to markdown in three steps:
@@ -70,6 +71,7 @@ The result `my_file_processed.md` should be a high-quality conversion of the ori
 
 ---
 
+&nbsp;
 ## 2. Prerequisites
 
 To use the `convert_pdf.py` and `post_process.py` scripts, you need to install a few things:
@@ -116,12 +118,14 @@ Now you can use the key with the `convert_pdf.py` script. You have two options:
 
 ---
 
+&nbsp;
 ## 3. Costs
 
 Running the `convert_pdf.py` on a 100-page pdf costs me around 1$. That's with the `--model "gpt-4o-mini"`. I didn't try other models yet.
 
 ---
 
+&nbsp;
 ## 4. Remarks
 
 I only tested this script on Windows 11 so far. It should work on Linux too. Contact me if there's an issue.
