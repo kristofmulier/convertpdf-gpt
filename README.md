@@ -121,7 +121,9 @@ Now you can use the key with the `convert_pdf.py` script. You have two options:
 &nbsp;
 ## 3. Costs
 
-Running the `convert_pdf.py` on a 100-page pdf costs me around 1$. That's with the `--model "gpt-4o-mini"`. I didn't try other models yet.
+Running the `convert_pdf.py` on a 100-page pdf costs me around $1.00. That's with the `--model "gpt-4o-mini"`. I didn't try other models yet.
+
+On another occasion, I converted a 520-page pdf document, which cost me precisely $3.08. I hereby conclude the cost is less than one dollar per 100 pages.
 
 ---
 
