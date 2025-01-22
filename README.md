@@ -1,8 +1,16 @@
 # convertpdf-gpt
 
+Several tools exist to convert pdf to markdown: I've tried `pdfplumber` and `markitdown` - but none of them were satisfying. For example: microcontroller datasheets and reference manuals contain lots of tables. These tools fail to convert them properly. Maybe it's due to the buildup of the pdf-file? Whatever it is - I want a more robust conversion strategy.
+
+ChatGPT does a tremendous job converting pdf page screenshots to markdown. The beauty of a screenshot is that it rules out any problems related to internal pdf buildup: a screenshot is a screenshot - period. However, it isn't feasible to feed 500 screenshots manually to ChatGPT. So I created this `convertpdf-gpt` project to do that automatically.
+
 ## 1. Quick Start Guide
 
-Convert a pdf file automatically to markdown. This `convertpdf-gpt` project provides two python scripts to get it done.
+The `convertpdf-gpt` project lets you convert a pdf file to markdown in three steps:
+
+- STEP 1: Run `convert_pdf.py` on the pdf-file.
+- STEP 2: Check for missing pages and add them manually.
+- STEP 3: Run `post_process.py`.
 
 ### 1.1 `convert_pdf.py` script
 
@@ -32,18 +40,33 @@ Finished page 3/520, wrote to user_manual.md
 ...
 ```
 
-The markdown output gets written to `my_file.md`. Open it to have a look after the script has fully completed.
+The markdown output gets written to `my_file.md`. Open it to have a look *after* the script has fully completed.
 
-### 1.2 `post_process.py` script
+### 1.2 Check for missing pages
 
-The second script does some post processing on the markdown file:
+Upon converting a 520 page pdf-file, I miss two pages. Here is one of them:
+
+```markdown
+# Page 113
+
+> (No backtick block found)
+
+I'm unable to access the content of the PDF or any specific page within it. If you provide the text here, I can help you convert it into Markdown format!
+```
+
+It's easy to find these missing pages in `my_file.md` (the output from the conversion script). Just search for the token `"backtick"` and you'll find them. Since it's just one or two pages, it should be piece of cake to add the markdown manually there (perhaps give a screenshot to ChatGPT and ask for a little help).
+
+
+### 1.3 `post_process.py` script
+
+Now let the post processing script take care of your markdown file:
 
 ```sh
 >python post_process.py my_file.md
                         -o my_file_processed.md
 ```
 
-The result `my_file_processed.md` should be a high-quality conversion of your original pdf file.
+The result `my_file_processed.md` should be a high-quality conversion of the original pdf file!
 
 ---
 
