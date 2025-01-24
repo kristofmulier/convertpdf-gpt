@@ -31,7 +31,7 @@ The first script does a rough conversion:
 This script takes your `my_file.pdf` file and uses Poppler (see [2. Prerequisites](#2-prerequisites)) to convert every page to a `.png` image. Then it feeds these images one-by-one to the OpenAI API (ChatGPT), with the request to convert the screenshot to markdown. You need an API key to get that working (see [2. Prerequisites](#2-prerequisites)).
 When you run the script, you should see output like:
 
-```
+```cmd
 C:\Users\krist\Documents\convertpdf-gpt>python convert_pdf.py --poppler-path "C:/poppler-24.08.0/Library/bin" user_manual.pdf
 [pdftocairo] Converting PDF to images... This may take a while.
 [pdftocairo] ...still working, please wait...
@@ -40,9 +40,25 @@ C:\Users\krist\Documents\convertpdf-gpt>python convert_pdf.py --poppler-path "C:
 [pdftocairo] ...still working, please wait...
 [pdftocairo] ...still working, please wait...
 [pdftocairo] Done! Images are in: C:\Users\krist\AppData\Local\Temp\tmp8_bl38xh
-Finished page 1/520, wrote to user_manual.md
-Finished page 2/520, wrote to user_manual.md
-Finished page 3/520, wrote to user_manual.md
+Processing Page 1/858
+Processing Page 2/858
+Processing Page 3/858
+    retry with model gpt-4o...
+    success!
+Processing Page 4/858
+    retry with model gpt-4o...
+    success!
+Processing Page 5/858
+Processing Page 6/858
+Processing Page 7/858
+Processing Page 8/858
+Processing Page 9/858
+Processing Page 10/858
+Processing Page 11/858
+Processing Page 12/858
+Processing Page 13/858
+Processing Page 14/858
+Processing Page 15/858
 ...
 ```
 
@@ -50,10 +66,23 @@ The markdown output gets written to `my_file.md`. Open it to have a look *after*
 
 ### 1.2 STEP 2: Check for missing pages
 
-Upon converting a 520 page pdf-file, I miss two pages. Here is one of them:
+My first script sometimes skipped a page. That's because, once in a while, the GPT wouldn't provide a reply with a proper markdown conversion of the page. Now this problem is less severe, because my script *retries* a few times. If it fails after a few retries, it retries again with a fallback GPT model. Only after many failures, it gives up on converting that page. If you scan through the output, you can see a failed attempt like this:
+
+```cmd
+Processing Page 17/858
+Processing Page 18/858
+    retry with model gpt-4o...
+    retry with model gpt-4o...
+    retry with model gpt-4o-mini...
+    retry with model gpt-4o-mini...
+    retry with model gpt-4o-mini...
+    failed!
+Processing Page 19/858
+```
+The `"failed!"` statement gets printed out in red, so you should be able to see it quickly. In the markdown file, you can find then the following:
 
 ```markdown
-# Page 113
+# Page 18
 
 > (No backtick block found)
 
