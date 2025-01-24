@@ -135,7 +135,7 @@ Here are a few conversions I made so far:
 | 520      | `gpt-4o-mini` | $3.08 |
 | 520      | `gpt-4o`      | $4.00 |
 
-In my 
+Model `gpt-4o` performs better than `gpt-4o-mini` at a marginally higher cost. The `gpt-4o` model is less likely to rearrange (corrupt) the order of the elements on the pdf page.
 
 ---
 
