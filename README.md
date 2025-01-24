@@ -17,7 +17,7 @@ The `convertpdf-gpt` project lets you convert a pdf file to markdown in three (o
 - **STEP 1:** Run `convert_pdf.py` on the pdf-file.
 - **STEP 2:** Check for missing pages and add them manually.
 - **STEP 3:** Run `post_process.py`.
-- **STEP 4:** [Optional] Check for missing bitfields
+- **STEP 4:** [Optional] Check for missing bitfields.
 
 &nbsp;
 ### 1.1 STEP 1: `convert_pdf.py` script
