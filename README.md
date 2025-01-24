@@ -138,6 +138,7 @@ To use the `convert_pdf.py` and `post_process.py` scripts, you need to:
 - Install Poppler
 - Get your OpenAI key
 
+&nbsp;
 ### 2.1 Poppler
 Install Poppler:
 https://github.com/oschwartz10612/poppler-windows/releases
@@ -154,6 +155,7 @@ Now you have two choices:
 
 - **CHOICE 2:** Add the path to your `PATH` environment variable. The script should find it there.
 
+&nbsp;
 ### 2.2 OpenAI Key
 You obviously need an OpenAI (ChatGPT) account. Then go to:
 https://platform.openai.com/settings/organization/api-keys
