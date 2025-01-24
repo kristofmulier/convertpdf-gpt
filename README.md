@@ -18,6 +18,7 @@ The `convertpdf-gpt` project lets you convert a pdf file to markdown in three st
 - **STEP 2:** Check for missing pages and add them manually.
 - **STEP 3:** Run `post_process.py`.
 
+&nbsp;
 ### 1.1 STEP 1: `convert_pdf.py` script
 
 The first script does a rough conversion:
@@ -64,6 +65,7 @@ Processing Page 15/858
 
 The markdown output gets written to `my_file.md`. Open it to have a look *after* the script has fully completed.
 
+&nbsp;
 ### 1.2 STEP 2: Check for missing pages
 
 My first script sometimes skipped a page. That's because, once in a while, the GPT wouldn't provide a reply with a proper markdown conversion of the page. Now this problem is less severe, because my script *retries* a few times. If it fails after a few retries, it retries again with a fallback GPT model. Only after many failures, it gives up on converting that page. If you scan through the output, you can see a failed attempt like this:
@@ -91,7 +93,7 @@ I'm unable to access the content of the PDF or any specific page within it. If y
 
 It's easy to find these missing pages in `my_file.md` (the output from the conversion script). Just search for the token `"backtick"` and you'll find them. Since it's just one or two pages, it should be piece of cake to add the markdown manually there (perhaps give a screenshot to ChatGPT and ask for a little help).
 
-
+&nbsp;
 ### 1.3 STEP 3: `post_process.py` script
 
 Now let the post processing script take care of your markdown file:
@@ -102,6 +104,29 @@ Now let the post processing script take care of your markdown file:
 ```
 
 The result `my_file_processed.md` should be a high-quality conversion of the original pdf file!
+
+&nbsp;
+### 1.4 STEP 4: [Optional] Check for missing bitfields
+
+It can happen that the markdown conversion misses a bitfield here and there. With the `gpt-4o-mini` model this is likely to happen. The `gpt-4o` model does a decent job, though. I just converted a 520 user manual (reference manual) today, and only had one missing bitfield in the entire markdown file. The conversion missed a `Reserved` bitfield in the `SMC_STSINT2` register.
+
+To check for missing bitfields, I query ChatGPT manually. In the pro-version of ChatGPT, the context window is pretty large. I paste around 3000 lines of the markdown file and ask the following:
+
+```
+[ChatGPT Query]
+I've written a script that converts a pdf file of an MCU reference manual into markdown.
+Unfortunately, it seems that not all register tables are complete. Some have missing
+bitfields. Please check if all register tables in this markdown file are complete. Tell
+me which register tables have missing bitfields. Most registers are 32 bits wide, some
+are 16 bits wide. Maybe some are 8 bits, I'm not sure.
+
+Here is the first markdown snippet to check for register bitfield completeness:
+[...]
+```
+
+I repeated this query until all 17.000 lines of my markdown file were checked. Only one
+bitfield omission was found.
+
 
 ---
 
