@@ -134,7 +134,7 @@ bitfield omission was found.
 &nbsp;
 ## 2. Prerequisites
 
-To use the `convert_pdf.py` and `post_process.py` scripts, you need to install a few things:
+To use the `convert_pdf.py` and `post_process.py` scripts, you need to:
 - Install Poppler
 - Get your OpenAI key
 
