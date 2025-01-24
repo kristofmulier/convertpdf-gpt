@@ -130,7 +130,7 @@ Now you can use the key with the `convert_pdf.py` script. You have two options:
 Here are a few conversions I made so far:
 
 | pages    | model         | cost  |
--------------------------------------
+|----------|---------------|-------|
 | 100      | `gpt-4o-mini` | $1.00 |
 | 520      | `gpt-4o-mini` | $3.08 |
 | 520      | `gpt-4o`      | $4.00 |
