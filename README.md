@@ -5,6 +5,11 @@ Several tools exist to convert pdf to markdown: I've tried `pdfplumber` and `mar
 ChatGPT does a tremendous job converting pdf page screenshots to markdown. The beauty of a screenshot is that it rules out any problems related to internal pdf buildup: a screenshot is a screenshot - period. However, it isn't feasible to feed 500 screenshots manually to ChatGPT. So I created this `convertpdf-gpt` project to do that automatically (note: using the ChatGPT API costs some money, but it's less than one dollar per 100 pages).
 
 &nbsp;
+> **Updates**
+> - `2024-01-22`: Release first version
+> - `2024-01-24`: Strengthen the query and use default model `gpt-4o` (`gpt-4o-mini` as fallback)<br><sup>Model `gpt-4o-mini` sometimes moves pdf elements around, corrupting the order. I mitigate the problem (update 2024-01-24) through strengthening the query and switching to model `gpt-4o` as the default for converting to markdown. Model `gpt-4o` performs better, but sometimes fails to make the conversion. If it fails, my script will retry a few times and eventually switch to fallback model `gpt-4o-mini`.</sup>
+
+&nbsp;
 ## 1. Quick Start Guide
 
 The `convertpdf-gpt` project lets you convert a pdf file to markdown in three steps:
@@ -18,7 +23,7 @@ The `convertpdf-gpt` project lets you convert a pdf file to markdown in three st
 The first script does a rough conversion:
 
 ```sh
->python convert_pdf.py --model "gpt-4o-mini"
+>python convert_pdf.py --model "gpt-4o"
                        --poppler-path "C:/poppler-24.08.0/Library/bin"
                        --api-key "sk-proj-xmj...ktgA"
                        my_file.pdf
@@ -87,12 +92,12 @@ I unzipped it at: `C:/poppler-24.08.0`. No installation was required - just unzi
 
 Now you have two choices:
 
-1. Pass the Poppler path to the conversion script with the `--poppler-path` argument. For example:
+- **CHOICE 1:** Pass the Poppler path to the conversion script with the `--poppler-path` argument. For example:
    ```
    --poppler-path "C:/poppler-24.08.0/Library/bin"
    ```
 
-2. Add the path to your `PATH` environment variable. The script should find it there.
+- **CHOICE 2:** Add the path to your `PATH` environment variable. The script should find it there.
 
 ### 2.2 OpenAI Key
 You obviously need an OpenAI (ChatGPT) account. Then go to:
@@ -109,21 +114,28 @@ Wait about ten minutes after adding credit to your key. It doesn't work in the f
 
 Now you can use the key with the `convert_pdf.py` script. You have two options:
 
-1. Pass the key to the conversion script with the `--api-key` argument. For example:
+- **CHOICE 1:** Pass the key to the conversion script with the `--api-key` argument. For example:
    ```
    --api-key "sk-proj-xmj...ktgA"
    ```
 
-2. Create a new `OPENAI_API_KEY` environment variable and store your key in there.
+
+- **CHOICE 2:** Create a new `OPENAI_API_KEY` environment variable and store your key in there.
 
 ---
 
 &nbsp;
 ## 3. Costs
 
-Running the `convert_pdf.py` on a 100-page pdf costs me around $1.00. That's with the `--model "gpt-4o-mini"`. I didn't try other models yet.
+Here are a few conversions I made so far:
 
-On another occasion, I converted a 520-page pdf document, which cost me precisely $3.08.
+| pages    | model         | cost  |
+-------------------------------------
+| 100      | `gpt-4o-mini` | $1.00 |
+| 520      | `gpt-4o-mini` | $3.08 |
+| 520      | `gpt-4o`      | $4.00 |
+
+In my 
 
 ---
 
