@@ -33,7 +33,10 @@ def parse_markdown_into_blocks(md_text: str) -> List[Dict[str, Union[str, List[s
     current_type: Optional[str] = None
 
     def add_block(block_type: str, block_lines: List[str]) -> None:
-        """TODO: ADD COMMENT"""
+        """
+        Add a new block of the specified type to the `blocks` list,
+        but only if `block_lines` is not empty.
+        """
         if block_lines:
             blocks.append({"type": block_type, "lines": block_lines})
 
@@ -123,6 +126,8 @@ def unify_headings_spread_over_two_lines(
     => becomes =>
 
     ## 8.1 Full Name and Abbreviation of Terms
+
+    This function attempts to unify such split headings into a single line.
     """
     numeric_heading_no_text = re.compile(r'^#{1,6}\s+\d+(?:\.\d+)*$')
     bullet_pattern = re.compile(r'^#{0,6}\s*\d+(?:[.)])\s')
@@ -166,7 +171,11 @@ def merge_multpage_tables(
     blocks: List[Dict[str, Union[str, List[str]]]]
 ) -> List[Dict[str, Union[str, List[str]]]]:
     """
-    TODO: ADD COMMENT
+    Merge consecutive table blocks that have the same column structure.
+    This is often necessary when a table was split across multiple pages
+    (e.g. after a page break heading). If two adjacent tables match in
+    column count, this function combines them into one table, skipping
+    the repeated header row.
     """
     merged_blocks: List[Dict[str, Union[str, List[str]]]] = []
     i = 0
@@ -199,7 +208,8 @@ def remove_page_headings_and_reassemble(
     blocks: List[Dict[str, Union[str, List[str]]]]
 ) -> str:
     """
-    TODO: ADD COMMENT
+    Remove blocks that are "page headings" (e.g. '# Page 2'), then
+    reassemble all remaining blocks into a single Markdown string.
     """
     filtered_blocks: List[Dict[str, Union[str, List[str]]]] = []
     for b in blocks:
@@ -210,11 +220,13 @@ def remove_page_headings_and_reassemble(
 
 def fix_titles_and_headings(md_text: str) -> str:
     """
+    Adjust headings and bullets in the Markdown text.
+
     1) If a line ends with '.', '!', or '?', treat it as normal text (not a heading or bullet).
     2) If a line matches the bullet/list pattern (e.g. '# 1. Text'), remove all '#' so it becomes normal text: '1. Text'.
     3) If a line is a numeric heading (e.g. '# 8.1 Title' or '## 1.2.3 Another'), fix the number of '#' = (dot_count + 1),
-       EXCEPT if the text after the numeric part starts with ':', e.g. '31:22'.
-    4) If a line starts with '#' but doesn't match bullets or numeric heading, remove the '#'.
+       EXCEPT if the text after the numeric part starts with a colon, e.g. '31:22'.
+    4) If a line starts with '#' but doesn't match bullets or numeric => remove '#'.
     """
     lines = md_text.splitlines()
     fixed_lines: List[str] = []
@@ -247,7 +259,7 @@ def fix_titles_and_headings(md_text: str) -> str:
                 new_line = re.sub(r'^[#\s]+', '', original)
                 fixed_lines.append(new_line)
                 continue
-    
+
             existing_hashes = match.group(1)
             numeric_part = match.group(2)
             rest = match.group(3).rstrip()
@@ -277,7 +289,9 @@ def fix_titles_and_headings(md_text: str) -> str:
 
 def reassemble_blocks(blocks: List[Dict[str, Union[str, List[str]]]]) -> str:
     """
-    TODO: ADD COMMENT
+    Given a list of blocks (each with a 'type' and a list of 'lines'),
+    reassemble them into a single Markdown string. Insert one blank
+    line between each block for readability.
     """
     lines_out: List[str] = []
     for idx, block in enumerate(blocks):
@@ -288,7 +302,9 @@ def reassemble_blocks(blocks: List[Dict[str, Union[str, List[str]]]]) -> str:
 
 def skip_header_and_separator(table_lines: List[str]) -> List[str]:
     """
-    TODO: ADD COMMENT
+    Given a list of table lines, skip the first line (header),
+    and if the next line is a dash separator row, skip that too.
+    Return the remaining lines.
     """
     lines_after_header = table_lines[1:]
     if lines_after_header and is_dash_separator(lines_after_header[0]):
@@ -297,7 +313,8 @@ def skip_header_and_separator(table_lines: List[str]) -> List[str]:
 
 def is_dash_separator(line: str) -> bool:
     """
-    TODO: ADD COMMENT
+    Check if `line` is a Markdown table dash separator line,
+    e.g. '|---|:---:|---|' possibly with colons for alignment.
     """
     stripped = line.replace(' ', '')
     if not (stripped.startswith('|') and stripped.endswith('|')):
@@ -307,7 +324,9 @@ def is_dash_separator(line: str) -> bool:
 
 def same_table_structure(table_lines_a: List[str], table_lines_b: List[str]) -> bool:
     """
-    TODO: ADD COMMENT
+    Return True if `table_lines_a` and `table_lines_b` appear to have
+    the same column structure, by comparing the number of '|' characters
+    in the first line of each.
     """
     if not table_lines_a or not table_lines_b:
         return False
@@ -315,13 +334,16 @@ def same_table_structure(table_lines_a: List[str], table_lines_b: List[str]) -> 
 
 def is_markdown_heading(line: str) -> bool:
     """
-    TODO: ADD COMMENT
+    Return True if the given line starts with '#',
+    indicating it may be a Markdown heading.
     """
     return line.startswith("#")
 
 def is_page_heading(block: Dict[str, Union[str, List[str]]]) -> bool:
     """
-    TODO: ADD COMMENT
+    Return True if `block` is a 'heading' and its text matches
+    a pattern like '# Page 2' (case-insensitive).
+    Used to skip page-break headings.
     """
     if block["type"] != "heading":
         return False
@@ -330,7 +352,8 @@ def is_page_heading(block: Dict[str, Union[str, List[str]]]) -> bool:
 
 def is_empty_text_block(block: Dict[str, Union[str, List[str]]]) -> bool:
     """
-    TODO: ADD COMMENT
+    Return True if `block` is of type 'text' and all its lines
+    are empty or whitespace.
     """
     if block["type"] != "text":
         return False
@@ -338,19 +361,22 @@ def is_empty_text_block(block: Dict[str, Union[str, List[str]]]) -> bool:
 
 def fix_broken_bitfield_tables(md_text: str) -> str:
     """
-    Look for lines like:
-        (some blank lines)
+    In the generated Markdown, lines describing bitfield ranges (e.g. '10:9')
+    followed by 'Reserved' sometimes appear immediately after a table instead
+    of in it. This function looks for the pattern:
+
+        <blank lines>
         10:9
-        (some blank lines)
+        <blank lines>
         Reserved
-        (some blank lines)
-    that appear *immediately* after a table, and fold them back
-    into that preceding table as a new row:
+        <blank lines>
+
+    and folds those two lines into a new row in the preceding table:
 
         | 10:9 | Reserved |  |  |
 
-    Then, only insert a blank line after the table if the next
-    non-blank line is *not* another table row.
+    Then, it ensures that a blank line is only inserted after the table
+    if the next non-blank line is not another table row.
     """
     lines = md_text.splitlines()
     output: list[str] = []
@@ -454,14 +480,18 @@ def fix_broken_bitfield_tables(md_text: str) -> str:
 
 def fix_multiline_table_cells(md_text: str) -> str:
     """
-    Option A:
-      - Keep "strict header" for the first (and optional second) row,
-      - For subsequent data rows, treat them as "continuation" ONLY if
-        *all* columns except the last are blank.
-      - Otherwise, treat them as a brand-new row.
+    Attempt to fix cases where some table rows get split across multiple lines.
 
-    This prevents losing data (e.g. "MBKEN") if the line
-    isn't truly just a continuation of the previous row's last cell.
+    Approach:
+      - The first row is assumed to be the header.
+      - The second row might be a dash-separator (or more header data).
+      - From the third row onward, if all columns but the last are empty,
+        treat the line as a continuation of the previous row’s last column.
+      - Otherwise, treat it as a new row.
+
+    This ensures that partial lines like "|    |    | text" get folded correctly,
+    but content that doesn't match that pattern starts a new row. This helps
+    preserve data integrity while preventing huge tables from being corrupted.
     """
     lines = md_text.splitlines()
     output: list[str] = []
@@ -469,10 +499,10 @@ def fix_multiline_table_cells(md_text: str) -> str:
     current_table: list[list[str]] = []
     table_cols_count: int | None = None
     in_table = False
-    row_index_in_table = 0  # 0 => first row (header), 1 => possible dash-separator, >=2 => data
+    row_index_in_table = 0  # 0 => first row (header), 1 => second row (separator/data), >=2 => data
 
     def flush_table():
-        """Convert all rows in current_table to Markdown lines, push them to output."""
+        """Convert all rows in current_table to Markdown lines, then output them."""
         if not current_table:
             return
         for row in current_table:
@@ -481,12 +511,12 @@ def fix_multiline_table_cells(md_text: str) -> str:
         current_table.clear()
 
     def is_table_row(line: str) -> bool:
-        """We assume lines that start/end with "|" are table rows"""
+        """Check if a line is a potential table row (starts/ends with '|')."""
         text = line.strip()
         return text.startswith("|") and text.endswith("|")
 
     def is_dash_separator(columns: list[str]) -> bool:
-        """e.g. ['---','----','---:'] etc."""
+        """Return True if all columns match a dash/colon pattern (like '---', '---:', etc.)."""
         dash_or_colon = re.compile(r'^[\-\:\s]+$')
         return all(dash_or_colon.match(c.strip()) for c in columns)
 
@@ -529,6 +559,7 @@ def fix_multiline_table_cells(md_text: str) -> str:
                 current_table.append(columns)
                 row_index_in_table += 1
             else:
+                # Mismatch => flush the old table and start a new one
                 flush_table()
                 output.append("")
                 current_table.clear()
@@ -556,11 +587,7 @@ def fix_multiline_table_cells(md_text: str) -> str:
             col_count = len(columns)
 
             if col_count == table_cols_count:
-                #
                 # 1) Check if it's a "continuation" line => all columns except last are blank?
-                #    e.g. "|     |     |     | some text |"
-                #    That means columns[0..-2] must be empty, or else it's a new row.
-                #
                 if all(not c.strip() for c in columns[:-1]):
                     # => merge into last row's last column
                     current_table[-1][-1] += "<br>" + columns[-1].strip()
@@ -569,8 +596,7 @@ def fix_multiline_table_cells(md_text: str) -> str:
                     current_table.append(columns)
 
             elif col_count < table_cols_count:
-                # Possibly a continuation or possibly just a row missing columns
-                # We'll still do the same check:
+                # Possibly a continuation or a row missing columns
                 if all(not c.strip() for c in columns[:-1]):
                     # merge into last column
                     # pad the last column with anything that *is* in columns[-1]
@@ -578,7 +604,7 @@ def fix_multiline_table_cells(md_text: str) -> str:
                     if columns:
                         current_table[-1][-1] += "<br>" + columns[-1].strip()
                 else:
-                    # pad it out => new row
+                    # pad out => new row
                     needed = table_cols_count - col_count
                     columns += [""] * needed
                     current_table.append(columns)
@@ -608,7 +634,9 @@ def fix_multiline_table_cells(md_text: str) -> str:
 
 def main() -> None:
     """
-    TODO: ADD COMMENT
+    Main entry point. Parse command-line arguments, read the input Markdown file,
+    perform various post-processing tasks, and write the resulting Markdown
+    to the output file.
     """
     parser = argparse.ArgumentParser(description="Post-process a Markdown file.")
     parser.add_argument("input", nargs="?", help="Path to the input Markdown file")
