@@ -33,6 +33,7 @@ def parse_markdown_into_blocks(md_text: str) -> List[Dict[str, Union[str, List[s
     current_type: Optional[str] = None
 
     def add_block(block_type: str, block_lines: List[str]) -> None:
+        """TODO: ADD COMMENT"""
         if block_lines:
             blocks.append({"type": block_type, "lines": block_lines})
 
@@ -71,7 +72,7 @@ def parse_markdown_into_blocks(md_text: str) -> List[Dict[str, Union[str, List[s
             else:
                 current_block_lines.append(line)
 
-    # End the last block
+    # Finish the last block
     add_block(current_type or "text", current_block_lines)
     return blocks
 
@@ -164,6 +165,9 @@ def unify_headings_spread_over_two_lines(
 def merge_multpage_tables(
     blocks: List[Dict[str, Union[str, List[str]]]]
 ) -> List[Dict[str, Union[str, List[str]]]]:
+    """
+    TODO: ADD COMMENT
+    """
     merged_blocks: List[Dict[str, Union[str, List[str]]]] = []
     i = 0
 
@@ -194,6 +198,9 @@ def merge_multpage_tables(
 def remove_page_headings_and_reassemble(
     blocks: List[Dict[str, Union[str, List[str]]]]
 ) -> str:
+    """
+    TODO: ADD COMMENT
+    """
     filtered_blocks: List[Dict[str, Union[str, List[str]]]] = []
     for b in blocks:
         if is_page_heading(b):
@@ -209,7 +216,6 @@ def fix_titles_and_headings(md_text: str) -> str:
        EXCEPT if the text after the numeric part starts with ':', e.g. '31:22'.
     4) If a line starts with '#' but doesn't match bullets or numeric heading, remove the '#'.
     """
-
     lines = md_text.splitlines()
     fixed_lines: List[str] = []
 
@@ -270,6 +276,9 @@ def fix_titles_and_headings(md_text: str) -> str:
     return "\n".join(fixed_lines)
 
 def reassemble_blocks(blocks: List[Dict[str, Union[str, List[str]]]]) -> str:
+    """
+    TODO: ADD COMMENT
+    """
     lines_out: List[str] = []
     for idx, block in enumerate(blocks):
         if idx > 0:
@@ -278,12 +287,18 @@ def reassemble_blocks(blocks: List[Dict[str, Union[str, List[str]]]]) -> str:
     return "\n".join(lines_out).strip()
 
 def skip_header_and_separator(table_lines: List[str]) -> List[str]:
+    """
+    TODO: ADD COMMENT
+    """
     lines_after_header = table_lines[1:]
     if lines_after_header and is_dash_separator(lines_after_header[0]):
         lines_after_header = lines_after_header[1:]
     return lines_after_header
 
 def is_dash_separator(line: str) -> bool:
+    """
+    TODO: ADD COMMENT
+    """
     stripped = line.replace(' ', '')
     if not (stripped.startswith('|') and stripped.endswith('|')):
         return False
@@ -291,20 +306,32 @@ def is_dash_separator(line: str) -> bool:
     return all(ch in '-:|' for ch in inner)
 
 def same_table_structure(table_lines_a: List[str], table_lines_b: List[str]) -> bool:
+    """
+    TODO: ADD COMMENT
+    """
     if not table_lines_a or not table_lines_b:
         return False
     return table_lines_a[0].count("|") == table_lines_b[0].count("|")
 
 def is_markdown_heading(line: str) -> bool:
+    """
+    TODO: ADD COMMENT
+    """
     return line.startswith("#")
 
 def is_page_heading(block: Dict[str, Union[str, List[str]]]) -> bool:
+    """
+    TODO: ADD COMMENT
+    """
     if block["type"] != "heading":
         return False
     text = " ".join(block["lines"]).strip()
     return bool(re.match(r"^#{1,6}\s+Page\s+\d+", text, re.IGNORECASE))
 
 def is_empty_text_block(block: Dict[str, Union[str, List[str]]]) -> bool:
+    """
+    TODO: ADD COMMENT
+    """
     if block["type"] != "text":
         return False
     return all(not ln.strip() for ln in block["lines"])
@@ -454,12 +481,12 @@ def fix_multiline_table_cells(md_text: str) -> str:
         current_table.clear()
 
     def is_table_row(line: str) -> bool:
-        # We assume lines that start/end with "|" are table rows
+        """We assume lines that start/end with "|" are table rows"""
         text = line.strip()
         return text.startswith("|") and text.endswith("|")
 
     def is_dash_separator(columns: list[str]) -> bool:
-        # e.g. ['---','----','---:'] etc.
+        """e.g. ['---','----','---:'] etc."""
         dash_or_colon = re.compile(r'^[\-\:\s]+$')
         return all(dash_or_colon.match(c.strip()) for c in columns)
 
@@ -571,7 +598,7 @@ def fix_multiline_table_cells(md_text: str) -> str:
             row_index_in_table += 1
             i += 1
 
-    # End of file => if we ended in a table => flush
+    # Finish file => if we ended in a table => flush
     if in_table:
         flush_table()
         if output and output[-1].strip():
@@ -580,6 +607,9 @@ def fix_multiline_table_cells(md_text: str) -> str:
     return "\n".join(output)
 
 def main() -> None:
+    """
+    TODO: ADD COMMENT
+    """
     parser = argparse.ArgumentParser(description="Post-process a Markdown file.")
     parser.add_argument("input", nargs="?", help="Path to the input Markdown file")
     parser.add_argument("-o", "--output", help="Path to the output (processed) Markdown file")
