@@ -729,7 +729,8 @@ def main() -> None:
     merged_md = remove_page_headings_and_reassemble(blocks)
 
     # 7) Fix numeric headings, remove spurious '#', etc.
-    final_md = fix_titles_and_headings_arm(merged_md)
+    # final_md = fix_titles_and_headings_arm(merged_md)
+    final_md = fix_titles_and_headings(merged_md)
     final_md = final_md.replace('<s>', '{s}').replace('<S>', '{S}')
 
     # 8) Post-post-processing to fix broken bitfield tables
