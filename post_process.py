@@ -239,8 +239,9 @@ def fix_titles_and_headings(md_text: str) -> str:
         stripped = line.strip()
 
         # 1) If the stripped line ends with one of . ! ?, treat as normal text
-        if stripped and stripped[-1] in ('.', '!', '?'):
-            fixed_lines.append(line)
+        if stripped and stripped[-1] in ('.', '!', '?', ','):
+            new_line = re.sub(r'^[#\s]+', '', original)
+            fixed_lines.append(new_line)
             continue
 
         # 2) Check bullet pattern
@@ -264,10 +265,27 @@ def fix_titles_and_headings(md_text: str) -> str:
             numeric_part = match.group(2)
             rest = match.group(3).rstrip()
 
-            # # If the text after the numeric part starts with a colon, skip heading logic
-            # if rest.lstrip().startswith(':'):
-            #     fixed_lines.append(line)
-            #     continue
+            # If the text after the numberic part comes immediately (without a space), don't make it
+            # a header. This avoids that a line like this:
+            # 0xFFAB
+            # turns into a header (no space after the '0').
+            if not rest.startswith(' '):
+                new_line = re.sub(r'^[#\s]+', '', original)
+                fixed_lines.append(new_line)
+                continue
+
+            # If the text after the numeric part starts with a colon or hyphen, don't make it a
+            # header.
+            if rest.lstrip().startswith((':', '-', '<', '>', '&')):
+                new_line = re.sub(r'^[#\s]+', '', original)
+                fixed_lines.append(new_line)
+                continue
+
+            # If the text after the numberic part is again a number, don't make it a header.
+            if rest.lstrip().startswith(('0', '1', '2', '3', '4', '5', '6', '7', '8', '9')):
+                new_line = re.sub(r'^[#\s]+', '', original)
+                fixed_lines.append(new_line)
+                continue
 
             # Otherwise, it's a valid numeric heading => set heading level
             level = numeric_part.count('.') + 1
@@ -285,7 +303,48 @@ def fix_titles_and_headings(md_text: str) -> str:
             fixed_lines.append(new_line)
         else:
             fixed_lines.append(line)
+        continue
     return "\n".join(fixed_lines)
+
+def fix_titles_and_headings_arm(md_text: str) -> str:
+    """
+
+    """
+    lines = md_text.splitlines()
+    fixed_lines: List[str] = []
+    heading_pattern = re.compile(r'^[A-D]\d+\.\d+')
+
+    for line in lines:
+        original_line = line
+        fixed_line = line.strip()
+
+        # Strip off all '#' at the beginning
+        if fixed_line.startswith('#'):
+            fixed_line = re.sub(r'^[#\s]+', '', fixed_line).strip()
+
+        # Toplevel is "Part A", "Part B", ...
+        if fixed_line.startswith(("Part A", "Part B", "Part C", "Part D")):
+            if not fixed_line.endswith(('.', '?', '!', ':')):
+                fixed_line = "# " + fixed_line
+
+        # Below that is "Chapter A1", "Chapter A2", ..., "Appendix D1", ...
+        if fixed_line.startswith(("Chapter ", "Appendix")):
+            fixed_line = "## " + fixed_line
+
+        # Below that is "A1.1", "A1.2", ... "D8.4"
+        match = heading_pattern.match(fixed_line)
+        if match:
+            fixed_line = "### " + fixed_line
+
+        # Check if fixed_line is different
+        if fixed_line == original_line.strip():
+            # no changes
+            fixed_lines.append(original_line)
+        else:
+            fixed_lines.append(fixed_line)
+        continue
+    return "\n".join(fixed_lines)
+
 
 def reassemble_blocks(blocks: List[Dict[str, Union[str, List[str]]]]) -> str:
     """
@@ -670,7 +729,8 @@ def main() -> None:
     merged_md = remove_page_headings_and_reassemble(blocks)
 
     # 7) Fix numeric headings, remove spurious '#', etc.
-    final_md = fix_titles_and_headings(merged_md)
+    final_md = fix_titles_and_headings_arm(merged_md)
+    final_md = final_md.replace('<s>', '{s}').replace('<S>', '{S}')
 
     # 8) Post-post-processing to fix broken bitfield tables
     final_md = fix_broken_bitfield_tables(final_md)
