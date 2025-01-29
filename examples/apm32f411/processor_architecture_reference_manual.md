@@ -1,309 +1,168 @@
-Arm®v7-M Architecture  
-Reference Manual
+# Arm®v7-M Architecture Reference Manual
 
-Copyright © 2006-2008, 2010, 2014, 2017, 2018, 2021 Arm Limited or its affiliates. All rights reserved.
-ARM DDI 0403E.e (ID021621)
-
-
-
-Armv7-M Architecture Reference Manual  
-Copyright © 2006-2008, 2010, 2014, 2017, 2018, 2021 Arm Limited or its affiliates. All rights reserved.
-
-Release Information  
+**Release Information**
 The following changes have been made to this document.
 
 
-| Date | Issue | Confidentiality | Change |
-| -------------------- | -------------------------------------- | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| June 2006 | A | Non-Confidential | Initial release |
-| July 2007 | B | Non-Confidential | Second release, errata and changes documented separately |
-| September 2008 | C | Non-Confidential, Restricted Access | Options for additional watchpoint based trace in the DWT, plus errata updates and clarifications. |
-| 12 February 2010 | D | Non-Confidential | Fourth release, adds DSP and Floating-point extensions, and extensive clarifications and reorganization. |
-| 17 April 2014 | E.a | Non-Confidential, Restricted Access | Fifth release. Adds double-precision floating-point, Flash Patch breakpoint version 2 and DWT changes, 64-bit timestamps,<br>cache control, and extensive reformatting. |
-| 02 December 2014 | E.b | Non-Confidential | Sixth release. Errata updates and clarifications. |
-| 19 May 2017 | E.c | Non-Confidential | Seventh release. Errata updates and clarifications. |
-| 29 June 2018 | E.d | Non-Confidential | Eighth release. Adds CS8, PS8B, and SB8B instructions. |
-| 15 February 2021 | E.e | Non-Confidential | Ninth release. Errata updates and clarifications. |
-
-
-Proprietary Notice
-
-
-This document is protected by copyright and other related rights and the practice or implementation of the information contained
-in this document may be protected by one or more patents or pending patent applications. No part of this document may be
-reproduced in any form by any means without the express prior written permission of Arm. No license, express or implied, by
-estoppel or otherwise to any intellectual property rights is granted by this document unless specifically stated.
-
-Your access to the information in this document is conditional upon your acceptance that you will not use or permit others to use
-the information for the purposes of determining whether implementations infringe any third party patents.
-
-THIS DOCUMENT IS PROVIDED "AS IS". ARM PROVIDES NO REPRESENTATIONS AND NO WARRANTIES,
-EXPRESS, IMPLIED OR STATUTORY, INCLUDING, WITHOUT LIMITATION, THE IMPLIED WARRANTIES OF
-MERCHANTABILITY, SATISFACTORY QUALITY, NON-INFRINGEMENT OF THIRD PARTY RIGHTS OR FITNESS FOR A PARTICULAR
-PURPOSE WITH RESPECT TO THE DOCUMENT. For the avoidance of doubt, Arm makes no representation with respect to,
-and has undertaken no analysis to identify or understand the scope and content of, patents, copyrights, trade secrets, or other rights.
-
-This document may include technical inaccuracies or typographical errors.
-
-TO THE EXTENT NOT PROHIBITED BY LAW, IN NO EVENT WILL ARM BE LIABLE FOR ANY DAMAGES,
-INCLUDING WITHOUT LIMITATION ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL, PUNITIVE, OR
-CONSEQUENTIAL DAMAGES, HOWEVER CAUSED AND REGARDLESS OF THE THEORY OF LIABILITY, ARISING
-OUT OF ANY USE OF THIS DOCUMENT, EVEN IF ARM HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
-DAMAGES.
-
-This document consists solely of commercial items. You shall be responsible for ensuring that any use, duplication or disclosure
-of this document complies fully with any relevant export laws and regulations to assure that this document or any portion thereof
-is not exported, directly or indirectly, in violation of such export laws. Use of the word "partner" in reference to Arm’s customers
-is not intended to create or refer to any partnership relationship with any other company. Arm may make changes to this document
-at any time and without notice.
-
-This document may be translated into other languages for convenience, and you agree that if there is any conflict between the
-English version of the document and any translation, the terms of the English version of the Agreement shall prevail.
-
-The Arm corporate logo and words marked with ® or ™ are registered trademarks or trademarks of Arm Limited (or its subsidiaries)
-in the US and/or elsewhere. All rights reserved. Other brands and names mentioned in this document may be the trademarks of
-their respective owners. You must follow the Arm’s trademark usage guidelines
-http://www.arm.com/company/policies/trademarks.
-
-
-
-Copyright © 2021 Arm Limited (or its affiliates). All rights reserved.
-
-Arm Limited. Company 02557590 registered in England.
-110 Fulbourn Road, Cambridge, England CB1 9NJ.
-
-LES-PRE-20349
-
-In this document, where the term Arm is used to refer to the company it means “Arm or any of its subsidiaries as appropriate”.
-
-
-Confidentiality Status
-
-
-This document is Non-Confidential. The right to use, copy and disclose this document may be subject to license restrictions in
-accordance with the terms of the agreement entered into by Arm and the party that Arm delivered this document to.
-
-
-Product Status
-
-
-The information in this document is final, that is for a developed product.
-
-
-Web Address
-
-
-http://www.arm.com
-
-ARM DDI 0403E.cCopyright © 2006-2008, 2010, 2014, 2017, 2018, 2021 Arm Limited or its affiliates. All rights reserved. iii ID021621                                                           Non-Confidential
-
-
-
-iv              Copyright © 2006-2008, 2010, 2014, 2017, 2018, 2021 Arm Limited or its affiliates. All rights reserved. ARM DDI 0403E.e 
-                Non-Confidential ID021621
-
-
-
-Contents
-Armv7-M Architecture Reference Manual
-
-Preface
-About this manual ........................................................................................ x
-Using this manual ......................................................................................... xi
-Conventions ................................................................................................ xiii
-Further reading ............................................................................................. xiv
-Feedback ...................................................................................................... xv
-
-# Part A  Application Level Architecture
-
-## Chapter A1  Introduction
-### A1.1  About the Armv7 architecture, and architecture profiles .......................... A1-20
-### A1.2  The Armv7-M architecture profile ............................................................. A1-21
-### A1.3  Architecture extensions ............................................................................ A1-22
-
-## Chapter A2  Application Level Programmers’ Model
-### A2.1  About the application level programmers’ model ...................................... A2-24
-### A2.2  Arm processor data types and arithmetic ................................................ A2-25
-### A2.3  Registers and Execution state ................................................................. A2-30
-### A2.4  Exceptions, faults and interrupts ............................................................... A2-33
-### A2.5  The optional Floating-point Extension ...................................................... A2-34
-### A2.6  Coprocessor support ................................................................................. A2-61
-
-## Chapter A3  Arm Architecture Memory Model
-### A3.1  Address space ............................................................................................ A3-64
-### A3.2  Alignment support ..................................................................................... A3-65
-### A3.3  Endian support ........................................................................................... A3-67
-### A3.4  Synchronization and semaphores ............................................................ A3-70
-### A3.5  Memory types and attributes and the memory order model .................. A3-78
-
-
-
-Contents
-
-### A3.6 Access rights ................................................................................................. A3-87
-### A3.7 Memory access order .................................................................................. A3-89
-### A3.8 Caches and memory hierarchy ................................................................ A3-97
-
-
-## Chapter A4      The Armv7-M Instruction Set
-
-### A4.1 About the instruction set ............................................................................ A4-102
-### A4.2 Unified Assembler Language ................................................................... A4-104
-### A4.3 Branch instructions .................................................................................... A4-106
-### A4.4 Data-processing instructions .................................................................... A4-107
-### A4.5 Status register access instructions ......................................................... A4-114
-### A4.6 Load and store instructions ...................................................................... A4-115
-### A4.7 Load Multiple and Store Multiple instructions ....................................... A4-117
-### A4.8 Miscellaneous instructions ........................................................................ A4-118
-### A4.9 Exception-generating instructions ........................................................... A4-119
-### A4.10 Coprocessor instructions .......................................................................... A4-120
-### A4.11 Floating-point load and store instructions ............................................ A4-121
-### A4.12 Floating-point register transfer instructions ......................................... A4-122
-### A4.13 Floating-point data-processing instructions ......................................... A4-123
-
-
-## Chapter A5      The Thumb Instruction Set Encoding
-
-### A5.1 Thumb instruction set encoding ............................................................. A5-126
-### A5.2 16-bit Thumb instruction encoding ......................................................... A5-129
-### A5.3 32-bit Thumb instruction encoding ......................................................... A5-137
-
-
-## Chapter A6      The Floating-point Instruction Set Encoding
-
-### A6.1 Overview ....................................................................................................... A6-160
-### A6.2 Floating-point instruction syntax ............................................................ A6-161
-### A6.3 Register encoding ...................................................................................... A6-164
-### A6.4 Floating-point data-processing instructions ......................................... A6-165
-### A6.5 Extension register load or store instructions ....................................... A6-167
-### A6.6 32-bit transfer between Arm core and extension registers ................ A6-168
-### A6.7 64-bit transfers between Arm core and extension registers .............. A6-169
-
-
-## Chapter A7      Instruction Details
-
-### A7.1 Format of instruction descriptions .......................................................... A7-172
-### A7.2 Standard assembler syntax fields ............................................................ A7-177
-### A7.3 Conditional execution ................................................................................ A7-178
-### A7.4 Shifts applied to a register ....................................................................... A7-182
-### A7.5 Memory accesses ....................................................................................... A7-184
-### A7.6 Hint instructions ......................................................................................... A7-185
-### A7.7 Alphabetical list of Armv7-M Thumb instructions .............................. A7-186
-
-
-# Part B      System Level Architecture
-
-
-
-## Chapter B1      System Level Programmers’ Model
-
-### B1.1 Introduction to the system level ............................................................. B1-510
-### B1.2 About the Armv7-M memory mapped architecture .............................. B1-511
-### B1.3 Overview of system level terminology and operation .......................... B1-512
-### B1.4 Registers ........................................................................................................ B1-516
-### B1.5 Armv7-M exception model ........................................................................ B1-523
-### B1.6 Floating-point support ............................................................................... B1-564
-
-
-## Chapter B2      System Memory Model
-
-### B2.1 About the system memory model ............................................................. B2-570
-### B2.2 Caches and branch predictors ................................................................ B2-571
-### B2.3 Pseudocode details of general memory system operations .............. B2-582
-
-
-
-Contents
-
-## Chapter B3  System Address Map
-### B3.1  The system address map ...................................................................................... B3-592
-### B3.2  System Control Space (SCS) ............................................................................. B3-595
-### B3.3  The system timer, SysTick .................................................................................. B3-620
-### B3.4  Nested Vectored Interrupt Controller, NVIC ....................................................... B3-624
-### B3.5  Protected Memory System Architecture, PMSAv7 ............................................ B3-632
-
-## Chapter B4  The CPUID Scheme
-### B4.1  About the CPUID scheme ................................................................................... B4-644
-### B4.2  Processor Feature ID Registers ........................................................................ B4-646
-### B4.3  Debug Feature ID register .................................................................................. B4-648
-### B4.4  Auxiliary Feature ID register ............................................................................... B4-649
-### B4.5  Memory Model Feature Registers ..................................................................... B4-650
-### B4.6  Instruction Set Attribute Registers .................................................................... B4-653
-### B4.7  Floating-point feature identification registers ................................................... B4-662
-### B4.8  Cache Control Identification Registers .......................................................... B4-665
-
-## Chapter B5  System Instruction Details
-### B5.1  About the Armv7-M system instructions ......................................................... B5-670
-### B5.2  Armv7-M system instruction descriptions ....................................................... B5-672
-
-# Part C  Debug Architecture
-
-## Chapter C1  Armv7-M Debug
-### C1.1  Introduction to Armv7-M debug .................................................................. C1-682
-### C1.2  The Debug Access Port .................................................................................. C1-686
-### C1.3  Armv7-M debug features .................................................................................. C1-688
-### C1.4  Debug reset .......................................................................................................... C1-693
-### C1.5  Debug event behavior ...................................................................................... C1-694
-### C1.6  Debug system registers .................................................................................. C1-699
-### C1.7  The Instrumentation Trace Macrocell ........................................................... C1-709
-### C1.8  The Data Watchpoint and Trace unit ............................................................. C1-719
-### C1.9  Embedded Trace Macrocell support .............................................................. C1-749
-### C1.10  Trace Port Interface Unit ............................................................................... C1-750
-### C1.11  Flash Patch and Breakpoint unit .............................................................. C1-755
-
-# Part D  Appendices
-
-## Appendix D1  Armv7-M CoreSight Infrastructure IDs
-### D1.1  CoreSight infrastructure IDs for an Armv7-M implementation .......................... D1-766
-
-## Appendix D2  Legacy Instruction Mnemonics
-### D2.1  Thumb instruction mnemonics ............................................................................. D2-770
-### D2.2  Pre-UAL pseudo-instruction NOP ....................................................................... D2-773
-### D2.3  Pre-UAL floating-point instruction mnemonics .................................................. D2-774
-
-## Appendix D3  Deprecated Features in Armv7-M
-### D3.1  Deprecated features of the Armv7-M architecture ......................................... D3-778
-
-## Appendix D4  Debug ITM and DWT Packet Protocol
-### D4.1  About the ITM and DWT packets ....................................................................... D4-780
-### D4.2  Packet descriptions .............................................................................................. D4-782
-### D4.3  DWT use of Hardware source packets .............................................................. D4-790
-
-
-
-Contents
-
-## Appendix D5      Armv7-R Differences
-### D5.1    About the Armv7-M and Armv7-R architecture profiles ................................. D5-798
-### D5.2    Endian support ................................................................................................ D5-799
-### D5.3    Application level support ........................................................................... D5-800
-### D5.4    System level support .................................................................................... D5-801
-### D5.5    Debug support ............................................................................................... D5-802
-
-## Appendix D6      Pseudocode Definition
-### D6.1    Instruction encoding diagrams and pseudocode .......................................... D6-804
-### D6.2    Limitations of pseudocode ........................................................................... D6-806
-### D6.3    Data types ........................................................................................................ D6-807
-### D6.4    Expressions ...................................................................................................... D6-811
-### D6.5    Operators and built-in functions ................................................................. D6-813
-### D6.6    Statements and program structure ............................................................. D6-818
-### D6.7    Miscellaneous helper procedures and functions ......................................... D6-822
-
-## Appendix D7      Pseudocode Index
-### D7.1    Pseudocode operators and keywords ........................................................ D7-828
-### D7.2    Pseudocode functions and procedures ...................................................... D7-831
-
-## Appendix D8      Register Index
-### D8.1    Arm core registers ........................................................................................ D8-842
-### D8.2    Floating-point Extension registers ............................................................ D8-843
-### D8.3    Memory mapped System registers ............................................................ D8-844
-### D8.4    Memory-mapped debug registers ............................................................. D8-847
-
-Glossary
-
-
-
-Preface
+| Date             | Issue | Confidentiality                     | Change                                                                                                                                                                  |
+|------------------|-------|-------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| June 2006        | A     | Non-Confidential                    | Initial release                                                                                                                                                         |
+| July 2007        | B     | Non-Confidential                    | Second release, errata and changes documented separately                                                                                                                |
+| September 2008   | C     | Non-Confidential, Restricted Access | Options for additional watchpoint based trace in the DWT, plus errata updates and clarifications.                                                                       |
+| 12 February 2010 | D     | Non-Confidential                    | Fourth release, adds DSP and Floating-point extensions, and extensive clarifications and reorganization.                                                                |
+| 17 April 2014    | E.a   | Non-Confidential, Restricted Access | Fifth release. Adds double-precision floating-point, Flash Patch breakpoint version 2 and DWT changes, 64-bit timestamps,<br>cache control, and extensive reformatting. |
+| 02 December 2014 | E.b   | Non-Confidential                    | Sixth release. Errata updates and clarifications.                                                                                                                       |
+| 19 May 2017      | E.c   | Non-Confidential                    | Seventh release. Errata updates and clarifications.                                                                                                                     |
+| 29 June 2018     | E.d   | Non-Confidential                    | Eighth release. Adds CS8, PS8B, and SB8B instructions.                                                                                                                  |
+| 15 February 2021 | E.e   | Non-Confidential                    | Ninth release. Errata updates and clarifications.                                                                                                                       |
+
+---
+
+## Table of Contents
+
+## Table of Contents
+
+- [Part A: Application Level Architecture](#part-a-application-level-architecture)
+  - [Chapter A1: Introduction](#chapter-a1-introduction)
+    - [A1.1 About the Armv7 architecture, and architecture profiles (A1-20)](#a11-about-the-armv7-architecture-and-architecture-profiles)
+    - [A1.2 The Armv7-M architecture profile (A1-21)](#a12-the-armv7-m-architecture-profile)
+    - [A1.3 Architecture extensions (A1-22)](#a13-architecture-extensions)
+  - [Chapter A2: Application Level Programmers' Model](#chapter-a2-application-level-programmers-model)
+    - [A2.1 About the application level programmers' model (A2-24)](#a21-about-the-application-level-programmers-model)
+    - [A2.2 Arm processor data types and arithmetic (A2-25)](#a22-arm-processor-data-types-and-arithmetic)
+    - [A2.3 Registers and Execution state (A2-30)](#a23-registers-and-execution-state)
+    - [A2.4 Exceptions, faults and interrupts (A2-33)](#a24-exceptions-faults-and-interrupts)
+    - [A2.5 The optional Floating-point Extension (A2-34)](#a25-the-optional-floating-point-extension)
+    - [A2.6 Coprocessor support (A2-61)](#a26-coprocessor-support)
+  - [Chapter A3: Arm Architecture Memory Model](#chapter-a3-arm-architecture-memory-model)
+    - [A3.1 Address space (A3-64)](#a31-address-space)
+    - [A3.2 Alignment support (A3-65)](#a32-alignment-support)
+    - [A3.3 Endian support (A3-67)](#a33-endian-support)
+    - [A3.4 Synchronization and semaphores (A3-70)](#a34-synchronization-and-semaphores)
+    - [A3.5 Memory types and attributes and the memory order model (A3-78)](#a35-memory-types-and-attributes-and-the-memory-order-model)
+    - [A3.6 Access rights (A3-87)](#a36-access-rights)
+    - [A3.7 Memory access order (A3-89)](#a37-memory-access-order)
+    - [A3.8 Caches and memory hierarchy (A3-97)](#a38-caches-and-memory-hierarchy)
+  - [Chapter A4: The Armv7-M Instruction Set](#chapter-a4-the-armv7-m-instruction-set)
+    - [A4.1 About the instruction set (A4-102)](#a41-about-the-instruction-set)
+    - [A4.2 Unified Assembler Language (A4-104)](#a42-unified-assembler-language)
+    - [A4.3 Branch instructions (A4-106)](#a43-branch-instructions)
+    - [A4.4 Data-processing instructions (A4-107)](#a44-data-processing-instructions)
+    - [A4.5 Status register access instructions (A4-114)](#a45-status-register-access-instructions)
+    - [A4.6 Load and store instructions (A4-115)](#a46-load-and-store-instructions)
+    - [A4.7 Load Multiple and Store Multiple instructions (A4-117)](#a47-load-multiple-and-store-multiple-instructions)
+    - [A4.8 Miscellaneous instructions (A4-118)](#a48-miscellaneous-instructions)
+    - [A4.9 Exception-generating instructions (A4-119)](#a49-exception-generating-instructions)
+    - [A4.10 Coprocessor instructions (A4-120)](#a410-coprocessor-instructions)
+    - [A4.11 Floating-point load and store instructions (A4-121)](#a411-floating-point-load-and-store-instructions)
+    - [A4.12 Floating-point register transfer instructions (A4-122)](#a412-floating-point-register-transfer-instructions)
+    - [A4.13 Floating-point data-processing instructions (A4-123)](#a413-floating-point-data-processing-instructions)
+  - [Chapter A5: The Thumb Instruction Set Encoding](#chapter-a5-the-thumb-instruction-set-encoding)
+    - [A5.1 Thumb instruction set encoding (A5-126)](#a51-thumb-instruction-set-encoding)
+    - [A5.2 16-bit Thumb instruction encoding (A5-129)](#a52-16-bit-thumb-instruction-encoding)
+    - [A5.3 32-bit Thumb instruction encoding (A5-137)](#a53-32-bit-thumb-instruction-encoding)
+  - [Chapter A6: The Floating-point Instruction Set Encoding](#chapter-a6-the-floating-point-instruction-set-encoding)
+    - [A6.1 Overview (A6-160)](#a61-overview)
+    - [A6.2 Floating-point instruction syntax (A6-161)](#a62-floating-point-instruction-syntax)
+    - [A6.3 Register encoding (A6-164)](#a63-register-encoding)
+    - [A6.4 Floating-point data-processing instructions (A6-165)](#a64-floating-point-data-processing-instructions)
+    - [A6.5 Extension register load or store instructions (A6-167)](#a65-extension-register-load-or-store-instructions)
+    - [A6.6 32-bit transfer between Arm core and extension registers (A6-168)](#a66-32-bit-transfer-between-arm-core-and-extension-registers)
+    - [A6.7 64-bit transfers between Arm core and extension registers (A6-169)](#a67-64-bit-transfers-between-arm-core-and-extension-registers)
+  - [Chapter A7: Instruction Details](#chapter-a7-instruction-details)
+    - [A7.1 Format of instruction descriptions (A7-172)](#a71-format-of-instruction-descriptions)
+    - [A7.2 Standard assembler syntax fields (A7-177)](#a72-standard-assembler-syntax-fields)
+    - [A7.3 Conditional execution (A7-178)](#a73-conditional-execution)
+    - [A7.4 Shifts applied to a register (A7-182)](#a74-shifts-applied-to-a-register)
+    - [A7.5 Memory accesses (A7-184)](#a75-memory-accesses)
+    - [A7.6 Hint instructions (A7-185)](#a76-hint-instructions)
+    - [A7.7 Alphabetical list of Armv7-M Thumb instructions (A7-186)](#a77-alphabetical-list-of-armv7-m-thumb-instructions)
+
+- [Part B: System Level Architecture](#part-b-system-level-architecture)
+  - [Chapter B1: System Level Programmers' Model](#chapter-b1-system-level-programmers-model)
+    - [B1.1 Introduction to the system level (B1-510)](#b11-introduction-to-the-system-level)
+    - [B1.2 About the Armv7-M memory mapped architecture (B1-511)](#b12-about-the-armv7-m-memory-mapped-architecture)
+    - [B1.3 Overview of system level terminology and operation (B1-512)](#b13-overview-of-system-level-terminology-and-operation)
+    - [B1.4 Registers (B1-516)](#b14-registers)
+    - [B1.5 Armv7-M exception model (B1-523)](#b15-armv7-m-exception-model)
+    - [B1.6 Floating-point support (B1-564)](#b16-floating-point-support)
+  - [Chapter B2: System Memory Model](#chapter-b2-system-memory-model)
+    - [B2.1 About the system memory model (B2-570)](#b21-about-the-system-memory-model)
+    - [B2.2 Caches and branch predictors (B2-571)](#b22-caches-and-branch-predictors)
+    - [B2.3 Pseudocode details of general memory system operations (B2-582)](#b23-pseudocode-details-of-general-memory-system-operations)
+  - [Chapter B3: System Address Map](#chapter-b3-system-address-map)
+    - [B3.1 The system address map (B3-592)](#b31-the-system-address-map)
+    - [B3.2 System Control Space (SCS) (B3-595)](#b32-system-control-space-scs)
+    - [B3.3 The system timer, SysTick (B3-620)](#b33-the-system-timer-systick)
+    - [B3.4 Nested Vectored Interrupt Controller, NVIC (B3-624)](#b34-nested-vectored-interrupt-controller-nvic)
+    - [B3.5 Protected Memory System Architecture, PMSAv7 (B3-632)](#b35-protected-memory-system-architecture-pmsav7)
+  - [Chapter B4: The CPUID Scheme](#chapter-b4-the-cpuid-scheme)
+    - [B4.1 About the CPUID scheme (B4-644)](#b41-about-the-cpuid-scheme)
+    - [B4.2 Processor Feature ID Registers (B4-646)](#b42-processor-feature-id-registers)
+    - [B4.3 Debug Feature ID register (B4-648)](#b43-debug-feature-id-register)
+    - [B4.4 Auxiliary Feature ID register (B4-649)](#b44-auxiliary-feature-id-register)
+    - [B4.5 Memory Model Feature Registers (B4-650)](#b45-memory-model-feature-registers)
+    - [B4.6 Instruction Set Attribute Registers (B4-653)](#b46-instruction-set-attribute-registers)
+    - [B4.7 Floating-point feature identification registers (B4-662)](#b47-floating-point-feature-identification-registers)
+    - [B4.8 Cache Control Identification Registers (B4-665)](#b48-cache-control-identification-registers)
+  - [Chapter B5: System Instruction Details](#chapter-b5-system-instruction-details)
+    - [B5.1 About the Armv7-M system instructions (B5-670)](#b51-about-the-armv7-m-system-instructions)
+    - [B5.2 Armv7-M system instruction descriptions (B5-672)](#b52-armv7-m-system-instruction-descriptions)
+
+- [Part C: Debug Architecture](#part-c-debug-architecture)
+  - [Chapter C1: Armv7-M Debug](#chapter-c1-armv7-m-debug)
+    - [C1.1 Introduction to Armv7-M debug (C1-682)](#c11-introduction-to-armv7-m-debug)
+    - [C1.2 The Debug Access Port (C1-686)](#c12-the-debug-access-port)
+    - [C1.3 Armv7-M debug features (C1-688)](#c13-armv7-m-debug-features)
+    - [C1.4 Debug reset (C1-693)](#c14-debug-reset)
+    - [C1.5 Debug event behavior (C1-694)](#c15-debug-event-behavior)
+    - [C1.6 Debug system registers (C1-699)](#c16-debug-system-registers)
+    - [C1.7 The Instrumentation Trace Macrocell (C1-709)](#c17-the-instrumentation-trace-macrocell)
+    - [C1.8 The Data Watchpoint and Trace unit (C1-719)](#c18-the-data-watchpoint-and-trace-unit)
+    - [C1.9 Embedded Trace Macrocell support (C1-749)](#c19-embedded-trace-macrocell-support)
+    - [C1.10 Trace Port Interface Unit (C1-750)](#c110-trace-port-interface-unit)
+    - [C1.11 Flash Patch and Breakpoint unit (C1-755)](#c111-flash-patch-and-breakpoint-unit)
+
+- [Part D: Appendices](#part-d-appendices)
+  - [Appendix D1: Armv7-M CoreSight Infrastructure IDs](#appendix-d1-armv7-m-coresight-infrastructure-ids)
+    - [D1.1 CoreSight infrastructure IDs for an Armv7-M implementation (D1-766)](#d11-coresight-infrastructure-ids-for-an-armv7-m-implementation)
+  - [Appendix D2: Legacy Instruction Mnemonics](#appendix-d2-legacy-instruction-mnemonics)
+    - [D2.1 Thumb instruction mnemonics (D2-770)](#d21-thumb-instruction-mnemonics)
+    - [D2.2 Pre-UAL pseudo-instruction NOP (D2-773)](#d22-pre-ual-pseudo-instruction-nop)
+    - [D2.3 Pre-UAL floating-point instruction mnemonics (D2-774)](#d23-pre-ual-floating-point-instruction-mnemonics)
+  - [Appendix D3: Deprecated Features in Armv7-M](#appendix-d3-deprecated-features-in-armv7-m)
+    - [D3.1 Deprecated features of the Armv7-M architecture (D3-778)](#d31-deprecated-features-of-the-armv7-m-architecture)
+  - [Appendix D4: Debug ITM and DWT Packet Protocol](#appendix-d4-debug-itm-and-dwt-packet-protocol)
+    - [D4.1 About the ITM and DWT packets (D4-780)](#d41-about-the-itm-and-dwt-packets)
+    - [D4.2 Packet descriptions (D4-782)](#d42-packet-descriptions)
+    - [D4.3 DWT use of Hardware source packets (D4-790)](#d43-dwt-use-of-hardware-source-packets)
+  - [Appendix D5: Armv7-R Differences](#appendix-d5-armv7-r-differences)
+    - [D5.1 About the Armv7-M and Armv7-R architecture profiles (D5-798)](#d51-about-the-armv7-m-and-armv7-r-architecture-profiles)
+    - [D5.2 Endian support (D5-799)](#d52-endian-support)
+    - [D5.3 Application level support (D5-800)](#d53-application-level-support)
+    - [D5.4 System level support (D5-801)](#d54-system-level-support)
+    - [D5.5 Debug support (D5-802)](#d55-debug-support)
+  - [Appendix D6: Pseudocode Definition](#appendix-d6-pseudocode-definition)
+    - [D6.1 Instruction encoding diagrams and pseudocode (D6-804)](#d61-instruction-encoding-diagrams-and-pseudocode)
+    - [D6.2 Limitations of pseudocode (D6-806)](#d62-limitations-of-pseudocode)
+    - [D6.3 Data types (D6-807)](#d63-data-types)
+    - [D6.4 Expressions (D6-811)](#d64-expressions)
+    - [D6.5 Operators and built-in functions (D6-813)](#d65-operators-and-built-in-functions)
+    - [D6.6 Statements and program structure (D6-818)](#d66-statements-and-program-structure)
+    - [D6.7 Miscellaneous helper procedures and functions (D6-822)](#d67-miscellaneous-helper-procedures-and-functions)
+  - [Appendix D7: Pseudocode Index](#appendix-d7-pseudocode-index)
+    - [D7.1 Pseudocode operators and keywords (D7-828)](#d71-pseudocode-operators-and-keywords)
+    - [D7.2 Pseudocode functions and procedures (D7-831)](#d72-pseudocode-functions-and-procedures)
+  - [Appendix D8: Register Index](#appendix-d8-register-index)
+    - [D8.1 Arm core registers (D8-842)](#d81-arm-core-registers)
+    - [D8.2 Floating-point Extension registers (D8-843)](#d82-floating-point-extension-registers)
+    - [D8.3 Memory mapped System registers (D8-844)](#d83-memory-mapped-system-registers)
+    - [D8.4 Memory-mapped debug registers (D8-847)](#d84-memory-mapped-debug-registers)
+
+
+---
+
+# Preface
 
 This preface describes the contents of this manual, then lists the conventions and terminology it uses.
 
@@ -314,24 +173,15 @@ This preface describes the contents of this manual, then lists the conventions a
 - *Feedback on page xv.*
 
 
-
-*Preface*  
-*About this manual*  
-
-
-About this manual
-
-
-This manual documents the Microcontroller profile of version 7 of the Arm® Architecture, the Armv7-M architecture profile. For short definitions of all the Armv7 profiles see *About the Armv7 architecture, and architecture profiles on page A1-20*.
-
-The manual has the following parts:
+## About this manual
+This manual documents the Microcontroller profile of version 7 of the Arm® Architecture, the Armv7-M architecture profile. For short definitions of all the Armv7 profiles see *About the Armv7 architecture, and architecture profiles on page A1-20*. The manual has the following parts:
 
 **Part A**  
 The application level programming model and memory model information along with the instruction set as visible to the application programmer.
 
 This is the information required to program applications or to develop the toolchain components (compiler, linker, assembler and disassembler) excluding the debugger. For Armv7-M, this is almost entirely a subset of material common to the other two profiles. Instruction set details that differ between profiles are clearly stated.
 
-____ **Note** ____
+**Note**
 
 All Armv7 profiles support a common procedure calling standard, the *Arm Architecture Procedure Calling Standard (AAPCS)*.
 
@@ -340,7 +190,7 @@ The system level programming model and system level support instructions require
 
 This is the information in addition to Part A required for an operating system (OS) and/or system support software. It includes details of register banking, the exception model, memory protection (management of access rights) and cache support.
 
-Part B is profile specific. Armv7-M introduces a new programmers’ model and as such has some fundamental differences at the system level from the other profiles. As Armv7-M is a memory-mapped architecture, the system memory map is documented here.
+Part B is profile specific. Armv7-M introduces a new programmers' model and as such has some fundamental differences at the system level from the other profiles. As Armv7-M is a memory-mapped architecture, the system memory map is documented here.
 
 **Part C**  
 The debug features to support the Armv7-M debug architecture and the programming interface to the debug environment.
@@ -356,27 +206,19 @@ This part is profile specific and includes several debug features that are suppo
 The appendices give information that relates to, but is not part of, the Armv7-M architecture profile specification.
 
 
-
-Preface  
-Using this manual
-
-
-Using this manual
-
+## Using this manual
 
 The information in this manual is organized into four parts as described below.
 
 
-# Part A, Application level architecture
-
-
+**Part A, Application level architecture**
 Part A describes the application level view of the architecture. It contains the following chapters:
 
 **Chapter A1 Introduction**  
 Introduces the Armv7 architecture, the architecture profiles it defines, and the Armv7-M profile defined by this manual.
 
-**Chapter A2 Application Level Programmers’ Model**  
-Gives an application-level view of the Armv7-M programmers’ model, including a summary of the exception model.
+**Chapter A2 Application Level Programmers' Model**  
+Gives an application-level view of the Armv7-M programmers' model, including a summary of the exception model.
 
 **Chapter A3 Arm Architecture Memory Model**  
 Gives an application-level view of the Armv7-M memory model, including the Arm memory attributes and memory ordering model.
@@ -394,13 +236,12 @@ Describes the encoding of the floating-point instruction set extension of the Th
 Provides detailed reference material on each Thumb instruction, arranged alphabetically by instruction mnemonic, including summary information for system-level instructions.
 
 
-# Part B, System level architecture
-
+**Part B, System level architecture**
 
 Part B describes the system level view of the architecture. It contains the following chapters:
 
-**Chapter B1 System Level Programmers’ Model**  
-Gives a system-level view of the Armv7-M programmers’ model, including the exception model.
+**Chapter B1 System Level Programmers' Model**  
+Gives a system-level view of the Armv7-M programmers' model, including the exception model.
 
 **Chapter B2 System Memory Model**  
 Provides a pseudocode description of the Armv7-M memory model.
@@ -414,29 +255,20 @@ Describes the CPUID scheme. This provides registers that identify the architectu
 **Chapter B5 System Instruction Details**  
 Provides detailed reference material on the system-level instructions.
 
-ARM DDI 0403E.c©Copyright © 2006-2008, 2010, 2014, 2017, 2018, 2021 Arm Limited or its affiliates. All rights reserved.  
-ID021621 Non-Confidential
+
+## Using this manual
 
 
-
-Preface  
-Using this manual
-
-
-# Part C, Debug architecture
-
+**Part C, Debug architecture**
 
 Part C describes the debug architecture. It contains the following chapter:
 
 
-## Chapter C1 Armv7-M Debug
-
+**Chapter C1 Armv7-M Debug**
 
 Describes the Armv7-M debug architecture.
 
-
-# Part D, Appendices
-
+**Part D, Appendices**
 
 This manual contains a glossary and the following appendices:
 
@@ -571,7 +403,7 @@ Other publications
 The following books are referred to in this manual:
 - *ANSI/IEEE Std 754-1985 and ANSI/IEEE Std 754-2008, IEEE Standard for Binary Floating-Point Arithmetic*. Unless otherwise indicated, references to IEEE 754 refer to either issue of the standard.
 
-  ＿＿＿ **Note** ＿＿＿  
+  **Note**
   This document does not adopt the terminology defined in the 2008 issue of the standard.
 
 - *JEP106, Standard Manufacturers Identification Code, JEDEC Solid State Technology Association*.
@@ -579,60 +411,13 @@ The following books are referred to in this manual:
 
 
 
-Feedback
+
+---
+
+# Part A: Application Level Architecture
 
 
-Arm welcomes feedback on its documentation.
-
-
-Feedback on this book
-
-
-If you have comments on the content of this manual, send e-mail to errata@arm.com. Give:
-- The title.
-- The number, ARM DDI 0403E.e.
-- The page numbers to which your comments apply.
-- A concise explanation of your comments.
-
-Arm also welcomes general suggestions for additions and improvements.
-
-____Note________________________________________________________
-
-Arm tests the PDF only in Adobe Acrobat and Acrobat Reader, and cannot guarantee the quality of the represented document when used with any other PDF reader.
-
-_______________________________________________________________
-
-
-Progressive Terminology Commitment
-
-
-Arm values inclusive communities. Arm recognizes that we and our industry have used terms that can be offensive. Arm strives to lead the industry and to create change.
-
-Previous issues of this document included terms that can be offensive. We have replaced these terms.
-
-If you find offensive terms in this document, please contact terms@arm.com.
-
-
-
-Preface
-Feedback
-
-
-
-# Part A
-Application Level Architecture
-
-
-
-markdown
-
-
-
-
-## Chapter A1
-
-Introduction
-
+## Chapter A1: Introduction
 
 This chapter introduces the Armv7 architecture, the architecture profiles it defines, and the Armv7-M profile
 defined by this manual. It contains the following sections:
@@ -670,7 +455,7 @@ While profiles were formally introduced with the Armv7 development, the A-profil
 
 The Arm architecture has evolved through several major revisions to a point where it supports implementations across a wide spectrum of performance points, with over a billion parts per annum being produced. The latest version, Armv7, formally recognizes this diversity by defining a set of architecture profiles that tailor the architecture to different market requirements. A key factor is that the application level is consistent across all profiles, and the bulk of the variation is at the system level.
 
-The introduction of Thumb-2 technology in Armv6T2 provided a balance to the Arm and Thumb instruction sets, and the opportunity for the Arm architecture to be extended into new markets, in particular the microcontroller marketplace. To take maximum advantage of this opportunity, Arm has introduced the Armv7-M architecture profile for microcontroller implementations, complementing its strengths in the high performance and real-time embedded markets. Armv7-M is a Thumb-only profile with a new system level programmers’ model.
+The introduction of Thumb-2 technology in Armv6T2 provided a balance to the Arm and Thumb instruction sets, and the opportunity for the Arm architecture to be extended into new markets, in particular the microcontroller marketplace. To take maximum advantage of this opportunity, Arm has introduced the Armv7-M architecture profile for microcontroller implementations, complementing its strengths in the high performance and real-time embedded markets. Armv7-M is a Thumb-only profile with a new system level programmers' model.
 
 Key criteria for Armv7-M implementations are as follows:
 
@@ -757,7 +542,6 @@ software tools might require these characterizations.
 
 | Table A1-1 Floating-point Extension full characterizations |  |
 | ---------------------------------------------------------- | ------------ |
-
 | Extension | Single-precision only | Single and double-precision |
 | FPv4-SP | FPv4-SP-D16-M | Not applicable |
 | FPv5 | FPv5-SP-D16-M | FPv5-D16-M |
@@ -767,12 +551,12 @@ A1-22 Copyright © 2006-2008, 2010, 2014, 2017, 2018, 2021 Arm Limited or its af
 Non-Confidential                                                                                                ID021621
 
 
+---
 
-## Chapter A2
-Application Level Programmers’ Model
+## Chapter A2: Application Level Programmers' Model
 
-This chapter gives an application-level view of the Armv7-M programmers’ model. It contains the following sections:
-• *About the application level programmers’ model* on page A2-24.
+This chapter gives an application-level view of the Armv7-M programmers' model. It contains the following sections:
+• *About the application level programmers' model* on page A2-24.
 • *Arm processor data types and arithmetic* on page A2-25.
 • *Registers and Execution state* on page A2-30.
 • *Exceptions, faults and interrupts* on page A2-33.
@@ -784,17 +568,17 @@ ID021621                                                Non-Confidential        
 
 
 
-A2 Application Level Programmers’ Model  
-### A2.1 About the application level programmers’ model
+A2 Application Level Programmers' Model  
+### A2.1 About the application level programmers' model
 
 
-### A2.1 About the application level programmers’ model
+### A2.1 About the application level programmers' model
 
 
-This chapter contains the programmers’ model information required for application development.
+This chapter contains the programmers' model information required for application development.
 
 The information in this chapter is distinct from the system information required to service and support application
-execution under an operating system. That information is given in Chapter B1 System Level Programmers’ Model. 
+execution under an operating system. That information is given in Chapter B1 System Level Programmers' Model. 
 System level support requires access to all features and facilities of the architecture, a level of access generally 
 referred to as privileged operation. System code determines whether an application runs in a privileged or 
 unprivileged manner. An operating system supports both privileged and unprivileged operation, but an application 
@@ -822,12 +606,12 @@ mode can handle system access and control directly.
 All exceptions execute in Handler mode. SVCAll handlers manage resources, such as interaction with peripherals, 
 memory allocation and management of software stacks, on behalf of the application.
 
-This chapter only provides system level information that is needed to understand the application programmers’ model. 
+This chapter only provides system level information that is needed to understand the application programmers' model. 
 Where appropriate it:
 
 - Gives an overview of the system level information.
 
-- Gives references to the system level descriptions in Chapter B1 System Level Programmers’ Model and 
+- Gives references to the system level descriptions in Chapter B1 System Level Programmers' Model and 
 elsewhere.
 
 A2-24            Copyright © 2006-2008, 2010, 2014, 2017, 2018, 2021 Arm Limited or its affiliates. All rights reserved.ARM DDI 0403E.e  
@@ -879,7 +663,7 @@ The instruction set provides operations on the values in registers, including bi
 
 
 
-A2 Application Level Programmers’ Model  
+A2 Application Level Programmers' Model  
 ### A2.2 Arm processor data types and arithmetic
 
 Shift and rotate operations
@@ -944,7 +728,7 @@ bits(N) LSL(bits(N) x, integer shift)
 
 
 
-A2 Application Level Programmers’ Model
+A2 Application Level Programmers' Model
 ### A2.2 Arm processor data types and arithmetic
 
 bits(N) LSR(bits(N) x, integer shift)
@@ -1049,7 +833,7 @@ functions when only the saturated result is wanted:
 
 ### A2.3 Registers and Execution state
 
-The application level programmers’ model provides details of the general-purpose and special-purpose registers 
+The application level programmers' model provides details of the general-purpose and special-purpose registers 
 visible to the application programmer, the Arm memory model, and the instruction set used to load registers from 
 memory, store registers to memory, or manipulate data (data operations) within the registers.
 
@@ -1145,7 +929,6 @@ are:
 
 | 31 | 30 | 29 | 28 | 27 | 26 |  | 20 | 19 | 16 | 15 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | ---- | ---- | ---- | ---- | --- |
-
 | N | Z | C | V | Q | Reserved | GE[3:0] | Reserved |
 
 
@@ -1315,10 +1098,6 @@ The original Arm floating-point implementation was based on the 1985 version of 
 - References to IEEE 754 that do not include the issue year apply to either issue of the standard.
 
 
-
-A2 Application Level Programmers’ Model  
-### A2.5 The optional Floating-point Extension
-
 Table A2-1 shows how the terminology in this manual differs from that used in IEEE 754-2008.
 
 
@@ -1374,10 +1153,6 @@ The FP extension provides single-precision floating-point data-processing instru
 
 
 
-A2 Application Level Programmers' Model  
-### A2.5 The optional Floating-point Extension
-
----
 
 **Note**  
 - Registers S0-S31 are sometimes described as the single-word registers.  
@@ -1385,7 +1160,7 @@ A2 Application Level Programmers' Model
 
 Other Arm floating-point implementations can support 32 double-precision registers, D0-D31. In the Armv7-M FP extension, and other implementations that support only D0-D15, any instruction that attempts to access any register in the range D16-D31 is UNDEFINED.  
 
----
+
 
 **Note**  
 
@@ -1447,9 +1222,6 @@ A2-36                Copyright © 2006-2008, 2010, 2014, 2017, 2018, 2021 Arm Li
                                             Non-Confidential ID021621
 
 
-
-A2 Application Level Programmers’ Model
-### A2.5 The optional Floating-point Extension
 
 ### A2.5.3 Floating-point Status and Control Register, FPSCR
 
@@ -1622,15 +1394,10 @@ A double-precision value is a 64-bit doubleword, with the format:
 
 
 | 63 | 62 |  | 52 | 51 |  | 32 | 31 |  |  | 0 |
-
 | --- | ------- | ---- | --------- | --- | --------- | -------- | --- | ----------- | -------- |
-
 | S | exponent | fraction |
 |  |  |  |
 
-
-A2 Application Level Programmers' Model  
-### A2.5 The optional Floating-point Extension
 
 Double-precision values represent numbers, infinities and NaNs in a similar way to single-precision values, with the interpretation of the format depending on the value of the exponent:
 
@@ -1698,7 +1465,7 @@ The Arm half-precision floating-point implementation uses two half-precision flo
 
 
 
-*A2 Application Level Programmers’ Model*  
+*A2 Application Level Programmers' Model*  
 *A2.5 The optional Floating-point Extension*
 
 The description of IEEE half-precision includes Arm-specific details that are left open by the standard, and is only  
@@ -1710,7 +1477,6 @@ For both half-precision floating-point formats, the layout of the 16-bit number 
 
 | 15 | 14 | 10 | 9 | 0 |
 | ---- | ---- | ------------ | --- | -------------- |
-
 | S | **exponent** | **fraction** |
 
 
@@ -1828,10 +1594,6 @@ The IEEE 754 standard specifies that:
 - An operation involving a quiet NaN operand, but not a signaling NaN operand, returns an input NaN as its result.
 
 
-
-A2 Application Level Programmers’ Model  
-### A2.5 The optional Floating-point Extension
-
 The FP behavior when Default NaN mode is disabled adheres to this with the following extra details, where the first operand means the first argument to the pseudocode function call that describes the operation:
 
 - If an Invalid Operation floating-point exception is produced because one of the operands is a signaling NaN, the quiet NaN result is equal to the signaling NaN with its most significant fraction bit changed to 1. If both operands are signaling NaNs, the result is produced in this way from the first operand.
@@ -1853,7 +1615,6 @@ The Invalid Operation exception causes the FPSCR.IOC bit be set to 1. This is no
 
 |  | Table A2-2 Default NaN encoding |
 | -------------------------------------- | ----------------------------------------------------- |
-
 |  | Half-precision, IEEE Format | Single-precision | Double-precision |
 | Sign bit | 0 | 0 | 0 |
 | Exponent | 0x1F | 0xFF | 0x7FF |
@@ -1877,10 +1638,6 @@ For the reciprocal and reciprocal square root estimate functions the dividend is
 
 **UFC** Underflow. The bit is set to 1 if the absolute value of the result of an operation, produced before rounding, is less than the minimum positive normalized number for the destination precision, and the rounded result is inexact.
 
-
-
-A2 Application Level Programmers' Model
-### A2.5 The optional Floating-point Extension
 
                            The criteria for the Underflow exception to occur are different in Flush-to-zero mode. For details,
                            see Flush-to-zero on page A2-43.
@@ -1939,18 +1696,9 @@ The following pseudocode functions perform floating-point operations:
     FPNeg( )
     FPSingleToDouble( )
     FPSingleToHalf( )
-
-ARM DDI 0403E.c Copyright © 2006-2008, 2010, 2014, 2017, 2018, 2021 Arm Limited or its affiliates. All rights reserved. A2-45
-ID021621                                                                                     Non-Confidential
-
-
-
-A2 Application Level Programmers’ Model  
-### A2.5 The optional Floating-point Extension
-
-FPStart( )  
-FPSub( )  
-FPToFixed( )
+    FPStart( )  
+    FPSub( )  
+    FPToFixed( )
 
 All of these operations except FPAbs( ) and FPNeg( ) can generate floating-point exceptions.
 
@@ -1975,8 +1723,9 @@ This section contains pseudocode defining the floating-point operations used by 
 Generation of specific floating-point values
 
 
-The following functions generate specific floating-point values. The sign argument of FPZero( ), FPMaxNormal( ), and FPInfinity( ) is ‘0’ for the positive version and ‘1’ for the negative version.
+The following functions generate specific floating-point values. The sign argument of FPZero( ), FPMaxNormal( ), and FPInfinity( ) is '0' for the positive version and '1' for the negative version.
 
+```
 // FPZero()
 // =========
 
@@ -2005,12 +1754,6 @@ bits(N) FPInfinity(bit sign, integer N)
     else E = 11;
 
     F = N – E – 1;
-
-
-
-A2 Application Level Programmers’ Model
-### A2.5 The optional Floating-point Extension
-
 
    exp  = Ones(E);
    frac = Zeros(F);
@@ -2048,7 +1791,7 @@ bits(N) FPDefaultNaN(integer N)
     exp = Ones(E);
     frac = '1':Zeros(F-1);
     return sign:exp:frac;
-
+```
 
 FP negation and absolute value
 
@@ -2079,16 +1822,6 @@ enumeration FPType {FPType_Nonzero, FPType_Zero, FPType_Infinity, FPType_QNaN, F
 
 // FPUnpack()
 // ===========
-
-
-ARM DDI 0403E.cCopyright © 2006-2008, 2010, 2014, 2017, 2018, 2021 Arm Limited or its affiliates. All rights reserved.       A2-47
-ID021621                                                                                                                  Non-Confidential
-
-
-
-A2 Application Level Programmers' Model  
-### A2.5 The optional Floating-point Extension
-
 // Unpack a floating-point number into its type, sign bit and the real number  
 // that it represents. The real number result has the correct sign for numbers  
 // and infinities, is very large in magnitude for infinities, and is 0.0 for  
@@ -2165,12 +1898,12 @@ A2 Application Level Programmers' Model
 
 
 type = FPType_Infinity; value = 2.0^10000000;
-else if frac64<51> == ‘1’ then FPType_QuietNaN else FPType_SNaN;
+else if frac64<51> == '1' then FPType_QuietNaN else FPType_SNaN;
 value = 0.0;
 else
 type = FPType_Nonzero; value = 2.0^(UInt(exp64)-1023) * (1.0 + UInt(frac64) * 2.0^-52);
 
-if sign == ‘1’ then value = -value;
+if sign == '1' then value = -value;
 return (type, sign, value);
 
 FP exception and NaN handling
@@ -2182,7 +1915,7 @@ enumeration FPType {FPType_Nonzero, FPType_Zero, FPType_Infinity, FPType_QuietNa
 // FPProcessException()
 //
 // =====================================================================
-// The ‘fpscr_val’ argument supplies FPSCR control bits. Status information is
+// The 'fpscr_val' argument supplies FPSCR control bits. Status information is
 // updated directly in the FPSCR where appropriate.
 
 FPProcessException(FPExc exception, bits(32) fpscr_val)
@@ -2194,10 +1927,10 @@ when FPExc_Overflow enable = 10; cumu1 = 2;
 when FPExc_Underflow enable = 11; cumu1 = 3;
 when FPExc_Inexact enable = 12; cumu1 = 4;
 when FPExc_InputDenorm enable = 15; cumu1 = 7;
-if fpscr_val<enable> == ‘1’ then
+if fpscr_val<enable> == '1' then
 IMPLEMENTATION_DEFINED floating-point trap handling;
 else
-FPSCR<cumu1> = ‘1’;
+FPSCR<cumu1> = '1';
 return;
 
 The FPProcessNaN() function processes a NaN operand, producing the correct result value and generating an Invalid
@@ -2206,7 +1939,7 @@ Operation exception if necessary:
 // FPProcessNaN()
 //
 // =====================================================================
-// The ‘fpscr_val’ argument supplies FPSCR control bits. Status information is
+// The 'fpscr_val' argument supplies FPSCR control bits. Status information is
 // updated directly in the FPSCR where appropriate.
 
 bits(N) FPProcessNaN(FPType type, bits(N) operand, bits(32) fpscr_val)
@@ -2214,9 +1947,9 @@ assert N IN {32,64};
 topfrac = If N == 32 then 22 else 51;
 result = operand;
 if type == FPType_SNaN then
-result<topfrac> = ‘1’;
+result<topfrac> = '1';
 FPProcessException(FPExc_InvalidOp, fpscr_val);
-if fpscr_val<25> == ‘1’ then // DefaultNaN requested
+if fpscr_val<25> == '1' then // DefaultNaN requested
 result = FPDefaultNaN(N);
 return result;
 
@@ -2229,13 +1962,7 @@ The FPProcessNaNs() function performs the standard NaN processing for a two-oper
 // processed. The bits(N) part is only relevant if it has and supplies the
 // result of the operation.
 //
-// The ‘fpscr_val’ argument supplies FPSCR control bits. Status information is
-
-
-
-A2 Application Level Programmers' Model  
-### A2.5 The optional Floating-point Extension
-
+// The 'fpscr_val' argument supplies FPSCR control bits. Status information is
 // updated directly in the FPSCR where appropriate.
 
 (boolean, bits(N)) FPProcessNaNs(FPType type1, FPType type2,  
@@ -2251,7 +1978,7 @@ A2 Application Level Programmers' Model
     elsif type2 == FPType_QNaN then
         done = TRUE; result = FPProcessNaN(type2, op2, fpscr_val);
     else
-        done = FALSE; result = Zeros(N); // ‘Don't care’ result
+        done = FALSE; result = Zeros(N); // 'Don't care' result
     return (done, result);
 
 The FPProcessNaNs3() function performs the standard NaN processing for a three-operand operation:
@@ -2263,7 +1990,7 @@ The FPProcessNaNs3() function performs the standard NaN processing for a three-o
 // processed. The bits(N) part is only relevant if it has and supplies the  
 // result of the operation.  
 //  
-// The ‘fpscr_val’ argument supplies FPSCR control bits. Status information is  
+// The 'fpscr_val' argument supplies FPSCR control bits. Status information is  
 // updated directly in the FPSCR where appropriate.
 
 (boolean, bits(N)) FPProcessNaNs3(FPType type1, FPType type2, FPType type3,  
@@ -2283,7 +2010,7 @@ The FPProcessNaNs3() function performs the standard NaN processing for a three-o
     elsif type3 == FPType_QNaN then
         done = TRUE; result = FPProcessNaN(type3, op3, fpscr_val);
     else
-        done = FALSE; result = Zeros(N); // ‘Don't care’ result
+        done = FALSE; result = Zeros(N); // 'Don't care' result
     return (done, result);
 
 
@@ -2295,7 +2022,7 @@ The FPRound() function rounds and encodes a single-precision floating-point resu
 // FPRound()  
 // ==========  
 //  
-// The ‘fpscr_val’ argument supplies FPSCR control bits. Status information is  
+// The 'fpscr_val' argument supplies FPSCR control bits. Status information is  
 // updated directly in the FPSCR where appropriate.
 
 bits(N) FPRound(real value, integer N, bits(32) fpscr_val)  
@@ -2303,16 +2030,7 @@ bits(N) FPRound(real value, integer N, bits(32) fpscr_val)
     assert value != 0.0;  
 
 // Obtain format parameters – minimum exponent, numbers of exponent and fraction bits.  
-    if N == 16 then  
-
-A2-50                   Copyright © 2006-2008, 2010, 2014, 2017, 2018, 2021 Arm Limited or its affiliates. All rights reserved. ARM DDI 0403E.e  
-                           Non-Confidential                                                                                              ID021621
-
-
-
-A2 Application Level Programmers’ Model
-### A2.5 The optional Floating-point Extension
-
+    if N == 16 then
     E = 5;
 elsif N == 32 then
     E = 8;
@@ -2323,9 +2041,9 @@ F = N - E - 1;
 
 // Split value into sign, unrounded mantissa and exponent.
 if value < 0.0 then
-    sign = ‘1’; mantissa = -value;
+    sign = '1'; mantissa = -value;
 else
-    sign = ‘0’; mantissa = value;
+    sign = '0'; mantissa = value;
     exponent = 0;
 while mantissa < 1.0 do
     mantissa = mantissa * 2.0; exponent = exponent - 1;
@@ -2333,9 +2051,9 @@ while mantissa >= 2.0 do
     mantissa = mantissa / 2.0; exponent = exponent + 1;
 
 // Deal with flush-to-zero.
-if fpscr_val<24> == ‘1’ && N != 16 && exponent < minimum_exp then
+if fpscr_val<24> == '1' && N != 16 && exponent < minimum_exp then
     result = FZero(sign, N);
-    FPSCR.UFC = ‘1’; // Flush-to-zero never generates a trapped exception
+    FPSCR.UFC = '1'; // Flush-to-zero never generates a trapped exception
 else
 
     // Start creating the exponent value for the result. Start by biasing the actual exponent
@@ -2350,26 +2068,26 @@ else
    // Underflow occurs if exponent is too small before rounding, and result is inexact or
    // the Underflow exception is trapped.
 
-| if biased_exp == 0 && (error != 0.0 |  | fpscr_val<UFC> == ‘1’) then |
+| if biased_exp == 0 && (error != 0.0 |  | fpscr_val<UFC> == '1') then |
 
 
       FPProcessException(FPExc_Underflow, fpscr_val);
       
    // Round result according to rounding mode.
    case fpscr_val<23:22> of
-       when ‘00’ // Round to Nearest (rounding to even if exactly halfway)
+       when '00' // Round to Nearest (rounding to even if exactly halfway)
 
-| round_up = (error > 0.5 |  | (error == 0.5 && int_mant<0> == ‘1’)); |
+| round_up = (error > 0.5 |  | (error == 0.5 && int_mant<0> == '1')); |
 
 
            overflow_to_inf = TRUE;
-       when ‘01’ // Round towards Plus Infinity
-           round_up = (error != 0.0 && sign == ‘0’);
-           overflow_to_inf = (sign == ‘0’);
-       when ‘10’ // Round towards Minus Infinity
-           round_up = (error != 0.0 && sign == ‘1’);
-           overflow_to_inf = (sign == ‘1’);
-       when ‘11’ // Round towards Zero
+       when '01' // Round towards Plus Infinity
+           round_up = (error != 0.0 && sign == '0');
+           overflow_to_inf = (sign == '0');
+       when '10' // Round towards Minus Infinity
+           round_up = (error != 0.0 && sign == '1');
+           overflow_to_inf = (sign == '1');
+       when '11' // Round towards Zero
            round_up = FALSE;
            overflow_to_inf = FALSE;
    if round_up then
@@ -2382,7 +2100,7 @@ else
 
    // Deal with overflow and generate result.
 
-| if N != 16 |  | fpscr_val<26> == ‘0’ then // Single, double or IEEE half precision |
+| if N != 16 |  | fpscr_val<26> == '0' then // Single, double or IEEE half precision |
 
 
        if biased_exp >= 2^E - 1 then
@@ -2390,11 +2108,6 @@ else
            FPProcessException(FPExc_Overflow, fpscr_val);
            error = 1.0; // Ensure that an Inexact exception occurs
        else
-
-
-
-A2 Application Level Programmers’ Model  
-### A2.5 The optional Floating-point Extension
 
     result = sign:biased_expnE-1:0::int_mantf-1:0⟨N⟩;  
                 // Alternative half precision (with N==16)
@@ -2488,7 +2201,7 @@ value and this value.
 // ==================
 
 bits(32) StandardFPSCRValue()
-    return ‘00000’ : FPSCR<26> : ‘11000000000000000000000’;
+    return '00000' : FPSCR<26> : '11000000000000000000000';
 
 FP comparisons
 
@@ -2498,7 +2211,6 @@ shows:
 
 | Table A2-4 FP comparison flag values |
 | --------------------------------------------------------------------------------------- |
-
 | Comparison result | N | Z | C | V |
 | :------------------: | :-: | :-: | :-: | :-: |
 | Equal | 0 | 1 | 1 | 0 |
@@ -2524,7 +2236,7 @@ execution as Table A7-1 on page A7-178 shows.
 | if type1==FPType_SNaN |  | type1==FPType_QNaN |  | type2==FPType_SNaN |  | type2==FPType_QNaN then |
 
 
-        result = (‘0’,’0’,’1’,’1’);
+        result = ('0','0','1','1');
 
 | if type1==FPType_SNaN |  | type2==FPType_SNaN |  | quiet_nan_exc then |
 
@@ -2532,11 +2244,11 @@ execution as Table A7-1 on page A7-178 shows.
             FPProcessException(FPExc_InvalidOp, fpscr_val);
     else // All non-NaN cases can be evaluated on the values produced by FPUnpack()
         if value1 == value2 then
-            result = (‘0’,’1’,’1’,’0’);
+            result = ('0','1','1','0');
         elsif value1 < value2 then
-            result = (‘1’,’0’,’0’,’0’);
+            result = ('1','0','0','0');
         else // value1 > value2
-            result = (‘0’,’0’,’1’,’0’);
+            result = ('0','0','1','0');
     return result;
 
 FP addition and subtraction
@@ -2544,13 +2256,6 @@ FP addition and subtraction
 The following functions perform floating-point addition and subtraction.
 
 // FPAdd()
-
-
-
-A2 Application Level Programmers' Model
-
-### A2.5 The optional Floating-point Extension
-
 // =======
 
 bits(N) FPAdd(bits(N) op1, bits(N) op2, boolean fpscr_controlled)
@@ -2721,10 +2426,6 @@ bits(N) FPMULAdd(bits(N) addend, bits(N) op1, bits(N) op2,
 
 
 | if typeA == FPType_QNaN && ((inf1 && zero2) |  | (zero1 && inf2)) then |
-
-
-A2 Application Level Programmers’ Model  
-### A2.5 The optional Floating-point Extension
 
     result = FPDefaultNaN(N);  
     FPProcessException(FPExc_InvalidOp, fpscr_val);  
@@ -2977,12 +2678,6 @@ bits(M) FPToFixed(bits(N) operand, integer M, integer fraction_bits, boolean uns
 // Operation floating-point exception).
     (result, overflow) = Sat(int_result, M, unsigned);
     return result;
-
-
-
-A2 Application Level Programmers’ Model
-### A2.5 The optional Floating-point Extension
-
        if overflow then
            FPProcessException(FPExc_InvalidOp, fpscr_val);
        elsif error != 0.0 then
@@ -2995,11 +2690,11 @@ A2 Application Level Programmers’ Model
                             boolean round_to_nearest, boolean fpscr_controlled)
        assert N IN {32,64};
        fpscr_val = if fpscr_controlled then FPSCR else StandardFPSCRValue();
-       if round_to_nearest then fpscr_val<23:22> = ‘00’;
+       if round_to_nearest then fpscr_val<23:22> = '00';
        int_operand = if unsigned then UInt(operand) else SInt(operand);
        real_operand = int_operand / 2^fraction_bits;
        if real_operand == 0.0 then
-           result = FPZero(‘0’, N);
+           result = FPZero('0', N);
        else
            result = FPRound(real_operand, N, fpscr_val);
        return result;
@@ -3033,19 +2728,19 @@ The following functions perform conversions between floating-point numbers and i
 
        // Determine whether supplied rounding mode requires an increment
        case round_mode of
-           when ‘00’ // ties away
+           when '00' // ties away
 
 | round_up = (error > 0.5 |  | (error == 0.5 && int_result >= 0)); |
 
 
-           when ‘01’ // nearest even
+           when '01' // nearest even
 
-| round_up = (error > 0.5 |  | (error == 0.5 && int_result<0> == ‘1’)); |
+| round_up = (error > 0.5 |  | (error == 0.5 && int_result<0> == '1')); |
 
 
-           when ‘10’ // plus infinity
+           when '10' // plus infinity
                round_up = (error != 0.0);
-           when ‘11’ // neg infinity
+           when '11' // neg infinity
                round_up = FALSE;
 
        if round_up then int_result = int_result + 1;
@@ -3058,14 +2753,6 @@ The following functions perform conversions between floating-point numbers and i
        elsif error != 0.0 then
            FPProcessException(FPExc_Inexact, fpscr_val);
        return result;
-
-ARM DDI 0403E.c Copyright © 2006-2008, 2010, 2014, 2017, 2018, 2021 Arm Limited or its affiliates. All rights reserved. A2-59
-ID021621                                                               Non-Confidential
-
-
-
-A2 Application Level Programmers’ Model  
-### A2.5 The optional Floating-point Extension
 
 
 FP minimum and maximum
@@ -3109,13 +2796,12 @@ ID021621 Non-Confidential
 
 
 
-A2 Application Level Programmers’ Model  
+A2 Application Level Programmers' Model  
 ### A2.6 Coprocessor support
 
+---
 
-
-## Chapter A3
-**Arm Architecture Memory Model**
+## Chapter A3: Arm Architecture Memory Model
 
 This chapter gives an application-level view of the Armv7-M memory model. It contains the following sections:
 
@@ -3324,11 +3010,8 @@ at address A and A+2, and the bytes at addresses A, A+1, A+2, and A+3 map onto e
 
 | MSByte | MSByte-1 | LSByte+1 | LSByte |
 | ----------------- | ----------------- | ----------------- | ------------------ |
-
 | Word at address A |
-
 | Halfword at address (A+2) | Halfword at address A |
-
 | Byte at address (A+3) | Byte at address (A+2) | Byte at address (A+1) | Byte at address A |
 
 
@@ -3342,11 +3025,8 @@ A3 Arm Architecture Memory Model
 
 | MSByte | MSByte-1 | LSByte+1 | LSByte |
 | ------------ | ----------- | ----------- | ---------- |
-
 | Word at address A |
-
 | Halfword at address A | Halfword at address (A+2) |
-
 | Byte at address A | Byte at address (A+1) | Byte at address (A+2) | Byte at address (A+3) |
 
 
@@ -3541,7 +3221,6 @@ Table A3-2 shows the effect of the operations shown in Figure A3-6 on page A3-71
 
 
 | Table A3-2 Effect of Exclusive instructions and write operations on local monitor |
-
 | ------------------ | ------------------ | -------------------------------- | --------------- |
 | **Initial state** | **Operation<sup>a</sup>** | **Effect** | **Final state** |
 | Open Access | CLREX | No effect. | Open Access. |
@@ -3558,11 +3237,11 @@ Table A3-2 shows the effect of the operations shown in Figure A3-6 on page A3-71
 
 
 <sup>a</sup> In the table:  
-   LoadExcl represents any Load-Exclusive instruction.  
-   StoreExcl represents any Store-Exclusive instruction.  
-   Store represents any store operation other than a Store-Exclusive operation.  
-   t is the tagged address, bits [31:0] of the address of the last Load-Exclusive instruction. For more information see  
-   _Tagging and the size of the tagged memory block on page A3-75_.  
+- LoadExcl represents any Load-Exclusive instruction.  
+- StoreExcl represents any Store-Exclusive instruction.  
+- Store represents any store operation other than a Store-Exclusive operation.  
+- t is the tagged address, bits [31:0] of the address of the last Load-Exclusive instruction. For more information see  
+- _Tagging and the size of the tagged memory block on page A3-75_.  
 <sup>b</sup> IMPLEMENTATION DEFINED alternative actions.
 
 ### A3.4.2 Exclusive access instructions and shareable memory regions
@@ -4606,7 +4285,6 @@ In *Figure A3-8 on page A3-92*, an access refers to a read or a write access to 
 
 
 | A1 | A2 | Normal | Device access | Strongly-ordered |
-
 |  |  | access | Non-shareable | Shareable | access |
 | ---------------- | ----- | --------- | --------------- | --------------- | ------------------- |
 | Normal access | - | - | - | - | - |
@@ -4652,7 +4330,7 @@ If A1 and A2 are generated by the same instruction:
 
 
 **Memory barrier** is the general term applied to an instruction, or sequence of instructions, used to force synchronization events by a processor with respect to retiring load and store instructions in a processor. A memory barrier is used to guarantee both:
-- Completion of preceding load and store instructions to the programmers’ model.
+- Completion of preceding load and store instructions to the programmers' model.
 - Flushing of any prefetched instructions before the memory barrier event.
 
 
@@ -4943,10 +4621,9 @@ The Preload instructions are hints, and so implementations can treat them as NOP
 A3 Arm Architecture Memory Model
 ### A3.8 Caches and memory hierarchy
 
+---
 
-
-## Chapter A4
-The Armv7-M Instruction Set
+## Chapter A4: The Armv7-M Instruction Set
 
 This chapter describes the Armv7-M Thumb instruction set, including the additional instructions added by the Floating-point Extension. It contains the following sections:
 
@@ -5021,7 +4698,7 @@ For more details, see the description of the BXWritePC() function in Pseudocode 
 ### A4.1.2 Conditional execution
 
 
-*Conditionally executed* means that the instruction only has its normal effect on the programmers’ model operation, 
+*Conditionally executed* means that the instruction only has its normal effect on the programmers' model operation, 
 memory and coprocessors if the N, Z, C, and V flags in the APSR satisfy a condition specified in the instruction. If 
 the flags do not satisfy this condition, the instruction acts as a NOP, that is, execution advances to the next instruction 
 as normal, including any relevant checks for exceptions being taken, but has no other effect.
@@ -5286,7 +4963,6 @@ These instructions can operate on signed or unsigned quantities. In some types o
 
 
 | Table A4-4 General multiply instructions |
-
 | ----------------------------------- | --------------------- | --------------------------- |
 | Instruction | See | Operation (number of bits) |
 | Multiply Accumulate | MLA on page A7-289 | 32 = 32 + 32 × 32 |
@@ -5486,7 +5162,6 @@ A4 The Armv7-M Instruction Set
 
 | Table A4-14 Parallel addition and subtraction instructions (continued) |
 | ---------------------------------------------------------------------------- |
-
 | Main instruction | Signed | Saturating | Signed halving | Unsigned | Unsigned saturating | Unsigned halving |
 | ---------------------------- | --------- | ------------ | ----------------- | ----------- | --------------------- | ------------------ |
 | SUB16, subtract, two halfwords | SSUB16 | QSUB16 | SHSUB16 | USUB16 | UQSUB16 | UHSUB16 |
@@ -5572,7 +5247,6 @@ Load and store instructions have several options for addressing memory. See *Add
 
 | **Table A4-17 Load and store instructions** |
 | -------------------------------------------- |
-
 | **Data type** | **Load** | **Store** | **Load unprivileged** | **Store unprivileged** | **Load exclusive** | **Store exclusive** |
 | 32-bit word | LDR | STR | LDRT | STRT | LDREX | STREX |
 | 16-bit halfword | - | STRH | - | STRHT | - | STREXH |
@@ -5692,7 +5366,6 @@ A4 The Armv7-M Instruction Set
 
 | Table A4-19 Miscellaneous instructions |
 | ---------------------------------------- |
-
 | **Instruction** | **See** |
 | Clear Exclusive | CLREX on page A7-219 |
 | Debug hint | DBG on page A7-229 |
@@ -5897,17 +5570,15 @@ Non-Confidential ID021621
 
 
 
+---
 
-## Chapter A5
-
-The Thumb Instruction Set Encoding
+## Chapter A5: The Thumb Instruction Set Encoding
 
 
-This chapter introduces the Thumb instruction set and describes how it uses the Arm programmers’ model. It contains the following sections:
+This chapter introduces the Thumb instruction set and describes how it uses the Arm programmers' model. It contains the following sections:
 - *Thumb instruction set encoding on page A5-126*.
 - *16-bit Thumb instruction encoding on page A5-129*.
 - *32-bit Thumb instruction encoding on page A5-137*.
-
 
 
 A5 The Thumb Instruction Set Encoding  
@@ -6071,7 +5742,6 @@ The encoding of Shift (immediate), add, subtract, move, and compare instructions
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 0 | 0 | opcode |
 
 
@@ -6108,7 +5778,6 @@ The encoding of data processing instructions is:
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ----- | ------ | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 0 | 1 | 0 | 0 | opcode |
 
 
@@ -6189,7 +5858,6 @@ The encoding of conditional branch and Supervisor Call instructions is:
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 8 7 | 6 5 4 3 2 1 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | ------ | -------------- |
-
 | 1 | 1 | 0 | 1 | opcode |
 
 
@@ -6210,9 +5878,7 @@ The encoding of 32-bit Thumb instructions is:
 
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
-
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | op1 |  | op2 |  | op |
 
 
@@ -6266,7 +5932,6 @@ The encoding of modified immediate constants in Thumb instructions is:
 | 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0 | 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0 |
 | -------------------------------------- | -------------------------------------- |
 | i | imm3 |
-
 | a b c d e f g h                      
 
 Table A5-11 shows the range of modified immediate constants available in Thumb data processing instructions, and how they are encoded in the a, b, c, d, e, f, g, h, i, and imm3 fields in the instruction.
@@ -6390,7 +6055,6 @@ The encoding of a Load Multiple or Store Multiple instructions is:
 
 | 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0 | 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0 |
 | ---------------------------------------- | ---------------------------------------- |
-
 | 1 1 | 1 0 0 0 | op | 0 | W | L | Rn |
 
 
@@ -6443,9 +6107,7 @@ The encoding of load byte instructions, and memory hits, is
 
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
-
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 0 | 0 | 0 | 1 | op1 | 0 | 0 | 1 | Rn | Rt | op2 |
 
 
@@ -6453,7 +6115,6 @@ Table A5-20 shows the allocation of encodings in this space. Other encodings in 
 
 
 | **Table A5-20 Load byte, memory hints** |
-
 | Op1 | Op2 | Rn | Rt | Instruction | See |
 | ----- | ----- | ---- | --- | ------------- | ----- |
 | 0x | xxxxx | 1111 | not 1111 | Load Register Byte | LDRB (literal) on page A7-254 |
@@ -6487,7 +6148,6 @@ The encoding of store single data item instructions is:
 
 | 15 14 13 12 11 10  9  8 7 6 5 4 3 2 1 0 | 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0 |
 | ---- | ---- |
-
 | 1 1 1 1 | 1 0 0 0 | op1 | 0 | op2 |
 
 
@@ -6528,7 +6188,6 @@ The encoding of data processing (shifted register) instructions is:
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 0 | 0 | 1 | op | S | Rn | Rd | 1 | 1 | 1 | 0 | 0 | 0 | S | Rn | Rd |
 
 
@@ -6570,7 +6229,6 @@ The encoding of move register and immediate shift instructions is:
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 0 | 0 | 1 | 0 | 0 | 0 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | imm3 | imm2 | type |
 
 
@@ -6707,7 +6365,6 @@ The encoding of multiply, multiply accumulate, and absolute difference instructi
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |  | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --- | - | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --- |
-
 | 1 | 1 | 1 | 1 | 0 | 0 | 1 | 1 | 0 | op1 |  | Ra |  | 1 | 1 | 1 | 0 | op2 |
 
 
@@ -6748,7 +6405,6 @@ The encoding of long multiply, long multiply accumulate, and divide, instruction
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |  | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --- | - | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --- |
-
 | 1 | 1 | 1 | 1 | 0 | 0 | 1 | 1 | 1 | op1 |  | 1 | 1 | 1 | op2 |
 
 
@@ -6785,7 +6441,6 @@ The encoding of coprocessor instructions is:
 
 |  | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | -------- | ----- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 |  | 1 | 1 | 1 | 1 | **op1** | 0 | **coproc** | **op** |
 
 
@@ -6810,12 +6465,11 @@ Table A5-30 Coprocessor instructions
 | 10xxx1 | 1 | xxxxx | Move to Arm core register from Coprocessor | MRC, MRC2 on page A7-297 |
 
 
-a. But not 000x0x.
+a. But not `000x0x`.
 
+---
 
-
-## Chapter A6
-The Floating-point Instruction Set Encoding
+## Chapter A6: The Floating-point Instruction Set Encoding
 
 The optional Armv7-M Floating-point Extension provides a range of Floating Point (FP) instructions. These 
 instructions extend the Armv7-M Thumb instructions. Implementing this extension does not affect the operating 
@@ -6910,7 +6564,6 @@ In all cases, if an instruction provides additional information, the additional 
 
 
 | Table A6-1 Data type specification flexibility |
-
 | --------------------- | ------------------------------------- |
 | Specified data type | Permitted more specific data types |
 | None | Any |
@@ -7018,7 +6671,6 @@ The encoding of floating-point data processing instructions is:
 
 | 15 14 13 | 12 11 10 9 8 7 6 5 4 3 2 1 0 | 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0 |
 | ---------- | ------------------------------ | ---------------------------------------- |
-
 | 1 1 1 | T | 1 1 0 | opc1 | opc2 |  | 1 0 | 1 sz | opc3 | 0 | 0 | opc4 |
 
 
@@ -7080,7 +6732,7 @@ S = UInt(a), exp = UInt(NOT(b)c:d) - 3 and mantissa = (16Uint(f:g:h))/16.
 Table A6-6 Floating-point modified immediate constants
 
 
-### A6.4.1 Operation of modified immediate constants in floating-point instructions
+### A6.4.1 Operation of modified immediate constants in floating-point instructions
 
 
 The VFPExpandImm() pseudocode function expands the modified immediate constant in a floating-point operation:
@@ -7096,7 +6748,6 @@ The encoding of an FP extension register load or store instruction is:
 
 | 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0 | 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0 |
 | --- | --- |
-
 | 1 1 1 | T | 1 0 | Opcode | Rn | 1 0 1 |
 
 
@@ -7134,7 +6785,6 @@ The encoding of floating-point 8-bit, 16-bit, and 32-bit register data transfer 
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |  | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |  | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | T | 1 | 1 | 0 | A | L |  | 1 | 0 | 1 | C | B | 1 |
 
 
@@ -7166,7 +6816,6 @@ The encoding of FP extension 64-bit register data transfer instructions is:
 
 | 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0 | 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0 |
 | -------------------------------------- | -------------------------------------- |
-
 | 1 1 T | 1 0 0 | 0 | 0 | 1 0 1 | C | op |
 
 
@@ -7178,7 +6827,6 @@ These instructions are MRRC and MCRR instructions for coprocessors 10 and 11, se
 
 
 | Table A6-9 64-bit data transfer instructions |
-
 | C | op | Instruction |
 | --- | ----- | ---------------------------------------------------------------------------------------- |
 | 0 | 0x01 | VMOV (between two Arm core registers and two single-precision registers) on page A7-483. |
@@ -7189,11 +6837,9 @@ A6 The Floating-point Instruction Set Encoding
 ### A6.7 64-bit transfers between Arm core and extension registers
 
 
+---
 
-
-## Chapter A7
-
-Instruction Details
+## Chapter A7: Instruction Details
 
 
 This chapter describes each instruction in the Armv7-M Thumb instruction sets, including the floating-point  
@@ -7491,7 +7137,7 @@ and returns a 4-bit condition specifier as follows:
 
 
 
-—  Otherwise, execution of the instruction is UNPREDICTABLE.
+—  Otherwise, execution of the instruction is UNPREDICTABLE.
 
 For more information, see ITSTATE.
 
@@ -7506,18 +7152,18 @@ boolean ConditionPassed()
 
   // Evaluate base condition.
   case cond<3:0> of
-    when ‘000’ result = (APSR.Z == ’1’);                    // EQ or NE
-    when ‘001’ result = (APSR.C == ’1’);                    // CS or CC
-    when ‘010’ result = (APSR.N == ’1’);                    // MI or PL
-    when ‘011’ result = (APSR.V == ’1’);                    // VS or VC
-    when ‘100’ result = (APSR.C == ’1’) && (APSR.Z == ’0’); // HI or LS
-    when ‘101’ result = (APSR.N == APSR.V);                 // GE or LT
-    when ‘110’ result = (APSR.N == APSR.V) && (APSR.Z == ’0’); // GT or LE
-    when ‘111’ result = TRUE;                              // AL
+    when '000' result = (APSR.Z == '1');                    // EQ or NE
+    when '001' result = (APSR.C == '1');                    // CS or CC
+    when '010' result = (APSR.N == '1');                    // MI or PL
+    when '011' result = (APSR.V == '1');                    // VS or VC
+    when '100' result = (APSR.C == '1') && (APSR.Z == '0'); // HI or LS
+    when '101' result = (APSR.N == APSR.V);                 // GE or LT
+    when '110' result = (APSR.N == APSR.V) && (APSR.Z == '0'); // GT or LE
+    when '111' result = TRUE;                              // AL
 
-  // Condition flag values in the set ‘111x’ indicate the instruction is always executed.
+  // Condition flag values in the set '111x' indicate the instruction is always executed.
   // Otherwise, invert condition if necessary.
-  if cond<3> == ’1’ && cond != ’1111’ then
+  if cond<3> == '1' && cond != '1111' then
     result = !result;
 
   return result;
@@ -7531,7 +7177,7 @@ an exception.
 
 ______Note
 
-The Branch (B) instruction with a conditional field of ’1110’ is UNDEFINED and takes an exception unless qualified
+The Branch (B) instruction with a conditional field of '1110' is UNDEFINED and takes an exception unless qualified
 by a condition check failure from an IT instruction.
 
 
@@ -7789,17 +7435,9 @@ NOP. Both 16-bit and 32-bit encodings are reserved:
 - For information on the 32-bit encodings see Hint instructions on page A5-143.
 
 
-
-A7 Instruction Details  
 ### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
 
 Every Armv7-M Thumb instruction is listed in this section. See *Format of instruction descriptions on page A7-172* for details of the format used.
-
-
 
 ### A7.7.1 ADC (immediate)
 
@@ -7812,7 +7450,6 @@ ADC{S}<c> <Rd>,<Rn>,#<const>
 
 | 15 14 13 12 11 10 9 8 | 7 6 5 4 3 2 1 0 | 15 14 13 12 11 10 9 8 | 7 6 5 4 3 2 1 0 |
 | :---------------------: | :---------------: | :---------------------: | :---------------: |
-
 | 1 1 1 0 | 1 0 0 | 0 0 | S | Rn | 0 | imm3 | Rd | imm8 |
 
 
@@ -7865,15 +7502,10 @@ None.
 
 Add with Carry (register) adds a register value, the carry flag value, and an optionally-shifted register value, and writes the result to the destination register. It can optionally update the condition flags based on the result.
 
-Encoding T1          All versions of the Thumb instruction set.
+Encoding T1          All versions of the Thumb instruction set.
 
-ADCS <Rd>,<Rm>                  Outside IT block.  
-ADC<c> <Rd>,<Rm>                 Inside IT block.
-
-
-
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
+ADCS <Rd>,<Rm>                  Outside IT block.  
+ADC<c> <Rd>,<Rm>                 Inside IT block.
 
 
 Operation
@@ -7906,11 +7538,6 @@ optionally update the condition flags based on the result.
 **Encoding T1**          All versions of the Thumb instruction set.
 ADDS <Rd>,<Rn>,#<imm3>               Outside IT block.
 ADD<c> <Rd>,<Rn>,#<imm3>             Inside IT block.
-
-
-
-
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
 
 
 
@@ -7949,22 +7576,11 @@ Operation
 
 
 
-
-
 ### A7.7.4 ADD (register)
-
-
 ADD (register) adds a register value and an optionally-shifted register value, and writes the result to the destination
 register. It can optionally update the condition flags based on the result.
 
-**Encoding T1**     All versions of the Thumb instruction set.
-
-
-
-
-A7 Instruction Details
-
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
+**Encoding T1**     All versions of the Thumb instruction set.
 
 
 \<shift> Specifies the shift to apply to the value read from \<Rm>. If \<shift> is omitted, no shift is applied and all encodings are permitted. If \<shift> is specified, only encoding T3 is permitted. The possible shifts and how they are encoded are described in Shifts applied to a register on page A7-182.
@@ -7977,15 +7593,7 @@ The pre-UAL syntax ADD<c>S is equivalent to ADDS<c>.
 Operation
 
 
-
-
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.5 ADD (SP plus immediate)
-
-
 ADD (SP plus immediate) adds an immediate value to the SP value, and writes the result to the destination register.
 
 
@@ -7993,11 +7601,6 @@ Encoding T1
 
 ADD<c> <Rd>,SP,#<imm8>  
 All versions of the Thumb instruction set.
-
-
-
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
 
 The pre-UAL syntax ADD<c> <c>S is equivalent to ADDS<c>.
 
@@ -8030,7 +7633,6 @@ ADD<c> <Rd>, SP, <Rm>
 
 
 |  | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
-
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 |  | 0 | 1 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 1 | 1 | 0 | 1 | R | dm |
 
@@ -8046,9 +7648,7 @@ ADD<c> SP,<Rm>
 
 
 |  | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
-
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 |  | 1 | 0 | 1 | 0 | 0 | 0 | 1 | 0 | 0 | 1 | R | m |  | 1 | 0 | 1 |
 
 
@@ -8061,9 +7661,7 @@ ADD{S}<c> <Rd>, SP,<Rm>,<shift>
 
 
 |  | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
-
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 |  | 1 | 1 | 1 | 0 | 1 | 0 | 0 | 1 | 0 | 0 | 1 | Rm | 0 | 0 | 0 | S | 1 | 0 | 1 | 0 | imm3 | Rd | imm2 | type | Rm |
 
 
@@ -8101,10 +7699,6 @@ where:
   If <Rd> is SP or omitted, <shift> is only permitted to be LSL #0, LSL #1, LSL #2 or LSL #3.
 
 
-
-A7 Instruction Details
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
 The pre-UAL syntax ADD<o>S is equivalent to ADDS<o>.
 
 
@@ -8137,39 +7731,36 @@ None.
 
 Address to Register adds an immediate value to the PC value, and writes the result to the destination register.
 
-Encoding T1                All versions of the Thumb instruction set.
+Encoding T1                All versions of the Thumb instruction set.
 ADR<c> <Rd>,<label>
 
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 0 | 1 | 0 | Rd | imm8 |
 
 
 d = UInt(Rd); imm32 = ZeroExtend(imm8:'00', 32); add = TRUE;
 
-Encoding T2                   Armv7-M.
-ADR<c>.W <Rd>,<label>       <label> before current instruction
-SUB <Rd>, PC,#0           Special case for zero offset
+Encoding T2                   Armv7-M.
+ADR<c>.W <Rd>,<label>       <label> before current instruction
+SUB <Rd>, PC,#0           Special case for zero offset
 
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 0 | 1 | 0 | 1 | 0 | 0 | 1 | 0 | 1 | 1 | 1 | 1 | 0 | imm3 | Rd | imm8 |
 
 
 d = UInt(Rd); imm32 = ZeroExtend(1:imm3:imm8, 32); add = FALSE;
 if d IN {13,15} then UNPREDICTABLE;
 
-Encoding T3                   Armv7-M
-ADR<c>.W <Rd>,<label>       <label> after current instruction
+Encoding T3                   Armv7-M
+ADR<c>.W <Rd>,<label>       <label> after current instruction
 
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 0 | 0 | 1 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 1 | 1 | 0 | imm3 | Rd | imm8 |
 
 
@@ -8178,28 +7769,24 @@ if d IN {13,15} then UNPREDICTABLE;
 
 Assembler syntax
 
-ADR<c><q> <Rd>, <label>   Normal syntax
-ADD<c><q> <Rd>, PC, #<const>   Alternative for encodings T1, T3
-SUB<c><q> <Rd>, PC, #<const>   Alternative for encoding T2
+ADR<c><q> <Rd>, <label>   Normal syntax
+ADD<c><q> <Rd>, PC, #<const>   Alternative for encodings T1, T3
+SUB<c><q> <Rd>, PC, #<const>   Alternative for encoding T2
 
 where:
 
-<c><q>    See Standard assembler syntax fields on page A7-177.
+<c><q>    See Standard assembler syntax fields on page A7-177.
 
-<Rd>      Specifies the destination register.
+<Rd>      Specifies the destination register.
 
-<label>   Specifies the label of an instruction or literal data item whose address it is to be loaded into <Rd>. The assembler calculates the required value of the offset from the Align(PC,4) value of the ADR instruction to this label.
+<label>   Specifies the label of an instruction or literal data item whose address it is to be loaded into <Rd>. The assembler calculates the required value of the offset from the Align(PC,4) value of the ADR instruction to this label.
 If the offset is positive, encodings T1 and T3 are permitted with imm32 equal to the offset. Permitted values of the offset are multiples of four in the range 0 to 1020 for encoding T1 and any value in the range 0 to 4095 for encoding T3.
 If the offset is negative, encoding T2 is permitted with imm32 equal to minus the offset. Permitted values of the offset are -4095 to -1.
 
 In the alternative syntax forms:
 
-<const>   Specifies the offset value for the ADD form and minus the offset value for the SUB form. Permitted values are multiples of four in the range 0 to 1020 for encoding T1 and any value in the range 0 to 4095 for encodings T2 and T3.
+<const>   Specifies the offset value for the ADD form and minus the offset value for the SUB form. Permitted values are multiples of four in the range 0 to 1020 for encoding T1 and any value in the range 0 to 4095 for encodings T2 and T3.
 
-
-
-A7 Instruction Details
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
 
 ___________ Note ___________
 
@@ -8223,9 +7810,6 @@ ID021621                                                                   Non-C
 
 
 
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
 
 ### A7.7.8 AND (immediate)
 
@@ -8240,11 +7824,6 @@ Armv7-M
 AND{S}{<c>} <Rd>, <Rn>, #<const>
 
 
-
-
-A7 Instruction Details
-
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
 
 
 
@@ -8264,10 +7843,6 @@ All versions of the Thumb instruction set.
 Outside IT block.  
 Inside IT block.
 
-
-
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
 
 
 Operation
@@ -8293,7 +7868,6 @@ Exceptions
 
 
 ### A7.7.10 ASR (immediate)
-
 Arithmetic Shift Right (immediate) shifts a register value right by an immediate number of bits, shifting in copies of its sign bit, and writes the result to the destination register. It can optionally update the condition flags based on the result.
 
 Encoding T1 All versions of the Thumb instruction set.
@@ -8304,13 +7878,7 @@ ASR{S} <Rd>, <Rm>, #<imm5> Inside IT block.
 
 
 
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.11 ASR (register)
-
-
 Arithmetic Shift Right (register) shifts a register value right by a variable number of bits, shifting in copies of its
 sign bit, and writes the result to the destination register. The variable number of bits is read from the bottom byte of
 a register. It can optionally update the condition flags based on the result.  
@@ -8323,16 +7891,12 @@ ASR<c> <Rd>,<Rm>           Inside IT block.
 
 
 
-### A7.7.12                                                                                                          A7 Instruction Details  
-
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-B
+### A7.7.12 B
 
 Branch causes a branch to a target address.
 
-**Encoding T1**        All versions of the Thumb instruction set.  
- B<c> <label>                             Not permitted in IT block.
+**Encoding T1**        All versions of the Thumb instruction set.  
+ B<c> <label>                             Not permitted in IT block.
 
 
 
@@ -8411,14 +7975,7 @@ EncodingSpecificOperations();
 None.
 
 
-
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.14 BFI
-
-
 Bit Field Insert copies any number of low order bits from a register into the same number of adjacent bits at any position in the destination register.  
 
 **Encoding T1**  
@@ -8428,14 +7985,7 @@ BFI<c> <Rd>, <Rn>, #<lsb>, #<width>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-
 | 1 | 1 | 1 | 0 | 0 | 1 | 1 | 0 | Rn | 0 | imm3 | Rd | imm2 | (0) | msb |
-
-
-A7 Instruction Details
-
-### A7.7 Alphabetical list of Arm®v7-M Thumb instructions
-
 
 
 ### A7.7.15 BIC (immediate)
@@ -8448,13 +7998,8 @@ BIC{S}<c> <Rd>, <Rn>, #<const>
 
 
 
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
 
 ### A7.7.16 BIC (register)
-
-
 Bit Clear (register) performs a bitwise AND of a register value and the complement of an optionally-shifted register  
 value, and writes the result to the destination register. It can optionally update the condition flags based on the result.
 
@@ -8469,7 +8014,6 @@ BIC `<Rdn>,<Rm>`
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
-
 | 0 | 1 | 0 | 0 | 0 | 0 | 1 | 1 | 0 | Rm | Rdn |
 
 
@@ -8485,9 +8029,7 @@ BIC{S}<c>.<w> `<Rd>,<Rn>,<Rm>{,<shift>}`
 
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
-
 | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
-
 | 1 | 1 | 0 | 1 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 1 | S | Rn | 0 | 0 | imm3 | Rd | imm2 | type | Rm |
 
 
@@ -8544,10 +8086,6 @@ Non-Confidential                                                   ID021621
 
 
 
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 Exceptions
 
 
@@ -8557,8 +8095,6 @@ None.
 
 
 ### A7.7.17 BKPT
-
-
 Breakpoint causes a DebugMonitor exception or a debug halt to occur depending on the configuration of the debug support.
 
 ____________________
@@ -8617,9 +8153,7 @@ BL<c> <label> Outside or last in IT block
 
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |  | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
-
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 0 | S | imm10 | 1 | J1 | J2 | imm11 |
 
 
@@ -8676,7 +8210,6 @@ Outside or last in IT block
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 0 | 1 | 0 | 0 | 1 | 1 | 1 | Rm | (0)<br>(0)<br>(0)<br>(0) |
 
 
@@ -8710,13 +8243,8 @@ BX<c> <Rm>                  Outside or last in IT block
 
 
 
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
 
 ### A7.7.21 CBNZ, CBZ
-
-
 Compare and Branch on Non-Zero and Compare and Branch on Zero compares the value in a register with zero,  
 and conditionally branches forward a constant value. They do not affect the condition flags.
 
@@ -8728,7 +8256,6 @@ CB{N}Z <Rn>,<label>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 0 | 1 | op | 0 |  | i |  | imm5 |  |  | Rn |
 
 
@@ -8782,9 +8309,7 @@ CDP<c> <coproc>,<opc1>,<CRd>,<CRn>,<CRm>,<opc2>
 
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
-
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | -- |
-
 | 1 | 1 | 0 | 1 | 1 | 0 | 0 | opc1 | CRn | CRd | coproc | opc2 | 0 | CRm |
 
 
@@ -8795,9 +8320,7 @@ CDP2<c> <coproc>,<opc1>,<CRd>,<CRn>,<CRm>,<opc2>
 
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
-
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | -- |
-
 | 1 | 1 | 1 | 1 | 1 | 0 | 0 | opc1 | CRn | CRd | coproc | opc2 | 0 | CRm |
 
 
@@ -8848,10 +8371,6 @@ UsageFault.
 
 
 
-A7 Instruction Details
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 Notes
 
 
@@ -8872,7 +8391,6 @@ CLREX<c>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 0 | 1 | 1 | 1 | (1) | (1) | (1) | (1) | (1) | (1) | 0 | 0 | (0) | (0) | (1) | (1) | (1) | (1) | 0 | 0 | 1 | 0 | (1) | (1) | (1) | (1) | (1) | (1) |
 
 
@@ -8905,7 +8423,6 @@ CLZ<c> <Rd>,<Rm>
 
 | 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0 | 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0 |
 | --- | --- |
-
 | 1 1 1 1 0 1 0 0 | 0 1 1 1 | Rm | 1 1 1 1 | Rd | 1 0 0 0 0 | Rm |
 
 
@@ -8940,13 +8457,8 @@ None.
 
 
 
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
 
 ### A7.7.25 CMN (immediate)
-
-
 Compare Negative (immediate) adds a register value and an immediate value. It updates the condition flags based 
 on the result, and discards the result.
 
@@ -8956,13 +8468,7 @@ CMN<c> <Rn>, #<const>
 
 
 
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.26 CMN (register)
-
-
 Compare Negative (register) adds a register value and an optionally-shifted register value. It updates the condition  
 flags based on the result, and discards the result.
 
@@ -8986,7 +8492,6 @@ CMP<c> <Rn>, #<imm8>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 0 | 0 | 1 | 0 | 1 | Rn | imm8 |
 
 
@@ -8999,7 +8504,6 @@ CMP<c>.W <Rn>, #<const>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 0 | 0 | 1 | 0 | 1 | Rn | 0 | imm3 | 1 | 1 | 1 | imm8 |
 
 
@@ -9035,7 +8539,6 @@ CMP<c> <Rn>,<Rm>                                      <Rn> and <Rm> both from R0
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 0 | 1 | 0 | 0 | 0 | 1 | 0 | 1 | 0 | 1 | Rm | Rn |
 
 
@@ -9050,7 +8553,6 @@ CMP<c> <Rn>,<Rm>                                      <Rn> and <Rm> not both fro
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 0 | 1 | 0 | 0 | 0 | 1 | 0 | 1 | 1 | Rm | Rn |
 
 
@@ -9069,7 +8571,6 @@ CMP<c>.W <Rn>, <Rm> {,<shift>}
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 0 | 1 | 1 | Rn | 0 | imm3 | 1 | imm2 | type | Rm |
 
 
@@ -9104,22 +8605,14 @@ if ConditionPassed() then
 
 
 
-A7 Instruction Details
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
 **Exceptions**
 
 None.
 
 
 
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
 
 ### A7.7.29 CPS
-
-
 Change Processor State. The instruction modifies the PRIMASK and FAULTMASK special-purpose register values.
 
 Encoding T1            Armv6-M, Armv7-M             Enhanced functionality in Armv7-M.  
@@ -9127,13 +8620,7 @@ CPS<effect> <iflags>                          Not permitted in IT block.
 
 
 
-A7 Instruction Details
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.30 CPY
-
-
 Copy is a pre-UAL synonym for MOV (register).
 
 
@@ -9157,13 +8644,9 @@ ID021621                                                                  Non-Co
 
 
 
-A7 Instruction Details
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
 
 
 ### A7.7.31 CSDB
-
-
 Consumption of Speculative Data Barrier is a memory barrier that controls speculative execution and data value prediction.
 
 No instruction other than branch instructions and instructions that write to the PC appearing in program order after the CSDB can be speculatively-executed using the results of any:
@@ -9184,7 +8667,6 @@ CSDB<c>.W
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 0 | 0 | 1 | 1 | 1 | 0 | 1 | 0 | (1) | (1) | (1) | (1) | 0 | (0) | (0) | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 |
 
 
@@ -9216,13 +8698,7 @@ None.
 
 
 
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.32 DBG
-
-
 Debug Hint provides a hint to debug trace support and related debug systems. See debug architecture documentation 
 for what use (if any) is made of this instruction.
 
@@ -9233,13 +8709,11 @@ DBG<c> #<option>
 
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
-
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 0 | 0 | 1 | 1 | 0 | 1 | 1 | (1) | (1) | (1) | (1) | (1) | 0 | 00 | 0 | 0 | 0 | 0 | 1 | 1 | 1 | 1 | 1 | option |
 
 
-// Any decoding of ‘option’ is specified by the debug system
+// Any decoding of 'option' is specified by the debug system
 
 **Assembler syntax**  
 
@@ -9263,13 +8737,8 @@ None.
 
 
 
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
 
 ### A7.7.33 DMB
-
-
 Data Memory Barrier acts as a memory barrier. It ensures that all explicit memory accesses that appear in program
 order before the DMB instruction are observed before any explicit memory accesses that appear in program order after
 the DMB instruction. It does not affect the ordering of any other instructions executing on the processor.
@@ -9281,9 +8750,7 @@ DMB<o>
 
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
-
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-
 | 1 | 1 | 1 | 0 | 0 | 1 | 1 | (1) | (1) | (1) | (1) | 0 | (0) | 0 | (1) | (1) | (1) | (1) | 0 | 1 | 0 | 1 | option |
 
 
@@ -9341,7 +8808,6 @@ DSB<op> #<option>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | option |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | -------- |
-
 | 1 | 1 | 1 | 0 | 0 | 1 | 1 | (1) | (1) | (1) | (1) | 1 | 0 | 0 | (0) | 0 | (1) | (1) | (1) | (1) | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | option |
 
 
@@ -9368,13 +8834,8 @@ Operation
 
 
 
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
 
 ### A7.7.35 EOR (immediate)
-
-
 Exclusive OR (immediate) performs a bitwise Exclusive OR of a register value and an immediate value, and writes
 the result to the destination register. It can optionally update the condition flags based on the result.
 
@@ -9436,15 +8897,10 @@ None.
 
 
 
-A7 Instruction Details
-
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
 
 
 
 ### A7.7.36 EOR (register)
-
-
 Exclusive OR (register) performs a bitwise Exclusive OR of a register value and an optionally-shifted register value, and writes the result to the destination register. It can optionally update the condition flags based on the result.
 
 All versions of the Thumb instruction set.
@@ -9509,7 +8965,6 @@ ISB<><#<option>>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 0 | 0 | 1 | 1 | (1) | (1) | (1) | (1) | 1 | 0 | 0 | 0 | 0 | (1) | (1) | (1) | (1) | 0 | 1 | 1 | 0 | option |
 
 
@@ -9546,13 +9001,8 @@ None.
 
 
 
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
 
 ### A7.7.38 IT
-
-
 If-Then makes up to four following instructions (the IT block) conditional. The conditions for the instructions in the IT block can be the same, or some of them can be the inverse of others.
 
 IT does not affect the condition flags. Branches to any instruction in the IT block are not permitted, apart from those performed by exception returns.
@@ -9569,7 +9019,6 @@ Not permitted in IT block
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 0 | 1 | 1 | 1 | 1 | <firstcond> | <mask> |
 
 
@@ -9614,17 +9063,7 @@ Table A7-3 shows how the values of <x>, <y>, and <z> determine the value of the 
 | T | T | omitted | <firstcond[0]> | <firstcond[0]> | 1 | 0 |
 | E | T | omitted | NOT <firstcond[0]> | <firstcond[0]> | 1 | 0 |
 | T | E | omitted | <firstcond[0]> | NOT <firstcond[0]> | 1 | 0 |
-
-
-A7 Instruction Details
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-                              Table A7-3 Determination of mask• field (continued)
-
-
-| <x> | <y> | <z> | mask[3] | mask[2] | mask[1] | mask[0] |
-| ----- | ----- | --------- | --------------- | --------------- | --------------- | ------------- |
-|  | E | omitted | NOT firstcond[0] | NOT firstcond[0] | 1 | 0 |
+|   | E | omitted | NOT firstcond[0] | NOT firstcond[0] | 1 | 0 |
 | T | T | T | firstcond[0] | firstcond[0] | firstcond[0] | 1 |
 | E | T | T | NOT firstcond[0] | firstcond[0] | firstcond[0] | 1 |
 | T | E | T | firstcond[0] | NOT firstcond[0] | firstcond[0] | 1 |
@@ -9655,15 +9094,9 @@ None.
 
 
 
-A7 Instruction Details
-
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
 
 
 ### A7.7.39 LDC, LDC2 (immediate)
-
-
 Load Coprocessor loads memory data from a sequence of consecutive memory addresses to a coprocessor. If no coprocessor can execute the instruction, an UsageFault exception is generated.
 
 This is a generic coprocessor instruction. Some of the fields have no functionality defined by the architecture and are free for use by the coprocessor instruction set designer. These fields are the D bit, the CRd field, and in the Unindexed addressing mode only, the imm8 field.
@@ -9672,17 +9105,12 @@ This is a generic coprocessor instruction. Some of the fields have no functional
 Encoding T1                                       Armv7-M
 
 
-
-
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
     <imm>     The immediate offset applied to the value of <Rn> to form the address. Permitted values are multiples  
               of 4 in the range 0-1020. For the offset addressing syntax, <imm> can be omitted, meaning an offset  
               of +0.  
 
     <option>  An additional instruction option to the coprocessor. An integer in the range 0-255 enclosed in { }.  
-              Encoded in ‘imm8.  
+              Encoded in 'imm8.  
 
 The pre-UAL syntax LDC<c> <L is equivalent to LDCL<c>.
 
@@ -9710,10 +9138,6 @@ UsageFault, MemManage, BusFault.
 
 
 
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.40 LDC, LDC2 (literal)
 
 
@@ -9723,47 +9147,49 @@ This is a generic coprocessor instruction. The D bit and the CRd field have no f
 
 
 Encoding T1              Armv7-M
-
+```
 LDC{L}<c> <coproc>,<CRd>,label  
 LDC{L}<c> <coproc>,<CRd>,[PC,#-0]   Special case LDC{L}<c> <coproc>,<CRd>,[PC],<option>  
+```
 
-| 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
+| 15  | 14  | 13  | 12  | 11  | 10  | 9   | 8   | 7   | 6   | 5   | 4   | 3   | 2   | 1   | 0   | 15  | 14  | 13  | 12  | 11  | 10  | 9   | 8   | 7   | 6   | 5   | 4   | 3   | 2   | 1   | 0   |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 1   | 1   | 0   | 1   | O   | P   | U   | D   | W   | 1   | 1   | 1   | CRd | coproc | imm8 |
 
-| :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- |
-
-| 1 | 1 | 0 | 1 | O | P | U | D | W | 1 | 1 | 1 | CRd | coproc | imm8 |
-
-
+```
 if P == '0' && U == '0' && D == '0' && w == '0' then UNDEFINED;  
 if P == '0' && U == '0' && D == '1' && W == '0' then SEE MRRC, MRRRC2;  
 index = (P == '1'); // Always TRUE in the Thumb instruction set  
 add = (U == '1'); cp = UInt(coproc); imm32 = ZeroExtend(imm8:'00', 32);  
-
+```
 | if W == '1' |  | P == '0' then UNPREDICTABLE; |
 
 
 Encoding T2              Armv7-M
-
+```
 LDC2{L}<c> <coproc>,<CRd>,label  
 LDC2{L}<c> <coproc>,<CRd>,[PC,#-0]   Special case LDC{L}<c> <coproc>,<CRd>,[PC],<option>  
+```
 
-| 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
+| 15  | 14  | 13  | 12  | 11  | 10  | 9   | 8   | 7   | 6   | 5   | 4   | 3   | 2   | 1   | 0   | 15  | 14  | 13  | 12  | 11  | 10  | 9   | 8   | 7   | 6   | 5   | 4   | 3   | 2   | 1   | 0   |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 1   | 1   | 1   | 1   | O   | P   | U   | D   | W   | 1   | 1   | 1   | CRd | coproc | imm8 |
 
-| 1 | 1 | 1 | 1 | O | P | U | D | W | 1 | 1 | 1 | CRd | coproc | imm8 |
-
-
+```
 if P == '0' && U == '0' && D == '0' && w == '0' then UNDEFINED;  
 if P == '0' && U == '0' && D == '1' && W == '0' then SEE MRRC, MRRRC2;  
 index = (P == '1'); // Always TRUE in the Thumb instruction set  
 add = (U == '1'); cp = UInt(coproc); imm32 = ZeroExtend(imm8:'00', 32);  
+```
 
 | if W == '1' |  | P == '0' then UNPREDICTABLE; |
 
 
 Assembler syntax
-
+```
 LDC{2}{L}<c><q> <coproc>,<CRd>,label  Normal form with P = 1, W = 0  
 LDC{2}{L}<c><q> <coproc>,<CRd>,[PC,#-0]  Alternative form with P = 1, W = 0  
+```
 
 where:  
 L            If specified, selects the D == 1 form of the encoding. If omitted, selects the D == 0 form.  
@@ -9782,13 +9208,9 @@ The pre-UAL syntax LDC<c>L is equivalent to LDC<c>.
 
 
 
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 Operation
 
-
+```
     if ConditionPassed() then
         EncodingSpecificOperations();
         if !CoprocessorAccepted(cp, ThisInstr()) then
@@ -9799,22 +9221,13 @@ Operation
             repeat
                 Coproc_SendLoadedWord(MemU[address,4], cp, ThisInstr()); address = address + 4;
             until Coproc_DoneLoading(cp, ThisInstr());
-
+```
 
 Exceptions
-
-
 UsageFault, MemManage, BusFault.
 
 
-
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.41 LDM, LDMIA, LDMFD
-
-
 **Load Multiple** loads multiple registers from consecutive memory locations using an address from a base register.  
 The sequential memory locations start at this address, and the address just above the last of those locations can  
 optionally be written back to the base register.
@@ -9830,24 +9243,20 @@ LDM<c> <Rn>,<registers>                            <Rn included in <registers>
 
 
 
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 Operation
 
 
 if ConditionPassed() then  
-    EncodingSpecificOperations();  
-    address = R[n];  
+    EncodingSpecificOperations();  
+    address = R[n];  
 
-    for i = 0 to 14  
-        if registers<r[i]> == '1' then  
-            R[i] = MemA[address,4]; address = address + 4;  
-    if registers<15> == '1' then  
-        LoadWritePC(MemA[address,4]);  
+    for i = 0 to 14  
+        if registers<r[i]> == '1' then  
+            R[i] = MemA[address,4]; address = address + 4;  
+    if registers<15> == '1' then  
+        LoadWritePC(MemA[address,4]);  
 
-    if wback && registers<n> == '0' then R[n] = R[n] + 4*BitCount(registers);  
+    if wback && registers<n> == '0' then R[n] = R[n] + 4*BitCount(registers);  
 
 
 Exceptions
@@ -9857,11 +9266,7 @@ UsageFault, MemManage, BusFault.
 
 
 
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
 ### A7.7.42 LDMDB, LDMEA
-
 Load Multiple Decrement Before (Load Multiple Empty Ascending) loads multiple registers from sequential
 memory locations using an address from a base register. The sequential memory locations end just below this
 address, and the address of the first of those locations can optionally be written back to the base register.
@@ -9876,7 +9281,6 @@ LDMDB<c> <Rn>{!},<registers>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 0 | 1 | 0 | 0 | 1 | 0 | 0 | W | 1 | Rn | P | M | 0 | 0 | register_list |
 
 
@@ -9923,40 +9327,31 @@ The pre-UAL syntaxes LDM<c>DB and LDM<c>EA are equivalent to LDMDB<c>.
 
 
 
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
 
 Operation
 
-
+```
 if ConditionPassed() then  
-&nbsp;&nbsp;&nbsp;&nbsp;EncodingSpecificOperations();  
-&nbsp;&nbsp;&nbsp;&nbsp;address = R[n] - 4+BitCount(registers);  
+    EncodingSpecificOperations();  
+    address = R[n] - 4+BitCount(registers);  
 
-&nbsp;&nbsp;&nbsp;&nbsp;for i = 0 to 14  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if registers<i> == '1' then  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;R[i] = MemA[address,4]; address = address + 4;  
-&nbsp;&nbsp;&nbsp;&nbsp;if registers<15> == '1' then  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LoadWritePC(MemA[address,4]);  
+    for i = 0 to 14  
+        if registers<i> == '1' then  
+            R[i] = MemA[address,4]; address = address + 4;  
+    if registers<15> == '1' then  
+        LoadWritePC(MemA[address,4]);  
 
-&nbsp;&nbsp;&nbsp;&nbsp;if wback && registers<n> == '0' then R[n] = R[n] - 4+BitCount(registers);  
-
+    if wback && registers<n> == '0' then R[n] = R[n] - 4+BitCount(registers);  
+```
 
 Exceptions
-
 
 UsageFault, MemManage, BusFault.
 
 
 
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
 
 ### A7.7.43 LDR (immediate)
-
-
 Load Register (immediate) calculates an address from a base register value and an immediate offset, loads a word 
 from memory, and writes it to a register. It can use offset, post-indexed, or pre-indexed addressing. See Memory 
 accesses on page A7-184 for information about memory accesses. 
@@ -9973,80 +9368,77 @@ LDR<c> <Rt>, [<Rn>, {#<imm5>}]
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 0 | 1 | 0 | imm5 | Rn | Rt |
 
-
+```
 t = UInt(Rt); n = UInt(Rn); imm32 = ZeroExtend(imm5:'00', 32);  
 index = TRUE; add = TRUE; wback = FALSE;
-
+```
 
 Encoding T2            All versions of the Thumb instruction set.
-
+```
 LDR<c> <Rt>, [SP, #<imm8>]
-
+```
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 0 | 0 | 1 | 1 | Rt | imm8 |
 
-
+```
 t = UInt(Rt); n = 13; imm32 = ZeroExtend(imm8:'00', 32);  
 index = TRUE; add = TRUE; wback = FALSE;
-
+```
 
 Encoding T3            Armv7-M
-
+```
 LDR<c>.W <Rt>, [<Rn>, #+<imm12>]
 LDR<c> <Rt>, [<Rn>,#+/-<imm8>]
 LDR<c> <Rt>, [<Rn>,#+/-<imm8>]!
-
+```
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |  | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |  | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 1 | 0 | 0 | 1 | 1 | 0 | Rn | Rt | imm12 |
 | 1 | 1 | 0 | 1 | 0 | Rn | Rt | 1 | P | U | W | imm8 |
 
-
+```
 if Rm == '1111' then SEE LDR (literal);  
 t = UInt(Rt); n = UInt(Rn); imm32 = ZeroExtend(imm12, 32); index = TRUE; add = TRUE;  
 wback = FALSE; if t == 15 && InITBlock() && !LastInITBlock() then UNPREDICTABLE;
-
+```
 
 Encoding T4            Armv7-M
-
+```
 LDR<c> <Rt>, [<Rn>, #+<imm8>]!
 LDR<c> <Rt>, [<Rn>,#+/-<imm8>]!
 LDR<c> <Rt>, [<Rn>,#+/-<imm8>]!
-
+```
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |  | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |  | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 1 | 0 | 0 | 0 | 0 | 1 | Rn | Rt | 1 | P | U | W | imm8 |
 
 
+```
 if Rm == '1111' then SEE LDR (literal);  
 if P == '1' && U == '1' && W == '0' then SEE LDRT;  
 if Rn == '1101' && P == '0' && U == '1' && W == '1' && imm8 == '00000100' then SEE POP;  
 if P == '0' && W == '0' then UNDEFINED;  
 t = UInt(Rt); n = UInt(Rn);  
 imm32 = ZeroExtend(imm8, 32); index = (P == '1'); add = (U == '1'); wback = (W == '1');  
+```
 
 | if (wback && n == t) |  | (t == 15 && InITBlock() && !LastInITBlock()) then UNPREDICTABLE; |
 
 
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-Assembler syntax
-----------------
+**Assembler syntax**
+```
 LDR<c> <Rt>, [<Rn> {, #+/-<imm>}] Offset: index==TRUE, wback==FALSE
 
 LDR<c> <Rt>, [<Rn>, #+/-<imm>]! Pre-indexed: index==TRUE, wback==TRUE
 
 LDR<c> <Rt>, [<Rn>], #+/-<imm> Post-indexed: index==FALSE, wback==TRUE
+```
 
 where:
 
@@ -10069,8 +9461,8 @@ where:
             0-255 for encoding T4. For the offset addressing syntax, <imm> can be omitted, meaning an offset of
             0.
 
-Operation
----------
+**Operation**
+```
 if ConditionPassed() then
   EncodingSpecificOperations();
   offset_addr = if add then (R[n] + imm32) else (R[n] - imm32);
@@ -10078,23 +9470,18 @@ if ConditionPassed() then
   data = MemU[address,4];
   if wback then R[n] = offset_addr;
   if t == 15 then
-      if address<1:0> == ‘00’ then LoadWritePC(data); else UNPREDICTABLE;
+      if address<1:0> == '00' then LoadWritePC(data); else UNPREDICTABLE;
   else
       R[t] = data;
+```
 
-Exceptions
-----------
+**Exceptions**
 UsageFault, MemManage, BusFault.
 
 
 
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
 
 ### A7.7.44 LDR (literal)
-
-
 Load Register (literal) calculates an address from the PC value and an immediate offset, loads a word from memory, 
 and writes it to a register. See Memory accesses on page A7-184 for information about memory accesses.
 
@@ -10108,7 +9495,6 @@ LDR<c> <Rt>,<label>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 0 | 1 | 0 | 0 | 1 | Rt | imm8 |
 
 
@@ -10121,7 +9507,6 @@ LDR<c>.W <Rt>,[PC,#-0]            Special case
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 1 | 0 | 0 | 0 | U | 1 | 0 | 1 | 1 | 1 | 1 | 1 | Rt | imm12 |
 
 
@@ -10170,11 +9555,8 @@ information, see Use of labels in UAL instruction syntax on page A4-104.
 
 
 
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
 Operation  
-
+```
 if ConditionPassed() then  
     EncodingSpecificOperations();  
     base = Align(PC,4);  
@@ -10184,20 +9566,14 @@ if ConditionPassed() then
         if address<1:0> == '00' then LoadWritePC(data); else UNPREDICTABLE;  
     else  
         R[t] = data;  
-
+```
 Exceptions  
 
 UsageFault, MemManage, BusFault.
 
 
 
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.45 LDR (register)
-
-
 Load Register (register) calculates an address from a base register value and an offset register value, loads a word from memory, and writes it to a register. The offset register value can be shifted left by 0, 1, 2, or 3 bits. See Memory accesses on page A7-184 for information about memory accesses.
 
 The register loaded can be the PC. If it is, the word loaded for the PC is treated as a branch address or an exception return value. Bit[0] complies with the Arm architecture interworking rules for branches to Thumb state execution and must be 1. If bit[0] is 0, a UsageFault exception occurs.
@@ -10209,10 +9585,6 @@ LDR<c> <Rt>,[<Rn>,<Rm>]
 
 All versions of the Thumb instruction set.
 
-
-
-A7 Instruction Details
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
 
 Operation
 
@@ -10234,13 +9606,7 @@ UsageFault, MemManage, BusFault.
 
 
 
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.46 LDRB (immediate)
-
-
 Load Register Byte (immediate) calculates an address from a base register value and an immediate offset, loads a byte from memory, zero-extends it to form a 32-bit word, and writes it to a register. It can use offset, post-indexed, or pre-indexed addressing. See Memory accesses on page A7-184 for information about memory accesses.
 
 
@@ -10252,7 +9618,6 @@ LDRB<c> <Rt>,[<Rn>,{#<imm5>}]
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-
 | 0 | 1 | 1 | 1 | imm5 | Rn | Rt |
 
 
@@ -10267,9 +9632,7 @@ LDRB<c>.W <Rt>,[<Rn>,#{+}<imm12>]
 
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
-
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-
 | 1 | 1 | 1 | 0 | 0 | 0 | 1 | Rn | Rt | imm12 |
 
 
@@ -10288,13 +9651,11 @@ LDRB<c> <Rt>,[<Rn>,#+/-<imm8>]
 
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
-
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-
 | 1 | 1 | 1 | 0 | 0 | 0 | 0 | Rn | Rt | 1 | P | U | W | imm8 |
 
 
-if Rt == '1111' && P == '1' && U == ‘0’ && W == '0' then SEE PLD (immediate);  
+if Rt == '1111' && P == '1' && U == '0' && W == '0' then SEE PLD (immediate);  
 if Rt == '1111' then SEE LDRB (literal);  
 if P == '1' && U == '1' && W == '0' then SEE LDRBT;  
 if P == '0' && W == '0' then UNDEFINED;  
@@ -10302,7 +9663,6 @@ t = UInt(Rt); n = UInt(Rn); imm32 = ZeroExtend(imm8, 32);
 index= (P == '1'); add = (U == '1'); wback = (W == '1');  
 
 | if t == 13 |  | (wback && n == t) then UNPREDICTABLE; |
-
 | if t == 15 && (P == '0' |  | U == '1' |  | W == '1') then UNPREDICTABLE; |
 
 
@@ -10323,12 +9683,6 @@ where:
 
 
 
-
-A7 Instruction Details
-
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 `+/-`  
 Is + or omitted to indicate that the immediate offset is added to the base register value (add == TRUE), or − to indicate that the offset is to be subtracted (add == FALSE). Different instructions are generated for #0 and #+0.
 
@@ -10342,15 +9696,11 @@ The pre-UAL syntax `LDR<*>B` is equivalent to `LDRB<*>`.
 Operation
 
 
-
-
 *A7 Instruction Details*
 *A7.7 Alphabetical list of Armv7-M Thumb instructions*
 
 
 ### A7.7.47 LDRB (literal)
-
-
 Load Register Byte (literal) calculates an address from the PC value and an immediate offset, loads a byte from 
 memory, zero-extends it to form a 32-bit word, and writes it to a register. See Memory accesses on page A7-184 for 
 information about memory accesses.
@@ -10362,10 +9712,8 @@ Encoding T1
 
 | LDRB<c> <Rt>,<label> | Armv7-M |
 | LDRB<c> <Rt>,[PC,#=0] | Special case |
-
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ----- | ---- | ---- | ---- | ---- | ---- | -- | -- | -- | -- | -- | -- | -- | -- | ---- | ---- | ---- | ---- | ---- | ---- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
-
 | 1 | 1 | 1 | 0 | 0 | 0 | U | 0 | 1 | 1 | 1 | 1 | Rt | imm12 |
 
 
@@ -10397,13 +9745,13 @@ The pre-UAL syntax LDR<c>B is equivalent to LDRB<c>.
 
 Operation
 
-
+```
     if ConditionPassed() then
         EncodingSpecificOperations();
         base = Align(PC,4);
         address = if add then (base + imm32) else (base - imm32);
         R[t] = ZeroExtend(MemU[address,1], 32);
-
+```
 
 Exceptions
 
@@ -10413,9 +9761,7 @@ Exceptions
 
 
 
-### A7.7.48      LDRB (register)
-
-
+### A7.7.48 LDRB (register)
 Load Register Byte (register) calculates an address from a base register value and an offset register value, loads a byte from memory, zero-extends it to form a 32-bit word, and writes it to a register. The offset register value can be shifted left by 0, 1, 2, or 3 bits. See Memory accesses on page A7-184 for information about memory accesses.
 
 **Encoding T1**   All versions of the Thumb instruction set.
@@ -10423,13 +9769,7 @@ LDRB<c> <Rt>, [<Rn>, <Rm>]
 
 
 
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.49 LDRBT
-
-
 Load Register Byte Unprivileged calculates an address from a base register value and an immediate offset, loads a byte from memory, zero-extends it to form a 32-bit word, and writes it to a register. See Memory accesses on page A7-184 for information about memory accesses. When privileged software uses an LDRBT instruction, the memory access is restricted as if the software was unprivileged. See also Effect of MPU_CTRL settings on unprivileged instructions on page B3-637.
 
 
@@ -10443,7 +9783,7 @@ Encoding T1
 | 1  1  1  1  0  0  0 0 0 0 1 | Rn Rt / 1  1  1  0 / imm8 |
 
 
-If Rn == ‘1111’ then SEE LDRB (literal);  
+If Rn == '1111' then SEE LDRB (literal);  
 t = UInt(Rt); n = UInt(Rn); postindex = FALSE; add = TRUE;  
 register_form = FALSE; imm32 = ZeroExtend(imm8, 32);  
 if t IN {13,15} then UNPREDICTABLE;
@@ -10471,8 +9811,6 @@ Operation
 
 
 ### A7.7.50 LDRD (immediate)
-
-
 Load Register Dual (immediate) calculates an address from a base register value and an immediate offset, loads two words from memory, and writes them to two registers. It can use offset, post-indexed, or pre-indexed addressing.
 See Memory accesses on page A7-184 for information about memory accesses.
 
@@ -10485,7 +9823,6 @@ LDRD<c> <Rt>,<Rt2>,[<Rn>,#+/-<imm8>]!
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 0 | 1 | 0 | 0 | P | U | 1 | W | 1 | Rn | Rt | Rt2 | imm8 |
 
 
@@ -10495,7 +9832,6 @@ t = UInt(Rt); t2 = UInt(Rt2); n = UInt(Rn); imm32 = ZeroExtend(imm8:'00', 32);
 index = (P == '1'); add = (U == '1'); wback = (W == '1');  
 
 | if wback && (m == t |  | m == t2) then UNPREDICTABLE; |
-
 | if t IN {13,15} |  | t2 IN {13,15} |  | t == t2 then UNPREDICTABLE; |
 
 
@@ -10534,13 +9870,7 @@ if ConditionPassed() then
     if wback then R[n] = offset_addr;
 
 
-
-A7 Instruction Details
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 Exceptions
-
 
 UsageFault, MemManage, BusFault.
 
@@ -10548,8 +9878,6 @@ UsageFault, MemManage, BusFault.
 
 
 ### A7.7.51 LDRD (literal)
-
-
 Load Register Dual (literal) calculates an address from the PC value and an immediate offset, loads two words from
 memory, and writes them to two registers. See Memory accesses on page A7-184 for information about memory
 accesses.
@@ -10564,10 +9892,6 @@ LDRD<c> <Rt>,<Rt2>,<label>
 LDRD<c> <Rt>,<Rt2>, [PC,#-0]
 
 
-
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
 Exceptions  
 MemManage, BusFault.
 
@@ -10575,8 +9899,6 @@ MemManage, BusFault.
 
 
 ### A7.7.52 LDREX
-
-
 Load Register Exclusive calculates an address from a base register value and an immediate offset, loads a word from memory, writes it to a register and:
 
 - If the address has the shareable Memory attribute, marks the physical address as exclusive access for the executing processor in a global monitor.
@@ -10590,14 +9912,7 @@ Armv7-M
 LDREX<c> <Rt>, [<Rn>{, #<imm8>}]
 
 
-
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.53 LDREXB
-
-
 Load Register Exclusive Byte derives an address from a base register value, loads a byte from memory, zero-extends it to form a 32-bit word, writes it to a register and:
 
 - If the address has the shareable Memory attribute, marks the physical address as exclusive access for the executing processor in a global monitor.
@@ -10614,7 +9929,6 @@ LDREXB<c> <Rt>, [<Rn>]
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 0 | 0 | 0 | 1 | 0 | 1 | Rn | 0 | 1 | 1 | Rt | 1 | (1) | (1) | (1) | (1) | 0 | 1 | 0 | 0 | (1) | (1) | (1) | (1) |
 
 
@@ -10639,25 +9953,21 @@ where:
 
 Operation
 
-
+```
     if ConditionPassed() then
         EncodingSpecificOperations();
         address = R[n];
         SetExclusiveMonitors(address,1);
         R[t] = ZeroExtend(MemA[address,1], 32);
-
+```
 
 Exceptions
-
-
 MemManage, BusFault.
 
 
 
 
 ### A7.7.54 LDREXH
-
-
 Load Register Exclusive Halfword derives an address from a base register value, loads a halfword from memory, zero-extends it to form a 32-bit word, writes it to a register and:
 
 - If the address has the shareable Memory attribute, marks the physical address as exclusive access for the executing processor in a global monitor.
@@ -10674,7 +9984,6 @@ LDREXH<c> <Rt>, [<Rn>]
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 0 | 0 | 0 | 0 | 1 | 0 | Rn | Rt | (1)(1)(1)(1) | 0 | 1 | 0 | 1 | (1)(1)(1)(1) |
 
 
@@ -10715,7 +10024,6 @@ UsageFault, MemManage, BusFault.
 
 
 ### A7.7.55 LDRH (immediate)
-
 Load Register Halfword (immediate) calculates an address from a base register value and an immediate offset, loads 
 a halfword from memory, zero-extends it to form a 32-bit word, and writes it to a register. It can use offset, 
 post-indexed, or pre-indexed addressing. See Memory accesses on page A7-184 for information about memory 
@@ -10726,9 +10034,7 @@ LDRH<c> <Rt>, [<Rn>, {#<imm5>}]
 
 
 | 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0 |
-
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 0 0 0 | 1 | imm5 | Rn | Rt |
 
 
@@ -10740,9 +10046,7 @@ LDRH<c>.W <Rt>,[<Rn>,#{+/-<imm12>}]
 
 
 | 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0 | 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0 |
-
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 1 1 1 | 0 | 0 0 0 | 1 | 1 | Rn | Rt | imm12 |
 
 
@@ -10758,40 +10062,34 @@ LDRH<c> <Rt>, [<Rn>, #+/-<imm8>]!
 
 
 | 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0 | 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0 |
-
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 1 1 1 | 0 1 | 0 0 | 0 | 1 | Rn | Rt | 1 | P | U | W | imm8 |
 
-
+```
 if Rn == '1111' then SEE LDRH (literal);  
 if Rt == '1111' && P == '1' && U == '0' && W == '0' then SEE PLD;  
 if P == '1' && U == '1' && W == '0' then SEE LDRHT;  
 if P == '0' && W == '0' then UNDEFINED;  
 t = UInt(Rt); n = UInt(Rn); imm32 = ZeroExtend(imm8, 32);  
 index = (P == '1'); add = (U == '1'); wback = (W == '1');  
+```
 
 | if t == 13 |  | (t == 15 && W == '1') |  | (wback && n == t) then UNPREDICTABLE; |
 
 
 Assembler syntax
 
-
+```
 LDRH<c> <Rt>, [<Rn> {, #+/-<imm>} ]                       Offset: index=TRUE, wback=FALSE  
 LDRH<c> <Rt>, [<Rn>, #+/-<imm>]!                    Pre-indexed: index=TRUE, wback=TRUE  
 LDRH<c> <Rt>, [<Rn>], #+/-<imm>               Post-indexed: index=FALSE, wback=TRUE  
+```
 
 where:
-
 <c><q> See Standard assembler syntax fields on page A7-177.  
 <Rt> Specifies the destination register.  
 <Rn> Specifies the base register. This register is permitted to be the SP. If this register is the PC, see LDRH  
 (literal) on page A7-266.
-
-
-
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
 
 +/-  Is + or omitted to indicate that the immediate offset is added to the base register value (add == TRUE), 
      or - to indicate that the offset is to be subtracted (add == FALSE). Different instructions are generated 
@@ -10833,24 +10131,15 @@ Unallocated memory hints must be implemented as NOPs. Software must not use them
 UAL assembler syntax.
 
 
-
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.56 LDRH (literal)
-
-
 Load Register Halfword (literal) calculates an address from the PC value and an immediate offset, loads a halfword from memory, zero-extends it to form a 32-bit word, and writes it to a register. See Memory accesses on [page A7-184](page A7-184) for information about memory accesses.
 
 
 Encoding T1
 
 | LDRH<c> <Rt>,<label> |
-
 | LDRH<c> <Rt>,[PC,#=0] | Special case |
 | ------------------------------------------- | -------------------------------------- |
-
 | 15 14 13 12 | 11 10 9 8 7 6 5 4 3 2 1 0 |  | 15 14 13 | 12 11 10 | 9   8 7 6 5 4 3 2 1 0 |
 | 1 1 1 1 | 0 0    0 0 1 0 0 0 | 1 1 1 | 1 1 1 1 | Rt | imm12 |
 
@@ -10899,31 +10188,15 @@ Exceptions
 UsageFault, MemManage, BusFault.
 
 
-
-
-A7 Instruction Details
-
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
-
 ### A7.7.57 LDRH (register)
-
-
 Load Register Halfword (register) calculates an address from a base register value and an offset register value, loads a halfword from memory, zero-extends it to form a 32-bit word, and writes it to a register. The offset register value can be shifted left by 0, 1, 2, or 3 bits. See Memory accesses on page A7-184 for information about memory accesses.
 
-
 Encoding T1
-
 
 All versions of the Thumb instruction set.
 
 LDRH<c>  <Rt>, [<Rn>, <Rm>]
 
-
-
-A7 Instruction Details
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
 
 
 Exceptions
@@ -10944,11 +10217,6 @@ Encoding T1
 **Armv7-M**
 
 
-
-### A7.7 Instruction Details
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.59 LDRSB (immediate)
 
 
@@ -10961,18 +10229,16 @@ LDRSB<c> <Rt>, [<Rn>, #<imm12>]
 
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
-
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-
 | 1 | 1 | 1 | 1 | 0 | 0 | 1 | 1 | 0 | 0 | 0 | 1 | 1 | Rn | Rt | imm12 |
 
-
+```
 if Rt == '1111' then SEE PL1;  
 if Rn == '1111' then SEE LDRSB (literal);  
 t = UInt(Rt); n = UInt(Rn); imm32 = ZeroExtend(imm12, 32);  
 index = TRUE; add = TRUE; wback = FALSE;  
 if t == 13 then UNPREDICTABLE;
-
+```
 
 Encoding T2  Armv7-M
 
@@ -10982,17 +10248,16 @@ LDRSB<c> <Rt>, [<Rn>, #+/-<imm8>]!
 
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
-
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-
 | 1 | 1 | 1 | 1 | 0 | 0 | 1 | 1 | 0 | 0 | 0 | 1 | Rn | Rt | 1 | P | U | W | imm8 |
 
-
+```
 if Rt == '1111' && P == '1' && U == '0' && wn == '0' then SEE PL1;  
 if Rn == '1111' then SEE LDRSB (literal);  
 if P == '0' && W == '0' then SEE LDRSBT;  
 t = UInt(Rt); n = UInt(Rn); imm32 = ZeroExtend(imm8, 32);  
 index = (P == '1'); add = (U == '1'); wback = (W == '1');  
+```
 
 | if t == 13 |  | (t == 15 && w == '1') |  | (wback && n == t) then UNPREDICTABLE; |
 
@@ -11019,32 +10284,24 @@ where:
 The pre-UAL syntax LDR<->SB is equivalent to LDRSB<c>.
 
 
-
-A7 Instruction Details
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
                               Operation
-
+```
                                if ConditionPassed() then
                                    EncodingSpecificOperations();
                                offset_addr = if add then (R[n] + imm32) else (R[n] - imm32);
                                address = if index then offset_addr else R[n];
                                R[t] = SignExtend(MemU[address,1], 32);
                                if wback then R[n] = offset_addr;
-
+```
                               Exceptions
 
                                  MemManage, BusFault.
 
 
 
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
 
 
 ### A7.7.60 LDRSB (literal)
-
-
 Load Register Signed Byte (literal) calculates an address from the PC value and an immediate offset, loads a byte 
 from memory, sign-extends it to form a 32-bit word, and writes it to a register. See Memory accesses on 
 page A7-184 for information about memory accesses.
@@ -11058,16 +10315,14 @@ LDRSB<c> <Rt>,[PC,#<imm12>] Special case
 
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
-
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-
 | 1 | 1 | 1 | 0 | 0 | 1 | U | 0 | 0 | 1 | 1 | 1 | 1 | Rt | imm12 |
 
-
+```
 if Rt == '1111' then SEE PL1;  
 t = UInt(Rt); imm32 = ZeroExtend(imm12, 32); add = (U == '1');  
 if t == 13 then UNPREDICTABLE;
-
+```
 
 Assembler syntax
 
@@ -11098,13 +10353,13 @@ The pre-UAL syntax LDR<c>SB is equivalent to LDRSB<c>.
 
 Operation
 
-
+```
 if ConditionPassed() then  
-  EncodingSpecificOperations();  
-  base = Align(PC,4);  
-  address = if add then (base + imm32) else (base - imm32);  
-  R[t] = SignExtend(MemU[address,1], 32);
-
+  EncodingSpecificOperations();  
+  base = Align(PC,4);  
+  address = if add then (base + imm32) else (base - imm32);  
+  R[t] = SignExtend(MemU[address,1], 32);
+```
 
 Exceptions
 
@@ -11126,7 +10381,6 @@ LDRSB<c> <Rt>, [<Rn>, <Rm>]
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 0 | 0 | 1 | 0 | 0 | 1 | Rm | Rn | Rt |
 
 
@@ -11140,23 +10394,23 @@ LDRSB<c>.W <Rt>, [<Rn>, <Rm>, {<LSL #<imm2>]}]
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |  | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |  | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 1 | 0 | 0 | 0 | 0 | 1 | Rn | Rt | 0 | 0 | 0 | 0 |  | 0 | 0 | 0 | 0 | <imm2> | Rm |
 
-
+```
 if Rt == '1111' then SEE PLD;
 if Rm == '1111' then SEE LDRSB (literal);
 t = UInt(Rt); n = UInt(Rn); m = UInt(Rm);
 index = TRUE; add = TRUE; wback = FALSE;
 (shift_t, shift_n) = (SRType_LSL, UInt(imm2));
+```
 
 | if n == 13 |  | m IN {13,15} then UNPREDICTABLE; |
 
 
 **Assembler syntax**
-
+```
 LDRSB<c> <Rt>, [<Rn>, <Rm> {, LSL #<shift>}]
-
+```
 where:
 
 <c><q> See Standard assembler syntax fields on page A7-177.
@@ -11174,30 +10428,21 @@ encoding T2 is permitted.
 The pre-UAL syntax LDR<c>S8 is equivalent to LDRSB<c>.
 
 **Operation**
-
+```
 if ConditionPassed() then
 EncodingSpecificOperations();
 offset = Shift(R[m], shift_t, shift_n, APSR.C);
 offset_addr = if add then (R[n] + offset) else (R[n] - offset);
 address = if index then offset_addr else R[n];
 R[t] = SignExtend(MemU[address,1], 32);
-
+```
 **Exceptions**
 
 MemManage, BusFault.
 
-ARM DDI 0403E.c Copyright © 2006-2008, 2010, 2014, 2017, 2018, 2021 Arm Limited or its affiliates. All rights reserved.
-ID021621 Non-Confidential
-
-
-
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
 
 
 ### A7.7.62 LDRSBT
-
-
 Load Register Signed Byte Unprivileged calculates an address from a base register value and an immediate offset, loads a byte from memory, sign-extends it to form a 32-bit word, and writes it to a register. See Memory accesses on page A7-184 for information about memory accesses. When privileged software uses an LDRSBT instruction, the memory access is restricted as if the software was unprivileged. See also Effect of MPU_CTRL settings on unprivileged instructions on page B3-637.
 
 
@@ -11209,21 +10454,20 @@ LDRSBT<c> <Rt>, [<Rn>, #<imm8>]
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 1 | 0 | 0 | 1 | 0 | 0 | 0 | 1 | 1 | Rn | Rt | 1 | 1 | 0 | imm8 |
 
-
-if Rn == ‘1111’ then SEE LDRSB (literal);  
+```
+if Rn == '1111' then SEE LDRSB (literal);  
 t = UInt(Rt); n = UInt(Rn); postindex = FALSE; add = TRUE;  
 register_form = FALSE; imm32 = ZeroExtend(imm8, 32);  
 if t IN {13,15} then UNPREDICTABLE;
-
+```
 
 Assembler syntax
 
-
+```
 LDRSBT<c> <Rt>, [<Rn> {, #<imm>}]
-
+```
 where:
 
 - `<c><q>` See Standard assembler syntax fields on page A7-177.
@@ -11234,12 +10478,12 @@ where:
 
 Operation
 
-
+```
 if ConditionPassed() then  
 EncodingSpecificOperations();  
 address = R[n] + imm32;  
 R[t] = SignExtend(MemU[address,1], 32);
-
+```
 
 Exceptions
 
@@ -11250,8 +10494,6 @@ MemManage, BusFault.
 
 
 ### A7.7.63 LDRSH (immediate)
-
-
 Load Register Signed Halfword (immediate) calculates an address from a base register value and an immediate
 offset, loads a halfword from memory, sign-extends it to form a 32-bit word, and writes it to a register. It can use
 offset, post-indexed, or pre-indexed addressing. See Memory accesses on page A7-184 for information about
@@ -11259,18 +10501,14 @@ memory accesses.
 
 
 Encoding T1 Armv7-M
-
+```
 LDRSH<c> <Rt>, [<Rn>, #<imm12>]
-
-
-
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
+```
 
 
 Operation
 
-
+```
     if ConditionPassed() then
         EncodingSpecificOperations();
     offset_addr = if add then (R[n] + imm32) else (R[n] - imm32);
@@ -11278,42 +10516,39 @@ Operation
     data = MemU[address, 2];
     if wback then R[n] = offset_addr;
     R[t] = SignExtend(data, 32);
-
+```
 
 Exceptions
-
-
 UsageFault, MemManage, BusFault.
 
 
 
 
 ### A7.7.64 LDRSH (literal)
-
-
 Load Register Signed Halfword (literal) calculates an address from the PC value and an immediate offset, loads a halfword from memory, sign-extends it to form a 32-bit word, and writes it to a register. See Memory accesses on page A7-184 for information about memory accesses.
 
 **Encoding T1** Armv7-M  
+```
 LDRSH<c> <Rt>,<label>  
 LDRSH<c> <Rt>,[PC,#-0] Special case
-
+```
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
-
 | 1 | 1 | 1 | 1 | 0 | 0 | 1 | U | 0 | 1 | 1 | 1 | 1 | 1 | Rt | imm12 |
 
-
+```
 if Rt == '1111' then SEE "Related instructions";  
 t = UInt(Rt); imm32 = ZeroExtend(imm12, 32); add = (U == '1');  
 if t == 13 then UNPREDICTABLE;
-
+```
 
 Assembler syntax
 
-
+```
 LDRSH<c><q> <Rt>, <label> Normal form  
 LDRSH<c><q> <Rt>, [PC, #+/-<imm>] Alternative form  
+```
 
 where:
 
@@ -11334,42 +10569,26 @@ The pre-UAL syntax LDR<c>SH is equivalent to LDRSH<c>.
 
 Operation
 
-
+```
 if ConditionPassed() then  
-    EncodingSpecificOperations();  
-    base = Align(PC,4);  
-    address = if add then (base + imm32) else (base - imm32);  
-    data = MemU[address,2];  
-    R[t] = SignExtend(data, 32);
-
+    EncodingSpecificOperations();  
+    base = Align(PC,4);  
+    address = if add then (base + imm32) else (base - imm32);  
+    data = MemU[address,2];  
+    R[t] = SignExtend(data, 32);
+```
 
 Exceptions
-
-
 UsageFault, MemManage, BusFault.
 
 
 Unallocated memory hints
-
-
 If the Rt field is '1111' in encoding T1, the instruction is an unallocated memory hint.
 
 Unallocated memory hints must be implemented as NOPs. Software must not use them, and they therefore have no UAL assembler syntax.
 
----
-
-ARM DDI 0403E.a Copyright © 2006-2008, 2010, 2014, 2017, 2018, 2021 Arm Limited or its affiliates. All rights reserved.  
-ID021621 Non-Confidential A7-277
-
-
-
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
 
 ### A7.7.65 LDRSH (register)
-
-
 Load Register Signed Halfword (register) calculates an address from a base register value and an offset register  
 value, loads a halfword from memory, sign-extends it to form a 32-bit word, and writes it to a register. The offset  
 register value can be shifted left by 0, 1, 2, or 3 bits. See Memory accesses on page A7-184 for information about  
@@ -11383,7 +10602,6 @@ LDRSH<c> <Rt>, [<Rn>, <Rm>]
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 0 | 0 | 1 | 1 | Rm | Rn | Rt |
 
 
@@ -11399,7 +10617,6 @@ LDRSH<c>.W <Rt>, [<Rn>,<Rm>, {LSL #<imm2>}]
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 1 | 0 | 0 | 1 | 1 | Rn | Rt | 0 | 0 | 0 | 0 | 0 | imm2 | Rm |
 
 
@@ -11430,7 +10647,7 @@ The pre-UAL syntax LDR<c>SH is equivalent to LDRSH<c>.
 
 Operation
 
-
+```
     if ConditionPassed() then
         EncodingSpecificOperations();
         offset = Shift(R[m], shift_t, shift_n, APSR.C);
@@ -11439,27 +10656,15 @@ Operation
         data = MemU[address,2];  
         if wback then R[n] = offset_addr;  
         R[t] = SignExtend(data, 32);
-
-
-
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
+```
 
 
 Exceptions
-
-
 UsageFault, MemManage, BusFault.
 
 
 
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.66 LDRSHT
-
-
 Load Register Signed Halfword Unprivileged calculates an address from a base register value and an immediate  
 offset, loads a halfword from memory, sign-extends it to form a 32-bit word, and writes it to a register. See Memory  
 accesses on page A7-184 for information about memory accesses. When privileged software uses an LDRSHT  
@@ -11468,26 +10673,26 @@ settings on unprivileged instruction on page B3-637.
 
 
 Encoding T1                                          Armv7-M
-
+```
 LDRSHT<c> <Rt>, [<Rn>, #<imm8>]  
-
+```
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 0 | 0 | 1 | 0 | 0 | 1 | Rn | Rt | 1 | 1 | 0 | imm8 |
 
-
+```
 if Rn == '1111' then SEE LDRSH (literal);  
 t = UInt(Rt); n = UInt(Rn); postindex = FALSE; add = TRUE;  
 register_form = FALSE; imm32 = ZeroExtend(imm8, 32);  
 if t IN {13,15} then UNPREDICTABLE;  
-
+```
 
 Assembler syntax
 
-
+```
 LDRSHT<c> <Rt>, [<Rn>, {, #<imm>}]  
+```
 
 where:
 
@@ -11502,30 +10707,20 @@ The pre-UAL syntax LDR<c>SH is equivalent to LDRSHT<c>.
 
 Operation
 
-
+```
     if ConditionPassed() then
         EncodingSpecificOperations();
         address = R[n] + imm32;
         data = MemU_unpriv[address,2];
         R[t] = SignExtend(data, 32);
-
+```
 
 Exceptions
-
-
 UsageFault, MemManage, BusFault.
-
-A7-280  
-
-Copyright © 2006-2008, 2010, 2014, 2017, 2018, 2021 Arm Limited or its affiliates. All rights reserved.ARM DDI 0403E.e  
-Non-Confidential ID021621
-
 
 
 
 ### A7.7.67 LDRT
-
-
 Load Register Unprivileged calculates an address from a base register value and an immediate offset, loads a word from memory, and writes it to a register. See *Memory accesses on page A7-184* for information about memory accesses. When privileged software uses an LDRT instruction, the memory access is restricted as if the software was unprivileged. See also *Effect of MPU_CTRL settings on unprivileged instructions on page B3-637*.
 
 **Encoding T1**  
@@ -11534,23 +10729,22 @@ LDRT<c> <Rt>, [<Rn>, #<imm8>]
 
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
-
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 0 | 0 | 0 | 0 | 1 | 0 | Rn | Rt | 1 | 1 | 0 | imm8 |
 
-
+```
 if Rn == '1111' then SEE LDR (literal);  
 t = UInt(Rt); n = UInt(Rn); postindex = FALSE; add = TRUE;  
 register_form = FALSE; imm32 = ZeroExtend(imm8, 32);  
 if t IN {13,15} then UNPREDICTABLE;
+```
 
 **Assembler syntax**
-
+```
 LDRT<c><q> <Rt>, [<Rn> {, #<imm>}]
+```
 
 where:
-
 <c><q> See *Standard assembler syntax fields on page A7-177*.
 
 <Rt> Specifies the destination register.
@@ -11562,26 +10756,20 @@ where:
 The pre-UAL syntax LDR<c>T is equivalent to LDRT<c>.
 
 **Operation**
-
+```
     if ConditionPassed() then
         EncodingSpecificOperations();
         address = R[n] + imm32;
         data = MemU_unpriv[address,4];
         R[t] = data;
+```
 
 **Exceptions**
-
 UsageFault, MemManage, BusFault.
 
 
 
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.68 LSL (immediate)
-
-
 Logical Shift Left (immediate) shifts a register value left by an immediate number of bits, shifting in zeros, and writes the result to the destination register. It can optionally update the condition flags based on the result.
 
 **Encoding T1**  
@@ -11607,20 +10795,21 @@ LSL{S}<c>.W <Rd>,<Rm>,#<imm5>
 
 | 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0 | 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0 |
 | ------------------------------------- | ------------------------------------- |
-
 | 1 1 1 0 1 0 | 0 1 0 0 0 | 0 0 | S | 1 1 1 1 | {0} | imm3 Rd | imm2 | 0 0 | Rm |
 
-
+```
 if (imm3:imm2) == '00000' then SEE MOV (register);  
 d = UInt(Rd); m = UInt(Rm); setflags = (S == '1');  
 (_, shift_n) = DecodeImmShift('00', imm3:imm2);  
+```
 
 | if d IN {13,15} |  | m IN {13,15} then UNPREDICTABLE; |
 
 
 Assembler syntax
-
+```
 LSL{S}{<c>}{<q>} <Rd>, <Rn>, #<imm5>  
+```
 
 where:  
 
@@ -11644,7 +10833,6 @@ where:
 
 
 ### A7.7.69 LSL (register)
-
 Logical Shift Left (register) shifts a register value left by a variable number of bits, shifting in zeros, and writes the result to the destination register. The variable number of bits is read from the bottom byte of a register. It can optionally update the condition flags based on the result.
 
 Encoding T1 All versions of the Thumb instruction set.
@@ -11654,7 +10842,6 @@ LSLC  <Rdn>,<Rm>                    Inside IT block.
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 1 | Rm | Rdn |
 
 
@@ -11665,11 +10852,8 @@ LSL{S}<c>.W <Rd>,<Rn>,<Rm>
 
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
-
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | - | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 1 | 0 | 0 | 0 | 0 | $ | Rn | 1 | 1 | 1 | 1 | Rd | 0 | 0 | 0 | 0 | 0 | Rm |
-
 | d = UInt(Rd); n = UInt(Rn); m = UInt(Rm); setflags = (S == '1'); if d IN {13,15} |  | n IN {13,15} |  | m IN {13,15} then UNPREDICTABLE; |
 
 
@@ -11683,6 +10867,7 @@ S             If present, specifies that the instruction updates the flags. Othe
 <Rm>          Specifies the register whose bottom byte contains the amount to shift by.
 
 Operation
+```
 if ConditionPassed() then
     EncodingSpecificOperations();
     shift_n = UInt(R[m]<7:0>);
@@ -11693,19 +10878,13 @@ if ConditionPassed() then
         APSR.Z = IsZeroBit(result);
         APSR.C = carry;
         // APSR.V unchanged
-
+```
 Exceptions
 None.
 
 
 
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.70 LSR (immediate)
-
-
 Logical Shift Right (immediate) shifts a register value right by an immediate number of bits, shifting in zeros, and writes the result to the destination register. It can optionally update the condition flags based on the result.
 
 **Encoding T1**  
@@ -11714,7 +10893,6 @@ All versions of the Thumb instruction set.
 
 
 ### A7.7.71 LSR (register)
-
 Logical Shift Right (register) shifts a register value right by a variable number of bits, shifting in zeros, and writes 
 the result to the destination register. The variable number of bits is read from the bottom byte of a register. It can 
 optionally update the condition flags based on the result.
@@ -11726,7 +10904,9 @@ optionally update the condition flags based on the result.
     15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0 
     0 1 0 0 0 0 0 0 0 1 1   Rm   Rdn 
 
+```
 d = UInt(Rdn); n = UInt(Rdn); m = UInt(Rm); setflags = !InITBlock();
+```
 
     Encoding T2                          Armv7-M
     LSR{$}<c>.W <Rd>,<Rn>,<Rm>
@@ -11734,13 +10914,18 @@ d = UInt(Rdn); n = UInt(Rdn); m = UInt(Rm); setflags = !InITBlock();
     15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0 
     1 1 1 1 1 0 0 0 1 0 0 0   1   $   Rn   1 1 1 1   Rd   0 0 0   Rm 
 
+```
 d = UInt(Rd); n = UInt(Rn); m = UInt(Rm); setflags = (S == '1'); 
+```
 
 | if d IN (13,15) |  | n IN (13,15) |  | m IN (13,15) then UNPREDICTABLE; |
 
 
 Assembler syntax
+```
     LSR{$}<c> <Rd>, <Rn>, <Rm>
+```
+
 where:
     $       If present, specifies that the instruction updates the flags. Otherwise, the instruction does not update 
             the flags.
@@ -11750,6 +10935,7 @@ where:
     <Rm>    Specifies the register whose bottom byte contains the amount to shift by.
 
 Operation
+```
     if ConditionPassed() then 
         EncodingSpecificOperations();
         shift_n = UInt(R[m]<7:0>);
@@ -11760,19 +10946,13 @@ Operation
             APSR.Z = IsZeroBit(result);
             APSR.C = carry;
             // APSR.V unchanged
+```
 
 Exceptions
     None.
 
 
-
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.72 MCR, MCR2
-
-
 Move to Coprocessor from Arm Register passes the value of an Arm register to a coprocessor.
 
 If no coprocessor can execute the instruction, a UsageFault exception is generated.
@@ -11784,11 +10964,11 @@ MCR <coproc>, <opc1>, <Rt>, <CRn>, <CRm>{, <opc2>}
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 0 | 1 | 1 | 0 | opc1 | 0 | CRn | Rt | coproc | opc2 | 1 | CRm |
 
-
-t = UInt(Rt); cp = UInt(coproc);  
+```
+t = UInt(Rt); cp = UInt(coproc);
+```
 
 | if t == 15 |  | t == 13 then UNPREDICTABLE; |
 
@@ -11800,11 +10980,11 @@ MCR2 <coproc>, <opc1>, <Rt>, <CRn>, <CRm>{, <opc2>}
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 1 | 1 | 0 | opc1 | 0 | CRn | Rt | coproc | opc2 | 1 | CRm |
 
-
+```
 t = UInt(Rt); cp = UInt(coproc);  
+```
 
 | if t == 15 |  | t == 13 then UNPREDICTABLE; |
 
@@ -11830,37 +11010,29 @@ If specified, selects the **c == 1** form of the encoding. If omitted, selects t
 \<opc2\> Is a coprocessor-specific opcode in the range 0-7. If it is omitted, \<opc2\> is assumed to be 0.
 
 **Operation**
-
+```
 if ConditionPassed() then  
     EncodingSpecificOperations();  
     if !Copro_Accepted(cp, ThisInstr()) then  
         GenerateCoprocessorException();  
     else  
         Coproc_SendOneWord(R[t], cp, ThisInstr());  
+```
 
 **Exceptions**
-
 UsageFault.
 
 
-
-A7 Instruction Details
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
 Notes
-
 **Coprocessor fields**  Only instruction bits[31:24], bit[20], bits[15:8], and bit[4] are defined by the Arm
                         architecture. The remaining fields are recommendations.
 
 
 
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
+
 
 
 ### A7.7.73 MCRR, MCRR2
-
-
 Move to Coprocessor from two Arm Registers passes the values of two Arm registers to a coprocessor.
 
 If no coprocessor can execute the instruction, a UsageFault exception is generated.
@@ -11871,13 +11043,12 @@ MCR<c> <coproc>,<opc1>,<Rt>,<Rt2>,<CRm>
 
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
-
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 0 | 1 | 0 | 0 | 0 | 1 | 0 | 0 | Rt2 | Rt | coproc | opc1 | CRm |
 
-
+```
 t = UInt(Rt); t2 = UInt(Rt2); cp = UInt(coproc);  
+```
 
 | if t == 15 |  | t2 == 15 then UNPREDICTABLE; |
 | if t == 13 |  | t2 == 13 then UNPREDICTABLE; |
@@ -11889,13 +11060,12 @@ MCRR2<c> <coproc>,<opc1>,<Rt>,<Rt2>,<CRm>
 
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
-
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 1 | 0 | 0 | 0 | 1 | 0 | 0 | Rt2 | Rt | coproc | opc1 | CRm |
 
-
+```
 t = UInt(Rt); t2 = UInt(Rt2); cp = UInt(coproc);  
+```
 
 | if t == 15 |  | t2 == 15 then UNPREDICTABLE; |
 | if t == 13 |  | t2 == 13 then UNPREDICTABLE; |
@@ -11928,24 +11098,22 @@ Is the second Arm register whose value is transferred to the coprocessor.
 Is the destination coprocessor register.
 
 **Operation**
-
+```
 if ConditionPassed() then  
     EncodingSpecificOperations();  
     if !Coproc_Accepted(cp, ThisInstr()) then  
         GenerateCoprocessorException();  
     else  
         Coproc_SendTwoWords(R[t2], R[t], cp, ThisInstr());  
+```
 
 **Exceptions**
-
 UsageFault.
 
 
 
 
 ### A7.7.74 MLA
-
-
 Multiply Accumulate multiplies two register values, and adds a third register value. The least significant 32 bits of the result are written to the destination register. These 32 bits do not depend on whether signed or unsigned calculations are performed.
 
 
@@ -11957,12 +11125,12 @@ MLA<c> <Rd>, <Rn>, <Rm>, <Ra>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 1 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | Rn | Ra | Rd | 0 | 0 | 0 | 0 | Rm |
 
-
+```
 if Ra == '1111' then SEE MUL;  
-d = UInt(Rd); n = UInt(Rn); m = UInt(Rm); a = UInt(Ra); setflags = FALSE;  
+d = UInt(Rd); n = UInt(Rn); m = UInt(Rm); a = UInt(Ra); setflags = FALSE;
+```
 
 | if d IN {13,15} |  | n IN {13,15} |  | m IN {13,15} |  | a == 13 then UNPREDICTABLE; |
 
@@ -11987,9 +11155,9 @@ Specifies the register that contains the second operand.
 Specifies the register containing the accumulative value.
 
 
-Operation
+**Operation**
 
-
+```
 if ConditionPassed() then  
 EncodingSpecificOperations();  
 operand1 = SInt(R[n]); // operand1 = UInt(R[n]) produces the same final results  
@@ -12002,37 +11170,27 @@ if setflags then
   APSR.Z = IsZeroBit(result<31:0>);  
   // APSR.C unchanged  
   // APSR.V unchanged
+```
 
 
-Exceptions
-
-
+**Exceptions**
 None.
 
 
-
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.75 MLS
-
-
 Multiply and Subtract multiplies two register values, and subtracts the least significant 32 bits of the result from a third register value. These 32 bits do not depend on whether signed or unsigned calculations are performed. The result is written to the destination register.
-
 
 Encoding T1
 
 MLSC<c> <Rd>, <Rn>, <Rm>, <Ra>
 
-
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ----- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | ---- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 1 | 0 | 1 | 0 | 0 | 0 | 0 | Rn | Ra | Rd | 0 | 0 | 0 | 1 | Rm |
 
-
-d = UInt(Rd);  n = UInt(Rn);  m = UInt(Rm);  a = UInt(Ra);  
+```
+d = UInt(Rd);  n = UInt(Rn);  m = UInt(Rm);  a = UInt(Ra);
+```
 
 | if d IN {13,15} |  | n IN {13,15} |  | m IN {13,15} |  | a IN {13,15} then UNPREDICTABLE; |
 
@@ -12051,7 +11209,7 @@ where:
 
 
 Operation
-
+```
 if ConditionPassed() then  
     EncodingSpecificOperations();  
     operand1 = SInt(R[n]);  // operand1 = UInt(R[n]) produces the same final results  
@@ -12059,16 +11217,12 @@ if ConditionPassed() then
     addend = SInt(R[a]);    // addend = UInt(R[a]) produces the same final results  
     result = addend - operand1 * operand2;  
     R[d] = result<31:0>;  
-
+```
 
 Exceptions
 
 None.
 
-
-
-A7 Instruction Details
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
 
 
 ### A7.7.76 MOV (immediate)
@@ -12079,20 +11233,19 @@ Move (immediate) writes an immediate value to the destination register. It can o
 **Encoding T1**  
 All versions of the Thumb instruction set.
 
+```
 MOVS <Rd>, #<imm8>  
 MOV<c> <Rd>, #<imm8>  
 Outside IT block.  
 Inside IT block.
+```
 
 
-
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
 
 
 Operation
 
-
+```
     if ConditionPassed() then
         EncodingSpecificOperations();
         result = ~imm32;
@@ -12102,27 +11255,20 @@ Operation
             APSR.Z = IsZeroBit(result);
             APSR.C = carry;
             // APSR.V unchanged
-
+```
 
 Exceptions
-
-
     None.
 
 
 
 
 ### A7.7.77 MOV (register)
-
-
 Move (register) copies a value from a register to the destination register. It can optionally update the condition flags based on the value.
 
 **Encoding T1** Armv6-M, Armv7-M If <Rd> and <Rm> both from R0-R7, otherwise all versions of the Thumb instruction set. If <Rd> is the PC, must be outside or last in IT block
 
 
-
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
 
 - Ones in which S is specified and <Rm> is the SP, or <Rm> is the PC.
 
@@ -12131,7 +11277,7 @@ The pre-UAL syntax MOV<c> {S} is equivalent to MOVS<c>.
 
 Operation
 
-
+```
     if ConditionPassed() then
         EncodingSpecificOperations();
         result = R[n];
@@ -12144,7 +11290,7 @@ Operation
                 APSR.Z = IsZeroBit(result);
                 // APSR.C unchanged
                 // APSR.V unchanged
-
+```
 
 Exceptions
 
@@ -12153,7 +11299,6 @@ None.
 
 
 ### A7.7.78 MOV (shifted register)
-
 Move (shifted register) is a synonym for ASR, LSL, LSR, ROR, and RRX.
 
 See the following sections for details:
@@ -12176,7 +11321,6 @@ Table A7-4 shows the equivalences between MOV (shifted register) and other instr
 
 | Table A7-4 MOV (shift, register shift) equivalences |
 | ------------------------------------------------------ |
-
 | MOV instruction | Canonical form |
 | MOV{S} <Rd>, <Rm>, ASR #<n> | ASR{S} <Rd>, <Rm>, #<n> |
 | MOV{S} <Rd>, <Rm>, LSL #<n> | LSL{S} <Rd>, <Rm>, #<n> |
@@ -12194,18 +11338,12 @@ The canonical form of the instruction is produced on disassembly.
 
 Exceptions
 
-
 None.
 
 
 
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
 
 ### A7.7.79 MOVT
-
-
 Move Top writes an immediate value to the top halfword of the destination register. It does not affect the contents  
 of the bottom halfword.
 
@@ -12216,12 +11354,13 @@ MOVT<c> <Rd>, #<imm16>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 0 | 1 | 0 | 0 | 1 | 1 | 0 | 0 | imm4 | 0 | imm3 | Rd | imm8 |
 
 
+```
 d = UInt(Rd); imm16 = imm4:i:imm3:imm8;  
 if d IN {13,15} then UNPREDICTABLE;
+```
 
 **Assembler syntax**
 
@@ -12236,11 +11375,12 @@ where:
 <imm16> Specifies the immediate value to be written to <Rd>. It must be in the range 0-65535.
 
 **Operation**
-
+```
 if ConditionPassed() then  
 &emsp;EncodingSpecificOperations();  
 &emsp;R[d]<31:16> = imm16;  
 // R[d]<15:0> unchanged
+```
 
 **Exceptions**
 
@@ -12249,7 +11389,6 @@ None.
 
 
 ### A7.7.80 MRC, MRC2
-
 Move to Arm Register from Coprocessor causes a coprocessor to transfer a value to an Arm register or to the condition flags.
 
 **Encoding T1** Armv7-M  
@@ -12257,35 +11396,32 @@ MRC{<c> <coproc>,<opc1>,<Rt>,<CRn>,<CRm>,{,<opc2>}
 
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
-
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 0 | 1 | 1 | 0 | opc1 | 1 | CRn | Rt | coproc | opc2 | 1 | CRm |
 
-
+```
 t = UInt(Rt); cp = UInt(coproc);  
-if t == 13 then UNPREDICTABLE;  
+if t == 13 then UNPREDICTABLE;
+```
 
 **Encoding T2** Armv7-M  
 MRC2{<c> <coproc>,<opc1>,<Rt>,<CRn>,<CRm>,{,<opc2>}
 
-
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
-
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 1 | 1 | 0 | opc1 | 1 | CRn | Rt | coproc | opc2 | 1 | CRm |
 
-
+```
 t = UInt(Rt); cp = UInt(coproc);  
 if t == 13 then UNPREDICTABLE;
+```
 
 If no coprocessor can execute the instruction, a UsageFault exception is generated.
 
 **Assembler syntax**
-
+```
 MRC{2}{<c> <coproc>, #<opc1>, <Rt>, <CRn>, <CRm>{, #<opc2>}>
-
+```
 where:
 
 2  
@@ -12316,14 +11452,9 @@ Is an additional source or destination coprocessor register.
 Is a coprocessor-specific opcode in the range 0-7. If it is omitted, <opc2> is assumed to be 0.
 
 
-
-A7 Instruction Details
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 Operation
 
-
+```
     if ConditionPassed() then
         EncodingSpecificOperations();
         if !CoprocessorAccepted(cp, ThisInstr()) then
@@ -12338,17 +11469,14 @@ Operation
                 APSR.C = value<29>;
                 APSR.V = value<28>;
                 // value<27:0> are not used.
-
+```
 
 Exceptions
-
-
     UsageFault.
 
 
 
 ### A7.7.81 MRRC, MRRC2
-
 Move to two Arm Registers from Coprocessor causes a coprocessor to transfer values to two Arm registers.
 
 If no coprocessor can execute the instruction, a UsageFault exception is generated.
@@ -12359,14 +11487,12 @@ MRRC<c> <coproc>,<opc>,<Rt>,<Rt2>,<CRm>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |  | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- |  | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 0 | 0 | 1 | 0 | 0 | 0 | 1 | 0 | 1 | R12 | Rt | coproc | opc1 | CRm |
 
 
 t = UInt(Rt); t2 = UInt(Rt2); cp = UInt(coproc);  
 
 | if t == 15 |  | t2 == 15 |  | t == t2 then UNPREDICTABLE; |
-
 | if t == 13 |  | t2 == 13 then UNPREDICTABLE; |
 
 
@@ -12376,14 +11502,12 @@ MRRC2<c> <coproc>,<opc>,<Rt>,<Rt2>,<CRm>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |  | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- |  | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 1 | 0 | 0 | 0 | 1 | 0 | 1 | 0 | R12 | Rt | coproc | opc1 | CRm |
 
 
 t = UInt(Rt); t2 = UInt(Rt2); cp = UInt(coproc);  
 
 | if t == 15 |  | t2 == 15 |  | t == t2 then UNPREDICTABLE; |
-
 | if t == 13 |  | t2 == 13 then UNPREDICTABLE; |
 
 
@@ -12437,7 +11561,6 @@ MRS<op> <Rd>, <spec_reg>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ----- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 0 | 0 | 1 | 1 | 1 | 1 | 0 | (0) | (1) | (1) | (1) | 1 | 0 | (0) | 0 | Rd | SYSm |
 
 
@@ -12446,13 +11569,7 @@ for the complete description of the instruction, including its application-level
 
 
 
-A7 Instruction Details
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.83 MSR
-
-
 Move to Special Register from Arm Register moves the value of a general-purpose Arm register to the specified special-purpose register.
 
 **Encoding T1** Armv6-M, Armv7-M Enhanced functionality in Armv7-M.
@@ -12468,14 +11585,7 @@ Move to Special Register from Arm Register moves the value of a general-purpose 
 MSR is a system level instruction except when accessing the APSR. See MSR on page B5-677 for the complete description of the instruction, including its application-level uses.
 
 
-
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.84 MUL
-
-
 Multiply multiplies two register values. The least significant 32 bits of the result are written to the destination 
 register. These 32 bits do not depend on whether signed or unsigned calculations are performed.
 
@@ -12489,11 +11599,7 @@ Encoding T1
 All versions of the Thumb instruction set.
 
 
-
-
 ### A7.7.85 MVN (immediate)
-
-
 Bitwise NOT (immediate) writes the bitwise inverse of an immediate value to the destination register. It can
 optionally update the condition flags based on the value.
 
@@ -12501,15 +11607,7 @@ optionally update the condition flags based on the value.
 Encoding T1 Armv7-M
 
 
-
-
-*ARM Instruction Details*  
-*A.7.7 Alphabetical list of Armv7-M Thumb instructions*
-
-
 ### A7.7.86 MVN (register)
-
-
 Bitwise NOT (register) writes the bitwise inverse of a register value to the destination register. It can optionally update the condition flags based on the result.
 
 **Encoding T1** All versions of the Thumb instruction set.
@@ -12518,47 +11616,26 @@ MVN<c> <Rd>, <Rm> Inside IT block.
 
 
 
-
-A7 Instruction Details
-
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.87 NEG
-
-
 Negate is a pre-UAL synonym for RSB (immediate) with an immediate value of 0. See RSB (immediate) on page A7-341 for details.
 
 
 Assembler syntax
-
-
+```
 NEG<c> <Rd>, <Rm>
+```
 
 This is equivalent to:
-
+```
 RSB<c> <Rd>, <Rm>, #0
-
+```
 
 Exceptions
-
-
 None.
 
-ARM DDI 0403E.c Copyright © 2006-2008, 2010, 2014, 2017, 2018, 2021 Arm Limited or its affiliates. All rights reserved.  
-ID021621 Non-Confidential
-
-A7-305
-
-
-
-*A7 Instruction Details*
-*A7.7 Alphabetical list of Armv7-M Thumb instructions*
 
 
 ### A7.7.88 NOP
-
-
 No Operation does nothing.
 
 This is a NOP-compatible hint, the architected NOP, see NOP-compatible hints on page A7-185.
@@ -12580,15 +11657,15 @@ NOP<c>.W
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 0 | 0 | 1 | 1 | 0 | 1 | 0 | (1) | (1) | (1) | 1 | 0 | (00) | (00) | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 
 
 *// No additional decoding required*
 
 **Assembler syntax**
-
+```
 NOP<c>.<q>  
+```
 
 where:  
 
@@ -12596,21 +11673,17 @@ where:
 &nbsp;&nbsp;&nbsp;&nbsp;See Standard assembler syntax fields on page A7-177.
 
 **Operation**
-
+```
 if ConditionPassed() then  
-&nbsp;&nbsp;&nbsp;&nbsp;EncodingSpecificOperations();  
-&nbsp;&nbsp;&nbsp;&nbsp;// Do nothing
+    EncodingSpecificOperations();  
+    // Do nothing
+```
 
 **Exceptions**
-
 None.
 
 
-
-
 ### A7.7.89 ORN (immediate)
-
-
 Logical OR NOT (immediate) performs a bitwise (inclusive) OR of a register value and the complement of an immediate value, and writes the result to the destination register. It can optionally update the condition flags based on the result.
 
 
@@ -12621,22 +11694,21 @@ ORN{$}<c> <Rd>, <Rn>, #<const>
 
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
-
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- |
-
 | 1 | 1 | 1 | 0 | 0 | 0 | 0 | 1 | $ | Rn | 0 | imm3 | Rd | imm8 |
 
-
+```
     if Rn == '1111' then SEE MVN (immediate);
     d = UInt(Rd); n = UInt(Rn); setflags = (s == '1');
     (imm32, carry) = ThumbExpandImm_C(i:imm3:imm8, APSR.C);
+```
 
 | if d IN {13, 15} |  | n == 13 then UNPREDICTABLE; |
 
 
 Assembler syntax
 
-
+```
     ORN{$}<c><q> {<Rd>, } <Rn>, #<const>
 
     where:
@@ -12652,11 +11724,11 @@ Assembler syntax
 
     <const>  Specifies the immediate value to be added to the value obtained from <Rn>. See Modified immediate
              constants in Thumb instructions on page A5-139 for the range of permitted values.
-
+```
 
 Operation
 
-
+```
     if ConditionPassed() then
         EncodingSpecificOperations();
         result = R[n] OR NOT(imm32);
@@ -12666,22 +11738,14 @@ Operation
             APSR.Z = IsZeroBit(result);
             APSR.C = carry;
             // APSR.V unchanged
-
+```
 
 Exceptions
-
-
     None.
 
 
 
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.90 ORN (register)
-
-
 Logical OR NOT (register) performs a bitwise (inclusive) OR of a register value and the complement of an  
 optionally-shifted register value, and writes the result to the destination register. It can optionally update the  
 condition flags based on the result.
@@ -12694,21 +11758,22 @@ ORN{$}<c> <Rd>,<Rn>,<Rm> {,<shift>}
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ---- | ----- | ----- | --- | --- | --- | --- |
-
 | 1 | 1 | 0 | 1 | 0 | 0 | 1 | $ | Rn | (0) | imm3 | Rd | imm2 | type | Rm |
 
-
+```
 if Rn == '1111' then SEE MVN (register);  
 d = UInt(Rd); n = UInt(Rn); m = UInt(Rm); setflags = (S == '1');  
-(shift_t, shift_n) = DecodeImmShift(type, imm3:imm2);  
+(shift_t, shift_n) = DecodeImmShift(type, imm3:imm2);
+```
 
 | if d IN {13,15} |  | n == 13 |  | n IN {13,15} then UNPREDICTABLE; |
 
 
 Assembler syntax
 
-
+```
 ORN{$}<c><q> {<Rd>,} <Rn>, <Rm> {,<shift>}
+```
 
 where:
 
@@ -12735,7 +11800,7 @@ where:
 
 Operation
 
-
+```
 if ConditionPassed() then  
   EncodingSpecificOperations();  
   (shifted, carry) = Shift_C(R[m], shift_t, shift_n, APSR.C);  
@@ -12746,24 +11811,14 @@ if ConditionPassed() then
     APSR.Z = IsZeroBit(result);  
     APSR.C = carry;  
     // APSR.V unchanged
-
+```
 
 Exceptions
-
-
 None.
 
-A7-308  Copyright © 2006-2008, 2010, 2014, 2017, 2018, 2021 Arm Limited or its affiliates. All rights reserved. ARM DDI 0403E.e  
-Non-Confidential                         ID021621
 
-
-
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-A7 Instruction Details
 
 ### A7.7.91 ORR (immediate)
-
 Logical OR (immediate) performs a bitwise (inclusive) OR of a register value and an immediate value, and writes the result to the destination register. It can optionally update the condition flags based on the result.
 
 Encoding T1            Armv7-M  
@@ -12772,19 +11827,19 @@ ORR{S}<c> <Rd>,<Rn>,#<const>
 
 | 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0 | 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0 |
 | -------------------------------------- | -------------------------------------- |
-
 | 1 1 1 0 | 0 0 | 0 | 0 | 0 | 0 | 1 | S | Rn | 0 | imm3 | Rd | imm8 |
 
-
+```
 if Rn == '1111' then SEE MOV (immediate);  
 d = UInt(Rd); n = UInt(Rn); setflags = (S == '1');  
 (imm32, carry) = ThumbExpandImm_C(1:imm3:imm8, APSR.C);  
+```
 
 | if d IN {13,15} |  | n == 13 then UNPREDICTABLE; |
 
 
 Assembler syntax
-
+```
     ORR{S}<c> <Rd>, <Rn>, #<const>
 
     where:
@@ -12796,7 +11851,7 @@ Assembler syntax
     <Rd>          Specifies the destination register. If <Rd> is omitted, this register is the same as <Rn>.
 
     <Rn>          Specifies the register that contains the operand.
-
+```
 
 <const>      Specifies the immediate value to be added to the value obtained from <Rn>. See Modified immediate<br>
 
@@ -12805,7 +11860,7 @@ Assembler syntax
 The pre-UAL syntax ORR<c>S is equivalent to ORRS<c>.
 
 Operation
-
+```
     if ConditionPassed() then
         EncodingSpecificOperations(); 
         result = R[n] OR imm32;
@@ -12815,42 +11870,27 @@ Operation
             APSR.Z = IsZeroBit(result);
             APSR.C = carry;
             // APSR.V unchanged
+```
 
 Exceptions
-
 None.
-
-ARM DDI 0403E.a © Copyright © 2006-2008, 2010, 2014, 2017, 2018, 2021 Arm Limited or its affiliates. All rights reserved. A7-309  
-ID021621 Non-Confidential
-
-
-
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
 
 
 ### A7.7.92 ORR (register)
-
-
 Logical OR (register) performs a bitwise (inclusive) OR of a register value and an optionally-shifted register value,  
 and writes the result to the destination register. It can optionally update the condition flags based on the result.
 
 
 Encoding T1          All versions of the Thumb instruction set.
 
-
+```
 ORRS <Rn>,<Rm>            Outside IT block.  
 ORR<c> <Rn>,<Rm>          Inside IT block.
-
-
-
-A7 Instruction Details
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
+```
 
 Operation
 
-
+```
     if ConditionPassed() then
         EncodingSpecificOperations();
         (shifted, carry) = Shift_C(R[m], shift_t, shift_n, APSR.C);
@@ -12861,22 +11901,10 @@ Operation
             APSR.Z = IsZeroBit(result);
             APSR.C = carry;
             // APSR.V unchanged
-
+```
 
 Exceptions
-
-
     None.
-
-ARM DDI 0403E.e Copyright © 2006-2008, 2010, 2014, 2017, 2018, 2021 Arm Limited or its affiliates. All rights reserved.  
-ID021621 Non-Confidential
-
-A7-311
-
-
-
-A7 Instruction Details  
-A.7.7 Alphabetical list of Arm®v7-M Thumb instructions  
 
 
 ### A7.7.93 PKHBT, PKHTB  
@@ -12891,9 +11919,7 @@ PKHTB<c> <Rd>,<Rn>,<Rm>{,ASR #<imm>}
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 0 | 0 | 1 | 0 | 1 | Rn | 0 | (0) | imm3 | Rd | imm2 | tb | T | Rm |
-
 | if S == '1' |  | T == '1' then UNDEFINED; |
 
 
@@ -12940,16 +11966,11 @@ if ConditionPassed() then
 None.
 
 
-
-
 ### A7.7.94       PLD (immediate)
-
-
 Preload Data signals the memory system that data memory accesses from a specified address are likely in the near 
 future. The memory system can respond by taking actions that are expected to speed up the memory accesses when 
 they do occur, such as pre-loading the cache line containing the specified address into the data cache. See Preloading 
 caches on page A3-99 and Memory hints on page A7-185 for additional information.
-
 
 Encoding T1              Armv7-M
 
@@ -12957,15 +11978,13 @@ PLD<c>   [<Rn>, #<imm12>]
 
 
 | 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0 |  | 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0 |
-
 | --------------------------------------- | ----------------------------------------- |
-
 | 1 1 1 1 0 0 0 0 1 0 0 1 | Rn | 1 1 1 | imm12 |
 
-
+```
 if Rn == '1111' then SEE PLD (literal); 
 n = UInt(Rn); imm32 = ZeroExtend(imm12, 32); add = TRUE;
-
+```
 
 Encoding T2              Armv7-M
 
@@ -12973,15 +11992,13 @@ PLD<c>   [<Rn>, #<–<imm8>]
 
 
 | 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0 |  | 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0 |
-
 | --------------------------------------- | ----------------------------------------- |
-
 | 1 1 1 1 0 0 0 0 1 0 0 0 | Rn | 1 1 1 1 | 0 0 | imm8 |
 
-
+```
 if Rn == '1111' then SEE PLD (literal); 
 n = UInt(Rn); imm32 = ZeroExtend(imm8, 32); add = FALSE;
-
+```
 
 Assembler syntax
 
@@ -13007,27 +12024,19 @@ PLD<c><q>   {<Rn> {, #+/-<imm>}}
 
 Operation
 
-
+```
     if ConditionPassed() then
         EncodingSpecificOperations();
         address = if add then (R[n] + imm32) else (R[n] - imm32);
         Hint_PreloadData(address);
-
+```
 
 Exceptions
-
-
 None.
 
 
 
-*A7 Instruction Details*  
-*A7.7 Alphabetical list of Armv7-M Thumb instructions*
-
-
 ### A7.7.95 PLD (literal)
-
-
 Preload Data signals the memory system that data memory accesses from a specified address are likely in the near future. The memory system can respond by taking actions that are expected to speed up the memory accesses when they do occur, such as pre-loading the cache line containing the specified address into the data cache. See *Preloading caches on page A3-99* and *Memory hints on page A7-185* for additional information.
 
 **Encoding T1**  
@@ -13036,21 +12045,18 @@ PLD<><label>
 
 
 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
-
 | ------- | --------- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
-
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
-
 | 1 | 1 | 1 | 0 | 0 | U | 0 | 0 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | imm12 |
 
 
 imm32 = ZeroExtend(imm12, 32); add = (U == '1');
 
 **Assembler syntax**
-
+```
 PLD<><q> <label> Normal form  
 PLD<><q> [PC, +/–<imm>] Alternative form  
-
+```
 where:
 
 <><q> See *Standard assembler syntax fields on page A7-177*.
@@ -13071,7 +12077,6 @@ The alternative syntax permits the addition or subtraction of the offset and the
 
 
 ### A7.7.96 PLD (register)
-
 Preload Data is a memory hint instruction that can signal the memory system that data memory accesses from a specified address are likely in the near future. The memory system can respond by taking actions that are expected to speed up the memory accesses when they do occur, such as pre-loading the cache line containing the specified address into the data cache. See Preloading caches on page A3-99 and Memory hints on page A7-185 for additional information.
 
 **Encoding T1**  
@@ -13079,10 +12084,6 @@ Preload Data is a memory hint instruction that can signal the memory system that
 | Armv7-M |
 | ---------- |
 | PLD<c>  [<Rn>, <Rm>{, LSL #<imm2>}] |
-
-
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
 
 
 ### A7.7.97 PLI (immediate, literal)
@@ -13096,46 +12097,44 @@ PLI<c> [<Rn>, #<imm12>]
 
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
-
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 1 | 0 | 0 | 1 | 0 | 0 | 1 | Rn | 1 | 1 | 1 | imm12 |
 
-
+```
 if Rn == '1111' then SEE encoding T3;  
 n = UInt(Rn); imm32 = ZeroExtend(imm12, 32); add = TRUE;
+```
 
 **Encoding T2**  
 Armv7  
 PLI<c> [<Rn>, #<±imm8>]
 
-
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 1 | 0 | 0 | 1 | 0 | 0 | 0 | 1 | Rn | 1 | 1 | 1 | 0 | 0 | imm8 |
 
-
+```
 if Rn == '1111' then SEE encoding T3;  
 n = UInt(Rn); imm32 = ZeroExtend(imm8, 32); add = FALSE;
+```
 
 **Encoding T3**  
 Armv7  
 PLI<c> <label>
 
-
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 1 | 0 | 0 | 1 | 0 | 0 | 1 | 1 | 0 | Rn | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | imm12 |
 
-
+```
 n = 15; imm32 = ZeroExtend(imm12, 32); add = (U == '1');
+```
 
-**Assembler syntax**  
-
+**Assembler syntax**
+```
 PLI{<c>} [<Rn>, #±<imm>]  
 PLI{<c>} [PC, #±<imm>]
+```
 
 where:
 
@@ -13152,31 +12151,19 @@ See Standard assembler syntax fields on page A7-177.
       -255-4095 otherwise.
 
 **Operation**
-
+```
 if ConditionPassed() then  
     EncodingSpecificOperations();  
     base = if n == 15 then Align(PC,4) else R[n];  
     address = if add then (base + imm32) else (base - imm32);  
     Hint_PreloadInstr(address);
-
-
-
-A7 Instruction Details
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
+```
 
 **Exceptions**
-
 None.
 
 
-
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.98 PLI (register)
-
-
 Preload Instruction is a memory hint instruction that can signal the memory system that instruction memory  
 accesses from a specified address are likely in the near future. The memory system can respond by taking actions  
 that are expected to speed up the memory accesses when they do occur, such as pre-loading the cache line containing  
@@ -13190,13 +12177,11 @@ PLI<c> {<Rn>, <Rm> {,LSL #<imm2>}}
 
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
-
 | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 1 | 0 | 0 | 1 | 1 | 0 | 0 | 0 | 1 |  |  |  |  | Rn | 1 | 1 | 1 | 0 | 0 | 0 | 0 |  |  | imm2 |  | Rm |
 
 
-    if Rn == ‘1111’ then SEE PLI (immediate, literal);  
+    if Rn == '1111' then SEE PLI (immediate, literal);  
     n = UInt(Rn); m = UInt(Rm); add = TRUE;  
     (shift_t, shift_n) = (SRType_LSL, UInt(imm2));  
     if m IN {13,15} then UNPREDICTABLE;  
@@ -13221,25 +12206,21 @@ Assembler syntax
 
 Operation
 
-
+```
     if ConditionPassed() then
         EncodingSpecificOperations();  
         offset = Shift(R[m], shift_t, shift_n, APSR.C);  
         address = if add then (R[n] + offset) else (R[n] - offset);  
         Hint_PreloadInstr(address);  
-
+```
 
 Exceptions
-
-
     None.
 
 
 
 
 ### A7.7.99 POP
-
-
 Pop Multiple Registers loads a subset, or possibly all, of the general-purpose registers R0-R12 and the PC or the LR from the stack.
 
 If the registers loaded include the PC, the word loaded for the PC is treated as a branch address or an exception return value. Bit[0] complies with the Arm architecture interworking rules for branches to Thumb state execution and must be 1. If bit[0] is 0, a UsageFault exception occurs.
@@ -13250,14 +12231,9 @@ Encoding T1
 All versions of the Thumb instruction set.
 
 
-
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 Operation
 
-
+```
     if ConditionPassed() then
         EncodingSpecificOperations();
         address = SP;
@@ -13267,7 +12243,7 @@ Operation
                 R[i] = MemA[address,4]; address = address + 4;
         if registers<L[15]> == '1' then
             LoadWritePC(MemA[address,4]);
-
+```
 
 
 Exceptions
@@ -13277,13 +12253,7 @@ UsageFault, MemManage, BusFault.
 
 
 
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.100 PSSBB
-
-
 Physical Speculative Bypass Barrier is a memory barrier which prevents Speculative loads from bypassing earlier stores to the same physical address. The semantics of the Physical Speculative Bypass Barrier are:
 
 - When a load to a location appears in program order after the PSSBB, then the load does not speculatively read an entry earlier in the coherence order for that location than the entry generated by the latest store satisfying all of the following conditions:
@@ -13300,7 +12270,6 @@ PSSBB<c> Armv7-M
 
 
 ### A7.7.101 PUSH
-
 Push Multiple Registers stores a subset, or possibly all, of the general-purpose registers R0-R12 and the LR to the stack.
 
 **Encoding T1**  
@@ -13308,10 +12277,6 @@ All versions of the Thumb instruction set.
 
 PUSH<c> <registers>
 
-
-
-A7 Instruction Details
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
 
 
 Operation
@@ -13334,10 +12299,6 @@ Exceptions
 
 UsageFault, MemManage, BusFault.
 
-
-
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
 
 
 ### A7.7.102 QADD
@@ -13390,7 +12351,7 @@ None.
 Saturating Add 16 performs two 16-bit integer additions, saturates the results to the 16-bit signed integer range
 −215 ≤ x ≤ 215 − 1, and writes the results to the destination register.
 
-Encoding T1                                                              Armv7E-M
+Encoding T1                                                              Armv7E-M
 QADD16<c> <Rd>, <Rn>, <Rm>
 
 \[
@@ -13410,19 +12371,19 @@ Assembler syntax
 QADD16{<c>}{<q>} <{Rd>, }<Rn>, <Rm>
 
 where:
-<c>, <q>      See Standard assembler syntax fields on page A7-177.
-<Rd>           The destination register.
-<Rn>           The first operand register.
-<Rm>          The second operand register.
+<c>, <q>      See Standard assembler syntax fields on page A7-177.
+<Rd>           The destination register.
+<Rn>           The first operand register.
+<Rm>          The second operand register.
 
 Operation
 
 if ConditionPassed() then
-    EncodingSpecificOperations();
-    sum1 = SInt(R[n]<15:0>) + SInt(R[m]<15:0>);
-    sum2 = SInt(R[n]<31:16>) + SInt(R[m]<31:16>);
-    R[d]<15:0> = SignedSat(sum1, 16);
-    R[d]<31:16> = SignedSat(sum2, 16);
+    EncodingSpecificOperations();
+    sum1 = SInt(R[n]<15:0>) + SInt(R[m]<15:0>);
+    sum2 = SInt(R[n]<31:16>) + SInt(R[m]<31:16>);
+    R[d]<15:0> = SignedSat(sum1, 16);
+    R[d]<31:16> = SignedSat(sum2, 16);
 
 Exceptions
 
@@ -13447,7 +12408,6 @@ QADD8{<c>}{<q>} <Rd>, <Rn>, <Rm>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 0 | 1 | 0 | 0 | 0 | Rn | 1 | 1 | 1 | Rd | 0 | 0 | 0 | Rm |
 
 
@@ -13502,9 +12462,6 @@ QASX<c> <Rd>, <Rn>, <Rm>
 
 
 
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
 ### A7.7.106 QDADD
 
 Saturating Double and Add adds a doubled register value to another register value, and writes the result to the
@@ -13518,7 +12475,6 @@ QDADD{<c>}{<q>} <Rd>, <Rm>, <Rn>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
-
 | 1 | 1 | 1 | 0 | 1 | 0 | 0 | 0 | 0 | Rn | 1 | 1 | 1 | 1 | Rd | 0 | 0 | 1 | Rm |
 
 
@@ -13570,7 +12526,6 @@ QDSUB<c> <Rd>, <Rm>, <Rn>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 1 | 0 | 1 | 0 | 0 | 0 | 0 | Rn | 1 | 1 | 1 | 1 | Rd | 1 | 0 | 1 | 1 | Rm |
 
 
@@ -13607,13 +12562,8 @@ None.
 
 
 
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
 
 ### A7.7.108 QSAX
-
-
 Saturating Subtract and Add with Exchange exchanges the two halfwords of the second operand, performs one 16-bit integer subtraction and one 16-bit addition, saturates the results to the 16-bit signed integer range <br>-2<sup>15</sup> ≤ x ≤ 2<sup>15</sup> − 1, and writes the results to the destination register.
 
 **Encoding T1** Armv7E-M  
@@ -13636,7 +12586,6 @@ QSUB<c> <Rd>, <Rm>, <Rn>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 0 | 1 | 0 | 0 | 0 | Rn | 1 | 1 | 1 | 1 | Rd | 1 | 0 | 1 | 0 | Rm |
 
 
@@ -13674,13 +12623,8 @@ None.
 
 
 
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
 
 ### A7.7.110 QSUB16
-
-
 Saturating Subtract 16 performs two 16-bit integer subtractions, saturates the results to the 16-bit signed integer range –2<sup>15</sup> ≤ x ≤ 2<sup>15</sup> – 1, and writes the results to the destination register.
 
 **Encoding T1**  
@@ -13690,7 +12634,6 @@ QSUB16<c> <Rd>, <Rn>, <Rm>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 0 | 0 | 1 | 0 | 1 | 0 | 1 | Rn | 1 | 1 | 1 | Rd | 0 | 0 | 0 | 1 | Rm |
 
 
@@ -13726,8 +12669,6 @@ None.
 
 
 ### A7.7.111 QSUB8
-
-
 Saturating Subtract 8 performs four 8-bit integer subtractions, saturates the results to the 8-bit signed integer range
 −2<sup>7</sup> ≤ x ≤ 2<sup>7</sup> − 1, and writes the results to the destination register.
 
@@ -13736,13 +12677,9 @@ QSUB8{<c>}{<q>} <Rd>, <Rn>, <Rm>
 
 
 
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
 
 
 ### A7.7.112 RBIT
-
-
 Reverse Bits reverses the bit order in a 32-bit register.
 
 **Encoding T1**  
@@ -13752,7 +12689,6 @@ RBIT<c> <Rd>, <Rm>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
-
 | 1 | 1 | 1 | 1 | 1 | 0 | 0 | 1 | Rm | 1 | 1 | 1 | 1 | Rd | 1 | 0 | 0 | Rm |
 
 
@@ -13763,34 +12699,35 @@ d = UInt(Rd); m = UInt(Rm);
 
 
 **Assembler syntax**
-
+```
 RBIT<c> <Rd>, <Rm>  
+```
 
 where:
-
+```
 <c> See Standard assembler syntax fields on page A7-177.  
 
 <Rd> Specifies the destination register.  
 
 <Rm> Specifies the register that contains the operand. Its number must be encoded twice in encoding T1, in both the Rm and Rm2 fields.  
+```
 
 **Operation**
-
+```
 if ConditionPassed() then  
-  EncodingSpecificOperations();  
-  bits(32) result;  
-  for i = 0 to 31  
-    result<31-i> = R[m]<i>;  
-  R[d] = result;  
+  EncodingSpecificOperations();  
+  bits(32) result;  
+  for i = 0 to 31  
+    result<31-i> = R[m]<i>;  
+  R[d] = result;  
+```
 
 **Exceptions**
-
 None.
 
 
 
 ### A7.7.113 REV
-
 Byte-Reverse Word reverses the byte order in a 32-bit register.
 
 Encoding T1            Armv6-M, Armv7-M
@@ -13799,7 +12736,6 @@ REV<c> <Rd>,<Rm>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 0 | 1 | 1 | 0 | 0 | 0 | 0 | Rm | Rd |
 
 
@@ -13811,12 +12747,13 @@ REV<c>.W <Rd>,<Rm>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 1 | 0 | 1 | 0 | 0 | 1 | Rm | 1 | 1 | 1 | Rd | 1 | 0 | 0 | 0 | Rm |
 
 
+```
 if !Consistent(Rm) then UNPREDICTABLE;
 d = UInt(Rd); m = UInt(Rm);  
+```
 
 | if d IN {13,15} |  | m IN {13,15} then UNPREDICTABLE; |
 
@@ -13831,7 +12768,7 @@ where:
       in both the Rm and Rm2 fields.
 
 Operation
-
+```
 if ConditionPassed() then
     EncodingSpecificOperations();
     bits(32) result;
@@ -13840,18 +12777,13 @@ if ConditionPassed() then
     result<15:8>  = R[m]<23:16>;
     result<7:0>   = R[m]<31:24>;
     R[d] = result;
-
+```
 Exceptions
 
 None.
 
 
-
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
 ### A7.7.114 REV16
-
 Byte-Reverse Packed Halfword reverses the byte order in each 16-bit halfword of a 32-bit register.
 
 **Encoding T1** Armv6-M, Armv7-M  
@@ -13860,19 +12792,17 @@ REV16<c> <Rd>, <Rm>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 0 | 0 | 1 | 1 | 0 | 0 | 1 | Rm | Rd |
 
-
+```
 d = UInt(Rd); m = UInt(Rm);  
+```
 
 **Encoding T2** Armv7-M  
 REV16<c>.W <Rd>, <Rm>
 
-
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 1 | 1 | 0 | 0 | 1 | Rm | 1 | 1 | 1 | Rd | 1 | 0 | 0 | 1 | Rm |
 
 
@@ -13912,8 +12842,6 @@ None.
 
 
 ### A7.7.115 REVSH
-
-
 Byte-Reverse Signed Halfword reverses the byte order in the lower 16-bit halfword of a 32-bit register, and sign extends the result to 32 bits.
 
 
@@ -13923,14 +12851,7 @@ Armv6-M, Armv7-M
 REVSH<c> <Rd>, <Rm>
 
 
-
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.116 ROR (immediate)
-
-
 Rotate Right (immediate) provides the value of the contents of a register rotated by a constant value. The bits that are rotated off the right end are inserted into the vacated bit positions on the left. It can optionally update the condition flags based on the result.
 
 Encoding T1  
@@ -13940,7 +12861,6 @@ ROR{s}<c> <Rd>, <Rm>, #<imm5>
 
 
 ### A7.7.117   ROR (register)
-
 Rotate Right (register) provides the value of the contents of a register rotated by a variable number of bits. The bits that are rotated off the right end are inserted into the vacated bit positions on the left. The variable number of bits is read from the bottom byte of a register. It can optionally update the condition flags based on the result.
 
 
@@ -13955,13 +12875,9 @@ Inside IT block.
 
 
 
-_A7 Instruction Details_
-_A7.7 Alphabetical list of Armv7-M Thumb instructions_
 
 
 ### A7.7.118 RRX
-
-
 Rotate Right with Extend provides the value of the contents of a register shifted right by one place, with the carry flag shifted into bit[31].
 
 RRX can optionally update the condition flags based on the result. In that case, bit[0] is shifted into the carry flag.
@@ -13971,9 +12887,7 @@ RRX{S}<c> <Rd>, <Rm>
 
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
-
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-
 | 1 | 1 | 0 | 1 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 1 | S | 1 | 1 | (0) | 0 | 0 | 0 | Rd | 0 | 1 | 1 | Rm |
 
 
@@ -14022,13 +12936,7 @@ None.
 
 
 
-A7 Instruction Details
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.119   RSB (immediate)
-
-
 Reverse Subtract (immediate) subtracts a register value from an immediate value, and writes the result to the
 destination register. It can optionally update the condition flags based on the result.
 
@@ -14041,7 +12949,6 @@ RSB<c> <Rd>,<Rn>,#0                                                    Inside IT
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 0 | 1 | 0 | 0 | 0 | 1 | 0 | 0 | 1 | Rn | Rd |
 
 
@@ -14054,9 +12961,7 @@ RSB{S}<c>.W <Rd>,<Rn>,#<const>
 
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
-
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---- | --- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 0 | 0 | 1 | 1 | 0 | S | Rn | 0 | imm3 | Rd | imm8 |
 
 
@@ -14114,13 +13019,8 @@ ID021621                                                                  Non-Co
 
 
 
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
 
 ### A7.7.120 RSB (register)
-
-
 Reverse Subtract (register) subtracts a register value from an optionally-shifted register value, and writes the result to the destination register. It can optionally update the condition flags based on the result.
 
 
@@ -14133,11 +13033,8 @@ RSB{s}{<c> <Rd>, <Rn>, <Rm> {, <shift>}}
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ------ | ------ | ------ | ------ | ------ | ------ | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 0 | 0 | 1 | 1 | 0 | 1 | 0 | 1 | Rn | (0) | imm3 | Rd |
-
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
-
 | (0) | imm2 | type | Rm |
 
 
@@ -14199,8 +13096,6 @@ None.
 
 
 ### A7.7.121 SADD16
-
-
 Signed Add 16 performs two 16-bit signed integer additions, and writes the results to the destination register. It sets the APSR.GE bits according to the results of the additions.
 
 
@@ -14212,13 +13107,7 @@ SADD16<c> <Rd>, <Rn>, <Rm>
 
 
 
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.122 SADD8
-
-
 Signed Add 8 performs four 8-bit signed integer additions, and writes the results to the destination register. It sets the APSR.GE bits according to the results of the additions.
 
 
@@ -14279,8 +13168,6 @@ A7-344            Copyright © 2006-2008, 2010, 2014, 2017, 2018, 2021 Arm Limit
 
 
 ### A7.7.123 SASX
-
-
 Signed Add and Subtract with Exchange exchanges the two halfwords of the second operand, performs one 16-bit 
 integer addition and one 16-bit subtraction, and writes the results to the destination register. It sets the APSR.GE 
 bits according to the results.
@@ -14292,7 +13179,6 @@ SASX<c> <Rd>, <Rn>, <Rm>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 1 | 0 | 0 | 1 | 0 | 0 | 0 | Rn | 1 | 1 | 1 | 1 | Rd | 0 | 0 | 0 | 0 | Rm |
 
 
@@ -14330,14 +13216,7 @@ Exceptions
 None.
 
 
-
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.124 SBC (immediate)
-
-
 Subtract with Carry (immediate) subtracts an immediate value and the value of NOT(Carry flag) from a register value, and writes the result to the destination register. It can optionally update the condition flags based on the result.
 
 
@@ -14348,7 +13227,6 @@ SBC{S}<c> <Rd>,<Rn>,#<const>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 0 | 0 | 1 | 1 | S | Rn | 0 | imm3 | Rd | imm8 |
 
 
@@ -14409,8 +13287,6 @@ A7-346        Copyright © 2006-2008, 2010, 2014, 2017, 2018, 2021 Arm Limited o
 
 
 ### A7.7.125 SBC (register)
-
-
 Subtract with Carry (register) subtracts an optionally-shifted register value and the value of NOT(Carry flag) from
 a register value, and writes the result to the destination register. It can optionally update the condition flags based
 on the result.
@@ -14419,19 +13295,12 @@ Encoding T1
 All versions of the Thumb instruction set.
 
 
-
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 Exceptions
 
 None.
 
 
-
 ### A7.7.126 SBFX
-
 Signed Bit Field Extract extracts any number of adjacent bits at any position from one register, sign extends them<br>to 32 bits, and writes the result to the destination register.
 
 Encoding T1 Armv7-M  
@@ -14440,12 +13309,9 @@ SBFX<c> <Rd>, <Rn>, #<lsb>, #<width>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 0 | 0 | 1 | 1 | 0 | 0 | 0 | 0 | Rn | 0 | imm3 | Rd |
-
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 3 | 2 | 0 | widthm1 |
 
 
@@ -14480,14 +13346,7 @@ if ConditionPassed() then<br>EncodingSpecificOperations();<br>msbit = lsbit + wi
 None.
 
 
-
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.127 SDIV
-
-
 Signed Divide divides a 32-bit signed integer register value by a 32-bit signed integer register value, and writes the result to the destination register. The condition flags are not affected.
 
 **Encoding T1**  
@@ -14497,11 +13356,8 @@ SDIV<c> <Rd>, <Rn>, <Rm>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 1 | 0 | 1 | 0 | 0 | Rn | (1)(1)(1)(1) | Rd |
-
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
-
 | 1 | 1 | 1 | 1 | 1 | 1 | Rm |
 
 
@@ -14554,12 +13410,7 @@ A7-350          Copyright © 2006-2008, 2010, 2014, 2017, 2018, 2021 Arm Limited
 Non-Confidential                                                                                            ID021621
 
 
-
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
 ### A7.7.128 SEL
-
 Select Bytes selects each byte of its result from either its first operand or its second operand, according to the values of the GE flags.
 
 
@@ -14610,13 +13461,7 @@ None.
 
 
 
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.129 SEV
-
-
 Send Event is a hint instruction. It causes an event to be signaled to all CPUs within the multiprocessor system. See  
 *Wait For Event and Send Event on page B1-560 for more details.*
 
@@ -14628,7 +13473,6 @@ SEV<c>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 0 | 1 | 1 | 1 | 1 | 0 | 0 | 0 | 0 | 0 | 0 |
 
 
@@ -14640,7 +13484,6 @@ SEV<c>.<q>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | ---- | ---- | ---- | ---- | ---- | ---- |
-
 | 1 | 1 | 0 | 0 | 1 | 1 | 0 | 1 | 1 | 0 | (1) | (1) | (1) | (1) | 1 | 0 | (0) | (0) | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 |
 
 
@@ -14664,13 +13507,7 @@ None.
 
 
 
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.130 SHADD16
-
-
 Signed Halving Add 16 performs two signed 16-bit integer additions, halves the results, and writes the results to the destination register.
 
 **Encoding T1** Armv7E-M  
@@ -14679,7 +13516,6 @@ SHADD16<c> <Rd>, <Rn>, <Rm>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 0 | 0 | 1 | 0 | 0 | 1 | Rn | 1 | 1 | 1 | Rd | 0 | 0 | 0 | Rm |
 
 
@@ -14711,10 +13547,7 @@ R[d]<31:16> = sum2<16:1>;
 
 None.
 
-ARM DDI 0403E.cCopyright © 2006-2008, 2010, 2014, 2017, 2018, 2021 Arm Limited or its affiliates. All rights reserved.  
-ID021621 Non-Confidential  
 
-A7-353
 
 
 
@@ -14728,7 +13561,6 @@ SHADD8<c> <Rd>, <Rn>, <Rm>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 0 | 1 | 0 | 0 | 0 | Rn | 1 | 1 | 1 | Rd | 0 | 1 | 0 | Rm |
 
 
@@ -14768,8 +13600,6 @@ None.
 
 
 ### A7.7.132 SHASX
-
-
 Signed Halving Add and Subtract with Exchange exchanges the two halfwords of the second operand, performs one
 signed 16-bit integer addition and one signed 16-bit subtraction, halves the results, and writes the results to the
 destination register.
@@ -14781,7 +13611,6 @@ SHASX<c> <Rd>, <Rn>, <Rm>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
-
 | 1 | 1 | 1 | 0 | 0 | 0 | 1 | 0 | 0 | Rn | 1 | 1 | 1 | 1 | Rd | 0 | 0 | 0 | Rm |
 
 
@@ -14817,13 +13646,7 @@ None.
 
 
 
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.133 SHSAX
-
-
 Signed Halving Subtract and Add with Exchange exchanges the two halfwords of the second operand, performs one
 signed 16-bit integer subtraction and one signed 16-bit addition, halves the results, and writes the results to the
 destination register.
@@ -14835,7 +13658,6 @@ SHSAX<\c> <Rd>,<Rn>,<Rm>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
-
 | 1 | 1 | 1 | 1 | 0 | 0 | 1 | 1 | 0 | Rn | 1 | 1 | 1 | Rd | 0 | 0 | 0 | Rm |
 
 
@@ -14871,7 +13693,6 @@ None.
 
 
 ### A7.7.134 SHSUB16
-
 Signed Halving Subtract 16 performs two signed 16-bit integer subtractions, halves the results, and writes the results to the destination register.
 
 **Encoding T1** Armv7E-M  
@@ -14914,14 +13735,7 @@ if ConditionPassed() then
 None.
 
 
-
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.135 SHSUB8
-
-
 Signed Halving Subtract 8 performs four signed 8-bit integer subtractions, halves the results, and writes the results to the destination register.
 
 **Encoding T1** Armv7E-M  
@@ -14930,7 +13744,6 @@ SHSUB8<c> <Rd>, <Rn>, <Rm>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-
 | 1 | 1 | 1 | 1 | 0 | 1 | 0 | 0 | Rn | 1 | 1 | 1 | Rd | 0 | 1 | 0 | Rm |
 
 
@@ -14970,8 +13783,6 @@ None.
 
 
 ### A7.7.136 SMLABB, SMLABT, SMLATB, SMLATT
-
-
 Signed Multiply Accumulate (halfwords) performs a signed multiply accumulate operation. The multiply acts on 
 two signed 16-bit quantities, taken from either the bottom or the top half of their respective source registers. The 
 other halves of these source registers are ignored. The 32-bit product is added to a 32-bit accumulate value and the 
@@ -14987,12 +13798,9 @@ Encoding T1
 
 |  | Armv7E-M |
 | ------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-
 | SMLA<x><y><c> <Rd>, <Rn>, <Rm>, <Ra> |
-
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | ---- | --- | --- | --- | --- | --- | --- | --- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | ---- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 0 | 0 | 0 | 1 | 1 | Rn | Ra | Rd | 0 | 0 | N | M | Rm |
 
 
@@ -15047,13 +13855,7 @@ None.
 
 
 
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.137 SMLAD, SMLADX
-
-
 Signed Multiply Accumulate Dual performs two signed 16 x 16-bit multiplications. It adds the products to a 32-bit accumulate operand.
 
 Optionally, you can exchange the halfwords of the second operand before performing the arithmetic. This produces top × bottom and bottom × top multiplication.
@@ -15067,7 +13869,6 @@ SMLADX{X}{<c>}{<q>} <Rd>, <Rn>, <Rm>, <Ra>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 1 | 0 | 1 | 0 | 0 | 0 | Rn | Ra | Rd | 0 | 0 | M | Rm |
 
 
@@ -15122,7 +13923,6 @@ None.
 
 
 ### A7.7.138 SMLAL
-
 Signed Multiply Accumulate Long multiplies two signed 32-bit values to produce a 64-bit value, and accumulates this with a 64-bit value.
 
 Encoding T1                                          Armv7-M
@@ -15131,12 +13931,9 @@ SMLAL<c> <RdLo>, <RdHi>, <Rn>, <Rm>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 1 | 1 | 1 | 0 | 0 | Rn | RdLo |
-
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | RdHi | 0 | 0 | 0 | 0 | Rm |
 
 
@@ -15176,12 +13973,7 @@ Exceptions
 None.
 
 
-
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
 ### A7.7.139 SMALBB, SMALBT, SMALTB, SMALTT
-
 Signed Multiply Accumulate Long (halfwords) multiplies two signed 16-bit values to produce a 32-bit value, and 
 accumulates this with a 64-bit value. The multiply acts on two signed 16-bit quantities, taken from either the bottom 
 or the top half of their respective source registers. The other halves of these source registers are ignored. The 32-bit 
@@ -15197,7 +13989,6 @@ SMAL<x><y><c> {<q>} <RdLo>, <RdHi>, <Rn>, <Rm>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |  | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |  | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 0 | 1 | 1 | 0 | 0 | Rn | RdLo | RdHi | 1 | 0 | N | M | Rm |
 
 
@@ -15252,8 +14043,6 @@ None.
 
 
 ### A7.7.140 SMLALD, SMLALDX
-
-
 Signed Multiply Accumulate Long Dual performs two signed 16 × 16-bit multiplications. It adds the products to a 64-bit accumulate operand.
 
 Optionally, you can exchange the halfwords of the second operand before performing the arithmetic. This produces top × bottom and bottom × top multiplication.
@@ -15266,13 +14055,7 @@ SMLALD{X}<c> <RdLo>,<RdHi>,<Rn>,<Rm>
 
 
 
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.141 SMLAWB, SMLAWT
-
-
 Signed Multiply Accumulate (word by halfword) performs a signed multiply accumulate operation. The multiply acts on a signed 32-bit quantity and a signed 16-bit quantity. The signed 16-bit quantity is taken from either the bottom or the top half of its source register. The other half of the second source register is ignored. The top 32 bits of the 48-bit product are added to a 32-bit accumulate value and the result is written to the destination register. The bottom 16 bits of the 48-bit product are ignored.
 
 If overflow occurs during the addition of the accumulate value, the instruction sets the Q flag in the APSR. No overflow can occur during the multiplication.
@@ -15284,9 +14067,7 @@ SMLAWy<><c> <Rd>, <Rn>, <Rm>, <Ra>
 
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
-
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --- |
-
 | 1 | 1 | 1 | 1 | 1 | 0 | 0 | 1 | 0 | 0 | 1 | 1 | Rn | Ra | Rd | 0 | 0 | M | Rm |
 
 
@@ -15332,8 +14113,6 @@ None.
 
 
 ### A7.7.142 SMLSD, SMLSDX
-
-
 Signed Multiply Subtract Dual performs two signed 16 × 16-bit multiplications. It adds the difference of the products to a 32-bit accumulate operand.
 
 Optionally, you can exchange the halfwords of the second operand before performing the arithmetic. This produces top × bottom and bottom × top multiplication.
@@ -15346,7 +14125,6 @@ SMLSD{X}{<c>}{<q>} <Rd>, <Rn>, <Rm>, <Ra>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | ---- |
-
 | 1 | 1 | 1 | 1 | 0 | 1 | 0 | 0 | Rn | Ra | Rd | 0 | 0 | M | Rm |
 
 
@@ -15392,14 +14170,7 @@ Exceptions
 None.
 
 
-
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.143 SMLSLD, SMLSLDX
-
-
 Signed Multiply Subtract Long Dual performs two signed 16 × 16-bit multiplications. It adds the difference of the products to a 64-bit accumulate operand.
 
 Optionally, you can exchange the halfwords of the second operand before performing the arithmetic. This produces top × bottom and bottom × top multiplication.
@@ -15414,7 +14185,6 @@ SMLSLD{X}<c> <RdLo>,<RdHi>,<Rn>,<Rm>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 1 | 0 | 1 | 1 | 1 | 0 | 0 | 1 | Rn | RdLo | RdHi | 1 | 1 | 0 | M | Rm |
 
 
@@ -15475,8 +14245,6 @@ None.
 
 
 ### A7.7.144 SMMLA, SMMLAR
-
-
 Signed Most Significant Word Multiply Accumulate multiplies two signed 32-bit values, extracts the most
 significant 32 bits of the result, and adds an accumulate value.
 
@@ -15491,9 +14259,7 @@ SMMLA{R}{<c>}{<q>} <Rd>, <Rn>, <Rm>, <Ra>
 
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
-
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- |
-
 | 1 | 1 | 1 | 1 | 0 | 1 | 0 | 1 | Rn | Ra | Rd | 0 | 0 | 0 | R | Rm |
 
 
@@ -15531,10 +14297,10 @@ where:
 Operation
 
 if ConditionPassed() then  
-  EncodingSpecificOperations();  
-  result = (SInt(R[a]) << 32) + SInt(R[n]) * SInt(R[m]);  
-  if round then result = result + 0x80000000;  
-  R[d] = result<63:32>;
+  EncodingSpecificOperations();  
+  result = (SInt(R[a]) << 32) + SInt(R[n]) * SInt(R[m]);  
+  if round then result = result + 0x80000000;  
+  R[d] = result<63:32>;
 
 
 Exceptions
@@ -15544,7 +14310,6 @@ None.
 
 
 ### A7.7.145 SMLSL, SMLSLR
-
 Signed Most Significant Word Multiply Subtract multiplies two signed 32-bit values, subtracts the result from a 32-bit accumulate value that is shifted left by 32 bits, and extracts the most significant 32 bits of the result of that subtraction.
 
 Optionally, you can specify that the result of the instruction is rounded instead of being truncated. In this case, the constant 0x80000000 is added to the result of the subtraction before the high word is extracted.
@@ -15555,7 +14320,6 @@ SMLSL{R}<c> <Rd>, <Rn>, <Rm>, <Ra>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 1 | 0 | 1 | 0 | 0 | Rn | Ra | Rd | 0 | 0 | 0 | R | Rm |
 
 
@@ -15603,8 +14367,6 @@ None.
 
 
 ### A7.7.146 SMMUL, SMMLUR
-
-
 Signed Most Significant Word Multiply multiplies two signed 32-bit values, extracts the most significant 32 bits of 
 the result, and writes those bits to the destination register.
 
@@ -15618,7 +14380,6 @@ SMMUL{R}<c> <Rd>, <Rn>, <Rm>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 1 | 0 | 1 | 0 | 1 | 1 | 0 | 0 | 1 | Rn | 1 | 1 | 1 | Rd | 0 | 0 | 0 | R | Rm |
 
 
@@ -15650,8 +14411,6 @@ where:
 
 
 ### A7.7.147 SMUAD, SMUADX
-
-
 Signed Dual Multiply Add performs two signed 16 × 16-bit multiplications. It adds the products together, and writes the result to the destination register.
 
 Optionally, you can exchange the halfwords of the second operand before performing the arithmetic. This produces top × bottom and bottom × top multiplication.
@@ -15668,8 +14427,6 @@ SMUAD{X}<c> <Rd>, <Rn>, <Rm>
 
 
 ### A7.7.148 SMULBB, SMULTB, SMULTB, SMULTT
-
-
 Signed Multiply (halfwords) multiplies two signed 16-bit quantities, taken from either the bottom or the top half of their respective source registers. The other halves of these source registers are ignored. The 32-bit product is written to the destination register. No overflow is possible during this instruction.
 
 
@@ -15680,14 +14437,7 @@ Arm®v7E-M
 SMUL<op><y><c> <Rd>, <Rn>, <Rm>
 
 
-
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.149 SMULL
-
-
 Signed Multiply Long multiplies two 32-bit signed values to produce a 64-bit result.
 
 **Encoding T1**  
@@ -15697,9 +14447,7 @@ SMULL<c> <RdLo>,<RdHi>,<Rn>,<Rm>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ----- | ----- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | ---- | --- | --- | --- |
-
 | 1 | 1 | 1 | 0 | 1 | 1 | 0 | 0 | Rn | RdLo | RdHi | 0 | 0 | 0 | Rm |
-
 | `dLo = UInt(RdLo); dHi = UInt(RdHi); n = UInt(Rn); m = UInt(Rm); setFlags = FALSE; if dLo IN {13,15} |  | dHi IN {13,15} |  | n IN {13,15} |  | m IN {13,15} then UNPREDICTABLE; if dHi == dLo then UNPREDICTABLE;` |
 
 
@@ -15731,7 +14479,6 @@ SMULW{y}<c> <Rd>,<Rn>,<Rm>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 1 | 1 | 0 | 0 | 1 | 0 | 0 | 1 | 1 | Rn | 1 | 1 | 1 | Rd | 0 | 0 | 0 | M | Rm |
 
 
@@ -15774,7 +14521,6 @@ None.
 
 
 ### A7.7.151 SMUSD, SMUSDX
-
 Signed Dual Multiply Subtract performs two signed 16 × 16-bit multiplications. It subtracts one of the products from 
 the other, and writes the result to the destination register.
 
@@ -15789,7 +14535,6 @@ SMUSD{X}<c> <Rd>, <Rn>, <Rm>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 1 | 0 | 1 | 0 | 0 | 0 | Rn | 1 | 1 | 1 | Rd | 0 | 0 | M | Rm |
 
 
@@ -15833,8 +14578,6 @@ None.
 
 
 ### A7.7.152 SSAT
-
-
 Signed Saturate saturates an optionally-shifted signed value to a selectable signed range.
 
 The Q flag is set to 1 if the operation saturates.
@@ -15847,7 +14590,6 @@ SSAT<c> <Rd>,#<imm>,<Rn>{,<shift>}
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 0 | 0 | 1 | 1 | 0 | 0 | sh | 0 | Rn | 0 | imm3 | Rd | imm2{0} | sat_imm |
 
 
@@ -15907,8 +14649,6 @@ None.
 
 
 ### A7.7.153 SSAT16
-
-
 Signed Saturate 16 saturates two signed 16-bit values to a selected signed range.
 
 The Q flag is set to 1 if the operation saturates.
@@ -15919,13 +14659,8 @@ SSAT16<c> <Rd>, #<imm>, <Rn>
 
 
 
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
 
 ### A7.7.154 SSAX
-
-
 Signed Subtract and Add with Exchange exchanges the two halfwords of the second operand, performs one 16-bit  
 integer subtraction and one 16-bit addition, and writes the results to the destination register. It sets the APSR.GE  
 bits according to the results.  
@@ -15937,7 +14672,6 @@ SSAX<c> <Rd>, <Rn>, <Rm>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 1 | 0 | 0 | 1 | 1 | 0 | 0 | Rn | 1 | 1 | 1 | 1 | Rd | 0 | 0 | 0 | 0 | Rm |
 
 
@@ -15980,8 +14714,6 @@ None.
 
 
 ### A7.7.155 SSBB
-
-
 Speculative Store Bypass Barrier is a memory barrier which prevents Speculative loads from bypassing earlier stores to the same virtual address under certain conditions. The semantics of the Speculative Store Bypass Barrier are:
 
 - When a load to a location appears in program order after the S8B8, then the load does not speculatively read an entry earlier in the coherence order for that location than the entry generated by the latest store satisfying all of the following conditions:
@@ -15999,9 +14731,7 @@ S8B8\<q>
 
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |  | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
-
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 0 | 0 | 0 | 1 | 1 | 0 | 1 | 1 | (0) | (1) | (1) | (1) | 1 | 0 | (00) | 0 | (1) | (1) | 1 | (1) | (1) | 0 | 1 | 0 | 0 | 0 | 0 | 0 |
 
 
@@ -16027,8 +14757,6 @@ None
 
 
 ### A7.7.156 SSUB16
-
-
 Signed Subtract 16 performs two 16-bit signed integer subtractions, and writes the results to the destination register.  
 It sets the APSR.GE bits according to the results of the subtractions.
 
@@ -16040,9 +14768,7 @@ SSUB16<c> <Rd>,<Rn>,<Rm>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 1 | 0 | 0 | 1 | 0 | 0 | 1 | 1 | 0 | 0 | 1 | Rn |
-
 | 1 | 1 | 1 | 1 | Rd | 0 | 0 | 0 | 0 | Rm |
 
 
@@ -16084,11 +14810,7 @@ None.
 
 
 
-A7 Instruction Details  
-### A7.7 Alphabetical list of Arm®v7-M Thumb instructions
-
 ### A7.7.157 SSUB8
-
 Signed Subtract 8 performs four 8-bit signed integer subtractions, and writes the results to the destination register.  
 It sets the APSR.GE bits according to the results of the subtractions.
 
@@ -16098,7 +14820,6 @@ SSUB8<c> <Rd>, <Rn>, <Rm>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 1 | 0 | 1 | 0 | 0 | Rn | 1 | 1 | 1 | Rd | 0 | 0 | 0 | Rm |
 
 
@@ -16142,8 +14863,6 @@ None.
 
 
 ### A7.7.158 STC, STC2
-
-
 Store Coprocessor stores data from a coprocessor to a sequence of consecutive memory addresses.
 
 If no coprocessor can execute the instruction, a UsageFault exception is generated.
@@ -16161,7 +14880,6 @@ STC{L}<c> <coproc>,<CRd>,[<Rn>],<option>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 0 | 1 | 0 | P | U | N | W | 0 | Rn | CRd | coproc | imm8 |
 
 
@@ -16184,7 +14902,6 @@ STC2{L}<c> <coproc>,<CRd>,[<Rn>],<option>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 0 | 1 | 1 | P | U | N | W | 0 | Rn | CRd | coproc | imm8 |
 
 
@@ -16224,10 +14941,6 @@ where:
   Specifies the base register. This register is permitted to be the SP.
 
 
-
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
 +/- | Is + or omitted to indicate that the immediate offset is added to the base register value (add == TRUE), or – to indicate that the offset is to be subtracted (add == FALSE). Different instructions are generated for #+0 and #-0.
 
 <imm> | Specifies the immediate offset added to or subtracted from the value of <Rn> to form the address. Permitted values are multiples of 4 in the range 0-1020. For the offset addressing syntax, <imm> can be omitted, meaning an offset of 0.
@@ -16262,8 +14975,6 @@ UsageFault, MemManage, BusFault.
 
 
 ### A7.7.159 STM, STMIA, STMEA
-
-
 Store Multiple stores multiple registers to consecutive memory locations using an address from a base register. The consecutive memory locations start at this address, and the address just above the last of those locations can optionally be written back to the base register.
 
 
@@ -16275,7 +14986,6 @@ STM<c> <Rn>{,<registers>}
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 0 | 0 | 0 | Rn | register_list |
 
 
@@ -16291,7 +15001,6 @@ STM<c>.W <Rn>{!},<registers>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 0 | 0 | 0 | 1 | W | 0 | Rn | (0) | M | (0) | register_list |
 
 
@@ -16331,11 +15040,6 @@ STMEA and STMIA are pseudo-instructions for STM, STMEA referring to its use for 
 The pre-UAL syntaxes STM<c>IA and STM<c>EA are equivalent to STM<c>.
 
 
-
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 Operation
 
 
@@ -16362,7 +15066,6 @@ UsageFault, MemManage, BusFault.
 
 
 ### A7.7.160        STMDB, STMFD
-
 Store Multiple Decrement Before stores multiple registers to consecutive memory locations using an address from
 a base register. The consecutive memory locations end just below this address, and the address of the first of those
 locations can optionally be written back to the base register.
@@ -16374,8 +15077,6 @@ STMDB<c> <Rn>{!},<registers>
 
 
 ### A7.7.161 STR (immediate)
-
-
 Store Register (immediate) calculates an address from a base register value and an immediate offset, and stores a word from a register to memory. It can use offset, post-indexed, or pre-indexed addressing. See Memory accesses on page A7-184 for information about memory accesses.
 
 **Encoding T1** All versions of the Thumb instruction set.
@@ -16385,7 +15086,6 @@ STR<c> <Rt>, [<Rn>, #<imm5>]
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 0 | 1 | 1 | 0 | imm5 | Rn | Rt |
 
 
@@ -16399,7 +15099,6 @@ STR<c> <Rt>, [SP, #<imm8>]
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 0 | 0 | 1 | Rt | imm8 |
 
 
@@ -16413,7 +15112,6 @@ STR<c>.W <Rt>, [<Rn>, #<imm12>]
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |  | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |  | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 0 | 0 | 0 | 1 | 0 | 0 | Rn | Rt | imm12 |
 
 
@@ -16431,7 +15129,6 @@ STR<c> <Rt>, [<Rn>, #+/-<imm8>]!
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |  | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |  | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 0 | 0 | 0 | 1 | 0 | 0 | Rn | Rt | 1 | P | U | W |  | imm8 |
 
 
@@ -16498,14 +15195,7 @@ Exceptions
 UsageFault, MemManage, BusFault.
 
 
-
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.162 STR (register)
-
-
 Store Register (register) calculates an address from a base register value and an offset register value, stores a word from a register to memory. The offset register value can be shifted left by 0, 1, 2, or 3 bits. See Memory accesses on page A7-184 for information about memory accesses.
 
 
@@ -16517,13 +15207,10 @@ STR<c> <Rt>, [<Rn>, <Rm>]
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
-
 | 0 | 1 | 0 | 1 | 0 | 0 | 0 | 0 | Rm | Rn | Rt |
 
 
 ### A7.7.163 STRB (immediate)
-
-
 Store Register Byte (immediate) calculates an address from a base register value and an immediate offset, and stores a byte from a register to memory. It can use offset, post-indexed, or pre-indexed addressing. See Memory accesses on page A7-184 for information about memory accesses.
 
 **Encoding T1** All versions of the Thumb instruction set.  
@@ -16532,7 +15219,6 @@ STRB<c> <Rt>, [<Rn>, #<imm5>]
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-
 | 0 | 1 | 1 | 0 | imm5 | Rn | Rt |
 
 
@@ -16545,7 +15231,6 @@ STRB<c>.W <Rt>, [<Rn>, #<imm12>]
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-
 | 1 | 1 | 1 | 0 | 0 | 0 | 0 | 0 | Rn | Rt | imm12 |
 
 
@@ -16562,7 +15247,6 @@ STRB<c> <Rt>, [<Rn>], #+/-<imm8>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-
 | 1 | 1 | 1 | 0 | 0 | 0 | 0 | 0 | Rn | Rt | 1 | P | U | W | imm8 |
 
 
@@ -16620,8 +15304,6 @@ MemManage, BusFault.
 
 
 ### A7.7.164 STRB (register)
-
-
 Store Register Byte (register) calculates an address from a base register value and an offset register value, and stores
 a byte from a register to memory. The offset register value can be shifted left by 0, 1, 2, or 3 bits. See Memory
 accesses on page A7-184 for information about memory accesses.
@@ -16634,7 +15316,6 @@ STRB<c> <Rt>, [<Rn>, <Rm>]
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
-
 | 0 | 1 | 0 | 1 | 0 | 0 | 0 | 0 | Rm | Rn | Rt |
 
 
@@ -16650,7 +15331,6 @@ STRB<c>.W <Rt>, [<Rn>, <Rm>{, LSL #<imm2>}]
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
-
 | 1 | 1 | 1 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | Rn | Rt | 0 | 0 | 0 | 0 | 0 | 0 | 0 | <imm2> | Rm |
 
 
@@ -16695,14 +15375,7 @@ Exceptions
 MemManage, BusFault.
 
 
-
-_A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions_
-
-
 ### A7.7.165 STRBT
-
-
 Store Register Byte Unprivileged calculates an address from a base register value and an immediate offset, and stores a byte from a register to memory. See _Memory accesses on page A7-184_ for information about memory accesses. When privileged software uses an STRBT instruction, the memory access is restricted as if the software was unprivileged. See also _Effect of MPU_CTRL settings on unprivileged instructions on page B3-637._
 
 
@@ -16713,7 +15386,6 @@ STRBT<c> <Rt>, [<Rn>, #<imm8>]
 
 | 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0 | 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0 |
 | --------------------------------------- | --------------------------------------- |
-
 | 1 1 1 1 | 1 0 0 0 | 0 0 0 | 0 0 | Rn | Rt | 1 1 1 0 | imm8 |
 
 
@@ -16759,8 +15431,6 @@ MemManage, BusFault.
 
 
 ### A7.7.166 STRD (immediate)
-
-
 Store Register Dual (immediate) calculates an address from a base register value and an immediate offset, and stores
 two words from two registers to memory. It can use offset, post-indexed, or pre-indexed addressing. See Memory
 accesses on page A7-184 for information about memory accesses.
@@ -16769,13 +15439,7 @@ accesses on page A7-184 for information about memory accesses.
 
 
 
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.167 STREX
-
-
 Store Register Exclusive calculates an address from a base register value and an immediate offset, and stores a word from a register to memory if the executing processor has exclusive access to the memory addressed.
 
 See Memory accesses on page A7-184 for information about memory accesses.
@@ -16787,14 +15451,12 @@ STREX<c> <Rd>, <Rt>, [<Rn>{, #<imm8>}]
 
 | 15 14 13 12 11 10 9 8 | 7 6 5 4 3 2 1 0 | 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0 |
 | ----------------------- | ----------------- | --------------------------------------- |
-
 | 1 1 1 0 0 0 0 1 0 0 0 | Rn | Rt | Rd | imm8 |
 
 
 d = UInt(Rd) ; t = UInt(Rt) ; n = UInt(Rn) ; imm32 = ZeroExtend(imm8:'00', 32);  
 
 | if d IN (13,15) |  | t IN (13,15) |  | n == t |  | n == d then UNPREDICTABLE; |
-
 | if d == n |  | d == t then UNPREDICTABLE; |
 
 
@@ -16835,8 +15497,6 @@ UsageFault, MemManage, BusFault.
 
 
 ### A7.7.168 STREXB
-
-
 Store Register Exclusive Byte derives an address from a base register value, and stores a byte from a register to memory if the executing processor has exclusive access to the memory addressed.
 
 See Memory accesses on page A7-184 for information about memory accesses.
@@ -16849,16 +15509,13 @@ STREX< c >< Rd >,< Rt >, [< Rn >]
 
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
-
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 0 | 1 | 0 | 0 | 0 | 1 | 1 | 0 | 0 | Rn | Rn | Rt | 0 | (1)(1)(1) | 0 | 0 | Rd |
 
 
 d = UInt(Rd); t = UInt(Rt); n = UInt(Rn);  
 
 | if d IN {13,15} |  | t IN {13,15} |  | n == 15 then UNPREDICTABLE; |
-
 | if d == n |  | d == t then UNPREDICTABLE; |
 
 
@@ -16901,8 +15558,6 @@ MemManage, BusFault.
 
 
 ### A7.7.169 STREXH
-
-
 Store Register Exclusive Halfword derives an address from a base register value, and stores a halfword from a register to memory if the executing processor has exclusive access to the memory addressed.
 
 See Memory accesses on page A7-184 for information about memory accesses.
@@ -16913,9 +15568,7 @@ Encoding T1
 
 
 | STREXH<c> <Rd>, <Rt>, [<Rn>] |
-
 | ----- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ------- | ------- | ------- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | - |
-
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | 1 | 1 | 0 | 1 | 0 | 0 | 0 | 1 | 1 | 0 | 0 | 0 | Rn | Rt | {1} {1} {1} {0} 0 1 0 1 | Rd |
 
@@ -16923,7 +15576,6 @@ Encoding T1
 d = UInt(Rd); t = UInt(Rt); n = UInt(Rn);
 
 | if d IN {13,15} |  | t IN {13,15} |  | n == 15 then UNPREDICTABLE; |
-
 | if d == n |  | d == t then UNPREDICTABLE; |
 
 
@@ -16960,32 +15612,16 @@ Exceptions
 
 UsageFault, MemManage, BusFault.
 
----
-
-*A7-396*
-
-*Copyright © 2006-2008, 2010, 2014, 2017, 2018, 2021 Arm Limited or its affiliates. All rights reserved.*
-*Non-Confidential*
-*ARM DDI 0403E.e*
-*ID021621*
-
-
 
 
 ### A7.7.170 STRH (Immediate)
-
-
 Store Register Halfword (immediate) calculates an address from a base register value and an immediate offset, and stores a halfword from a register to memory. It can use offset, post-indexed, or pre-indexed addressing. See Memory accesses on page A7-184 for information about memory accesses.
 
 **Encoding T1** All versions of the Thumb instruction set.
 STRH<c> <Rt>, [<Rn>, {#<imm5>}]
 
 
-
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-    <imm> Specifies the immediate offset added to or subtracted from the value of <Rn> to form the address. 
+<imm> Specifies the immediate offset added to or subtracted from the value of <Rn> to form the address. 
 Permitted values are multiples of 2 in the range 0-62 for encoding T1, any value in the range 0-4095 
 for encoding T2, and any value in the range 0-255 for encoding T3. For the offset addressing syntax, 
 <imm> can be omitted, meaning an offset of 0.
@@ -17014,8 +15650,6 @@ UsageFault, MemManage, BusFault.
 
 
 ### A7.7.171 STRH (register)
-
-
 Store Register Halfword (register) calculates an address from a base register value and an offset register value, and stores a halfword from a register to memory. The offset register value can be shifted left by 0, 1, 2, or 3 bits. See [Memory accesses on page A7-184](#) for information about memory accesses.
 
 **Encoding T1** All versions of the Thumb instruction set.  
@@ -17024,7 +15658,6 @@ STRH<c> <Rt>, [<Rn>, <Rm>]
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 0 | 1 | 0 | 1 | 0 | 0 | 1 | Rm | Rn | Rt |
 
 
@@ -17038,7 +15671,6 @@ STRH<c>.W <Rt>, [<Rn>, <Rm>{, LSL #<imm2>}]
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | Rn | Rt | 0 | 0 | 0 | 0 | 0 | 0 | <imm2> | Rm |
 
 
@@ -17079,13 +15711,8 @@ UsageFault, MemManage, BusFault.
 
 
 
-*A7 Instruction Details*  
-*A7.7 Alphabetical list of Armv7-M Thumb instructions*
-
 
 ### A7.7.172 STRHT
-
-
 Store Register Halfword Unprivileged calculates an address from a base register value and an immediate offset, and stores a halfword from a register to memory. See *Memory accesses on page A7-184* for information about memory accesses. When privileged software uses an STRHT instruction, the memory access is restricted as if the software was unprivileged. See also *Effect of MPU_CTRL settings on unprivileged instructions on page B3-637*.
 
 **Encoding T1**  
@@ -17128,9 +15755,9 @@ Operation
 
 
 if ConditionPassed() then  
-   EncodingSpecificOperations();  
-   address = R[n] + imm32;  
-   MemU_unpriv[address,2] = R[t]<15:0>;  
+   EncodingSpecificOperations();  
+   address = R[n] + imm32;  
+   MemU_unpriv[address,2] = R[t]<15:0>;  
 
 
 Exceptions
@@ -17142,8 +15769,6 @@ UsageFault, MemManage, BusFault.
 
 
 ### A7.7.173 STRT
-
-
 Store Register Unprivileged calculates an address from a base register value and an immediate offset, and stores a word from a register to memory. See Memory accesses on page A7-184 for information about memory accesses. When privileged software uses an STRT instruction, the memory access is restricted as if the software was unprivileged. See also Effect of MPU_CTRL settings on unprivileged instructions on page B3-637.
 
 **Encoding T1**
@@ -17153,14 +15778,7 @@ Armv7-M
 STRT<c> <Rt>, [<Rn>, #<imm8>]
 
 
-
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.174 SUB (immediate)
-
-
 Subtract (immediate) subtracts an immediate value from a register value, and writes the result to the destination register. It can optionally update the condition flags based on the result.
 
 
@@ -17172,11 +15790,6 @@ SUB<c> <Rd>,<Rn>,#<imm3>
 
 Outside IT block.  
 Inside IT block.
-
-
-
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
 
 <Rn>  Specifies the register that contains the first operand. If the SP is specified for <Rn>, see SUB (SP  
       minus immediate) on page A7-406. If the PC is specified for <Rn>, see ADR on page A7-198.
@@ -17213,14 +15826,7 @@ Exceptions
 None.
 
 
-
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.175 SUB (register)
-
-
 Subtract (register) subtracts an optionally-shifted register value from a register value, and writes the result to the destination register. It can optionally update the condition flags based on the result.
 
 **Encoding T1**  
@@ -17231,7 +15837,6 @@ SUB<c> <Rd>,<Rn>,<Rm> &emsp;&emsp;&emsp;&emsp;Outside IT block.
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | ---- | --- | --- | --- | --- |
-
 | 0 | 0 | 1 | 1 | 0 | 1 | 1 | Rm | Rn | Rd |
 
 
@@ -17244,7 +15849,6 @@ SUB{s}<c>.W <Rd>,<Rn>,<Rm>{,<shift>}
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | ---- | --- | --- | --- | --- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 0 | 1 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 1 | S | Rn | (0) | imm3 | Rd | imm2 | type | Rm |
 
 
@@ -17294,19 +15898,9 @@ if ConditionPassed() then
 &emsp;&emsp;&emsp;&emsp;APSR.V = overflow;
 
 
-
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 Exceptions
 
 None.
-
-
-
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
 
 
 ### A7.7.176 SUB (SP minus immediate)
@@ -17319,11 +15913,6 @@ Encoding T1
 
 All versions of the Thumb instruction set.  
 SUB<c> SP,SP,#<imm7>
-
-
-
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
 
 Operation
 
@@ -17342,14 +15931,7 @@ Exceptions
 None.
 
 
-
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.177 SUB (SP minus register)
-
-
 Subtract (SP minus register) subtracts an optionally-shifted register value from the SP value, and writes the result to the destination register.
 
 **Encoding T1**  
@@ -17360,8 +15942,6 @@ SUB{$}<c> <Rd>, SP,<Rm>{,<shift>}
 
 
 ### A7.7.178 SVC
-
-
 The Supervisor Call instruction generates a call to a system supervisor. For more information see Armv7-M exception model on page B1-523.
 
 Use it as a call to an operating system to provide a service.
@@ -17379,7 +15959,6 @@ SVC<c> #<imm8>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 0 | 1 | 1 | 1 | 1 | imm8 |
 
 
@@ -17416,14 +15995,7 @@ Exceptions
 SVCcall.
 
 
-
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.179 SXTAB
-
-
 Signed Extend and Add Byte extracts an 8-bit value from a register, sign-extends it to 32 bits, adds the result to the value in another register, and writes the final result to the destination register. You can specify a rotation by 0, 8, 16, or 24 bits before extracting the 8-bit value.
 
 **Encoding T1**  
@@ -17433,7 +16005,6 @@ SXTAB<c> <Rd>,<Rn>,<Rm>{,<rotation>}
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | Rn | 1 | 1 | 1 | Rd | 4 | <br>(rotate) | Rm |
 
 
@@ -17453,10 +16024,10 @@ where:
 <Rn>  The first operand register.  
 <Rm>  The second operand register.  
 <rotation>  This can be any one of:  
-            omitted        Encoded as rotate = '00'.  
-            ROR #8        Encoded as rotate = '01'.  
-            ROR #16       Encoded as rotate = '10'.  
-            ROR #24       Encoded as rotate = '11'.
+            omitted        Encoded as rotate = '00'.  
+            ROR #8        Encoded as rotate = '01'.  
+            ROR #16       Encoded as rotate = '10'.  
+            ROR #24       Encoded as rotate = '11'.
 
 **Note**  
 An assembler can permit ROR #0 to mean the same thing as omitting the rotation, possibly with restrictions on the permitted encodings, but this is not standard UAL and must not be used for disassembly.
@@ -17464,9 +16035,9 @@ An assembler can permit ROR #0 to mean the same thing as omitting the rotation, 
 **Operation**
 
 if ConditionPassed() then  
-    EncodingSpecificOperations();  
-    rotated = ROR(R[m], rotation);  
-    R[d] = R[n] + SignExtend(rotated<7:0>, 32);
+    EncodingSpecificOperations();  
+    rotated = ROR(R[m], rotation);  
+    R[d] = R[n] + SignExtend(rotated<7:0>, 32);
 
 **Exceptions**
 
@@ -17476,8 +16047,6 @@ None.
 
 
 ### A7.7.180  SXTAB16
-
-
 Signed Extend and Add Byte 16 extracts two 8-bit values from a register, sign-extends them to 16 bits each, adds the results to two 16-bit values from another register, and writes the final results to the destination register. You can specify a rotation by 0, 8, 16, or 24 bits before extracting the 8-bit values.
 
 
@@ -17488,7 +16057,6 @@ SXTAB16<c> <Rd>, <Rn>, <Rm>{, <rotation>}
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | ---- | --- | --- | --- | --- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 0 | 0 | 1 | 0 | 0 | Rn | 1 | 1 | 1 | Rd | 1 | (0) | rotate | Rm |
 
 
@@ -17533,14 +16101,7 @@ Exceptions
 None.
 
 
-
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.181 SXTAH
-
-
 Signed Extend and Add Halfword extracts a 16-bit value from a register, sign-extends it to 32 bits, adds the result to a value from another register, and writes the final result to the destination register. You can specify a rotation by 0, 8, 16, or 24 bits before extracting the 16-bit value.
 
 Encoding T1                                            Armv7E-M  
@@ -17593,7 +16154,6 @@ None.
 
 
 ### A7.7.182 SXTB
-
 Signed Extend Byte extracts an 8-bit value from a register, sign extends it to 32 bits, and writes the result to the destination register. You can specify a rotation by 0, 8, 16, or 24 bits before extracting the 8-bit value.
 
 
@@ -17606,8 +16166,6 @@ SXTB<c> <Rd>, <Rm>
 
 
 ### A7.7.183 SXTB16
-
-
 Signed Extend Byte 16 extracts two 8-bit values from a register, sign-extends them to 16 bits each, and writes the results to the destination register. You can specify a rotation by 0, 8, 16, or 24 bits before extracting the 8-bit values.
 
     Encoding T1              ARMv7E-M
@@ -17615,9 +16173,7 @@ Signed Extend Byte 16 extracts two 8-bit values from a register, sign-extends th
 
 
 | 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0 | 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0 |
-
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 1 | 1 0 | 0 0 | 0 1 0 | 1 1 1 1 | 1 1 1 | Rd | 1 | (0) | rotate | Rm |
 
 
@@ -17667,8 +16223,6 @@ None.
 
 
 ### A7.7.184 SXTH
-
-
 Signed Extend Halfword extracts a 16-bit value from a register, sign extends it to 32 bits, and writes the result to 
 the destination register. You can specify a rotation by 0, 8, 16, or 24 bits before extracting the 16-bit value.
 
@@ -17677,13 +16231,7 @@ SXTH<c> <Rd>, <Rm>
 
 
 
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.185 TBB, TBH
-
-
 Table Branch Byte causes a PC-relative forward branch using a table of single byte offsets. A base register provides 
 a pointer to the table, and a second register supplies an index into the table. The branch length is twice the value of 
 the byte returned from the table.
@@ -17704,8 +16252,6 @@ Encoding T1
 
 
 ### A7.7.186 TEQ (immediate)
-
-
 Test Equivalence (immediate) performs an exclusive OR operation on a register value and an immediate value. It updates the condition flags based on the result, and discards the result.
 
 
@@ -17716,7 +16262,6 @@ TEQ<c> <Rn>, #<const>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 0 | 0 | 0 | 1 | Rn | 0 | imm3 | 1 | 1 | 1 | 1 | imm8 |
 
 
@@ -17758,13 +16303,7 @@ None.
 
 
 
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.187 TEQ (register)
-
-
 Test Equivalence (register) performs an exclusive OR operation on a register value and an optionally-shifted register  
 value. It updates the condition flags based on the result, and discards the result.
 
@@ -17777,7 +16316,6 @@ TEQ<c> <Rn>, <Rm>{, <shift>}
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
-
 | 1 | 1 | 0 | 0 | 1 | 0 | 0 | 1 | Rn | (0) | imm3 | 1 | 1 | 1 | imm2 | type | Rm |
 
 
@@ -17795,7 +16333,7 @@ TEQ{<c>} <Rn>, <Rm> {, <shift>}
 where:
 
 <c>  
-See Standard assembler syntax fields on page A7-177.  
+See Standard assembler syntax fields on page A7-177.  
 
 <Rn>  
 Specifies the register that contains the first operand.  
@@ -17806,7 +16344,7 @@ Specifies the register that is optionally shifted and used as the second operand
 <shift>  
 Specifies the shift to apply to the value read from <Rm>. If <shift> is omitted, no shift is applied. The  
 possible shifts and how they are encoded are described in Shifts applied to a register on  
-page A7-182.
+page A7-182.
 
 
 Operation
@@ -17831,8 +16369,6 @@ None.
 
 
 ### A7.7.188 TST (immediate)
-
-
 Test (immediate) performs a logical AND operation on a register value and an immediate value. It updates the condition flags based on the result, and discards the result.
 
 
@@ -17844,7 +16380,6 @@ TST<c> <Rn>,#<const>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | Rn | 0 | imm3 | 1 | 1 | 1 | imm8 |
 
 
@@ -17888,14 +16423,7 @@ Exceptions
 None.
 
 
-
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.189 TST (register)
-
-
 Test (register) performs a logical AND operation on a register value and an optionally-shifted register value. It updates the condition flags based on the result, and discards the result.
 
 **Encoding T1** All versions of the Thumb instruction set.  
@@ -17916,14 +16444,7 @@ Armv7E-M
 UADD16{<c>}{<q>} <Rd>, <Rn>, <Rm>
 
 
-
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.191 UADD8
-
-
 Unsigned Add 8 performs four unsigned 8-bit integer additions, and writes the results to the destination register. It sets the APSR.GE bits according to the results of the additions.
 
 **Encoding T1**  
@@ -17933,7 +16454,6 @@ UADD8<c> <Rd>, <Rn>, <Rm>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 0 | 0 | 1 | 0 | 0 | Rn | 1 | 1 | 1 | Rd | 0 | 1 | 0 | 0 | Rm |
 
 
@@ -17976,7 +16496,6 @@ None.
 
 
 ### A7.7.192    UASX
-
 Unsigned Add and Subtract with Exchange exchanges the two halfwords of the second operand, performs one
 unsigned 16-bit integer addition and one unsigned 16-bit subtraction, and writes the results to the destination
 register. It sets the APSR.GE bits according to the results.
@@ -18021,14 +16540,7 @@ Exceptions
 None.
 
 
-
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.193 UBFX
-
-
 Unsigned Bit Field Extract extracts any number of adjacent bits at any position from one register, zero extends them  
 to 32 bits, and writes the result to the destination register.
 
@@ -18039,7 +16551,6 @@ UBFX<c> <Rd>,<Rn>,#<lsb>,#<width>
 
 
 ### A7.7.194 UDF
-
 Permanently Undefined generates an Undefined Instruction exception.
 
 **Encoding T1** Armv7M  
@@ -18048,7 +16559,6 @@ UDF{<c>}{<q>} #<imm8>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 0 | 1 | 1 | 1 | 0 | **imm8** |
 
 
@@ -18061,7 +16571,6 @@ UDF<c>.W #<imm16>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 0 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | **imm4** | 1 | 0 | 0 | **imm12** |
 
 
@@ -18089,13 +16598,7 @@ Undefined Instruction.
 
 
 
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.195 UDIV
-
-
 Unsigned Divide divides a 32-bit unsigned integer register value by a 32-bit unsigned integer register value, and writes the result to the destination register. The condition flags are not affected.
 
 
@@ -18105,9 +16608,7 @@ UDIV<c> <Rd>,<Rn>,<Rm>
 
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
-
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 1 | 0 | 1 | 1 | 0 | 0 | 1 | 1 | 1 | 1 | 1 |  | Rn | (1)(1)(1)(1) | Rd | 1 | 1 | 1 | 1 | Rm |
 
 
@@ -18156,8 +16657,7 @@ Non-Confidential ID021621
 
 
 
-### A7.7.196 **UHADD16**
-
+### A7.7.196 UHADD16
 Unsigned Halving Add 16 performs two unsigned 16-bit integer additions, halves the results, and writes the results to the destination register.
 
 **Encoding T1** Armv7E-M  
@@ -18166,9 +16666,7 @@ UHADD16<c> <Rd>, <Rn>, <Rm>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 0 | 0 | 1 | 0 | 0 | 1 | Rn | 1 | 1 | 1 | Rd |
-
 | 1 | 0 | 1 | 0 | Rm |  |
 
 
@@ -18207,13 +16705,7 @@ None.
 
 
 
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.197 UHADD8
-
-
 Unsigned Halving Add 8 performs four unsigned 8-bit integer additions, halves the results, and writes the results to the destination register.
 
 
@@ -18224,7 +16716,6 @@ UHADD8<c> <Rd>, <Rn>, <Rm>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 0 | 1 | 0 | 0 | 0 | Rn | 1 | 1 | 1 | Rd | 0 | 1 | 0 | Rm |
 
 
@@ -18269,8 +16760,6 @@ None.
 
 
 ### A7.7.198 UHASX
-
-
 Unsigned Halving Add and Subtract with Exchange exchanges the two halfwords of the second operand, performs one unsigned 16-bit integer addition and one unsigned 16-bit subtraction, halves the results, and writes the results to the destination register.
 
 
@@ -18282,7 +16771,6 @@ UHASX{<c>}{<q>} <Rd>, <Rn>, <Rm>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-
 | 1 | 1 | 1 | 0 | 0 | 1 | 0 | 0 | Rn | 1 | 1 | 1 | Rd | 0 | 1 | 0 | Rm |
 
 
@@ -18338,7 +16826,6 @@ UHSAX{<c>}{<q>} <Rd>, <Rn>, <Rm>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 0 | 0 | 1 | 1 | 0 | Rn | 1 | 1 | 1 | Rd | 0 | 1 | 0 | Rm |
 
 
@@ -18379,14 +16866,7 @@ _Non-Confidential_ ID021621
 
 
 
-A7 Instruction Details
-
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.200 UHSUB16
-
-
 Unsigned Halving Subtract 16 performs two unsigned 16-bit integer subtractions, halves the results, and writes the results to the destination register.
 
 
@@ -18397,14 +16877,7 @@ UHSUB16<c> <Rd>, <Rn>, <Rm>
 
 
 
-_A7 Instruction Details_
-
-_A7.7 Alphabetical list of Armv7-M Thumb instructions_
-
-
 ### A7.7.201 UHSUB8
-
-
 Unsigned Halving Subtract 8 performs four unsigned 8-bit integer subtractions, halves the results, and writes the results to the destination register.
 
 **Encoding T1** Armv7E-M  
@@ -18413,7 +16886,6 @@ UHSUB8<c> <Rd>, <Rn>, <Rm>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 0 | 0 | 1 | 1 | 0 | 0 | Rn | 1 | 1 | 1 | Rd | 0 | 1 | 0 | Rm |
 
 
@@ -18450,17 +16922,7 @@ if ConditionPassed() then
 None.
 
 
-
-
-A7 Instruction Details
-
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
-
 ### A7.7.202 UMAAL
-
-
 Unsigned Multiply Accumulate Accumulate Long multiplies two unsigned 32-bit values to produce a 64-bit value, adds two unsigned 32-bit values, and writes the 64-bit result to two registers.
 
 
@@ -18472,9 +16934,7 @@ UMAAL<c> <RdLo>, <RdHi>, <Rn>, <Rm>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 0 | 1 | 1 | 1 | 0 | 0 | 0 | 15 14 | 13 12 | 11 10 | 9 8 | 7 6 | 5 4 | 3 2 | 1 0 |
-
 | 1 | 1 | 0 | 0 | 1 | 1 | 0 | 0 | Rn | RdLo | RdHi | 0 1 | 0 0 | Rm |
 
 
@@ -18526,13 +16986,7 @@ None.
 
 
 
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.203 UMLAL
-
-
 Unsigned Multiply Accumulate Long multiplies two unsigned 32-bit values to produce a 64-bit value, and accumulates this with a 64-bit value.
 
 
@@ -18545,7 +16999,6 @@ UMLAL<c> <RdLo>, <RdHi>, <Rn>, <Rm>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ----- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | ---- | ---- | --- | --- | ---- | --- |
-
 | 1 | 1 | 1 | 0 | 1 | 1 | 1 | 0 | 1 | 0 | Rn | RdLo | RdHi | 0 | 0 | 0 | Rm |
 
 
@@ -18597,8 +17050,7 @@ None.
 
 
 
-### A7.7.204        UMULL
-
+### A7.7.204 UMULL
 Unsigned Multiply Long multiplies two 32-bit unsigned values to produce a 64-bit result.
 
     Encoding T1             Armv7-M
@@ -18638,14 +17090,7 @@ Exceptions
     None.
 
 
-
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.205 UQADD16
-
-
 Unsigned Saturating Add 16 performs two unsigned 16-bit integer additions, saturates the results to the 16-bit  
 unsigned integer range 0 ≤ x ≤ 2^16 – 1, and writes the results to the destination register.
 
@@ -18656,7 +17101,6 @@ UQADD16<c> <Rd>, <Rn>, <Rm>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | --- | --- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
-
 | 1 | 1 | 1 | 0 | 0 | 1 | 0 | 0 | Rn | 1 | 1 | 1 | Rd | 0 | 1 | 0 | Rm |
 
 
@@ -18693,8 +17137,6 @@ None.
 
 
 ### A7.7.206 UQADD8
-
-
 Unsigned Saturating Add 8 performs four unsigned 8-bit integer additions, saturates the results to the 8-bit unsigned
 integer range 0 ≤ x ≤ 2^8 – 1, and writes the results to the destination register.
 
@@ -18705,7 +17147,6 @@ UQADD8<c> <Rd>, <Rn>, <Rm>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 1 | 0 | 1 | 0 | 0 | Rn | 1 | 1 | 1 | Rd | 0 | 1 | 0 | Rm |
 
 
@@ -18743,13 +17184,7 @@ None.
 
 
 
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.207 UQASX
-
-
 Unsigned Saturating Add and Subtract with Exchange exchanges the two halfwords of the second operand, performs one unsigned 16-bit integer addition and one unsigned 16-bit subtraction, saturates the results to the 16-bit unsigned integer range 0 ≤ x ≤ 2^16 – 1, and writes the results to the destination register.
 
 **Encoding T1**  
@@ -18758,9 +17193,7 @@ UQASX<c> <Rd>, <Rn>, <Rm>
 
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |  | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
-
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---- | ---- | ---- | --- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 1 | 0 | 1 | 0 | 0 | Rn | 1 | 1 | 1 | 1 | Rd | 0 | 1 | 0 | 1 | Rm |
 
 
@@ -18801,8 +17234,6 @@ Non-Confidential                                                                
 
 
 ### A7.7.208 UQSAX
-
-
 Unsigned Saturating Subtract and Add with Exchange exchanges the two halfwords of the second operand, performs one unsigned 16-bit integer subtraction and one unsigned 16-bit addition, saturates the results to the 16-bit unsigned integer range 0 ≤ x ≤ 2^16 – 1, and writes the results to the destination register.
 
 **Encoding T1**  
@@ -18811,13 +17242,7 @@ UQSAX{<c>}{<q>} {<Rd>, } <Rn>, <Rm>
 
 
 
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.209 UQSUB16
-
-
 Unsigned Saturating Subtract 16 performs two unsigned 16-bit integer subtractions, saturates the results to the 16-bit unsigned integer range 0 ≤ x ≤ 2^16 – 1, and writes the results to the destination register.
 
 
@@ -18867,8 +17292,6 @@ None.
 
 
 ### A7.7.210 UQSUB8
-
-
 Unsigned Saturating Subtract 8 performs four unsigned 8-bit integer subtractions, saturates the results to the 8-bit unsigned integer range 0 ≤ x ≤ 2^8 – 1, and writes the results to the destination register.
 
 
@@ -18880,7 +17303,6 @@ UQSUB8<c> <Rd>,<Rn>,<Rm>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 0 | 0 | 1 | 0 | 0 | Rn | 1 | 1 | 1 | Rd | 0 | 0 | 1 | Rm |
 
 
@@ -18922,18 +17344,9 @@ Exceptions
 None.
 
 ---
-**A7 Instruction Details**  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
-
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
 
 
 ### A7.7.211 USAD8
-
-
 Unsigned Sum of Absolute Differences performs four unsigned 8-bit subtractions, and adds the absolute values of the differences together.
 
 **Encoding T1**  
@@ -18941,11 +17354,7 @@ Armv7E-M
 USAD8<c> <Rd>,<Rn>,<Rm>
 
 
-
-
 ### A7.7.212 USADA8
-
-
 Unsigned Sum of Absolute Differences and Accumulate performs four unsigned 8-bit subtractions, and adds the absolute values of the differences to a 32-bit accumulate operand.
 
 
@@ -18955,11 +17364,7 @@ Armv7E-M
 USADA8{<c>}{<q>} <Rd>, <Rn>, <Rm>, <Ra>
 
 
-
-
 ### A7.7.213 USAT
-
-
 Unsigned Saturate saturates an optionally-shifted signed value to a selected unsigned range.
 
 The Q flag is set to 1 if the operation saturates.
@@ -18970,9 +17375,7 @@ USAT<c> <Rd>, #<imm5>, <Rn> {,<shift>}
 
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
-
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 0 | 0 | 1 | 1 | 0 | sh | 0 | Rn | 0 | imm3 | Rd | imm2 | (0) | sat_imm |
 
 
@@ -19021,22 +17424,11 @@ if ConditionPassed() then
 
 
 Exceptions
-
-
 None.
-
-*A7 Instruction Details*  
-*A7.7 Alphabetical list of Armv7-M Thumb instructions*
-
-A7-444  
-*Copyright © 2006-2008, 2010, 2014, 2017, 2018, 2021 Arm Limited or its affiliates. All rights reserved.*  
-*ARM DDI 0403E.e*  
-*ID021621*
 
 
 
 ### A7.7.214 USAT16
-
 Unsigned Saturate 16 saturates two signed 16-bit values to a selected unsigned range.
 
 The Q flag is set to 1 if the operation saturates.
@@ -19046,9 +17438,7 @@ USAT16<c> <Rd>, #<im4>, <Rn>
 
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
-
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 0 | 0 | 1 | 1 | 0 | 1 | Rn | 0 | 0 | 0 | 0 | Rd | 0 | 0 | (0) | (0) | (0) | sat_imm |
 
 
@@ -19085,22 +17475,9 @@ Exceptions
 
     None.
 
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-ARM DDI 0403E.b Copyright © 2006-2008, 2010, 2014, 2017, 2018, 2021 Arm Limited or its affiliates. All rights reserved.  
-ID021621                                                                                          Non-Confidential  
-                                                                                                  A7-445
-
-
-
-*A7 Instruction Details*
-*A7.7 Alphabetical list of Armv7-M Thumb instructions*
 
 
 ### A7.7.215 USAX
-
-
 Unsigned Subtract and Add with Exchange exchanges the two halfwords of the second operand, performs one unsigned 16-bit integer subtraction and one unsigned 16-bit addition, and writes the results to the destination register. It sets the APSR.GE bits according to the results.
 
 **Encoding T1**  
@@ -19110,7 +17487,6 @@ USAX<c> \<Rd>, \<Rn>, \<Rm>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 0 | 1 | 0 | 1 | 1 | 0 | 0 | Rn | 1 | 1 | 1 | Rd | 0 | 1 | 0 | 0 | Rm |
 
 
@@ -19152,7 +17528,6 @@ The pre-UAL syntax USUBADDX<c> is equivalent to USAX<c>.
 
 
 ### A7.7.216    USUB16
-
 Unsigned Subtract 16 performs two 16-bit unsigned integer subtractions, and writes the results to the destination
 register. It sets the APSR.GE bits according to the results of the subtractions.
 
@@ -19162,7 +17537,6 @@ USUB16<c> <Rd>, <Rn>, <Rm>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 0 | 0 | 1 | 1 | 0 | 1 | 0 | 0 | 1 | 1 | 0 | 1 | 1 | Rn | 1 | 1 | 1 | Rd | 0 | 1 | 0 | 0 | Rm |
 
 
@@ -19194,14 +17568,7 @@ Exceptions
 None.
 
 
-
-A7 Instruction Details
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.217 USUB8
-
-
 Unsigned Subtract 8 performs four 8-bit unsigned integer subtractions, and writes the results to the destination
 register. It sets the APSR.GE bits according to the results of the subtractions.
 
@@ -19213,7 +17580,6 @@ USUB8<c> <Rd>, <Rn>, <Rm>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 0 | 1 | 0 | 0 | Rn | 1 | 1 | 1 | Rd | 0 | 1 | 0 | 0 | Rm |
 
 
@@ -19262,7 +17628,6 @@ None.
 
 
 ### A7.7.218 UXTAB
-
 Unsigned Extend and Add Byte extracts an 8-bit value from a register, zero-extends it to 32 bits, adds the result to 
 the value in another register, and writes the final result to the destination register. You can specify a rotation by 0, 
 8, 16, or 24 bits before extracting the 8-bit value.
@@ -19272,9 +17637,7 @@ UXTAB<c> <Rd>,<Rn>,<Rm>{,<rotation>}
 
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
-
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 0 | 0 | 0 | 0 | 1 | Rn | 1 | 1 | 1 | Rd | 1 | 0 | { | rotate |  | Rm |
 
 
@@ -19314,13 +17677,7 @@ if ConditionPassed() then
 Exceptions
 None.
 
-
-
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
 ### A7.7.219  UXTAB16
-
 Unsigned Extend and Add Byte 16 extracts two 8-bit values from a register, zero-extends them to 16 bits each, adds  
 the results to two 16-bit values from another register, and writes the final results to the destination register. You can  
 specify a rotation by 0, 8, 16, or 24 bits before extracting the 8-bit values.
@@ -19331,7 +17688,6 @@ UXTAB16<c> <Rd>,<Rn>,<Rm>{,<rotation>}
 
 
 ### A7.7.220 UXTAB
-
 Unsigned Extend and Add Halfword extracts a 16-bit value from a register, zero-extends it to 32 bits, adds the result 
 to a value from another register, and writes the final result to the destination register. You can specify a rotation by 
 0, 8, 16, or 24 bits before extracting the 16-bit value.
@@ -19342,7 +17698,6 @@ UXTAH<c> <Rd>,<Rn>,<Rm>{,<rotation>}
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | Rn | 1 | 1 | 1 | Rd | 1 | (0) | rotate | Rm |
 
 
@@ -19383,14 +17738,7 @@ Exceptions
 None.
 
 
-
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.221  UXTB
-
-
 Unsigned Extend Byte extracts an 8-bit value from a register, zero extends it to 32 bits, and writes the result to the destination register. You can specify a rotation by 0, 8, 16, or 24 bits before extracting the 8-bit value.
 
 **Encoding T1** Armv6-M, Armv7  
@@ -19399,7 +17747,6 @@ UXTB<c> <Rd>,<Rm>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-
 | 1 | 0 | 1 | 0 | 0 | 1 | 0 | 1 | 1 | Rm | Rd |
 
 
@@ -19411,7 +17758,6 @@ UXTB<c>.W <Rd>,<Rm>{,<rotation>}
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-
 | 1 | 1 | 1 | 1 | 0 | 0 | 0 | 1 | 0 | 0 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | Rd | 1 | (0)rotate | Rm |
 
 
@@ -19444,7 +17790,6 @@ Operation
 
 
 ### A7.7.222  UXTB16
-
 Unsigned Extend Byte 16 extracts two 8-bit values from a register, zero-extends them to 16 bits each, and writes
 the results to the destination register. You can specify a rotation by 0, 8, 16, or 24 bits before extracting the 8-bit
 values.
@@ -19454,13 +17799,7 @@ UXTB16<c> <Rd>,<Rm>{,<rotation>}
 
 
 
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.223  UXTH
-
-
 Unsigned Extend Halfword extracts a 16-bit value from a register, zero extends it to 32 bits, and writes the result to the destination register. You can specify a rotation by 0, 8, 16, or 24 bits before extracting the 16-bit value.
 
 
@@ -19472,8 +17811,6 @@ UXTH<c> <Rd>,<Rm>
 
 
 ### A7.7.224 VABS
-
-
 Floating-point Absolute takes the absolute value of a single-precision register, and places the result in a second register.
 
 **Encoding T1**  
@@ -19481,13 +17818,7 @@ FPv4-SP, FPv5 (sz = 1 UNDEFINED in single-precision only variants)
 
 
 
-A7 Instruction Details
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.225 VADD
-
-
 Floating-point Add adds two single-precision or double-precision registers, and places the results in the destination register.
 
 **Encoding T1**  
@@ -19499,7 +17830,6 @@ VADD<c>.<F64 <Dd>, <Dn>, <Dm>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 0 | 1 | 1 | 0 | 0 | D | 1 | Vn | Vd | 1 | 0 | 1 | sz | N | M | 0 | Vm |
 
 
@@ -19545,7 +17875,6 @@ Non-Confidential ID021621
 
 
 ### A7.7.226    VCMP, VCMPE
-
 Floating-point Compare compares two registers, or one register and zero. It writes the result to the FPSCR flags. 
 These are normally transferred to the Arm flags by a subsequent VMRS instruction.
 
@@ -19560,9 +17889,7 @@ VCMP{E}{<c>}.F64 <Dd>, <Dm>
 
 
 | 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0 | 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0 |
-
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 0 | 0 | 1 | 1 | 0 | D | 1 | 1 | 0 | 0 | 0 | Vd | 1 | 0 | 1 | sz | E | M | 0 | Vm |
 
 
@@ -19578,9 +17905,7 @@ VCMP{E}{<c>}.F64 <Dd>, #0.0
 
 
 | 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0 | 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0 |
-
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 0 | 0 | 1 | 1 | 0 | D | 1 | 1 | 0 | 0 | 1 | Vd | 1 | 0 | 1 | sz | E | 1 | 0 | 0 | (0) (0) (0) (0) (0) (0) (0) (0) |
 
 
@@ -19619,17 +17944,12 @@ if ConditionPassed() then
 
 
 
-*A7 Instruction Details*
-*A7.7 Alphabetical list of Armv7-M Thumb instructions*
-
 
 Exceptions
-
 
 Undefined Instruction.
 
 Floating-point exceptions: Invalid Operation, Input Denormal.
-
 
 NaNs
 
@@ -19642,8 +17962,6 @@ VCMPE causes an Invalid Operation exception if either operand is any type of NaN
 
 
 ### A7.7.227 VCVTA, VCVTN, VCVTP, and VCVTM
-
-
 These instructions convert a value in a register from floating-point to a 32-bit integer, or from a 32-bit integer to  
 floating-point, and place the result in a second register.
 
@@ -19663,12 +17981,8 @@ VCVT{A,N,P,M}.U32.F32 <Sd>, <Sm>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 1 | 0 | 1 | D | 1 | 1 | 1 | opc2 | Vd | 1 | 0 | sz | op | 1 | M | 0 | Vm |
 
-
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
 
     else
         S[d] = FPToFixedDirected(S[m],32,0,unsigned,round_mode,TRUE);
@@ -19682,14 +17996,7 @@ Undefined Instruction.
 Floating-point exceptions: Invalid Operation, Input Denormal, and Inexact.
 
 
-
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.228 VCVT, VCVTR (between floating-point and integer)
-
-
 Floating-point Convert (between floating-point and integer) converts a value in a register from floating-point to a  
 32-bit integer, or from a 32-bit integer to floating-point, and places the result in a second register.
 
@@ -19749,11 +18056,6 @@ ID021621 Non-Confidential
 
 A7-461
 
-
-
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
 <Sd>, <Dm> The destination register and the operand register, for a double-precision operand.
 
 <Dd>, <Sm> The destination register and the operand register, for a double-precision result.
@@ -19784,10 +18086,7 @@ Undefined Instruction.
 
 Floating-point exceptions: Input Denormal, Invalid Operation, and Inexact.
 
-
-
 ### A7.7.229 VCVT (between floating-point and fixed-point)
-
 Floating-point Convert (between floating-point and fixed-point) converts a value in a register from floating-point 
 to fixed-point, or from fixed-point to floating-point, and places the result in a second register. You can specify the 
 fixed-point value as either signed or unsigned.
@@ -19809,7 +18108,6 @@ VCVT<c>.F32.<Td> <Sd>, <Sd>, #<fbits>
 
 | 15 14 13 12 11 10 9 8 7 | 6 5 4 3 2 1 0 | 15 14 13 12 11 10 9 8 7 | 6 5 4 3 2 1 0 |
 | ---------- | --------- | ---------- | ---------- |
-
 | 1 1 0 1 0 1 1 | 0 0 1 0 | D | 1 | O | 1 | 1 | op | U | Vd | 1 | 0 | 1 | sf | sx | 1 | 0 | imm4 |
 
 
@@ -19843,15 +18141,9 @@ where:
             • If <Td> is S16 or U16, <fbits> must be in the range 0-16. (16 - <fbits>) is encoded in [imm4:i].
             • If <Td> is S32 or U32, <fbits> must be in the range 1-32. (32 - <fbits>) is encoded in [imm4:i].
 
-
-
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 Operation
 
-
+```
     if ConditionPassed() then
         EncodingSpecificOperations();
         ExecuteFPMCheck();
@@ -19867,24 +18159,15 @@ Operation
             D[d] = FixedToFP(D[d]<size-1:0>, 64, frac_bits, unsigned, round_nearest, TRUE);
         else
             S[d] = FixedToFP(S[d]<size-1:0>, 32, frac_bits, unsigned, round_nearest, TRUE);
-
+```
 
 Exceptions
-
-
 Undefined Instruction.  
-
 Floating-point exceptions: Input Denormal, Invalid Operation, and Inexact.
-
-A7-464          Copyright © 2006-2008, 2010, 2014, 2017, 2018, 2021 Arm Limited or its affiliates. All rights reserved.ARM DDI 0403E.e  
-              Non-Confidential                                                                                     ID021621
-
 
 
 
 ### A7.7.230 VCVT (between double-precision and single-precision)
-
-
 This instruction does one of the following:
 
 - Converts the value in a double-precision register to single-precision and writes the result to a single-precision register.
@@ -19900,19 +18183,11 @@ VCVT<c>.<F64.F32 <D><, <Sm>
 
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |  | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
-
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-
 | 1 | 1 | 0 | 1 | 1 | 1 | 1 | D | 1 | 0 | 1 | 1 | Vd | 1 | 0 | 1 | sz | 1 | M | 0 | Vm |
 
 
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.231 VCVTB, VCVTT
-
-
 Floating-point Convert Bottom and floating-point Convert Top do one of the following:
 
 - Convert the half-precision value in the top or bottom half of a single-precision register to single-precision  
@@ -19937,14 +18212,11 @@ FPv4-SP, FPv5 (sz = 1 UNDEFINED in single-precision only variants)
 | VCVTB<c>.F16.F32 <Sd>, <Sm>               <br>VCVTT<c>.F16.F32 <Sd>, <Sm><br>VCVTB<c>.F64.F16 <Dd>, <Sm><br>VCVTT<c>.F64.F16 <Dd>, <Sm><br>VCVTB<c>.F16.F64 <Sd>, <Dm><br>VCVTT<c>.F16.F64 <Sd>, <Dm> |
 
 
-A7 Instruction Details
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
 <Dd>    The double-precision destination register.
 <Dm>    The double-precision operand register.
 
 Operation
-
+```
     if ConditionPassed() then
         EncodingSpecificOperations();
         ExecuteFCheck();
@@ -19959,22 +18231,14 @@ Operation
                 S[d]<lowbit:15:lowbit> = FPDoubleToHalf(D[m], TRUE);
             else
                 S[d]<lowbit:15:lowbit> = FPSingleToHalf(S[m], TRUE);
-
+```
 Exceptions
-
     Undefined Instruction.
-
     Floating-point exceptions: Invalid Operation, Input Denormal, Overflow, Underflow, and Inexact.
 
 
 
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.232 VDIV
-
-
 Floating-point Divide divides one floating-point value by another floating-point value and writes the result to a third floating-point register.
 
 
@@ -19987,9 +18251,7 @@ VDIV<c>.<F64> <Dd>, <Dn>, <Dm>
 
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |  | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
-
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | - | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | - |
-
 | 1 | 1 | 1 | 0 | 1 | 1 | D | 0 | 0 | Vn | Vd | 1 | 0 | 1 | sz | N | 0 | M | 0 | Vm |
 
 
@@ -20037,8 +18299,6 @@ Floating-point exceptions: Invalid Operation, Division by Zero, Overflow, Underf
 
 
 ### A7.7.233 VFMA, VFMS
-
-
 Floating-point Fused Multiply Accumulate multiplies two registers, and accumulates the result into the destination
 register. The result of the multiply is not rounded before the accumulation.
 
@@ -20049,14 +18309,7 @@ before the addition.
 **Encoding T1** FPv4-SP, FPv5 (sz = 1 UNDEFINED in single-precision only variants)
 
 
-
-### A7.7 Instruction Details
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.234 VFNMAs, VFNMS
-
-
 Floating-point Fused Negate Multiply Accumulate negates one floating-point register value and multiplies it by 
 another floating-point register value, adds the negation of the floating-point value in the destination register to the 
 product, and writes the result back to the destination register. The result of the multiply is not rounded before the 
@@ -20071,11 +18324,7 @@ Encoding T1
 FPv4-SP, FPv5 (sz = 1 UNDEFINED in single-precision only variants)
 
 
-
-
 ### A7.7.235 VLDM
-
-
 Floating-point Load Multiple loads multiple extension registers from consecutive memory locations using an address from an Arm core register.
 
 
@@ -20088,10 +18337,10 @@ VLDM{mode}<c> <Rn>{!}, <list>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ----- | ----- | ---- | ---- | ---- | ---- | --- | --- | --- | ---- | --- | --- | ---- | --- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --- | ---- | ---- | --- | --- | --- | --- | --- | ---- | --- |
-
 | 1 | 1 | 0 | 1 | 0 | P | U | D | W | 1 | 1 | Rn | Vd | 1 | 0 | 1 | imm8 |
 
 
+```
 if P == '0' && U == '0' && W == '0' then SEE "Related encodings";  
 if P == '0' && D == '1' && W == '1' && Rn == '1101' then SEE VLPOP;  
 if P == '1' && W == '0' then SEE VLDLR;  
@@ -20102,6 +18351,7 @@ single_regs = FALSE; ad = (U == '1'); wback = (W == '1');
 d = UInt(D:'0'); n = UInt(Rn); imm32 = ZeroExtend(imm8:'00', 32);  
 regs = UInt(imm8) DIV 2;  
 if n == 15 then UNPREDICTABLE;  
+```
 
 | if regs == 0 |  | regs > 16 |  | (d+regs) > 32 then UNPREDICTABLE; |
 
@@ -20118,10 +18368,9 @@ VLDM{mode}<c> <Rn>{!}, <list>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ----- | ----- | ---- | ---- | ---- | ---- | --- | --- | --- | ---- | --- | --- | ---- | --- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --- | ---- | ---- | --- | --- | --- | --- | --- | ---- | --- |
-
 | 1 | 1 | 0 | 1 | 0 | P | U | D | W | 1 | 0 | Rn | Vd | 1 | 0 | 0 | 1 | imm8 |
 
-
+```
 if P == '0' && U == '0' && W == '0' then SEE "Related encodings";  
 if P == '0' && D == '1' && W == '1' && Rn == '1101' then SEE VLPOP;  
 if P == '1' && W == '0' then SEE VLDLR;  
@@ -20131,6 +18380,7 @@ single_regs = TRUE; ad = (U == '1'); wback = (W == '1');
 d = UInt(Vd:D); n = UInt(Rn); imm32 = ZeroExtend(imm8:'00', 32);  
 regs = UInt(imm8);  
 if n == 15 then UNPREDICTABLE;  
+```
 
 | if regs == 0 |  | (d+regs) > 32 then UNPREDICTABLE; |
 
@@ -20139,7 +18389,6 @@ Related encodings  See 64-bit transfers between Arm core and extension registers
 
 
 Assembler syntax
-
 
 VLDM{<mode>}{<c>}{<q>}{.<size>} <Rn>{!}, <list>
 
@@ -20160,11 +18409,6 @@ where:
 \<Rn>  
 : The base register. The SP can be used.
 
-
-
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
 !           Causes the instruction to write a modified value back to <Rn>. This is required if <mode> == DB, and  
             is optional if <mode> == IA. Encoded as W = 1.
 
@@ -20178,7 +18422,7 @@ A7 Instruction Details
 
 Operation
 
-
+```
     if ConditionPassed() then
         EncodingSpecificOperations();
         ExecuteFPCheck();
@@ -20191,19 +18435,15 @@ Operation
                 word1 = MemA[address,4];  word2 = MemA[address+4,4];  address = address+8;
                 // Combine the word-aligned words in the correct order for current endianness.
                 D[d+r] = if BigEndian() then word1:word2 else word2:word1;
-
+```
 
 Exceptions
-
-
     Undefined Instruction, UsageFault, MemManage fault, BusFault.
 
 
 
 
 ### A7.7.236 VLDR
-
-
 Floating-point Load Register loads an extension register from memory, using an address from an Arm core register, with an optional offset.
 
 
@@ -20218,7 +18458,6 @@ VLDR<c> <Dd>, [PC,#<+0>]        Special case
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |  | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |  | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 0 | 1 | 0 | 1 | U | D | 0 | 1 | Rn | Vd | 1 | 0 | 1 | 1 | imm8 |
 
 
@@ -20237,7 +18476,6 @@ VLDR<c> <Sd>, [PC,#<+0>]        Special case
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |  | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |  | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 0 | 1 | 0 | 1 | U | D | 0 | 1 | Rn | Vd | 1 | 0 | 0 | 0 | imm8 |
 
 
@@ -20247,13 +18485,14 @@ d = UInt(Vd:D);  n = UInt(Rn);
 
 Assembler syntax
 
-
+```
 VLDR<c>{<q>}{.64} <Dd>, [<Rn>{, #+/-<imm>}]  Encoding T1, immediate form
 VLDR<c>{<q>}{.64} <Dd>, <label>              Encoding T1, normal literal form
 VLDR<c>{<q>}{.64} <Dd>, [PC, #+/-<imm>]      Encoding T1, alternative literal form
 VLDR<c>{<q>}{.32} <Sd>, [<Rn>{, #+/-<imm>}]  Encoding T2, immediate form
 VLDR<c>{<q>}{.32} <Sd>, <label>              Encoding T2, normal literal form
 VLDR<c>{<q>}{.32} <Sd>, [PC, #+/-<imm>]      Encoding T2, alternative literal form
+```
 
 where:
 
@@ -20276,10 +18515,6 @@ where:
 If the offset is zero or positive, imm32 is equal to the offset and add == TRUE.
 
 
-
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
 If the offset is negative, imm32 is equal to minus the offset and add == FALSE.
 
 For the literal forms of the instruction, the base register is encoded as '1111' to indicate that the PC is the base register.
@@ -20294,8 +18529,6 @@ Operation
 
 
 ### A7.7.237 VMAXNM, VMINNM
-
-
 VMAXNM and VMINNM determine the floating-point maximum number and floating-point minimum number accordingly.
 
 NaN handling is specified by IEEE754-2008.
@@ -20307,7 +18540,6 @@ FPv5 (sz = 1 **UNDEFINED in single-precision only variants)
 
 
 ### A7.7.238 VMLA, VMLS
-
 Floating-point Multiply Accumulate multiplies two floating-point registers, and accumulates the results into the destination floating-point register.
 
 Floating-point Multiply Subtract multiplies two floating-point registers, subtracts the product from the destination floating-point register, and places the results in the destination floating-point register.
@@ -20322,19 +18554,20 @@ VMLA<c>.F32 <Sd>, <Sn>, <Sm>                                 VMLS<c>.F32 <Sd>, <
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | ---- | --- | --- | --- | --- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 0 | 1 | 1 | 0 | 0 | 0 | D | 0 | 0 | Vn | Vd | 1 | 0 | 1 | sz | N | op | M | 0 | Vm |
 
-
+```
 dp_operation = (sz == '1'); add = (op == '0');  
 d = if dp_operation then UInt(D:Vd) else UInt(Vd:D);  
 n = if dp_operation then UInt(N:Vn) else UInt(Vn:N);  
 m = if dp_operation then UInt(M:Vm) else UInt(Vm:M);
+```
 
 Assembler syntax
-
+```
 VML<y>{<c>}{<q>}.F32 <Sd>, <Sn>, <Sm> Encoded as sz = 0  
 VML<y>{<c>}{<q>}.F64 <Dd>, <Dn>, <Dm> Encoded as sz = 1
+```
 
 where:
 
@@ -20349,7 +18582,7 @@ S Specifies VMLS, encoded as op=1.
 <Dd>, <Dn>, <Dm> The destination double-precision register and the operand double-precision registers.
 
 Operation
-
+```
 if ConditionPassed() then  
     EncodingSpecificOperations();  
     ExecuteFPCheck();  
@@ -20359,39 +18592,20 @@ if ConditionPassed() then
     else  
         addend32 = if add then FPMul(S[n], S[m], TRUE) else FPNeg(FPMul(S[n], S[m], TRUE));  
         S[d] = FPAdd(S[d], addend32, TRUE);
-
-
-
-A7 Instruction Details
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
+```
 
 Exceptions
-
-
 Undefined Instruction.
-
 Floating-point exceptions: Input Denormal, Invalid Operation, Overflow, Underflow, and Inexact.
 
 
-
-_A7 Instruction Details_
-_A7.7 Alphabetical list of Armv7-M Thumb instructions_
-
-
 ### A7.7.239 VMOV (immediate)
-
-
 VMOV (immediate) places an immediate constant into the destination floating-point register.
 
 **Encoding T1** FPv4-SP, FPv5 (sz = 1 UNDEFINED in single-precision only variants)
 
 
-
-
 ### A7.7.240 VMOV (register)
-
-
 VMOV (register) copies the contents of one register to another.
 
 **Encoding T1**  
@@ -20402,7 +18616,6 @@ VMOV<c>.F64 <Dd>, <Dm>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
-
 | 1 | 1 | 0 | 1 | 1 | 0 | 0 | 0 | D | 1 | 1 | 0 | 0 | 0 | 0 | 0 | Vd | 1 | 0 | 1 | sz | 0 | 1 | M | 0 | Vm |
 
 
@@ -20425,30 +18638,21 @@ where:
 
 Operation
 
-
+```
 if ConditionPassed() then  
-&nbsp;&nbsp;&nbsp;&nbsp;EncodingSpecificOperations();  
-&nbsp;&nbsp;&nbsp;&nbsp;ExecuteFPCcheck();  
-&nbsp;&nbsp;&nbsp;&nbsp;if dp_operation then  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;D[d] = D[m];  
-&nbsp;&nbsp;&nbsp;&nbsp;else  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;S[d] = S[m];
-
+    EncodingSpecificOperations();  
+    ExecuteFPCcheck();  
+    if dp_operation then  
+        D[d] = D[m];  
+    else  
+        S[d] = S[m];
+```
 
 Exceptions
-
-
 Undefined Instruction.
 
 
-
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.241 VMOV (Arm core register to scalar)
-
-
 VMOV (Arm core register to scalar) transfers one word from an Arm core register to the upper or lower half of a doubleword register.
 
 ____ Note ____
@@ -20461,14 +18665,7 @@ Encoding T1             FPv4-SP
 VMOV<c>.<size> <Dd[x]>, <Rt>
 
 
-
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.242 VMOV (scalar to Arm core register)
-
-
 VMOV (scalar to Arm core register) transfers one word from the upper or lower half of a doubleword register to an Arm core register.
 
 ------
@@ -20479,16 +18676,14 @@ The pseudocode descriptions of the instruction operation convert the doubleword 
 
 | Encoding T1 | FPv4-SP |
 | ------------------- | ------------------------------- |
-
 | VMOV<c>.<dt> <Rt>, <Dn[x]> |
-
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-
 | 1 | 1 | 0 | 1 | 1 | 0 | 0 | 0 | H | 1 | Vn | RT | 1 | 0 | 1 | N | 0 | 0 | 1 | (0) | (0) | (0) | (0) |
 
-
+```
 t = UInt(Rt); n = UInt(N:Vn:H);  
+```
 
 | if t == 15 |  | t == 13 then UNPREDICTABLE; |
 
@@ -20508,25 +18703,19 @@ where:
 `<Rt>`        The destination Arm core register.
 
 Operation
-
+```
     if ConditionPassed() then
         EncodingSpecificOperations();
         ExecuteFPCheck();
         R[t] = S[n];
-
+```
 Exceptions
 
 Undefined Instruction.
 
 
 
-_A7 Instruction Details_  
-_A7.7 Alphabetical list of Armv7-M Thumb instructions_
-
-
 ### A7.7.243 VMOV (between Arm core register and single-precision register)
-
-
 Floating-point Move (between Arm core register and single-precision register) transfers the contents of a 
 single-precision register to an Arm core register, or the contents of an Arm core register to a single-precision 
 register.
@@ -20539,11 +18728,11 @@ VMOV<c> <Rt>, <Sn>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 0 | 1 | 1 | 0 | 0 | 0 | 0 | op | Vn | Rt | 1 | 0 | 1 | N | (0) | (1) | (0) | (0) | (0) | (0) |
 
-
+```
 to_arm_register = (op == '1'); t = UInt(Rt); n = UInt(Vn:N);  
+```
 
 | if t == 15 |  | t == 13 then UNPREDICTABLE; |
 
@@ -20559,14 +18748,15 @@ where:
 <Rt>     The Arm core register.  
 
 **Operation**  
-
+```
 if ConditionPassed() then  
 EncodingSpecificOperations();  
 ExecuteFPCheck();  
 if to_arm_register then  
     R[t] = S[n];  
 else  
-    S[n] = R[t];  
+    S[n] = R[t];
+```
 
 **Exceptions**
 
@@ -20575,15 +18765,7 @@ Undefined Instruction.
 
 
 
-A7 Instruction Details
-
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
-
 ### A7.7.244 VMOV (between two Arm core registers and two single-precision registers)
-
-
 Floating-point Move (between two Arm core registers and two single-precision registers) transfers the contents of two consecutively numbered single-precision registers to two Arm core registers, or the contents of two Arm core registers to a pair of single-precision registers. The Arm core registers do not have to be contiguous.
 
 
@@ -20593,17 +18775,14 @@ Encoding T1
 
 |  | FPv4-SP |
 | ---------------- | ------------------------------------- |
-
 | VMOV<c> <Sm>, <Sm1>, <Rt>, <Rt2> |
 | VMOV<c> <Rt>, <Rt2>, <Sm>, <Sm1> |
-
 | 1 1 1 0 1 1 0 0 1 0 0 0 0 | op | R2 | Rt | 1 0 1 0 0 0 | M | 1 | Vm |
 
 
 to_arm_registers = (op == '1'); t = UInt(Rt); t2 = UInt(Rt2);  m = UInt(Vm:M);
 
 | if t == 15 |  | t2 == 15 |  | m == 31 then UNPREDICTABLE; |
-
 | if t == 13 |  | t2 == 13 then UNPREDICTABLE; |
 
 
@@ -20642,19 +18821,10 @@ Operation
 
 
 Exceptions
-
-
 Undefined Instruction.
 
 
-
-_A7 Instruction Details_
-_A7.7 Alphabetical list of Armv7-M Thumb instructions_
-
-
 ### A7.7.245 VMOV (between two Arm core registers and a doubleword register)
-
-
 Floating-point Move (between two Arm core registers and a doubleword register) transfers two words from two Arm core registers to a doubleword register, or from a doubleword register to two Arm core registers.
 
 
@@ -20666,7 +18836,6 @@ VMOV<c> <Rt>, <Rt2>, <Dm>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | ---- | --- | --- | ---- | --- | --- | --- | --- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | R12 | Rt | 1 | 0 | 1 | 1 | 0 | 0 | 0 | M | 1 | Vm |
 
 
@@ -20691,6 +18860,7 @@ where:
 <Dm> The double-precision register.  
 <Rt>, <Rt2> The two Arm core registers.  
 
+```
 if ConditionPassed() then
     EncodingSpecificOperations(); 
     ExecuteFPCheck(); 
@@ -20700,20 +18870,14 @@ if ConditionPassed() then
     else 
         D[m]<31:0> = R[t]; 
         D[m]<63:32> = R[t2];
-
+```
 
 Exceptions
-
-
 Undefined Instruction.
-
-_A7-484   Copyright © 2006-2008, 2010, 2014, 2017, 2018, 2021 Arm Limited or its affiliates. All rights reserved.ARM DDI 0403E.e_
-_Non-Confidential_                                                                   _ID021621_
 
 
 
 ### A7.7.246 VMRS
-
 Move to Arm core register from floating-point Special Register moves the value of the FPSCR to a general-purpose 
 register, or the values of the FCSR flags to the APSR.
 
@@ -20722,9 +18886,7 @@ VMRS<c> <Rt>, FPSCR
 
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
-
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 0 | 1 | 1 | 0 | 0 | 1 | 1 | (0) | (0) | (0) | (1) | Rt | 1 | 0 | 1 | 0 | (0) | (0) | (0) | (1) | (0) | (0) | (0) |
 
 
@@ -20742,11 +18904,11 @@ See Standard assembler syntax fields on page A7-177.
 
 <Rt>  
 The destination Arm core register. This register can be R0-R14 or APSR_nzcv. APSR_nzcv is  
-encoded as <Rt> = ‘1111’, and the instruction transfers the FPSCR N, Z, C, and V flags to the APSR  
+encoded as <Rt> = '1111', and the instruction transfers the FPSCR N, Z, C, and V flags to the APSR  
 N, Z, C, and V flags.
 
 Operation
-
+```
     if ConditionPassed() then  
         EncodingSpecificOperations();  
         ExecuteFPCheck();  
@@ -20759,20 +18921,14 @@ Operation
             APSR.V = FPSCR.V;  
         else  
             R[t] = FPSCR;  
+```
 
 Exceptions
-
 Undefined Instruction.
 
 
 
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.247 VMSR
-
-
 Move to floating-point Special Register from Arm core register moves the value of a general-purpose register to the FPSCR.
 
 **Encoding T1**  
@@ -20800,25 +18956,20 @@ where:
 <Rt> The general-purpose register to be transferred to the FPSCR.
 
 **Operation**
-
+```
     if ConditionPassed() then
         EncodingSpecificOperations();
         ExecuteFPChek();
         SerializeVFPO();
         VFPExcBarrier();
         FPSCR = R[t];
+```
 
 **Exceptions**
-
 Undefined Instruction.
 
 
-
-A7 Instruction Details
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
 ### A7.7.248 VMUL
-
 Floating-point Multiply multiplies two floating-point register values, and places the result in the destination
 floating-point register.
 
@@ -20829,7 +18980,6 @@ VMUL<c>.<F64 <Dd>, <Dn>, <Dm>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |  | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |  | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 1 | 0 | 1 | 1 | 0 | 0 | D | 0 | Vn | Vd | 1 | 0 | sz | N | M | 0 | Vm |
 
 
@@ -20866,13 +19016,7 @@ Floating-point exceptions: Input Denormal, Invalid Operation, Overflow, Underflo
 
 
 
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.249 VNEG
-
-
 Floating-point Negate inverts the sign bit of a single-precision register, and places the results in a second
 single-precision register.
 
@@ -20890,8 +19034,6 @@ VNEG<c>.F64 <Dd>, <Dm>
 
 
 ### A7.7.250 VNMlA, VNMLS, VNMUl
-
-
 Floating-point Multiply Accumulate and Negate multiplies two floating-point register values, adds the negation of the floating-point value in the destination register to the negation of the product, and writes the result back to the destination register.
 
 Floating-point Multiply Subtract and Negate multiplies two floating-point register values, adds the negation of the floating-point value in the destination register to the product, and writes the result back to the destination register.
@@ -20970,7 +19112,7 @@ A.7.7 Alphabetical list of Armv7-M Thumb instructions
 
 Operation
 
-
+```
     enumeration VFPNegMul {VFPNegMul1_VNMLA, VFPNegMul1_VNMLS, VFPNegMul1_VNMUL};
 
     if ConditionPassed() then
@@ -20988,21 +19130,16 @@ Operation
                 when VFPNegMul1_VNMLA S[d] = FPAdd(FPNeg(S[d]), FPNeg(product32), TRUE);
                 when VFPNegMul1_VNMLS S[d] = FPAdd(FPNeg(S[d]), product32, TRUE);
                 when VFPNegMul1_VNMUL S[d] = FPNeg(product32);
-
+```
 
 Exceptions
-
-
     Undefined Instruction.
-
     Floating-point exceptions: Invalid Operation, Overflow, Underflow, Inexact, Input Denormal.
 
 
 
 
 ### A7.7.251 VPOP
-
-
 Floating-point Pop Registers loads multiple consecutive floating-point registers from the stack.
 
 **Encoding T1** FPv4-SP
@@ -21012,7 +19149,6 @@ VPOP `<list>`  `<list>` is consecutive 64-bit registers
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 0 | 1 | 0 | 0 | D | 1 | 1 | 1 | 1 | 0 | 0 | 1 | Vd | 1 | 0 | 1 | 1 | imm8 |
 
 
@@ -21031,12 +19167,12 @@ VPOP `<list>`  `<list>` is consecutive 32-bit registers
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 0 | 1 | 0 | 0 | D | 1 | 1 | 1 | 1 | 0 | 0 | 1 | Vd | 1 | 0 | 1 | 0 | imm8 |
 
-
+```
 single_regs = TRUE; d = UInt(D:d); imm32 = ZeroExtend(imm8:`00`, 32);  
-regs = UInt(imm8);  
+regs = UInt(imm8);
+``` 
 
 | if regs == 0 |  | (d+regs) > 32 then UNPREDICTABLE; |
 
@@ -21058,36 +19194,27 @@ where:
 
 Operation
 
-
+```
 if ConditionPassed() then  
-  EncodingSpecificOperations();  
-  ExecutePrecheck();  
-  address = SP;  
-  SP = SP + imm32;  
-  if single_regs then  
-    for r = 0 to regs-1  
-      S[d+r] = MemA[address,4]; address = address+4;  
-  else  
-    for r = 0 to regs-1  
-      word1 = MemA[address,4]; word2 = MemA[address+4,4]; address = address+8;  
-      // Combine the word-aligned words in the correct order for current endianness.  
-      D[d+r] = if BigEndian() then word1:word2 else word2:word1;
-
+  EncodingSpecificOperations();  
+  ExecutePrecheck();  
+  address = SP;  
+  SP = SP + imm32;  
+  if single_regs then  
+    for r = 0 to regs-1  
+      S[d+r] = MemA[address,4]; address = address+4;  
+  else  
+    for r = 0 to regs-1  
+      word1 = MemA[address,4]; word2 = MemA[address+4,4]; address = address+8;  
+      // Combine the word-aligned words in the correct order for current endianness.  
+      D[d+r] = if BigEndian() then word1:word2 else word2:word1;
+```
 
 Exceptions
-
-
 Undefined Instruction, UsageFault, MemManage fault, BusFault.
 
 
-
-A7 Instruction Details  
-A.7.7 Alphabetical list of Armv7-M Thumb instructions  
-
-
 ### A7.7.252 VPUSH
-
-
 Floating-point Push Registers stores multiple consecutive floating-point registers to the stack.
 
 
@@ -21099,14 +19226,13 @@ VPUSh<c> <list>
 
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
-
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-
 | 1 | 1 | 0 | 1 | 0 | 1 | 0 | 0 | D | 1 | 0 | 1 | 1 | 0 | 0 | 1 | Vd | 1 | 0 | 1 | imm8 |
 
-
+```
 single_regs = FALSE;  d = UInt(D:Vd);  imm32 = ZeroExtend(imm8:'00', 32);  
-regs = UInt(imm8) DIV 2;  
+regs = UInt(imm8) DIV 2;
+```
 
 | if regs == 0 |  | regs > 16 |  | (d+regs) > 32 then UNPREDICTABLE; |
 
@@ -21122,14 +19248,13 @@ VPUSh<c> <list>
 
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
-
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-
 | 1 | 1 | 0 | 1 | 0 | 0 | D | 1 | 0 | 1 | 1 | 0 | 0 | 1 | Vd | 1 | 0 | 1 | imm8 |
 
-
+```
 single_regs = TRUE;  d = UInt(Vd:D);  
-imm32 = ZeroExtend(imm8:'00', 32);  regs = UInt(imm8);  
+imm32 = ZeroExtend(imm8:'00', 32);  regs = UInt(imm8);
+```
 
 | if regs == 0 |  | (d+regs) > 32 then UNPREDICTABLE; |
 
@@ -21150,7 +19275,7 @@ VPUSh<c>!{<q>}.<size> <list>
 
 Operation
 
-
+```
 if ConditionPassed() then  
     EncodingSpecificOperations();  
     ExecuteFPCheck();  
@@ -21165,19 +19290,15 @@ if ConditionPassed() then
             MemA[address,4] = if BigEndian() then D[d+r]<63:32> else D[d+r]<31:0>;  
             MemA[address+4,4] = if BigEndian() then D[d+r]<31:0> else D[d+r]<63:32>;  
             address = address+8;  
-
+```
 
 Exceptions
-
-
 Undefined Instruction, UsageFault, MemManage fault, BusFault.
 
 
 
 
 ### A7.7.253 VRINTA, VRINTN, VRINTP, and VRINTM
-
-
 These instructions round a floating-point value to an integral floating-point value of the same size. A zero input 
 gives a zero result with the same sign, an infinite input gives an infinite result with the same sign, and a NaN is 
 propagated as for normal arithmetic.
@@ -21201,7 +19322,7 @@ VRINT{A,N,P,M}.F32 <Sd>,<Sm>
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | 1 | 1 | 1 | D | 1 | 1 | sz | 0 | 1 | M | 0 | Vm |  |  |  |  |
 
-
+```
 if !InITBlock() then UNPREDICTABLE;  
 dp_operation = (sz == '1');  
 case RM of  
@@ -21216,11 +19337,9 @@ case RM of
 
 d = if dp_operation then UInt(D):else UInt(Vd:D);  
 m = if dp_operation then UInt(M):else UInt(Vm:M);  
-
+```
 
 Assembler syntax
-
-
 VRINT{r}{<q>}.F64 <Dd>, <Dm>                      Encoded as sz = 1  
 VRINT{r}{<q>}.F32 <Sd>, <Sm>                      Encoded as sz = 0  
 
@@ -21240,13 +19359,7 @@ where:
 <Sd>, <Sm>    The destination register and the operand register, for a single-precision operand or result.
 
 
-
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 Operation
-
 
     if ConditionPassed() then
         EncodingSpecificOperations();
@@ -21271,8 +19384,6 @@ Floating-point exceptions: Invalid Operation, Overflow, and Underflow.
 
 
 ### A7.7.254 VRINTX
-
-
 This instruction rounds a floating-point value to an integral floating-point value of the same size. A zero input gives
 a zero result with the same sign, an infinite input gives an infinite result with the same sign, and a NaN is propagated 
 as for normal arithmetic.
@@ -21287,7 +19398,6 @@ VRINTX<><q>.F32 <Sd>,<Sm>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 0 | 1 | 0 | 0 | 1 | D | 1 | 1 | 0 | 1 | 1 |  | Vd | 1 | 0 | sz | 0 | 1 | M | 0 | Vm |
 
 
@@ -21335,13 +19445,7 @@ Floating-point exceptions: Invalid Operation, Overflow, Underflow.
 
 
 
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.255 VRINTZ, VRINTR
-
-
 These instructions round a floating-point value to an integral floating-point value of the same size. A zero input gives a zero result with the same sign, an infinite input gives an infinite result with the same sign, and a NaN is propagated as for normal arithmetic.
 
 These instructions use the following rounding modes:
@@ -21356,7 +19460,6 @@ FPV$ (sz = 1 UNDEFINED in single-precision only variants)
 
 
 ### A7.7.256 VSEL
-
 Floating-point selection allows the destination register to take the value from either one or the other of two source 
 registers according to the condition codes in the The Application Program Status Register (APSR) on page A2-31, 
 see Conditional execution on page A7-178. The condition codes for VSEL are limited to GE, GT, EQ and VS, with 
@@ -21368,25 +19471,14 @@ VSEL<cond>.F32 <Sd>,<Sn>,<Sm>
 VSEL<cond>.F64 <Dd>,<Dm>,<Dm>
 
 
-
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.257 VSQRT
-
-
 Floating-point Square Root calculates the square root of a floating-point register value and writes the result to another floating-point register.
 
 **Encoding T1**  
 FPv4-SP, FPv5 (sz = 1 UNDEFINED in single-precision only variants)
 
 
-
-
 ### A7.7.258 VSTM
-
-
 Floating-point Store Multiple stores multiple extension registers to consecutive memory locations using an address from an Arm core register.
 
 
@@ -21397,28 +19489,30 @@ VSTM{mode}<c> <Rn>{!}, <list>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 0 | 1 | 0 | P | U | D | W | 0 | Vd | Rn | Vd | 1 | 0 | 1 | imm8 |
 
 
+```
 if P == '0' && U == '0' && W == '0' then SEE "Related encodings";
 if P == '1' && U == '0' && W == '1' && Rn == '1101' then SEE VPUSH;
 if P == '1' && W == '0' then SEE VSTR;
 if P==8 && W=='1' then SEE "SFTSX";
 if P == U && W == '1' then UNDEFINED;
+```
 
 | // Remaining combinations are P | U | W = 010 (IA without !), 011 (IA with !), 101 (DB with !) single_regs = FALSE; add = (U == '1'); wback = (W == '1'); |
 
-
+```
 d = UInt(D:Vd); n = UInt(Rn); imm32 = ZeroExtend(imm8:'00', 32);
 regs = UInt(imm8) DIV 2;
 if n == 15 then UNPREDICTABLE;
+```
 
 | if regs == 0 |  | regs > 16 |  | (d+regs) > 32 then UNPREDICTABLE; |
 
-
+```
 if VFPSmallRegisterBank() && (d+regs) > 16 then UNPREDICTABLE;
-
+```
 
 Encoding T2        FPv4-SP                                          <list> is consecutive 32-bit registers
 
@@ -21427,20 +19521,21 @@ VSTM{mode}<c> <Rn>{!}, <list>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 0 | 1 | 0 | P | U | D | W | 1 | Vd | Rn | Vd | 1 | 0 | 1 | imm8 |
 
-
+```
 if P == '0' && U == '0' && W == '0' then SEE "Related encodings";
 if P == '1' && U == '0' && W == '1' && Rn == '1101' then SEE VPUSH;
 if P == '1' && W == '0' then SEE VSTR;
 if P==8 && W=='1' then SEE "SFTSX";
 if P == U && W == '1' then UNDEFINED;
+```
 
 | // Remaining combinations are P | U | W = 010 (IA without !), 011 (IA with !), 101 (DB with !) single_regs = TRUE; add = (U == '1'); wback = (W == '1'); d = UInt(Vd:D); n = UInt(Rn); imm32 = ZeroExtend(imm8:'00', 32); regs = UInt(imm8); |
 
-
+```
 if n == 15 then UNPREDICTABLE;
+```
 
 | if regs == 0 |  | (d+regs) > 32 then UNPREDICTABLE; |
 
@@ -21448,7 +19543,10 @@ if n == 15 then UNPREDICTABLE;
 Related encodings    See 64-bit transfers between Arm core and extension registers on page A6-169
 
 Assembler syntax
+```
 VSTM{mode}<c>{<q>}{.<size>} <Rn>{!}, <list>
+```
+
 where:
 
 <mode>    The addressing mode:
@@ -21463,11 +19561,6 @@ where:
 
 !    Causes the instruction to write a modified value back to <Rn>. Required if <mode> == DB. Encoded as W = 1.
 
-
-
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
 If I is omitted, the instruction does not change <Rn> in this way. Encoded as W = 0.
 
 <list> The floating-point registers to be stored, as a list of consecutively numbered doubleword (encoding  
@@ -21481,7 +19574,7 @@ If I is omitted, the instruction does not change <Rn> in this way. Encoded as W 
 
 Operation
 
-
+```
 if ConditionPassed() then  
     EncodingSpecificOperations();  
     ExecuteFPCheck();  
@@ -21495,21 +19588,14 @@ if ConditionPassed() then
             MemA[address,4] = if BigEndian() then D[d+r]<63:32> else D[d+r]<31:0>;  
             MemA[address+4,4] = if BigEndian() then D[d+r]<31:0> else D[d+r]<63:32>;  
             address = address+8;  
-
+```
 
 Exceptions
-
-
-Undefined Instruction, UsageFault, MemManage fault, BusFault.
-
-A7-500           Copyright © 2006-2008, 2010, 2014, 2017, 2018, 2021 Arm Limited or its affiliates. All rights reserved.  
-                 ARM DDI 0403E.e  
-                 Non-Confidential                                                                                            ID021621
+Undefined Instruction, UsageFault, MemManage fault, BusFault.                                                                                     ID021621
 
 
 
 ### A7.7.259 VSTR
-
 Floating-point Store Register stores a single extension register to memory, using an address from an Arm core
 register, with an optional offset.
 
@@ -21519,7 +19605,6 @@ VSTR<c>  <Dd>, [<Rn>{, #<imm>}]
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 0 | 0 | 1 | 1 | D | 0 | 0 | 0 | Rn | Vd | 1 | 0 | imm8 |
 
 
@@ -21562,7 +19647,7 @@ where:
            can be omitted, meaning an offset of +0.
 
 Operation
-
+```
     if ConditionPassed() then
         EncodingSpecificOperations();
         ExecuteFPCheck();
@@ -21573,21 +19658,16 @@ Operation
             // Store as two word-aligned words in the correct order for current endianness.
             MemA[address,4] = if BigEndian() then D[d]<63:32> else D[d]<31:0>;
             MemA[address+4,4] = if BigEndian() then D[d]<31:0> else D[d]<63:32>;
+```
 
-
-
-A7 Instruction Details
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
 
 
 Exceptions
-
 Undefined Instruction, UsageFault, MemManage fault, BusFault.
 
 
 
 ### A7.7.260 VSUB
-
 Floating-point Subtract subtracts one floating-point register value from another floating-point register value, and places the results in the destination floating-point register.
 
 **Encoding T1**              FPv4-SP, FPv5 (sz = 1 UNDEFINED in single-precision only variants)  
@@ -21638,14 +19718,7 @@ Undefined Instruction.
 Floating-point exceptions: Input Denormal, Invalid Operation, Overflow, Underflow, and Inexact.
 
 
-
-A7 Instruction Details  
-### A7.7 Alphabetical list of Armv7-M Thumb instructions
-
-
 ### A7.7.261 WFE
-
-
 Wait For Event is a hint instruction. If the Event Register is clear, it suspends execution in the lowest power state available consistent with a fast wakeup without the need for software reassertion, until a reset, exception or other event occurs. See Wait For Event and Send Event on page B1-560 for more details.
 
 For general hint behavior, see NOP-compatible hints on page A7-185.
@@ -21681,13 +19754,14 @@ where:
     <c><q> See Standard assembler syntax fields on page A7-177.
 
 **Operation**
-
+```
     if ConditionPassed() then 
         EncodingSpecificOperations();
         if EventRegistered() then
             ClearEventRegister();
         else
             WaitForEvent();
+```
 
 **Exceptions**
 
@@ -21696,7 +19770,6 @@ None.
 
 
 ### A7.7.262 WFI
-
 Wait For Interrupt is a hint instruction. It suspends execution, in the lowest power state available consistent with a
 fast wakeup without the need for software restoration, until a reset, asynchronous exception or other event occurs.
 See Wait For Interrupt on page B1-562 for more details.
@@ -21720,7 +19793,6 @@ WFI<c>.W
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | 0 | 0 | 1 | 1 | 0 | 1 | 0 | 1 | (1) | (1) | (1) | (1) | (0) | (0) | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 1 |
 
 
@@ -21747,14 +19819,7 @@ Notes
 PRIMASK For the effect of PRIMASK on WFI, see Wait For Interrupt on page B1-562.
 
 
-
-*A7 Instruction Details*  
-*A7.7 Alphabetical list of Armv7-M Thumb instructions*
-
-
 ### A7.7.263 YIELD
-
-
 YIELD is a hint instruction. It enables software with a multithreading capability to indicate to the hardware that it is performing a task, for example a spinlock, that could be swapped out to improve overall system performance. Hardware can use this hint to suspend and resume multiple code threads if it supports the capability.
 
 For general hint behavior, see NOP-compatible hints on page A7-185.
@@ -21799,18 +19864,13 @@ where:
 
 None.
 
+---
 
+# Part B: System Level Architecture
 
-# Part B
-System Level Architecture
+## Chapter B1: System Level Programmers' Model
 
-
-
-
-## Chapter B1
-System Level Programmers’ Model
-
-This chapter provides a system-level view of the Armv7-M programmers’ model. It contains the following sections:
+This chapter provides a system-level view of the Armv7-M programmers' model. It contains the following sections:
 
 - *Introduction to the system level on page B1-510.*
 - *About the Armv7-M memory mapped architecture on page B1-511.*
@@ -21828,7 +19888,7 @@ This chapter provides a system-level view of the Armv7-M programmers’ model. I
 The Arm architecture defines a hierarchy for software operation:
 
 - The lowest level is the application level, described in part A of this manual. In particular, Chapter A2  
-  _Application Level Programmers’ Model_ describes the programmers model for applications.  
+  _Application Level Programmers' Model_ describes the programmers model for applications.  
   Application-level software is largely independent of the architecture profile.
 
 - The higher level is the system level, that includes support for the applications. The system level features and  
@@ -21841,7 +19901,7 @@ System level support requires privileged access, giving system software the acce
 configure and control the resources. Typically, an operating system provides this control, providing system services  
 to the applications, either transparently, or through application initiated Supervisor Calls. The operating system is  
 also responsible for servicing interrupts and other system events, making exceptions a key component of the system  
-level programmers’ model.
+level programmers' model.
 
 In addition, Armv7-M is a departure from the normal architecture evolution in that it has been designed to take the  
 Arm architecture to lower cost or performance points than previously supported as well as having a strong migration  
@@ -21988,7 +20048,7 @@ An exception for which the processor has started executing a corresponding excep
 
 
 
-B1 System Level Programmers’ Model  
+B1 System Level Programmers' Model  
 ### B1.3 Overview of system level terminology and operation
 
 Active and pending
@@ -22074,7 +20134,7 @@ to Debug state.
 
 
 
-B1 System Level Programmers’ Model
+B1 System Level Programmers' Model
 
 ### B1.4 Registers
 
@@ -22158,11 +20218,8 @@ subregisters. xPSR is a generic term for a Program Status Register.
 
 | 31 | 30 | 29 | 28 | 27 | 26 | 25 | 24 | 23 | 20 | 19 | 16 | 15 | 10 | 9 | 8 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ------- | ---- | --------- | ---- | --------------- | ---- | ---- | --- | ----------------------- |
-
 | APSR | N | Z | C | V | Q | GE[3:0]† |  | 16-0 Reserved |
-
 | IPSR |  | 0 or Exception Number |
-
 | EPSR | IC | IT | T |  | IC | IT |
 
 
@@ -22298,7 +20355,7 @@ Software can access these registers using the MRS and MSR instructions, see *MRS
 
 
 
-B1 System Level Programmers’ Model
+B1 System Level Programmers' Model
 
 ### B1.4 Registers
 
@@ -22353,7 +20410,7 @@ Except for writes to the CONTROL register, any change to a special-purpose regis
 ### B1.4.7 Register-related definitions for pseudocode
 
 
-The system programmers’ model pseudocode uses two register types:  
+The system programmers' model pseudocode uses two register types:  
 
 - 32-bit core registers, see *The Arm core registers on page B1-516.*  
 - 32-bit memory mapped registers.  
@@ -22459,7 +20516,7 @@ The MemManage fault handles memory protection faults that are determined by the 
 
 
 
-**B1 System Level Programmers’ Model**  
+**B1 System Level Programmers' Model**  
 **B1.5 Armv7-M exception model**
 
 **BusFault**  
@@ -22966,8 +21023,6 @@ When pushing context to the stack, the hardware saves eight 32-bit words, compri
 
 
 
-B1 System Level Programmers’ Model  
-### B1.5 Armv7-M exception model
 
 If the processor implements the Floating-point Extension, in addition to this eight word stack frame it can also either 
 push FP state onto the stack, or reserve space on the stack for this state. For more information see Stack alignment 
@@ -22975,6 +21030,7 @@ on exception entry on page B1-535.
 
 The ExceptionEntry() pseudocode function describes the exception entry behavior:
 
+```
 // Exception Number Enumeration  
 // =============================
 
@@ -23034,14 +21090,11 @@ The definitions of the PushStack() and ExceptionTaken() pseudocode functions are
     MemA[frameptr+0x4,4] = R[1];  
     MemA[frameptr+0x8,4] = R[2];  
     MemA[frameptr+0xC,4] = R[3];
-
-
-
-MemA[frameptr+0x10,4] = R[12];  
-MemA[frameptr+0x14,4] = LR;  
-MemA[frameptr+0x18,4] = ReturnAddress(ExceptionType);  
-MemA[frameptr+0x1C,4] = (XPSR<31:10>:frametp:align:XPSR<8:0>);  
- // see ReturnAddress() in-line note for information on XPSR.IT bits
+    MemA[frameptr+0x10,4] = R[12];  
+    MemA[frameptr+0x14,4] = LR;  
+    MemA[frameptr+0x18,4] = ReturnAddress(ExceptionType);  
+    MemA[frameptr+0x1C,4] = (XPSR<31:10>:frametp:align:XPSR<8:0>);  
+    // see ReturnAddress() in-line note for information on XPSR.IT bits
 
 if HaveFPExt() && CONTROL.FPCA == '1' then  
     if FPCCR.LSPEN == '0' then  
@@ -23068,8 +21121,7 @@ else
 
 return;  
 // ExceptionTaken()  
-// ————————————————————  
-
+// ----------------
 ExceptionTaken(usage ExceptionNumber)  
 
     bit bit;  
@@ -23096,6 +21148,7 @@ ExceptionTaken(usage ExceptionNumber)
     ClearExclusiveLocal(ProcessorID());  
     SetEventRegister();             // see WFE instruction for more details  
     InstructionSynchronizationBarrier('1111');  
+```
 
 For more information about the registers with UNKNOWN values, see Exemptions on exception entry on page B1-546.
 
@@ -23104,12 +21157,7 @@ For updates to system status registers, see System Control Space (SCS) on page B
 The value of ReturnAddress() is the address to which execution returns after the processor has handled the exception:
 
 
-
-B1 System Level Programmers’ Model  
-### B1.5 Armv7-M exception model
-
-
-
+```
 FPCCR.MMRDY = '1';
 else
     FPCCR.MMRDY = '0';
@@ -23118,6 +21166,7 @@ if DEMCR.MON_EN == '1' && ExecutionPriority() > UInt(SHPR3.PRI_12) then
 else
     FPCCR.MONRDY = '0';
 return;
+```
 
 For more information about the information held in the FPCCR see Floating Point Context Control Register, 
 FPCCR on page B3-615.
@@ -23176,13 +21225,6 @@ On an exception entry when CCR.STKALIGN is set to 1, the exception entry sequenc
 is in use before the exception entry has 8-byte alignment, by adjusting its alignment if necessary. When the processor 
 pushes the PSR value to the stack it uses bit[9] of the stacked PSR value to indicate whether it realigned the stack.
 
-
-
-_B1 System Level Programmers’ Model_  
-_B1.5 Armv7-M exception model_
-
----
-
 **Note**  
 In normal operation, PSR[9] is reserved.
 
@@ -23227,12 +21269,6 @@ The pseudocode in _Exception entry behavior on page B1-531 and Exception return 
 
 - Using a reserved bit in the PSR to indicate whether the processor realigned the stack on exception entry makes the feature transparent to context switch code, but requires all software to respect the reserved status of unused bits in the PSR.
 
-_B1-536 Copyright © 2006-2008, 2010, 2014, 2017, 2018, 2021 Arm Limited or its affiliates. All rights reserved.ARM DDI 0403E.e Non-Confidential_
-
-
-
-B1 System Level Programmers’ Model  
-### B1.5 Armv7-M exception model
 
 Retrieving arguments from the stack
 
@@ -23273,14 +21309,6 @@ information on taking an exception:
 The FPCCR.ASPEN and FPCCR.LSPEN bits determine which action is taken, see Floating Point Context Control 
 Register, FPCCR on page B3-615.
 
-ARM DDI 0403E.eCopyright © 2006-2008, 2010, 2014, 2017, 2018, 2021 Arm Limited or its affiliates. All rights reserved.  
-ID021621  
-Non-Confidential
-
-
-
-*B1 System Level Programmers' Model*
-*B1.5 Armv7-M exception model*
 
 
 | Original SP, | SP Offset | Original SP, |
@@ -23404,7 +21432,6 @@ In both tables:
 
 
 | Table B1-8 EXC_RETURN definition of exception return behavior, no FP extension |
-
 | EXC_RETURN | Return to | Return stack |
 | ------------ | -------------- | -------------- |
 | 0xFFFFFFF1 | Handler mode | Main |
@@ -23412,7 +21439,7 @@ In both tables:
 | 0xFFFFFFFD | Thread mode | Process |
 
 
-### B1.5 Armv7-M exception model
+
 
 
 Table B1-9 EXC_RETURN definition of exception return behavior, with FP extension
@@ -23489,6 +21516,7 @@ Exception return operation
 
 The ExceptionReturn() pseudocode function describes the exception return operation:
 
+```
 // ExceptionReturn()
 // =================
 
@@ -23552,15 +21580,7 @@ The ExceptionReturn() pseudocode function describes the exception return operati
             PushStack(UsageFault);           // to negate PopStack()
             LR = '1111':EXC_RETURN;
             ExceptionTaken(UsageFault);      // return IPSR is inconsistent
-
-ARM DDI 0403E.e Copyright © 2006-2008, 2010, 2014, 2017, 2018, 2021 Arm Limited or its affiliates. All rights reserved.
-ID021621                                                                                           Non-Confidential
-
-                                                                                                                                B1-541
-
-
-
-return;
+            return;
 
 if CurrentMode==Mode_Thread && IPSR<8:0> != '000000000' then  
     UFSR.INVPC = '1';  
@@ -23575,6 +21595,8 @@ InstructionSynchronizationBarrier('1111');
 
 if CurrentMode==Mode_Thread && NestedActivation == 0 && SCR.SLEEPONEXIT == '1' then  
     SleepOnExit();                     // IMPLEMENTATION DEFINED
+
+```
                                
 ExceptionActiveBitCount() is a pseudocode function that returns the number of bits that are set to 1 in the ExceptionActive[] array:
 
@@ -23592,6 +21614,7 @@ For pseudocode that describes use Miscellaneous helper procedures and functions 
 
 The definitions of the DeActivate() and PopStack() pseudocode functions are:
 
+```
 // DeActivate()  
 //  
 
@@ -23625,8 +21648,6 @@ PopStack(bits(32) frameptr, bits(28) EXC_RETURN)  /* only stack locations, not t
 
     if HaveFPExc() then
 
-
-
 if EXC_RETURN<4> == '0' then
     if FPCCR.LSPACT == '1' then
         FPCCR.LSPACT = '0'; // state in FP is still valid
@@ -23638,7 +21659,7 @@ if EXC_RETURN<4> == '0' then
 
 CONTROL.PGA = NOT(EXC_RETURN<4>);
 
-spmask = Zeros(29):(psr<9> AND forcealign):‘00’;
+spmask = Zeros(29):(psr<9> AND forcealign):'00';
 
 case EXC_RETURN<3:0> of
     when '0001' // returning to Handler
@@ -23654,6 +21675,7 @@ if HaveEPSR() then
 IPSR<8:0> = psr<8:0>; // valid IPSR bits loaded from memory
 EPSR<26,24,15:10> = psr<26:24,15:10>; // valid EPSR bits loaded from memory
 return;
+```
 
 
 ### B1.5.9 Exceptions in single-word load operations
@@ -23692,10 +21714,6 @@ On an implementation that supports interruptible Load Multiple and Store Multipl
 and Store Multiple instructions that are not in an IT block are compatible with the single-copy atomicity rules for
 Device and Strongly Ordered memory described in Memory access restrictions on page A3-83.
 
-
-
-B1 System Level Programmers' Model  
-### B1.5 Armv7-M exception model
 
 For the instructions that are part of the base Armv7-M architecture, the ICI bits store the number of the first register in the register list that must be loaded or stored on return to the instruction.
 
@@ -23800,11 +21818,6 @@ Interrupt of LDM or STM not in an IT block, not using SP as the base register
 - The base register contains the final value, whether the LDM or STM instruction is DB or IA.
 - The ICI bits hold the continuation state.
 
-
-
-B1 System Level Programmers’ Model  
-### B1.5 Armv7-M exception model
-
 Base register load  
 
 In all cases, the processor restores the original base address when it abandons the instruction. Other  
@@ -23878,6 +21891,7 @@ occurs only when the late-arriving exception is of higher priority than the orig
 supports late-arriving exceptions, the LateArrival() pseudocode function shows their operation. This function 
 changes the ExceptionType argument used in the ExceptionTaken() function.
 
+```
 // LateArrival()
 // =============
 
@@ -23894,6 +21908,7 @@ LateArrival()
        ExceptionTaken(LAEnum);   // late-arriving exception taken
    else
        ExceptionTaken(OEnum);    // original exception taken
+```
 
 For the definition of ExceptionTaken() see Exception entry behavior on page B1-531.
 
@@ -23935,10 +21950,6 @@ escalation if appropriate, is of higher priority than the original exception, bu
 what conditions, if any, lead to late arrival preemption.
 
 
-
-B1 System Level Programmers’ Model  
-### B1.5 Armv7-M exception model
-
 If the processor does not use the late-arrival preemption mechanism to handle a derived exception, the derived  
 exception becomes pending, and the processor takes the exception in accordance with the prioritization rules for  
 pending exceptions.
@@ -23948,7 +21959,7 @@ exception, which becomes active. The original exception remains in the pending s
 
 The DerivedLateArrival() pseudocode function shows this operation. This function changes the ExceptionType  
 argument used in the ExceptionTaken() function.
-
+```
 // DerivedLateArrival()  
 // ====================
 
@@ -23984,7 +21995,7 @@ else
     else  
         SetPending(DEnum);     // DE to Pending state  
         ExceptionTaken(OEnum); // start execution of the OE
-
+```
 For definitions of ExceptionTaken() and PushStack() see Exception entry behavior on page B1-531.
 
 The ICSR and SHCSR maintain pending state information, see Interrupt Control and State Register, ICSR on  
@@ -24063,7 +22074,7 @@ In the tail-chaining optimization, the processor combines the exception return a
 form the sequence described by the TailChain() pseudocode function, in which ReturningExceptionNumber is the 
 number of the exception being returned from, and ExceptionNumber is the number of the exception being entered by 
 tail-chaining. EXC_RETURN is the EXC_RETURN value that started the original exception return.
-
+```
 // TailChain()
 // ============
 
@@ -24075,7 +22086,7 @@ TailChain(integer ExceptionNumber, bits(28) EXC_RETURN)
     LR   = '1111':EXC_RETURN;
     DeActivate(ReturningExceptionNumber);
     ExceptionTaken(ExceptionNumber);
-
+```
 For a definition of ExceptionTaken() see Exception entry behavior on page B1-531.
 
 
@@ -24202,11 +22213,6 @@ In all fault handling cases, the processor sets the corresponding fault status r
 returns according to the rules defined in the ReturnAddress() pseudocode function.
 
 For the definitions of ExceptionTaken() and ReturnAddress() see Exception entry behavior on page B1-531.
-
-
-
-B1 System Level Programmers’ Model  
-### B1.5 Armv7-M exception model
 
 List of Armv7-M faults
 
@@ -24574,10 +22580,6 @@ Lockup occurs when a fetch causes an MPU access violation, an XN region violatio
 See MPU Control Register, MPU_CTRL on page B3-637 for more information.
 
 
-
-B1 System Level Programmers' Model  
-### B1.5 Armv7-M exception model
-
 MemManage fault on data access
 
 **Behavior**  
@@ -24896,11 +22898,6 @@ architecturally-defined mechanism that completely suspends execution makes it ve
 powerdown entry mechanism.
 
 
-
-B1 System Level Programmers' Model
-### B1.5 Armv7-M exception model
-
-
 Pseudocode details of Wait For Interrupt
 
 
@@ -24987,7 +22984,7 @@ Checks on FP instruction execution
 Whenever the processor attempts to execute a floating-point instruction, it must check whether access to the FP
 functionality is enabled. If it is, it must check whether it has an outstanding lazy save of the FP state, and if so it
 must save the FP state to the reserved area on the stack. The ExecuteFPCheck() function performs these checks.
-
+```
 // ExecuteFPCheck()
 // =================
 
@@ -25005,12 +23002,12 @@ must save the FP state to the reserved area on the stack. The ExecuteFPCheck() f
             FPSCR.26:22 = FPSCR<26:22>;
             CONTROL.FPCA = '1';
         return;
-
+```
 Saving FP state on page B1-566 describes the PreserveFPState() pseudocode procedure.
 
 The CheckVFPEEnabled() pseudocode procedure takes appropriate action if software uses a floating-point instruction
 when the Floating-point Extension is not enabled.
-
+```
 // CheckVFPEEnabled()
 // ===================
 
@@ -25029,20 +23026,12 @@ when the Floating-point Extension is not enabled.
                 UNPREDICTABLE;
             // when '11' // access permitted by CPACR
         return;
-
+```
 ---
-
-_ARM DDI 0403E.eCopyright © 2006-2008, 2010, 2014, 2017, 2018, 2021 Arm Limited or its affiliates. All rights reserved. B1-565
-ID021621 Non-Confidential_
-
-
-
-B1 System Level Programmers' Model  
-### B1.6 Floating-point support
 
 Saving FP state
 The PreserveFPState() pseudocode function saves the floating-point state to the stack when there is an outstanding lazy save of the FP state.
-
+```
 // PreserveFPState()
 // =================
 
@@ -25075,7 +23064,7 @@ PreserveFPState()
     FPSCR = bits(32) UNKNOWN;  
 
     return;  
-
+```
 Exceptions while saving FP state describes possible exceptions during this save of FP state.  
 
 Exceptions while saving FP state
@@ -25083,7 +23072,7 @@ The TakePreserveFPException() pseudocode function describes the handling of poss
 
 ____Note____  
 The logic used to determine whether these exceptions escalate to HardFault differs from the normal escalation logic described in Priority escalation on page B1-529.  
-
+```
 // TakePreserveFPException()  
 // ==========================
 
@@ -25098,44 +23087,17 @@ TakePreserveFPException(integer Exception)
         // Ignore DebugMonitor exception  
         return;  
     // Record appropriate fault status information  
-
-B1-566  
-Copyright © 2006-2008, 2010, 2014, 2017, 2018, 2021 Arm Limited or its affiliates. All rights reserved. ARM DDI 0403E.e  
-Non-Confidential ID021621
+```
 
 
-
-B1 System Level Programmers' Model  
-### B1.6 Floating-point support
-
-
-
-B1 System Level Programmers' Model
-### B1.6 Floating-point support
-
-B1-568
-Copyright © 2006-2008, 2010, 2014, 2017, 2018, 2021 Arm Limited or its affiliates. All rights reserved. ARM DDI 0403E.e
-Non-Confidential ID021621
-
-
-
-## Chapter B2
-System Memory Model
+## Chapter B2: System Memory Model
 
 This chapter provides pseudocode that describes the Armv7-M memory model. It contains the following sections:  
 • *About the system memory model on page B2-570.*  
 • *Caches and branch predictors on page B2-571.*  
 • *Pseudocode details of general memory system operations on page B2-582.*
 
-
-
-B2 System Memory Model  
 ### B2.1 About the system memory model
-
-
-### B2.1 About the system memory model
-
-
 The pseudocode described in this chapter is associated with instruction fetches from memory and load or store data accesses.
 
 The pseudocode hierarchy for a load or store instruction is as follows:
@@ -25143,12 +23105,7 @@ The pseudocode hierarchy for a load or store instruction is as follows:
 - Memory attributes are determined from the default system address map or using an MPU as defined in *The system address map on page B3-592 or Protected Memory System Architecture, PMSAv7 on page B3-632* respectively.
 - The access is governed by whether the access is a read or write, its address alignment, data endianness and memory attributes.
 
-
-
-
 ### B2.2 Caches and branch predictors
-
-
 The concept of caches is described in *Caches and memory hierarchy* on page A3-97. This section describes the Armv7-M cache identification and control mechanisms, and the cache maintenance operations.
 
 This section contains the following subsections:
@@ -25162,10 +23119,7 @@ This section contains the following subsections:
 - *System level caches* on page B2-581.
 - *Performing cache maintenance operations* on page B2-581.
 
-
 ### B2.2.1 Cache identification
-
-
 The Armv7 cache identification consists of a set of registers that describe the implemented caches that are under the control of the processor:
 
 - A single Cache Type Register defines:
@@ -25209,8 +23163,6 @@ Read the Cache Size ID Register to find details of the cache.
 
 
 ### B2.2.2 Cache enabling and disabling
-
-
 In Armv7-M the architecture defines the control of multiple levels of cache.
 
 In Armv7-M, the Configuration and Control Register, CCR is used to enable and disable caches, see Configuration<br> and Control Register, CCR on page B3-604.
@@ -25392,7 +23344,6 @@ location in a cache hierarchy that an operation works on. These parameters are:
 can be determined from the Cache Level ID Register, see Cache Level ID Register, CLIDR on  
 page B4-665. In the Arm architecture, the lower numbered levels are those closest to the processor,  
 see Memory hierarchy on page A3-97. |
-
 | Set | Each level of a cache is split up into a number of sets. Each set is a set of locations in a cache level |
 
 
@@ -26244,9 +24195,7 @@ page B1-551 for more information.
 
 
 
-## Chapter B3
-
-System Address Map
+## Chapter B3: System Address Map
 
 This chapter describes the Armv7-M system address map, including the memory-mapped registers. It contains the following sections:
 - *The system address map on page B3-592*.
@@ -26255,19 +24204,8 @@ This chapter describes the Armv7-M system address map, including the memory-mapp
 - *Nested Vectored Interrupt Controller, NVIC on page B3-624*.
 - *Protected Memory System Architecture, PMSAv7 on page B3-632*.
 
----
-ARM DDI 0403E.e Copyright © 2006-2008, 2010, 2014, 2017, 2018, 2021 Arm Limited or its affiliates. All rights reserved.
-ID021621 Non-Confidential
-
-
-
-B3 System Address Map  
-### B3.1 The system address map
-
 
 ### B3.1 The system address map
-
-
 Armv7-M supports a predefined 32-bit address space, with subdivision for code, data, and peripherals, and regions for on-chip and off-chip resources, where on-chip refers to resources that are tightly coupled to the processor. The address space supports eight primary partitions of 0.5GB each:
 - Code.
 - SRAM.
@@ -26306,21 +24244,6 @@ For more information about memory attributes and the memory model see Chapter A2
 | 0x20000000-0x3FFFFFFF | SRAM | Normal | - | WBWA | SRAM region typically used for on-chip RAM. |
 | 0x40000000-0x5FFFFFFF | Peripheral | Device | XN | - | On-chip peripheral address space. |
 | 0x60000000-0x7FFFFFFF | RAM | Normal | - | WBWA | Memory with write-back, write allocate cache attribute for L2/L3 cache support. |
-
-
-B3-592           Copyright © 2006-2008, 2010, 2014, 2017, 2018, 2021 Arm Limited or its affiliates. All rights reserved.ARM DDI 0403E.e  
-                                                 Non-Confidential                                    ID021621
-
-
-
-B3 System Address Map  
-### B3.1 The system address map
-
-Table B3-1 Armv7-M address map (continued)
-
-
-| Address | Name | Device type | XN? | Cache | Description |
-| ------------------------------- | -------- | -------------------- | ----- | ------- | --------------------------------------------------------- |
 | 0x80000000-0x9FFFFFFF | RAM | Normal | - | WT | Memory with Write-Through cache attribute. |
 | 0xA0000000-0xBFFFFFFF | Device | Device, shareable | XN | - | Shared device space. |
 | 0xC0000000-0xDFFFFFFF | Device | Device, Non-shareable | XN | - | Non-shared device space. |
@@ -26359,28 +24282,19 @@ The address map shown in Table B3-1 on page B3-592:
 - Can be used as a background region for privileged accesses when the MPU is enabled, see the definition of PRIVDEFENA in MPU Control Register, MPU_CTRL on page B3-637.
 
 
-
-B3 System Address Map  
-### B3.1 The system address map
-
-____________________  
 **Note**  
 An enabled MPU cannot change the XN property of the System memory region.  
-____________________  
 
 
 ### B3.1.1 General rules for PPB register accesses
-
-
 The general rules for the PPB, address range 0xE0000000 to 0xE0100000, are:
 - The region is defined as Strongly-ordered memory, see Strongly-ordered memory access restrictions on page A3-83.
 - Register accesses are always little endian, regardless of the endian state of the processor.
 - In general and unless otherwise stated, registers support word accesses only, with byte and halfword access UNPREDICTABLE. The priority and fault status registers are concatenations of byte-aligned bit fields affecting different resources. Such a register might be accessible as a byte or halfword register with an appropriate address offset from the 32-bit register base address.
 
-____________________  
+
 **Note**  
 A register supports byte and halfword access only if its register description in this manual explicitly states that it supports these accesses.  
-____________________  
 
 - Where a bit is defined as being cleared to 0 on a read, the architecture guarantees the following atomic behavior when a read of the bit coincides with an event that sets the bit to 1:
   — If the bit reads as 1, the read operation clears the bit to 0.
@@ -26391,17 +24305,15 @@ Unprivileged accesses to the PPB causes BusFault errors unless otherwise stated.
 - Unprivileged accesses can be enabled to the Software Trigger Interrupt Register in the System Control Space by programming a control bit in the Configuration Control Register.
 - For debug related resources, see General rules applying to debug register access on page C1-686 for exception details.
 
-____________________  
+
 **Note**  
 The architecture defines the Flash Patch and Breakpoint (FPB) unit as a debug resource, see Flash Patch and Breakpoint unit on page C1-755. However, FPB resources can be used as a means of updating software as part of a product maintenance policy. The address remapping behavior of the FPB is not specific to debug operation, but allocating FPB resources to software maintenance reduces Debug functionality.  
-____________________
+
 
 
 
 
 ### B3.2 System Control Space (SCS)
-
-
 The System Control Space (SCS) is a memory-mapped 4KB address space that provides 32-bit registers for configuration, status reporting and control. The SCS registers divide into the following groups:
 - System control and identification.
 - The CPUID processor identification space.
@@ -26445,16 +24357,8 @@ The following sections summarize the other register groups:
 
 
 ### B3.2.1 About the System Control Block
-
-
 In an Armv7-M processor, a **System Control Block (SCB)** in the SCS provides key status information and control features for the processor. The SCB supports:
 - Software reset control, at various levels.
-
-
-
-B3 System Address Map  
-### B3.2 System Control Space (SCS)
-
 - Base address management for the exception model, by controlling table pointers.
 - System exception management, including:
   — Exception enables.
@@ -26498,23 +24402,6 @@ All registers are 32-bits wide, unless described differently in the register des
 | 0xE000ED20 | SHPR3 | RW | 0x00000000 | System Handler Priority Register 3, SHPR3 on page B3-607. |
 | 0xE000ED24 | SHCSR | RW | 0x00000000 | System Handler Control and State Register, SHCSR on page B3-607. |
 | 0xE000ED28 | CFSR | RW | 0x00000000 | Configurable Fault Status Register, CFSR on page B3-609.<br>The following describe the subregisters of the CFSR:<br>• MemManage Status Register, MMFSR on page B3-609.<br>• BusFault Status Register, BFSR on page B3-610.<br>• UsageFault Status Register, UFSR on page B3-611. |
-
-
-B3-596       Copyright © 2006-2008, 2010, 2014, 2017, 2018, 2021 Arm Limited or its affiliates. All rights reserved.  
-Non-Confidential                                                                                                       ARM DDI 0403E.e  
-                                                                                                                       ID021621
-
-
-
-
-B3 System Address Map
-
-### B3.2 System Control Space (SCS)
-
-
-
-| Address | Name | Type | Reset | Description |
-| ------------ | -------- | ------ | ------------ | ----------------------------------------------------------------------- |
 | 0xE000ED2C | HFSR | RW | 0x00000000 | **HardFault Status Register, HFSR on page B3-612.** |
 | 0xE000ED30 | DFSR | RW | 0x0000000C | **Debug Fault Status Register, DFSR on page C1-699.** |
 | 0xE000ED34 | MMFAR | RW | UNKNOWN | **MemManage Fault Address Register, MMFAR on page B3-613.** |
@@ -26560,14 +24447,6 @@ Table B3-6 Summary of system control and ID registers not in the SCB
 | 0xE000E004 | ICTR | RO | IMPLEMENTATION DEFINED | **Interrupt Controller Type Register, ICTR on page B3-618** |
 | 0xE000E008 | ACTLR | RW | IMPLEMENTATION DEFINED | **Auxiliary Control Register, ACTLR on page B3-618** |
 | 0xE000E00C | - | - | - | Reserved |
-
-
-B3 System Address Map  
-### B3.2 System Control Space (SCS)
-
-
-| Address | Name | Type | Reset | Description |
-| ------------------ | ------ | ------ | ------- | ---------------------------------------------------------------------------------------------- |
 | 0xE000EDF0- | - | - | - | See Debug system registers on page C1-699 |
 | 0xE000EEFC |  |  |  |  |
 | 0xE000EF00 | STIR | WO | - | Software Triggered Interrupt Register, STIR on page B3-619 |
@@ -26609,8 +24488,7 @@ The CPUID Base Register characteristics are:
 
 **Usage constraints** This register is word accessible only.
 
-Software can use the CPUID registers to find more information about the processor, see  
-## Chapter B4 The CPUID Scheme.
+Software can use the CPUID registers to find more information about the processor, see Chapter B4 The CPUID Scheme.
 
 **Configurations** Always implemented.
 
@@ -26623,7 +24501,6 @@ The CPUID Base Register bit assignments are:
 
 | 31 | 24   23 | 20   19 | 16 | 15 | 4  3 | 0 |
 | ------------- | --------- | --------- | ---- | ---------------------- | ------------ | ----------- |
-
 | IMPLEMENTER | VARIANT | 1  1  1 | PARTNO | REVISION |
 
 
@@ -26687,10 +24564,6 @@ On writes, sets the PendSV exception as pending. On reads, indicates the current
 
 1 On writes, make PendSV exception pending. On reads, PendSV is pending.
 
-
-
-B3 System Address Map  
-### B3.2 System Control Space (SCS)
 
 Normally, software writes 1 to this bit to request a context switch.
 
@@ -26827,7 +24700,6 @@ The VTOR bit assignments are:
 
 | 31 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 7 | 6 | 0 |
 | ------ | -------- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | --- | --- | --- |
-
 | TBLOFF | Reserved |
 
 
@@ -26844,41 +24716,23 @@ Software can write all 1s to the TBLOFF field and then read the register to find
 
 
 ### B3.2.6 Application Interrupt and Reset Control Register, AIRCR
-
-
 The AIRCR characteristics are:
 
 **Purpose** Sets or returns interrupt control data.
 
 **Usage constraints** There are no usage constraints.
 
-
-
-
-B3 System Address Map
-
-### B3.2 System Control Space (SCS)  
-
-
 **Configurations**  Always implemented.
 
 **Attributes**  See Table B3-4 on page B3-596, and the register description.
 
 The AIRCR bit assignments are:
-
-
-
-B3 System Address Map  
-### B3.2 System Control Space (SCS)
-
 When the processor is halted in Debug state, if a write to the register writes a 1 to both 
 VECTRESET and SYSRESETREQ, the behavior is UNPREDICTABLE.  
 This bit is write only.
 
 
 ### B3.2.7 System Control Register, SCR
-
-
 The SCR characteristics are:
 
 **Purpose**  
@@ -26975,11 +24829,6 @@ Exceptions 1, 2, and 3, Reset, NMI, and HardFault, have fixed priorities and the
 System Handler Priority Register fields. Therefore, the first defined system handler priority field is PR1_4, that
 controls the priority of the handler for exception 4, the MemManage exception.
 
-
-
-B3 System Address Map  
-### B3.2 System Control Space (SCS)
-
 _________________ Note _________________  
 Following the Arm register naming convention, the first System Handler Priority Register would be SHPR0. In the  
 model for these registers, this would hold the priorities for handlers 0-3. But exception 0 is not defined, and  
@@ -26987,8 +24836,6 @@ exceptions 1-3 have fixed priorities. Therefore, the implemented SHPRs start at 
 
 
 ### B3.2.10 System Handler Priority Register 1, SHPR1
-
-
 The SHPR1 Register characteristics are:
 
 **Purpose**            Sets or returns priority for system handlers 4-7.
@@ -27014,8 +24861,6 @@ The SHPR1 bit assignments are:
 
 
 ### B3.2.11 System Handler Priority Register 2, SHPR2
-
-
 The SHPR2 Register characteristics are:
 
 **Purpose**            Sets or returns priority for system handlers 8-11.
@@ -27043,8 +24888,6 @@ The SHPR2 bit assignments are:
 
 
 ### B3.2.12 System Handler Priority Register 3, SHPR3
-
-
 The SHPR3 Register characteristics are:
 
 **Purpose** Sets or returns priority for system handlers 12-15.
@@ -27056,11 +24899,6 @@ The SHPR3 Register characteristics are:
 **Attributes** See [Table B3-4 on page B3-596](page-link).
 
 The SHPR3 bit assignments are:
-
-
-
-B3 System Address Map  
-### B3.2 System Control Space (SCS)
 
 USGFAULTENA, bit[18]  
    0 Disable UsageFault.  
@@ -27138,8 +24976,6 @@ Active state bits[11:10, 8:7, 3, 1:0] are set to 1 if the associated exception i
 
 
 ### B3.2.14 Status registers for configurable-priority faults
-
-
 The 32-bit CFSR comprises the status registers for the faults that have configurable priority. Software can access the combined CFSR, or use byte or halfword accesses to access the individual Configurable Fault Status Registers. For more information see:
 - **Configurable Fault Status Register, CFSR**.
 - **MemManage Status Register, MMFSR**.
@@ -27148,8 +24984,6 @@ The 32-bit CFSR comprises the status registers for the faults that have configur
 
 
 ### B3.2.15 Configurable Fault Status Register, CFSR
-
-
 The CFSR characteristics are:
 
 **Purpose** Contains the three Configurable Fault Status Registers.
@@ -27190,12 +25024,6 @@ The MMFSR characteristics are:
 **Usage constraints** 
 - Byte accessible.
 - Write a one to a register bit to clear the corresponding fault.
-
-
-
-B3 System Address Map  
-### B3.2 System Control Space (SCS)
-
 - The register bits are additive, that is, if more than one fault occurs, all associated bits are set to 1.
 - The MMFSR is bits[7:0] of the CFSR.  
 
@@ -27273,10 +25101,6 @@ See the CFSR entry in Table B3-4 on page B3-596.
 The BFSR bit assignments are:
 
 
-
-B3 System Address Map  
-### B3.2 System Control Space (SCS)
-
 The UFSR bit assignments are:
 
 
@@ -27284,14 +25108,7 @@ The UFSR bit assignments are:
 The HFSR bit assignments are:
 
 
-
-### B3.2 System Address Map
-### B3.2 System Control Space (SCS)
-
-
 ### B3.2.18 BusFault Address Register, BFAR
-
-
 The BFAR characteristics are:
 
 **Purpose**              Shows the address associated with a precise data access fault.
@@ -27307,7 +25124,6 @@ The BFAR bit assignments are:
 
 | 31 | 0 |
 | ------------------------------------------------------------------------------------------------- | --- |
-
 | ADDRESS |
 
 
@@ -27323,8 +25139,6 @@ UNKNOWN if MFSR.MMARVALID is set.
 
 
 ### B3.2.19 Auxiliary Fault Status Register, AFSR
-
-
 The AFSR characteristics are:
 
 **Purpose**              Provides implementation-specific fault status information and control.
@@ -27339,8 +25153,6 @@ The AFSR characteristics are:
 
 
 ### B3.2.20 Coprocessor Access Control Register, CPACR
-
-
 The CPACR characteristics are:
 
 **Purpose**              Specifies the access privileges for coprocessors.
@@ -27357,7 +25169,6 @@ The CPACR bit assignments are:
 
 | 31 | 30 | 29 | 28 | 27 | 26 | 25 | 24 | 23 | 22 | 21 | 20 | 19 | 18 | 17 | 16 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | Reserved | CP11 | CP10 | Reserved | CP7 | CP6 | CP5 | CP4 | CP3 | CP2 | CP1 | CP0 |
 
 
@@ -27402,8 +25213,6 @@ Any attempt to execute a floating-point instruction results in a NOCP UsageFault
 
 
 ### B3.2.21 Floating Point Context Control Register, FPCCR
-
-
 The FPCCR characteristics are:
 
 **Purpose**  
@@ -27430,19 +25239,13 @@ ARM DDI 0403E.cCopyright © 2006-2008, 2010, 2014, 2017, 2018, 2021 Arm Limited 
 ID021621 Non-Confidential                                                                      B3-615
 
 
-
-B3 System Address Map  
-### B3.2 System Control Space (SCS)
-
 The FPCCR bit assignments are:
 
 
 | 31 | 30 | 29 |  |  |  | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | Reserved |  | MONRDY | LSPACT |
 |  |  | Reserved | USER |
-
 | LSPEN |  | Reserved |
 | ASPEN |  | BFRDY |
 |  |  | MMRDY <br>HFRDY<br>THREAD |
@@ -27528,8 +25331,6 @@ For MONRDY, BFRDY, MMRDY, and HFRDY, the phrase was able means that this excepti
 
 
 ### B3.2.22 Floating Point Context Address Register, FPCAR
-
-
 The FPCAR characteristics are:
 
 **Purpose**        Holds the location of the unpopulated floating-point register space allocated on an exception stack frame. The FPCAR points to the stack location reserved for S0.
@@ -27544,9 +25345,7 @@ The FPCAR bit assignments are.
 
 
 | 31 |  |  |  |  | 3  2  0 |
-
 | ------ | ------------- | ------------- | ------------- | ------------- |
-
 | ADDRESS | Reserved |
 
 
@@ -27558,8 +25357,6 @@ For more information about the use of the FPCAR see *Lazy context save of FP sta
 
 
 ### B3.2.23 Floating Point Default Status Control Register, FPSCR
-
-
 The FPDSCR characteristics are:
 
 **Purpose**        Holds the default values for the floating-point status control data that the processor assigns to the FPSCR when it creates a new floating-point context.
@@ -27576,11 +25373,6 @@ Attributes        See Table B3-5 on page B3-597.
 
 The FPSR bit assignments are:
 
-
-
-B3 System Address Map  
-### B3.2 System Control Space (SCS)
-
 Usage constraints     The register might have IMPLEMENTATION DEFINED usage constraints.
 
 Configurations        Always implemented. The contents of this register are IMPLEMENTATION DEFINED.
@@ -27589,8 +25381,6 @@ Attributes            See Table B3-6 on page B3-597.
 
 
 ### B3.2.26 Software Triggered Interrupt Register, STIR
-
-
 The STIR characteristics are:
 
 **Purpose**              Provides a mechanism for software to generate an interrupt.
@@ -27606,14 +25396,7 @@ The STIR bit assignments are:
 
 
 
-B3 System Address Map
-
 ### B3.3 The system timer, SysTick
-
-
-
-### B3.3 The system timer, SysTick
-
 
 An Armv7-M implementation must include a system timer, SysTick, that provides a simple, 24-bit clear-on-write, decrementing, wrap-on-zero counter with a flexible control mechanism. A system can use this counter in several different ways, including:
 
@@ -27625,8 +25408,6 @@ An Armv7-M implementation must include a system timer, SysTick, that provides a 
 
 
 ### B3.3.1 SysTick operation
-
-
 The timer consists of four registers:
 - A control and status register. This configures the SysTick clock, enables the counter, enables the SysTick interrupt, and indicates the counter status.
 - A counter reload value register. This provides the wrap value for the counter.
@@ -27656,15 +25437,7 @@ The timer is clocked by a reference clock. Whether the reference clock is the pr
 
 
 
-B3 System Address Map
-
-### B3.3 The system timer, SysTick
-
-
-
 ### B3.3.2 System timer register support in the SCS
-
-
 Table B3-7 summarizes the register support provided within the SCS address map. All listed registers are 32-bits
 wide. See System Control Space (SCS) on page B3-595 for more information about the complete SCS address map.
 
@@ -27682,8 +25455,6 @@ a. See register description for information about the reset value of SYST_CSR bi
 
 
 ### B3.3.3 SysTick Control and Status Register, SYST_CSR
-
-
 The SYST_CSR characteristics are:
 
 **Purpose** Controls the system timer and provides status data.
@@ -27695,11 +25466,6 @@ The SYST_CSR characteristics are:
 **Attributes** See Table B3-7, and the description of the CLKSOURCE bit.
 
 The SYST_CSR bit assignments are:
-
-
-
-B3 System Address Map  
-### B3.3 The system timer, SysTick
 
 TICKINT, bit[1]  
 Indicates whether counting to 0 causes the status of the SysTick exception to change to  
@@ -27716,8 +25482,6 @@ Indicates the enabled status of the SysTick counter:
 
 
 ### B3.3.4 SysTick Reload Value Register, SYST_RVR
-
-
 The SYST_RVR characteristics are:
 
 **Purpose** Holds the reload value of the SYST_CVR.
@@ -27733,7 +25497,6 @@ The SYST_RVR bit assignments are:
 
 | 31 |  |  |  | 24 | 23 |  |  |  | 0 |
 | ---- | --- | --- | --- | ---- | ---- | --- | --- | --- | --- |
-
 | Reserved | <br> | RELOAD |
 
 
@@ -27743,8 +25506,6 @@ The SYST_RVR bit assignments are:
 
 
 ### B3.3.5 SysTick Current Value Register, SYST_CVR
-
-
 The SYST_CVR characteristics are:
 
 **Purpose** Reads or clears the current counter value.
@@ -27763,7 +25524,6 @@ The SYST_CVR bit assignments are:
 
 | 31 |  |  |  | 0 |
 | ---- | --- | --- | --- | --- |
-
 | CURRENT |
 
 
@@ -27779,8 +25539,6 @@ Non-Confidential ID021621
 
 
 ### B3.3.6 SysTick Calibration value Register, SYST_CALIB
-
-
 The SYST_CALIB Register characteristics are:
 
 **Purpose**  
@@ -27800,7 +25558,6 @@ The SYST_CALIB bit assignments are:
 
 
 ### B3.4  Nested Vectored Interrupt Controller, NVIC
-
 Armv7-M provides an interrupt controller as an integral part of the Armv7-M exception model. The interrupt 
 controller operation aligns with the Arm General Interrupt Controller (GIC) specification, defined for use with 
 other Armv7 profiles and other architectures.
@@ -27813,8 +25570,6 @@ as described in Table B3-8 on page B3-626.
 
 
 ### B3.4.1 NVIC operation
-
-
 Armv7-M supports level-sensitive and pulse-sensitive interrupt behavior. This means that both level-sensitive and 
 pulse-sensitive interrupts can be handled. Pulse interrupt sources must be held long enough to be sampled reliably 
 by the processor clock to ensure they are latched and become pending. A subsequent pulse can add the pending state 
@@ -27872,15 +25627,52 @@ ______Note______
 The interrupt number of an external interrupt is its (ExceptionNumber - 16).
 
 
-External interrupt input behavior
+**External interrupt input behavior**
 
 
 The following pseudocode describes the relationship between external interrupt inputs and the NVIC behavior:
+```
+// Definitions
+ // ===========
+ NVIC[] is an array of active high external interrupt input signals;
+   // the type of signal (level or pulse) and its assertion level/sense is IMPLEMENTATION DEFINED
+   // and might not be the same for all inputs
+ boolean Edge(integer INTNUM); 
+boolean NVIC_Pending[INTNUM]; 
+integer INTNUM;               
+   // Returns true if on a clock edge NVIC[INTNUM]
+   // has changed from ‘0’ to ‘1’
+   // an array of pending status bits for the external interrupts
+   // the external interrupt number
+   // The WriteToRegField helper function returns TRUE on a write of ‘1’ event
+   // to the field FieldNumber of the RegName register.
+ boolean WriteToRegField(register RegName, integer FieldNumber)
+ boolean ExceptionIN(integer INTNUM);  
+ // returns TRUE if exception entry in progress 
+ // to activate INTNUM
+ boolean ExceptionOUT(integer INTNUM);  // returns TRUE if exception return in progress
+ // from active INTNUM
+ // Interrupt interface
+ // ===================
+ sampleInterruptHi = WriteToRegField(AIRCR, VECTCLRACTIVE) || ExceptionOUT(INTNUM);
+ sampleInterruptLo = WriteToRegField(ICPR, INTNUM); 
+InterruptAssertion   =  Edge(INTNUM) || (NVIC[INTNUM] && sampleInterruptHi); 
+InterruptDeassertion =  !NVIC[INTNUM] && sampleInterruptLo;
+ // NVIC behavior
+ // =============
+ clearPend = ExceptionIN(INTNUM) || InterruptDeassertion; 
+setPend  
+ = InterruptAssertion || WriteToRegField(ISPR, INTNUM);
+ if clearPend && setPend then
+   IMPLEMENTATION DEFINED whether NVIC_Pending[INTNUM] is TRUE or FALSE;
+ else
+   NVIC_Pending[INTNUM] = setPend || (NVIC_Pending[INTNUM] && !clearPend);
+```
 
+### B3.4.2  Implemented interrupts
+It is IMPLEMENTATION DEFINED which NVIC interrupts are implemented. Where a particular NVIC interrupt line is  not implemented, its associated registers are reserved. This means that when an interrupt line is not implemented its corresponding Set, Enable/Clear, and Enable/Pending  bits behave as RAZ/WI when accessed by software.
 
-
-### B3.4.3   NVIC register support in the SCS
-
+### B3.4.3 NVIC register support in the SCS
 The following registers, used with the interrupt controller, are in the system control region of the SCS:
 
 **ICTR**  
@@ -27923,15 +25715,6 @@ The ICTR.INTLINESNUM indicates the maximum number of implemented external interr
 - For the NVIC_IPRs, each register has four 8-bit fields, each corresponding to one interrupt, and Table B3-10 on page B3-627 shows how ICTR.INTLINESNUM determines the number of implemented registers.
 - Unimplemented NVIC registers are reserved.
 
-
-
-
-B3 System Address Map
-
-### B3.4 Nested Vectored Interrupt Controller, NVIC
-
-
-
 | ICTR.INTLINESNUM | Maximum number of interrupts | Last implemented NVIC_ISER | Corresponding interrupts |
 | ------------------ | ------------------------------ | ---------------------------- | -------------------------- |
 | 0b0000 | 32 | NVIC_ISER0 | 0-31 |
@@ -27973,14 +25756,8 @@ Table B3-9 Implemented NVIC registers, except NVIC_IPRs
 Table B3-10 Implemented NVIC_IPRs
 
 
-
-B3 System Address Map  
-### B3.4 Nested Vectored Interrupt Controller, NVIC
-
-
 | Table B3-10 Implemented NVIC_IPRs (continued) |
 | ----------------------------------------------- |
-
 | ICTR.INTLINESNUM | Maximum number of interrupts | Last implemented NVIC_IPR | Corresponding interrupts |
 | ----------------- | ----------------------------- | -------------------------- | --------------------------- |
 | 0b1011 | 384 | NVIC_IPR95 | 380-383 |
@@ -28011,14 +25788,6 @@ The NVIC_ISERn characteristics are:
 The NVIC_ISER bit assignments are:
 
 
-
-The NVIC_ICERn bit assignments are:
-
-
-
-B3 System Address Map  
-### B3.4 Nested Vectored Interrupt Controller, NVIC
-
 Usage constraints NVIC_ICPRn[31:0] are the clear-pending bits for interrupts (31+(32*n)) - (32*n).  
 When n=15, bits[31:16] are reserved.  
 
@@ -28028,11 +25797,6 @@ page B3-626.
 Attributes See Table B3-8 on page B3-626.  
 
 The NVIC_ICPRn bit assignments are:
-
-
-
-B3 System Address Map  
-### B3.4 Nested Vectored Interrupt Controller, NVIC
 
 Usage constraints     The registers are byte, aligned halfword, and word accessible.
 
@@ -28046,7 +25810,6 @@ The NVIC_IPR<n> bit assignments are:
 
 | 31 | 24:23 | 16:15 | 8 | 7 | 0 |
 | ------ | -------------- | ------------ | ---------- | -------- | -------- |
-
 | PRI_N3 | PRI_N2 | PRI_N1 | PRI_N0 |
 
 
@@ -28079,7 +25842,7 @@ MPU support in Armv7-M is optional.
 ### B3.5.1 Relation of the MPU to the system memory map
 
 
-When implemented, an MPU’s relation to the system memory map described in The system address map on 
+When implemented, an MPU's relation to the system memory map described in The system address map on 
 page B3-592 is as follows:
 - MPU support provides control of access rights on physical addresses. It does not perform address translation.
 - When the MPU is disabled or not present, the system adopts the default system memory map listed in 
@@ -28169,7 +25932,7 @@ AddressDescriptor ValidateAddress(bits(32) address, AccType acctype, boolean isw
 
     hit = FALSE; // assume no valid MPU region and not using default memory map
 
-    isPPBAccess = (address<31:20> == ‘111100000000’);
+    isPPBAccess = (address<31:20> == '111100000000');
 
 
 | if acctype == AccType_VECTABLE |  | isPPBAccess then |
@@ -28177,11 +25940,11 @@ AddressDescriptor ValidateAddress(bits(32) address, AccType acctype, boolean isw
 
         hit = TRUE; // use default map for PPB and vector table lookups
 
-    elsif MPU_CTRL.ENABLE == ‘0’ then
-        if MPU_CTRL.HFNMIENA == ‘1’ then UNPREDICTABLE;
+    elsif MPU_CTRL.ENABLE == '0' then
+        if MPU_CTRL.HFNMIENA == '1' then UNPREDICTABLE;
         else hit = TRUE; // always use default map if MPU disabled
 
-    elsif MPU_CTRL.HFNMIENA == ‘0’ && ExecutionPriority() < 0 then
+    elsif MPU_CTRL.HFNMIENA == '0' && ExecutionPriority() < 0 then
         hit = TRUE; // optionally use default for HardFault, NMI and FAULTMASK
 
     else // MPU is enabled so check each individual region
@@ -28191,7 +25954,7 @@ AddressDescriptor ValidateAddress(bits(32) address, AccType acctype, boolean isw
 B3 System Address Map  
 ### B3.5 Protected Memory System Architecture, PMSAv7
 
-if (MPU_CTRL.PRIVDEFENA == ‘1’) && ispriv then  
+if (MPU_CTRL.PRIVDEFENA == '1') && ispriv then  
     hit = TRUE; // optional default as background for Privileged accesses
 
 for r = 0 to (UInt(MPU_TYPE.DREGION) – 1) // highest matching region wins  
@@ -28199,7 +25962,7 @@ for r = 0 to (UInt(MPU_TYPE.DREGION) – 1) // highest matching region wins
     bits(32) base_address = MPU_RBAR[r];  
     bits(16) access_control = MPU_RASR[r]<31:16>;
 
-    if size_enable<0> == ‘1’ then // MPU region enabled so perform checks  
+    if size_enable<0> == '1' then // MPU region enabled so perform checks  
         lsbit = UInt(size_enable<5:1>) + 1;  
         if lsbit < 5 then UNPREDICTABLE;  
         if (lsbit < 8) && (IsZero(size_enable<15:8>)) then UNPREDICTABLE;
@@ -28209,7 +25972,7 @@ for r = 0 to (UInt(MPU_TYPE.DREGION) – 1) // highest matching region wins
 
 
             subregion = UInt(address<lsbit-1:lsbit-3>);  
-            if size_enable<subregion+6> == ‘0’ then  
+            if size_enable<subregion+6> == '0' then  
                 texcb = access_control<5:3,1:0>;  
                 s = access_control<2>;  
                 perms.ap = access_control<10:8>;  
@@ -28217,19 +25980,19 @@ for r = 0 to (UInt(MPU_TYPE.DREGION) – 1) // highest matching region wins
                 result.memattrs = DefaultTEXDecode(texcb,S);  
                 hit = TRUE;  
       
-if address<31:29> == ‘111’ then // enforce System space execute never  
-    perms.xn = ‘1’;
+if address<31:29> == '111' then // enforce System space execute never  
+    perms.xn = '1';
 
 if hit then // perform check of acquired access permissions  
     CheckPermission(perms, address, acctype, iswrite);  
 else // generate fault if no MPU match or use of default not enabled  
     if acctype == AccType_IFETCH then  
-        MMFSR.ICACCVIOL = ‘1’;  
-        HFSR.MMARVALID = ‘0’;  
+        MMFSR.ICACCVIOL = '1';  
+        HFSR.MMARVALID = '0';  
     else  
-        MMFSR.DACCVIOL = ‘1’;  
+        MMFSR.DACCVIOL = '1';  
         MMAR = address;  
-        MMFSR.MMARVALID = ‘1’;  
+        MMFSR.MMARVALID = '1';  
     ExceptionTaken(MemManage);
 
 return result;
@@ -28241,25 +26004,25 @@ Permissions DefaultPermissions(bits(32) address)
 
 Permissions perms;
 
-perms.ap = ‘011’;
+perms.ap = '011';
 
 case address<31:29> of  
-    when ‘000’  
-        perms.xn = ‘0’;  
-    when ‘001’  
-        perms.xn = ‘0’;  
-    when ‘010’  
-        perms.xn = ‘1’;  
-    when ‘011’  
-        perms.xn = ‘0’;  
-    when ‘100’  
-        perms.xn = ‘0’;  
-    when ‘101’  
-        perms.xn = ‘1’;  
-    when ‘110’  
-        perms.xn = ‘1’;  
-    when ‘111’  
-        perms.xn = ‘1’;
+    when '000'  
+        perms.xn = '0';  
+    when '001'  
+        perms.xn = '0';  
+    when '010'  
+        perms.xn = '1';  
+    when '011'  
+        perms.xn = '0';  
+    when '100'  
+        perms.xn = '0';  
+    when '101'  
+        perms.xn = '1';  
+    when '110'  
+        perms.xn = '1';  
+    when '111'  
+        perms.xn = '1';
 
 
 
@@ -28416,9 +26179,7 @@ FAULTMASK is set to 1, and when this is different for other privileged software.
 
 |  |  |  |
 | ----------------------- | --------------------------------------------------------------- | ---------------------------- |
-
 | **Table B3-12 Effect of MPU_CTRL settings on unprivileged instructions** |  |
-
 | **MPU_CTRL** | **Effect on unprivileged load or store instructions from** |  |
 | **HFNMIENA ENABLE** | **Specified handlers** ᵃ | **Other privileged software** |
 | 0 | 0 | MPU disabled. Unprivileged access, using default memory map. |
@@ -28491,7 +26252,7 @@ the new region number.
 **Usage constraints**  
 - Normally, used with MPU_RBAR, see _MPU Region Number Register, MPU_RNR 
   on page B3-638_.
-- The minimum region alignment required by an MPU_RBAR is IMPLEMEN­TATION 
+- The minimum region alignment required by an MPU_RBAR is IMPLEMEN TATION 
   DEFINED. See the register description for more information about permitted region 
   sizes.
 - If an implementation supports N regions then the regions number from 0 to (N-1). If 
@@ -28509,7 +26270,6 @@ The MPU_RBAR bit assignments are:
 
 | 31 | 5 | 4 | 3 | 0 |
 | ----------------- | ---------------------- | -------- | ------ | ---- |
-
 | ADDR |  | VALID | REGION |
 
 
@@ -28565,7 +26325,6 @@ The MPU_RASR bit assignments are:
 
 | 31 | 30 | 29 | 28 | 27 | 26 | 25 | 24 | 23 | 22 | 21 | 20 | 19 | 18 | 17 | 16 | 15 | 8 | 7 | 6 | 5 | 1 | 0 |
 | ------ | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- | --- |
-
 | AP | TEX | S | C | B | SRD<br>Reserved | Reserved | Reserved | XN | ENABLE |
 
 
@@ -28660,7 +26419,6 @@ B3 System Address Map
 
 | Table B3-14 Cache policy encoding |
 | ------------------------------------------ |
-
 | AA or BB subfield of {TEX,C,B} encoding | Cacheability policy |
 | 00 | Non-cacheable |
 | 01 | Write-Back, write and read allocate |
@@ -28673,7 +26431,6 @@ The AP bits, AP[2:0], are used for access permissions. These are shown in [Table
 
 | Table B3-15 Access permissions field encoding |
 | ------------------------------------------------------------------- |
-
 | AP[2:0] | Privileged access | Unprivileged access | Notes |
 | --------- | ------------------- | --------------------- | ---------------------------------------- |
 | 000 | No access | No access | Any access generates a permission fault |
@@ -28698,7 +26455,6 @@ Otherwise, the processor generates a MemManage fault when it issues the instruct
 
 | Table B3-16 Execute Never encoding |
 | ----------------------------------------------------------- |
-
 | XN | Description |
 | ---- | ------------------------------------------------------ |
 | 0 | Execution of an instruction fetched from this region permitted |
@@ -28712,8 +26468,7 @@ The MPU_RBAR and MPU_RASR form a pair of words in the address range 0xE000ED9C-0
 
 
 
-## Chapter B4
-**The CPUID Scheme**
+## Chapter B4: The CPUID Scheme
 
 This chapter describes the Armv7-M implementation of the CPUID scheme. This scheme provides registers that 
 identify the architecture version and many features of the processor implementation. This chapter also describes the 
@@ -28868,7 +26623,6 @@ The ID_PFR1 bit assignments are:
 
 | 31 |  | 12 11 |  | 8 | 7 | 0 |
 | ------------------- | ---------------- | ------------------ | ---------------- | ------------------ | ------------------ | ------------------ |
-
 | Reserved |  |  |  | M-profile programmers' model | Armv7-M reserved |
 
 
@@ -28879,11 +26633,11 @@ The ID_PFR1 bit assignments are:
 B4 The CPUID Scheme
 ### B4.2 Processor Feature ID Registers
 
-M profile programmers’ model, bits[11:8]
+M profile programmers' model, bits[11:8]
 
                          0                  Armv7-M reserved.
                          1                  Reserved.
-                         2                  Two-stack programmers’ model supported.
+                         2                  Two-stack programmers' model supported.
 
 Bits[7:0]                Armv7-M reserved.
 
@@ -28964,7 +26718,6 @@ The ID_AFR0 bit assignments are:
 
 | 31 | 16 | 15 | 12 | 11 | 8 | 7 | 4 | 3 | 0 |
 | ---------------- | ------ | ------- | ------ | ---- | ----- | ---- | --- | --- | ----- |
-
 | Reserved |  |
 
 
@@ -29202,7 +26955,6 @@ The ID_ISAR0 bit assignments are:
 
 | 31 | 28 27 | 24 23 | 20 19 | 16 15 | 12 11 | 8 7 | 4 3 | 0 |
 | ------- | ----------------------------- | ------------ | ------------ | --------- | ------- | ----- | ------ | --------- |
-
 |  | Reserved |  |  |  | ArmV7-M reserved |
 |  |  |  |  |  |  |
 |  |  | Divide_instrs | Debug_instrs | Coproc_instrs | <br>Bitcount_instrs<br>Bitfield_instrs<br>CmpBranch_instrs |
@@ -29403,7 +27155,6 @@ The ID_ISAR4 bit assignments are:
 
 | 31 | 28 27 | 24 23 | 20 19 | 16 15 | 12 11 | 8 7 | 4 3 | 0 |
 | ---- | ------- | ------- | ------- | ------- | ------- | ----- | ----- | --- |
-
 | Armv7-M reserved | Armv7-M reserved | PSR_M_instrs | SynchPrim_instrs_frac | Barrier_instrs | L_Unpriv_instrs WithShifts_instrs Writeback_instrs |
 
 
@@ -29518,7 +27269,6 @@ The MVFR0 bit assignments are:
 
 | 31 | 28 27 | 24 23 | 20 19 | 16 15 | 12 11 | 8 7 | 4 3 | 0 |
 | ----- | ------- | ------- | ------- | ------- | ------- | ----- | ----- | --- |
-
 | FP  <br> rounding <br> modes | Short <br>  vectors | Square <br> root | Divide | FP <br> exception <br> trapping | Double-<br>precision | Single-<br>precision | A_SIMD <br> registers |
 
 
@@ -29603,7 +27353,6 @@ The MVFR1 bit assignments are:
 
 | 31 | 28 | 27 | 24 | 23 | 8 | 7 | 4 | 3 | 0 |
 | ---------------- | ------- | ----------- | ---- | ---------------------------- | --- | ------ | --- | ----- | --- |
-
 | FP fused MAC | FP HPFP | Reserved |  | D_NaN mode | FtZ mode |
 
 
@@ -29646,7 +27395,6 @@ The MVFR2 bit assignments are:
 
 | 31 |  |  |  | 8 | 7 | 4 | 3 | 0 |
 | ----- | --- | ---- | --- | --- | ------ | --- | --- | --- |
-
 | Reserved |  |  |  |  | VFP_Misc | Reserved |
 
 
@@ -29693,7 +27441,6 @@ The CLIDR bit assignments are:
 
 | 31 | 30 | 29 | 27 | 26 | 24 | 23 | 21 | 20 | 18 | 17 | 15 | 14 | 12 | 11 | 9 | 8 | 6 | 5 | 3 | 2 | 0 |
 | ------ | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | -- | -- | -- | -- | -- | -- | -- |
-
 | (0)(0) | LoUU | LoC | LoUIS | Ctype7 | Ctype6 | Ctype5 | Ctype4 | Ctype3 | Ctype2 | Ctype1 |
 
 
@@ -29715,7 +27462,6 @@ Cache Type fields. Indicate the type of cache implemented at each level, from Le
 
 
 | **Table B4-3 CtypeX bit assignment values** |
-
 | Ctype<n> value | Meaning, cache implemented at this level |
 | ---------------- | ------------------------------------------------------ |
 | 000 | No cache |
@@ -29871,8 +27617,7 @@ Log2 of the number of words in the smallest cache line of all the instruction ca
 
 
 
-## Chapter B5
-System Instruction Details  
+## Chapter B5: System Instruction Details  
 
 This chapter describes the Armv7-M system instructions. It contains the following sections:
 - *About the Armv7-M system instructions on page B5-670.*
@@ -29951,7 +27696,7 @@ The following sections give more information about the special registers and the
 
 
 
-B5 System Instruction Details  
+
 ### B5.2 Armv7‑M system instruction descriptions
 
 
@@ -30009,9 +27754,7 @@ MRS<c> <Rd>,<spec_reg>
 
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |  | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
-
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-
 | 1 | 1 | 0 | 0 | 1 | 1 | 1 | (0) | (1) | (1) | (1) | (1) | 1 | 0 | (0) | 0 |  | Rd | SYSm |
 
 
@@ -30037,6 +27780,7 @@ where:
 
 Operation
 
+```
 if ConditionPassed() then  
 EncodingSpecificOperations();  
 R[d] = Zeros(32);  
@@ -30072,10 +27816,8 @@ case SYSm<7:3> of
         if HaveFPExt() then  
           R[d]<2:0> = CONTROL<2:0><b>;  
         else
+```
 
-
-
-B5 System Instruction Details  
 ### B5.2 Armv7-M system instruction descriptions
 
             R[d]<1:0> ← CONTROL<1:0> ;
@@ -30116,7 +27858,6 @@ MSR<c> <spec_reg>,<Rn>
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ----- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- |
-
 | 1 | 1 | 1 | 0 | 0 | 1 | 1 | 0 | 0 | (0) | Rn | 1 | 0 | (0) | mask | (0) | SYSm |
 
 
@@ -30168,22 +27909,12 @@ Visibility of changes in execution priority resulting from executing an MSR inst
 - Decreases the execution priority, the architecture guarantees only that the new priority is visible to instructions executed after either executing an ISB, or performing an exception entry or exception return.
 
 
+---
+
+# Part C: Debug Architecture
 
 
-# Part C
-
-Debug Architecture
-
-
-
-> (FAILED after all attempts, including fallback model 'gpt-4o-mini')
-
-No valid Markdown block found.
-
-
-
-## Chapter C1
-Armv7-M Debug  
+## Chapter C1: Armv7-M Debug  
 
 This chapter describes the Armv7-M debug architecture. It contains the following sections:
 - *Introduction to Armv7-M debug* on page C1-682.
@@ -30493,7 +28224,6 @@ There are two Halting debug authentication modes:
 
 
 | **Table C1-4 Halting debug authentication** |
-
 | ------------------ | ---------------------------- | --------------------------------- |
 | **DBGEN** | **DHCSR.S_HALTING** | **Halting debug authentication mode** |
 | LOW | 0 | Halting is prohibited |
@@ -30549,7 +28279,6 @@ Table C1-6 shows the DAP access permissions when DBGEN is deasserted and DHCSR.S
 
 | Address range | Region | Non-invasive debug enabled |
 | ----------------------- | -------------- | ------------------------------- |
-
 |  |  | False | True |
 | 0x00000000-0xDFFFFFFF | Rest of memory | No access | No access |
 | 0xE0000000-0xE00FFFFF | PPB | See Table C1-7 on page C1-690 | See Table C1-7 on page C1-690 |
@@ -30568,7 +28297,6 @@ Table C1-7 DAP PPB access permissions when DBGEN is deasserted
 
 | Address range | Region or register | Non-invasive debug enabled |
 | ----------------------- | ----------------------------- | --------------------------------- |
-
 |  |  | False | True |
 | 0xE00xxF80-0xE00xxFB7a | All CoreSight Software Lock registers | No access | RW |
 | 0xE00xxFD0-0xE00xxFFb | All CoreSight ID registers | RO | RO |
@@ -30884,7 +28612,6 @@ Table C1-9 Debug stepping control using the DHCSR
 
 | DHCSR write<sup>a</sup> |  |  |
 | ------------------- | ---------------------------------- | ------------------------------------ |
-
 | C_HALT | C_STEP | C_MASKINTS | Effect |
 | 0 | 0 | 0 | Exit Debug state and start instruction execution.<br>Exceptions can become active<sup>b</sup>. |
 | 0 | 0 | 1 | Exit Debug state and start instruction execution.<br>PendSV, SysTick and external configurable interrupts are disabled,<br>otherwise exceptions can become active<sup>b</sup>. |
@@ -31401,7 +29128,6 @@ The DEMCR bit assignments are:
 
 
 | 31 |  | 25 24 23 | 20 19 18 17 16 | 15 14 13 12 11 10 9 | 8 7 6 5 4 3 2 1 0 |
-
 | -------- | -------------------- | ---------------- | -------------------- | ------------------ |
 |  | Reserved | Reserved | Reserved |  |
 | TRCENA | MON_REQ | VC_HARDERR | VC_INTERR | VC_BUSERR |
@@ -31834,7 +29560,6 @@ For bit STIMENA[n], in register ITM_TER<n>:
 
 | Table C1-12 Mapping between ITM_TERs, stimulus ports, and ITM_STIMs |
 | ------------------------------------------------------------------------- |
-
 | ITM_TER | Stimulus ports | ITM_STIMs |
 | ---------- | ---------------- | --------------------------------------------- |
 | ITM_TER0 | 0-31 | ITM_STIM0-ITM_STIM31 |
@@ -32105,12 +29830,9 @@ the FUNCTION field defines the supported comparisons of that type.
 
 | Table C1-13 DWT_FUNCTION register comparison type definition |
 | -------------------------------------------------------------------------------------------------- |
-
 | DWT_FUNCTION bits: | Comparison type and DWT_COMP use | DWT_MASK use | Functions |
 | --------------------------- | ----------------------------------------------------- | ------------------------ | -------------------------------------------------------------------- |
-
 | DATAVMATCH | CYCMATCH |  |
-
 | 0 | 0 | Address | Mask value | See [Address comparison functions](#) |
 | 0 | 1a | Cycle count | SBZ | See [Cycle count comparison functions on page C1-724](#) |
 | 1b | 0 | Data value | SBZ | See [Data value comparison functions on page C1-725](#) |
@@ -32320,7 +30042,6 @@ must programs the FUNCTION field to a value with an effect, as shown in Table C1
 
 | **Table C1-15 DWT cycle count comparison functions** |
 | :---------------------------------------------------: |
-
 | **DWT_FUNCTION0.FUNCTION** | **Action on successful match** |
 | 0000 | Comparator disabled |
 | 0001 | Generate Data trace PC value packetⁿ |
@@ -33229,7 +30950,6 @@ The DWT_CYCCNT register bit assignments are:
 
 | 31 |  |  |  | 0 |
 | ---- | --- | --- | --- | --- |
-
 | CYCCNT |
 
 
@@ -33261,7 +30981,6 @@ The DWT_CPICNT register bit assignments are:
 
 | 31 |  |  |  | 8 | 7 | 0 |
 | ---- | --- | --- | --- | --- | --- | --- |
-
 | Reserved | CPICNT |
 
 
@@ -33312,7 +31031,6 @@ The DWT_EXCCNT register bit assignments are:
 
 | 31 | 8 | 7 | 0 |
 | ------------------------------------ | ------------------------------- | -------- | -------- |
-
 | Reserved |  | EXCCNT |
 
 
@@ -33361,7 +31079,6 @@ The DWT_SLEEPCNT register bit assignments are:
 
 | 31 |  |  |  |  |  | 8 | 7 | 0 |
 | ----- | --- | --- | --- | --- | --- | ----- | ----- | ----- |
-
 | Reserved | SLEEPCNT |
 
 
@@ -33408,7 +31125,6 @@ The DWT_LSUCNT register bit assignments are:
 
 | 31 |  |  |  |  |  | 8 | 7 | 0 |
 | ----- | --- | --- | --- | --- | --- | ----- | ----- | ----- |
-
 | Reserved | LSUCNT |
 
 
@@ -33583,8 +31299,8 @@ Reserved.
 **EMITRANGE, bits[5]**
 
 If the implementation supports trace sampling, enables generation of Data trace address packets, that hold Daddr[15:0]:  
-0        Data trace address packets disabled.  
-1        Enable Data trace address packet generation.
+0        Data trace address packets disabled.  
+1        Enable Data trace address packet generation.
 
 For more information see Address comparison functions on page C1-721.
 
@@ -33601,10 +31317,10 @@ Selects action taken on comparator match:
 0000 = Disabled or LinkAddr(), see LinkAddr support on page C1-728.
 
 For non-zero values:  
-•    If DATAVMATCH is set to 1, see Table C1-16 on page C1-726  
-•    If DATAVMATCH is set to 0 then:  
-    —    If CYCMATCH is set to 0, see Table C1-14 on page C1-722  
-    —    If CYCMATCH is set to 1, see Table C1-15 on page C1-724.
+•    If DATAVMATCH is set to 1, see Table C1-16 on page C1-726  
+•    If DATAVMATCH is set to 0 then:  
+    —    If CYCMATCH is set to 0, see Table C1-14 on page C1-722  
+    —    If CYCMATCH is set to 1, see Table C1-15 on page C1-724.
 
 This field resets to zero.
 
@@ -33719,7 +31435,6 @@ The TPIU_CSPSR bit assignments are:
 
 | 31 |  |  |  | 0 |
 | ----- | --- | --- | --- | ---- |
-
 | CWIDTH[31:0] |
 
 
@@ -33758,7 +31473,6 @@ The TPIU_ACPR bit assignments are:
 
 | 31 |  | 16 | 15 | 0 |
 | ------ | ----- | ----- | ---- | ----- |
-
 | Reserved | SWOSCALER |
 
 
@@ -33798,7 +31512,6 @@ The TPIU_SPPR bit assignments are:
 
 | 31 |  |  |  |  |  |  | 2 | 1 | 0 |
 | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | Reserved |
 
 
@@ -33832,7 +31545,6 @@ The TPIU_TYPE register bit assignments are:
 
 | 31 |  |  |  |  | 16 | 15 | 12 | 11 | 10 | 9 | 8 | 6 | 5 | 0 |
 | ---- | --- | --- | --- | --- | ---- | ---- | ---- | ---- | ---- | --- | --- | --- | --- | --- |
-
 | Reserved | IMPLEMENTATION DEFINED |
 
 
@@ -34104,7 +31816,6 @@ The FP_COMPn register bit assignments for FPB Version 2 where the Flash Patch is
 
 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 1 | 0 |
 | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | --- | --- |
-
 | 31 | BPADDR |  | 0 |
 
 
@@ -34126,7 +31837,6 @@ The FP_COMPn register bit assignments for FPB Version 2 where the Flash Patch is
 
 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 1 | 0 |
 | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | --- | --- |
-
 | 31 | DCBA |  | 1 |
 
 
@@ -34139,7 +31849,6 @@ If BE == 1, the register bit assignments for DCBA are:
 
 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 1 |
 | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | --- |
-
 | 31 | BPADDR |  | 1 |
 
 
@@ -34150,7 +31859,6 @@ If BE == 0, the register bit assignments for DCBA are:
 
 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 31 30 29 28 | 2 1 |
 | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ------------- | ----- |
-
 |  | FPADDR |  |
 
 
@@ -34190,36 +31898,21 @@ C1 Armv7-M Debug
 ### C1.11 Flash Patch and Breakpoint unit
 
 
+---
+
+# Part D: Appendixes
 
 
-# Part D
-
-## Appendixes
-
-
-
-markdown
-
-
-
-## Appendix D1
-Armv7-M CoreSight Infrastructure IDs
+## Appendix D1: Armv7-M CoreSight Infrastructure IDs
 
 This appendix describes the Armv7-M implementation of the CoreSight management registers and Infrastructure IDs. It contains the following section:
 • CoreSight infrastructure IDs for an Armv7-M implementation on page D1-766.
 
-
-
-## Appendix D1 Armv7-M CoreSight Infrastructure IDs
 ### D1.1 CoreSight infrastructure IDs for an Armv7-M implementation
-
-
-### D1.1 CoreSight infrastructure IDs for an Armv7-M implementation
-
 
 Armv7-M implementations support SCS, FPB, DWT, and ITM units along with a ROM table as shown in  
 Table C1-3 on page C1-686. The Arm® CoreSight™ Architecture Specification defines the CoreSight architecture  
-programmers’ model. This defines a 4KB register block for each CoreSight component. Each 4KB register block  
+programmers' model. This defines a 4KB register block for each CoreSight component. Each 4KB register block  
 subdivides into the following sections:  
 - A component ID, at offsets 0xFF0 to 0xFFF.  
 - A peripheral ID, at offsets 0xFD0 to 0xFEF.  
@@ -34246,38 +31939,27 @@ by the processor.
 Table D1-1 shows the Component and Peripheral ID register formats.  
 
 
-| Address offset | Valueⁿᵃ | Name | Description | Reference |
-| ---------------- | --------- | ----------------- | ----------------------------------------------------------------------------- | ------------------------------------------------------------ |
-
-| 0xFFC | 0x00000081 | CID3 | Component ID3 | Preamble |  |
-| 0xFF8 | 0x00000005 | CID2 | Component ID2 | Preamble |  |
-| 0xFF4 | 0x00000000 | CID1 | Component ID1 | Bits[7:4] Component Class<br>Bits[3:0] Preamble |  |
-| 0xFF0 | 0x0000000D | CID0 | Component ID0 | Preamble |  |
-| 0xFEC | 0x00000007 | PID3 | Peripheral ID3 | Bits[7:4] RevAnd, minor revision field<br>Bits[3:0] if non-zero indicate a customer-modified block |  |
-| 0xFE8 | 0x0000007X | PID2 | Peripheral ID2 | Bits[7:4] Revision bit[3] == 1: JEDEC assigned ID fields<br>Bits[2:0] JEP106 ID code [6:4] |  |
-| 0xFE4 | 0x0000007X | PID1 | Peripheral ID1 | Bits[7:4] JEP106 ID code [3:0]<br>Bits[3:0] Part Number [11:8] |  |
-| 0xFE0 | 0x0000007Y | PID0 | Peripheral ID0 | Part Number [7:0] |  |
-| 0xFDC | 0x00000000 | PID7 | Peripheral ID7 | Reserved |  |
-
-
-## Appendix D1 Armv7-M CoreSight Infrastructure IDs
-### D1.1 CoreSight infrastructure IDs for an Armv7-M implementation
-
-Table D1-1 Component and Peripheral ID register formats (continued)
-
-
-| Address offset | Value<sup>a</sup> | Name | Description | Reference |
-| ---------------- | ------------------------- | ------------- | ---------------- | ---------------- |
-| 0xFD8 | 0x00000000 | PID6 | Peripheral ID6 | Reserved |
-| 0xFDC | 0x00000000 | PID5 | Peripheral ID5 | Reserved |
-| 0xFD0 | 0x0000000X | PID4 | Peripheral ID4 | Bits[7:4] 4KB count<br>Bits[3:0] JEP106 continuation code |
+| Address offset | Valueⁿᵃ    | Name   | Description    | Reference                                                                                          |
+| -------------- | ---------- | ------ | -------------- | -------------------------------------------------------------------------------------------------- |
+| 0xFFC          | 0x00000081 | CID3   | Component ID3  | Preamble                                                                                           |
+| 0xFF8          | 0x00000005 | CID2   | Component ID2  | Preamble                                                                                           |
+| 0xFF4          | 0x00000000 | CID1   | Component ID1  | Bits[7:4] Component Class<br>Bits[3:0] Preamble                                                    |
+| 0xFF0          | 0x0000000D | CID0   | Component ID0  | Preamble                                                                                           |
+| 0xFEC          | 0x00000007 | PID3   | Peripheral ID3 | Bits[7:4] RevAnd, minor revision field<br>Bits[3:0] if non-zero indicate a customer-modified block |
+| 0xFE8          | 0x0000007X | PID2   | Peripheral ID2 | Bits[7:4] Revision bit[3] == 1: JEDEC assigned ID fields<br>Bits[2:0] JEP106 ID code [6:4]         |
+| 0xFE4          | 0x0000007X | PID1   | Peripheral ID1 | Bits[7:4] JEP106 ID code [3:0]<br>Bits[3:0] Part Number [11:8]                                     |
+| 0xFE0          | 0x0000007Y | PID0   | Peripheral ID0 | Part Number [7:0]                                                                                  |
+| 0xFDC          | 0x00000000 | PID7   | Peripheral ID7 | Reserved                                                                                           |
+| 0xFD8          | 0x00000000 | PID6   | Peripheral ID6 | Reserved                                                                                           |
+| 0xFDC          | 0x00000000 | PID5   | Peripheral ID5 | Reserved                                                                                           |
+| 0xFD0          | 0x0000000X | PID4   | Peripheral ID4 | Bits[7:4] 4KB count<br>Bits[3:0] JEP106 continuation code                                          |
 
 
 a. For entries in the Value column, bits identified as X are defined by the Arm<sup>#</sup> CoreSight<sup>™</sup> Architecture Specification, and bits identified as Y are IMPLEMENTATION DEFINED.
 
 In Armv7-M, all CoreSight registers are accessed as words. Any 8-bit or 16-bit registers defined in the Arm<sup>#</sup> CoreSight<sup>™</sup> Architecture Specification are accessed as zero-extended words.
 
-For more information about the registers and their bit fields, see the CoreSight programmers’ model in the Arm<sup>#</sup> CoreSight<sup>™</sup> Architecture Specification.
+For more information about the registers and their bit fields, see the CoreSight programmers' model in the Arm<sup>#</sup> CoreSight<sup>™</sup> Architecture Specification.
 
 ___Note___  
 The JEDEC defined fields refer to the JEDEC JEP106 code of the block designer. The combination of part number, designer and component class fields must be unique.
@@ -34299,27 +31981,14 @@ See the Arm<sup>#</sup> CoreSight<sup>™</sup> Architecture Specification for t
 
 
 
-## Appendix D1 Armv7-M CoreSight Infrastructure IDs
-### D1.1 CoreSight infrastructure IDs for an Armv7-M implementation
-
-
-
-## Appendix D2
-Legacy Instruction Mnemonics  
-
+## Appendix D2: Legacy Instruction Mnemonics  
 This appendix describes the legacy mnemonics in the Armv7-M Thumb instruction set and their Unified Assembler Language (UAL) equivalents. It contains the following sections:  
-•      _Thumb instruction mnemonics on page D2-770._  
-•      _Pre-UAL pseudo-instruction NOP on page D2-773._
-•      _Pre-UAL floating-point instruction mnemonics on page D2-774._
-
-
-
-## Appendix D2 Legacy Instruction Mnemonics
-### D2.1 Thumb instruction mnemonics
+•      _Thumb instruction mnemonics on page D2-770._  
+•      _Pre-UAL pseudo-instruction NOP on page D2-773._
+•      _Pre-UAL floating-point instruction mnemonics on page D2-774._
 
 
 ### D2.1 Thumb instruction mnemonics
-
 
 The following table shows the pre-UAL assembly syntax used for Thumb instructions before the introduction of Thumb-2 technology and the equivalent UAL syntax for each instruction. It can be used to translate correctly-assembling pre-UAL Thumb assembler code into UAL assembler code.
 
@@ -34357,23 +32026,6 @@ Table D2-1 Pre-UAL assembly syntax
 | CMP <Rn>, <Rm> | CMP <Rn>, <Rm> | <Rd> and <Rm> can be high registers. |
 | CPS<effect> <iflags> | CPS<effect> <iflags> | - |
 | CPY <Rd>, <Rm> | MOV <Rd>, <Rm> | - |
-
-
-D2-770  
-Copyright © 2006-2008, 2010, 2014, 2017, 2018, 2021 Arm Limited or its affiliates. All rights reserved.ARM DDI 0403E.e  
-Non-Confidential ID021621
-
-
-
-## Appendix D2 Legacy Instruction Mnemonics
-### D2.1 Thumb instruction mnemonics
-
-
-| Table D2-1 Pre-UAL assembly syntax (continued) |
-| ----------------------------------------------- |
-
-| **Pre-UAL Thumb syntax** | **Equivalent UAL syntax** | **Notes** |
-| --------------------------- | --------------------------- | --------------------------------------- |
 | EOR <Rd>, <Rm> | EORS <Rd>, <Rd>, <Rm> | - |
 | LDMIA <Rn>!, <registers> | LDMIA <Rn>, <registers> | If <Rn> listed in <registers>. |
 |  | LDMIA <Rn>!, <registers> | Otherwise. |
@@ -34407,14 +32059,6 @@ Non-Confidential ID021621
 | ROR <Rd>, <Rs> | RORS <Rd>, <Rd>, <Rs> |  |
 | SBC <Rd>, <Rm> | SBCS <Rd>, <Rd>, <Rm> |  |
 | STMIA <Rn>!, <registers> | STMIA <Rn>!, <registers> |  |
-
-
-## Appendix D2 Legacy Instruction Mnemonics
-### D2.1 Thumb instruction mnemonics
-
-
-| Pre-UAL Thumb syntax | Equivalent UAL syntax | Notes |
-| -------------------------------- | ------------------------------ | ----------------------------- |
 | STR <Rd>, [<Rn>, #<imm>] | STR <Rd>, [<Rn>, #<imm>] | <Rn> can be SP. |
 | STR <Rd>, [<Rn>, <Rm>] | STR <Rd>, [<Rn>, <Rm>] | - |
 | STRB <Rd>, [<Rn>, #<imm>] | STRB <Rd>, [<Rn>, #<imm>] | - |
@@ -34437,10 +32081,7 @@ Table D2-1 Pre-UAL assembly syntax (continued)
 
 
 
-
 ### D2.2 Pre-UAL pseudo-instruction NOP
-
-
 In pre-UAL assembler code, NOP is a pseudo-instruction, equivalent to MOV R8, R8 in Thumb code.
 
 Assembling the NOP mnemonic as UAL will not change the functionality of the code, but will change:
@@ -34454,14 +32095,7 @@ The pre-UAL pseudo-instruction is different for Arm code where it is equivalent 
 _________________
 
 
-
-## Appendix D2 Legacy Instruction Mnemonics
 ### D2.3 Pre-UAL floating-point instruction mnemonics
-
-
-### D2.3 Pre-UAL floating-point instruction mnemonics
-
-
 [Table D2-2](#) lists the UAL equivalents of pre-UAL floating-point instruction mnemonics.
 
 **Table D2-2 UAL equivalents of pre-UAL floating-point instruction mnemonics**
@@ -34497,22 +32131,6 @@ _________________
 | FPSCR | VMRS | VMRS on page A7-485 |
 | FMSTAT | VMRS | VMRS on page A7-485 |
 | VFXR | VMSR | VMSR on page A7-486 |
-
-
-D2-774  Copyright © 2006-2008, 2010, 2014, 2017, 2018, 2021 Arm Limited or its affiliates. All rights reserved.  
-ARM DDI 0403E.e  
-Non-Confidential ID021621
-
-
-
-## Appendix D2 Legacy Instruction Mnemonics
-### D2.3 Pre-UAL floating-point instruction mnemonics
-
-Table D2-2 UAL equivalents of pre-UAL floating-point instruction mnemonics (continued)  
-
-
-| Pre-UAL assembler mnemonic | UAL equivalent | See |
-| ---------------------------- | ----------------- | ------------------------------------- |
 | FMACD, FMNMACS | VMLS | VMLA, VMLS on page A7-476 |
 | FMNACD, FMNMSCS | VNMLA | VNMLA, VNMLS, VNMUL on page A7-489 |
 | FMULDD, FMULMLS | VNMUL | VNMLA, VNMLS, VNMUL on page A7-489 |
@@ -34535,8 +32153,6 @@ Table D2-2 UAL equivalents of pre-UAL floating-point instruction mnemonics (cont
 
 
 ### D2.3.1 FLDMX, FSTMX
-
-
 Encoding T1 of the VLDM, VPOP, VPUSH, and VSTM instructions contain an imm8 field that is set to twice the number of doubleword registers to be transferred. Arm deprecates use of these encodings with an odd value in imm8, and there is no UAL syntax for them.
 
 The pre-UAL mnemonics FLDMX and FSTMX result in the same instructions as FLDMD respectively, except that imm8 is equal to twice the number of doubleword registers plus one:  
@@ -34546,35 +32162,16 @@ The pre-UAL mnemonics FLDMX and FSTMX result in the same instructions as FLDMD r
 Arm deprecates use of FLDMX and FSTMX, except for disassembly purposes, and for reassembly of disassembled code.
 
 
-
-## Appendix D2 Legacy Instruction Mnemonics
-### D2.3 Pre-UAL floating-point instruction mnemonics
-
-
-
-
-## Appendix D3
-
-**Deprecated Features in Armv7-M**
-
+## Appendix D3: Deprecated Features in Armv7-M
 This appendix identifies deprecated features in the Armv7-M architecture. It contains the following section:
 - _Deprecated features of the Armv7-M architecture on page D3-778._
 
 
-
-## Appendix D3 Deprecated Features in Armv7-M
 ### D3.1 Deprecated features of the Armv7-M architecture
-
-
-### D3.1 Deprecated features of the Armv7-M architecture
-
-
 This appendix describes features that are present in the Armv7-M architecture for backwards compatibility. These features might not be supported in future versions of the Arm architecture. Arm strongly recommends that software does not use or rely on these features.
 
 
 ### D3.1.1 Deprecated architectural features
-
-
 This subsection identifies deprecated features of the Armv7-M architecture. See also *Deprecated feature of the Armv7-M Thumb instruction set*.
 
 
@@ -34627,10 +32224,9 @@ The Armv7-M Thumb instruction set is a version of a single Armv7 Thumb instructi
 - Use of <Rn> as the lowest-numbered register in the register list of a 16-bit STM instruction with base register write-back.
 - Use of APSR, without a _<bits>_ qualifier, as an argument to the MSR instruction, as an alias for APSR_nzcvq.
 
+---
 
-
-## Appendix D4
-Debug ITM and DWT Packet Protocol
+## Appendix D4: Debug ITM and DWT Packet Protocol
 
 This appendix describes the protocol for the packets used to send the data generated by the Debug ITM and DWT to an external debugger. It contains the following sections:
 • *About the ITM and DWT packets* on page D4-780.
@@ -34640,15 +32236,7 @@ This appendix describes the protocol for the packets used to send the data gener
 ARM DDI 0403E.a © Copyright © 2006-2008, 2010, 2014, 2017, 2018, 2021 Arm Limited or its affiliates. All rights reserved.  
 ID021621 Non-Confidential
 
-
-
-## Appendix D4 Debug ITM and DWT Packet Protocol
 ### D4.1 About the ITM and DWT packets
-
-
-### D4.1 About the ITM and DWT packets
-
-
 The following sections give an overview of the ITM and DWT packets and how the TPIU transmits them:
 - *Uses of ITM and DWT packets*.
 - *ITM and DWT protocol packet categories*.
@@ -34661,8 +32249,6 @@ This appendix describes packet transmission by a TPIU. However, the ITM can send
 
 
 ### D4.1.1 Uses of ITM and DWT packets
-
-
 The ITM sends a packet to the TPIU when:
 - Software writes to a stimulus register.
 - The hardware generates a Local or Global timestamp, or any other protocol packet.
@@ -34678,8 +32264,6 @@ This appendix describes the packet protocol used.
 
 
 ### D4.1.2 ITM and DWT protocol packet categories
-
-
 The first byte of a packet is the packet header, and indicates the packet type. For some packet types, the packet can include one or more bytes of payload.
 
 
@@ -34696,8 +32280,6 @@ Except for the Synchronization packet and, for some implementations the Global t
 
 
 ### D4.1.3 Packet transmission by the TPIU
-
-
 The TPIU either:
 - Forms the packets into frames, as required by the *Arm® CoreSight™ Architecture Specification*.
 - Transmits the packets over a serial port.
@@ -34706,11 +32288,6 @@ For each packet, the TPIU transmits:
 - The header byte first, followed by any payload bytes.
 - Each byte of the packet *least significant bit* (LSB) first.
 
-
-
-## Appendix D4 Debug ITM and DWT Packet Protocol
-### D4.1 About the ITM and DWT packets
-
 Figures in this chapter show the LSB of each byte to the right, and the most significant bit (MSB) to the left.
 Figure D4-1 shows this convention, and how it relates to data transmission, for a packet with a header byte and two
 bytes of payload.
@@ -34718,7 +32295,6 @@ bytes of payload.
 
 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | MSB |  |  |  |  |  |  | LSB | Header byte |
 | MSB |  |  |  |  |  |  | LSB | First payload byte |
 | MSB |  |  |  |  |  |  | LSB | Second payload byte |
@@ -34734,14 +32310,7 @@ ITM relates to other debug components on page C1-713. The TPIU then merges this 
 the ETM.
 
 
-
-## Appendix D4 Debug ITM and DWT Packet Protocol
 ### D4.2 Packet descriptions
-
-
-### D4.2 Packet descriptions
-
-
 *ITM and DWT protocol packet categories on page D4-780* summarized the packet categories. The following give more information about the protocol and source categories, and describe each packet type:  
 
 - **Synchronization packet**.  
@@ -34757,7 +32326,6 @@ A Synchronization packet provides a unique pattern in the bit stream. Trace capt
 
 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | Byte 0 |
 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | Byte 1 |
 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | Byte 2 |
@@ -34797,11 +32365,6 @@ Non-Confidential
 ID021621
 
 
-
-## Appendix D4 Debug ITM and DWT Packet Protocol
-### D4.2 Packet descriptions
-
-
 | Description | Header | Payload a | Remarks |
 | ---------------------- | ------------ | ------------ | ------------------------------------------------------------------------------------------ |
 | Extension | 0bC0001500 | 0 to 4 bytes | S = Source, D = Data, C = Continuation. <br> See Extension packet on page D4-786. |
@@ -34826,8 +32389,6 @@ In protocol packets, bit[7] of each byte, including the header byte, but not inc
 
 
 ### D4.2.3 Overflow packet
-
-
 The ITM outputs an Overflow packet if:
 
 - Software writes to a Stimulus Port register when the stimulus port output buffer is full.
@@ -34835,11 +32396,6 @@ The ITM outputs an Overflow packet if:
 - The Local timestamp counter overflows.
 
 The Overflow packet comprises a header with no payload. Figure D4-3 shows the packet format.
-
-
-
-## Appendix D4 Debug ITM and DWT Packet Protocol
-### D4.2 Packet descriptions
 
 
 Local timestamp packet format 1, two to five bytes
@@ -34892,17 +32448,9 @@ The Local timestamp packet uses only the number of payload bytes required to out
 
 ---
 
-*D4-784  Copyright © 2006-2008, 2010, 2014, 2017, 2018, 2021 Arm Limited or its affiliates. All rights reserved.ARM DDI 0403E.e Non-Confidential ID021621*
-
-
-
-## Appendix D4 Debug ITM and DWT Packet Protocol
-### D4.2 Packet descriptions
-
 
 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 1 | TC[1:0] | 0 | 0 | 0 | 0 | 0 | Header |
 | 1 | 1 | 0 | 0 | 1 | 0 | 0 | 1 | Payload byte 0, bits[6:0] are TS[6:0] |
 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | Payload byte 1, bits[6:0] are TS[13:7] |
@@ -34919,7 +32467,6 @@ Local timestamp packet format 2 (LTS2) is a single-byte packet, comprising only 
 
 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 0 | TS[2:0] | 0 | 0 | 0 | 0 | Header |
 
 
@@ -34941,8 +32488,6 @@ The ITM outputs this packet only when both:
 
 
 ### D4.2.5 Global timestamp packets
-
-
 If an implementation supports global timestamping, the ITM generates Global timestamp packets based on a global timestamp clock. A Global timestamp is a 48-bit or 64-bit value. The size of the Global timestamp is determined by the implementation. To transfer the Global timestamp, two packet formats are used. These two packet formats are used for both 48-bit and 64-bit timestamps:  
 - Global timestamp packet format 1 (GTS1) packets transmit bits[25:0] of the timestamp value, and the ITM compresses these by not transmitting high-order bytes that are unchanged from the previous timestamp value.  
   _This compression scheme is similar to the compression used for local timestamps, see Local timestamp value compression on page D4-784._
@@ -34957,22 +32502,10 @@ When the ITM must transmit a complete global timestamp value, using both a GTS1 
 
 Figure D4-7 on page D4-786 shows the GTS1 packet format.
 
----
-
-_ARM DDI 0403E.aCopyright © 2006-2008, 2010, 2014, 2017, 2018, 2021 ARM Limited or its affiliates. All rights reserved.  
-ID021621 Non-Confidential D4-785_
-
-
-
-## Appendix D4 Debug ITM and DWT Packet Protocol
-### D4.2 Packet descriptions
-
 
 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 0 | 0 | 1 | 0 | 1 | 0 | 0 | Header |
-
 | C | TS[6:0] | Payload byte 0 |
 | C | TS[13:7] | Payload byte 1, if required |
 | C | TS[20:14] | Payload byte 2, if required |
@@ -35003,9 +32536,7 @@ Figure D4-8 shows the GTS2 packet format for a 48-bit timestamp. The ITM always 
 
 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 0 | 1 | 1 | 1 | 0 | 1 | 0 | Header |
-
 | 1 | TS[32:26] | Payload byte 0 |
 | 1 | TS[39:33] | Payload byte 1 |
 | 1 | TS[46:40] | Payload byte 2 |
@@ -35019,9 +32550,7 @@ Figure D4-9 shows the GTS2 packet format for a 64-bit timestamp. The ITM always 
 
 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 0 | 1 | 1 | 1 | 0 | 1 | 0 | Header |
-
 | 1 | TS[32:26] | Payload byte 0 |
 | 1 | TS[39:33] | Payload byte 1 |
 | 1 | TS[46:40] | Payload byte 2 |
@@ -35034,14 +32563,7 @@ Figure D4-9 shows the GTS2 packet format for a 64-bit timestamp. The ITM always 
 
 
 ### D4.2.6 Extension packet
-
-
 An Extension packet provides additional information about the identified source. The amount of information required determines the number of payload bytes, 0-4. Figure D4-10 on page D4-787 shows the packet format.
-
-
-
-## Appendix D4 Debug ITM and DWT Packet Protocol
-### D4.2 Packet descriptions
 
 
 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
@@ -35110,12 +32632,6 @@ Table D4-3 ITM and DWT Instrumentation and Hardware source packet formats
 The SS bits indicates the payload size, using the following encoding:  
 01  
 1-byte payload, 2-byte packet.
-
-
-
-## Appendix D4 Debug ITM and DWT Packet Protocol
-### D4.2 Packet descriptions
-
 10       2-byte payload, 3-byte packet.  
 11       4-byte payload, 5-byte packet.  
 
@@ -35124,16 +32640,12 @@ The protocol does not permit an SS value of 0b00, see Synchronization packet on 
 
 
 ### D4.2.8 Instrumentation packet
-
-
 A software write to an ITM stimulus port generates an Instrumentation packet. Figure D4-12 shows the packet format.  
 
 
 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | A[4:0] | 0 | S | S | Header |
-
 | Payload[7:0] | Payload byte 0 |
 | Payload[15:8] | Payload byte 1, if required |
 | Payload[23:16] | Payload byte 2, if required |
@@ -35162,9 +32674,7 @@ The size of the write transaction determines the size of the Instrumentation pac
 
 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | A[4:0] | 0 | 1 | 0 | 0 | Header, SS is 0b10 |
-
 | 1 | 0 | 1 | 0 | 0 | 0 | 0 | 1 | Payload byte 0, 0xA1 |
 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 1 | Payload byte 2, 0x03 |
 
@@ -35179,11 +32689,6 @@ If an ITM implementation supports more than 32 stimulus ports, the ITM uses pagi
 
 Stimulus port number = (Page number × 32) + A[4:0]
 
-
-
-## Appendix D4 Debug ITM and DWT Packet Protocol
-### D4.2 Packet descriptions
-
 _____________ Note ______________  
 Whenever a debugger receives an Instrumentation packet, it uses the page number from the last Extension packet it  
 received, or a page number of 0 if it has not received an Extension packet since it last received a Synchronization  
@@ -35192,17 +32697,13 @@ __________________________________
 
 
 ### D4.2.9 Hardware source packet
-
-
 The DWT unit generates Hardware source packets, that it forwards to the ITM for prioritization and transmission.  
 Figure D4-14 shows the packet format.
 
 
 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | A[4:0] | 1 | S | S | Header |
-
 | Payload[7:0] | Payload byte 0 |
 | Payload[15:8] | Payload byte 1, if required |
 | Payload[23:16] | Payload byte 2, if required |
@@ -35224,7 +32725,6 @@ packets.
 
 
 ### D4.3 DWT use of Hardware source packets
-
 The DWT generates packets using the Hardware source packet format, see Hardware source packet on page D4-789. It uses the A[4:0] field to hold a discriminator ID, and Armv7-M defines the following discriminator IDs:
 
 0       Event counter wrapping, see Event counter packet, discriminator ID0.
@@ -35237,8 +32737,6 @@ Armv7-M does not define any Extension packets for Hardware source packets.
 
 
 ### D4.3.1 Event counter packet, discriminator ID0
-
-
 The DWT unit generates an Event counter packet when a counter value wraps round to zero, that is, when:
 - A count up, or incrementing, counter overflows.
 - A countdown, or decrementing, counter underflows.
@@ -35293,18 +32791,11 @@ Table D4-5 shows the payload bit assignments.
 
 
 ### D4.3.2 Exception trace packets, discriminator ID1
-
-
 The DWT unit can generate an Exception trace packet whenever the processor enters, exits, or returns to an exception. The packet has two payload bytes, that indicate the exception number and the action, associated with that exception, that the processor has taken.
 
 See Exception number definition on page B1-525 for information about the ExceptionNumber values returned.
 
 Figure D4-16 shows the Exception trace packet format.
-
-
-
-## Appendix D4 Debug ITM and DWT Packet Protocol
-### D4.3 DWT use of Hardware source packets
 
 
 | Byte | Bit | Name | Description |
@@ -35319,8 +32810,6 @@ Figure D4-16 shows the Exception trace packet format.
 
 
 ### D4.3.3 Periodic PC sample packets, discriminator ID2
-
-
 The DWT unit generates PC samples at fixed time intervals, with an accuracy of one clock cycle. The POSTCNT  
 counter period determines the PC sampling interval, and software configures the DWT_CTRL.CYCTAP field to  
 determine how POSTCNT relates to the processor cycle counter, CYCCNT. The DWT_CTRL.PCSAMPLENA bit  
@@ -35344,8 +32833,6 @@ The single payload byte is a zero byte.
 
 
 ### D4.3.4 Data trace packets discriminator IDs 8-23
-
-
 The DWT unit generates a Data trace packet when a comparison with a DWT comparator matches, and the 
 configuration of that comparator in the corresponding DWT_FUNCTION register requires data capture on a 
 match. For more information see:
@@ -35378,7 +32865,6 @@ Figure D4-19 shows the Data trace packet header format.
 
 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | ----- | ----- | ------- | ------- | ------- | --- | --- | --- |
-
 | A[4:0] | CMPM[1:0] | 1 | S | S |
 
 
@@ -35402,11 +32888,6 @@ The Data trace packet header encoding is:
   - **1** Data trace address packet, see Data trace address packet format on 
     page D4-794.
 
-
-
-## Appendix D4 Debug ITM and DWT Packet Protocol
-### D4.3 DWT use of Hardware source packets
-
 When bits[7:6] are 0b10:  
 0 &nbsp;&nbsp;&nbsp;&nbsp;Read access.  
 1 &nbsp;&nbsp;&nbsp;&nbsp;Write access.  
@@ -35420,9 +32901,7 @@ Table D4-7 shows how the encoding of the Data trace packet heading assigns discr
 
 | Header bit |  | Data trace packet type | Discriminator | Payload |
 | ------------ | ----------------------------- | ------------------------------------------------ | --------------- | --------- |
-
 |  | [7] | [6] | [5] | [4] | [3] |  | IDs |  |
-
 | 0 | 1 | CMPN[1:0] | 0 | PC value packet | 8, 10, 12, 14 | 4 bytes |
 | 0 | 1 | CMPN[1:0] | 1 | Address packet | 9, 11, 13, 15 | 2 bytes |
 | 1 | 0 | CMPN[1:0] | 0 | Data value packet, read access | 16, 18, 20, 22 | 1, 2, or 4 bytes |
@@ -35440,9 +32919,7 @@ Figure D4-20 shows the format of a Data trace packet containing the PC value for
 
 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 0 | 1 | CMPN[1:0] | 0 | 1 | 1 | 1 | 1 | Header |
-
 | PC[7:0] | Payload byte 0 |
 | PC[15:8] | Payload byte 1 |
 | PC[23:16] | Payload byte 2 |
@@ -35460,9 +32937,7 @@ Figure D4-21 shows the format of a Data trace packet containing bits[15:0] of an
 
 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 0 | 1 | CMPN[1:0] | 1 | 1 | 1 | 0 | 0 | Header |
-
 | DADDR[7:0] | Payload byte 0 |
 | DADDR[15:8] | Payload byte 1 |
 
@@ -35477,15 +32952,9 @@ Figure D4-22 on page D4-795 shows the format of a Data trace packet containing a
 
 
 
-## Appendix D4 Debug ITM and DWT Packet Protocol
-### D4.3 DWT use of Hardware source packets
-
-
 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-
 | 1 | 0 | CMPN[1:0] | WnR | 1 | S | S | S | Header |
-
 |  |  |  |  |  |  |  |  | VALUE[7:0] | Payload byte 0 |
 |  |  |  |  |  |  |  |  | VALUE[15:8] | Payload byte 1, if required |
 |  |  |  |  |  |  |  |  | VALUE[23:16] | Payload byte 2, if required |
@@ -35499,16 +32968,7 @@ Byte    One-byte payload, VALUE[7:0], SS is 0b01.
 Halfword Two-byte payload, VALUE[15:0], SS is 0b10.  
 Word    Four-byte payload, VALUE[31:0], SS is 0b11.
 
-
-
-## Appendix D4 Debug ITM and DWT Packet Protocol
-### D4.3 DWT use of Hardware source packets
-
-
-
-## Appendix D5
-Armv7-R Differences
-
+## Appendix D5: Armv7-R Differences
 This appendix compares the Armv7-M and Armv7-R architecture profiles, identifying their similarities and differences. It contains the following sections:  
 • *About the Armv7-M and Armv7-R architecture profiles on page D5-798.*  
 • *Endian support on page D5-799.*  
@@ -35516,15 +32976,7 @@ This appendix compares the Armv7-M and Armv7-R architecture profiles, identifyin
 • *System level support on page D5-801.*  
 • *Debug support on page D5-802.*
 
-
-
-## Appendix D5 Armv7-R Differences
 ### D5.1 About the Armv7-M and Armv7-R architecture profiles
-
-
-### D5.1 About the Armv7-M and Armv7-R architecture profiles
-
-
 Thumb-2 technology is common across all the Armv7 profiles, there are other key similarities between the
 Armv7-M and Armv7-R profiles. By understanding the similarities and differences, developers can minimize the
 effort required to support software on both profiles, or to generate a system architecture that permits straightforward
@@ -35533,11 +32985,7 @@ migration from one profile to the other.
 A system tradeoff that must be made as part of the profile decision is absolute performance versus interrupt latency.
 
 
-
-
 ### D5.2 Endian support
-
-
 Armv7-R supports instruction fetches in big and little endian formats, with the format determined by the IE bit in the System Control Register. Armv7-M only supports instruction fetches in little endian format. Where an Armv7-M implementation requires big endian instruction format, the bus fabric must provide byte swapping within a halfword. The byte swap is required for instruction fetches only and must not occur on data accesses.
 
 By example, for instruction fetches over a 32-bit bus:
@@ -35550,14 +32998,7 @@ By example, for instruction fetches over a 32-bit bus:
 Armv7-M and Armv7-R both support a configurable endian model for data accesses, see Endian support on page A3-67. While Armv7-R supports dynamic endian control via a control bit in its xPSR and System Control register EE bit, Armv7-M is statically configured on reset.
 
 
-
-## Appendix D5 Armv7-R Differences
 ### D5.3 Application level support
-
-
-### D5.3 Application level support
-
-
 At the application level, Armv7-M can be considered as a subset of Armv7-R. All the Armv7-M application level 
 instructions are supported in Armv7-R, along with the same flags and general purpose registers. However, the Load 
 Multiple and Store Multiple instructions are always restartable in Armv7-R and do not support the Armv7-M 
@@ -35590,12 +33031,8 @@ Both Armv7-R and Armv7-M support an optional Floating-point Extension. However:
   support Advanced SIMD.
 
 
-
-
 ### D5.4 System level support
-
-
-The programmers’ model and exception model are significantly different in the two profiles:
+The programmers' model and exception model are significantly different in the two profiles:
 - **Armv7-R supports:**
   - A set of operating modes with, for example, a specific mode for handling each class of exception. Core registers are banked between different modes.
   - Fixed entry points (addresses) for exception handling. When handling exceptions, stacking and unstacking is under software control.
@@ -35604,7 +33041,7 @@ The programmers’ model and exception model are significantly different in the 
 - **Armv7-M only banks the stack pointer.** It uses a combination of special-purpose registers and memory mapped resources for system configuration and execution management, both for normal operation and for debug. A key feature of Armv7-M is low-latency exception handling, with automatic stacking and unstacking on exception entry and exit.
   The Armv7-M Floating-point Extension provides configurable hardware stacking and unstacking of floating-point registers.
 
-System level instruction support is different, reflecting the different programmers’ models. Both profiles support the CPS, MRS, and MSR instructions, but they execute differently. Armv7-R provides additional system level instructions, for example SRS and RFE. The behavior of Wait For Exception and Wait For Interrupt behavior differs because of the different the exception models.
+System level instruction support is different, reflecting the different programmers' models. Both profiles support the CPS, MRS, and MSR instructions, but they execute differently. Armv7-R provides additional system level instructions, for example SRS and RFE. The behavior of Wait For Exception and Wait For Interrupt behavior differs because of the different the exception models.
 
 Both profiles support the Arm Protected Memory System Architecture (PMSAv7). This is:
 - Required in Armv7-R.
@@ -35620,22 +33057,10 @@ Interrupt control and prioritization is an integral part of the Armv7-M exceptio
 
 Armv7-M defines a system timer. A similar timer can be used with Armv7-R, and an implementation can route its interrupt through a GIC for maximum compatibility.
 
-
-
-## Appendix D5 Armv7-R Differences
 ### D5.5 Debug support
-
-
-### D5.5 Debug support
-
-
 Both profiles support Halting and Monitor debug. The mechanisms for breakpoint and watchpoint handling are different. There are also different levels of counter support for profiling. Both support an optional trace feature, based on an *Embedded Trace Macrocell* (ETM). Armv7-M is generally less invasive in its debug support, and offers additional software and hardware event generation trace capabilities as part of the basic architecture.
 
-
-
-## Appendix D6
-Pseudocode Definition
-
+## Appendix D6: Pseudocode Definition
 This appendix provides a formal definition of the pseudocode used in this manual, and lists the *helper* procedures
 and functions used by pseudocode to perform useful architecture-specific jobs. It contains the following sections:
 
@@ -35647,15 +33072,7 @@ and functions used by pseudocode to perform useful architecture-specific jobs. I
 • *Statements and program structure on page D6-818.*
 • *Miscellaneous helper procedures and functions on page D6-822.*
 
-
-
-## Appendix D6 Pseudocode Definition
 ### D6.1 Instruction encoding diagrams and pseudocode
-
-
-### D6.1 Instruction encoding diagrams and pseudocode
-
-
 Instruction descriptions in this book contain:  
 • An Encoding section, containing one or more encoding diagrams, each followed by some encoding-specific  
   pseudocode that translates the fields of the encoding into inputs for the common pseudocode of the  
@@ -35715,14 +33132,9 @@ D6-804 Copyright © 2006-2008, 2010, 2014, 2017, 2018, 2021 Arm Limited or its a
 Non-Confidential ID021621
 
 
-
-## Appendix D6 Pseudocode Definition
 ### D6.1 Instruction encoding diagrams and pseudocode
 
-
 ### D6.1.1 Pseudocode
-
-
 The pseudocode provides precise descriptions of what instructions do. Instruction fields are referred to by the names shown in the encoding diagram for the instruction.
 
 The pseudocode is described in detail in the following sections.
@@ -35731,14 +33143,7 @@ ARM DDI 0403E.eCopyright © 2006-2008, 2010, 2014, 2017, 2018, 2021 Arm Limited 
 ID021621 Non-Confidential D6-805
 
 
-
-## Appendix D6 Pseudocode Definition
 ### D6.2 Limitations of pseudocode
-
-
-### D6.2 Limitations of pseudocode
-
-
 The pseudocode descriptions of instruction functionality have a number of limitations. These are mainly due to the fact that, for clarity and brevity, the pseudocode is a sequential and mostly deterministic language.
 
 These limitations include:  
@@ -35751,11 +33156,7 @@ These limitations include:
 For more information see Simple statements on page D6-818.
 
 
-
-
 ### D6.3 Data types
-
-
 This section describes:
 - _General data type rules._
 - _Bitstrings._
@@ -35768,8 +33169,6 @@ This section describes:
 
 
 ### D6.3.1 General data type rules
-
-
 Arm Architecture pseudocode is a strongly-typed language. Every constant and variable is of one of the following types:
 - Bitstring.
 - Integer.
@@ -35787,8 +33186,6 @@ These data types are described in more detail in the following sections.
 
 
 ### D6.3.2 Bitstrings
-
-
 A bitstring is a finite-length string of 0s and 1s. Each length of bitstring is a different type. The minimum permitted length of a bitstring is 1.
 
 The type name for bitstrings of length N is bits(N). A synonym of bits(1) is bit.
@@ -35805,8 +33202,6 @@ Bitstrings are the only concrete data type in pseudocode, in the sense that they
 
 
 ### D6.3.3 Integers
-
-
 Pseudocode integers are unbounded in size and can be either positive or negative. That is, they are mathematical
 integers rather than what computer languages and architectures commonly call integers. Computer integers are
 represented in pseudocode as bitstrings of the appropriate length, associated with suitable functions to interpret
@@ -35821,8 +33216,6 @@ should be written as -0x80000000.
 
 
 ### D6.3.4 Reals
-
-
 Pseudocode reals are unbounded in size and precision. That is, they are mathematical real numbers, not computer
 floating-point numbers. Computer floating-point numbers are represented in pseudocode as bitstrings of the
 appropriate length, associated with suitable functions to interpret those bitstrings as reals.
@@ -35833,8 +33226,6 @@ Real constants are written in decimal with a decimal point (so 0 is an integer c
 
 
 ### D6.3.5 Booleans
-
-
 A Boolean is a logical true or false value.
 
 The type name for Booleans is boolean. This is not the same type as bit, which is a length-1 bitstring.boolean
@@ -35842,10 +33233,7 @@ constants are TRUE and FALSE.
 
 
 ### D6.3.6 Enumerations
-
-
 An enumeration is a defined set of symbolic constants, such as:
-
 
 
 Lists are often used as the return type for a function that returns multiple results. For example, this particular list is 
@@ -35894,8 +33282,6 @@ List constants are written as a list of constants of the appropriate types, like
 
 
 ### D6.3.8 Arrays
-
-
 Pseudocode arrays are indexed by either enumerations or integer ranges. An integer range is represented by the 
 lower inclusive end of the range, then …, then the upper inclusive end of the range. For example:
 
@@ -35915,10 +33301,7 @@ one element, because enumerations always contain at least one symbolic constant 
 at least one integer.
 
 
-
-## Appendix D6 Pseudocode Definition
 ### D6.3 Data types
-
 Arrays do not usually appear directly in pseudocode. The items that syntactically look like arrays in pseudocode are
 usually array-like functions such as r[i], Mem[address,size] or Element[{i,type]. These functions package up and
 abstract additional operations normally performed on accesses to the underlying arrays, such as register banking,
@@ -35926,11 +33309,7 @@ memory protection, endian-dependent byte ordering, exclusive-access housekeeping
 processing.
 
 
-
-
 ### D6.4  Expressions
-
-
 This section describes:
 - *General expression syntax*.
 - *Polymorphism and prototypes of operators and functions*.
@@ -35938,8 +33317,6 @@ This section describes:
 
 
 ### D6.4.1  General expression syntax
-
-
 An expression is one of the following:
 - A constant.
 - A variable, optionally preceded by a data type name to declare its type.
@@ -35984,45 +33361,33 @@ Every expression has a data type. This is determined by:
 
 
 ### D6.4.2  Polymorphism and prototypes of operators and functions
-
-
 Operators and functions in pseudocode can be polymorphic, producing different functionality when applied to 
 different data types. Each of the resulting forms of an operator or function has a different prototype definition. For 
 example, the operator + has forms that act on various combinations of integers, reals and bitstrings.
 
-
-
-## Appendix D6 Pseudocode Definition
 ### D6.4 Expressions
-
 One particularly common form of polymorphism is between bitstrings of different lengths. This is represented by
 using bits(N), bits(M), and the like, in the prototype definition.
 
 
 ### D6.4.3 Precedence rules
-
-
 The precedence rules for expressions are:  
-1.       Constants, variables and function invocations are evaluated with higher priority than any operators using
-             their results.
+1.       Constants, variables and function invocations are evaluated with higher priority than any operators using
+             their results.
 
-2.       Expressions on integers follow the normal exponentiation before multiply/divide before add/subtract
-             operator precedence rules, with sequences of multiply/divides or add/subtracts evaluated left-to-right.
+2.       Expressions on integers follow the normal exponentiation before multiply/divide before add/subtract
+             operator precedence rules, with sequences of multiply/divides or add/subtracts evaluated left-to-right.
 
-3.       Other expressions must be parenthesized to indicate operator precedence if ambiguity is possible, but need
-             not be if all permissible precedence orders under the type rules necessarily lead to the same result. For
+3.       Other expressions must be parenthesized to indicate operator precedence if ambiguity is possible, but need
+             not be if all permissible precedence orders under the type rules necessarily lead to the same result. For
 
 | example, if i, j and k are integer variables, i > 0 && j > 0 && k > 0 is acceptable, but i > 0 && j > 0 |  | k |
 
 
-             > 0 is not.
-
-
+             > 0 is not.
 
 
 ### D6.5 Operators and built-in functions
-
-
 This section describes:
 - *Operations on generic types*.
 - *Operations on booleans*.
@@ -36031,8 +33396,6 @@ This section describes:
 
 
 ### D6.5.1 Operations on generic types
-
-
 The following operations are defined for all types.
 
 
@@ -36059,8 +33422,6 @@ If x and y are two values of the same type and t is a value of type boolean, the
 
 
 ### D6.5.2 Operations on booleans
-
-
 If x is a boolean, then !x is its logical inverse.
 
 If x and y are booleans, then x && y is the result of ANDing them together. As in the C language, if x is FALSE, the result is determined to be FALSE without evaluating y.
@@ -36073,25 +33434,11 @@ If x and y are booleans, then x ^ y is the result of exclusive-ORing them togeth
 
 
 ### D6.5.3 Bitstring manipulation
-
-
 The following bitstring manipulation functions are defined:
-
-
 Bitstring length and top bit
-
-
 If x is a bitstring, the bitstring length function Len(x) returns its length as an integer, and TopBit(x) is the leftmost bit of x (= x<Len(x)-1>) using bitstring extraction.
 
-
-
-## Appendix D6 Pseudocode Definition
-### D6.5 Operators and built-in functions
-
-
 Bitstring concatenation and replication
-
-
 If x and y are bitstrings of lengths N and M respectively, then x:y is the bitstring of length N+M constructed by 
 concatenating x and y in left-to-right order.
 
@@ -36100,10 +33447,7 @@ copies of x concatenated together and:
 - Zeros(n) = Replicate('0',n)
 - Ones(n) = Replicate('1',n)
 
-
 Bitstring extraction
-
-
 The bitstring extraction operator extracts a bitstring from either another bitstring or an integer. Its syntax is 
 x<integer_list>, where x is the integer or bitstring being extracted from, and <integer_list> is a list of integers 
 enclosed in angle brackets rather than the usual parentheses. The length of the resulting bitstring is equal to the 
@@ -36116,12 +33460,12 @@ x<i,j,k,...,n> is defined to be the concatenation:
 
 xi : xj : xk : ... : xn
 
-If integer_list consists of just one integer i, x<i> is defined to be:
+If `integer_list` consists of just one integer i, `x<i>` is defined to be:
 
 - If x is a bitstring, '0' if bit i of x is a zero and '1' if bit i of x is a one.
 
 - If x is an integer, let y be the unique integer in the range 0 to 2^(i+1)-1 that is congruent to x modulo 2^(i+1).
-Then x<i> is '0' if y < 2^i and '1' if y >= 2^i.
+Then `x<i>` is '0' if y < 2^i and '1' if y >= 2^i.
 
 Loosely, this second definition treats an integer as equivalent to a sufficiently long 2's complement representation 
 of it as a bitstring.
@@ -36130,7 +33474,7 @@ In <integer_list>, the notation i:j with i >= j is shorthand for the integers in
 inclusive. For example, instr<31:28> is shorthand for instr<31,30,29,28>.
 
 The expression x<integer_list> is assignable provided x is an assignable bitstring and no integer appears more than 
-once in <integer_list>. In particular, x<i> is assignable if x is an assignable bitstring and 0 <= i < Len(x).
+once in <integer_list>. In particular, `x<i>` is assignable if x is an assignable bitstring and 0 <= i < Len(x).
 
 Encoding diagrams for registers frequently show named bits or multi-bit fields. For example, the encoding diagram 
 for the APSR shows its bit<31> as N. In such cases, the syntax APSR.N is used as a more readable synonym for 
@@ -36158,11 +33502,6 @@ Testing a bitstring for being all zero or all ones
 If x is a bitstring, IsZeroBit(x) produces TRUE if all of the bits of x are zeros and FALSE if any of them are ones, and 
 IsZeroBit(x) produces '1' if all of the bits of x are zeros and '0' if any of them are ones. IsOnes(x) and IsOnesBit(x) 
 work in the corresponding way. So:
-
-
-
-## Appendix D6 Pseudocode Definition
-### D6.5 Operators and built-in functions
 
 IsZero(x)   = (BitCount(x) == 0)
 
@@ -36207,6 +33546,7 @@ Converting bitstrings to integers
 
 If x is a bitstring, SInt(x) is the integer whose 2's complement representation is x:
 
+```
 // SInt()
 // ======
 
@@ -36228,21 +33568,20 @@ integer UInt(bits(N) x)
        if x<i> == '1' then result = result + 2^i;
    return result;
 
-
+```
 
 Int(x, unsigned) returns either SInt(x) or UInt(x) depending on the value of its second argument:
 
+```
 // Int()
 // =====
 
 integer Int(bits(N) x, boolean unsigned)
     result = if unsigned then UInt(x) else SInt(x);
     return result;
-
+```
 
 ### D6.5.4 Arithmetic
-
-
 Most pseudocode arithmetic is performed on integer or real values, with operands being obtained by conversions 
 from bitstrings and results converted back to bitstrings afterwards. As these data types are the unbounded 
 mathematical types, no issues arise about overflow or similar errors.
@@ -36337,18 +33676,6 @@ Maximum and minimum
 If x and y are integers or reals, then Max(x, y) and Min(x, y) are their maximum and minimum respectively. Both are of type integer if both x and y are of type integer and of type real otherwise.
 
 ---
-
-## Appendix D6 Pseudocode Definition
-### D6.5 Operators and built-in functions
-ARM DDI 0403E.b Copyright © 2006-2008, 2010, 2014, 2017, 2018, 2021 Arm Limited or its affiliates. All rights reserved.  
-ID021621  
-Non-Confidential                                                 D6-817
-
-
-
-## Appendix D6 Pseudocode Definition
-### D6.6 Statements and program structure
-
 
 ### D6.6 Statements and program structure
 
@@ -36446,13 +33773,7 @@ Indentation is normally done by four spaces for each level.
 
 if ... then ... else ...
 
-
 A multi-line if ... then ... else ... structure takes the form:
-
-
-
-## Appendix D6 Pseudocode Definition
-### D6.6 Statements and program structure
 
 ___Note___  
 In these forms, <statement 1>, <statement 2> and <statement A> must be terminated by semicolons. This and the  
@@ -36460,7 +33781,7 @@ fact that the else part is optional are differences from the if ... then ... els
 
 ---
 
-
+```
 repeat ... until ...
 
 A repeat ... until ... structure takes the form:
@@ -36510,6 +33831,7 @@ A case ... of ... structure takes the form:
             <statement B>
             ...
             <statement Z>
+```
 
 where <constant values> consists of one or more constant values of the same type as <expression>, separated by  
 commas. Abbreviated one line forms of when and otherwise parts can be used when they contain only simple  
@@ -36523,18 +33845,13 @@ Procedure and function definitions
 
 A procedure definition takes the form:
 
-D6-820  
-
-Copyright © 2006-2008, 2010, 2014, 2017, 2018, 2021 Arm Limited or its affiliates. All rights reserved.ARM DDI 0403E.e  
-                                                          Non-Confidential                                                ID021621
-
-
-
+```
 <procedure name>(<argument prototypes>)
     <statement 1>
     <statement 2>
     ...
     <statement n>
+```
 
 where the <argument prototypes> consists of zero or more argument definitions, separated by commas. Each
 argument definition consists of a type name followed by the name of the argument.
@@ -36549,77 +33866,61 @@ This first prototype line is not terminated by a semicolon. This helps to distin
 
 A function definition is similar, but also declares the return type of the function:
 
+```
 <return type> <function name>(<argument prototypes>)
     <statement 1>
     <statement 2>
     ...
     <statement n>
+```
 
 An array-like function is similar, but with square brackets:
-
+```
 <return type> <function name>[<argument prototypes>]
     <statement 1>
     <statement 2>
     ...
     <statement n>
+```
 
 An array-like function also usually has an assignment prototype:
-
+```
 <function name>[<argument prototypes>] = <value prototypes>
     <statement 1>
     <statement 2>
     ...
     <statement n>
+```
 
 
 ### D6.6.3 Comments
-
-
 Two styles of pseudocode comment exist:
 - `//` starts a comment that is terminated by the end of the line.
 - `/*` starts a comment that is terminated by `*/`.
 
-
-
-## Appendix D6 Pseudocode Definition
 ### D6.7 Miscellaneous helper procedures and functions
-
-
-### D6.7 Miscellaneous helper procedures and functions
-
-
 The functions described in this section are not part of the pseudocode specification. They are helper procedures and functions used by pseudocode to perform useful architecture-specific jobs. Each has a brief description and a pseudocode prototype. Some have had a pseudocode definition added.
 
 
 ### D6.7.1 ArchVersion()
-
-
 This function returns the major version number of the architecture.
 
 integer ArchVersion()
 
 
 ### D6.7.2 BKPTInstrDebugEvent()
-
-
 This procedure generates a debug event for a BKPT instruction.
 
 
 ### D6.7.3 BreakPoint()
-
-
 This procedure causes a debug breakpoint to occur.
 
 
 ### D6.7.4 CallSupervisor()
-
-
 In the M profile, this procedure causes an SVCall exception.
 
 
 ### D6.7.5 ConditionPassed()
-
-
 This function performs the condition test for an instruction, based on:
 - The current instruction encodings (encodings T1 and T3 of the B instruction).
 - The current values of the xPSR.IT[7:0] bits for other Thumb instructions.
@@ -36628,287 +33929,188 @@ Boolean ConditionPassed()
 
 
 ### D6.7.6 ConsumptionOfSpeculativeDataBarrier()
-
-
 This function performs a CSDB instruction.
 
 ConsumptionOfSpeculativeDataBarrier()
 
 
 ### D6.7.7 Coproc_Accepted()
-
-
 This function determines whether a coprocessor accepts an instruction.
-
 Boolean Coproc_Accepted(integer cp_num, bits(32) instr)
 
 
 ### D6.7.8 Coproc_DoneLoading()
-
-
 This function determines for an LDC instruction whether enough words have been loaded.
-
 Boolean Coproc_DoneLoading(integer cp_num, bits(32) instr)
 
-
 ### D6.7.9 Coproc_DoneStoring()
-
-
 This function determines for an STC instruction whether enough words have been stored.
-
 Boolean Coproc_DoneStoring(integer cp_num, bits(32) instr)
 
 
 ### D6.7.10 Coproc_GetOneWord()
-
-
 This function obtains the word for an MRC instruction from the coprocessor.
-
-
-
-## Appendix D6 Pseudocode Definition
-### D6.7 Miscellaneous helper procedures and functions
 
     bits(32) Coproc_GetOneWord(integer cp_num, bits(32) instr)
 
 
 ### D6.7.11 Coproc_GetTwoWords()
-
-
 This function obtains the two words for an MRRC instruction from the coprocessor.
 
     (bits(32), bits(32)) Coproc_GetTwoWords(integer cp_num, bits(32) instr)
 
 
 ### D6.7.12 Coproc_GetWordToStore()
-
-
 This function obtains the next word to store for an STC instruction from the coprocessor
 
     bits(32) Coproc_GetWordToStore(integer cp_num, bits(32) instr)
 
 
 ### D6.7.13 Coproc_InternalOperation()
-
-
 This procedure instructs a coprocessor to perform the internal operation requested by a CDP instruction.
 
     Coproc_InternalOperation(integer cp_num, bits(32) instr)
 
 
 ### D6.7.14 Coproc_SendLoadedWord()
-
-
 This procedure sends a loaded word for an LDC instruction to the coprocessor.
 
     Coproc_SendLoadedWord(bits(32) word, integer cp_num, bits(32) instr)
 
 
 ### D6.7.15 Coproc_SendOneWord()
-
-
 This procedure sends the word for an MCR instruction to the coprocessor.
 
     Coproc_SendOneWord(bits(32) word, integer cp_num, bits(32) instr)
 
 
 ### D6.7.16 Coproc_SendTwoWords()
-
-
 This procedure sends the two words for an MCRR instruction to the coprocessor.
 
     Coproc_SendTwoWords(bits(32) word1, bits(32) word2, integer cp_num, bits(32) instr)
 
 
 ### D6.7.17 DataMemoryBarrier()
-
-
 This procedure produces a Data Memory Barrier.
 
     DataMemoryBarrier(bits(4) option)
 
 
 ### D6.7.18 DataSynchronizationBarrier()
-
-
 This procedure performs a Data Synchronization Barrier.
 
     DataSynchronizationBarrier(bits(4) option)
 
 
 ### D6.7.19 EncodingSpecificOperations()
-
-
 This procedure invokes the encoding-specific pseudocode for an instruction encoding and checks the `should be` bits of the encoding, as described in *Instruction encoding diagrams and pseudocode on page D6-804*.
 
 
 ### D6.7.20 GenerateCoprocessorException()
-
-
 This procedure raises a UsageFault exception for a rejected coprocessor instruction.
 
-ARM DDI 0403E.c Copyright © 2006-2008, 2010, 2014, 2017, 2018, 2021 Arm Limited or its affiliates. All rights reserved.  
-ID021621 Non-Confidential
-
-
-
-## Appendix D6 Pseudocode Definition
-### D6.7 Miscellaneous helper procedures and functions
-
-
 ### D6.7.21 GenerateIntegerZeroDivide()
-
 This procedure raises the appropriate exception for a division by zero in the integer division instructions SDIV and UDIV.  
 
 In the M profile, this is a UsageFault exception.
 
 
 ### D6.7.22 HaveDSPExt()
-
 This procedure returns TRUE if the implementation includes the DSP extension.
 
     boolean HaveDSPExt()
 
 
 ### D6.7.23 HaveFPExt()
-
 This procedure returns TRUE if the implementation includes the floating-point (FP) Extension.
 
     boolean HaveFPExt()
     
 
 ### D6.7.24 Hint_Debug()
-
 This procedure supplies a hint to the debug system.
 
     Hint_Debug(bits(4) option)
 
 
 ### D6.7.25 Hint_PreloadData()
-
 This procedure performs a preload data hint.
 
     Hint_PreloadData(bits(32) address)
 
 
 ### D6.7.26 Hint_PreloadInstr()
-
 This procedure performs a preload instructions hint.
 
     Hint_PreloadInstr(bits(32) address)
 
 
 ### D6.7.27 Hint_SendEvent()
-
 This procedure performs a send event hint.
 
 
 ### D6.7.28 Hint_Yield()
-
 This procedure performs a Yield hint.
 
 
 ### D6.7.29 InstructionSynchronizationBarrier()
-
 This procedure produces an Instruction Synchronization Barrier.
 
     InstructionSynchronizationBarrier(bits(4) option)
 
 
 ### D6.7.30 IntegerZeroDivideTrappingEnabled()
-
 This function returns TRUE if the trapping of divisions by zero in the integer division instructions SDIV and UDIV is enabled, and FALSE otherwise.
 
 In the M profile, this is controlled by the DIV_0_TRP bit in the Configuration Control register. TRUE is returned if the bit is 1 and FALSE if it is 0.
 
----
-Copyright © 2006-2008, 2010, 2014, 2017, 2018, 2021 Arm Limited or its affiliates. All rights reserved. ARM DDI 0403E.e  
-Non-Confidential ID021621
-
-
-
-## Appendix D6 Pseudocode Definition
-### D6.7 Miscellaneous helper procedures and functions
-
 
 ### D6.7.31 ProcessorID()
-
-
 Identifies the executing processor.
 
 
 ### D6.7.32 ResetSCSRegs()
-
-
 Restores all registers in the System Control Space (SCS) that have architecturally-defined reset values to those values.
 
     ResetSCSRegs()
 
 
 ### D6.7.33 SetPending()
-
-
 This procedure sets the associated exception state to Pending. For a definition of the different exception states see Exceptions on page B1-513.
 
 
 ### D6.7.34 SerializeVFP()
-
-
 This procedure ensures that any exceptional conditions in previous floating-point instructions have been detected.
 
 
 ### D6.7.35 SpeculativeSynchronizationBarrierToPA()
-
-
 This function performs an PSSBB instruction.
 
     SpeculativeSynchronizationBarrierToPA()
 
 
 ### D6.7.36 SpeculativeSynchronizationBarrierToVA()
-
-
 This function performs an SSBB instruction.
 
     SpeculativeSynchronizationBarrierToVA()
 
 
 ### D6.7.37 ThisInstr()
-
-
 This function returns the currently-executing instruction. It is only used on 32-bit instruction encodings.
 
     bits(32) ThisInstr()
 
 
 ### D6.7.38 VFPExcBarrier()
-
-
 This procedure ensures all floating-point exception processing has completed.
 
-
-
-## Appendix D6 Pseudocode Definition
-### D6.7 Miscellaneous helper procedures and functions
-
-
-
-## Appendix D7
-**Pseudocode Index**
+## Appendix D7: Pseudocode Index
 
 This appendix provides an index to pseudocode operators and functions that occur elsewhere in this manual. It contains the following sections:  
 • *Pseudocode operators and keywords on page D7-828.*  
 • *Pseudocode functions and procedures on page D7-831.*
 
-
-
-## Appendix D7 Pseudocode Index
 ### D7.1 Pseudocode operators and keywords
-
-
-### D7.1 Pseudocode operators and keywords
-
-
 Table D7-1 lists the pseudocode operators and keywords, and is an index to their descriptions:
 
 
@@ -36940,15 +34142,7 @@ Table D7-1 lists the pseudocode operators and keywords, and is an index to their
 | << | Multiply integer by power of 2 (with rounding towards -infinity) | Scaling on page D6-817 |
 
 
-D7-828  
-Copyright © 2006-2008, 2010, 2014, 2017, 2018, 2021 Arm Limited or its affiliates. All rights reserved.  
-Non-Confidential  
-ARM DDI 0403E.e  
-ID021621
 
-
-
-## Appendix D7 Pseudocode Index
 ### D7.1 Pseudocode operators and keywords
 
 
@@ -36981,21 +34175,6 @@ ID021621
 | OR | Bitwise OR of bitstrings | Logical operations on bitstrings on page D6-814 |
 | otherwise | Introduces default case in case ... of ... <br> control structure | case ... of ... on page D6-820 |
 | real | Real number type | Reals on page D6-808 |
-
-
-ARM DDI 0403E.cCopyright © 2006-2008, 2010, 2014, 2017, 2018, 2021 Arm Limited or its affiliates. All rights reserved.  
-ID021621                                              Non-Confidential                                           D7-829
-
-
-
-## Appendix D7 Pseudocode Index
-### D7.1 Pseudocode operators and keywords
-
-
-| **Table D7-1 Pseudocode operators and keywords (continued)** |
-| ------------------------------------------------------------- |
-
-| **Operator** | **Meaning** | **See** |
 | repeat ... until ... | Control structure | repeat ... until ... on page D6-820 |
 | return | Procedure or function return | Return statements on page D6-818 |
 | SEE | Points to other pseudocode to use instead | SEE... on page D6-818 |
@@ -37007,17 +34186,7 @@ ID021621                                              Non-Confidential          
 | while ... do ... | Control structure | while ... do on page D6-820 |
 
 
-D7-830      Copyright © 2006-2008, 2010, 2014, 2017, 2018, 2021 Arm Limited or its affiliates. All rights reserved.ARM DDI 0403E.e  
-            Non-Confidential ID021621
-
-
-
-## Appendix D7 Pseudocode Index
 ### D7.2 Pseudocode functions and procedures
-
-
-### D7.2 Pseudocode functions and procedures
-
 
 Table D7-2 lists the pseudocode functions and procedures used in this manual, and is an index to their descriptions:
 
@@ -37049,19 +34218,6 @@ Table D7-2 lists the pseudocode functions and procedures used in this manual, an
 | ClearExclusiveByAddress() | Clear local exclusive monitor records for an <br>address range | Pseudocode details of operations on exclusive <br>monitors on page B2-586 |
 | ClearExclusiveLocal() | Clear global exclusive monitor record for a <br>processor |  |
 | ConditionPassed() | Returns TRUE if the current instruction passes <br>its condition check | Pseudocode details of conditional execution on <br>page A7-178 |
-
-
-ARM DDI 0403E.cCopyright © 2006-2008, 2010, 2014, 2017, 2018, 2021 Arm Limited or its affiliates. All rights reserved.  
-ID021621                                                 Non-Confidential                                                D7-831
-
-
-
-## Appendix D7 Pseudocode Index
-### D7.2 Pseudocode functions and procedures
-
-
-| Function | Meaning | See |
-| ----------------------------------- | ----------------------------------------------------------------------- | --------------------------------------------------------------- |
 | Consistent() | Test identically-named instruction bits or fields are identical | Instruction encoding diagrams and pseudocode on page D6-804 |
 | ConsumptionofSpeculativeDataBarrier() | Perform a Consumption of Speculative Data Barrier | ConsumptionOfSpeculativeDataBarrier() on page D6-822 |
 | Coproc_Accepted() | Determine whether a coprocessor accepts an instruction | Coproc_Accepted() on page D6-822 |
@@ -37083,18 +34239,6 @@ ID021621                                                 Non-Confidential       
 | DataMemoryBarrier() | Perform a Data Memory Barrier operation | DataMemoryBarrier() on page D6-823 |
 | DataSynchronizationBarrier() | Perform a Data Synchronization Barrier operation | DataSynchronizationBarrier() on page D6-823 |
 | Deactivate() | Removal of Active state from an exception as part of the exception return | Exception return behavior on page B1-539 |
-
-
-Table D7-2 Pseudocode functions and procedures (continued)
-
-
-
-## Appendix D7 Pseudocode Index
-### D7.2 Pseudocode functions and procedures
-
-
-| Function | Meaning | See |
-| ---------------------------- | --------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
 | DecodeImmShift() | Decode shift type and amount for an immediate shift | Shift operations on page A7-183 |
 | DefaultMemoryAttributes() | Determine memory attributes for an address in the default memory map | Default memory access decode on page B2-588 |
 | DefaultPermissions() | Defines memory access permissions for the default memory map | MPU pseudocode on page B3-633 |
@@ -37118,19 +34262,6 @@ Table D7-2 Pseudocode functions and procedures (continued)
 | FPCompare() | Floating-point comparison, producing NZCV flags result | FP comparisons on page A2-53 |
 | FPDefaultNaN() | Generate floating-point default NaN | Generation of specific floating-point values on page A2-46 |
 | FPDiv() | Floating-point division | FP multiplication and division on page A2-54 |
-
-
-_ARM DDI 0403E.eCopyright © 2006-2008, 2010, 2014, 2017, 2018, 2021 Arm Limited or its affiliates. All rights reserved._
-_ID021621 Non-Confidential D7-833_
-
-
-
-## Appendix D7 Pseudocode Index
-### D7.2 Pseudocode functions and procedures
-
-
-| Function | Meaning | See |
-| ---------------------------- | ------------------------------------------------------------------------- | --------------------------------------------------------------- |
 | FPHalfToSingle() | Convert half-precision floating-point to single-precision floating-point | FP conversions on page A2-56 |
 | FPInfinity() | Generate floating-point infinity | Generation of specific floating-point values on page A2-46 |
 | FPMaxNormal() | Generate maximum normalized floating-point value |  |
@@ -37154,24 +34285,6 @@ _ID021621 Non-Confidential D7-833_
 | HaveDSPExt() | Returns TRUE if the implementation includes the DSP extension | HaveDSPExt() on page D6-824 |
 | HaveFPExt() | Returns TRUE if the implementation includes the FP extension | HaveFPExt() on page D6-824 |
 | Hint_Debug() | Perform function of DBG hint instruction | Hint_Debug() on page D6-824 |
-
-
-D7-834
-
-Copyright © 2006-2008, 2010, 2014, 2017, 2018, 2021 Arm Limited or its affiliates. All rights reserved.ARM DDI 0403E.e  
-Non-Confidential                                                   ID021621
-
-
-
-
-## Appendix D7 Pseudocode Index
-
-### D7.2 Pseudocode functions and procedures
-
-
-
-| Function | Meaning | See |
-| -------------------------------- | ----------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
 | Hint_PreloadData() | Perform function of PLD memory hint instruction | Hint_PreloadData() on page D6-824 |
 | Hint_PreloadInstr() | Perform function of PLI memory hint instruction | Hint_PreloadInstr() on page D6-824 |
 | Hint_SendEvent() | Perform function of SEV hint instruction | Hint_SendEvent() on page D6-824 |
@@ -37195,19 +34308,6 @@ Non-Confidential                                                   ID021621
 | LoadWritePC() | Write value to PC, with interworking | Pseudocode details of Arm core register operations on page A2-30 |
 | LookUpSP() | Select the current SP | Pseudocode details of Arm core register accesses on page B1-521 |
 | LowestSetBit() | Position of rightmost 1 in a bitstring | Lowest and highest set bits of a bitstring on page D6-815 |
-
-
-ARM DDI 0403E.eCopyright © 2006-2008, 2010, 2014, 2017, 2018, 2021 Arm Limited or its affiliates. All rights reserved.
-ID021621                                                                                     Non-Confidential
-
-
-
-## Appendix D7 Pseudocode Index
-### D7.2 Pseudocode functions and procedures
-
-
-| Function | Meaning | See |
-| ------------------------ | ------------------------------------------------------------------------ | ---------------------------------------------------------- |
 | LSL_C() | Logical shift left of a bitstring, with carry output | Shift and rotate operations on page A2-26 |
 | LSL() | Logical shift left of a bitstring |  |
 | LSR_C() | Logical shift right of a bitstring, with carry output | Shift and rotate operations on page A2-26 |
@@ -37232,18 +34332,6 @@ ID021621                                                                        
 | Replicate() | Bitstring replication | Bitstring concatenation and replication on page D6-814 |
 | ResetSCSRegs() | Resets the SCS registers with defined reset values to those values | ResetSCSRegs() on page D6-825 |
 | ReturnAddress() | Return address stacked on exception entry | Exception entry behavior on page B1-531 |
-
-
-Table D7-2 Pseudocode functions and procedures (continued)
-
-
-
-## Appendix D7 Pseudocode Index
-### D7.2 Pseudocode functions and procedures
-
-
-| Function | Meaning | See |
-| ------------------------------------ | -------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
 | ROR_C() | Rotate right of a bitstring, with carry output | Shift and rotate operations on page A2-26 |
 | ROR() | Rotate right of a bitstring |  |
 | RoundDown() | Round real to integer, rounding towards–infinity | Rounding and aligning on page D6-817 |
@@ -37266,19 +34354,6 @@ Table D7-2 Pseudocode functions and procedures (continued)
 | SInt() | Convert bitstring to integer in signed (two's complement) fashion | Converting bitstrings to integers on page D6-815 |
 | SleepOnExit() | Optionally returns processor to a power-saving mode on return from the only active exception | Exception return operation on page B1-541 |
 | SpeculativeSynchronizationBarrierToPA() | Perform a PSSBB instruction | SpeculativeSynchronizationBarrierToPA() on page D6-825 |
-
-
-ARM DDI 0403E.eCopyright © 2006-2008, 2010, 2014, 2017, 2018, 2021 Arm Limited or its affiliates. All rights reserved.  
-ID021621                                                                                                      Non-Confidential                                                                                  D7-837
-
-
-
-## Appendix D7 Pseudocode Index
-### D7.2 Pseudocode functions and procedures
-
-
-| Function | Meaning | See |
-| ------------------------------------ | ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
 | SpeculativeSynchronizationBarrierToVA() | Perform a SSBB instruction | SpeculativeSynchronizationBarrierToVA() on page D6-825 |
 | Sqrt() | Calculate a square root | Square root on page D6-817 |
 | StandardFPSCRValue() | Returns the FPSCR value that selects Arm | Selection of Arm standard floating-point arithmetic |
@@ -37310,39 +34385,13 @@ ID021621                                                                        
 |  | implementation of 16 doubleword registers |  |
 | WaitForEvent() | Wait until WFE instruction completes | Pseudocode details of the Wait For Event lock mechanism on page B1-561 |
 | WaitForInterrupt() | Wait until WFI instruction completes | Pseudocode details of Wait For Interrupt on page B1-563 |
-
-
-Copyright © 2006-2008, 2010, 2014, 2017, 2018, 2021 Arm Limited or its affiliates. All rights reserved.ARM DDI 0403E.e  
-Non-Confidential                                                                                                                                 ID021621
-
-
-
-## Appendix D7 Pseudocode Index
-### D7.2 Pseudocode functions and procedures
-
-
-| Function | Meaning | See |
-| ------------------ | ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
 | WriteToRegField() | Indicate a write of 1 to a specified field in a | [External interrupt input behavior on page B3-625](#) |
 |  | system control register |  |
 | ZeroExtend() | Extend bitstring to left with zero bits | [Zero-extension and sign-extension of bitstrings on page D6-815](#) |
 | Zeros() | All-zeros bitstring | [Bitstring concatenation and replication on page D6-814](#) |
 
 
-ARM DDI 0403E.eCopyright © 2006-2008, 2010, 2014, 2017, 2018, 2021 Arm Limited or its affiliates. All rights reserved.  
-ID021621 Non-Confidential                                                                                D7-839
-
-
-
-## Appendix D7 Pseudocode Index
-### D7.2 Pseudocode functions and procedures
-
-
-
-
-## Appendix D8
-
-Register Index
+## Appendix D8: Register Index
 
 
 This appendix provides an index to the descriptions of the Arm registers in this manual. It includes the Arm core registers and the memory mapped registers, and contains the following sections:
@@ -37350,11 +34399,6 @@ This appendix provides an index to the descriptions of the Arm registers in this
 - _Floating-point Extension registers on page D8-843._
 - _Memory mapped System registers on page D8-844._
 - _Memory-mapped debug registers on page D8-847._
-
-
-
-## Appendix D8 Register Index
-### D8.1 Arm core registers
 
 
 ### D8.1 Arm core registers
@@ -37379,11 +34423,6 @@ This appendix provides an index to the descriptions of the Arm registers in this
 
 
 Table D8-1 Arm core register index
-
-
-
-## Appendix D8 Register Index
-### D8.2 Floating-point Extension registers
 
 
 ### D8.2 Floating-point Extension registers
@@ -37412,11 +34451,6 @@ The Floating-point Extension provides two alternative views of its set of data r
 • The doubleword view sees the registers as 64-bit registers D0-D15.
 
 For more information see The FP extension registers on page A2-35.
-
-
-
-## Appendix D8 Register Index
-### D8.3 Memory mapped System registers
 
 
 ### D8.3 Memory mapped System registers
@@ -37461,8 +34495,6 @@ Table D8-2 provides an index to the main descriptions of the memory mapped syste
 Table D8-2 Memory-mapped System register index
 
 
-
-## Appendix D8 Register Index
 ### D8.3 Memory-mapped System registers
 
 
@@ -37500,25 +34532,12 @@ Table D8-2 Memory-mapped System register index
 | SHPR2 | System Handler Priority Register 2, SHPR2 on page B3-606 | - |
 | SHPR3 | System Handler Priority Register 3, SHPR3 on page B3-607 | - |
 | STIR | Software Triggered Interrupt Register, STIR on page B3-619 | - |
-
-
-## Appendix D8 Register Index
-### D8.3 Memory-mapped System registers
-
-
-| Register | See | Notes |
-| ------------- | ---------------------------------------------------------------------------------------- | ------- |
 | SYST_CALIB | _SysTick Calibration value Register, SYST_CALIB on page B3-623_ | - |
 | SYST_CSR | _SysTick Control and Status Register, SYST_CSR on page B3-621_ | - |
 | SYST_CVR | _SysTick Current Value Register, SYST_CVR on page B3-622_ | - |
 | SYST_RVR | _SysTick Reload Value Register, SYST_RVR on page B3-622_ | - |
 | UFSR | _UsageFault Status Register, UFSR on page B3-611_ | - |
 | VTOR | _Vector Table Offset Register, VTOR on page B3-601_ | - |
-
-
-Copyright © 2006-2008, 2010, 2014, 2017, 2018, 2021 Arm Limited or its affiliates. All rights reserved.ARM DDI 0403E.e  
-Non-Confidential                                                                                      ID021621
-
 
 
 ### D8.4 Memory-mapped debug registers
@@ -37560,19 +34579,6 @@ information about these see:
 | ITM_TPR | Trace Privilege Register, ITM_TPR on page C1-715 |
 | TPIU_ACPR | Asynchronous Clock Prescaler Register, TPIU_ACPR on page C1-752 |
 | TPIU_CSPPR | Current Parallel Port Size Register, TPIU_CSPPR on page C1-751 |
-
-
-## Appendix D8 Register Index
-### D8.4 Memory-mapped debug registers
-
-
-
-## Appendix D8 Register Index
-### D8.4 Memory-mapped debug registers
-
-
-| Register | Description, see |
-| --------------- | --------------------------------------------------------------------------------------------------------- |
 | TPIU_SPPR | *Selected Pin Protocol Register, TPIU_SPPR on page C1-752* |
 | TPIU_SPPSR | *Supported Parallel Port Sizes Register, TPIU_SPPSR on page C1-751* |
 | TPIU_TYPE | *TPIU Type register, TPIU_TYPE on page C1-753* |
@@ -37581,9 +34587,6 @@ information about these see:
 a. In addition to the registers listed, debug support includes bits in the ICSR, see *Interrupt Control and State Register, ICSR on page B3-599*.
 
 
-
-
-Glossary
 
 
 **AAPCS**  
@@ -38072,7 +35075,7 @@ Represent an integer in the range –2^N–1 to +2^N–1–1, using two's comple
 
 Signed immediate and offset fields
 
-Are encoded in two’s complement notation unless otherwise stated.
+Are encoded in two's complement notation unless otherwise stated.
 
 
 SIMD

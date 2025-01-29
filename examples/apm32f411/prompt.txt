@@ -1,0 +1,48 @@
+# REQUEST
+# =======
+You are given the following data from the MCU:
+- snippet from `user_manual.pdf` (aka "the document")
+- snippet from `APM32F411.svd` (aka "the svd snippet")
+
+Together we will update the SVD file of the `APM32F411` MCU. We will do it register-by-register. I ask you to "update register XXX". This is how we'll work:
+
+Extract the register data from the svd snippet. Process each `<field>` (bitfield) in there as follows:
+
+    - Retain the `<name>` value as-is.
+
+    - Add or update the `<displayName>` tag with the full name of the bitfield.
+
+    - Add or update the `<description>` tag with an accurate description from the document. The description should clarify in a few words what the bitfield does/means.
+
+    - Retain the `<bitOffset>` value as-is.
+
+    - Retain the `<bitWidth>` value as-is.
+
+    - Retain the `<access>` tag or add it based on the document.
+
+    - Add `<enumeratedValues>` with enumerations for the bitfield based on the document. Within each `<enumeratedValue>` tag should be the following tags: `<name>`, `<description>` and `<value>`.
+
+    - Add a vendor extension tag for the bitfield, to indicate if it is a "runtime" or a "setting" bitfield. For example:
+    ```
+    <vendorExtensions>
+      <embeetle:fieldKind>runtime</embeetle:fieldKind>
+    </vendorExtensions>
+    ```
+    A setting bitfield is a bitfield that you'd typically configue in an initialization function for
+    the given peripheral, for example enabling an interrupt. A runtime bitfield would rather be used
+    in "runtime functions" that you invoke to do things with the peripheral (eg. send or receive
+    data, ...) *after* it has been initialized.
+
+# USER MANUAL SNIPPET
+# ===================
+```markdown
+...
+```
+
+# SVD SNIPPET
+# ===========
+```svd
+...
+```
+
+Ready? Let's start with updating register `DATA`.

@@ -1,283 +1,245 @@
-User Manual
-
-
-APM32F411xCxE
+# User Manual APM32F411xCxE
 
 Arm® Cortex®-M4F core-based 32-bit MCU
-
 Version: V 1.4
-
 © Geehy Semiconductor Co., Ltd.
 
 
 
-Contents
+## Table of Contents
 
-# 1 Introduction and document description rules ......................................... 7
+1. [Introduction and document description rules (p.7)](#1-introduction-and-document-description-rules)
+   - [1.1 Introduction (p.7)](#11-introduction)
+   - [1.2 Document description rules (p.7)](#12-document-description-rules)
 
-## 1.1 Introduction ...................................................................................................................... 7
-## 1.2 Document description rules ............................................................................................. 7
+2. [System architecture (p.11)](#2-system-architecture)
+   - [2.1 Full Name and Abbreviation of Terms (p.11)](#21-full-name-and-abbreviation-of-terms)
+   - [2.2 System architecture block diagram (p.11)](#22-system-architecture-block-diagram)
+   - [2.3 Memory mapping (p.13)](#23-memory-mapping)
+   - [2.4 Startup configuration (p.13)](#24-startup-configuration)
 
-# 2 System architecture .................................................................................. 11
+3. [Flash memory (p.15)](#3-flash-memory)
+   - [3.1 Full Name and Abbreviation of Terms (p.15)](#31-full-name-and-abbreviation-of-terms)
+   - [3.2 Introduction (p.15)](#32-introduction)
+   - [3.3 Main characteristics (p.15)](#33-main-characteristics)
+   - [3.4 Flash memory structure (p.16)](#34-flash-memory-structure)
+   - [3.5 Functional description (p.16)](#35-functional-description)
+   - [3.6 Register address mapping (p.23)](#36-register-address-mapping)
+   - [3.7 Register functional description (p.23)](#37-register-functional-description)
 
-## 2.1 Full Name and Abbreviation of Terms ............................................................................. 11
-## 2.2 System architecture block diagram.................................................................................. 11
-## 2.3 Memory mapping ............................................................................................................ 13
-## 2.4 Startup configuration ....................................................................................................... 13
+4. [Static Memory Controller (SMC) (p.28)](#4-static-memory-controller-smc)
+   - [4.1 Full Name and Abbreviation Description of Terms (p.28)](#41-full-name-and-abbreviation-description-of-terms)
+   - [4.2 SMC Introduction (p.28)](#42-smc-introduction)
+   - [4.3 SMC Structure Block Diagram (p.28)](#43-smc-structure-block-diagram)
+   - [4.4 SMC Functional Description (p.29)](#44-smc-functional-description)
+   - [4.5 SMC register address mapping (p.35)](#45-smc-register-address-mapping)
+   - [4.6 SMC register functional description (p.35)](#46-smc-register-functional-description)
 
-# 3 Flash memory ................................................................................................ 15
+5. [System configuration controller (SYSCFG) (p.45)](#5-system-configuration-controller-syscfg)
+   - [5.1 Main characteristics (p.45)](#51-main-characteristics)
+   - [5.2 I/O compensation cell (p.45)](#52-io-compensation-cell)
+   - [5.3 Register address mapping (p.45)](#53-register-address-mapping)
+   - [5.4 Register functional description (p.45)](#54-register-functional-description)
 
-## 3.1 Full Name and Abbreviation of Terms ............................................................................. 15
-## 3.2 Introduction...................................................................................................................... 15
-## 3.3 Main characteristics ........................................................................................................ 15
-## 3.4 Flash memory structure .................................................................................................. 16
-## 3.5 Functional description ..................................................................................................... 16
-## 3.6 Register address mapping .............................................................................................. 23
-## 3.7 Register functional description ....................................................................................... 23
+6. [Reset and clock (RCM) (p.50)](#6-reset-and-clock-rcm)
+   - [6.1 Full Name and Abbreviation of Terms (p.50)](#61-full-name-and-abbreviation-of-terms)
+   - [6.2 Reset management unit (RMU) (p.50)](#62-reset-management-unit-rmu)
+   - [6.3 Clock Management Unit (CMU) (p.52)](#63-clock-management-unit-cmu)
+   - [6.4 Register address mapping (p.60)](#64-register-address-mapping)
+   - [6.5 Register functional description (p.61)](#65-register-functional-description)
 
-# 4 Static Memory Controller (SMC) ............................................................. 28
+7. [Power management unit (PMU) (p.87)](#7-power-management-unit-pmu)
+   - [7.1 Full Name and Abbreviation of Terms (p.87)](#71-full-name-and-abbreviation-of-terms)
+   - [7.2 Introduction (p.87)](#72-introduction)
+   - [7.3 Structure block diagram (p.88)](#73-structure-block-diagram)
+   - [7.4 Functional Description (p.88)](#74-functional-description)
+   - [7.5 Register address mapping (p.95)](#75-register-address-mapping)
+   - [7.6 Register functional description (p.95)](#76-register-functional-description)
 
-## 4.1 Full Name and Abbreviation Description of Terms ......................................................... 28
-## 4.2 SMC Introduction ............................................................................................................ 28
-## 4.3 SMC Structure Block Diagram ....................................................................................... 28
-## 4.4 SMC Functional Description ........................................................................................... 29
-## 4.5 SMC register address mapping ....................................................................................... 35
-## 4.6 SMC register functional description ................................................................................ 35
+8. [Nested Vector Interrupt Controller (NVIC) (p.99)](#8-nested-vector-interrupt-controller-nvic)
+   - [8.1 Full Name and Abbreviation of Terms (p.99)](#81-full-name-and-abbreviation-of-terms)
+   - [8.2 Introduction (p.99)](#82-introduction)
+   - [8.3 Main characteristics (p.99)](#83-main-characteristics)
+   - [8.4 Interrupt and exception vector table (p.99)](#84-interrupt-and-exception-vector-table)
 
-# 5 System configuration controller (SYSCFG) ............................................. 45
+9. [External interrupt/event controller (EINT) (p.104)](#9-external-interruptevent-controller-eint)
+   - [9.1 Introduction (p.104)](#91-introduction)
+   - [9.2 Main characteristics (p.104)](#92-main-characteristics)
+   - [9.3 Functional Description (p.104)](#93-functional-description)
+   - [9.4 Register address mapping (p.107)](#94-register-address-mapping)
+   - [9.5 Register functional description (p.107)](#95-register-functional-description)
 
-## 5.1 Main characteristics ........................................................................................................ 45
-## 5.2 I/O compensation cell ...................................................................................................... 45
-## 5.3 Register address mapping .............................................................................................. 45
-## 5.4 Register functional description ........................................................................................ 45
+10. [Direct memory access (DMA) (p.111)](#10-direct-memory-access-dma)
+    - [10.1 Introduction (p.111)](#101-introduction)
+    - [10.2 Main characteristics (p.111)](#102-main-characteristics)
+    - [10.3 Functional Description (p.111)](#103-functional-description)
+    - [10.4 DMA register address mapping (p.118)](#104-dma-register-address-mapping)
+    - [10.5 Register functional description (p.118)](#105-register-functional-description)
 
-# 6 Reset and clock (RCM) .............................................................................. 50
+11. [Debug MCU (DBGMCU) (p.127)](#11-debug-mcu-dbgmcu)
+    - [11.1 Full Name and Abbreviation of Terms (p.127)](#111-full-name-and-abbreviation-of-terms)
+    - [11.2 Introduction (p.127)](#112-introduction)
+    - [11.3 Main characteristics (p.127)](#113-main-characteristics)
+    - [11.4 Functional Description (p.128)](#114-functional-description)
+    - [11.5 Register address mapping (p.129)](#115-register-address-mapping)
+    - [11.6 Register functional description (p.129)](#116-register-functional-description)
 
-## 6.1 Full Name and Abbreviation of Terms ............................................................................. 50
-## 6.2 Reset management unit (RMU) ...................................................................................... 50
-## 6.3 Clock Management Unit (CMU) ..................................................................................... 52
-## 6.4 Register address mapping .............................................................................................. 60
-## 6.5 Register functional description ........................................................................................ 61
+12. [General-Purpose Input/Output Pin (GPIO) (p.134)](#12-general-purpose-inputoutput-pin-gpio)
+    - [12.1 Full Name and Abbreviation of Terms (p.134)](#121-full-name-and-abbreviation-of-terms)
+    - [12.2 Main characteristics (p.134)](#122-main-characteristics)
+    - [12.3 Structure block diagram (p.135)](#123-structure-block-diagram)
+    - [12.4 Functional Description (p.135)](#124-functional-description)
+    - [12.5 Register address mapping (p.139)](#125-register-address-mapping)
+    - [12.6 Register functional description (p.139)](#126-register-functional-description)
 
-# 7 Power management unit (PMU) ............................................................ 87
+13. [Timer overview (p.144)](#13-timer-overview)
+    - [13.1 Full Name and Abbreviation of Terms (p.144)](#131-full-name-and-abbreviation-of-terms)
+    - [13.2 Timer category and main difference (p.144)](#132-timer-category-and-main-difference)
 
+14. [Advanced Timers (TMR1/8) (p.147)](#14-advanced-timers-tmr18)
+    - [14.1 Introduction (p.147)](#141-introduction)
+    - [14.2 Main characteristics (p.147)](#142-main-characteristics)
+    - [14.3 Structure block diagram (p.148)](#143-structure-block-diagram)
+    - [14.4 Functional Description (p.148)](#144-functional-description)
+    - [14.5 Register address mapping (p.166)](#145-register-address-mapping)
+    - [14.6 Register functional description (p.167)](#146-register-functional-description)
 
+15. [General-purpose timer (TMR2/3/4/5) (p.187)](#15-general-purpose-timer-tmr2345)
+    - [15.1 Introduction (p.187)](#151-introduction)
+    - [15.2 Main characteristics (p.187)](#152-main-characteristics)
+    - [15.3 Structure block diagram (p.188)](#153-structure-block-diagram)
+    - [15.4 Functional Description (p.188)](#154-functional-description)
+    - [15.5 Register address mapping (p.201)](#155-register-address-mapping)
+    - [15.6 Register functional description (p.202)](#156-register-functional-description)
 
-## 7.1     Full Name and Abbreviation of Terms ................................................................................ 87
-## 7.2     Introduction .............................................................................................................................. 87
-## 7.3     Structure block diagram ......................................................................................................... 88
-## 7.4     Functional Description .......................................................................................................... 88
-## 7.5     Register address mapping ................................................................................................... 95
-## 7.6     Register functional description ........................................................................................... 95
-# 8       Nested Vector Interrupt Controller (NVIC) ................................................. 99
-## 8.1     Full Name and Abbreviation of Terms ................................................................................ 99
-## 8.2     Introduction .............................................................................................................................. 99
-## 8.3     Main characteristics ................................................................................................................ 99
-## 8.4     Interrupt and exception vector table ................................................................................... 99
-# 9       External interrupt/event controller (EINT) ................................................. 104
-## 9.1     Introduction ........................................................................................................................... 104
-## 9.2     Main characteristics ............................................................................................................ 104
-## 9.3     Functional Description ....................................................................................................... 104
-## 9.4     Register address mapping ................................................................................................ 107
-## 9.5     Register functional description ........................................................................................ 107
-# 10      Direct memory access (DMA) ................................................................. 111
-## 10.1   Introduction ........................................................................................................................... 111
-## 10.2   Main characteristics ............................................................................................................ 111
-## 10.3   Functional Description ....................................................................................................... 111
-## 10.4   DMA register address mapping ......................................................................................... 118
-## 10.5   Register functional description ......................................................................................... 118
-# 11      Debug MCU (DBGMCU) ........................................................................... 127
-## 11.1   Full Name and Abbreviation of Terms .............................................................................. 127
-## 11.2   Introduction ........................................................................................................................... 127
-## 11.3   Main characteristics ............................................................................................................ 127
-## 11.4   Functional Description ....................................................................................................... 128
-## 11.5   Register address mapping ................................................................................................ 129
-## 11.6   Register functional description ........................................................................................ 129
-# 12     General-Purpose Input/Output Pin (GPIO) .............................................. 134
-## 12.1   Full Name and Abbreviation of Terms .............................................................................. 134
-## 12.2   Main characteristics ............................................................................................................ 134
-## 12.3   Structure block diagram ..................................................................................................... 135
-## 12.4   Functional Description ....................................................................................................... 135
-## 12.5   Register address mapping ................................................................................................ 139
-## 12.6   Register functional description ........................................................................................ 139
+16. [General-purpose timers (TMR9/10/11/12/13/14) (p.219)](#16-general-purpose-timers-tmr91011121314)
+    - [16.1 Introduction (p.219)](#161-introduction)
+    - [16.2 Main characteristics of TMR9/12 (p.219)](#162-main-characteristics-of-tmr912)
+    - [16.3 Main characteristics of TMR10/11/13/14 (p.219)](#163-main-characteristics-of-tmr10111314)
+    - [16.4 TMR9/12 structure block diagram (p.220)](#164-tmr912-structure-block-diagram)
+    - [16.5 TMR10/11/13/14 structure block diagram (p.221)](#165-tmr10111314-structure-block-diagram)
+    - [16.6 Functional Description (p.221)](#166-functional-description)
+    - [16.7 TMR9/12 register address mapping (p.227)](#167-tmr912-register-address-mapping)
+    - [16.8 TMR9/12 register functional description (p.228)](#168-tmr912-register-functional-description)
+    - [16.9 TMR10/11/13/14 register address mapping (p.237)](#169-tmr10111314-register-address-mapping)
+    - [16.10 TMR10/11/13/14 register functional description (p.238)](#1610-tmr10111314-register-functional-description)
 
-www.geehy.com                                                                                                           Page 2
+17. [Watchdog timer (WDT) (p.246)](#17-watchdog-timer-wdt)
+    - [17.1 Introduction (p.246)](#171-introduction)
+    - [17.2 Independent watchdog timer (IWDT) (p.246)](#172-independent-watchdog-timer-iwdt)
+    - [17.3 Window watchdog timer (WWDT) (p.248)](#173-window-watchdog-timer-wwdt)
+    - [17.4 IWDT register address mapping (p.249)](#174-iwdt-register-address-mapping)
+    - [17.5 IWDT register functional description (p.250)](#175-iwdt-register-functional-description)
+    - [17.6 WWDT register address mapping (p.251)](#176-wwdt-register-address-mapping)
+    - [17.7 WWDT register functional description (p.251)](#177-wwdt-register-functional-description)
 
+18. [Real-time clock (RTC) (p.253)](#18-real-time-clock-rtc)
+    - [18.1 Full Name and Abbreviation of Terms (p.253)](#181-full-name-and-abbreviation-of-terms)
+    - [18.2 Introduction (p.253)](#182-introduction)
+    - [18.3 Main characteristics (p.253)](#183-main-characteristics)
+    - [18.4 Structure block diagram (p.253)](#184-structure-block-diagram)
+    - [18.5 Functional Description (p.254)](#185-functional-description)
+    - [18.6 Register address mapping (p.260)](#186-register-address-mapping)
+    - [18.7 Register functional description (p.260)](#187-register-functional-description)
 
+19. [Universal synchronous/asynchronous transceiver (USART) (p.276)](#19-universal-synchronousasynchronous-transceiver-usart)
+    - [19.1 Full Name and Abbreviation of Terms (p.276)](#191-full-name-and-abbreviation-of-terms)
+    - [19.2 Introduction (p.276)](#192-introduction)
+    - [19.3 Main characteristics (p.276)](#193-main-characteristics)
+    - [19.4 Functional Description (p.278)](#194-functional-description)
+    - [19.5 Register address mapping (p.292)](#195-register-address-mapping)
+    - [19.6 Register functional description (p.292)](#196-register-functional-description)
 
-# 13  Timer overview.................................................................................. 144
-## 13.1  Full Name and Abbreviation of Terms ............................................................... 144
-## 13.2  Timer category and main difference ................................................................. 144
-# 14  Advanced Timers (TMR1/8) .............................................................. 147
-## 14.1  Introduction.......................................................................................................... 147
-## 14.2  Main characteristics ............................................................................................ 147
-## 14.3  Structure block diagram ...................................................................................... 148
-## 14.4  Functional Description ......................................................................................... 148
-## 14.5  Register address mapping ................................................................................... 166
-## 14.6  Register functional description ............................................................................ 167
-# 15  General-purpose timer (TMR2/3/4/5) ............................................. 187
-## 15.1  Introduction.......................................................................................................... 187
-## 15.2  Main characteristics ............................................................................................. 187
-## 15.3  Structure block diagram ....................................................................................... 188
-## 15.4  Functional Description ......................................................................................... 188
-## 15.5  Register address mapping ................................................................................... 201
-## 15.6  Register functional description ............................................................................ 202
-# 16  General-purpose timers (TMR9/10/11/12/13/14)............................. 219
-## 16.1  Introduction.......................................................................................................... 219
-## 16.2  Main characteristics of TMR9/12 .......................................................................... 219
-## 16.3  Main characteristics of TMR10/11/13/14 ............................................................. 219
-## 16.4  TMR9/12 structure block diagram ......................................................................... 220
-## 16.5  TMR10/11/13/14 structure block diagram .............................................................. 221
-## 16.6  Functional Description ......................................................................................... 221
-## 16.7  TMR9/12 register address mapping ..................................................................... 227
-## 16.8  TMR9/12 register functional description ............................................................... 228
-## 16.9  TMR10/11/13/14 register address mapping .......................................................... 237
-## 16.10  TMR10/11/13/14 register functional description .................................................. 238
-# 17  Watchdog timer (WDT) ...................................................................... 246
-## 17.1  Introduction.......................................................................................................... 246
-## 17.2  Independent watchdog timer (IWDT)..................................................................... 246
-## 17.3  Window watchdog timer (WWDT)........................................................................... 248
-## 17.4  IWDT register address mapping .......................................................................... 249
-## 17.5  IWDT register functional description ..................................................................... 250
-## 17.6  WWDT register address mapping ......................................................................... 251
-## 17.7  WWDT register functional description ................................................................... 251
-# 18  Real-time clock (RTC)....................................................................... 253
+20. [Internal integrated circuit interface (I2C) (p.301)](#20-internal-integrated-circuit-interface-i2c)
+    - [20.1 Full Name and Abbreviation of Terms (p.301)](#201-full-name-and-abbreviation-of-terms)
+    - [20.2 Introduction (p.301)](#202-introduction)
+    - [20.3 Main characteristics (p.301)](#203-main-characteristics)
+    - [20.4 Structure block diagram (p.303)](#204-structure-block-diagram)
+    - [20.5 Functional Description (p.303)](#205-functional-description)
+    - [20.6 Register address mapping (p.310)](#206-register-address-mapping)
+    - [20.7 Register functional description (p.311)](#207-register-functional-description)
 
+21. [Serial peripheral interface/Inter-IC sound interface (SPI/I2S) (p.321)](#21-serial-peripheral-interfaceinter-ic-sound-interface-spii2s)
+    - [21.1 Full Name and Abbreviation of Terms (p.321)](#211-full-name-and-abbreviation-of-terms)
+    - [21.2 Introduction (p.321)](#212-introduction)
+    - [21.3 Main characteristics (p.322)](#213-main-characteristics)
+    - [21.4 SPI functional description (p.323)](#214-spi-functional-description)
+    - [21.5 I2S functional description (p.334)](#215-i2s-functional-description)
+    - [21.6 Register address mapping (p.346)](#216-register-address-mapping)
+    - [21.7 Register functional description (p.347)](#217-register-functional-description)
 
+22. [Quad serial peripheral interface (QSPI) (p.354)](#22-quad-serial-peripheral-interface-qspi)
+    - [22.1 Introduction (p.354)](#221-introduction)
+    - [22.2 Main characteristics (p.354)](#222-main-characteristics)
+    - [22.3 Functional Description (p.354)](#223-functional-description)
+    - [22.4 Register address mapping (p.363)](#224-register-address-mapping)
+    - [22.5 Register functional description (p.364)](#225-register-functional-description)
 
-## 18.1  Full Name and Abbreviation of Terms..............................................................253
-## 18.2  Introduction........................................................................................................253
-## 18.3  Main characteristics .........................................................................................253
-## 18.4  Structure block diagram ..................................................................................253
-## 18.5  Functional Description ...................................................................................254
-## 18.6  Register address mapping.............................................................................260
-## 18.7  Register functional description.......................................................................260
+23. [Controller area network (CAN) (p.376)](#23-controller-area-network-can)
+    - [23.1 Full Name and Abbreviation Description of Terms (p.376)](#231-full-name-and-abbreviation-description-of-terms)
+    - [23.2 Introduction (p.376)](#232-introduction)
+    - [23.3 Main Features (p.376)](#233-main-features)
+    - [23.4 Functional Description (p.376)](#234-functional-description)
+    - [23.5 Register address mapping (p.385)](#235-register-address-mapping)
+    - [23.6 Register functional description (p.386)](#236-register-functional-description)
 
+24. [Secure digital input/output interface (SDIO) (p.404)](#24-secure-digital-inputoutput-interface-sdio)
+    - [24.1 Full Name and Abbreviation of Terms (p.404)](#241-full-name-and-abbreviation-of-terms)
+    - [24.2 Introduction (p.404)](#242-introduction)
+    - [24.3 Main characteristics (p.404)](#243-main-characteristics)
+    - [24.4 Functional Description (p.404)](#244-functional-description)
+    - [24.5 Register address mapping (p.429)](#245-register-address-mapping)
+    - [24.6 Register functional description (p.429)](#246-register-functional-description)
 
-# 19  Universal synchronous/asynchronous transceiver (USART)........276
+25. [USB_OTG (p.441)](#25-usb_otg)
+    - [25.1 Introduction (p.441)](#251-introduction)
+    - [25.2 OTG_FS global register address mapping (p.441)](#252-otg_fs-global-register-address-mapping)
+    - [25.3 OTG_FS global register functional description (p.442)](#253-otg_fs-global-register-functional-description)
+    - [25.4 OTG_FS master mode register address mapping (p.457)](#254-otg_fs-master-mode-register-address-mapping)
+    - [25.5 OTG_FS host mode register functional description (p.457)](#255-otg_fs-host-mode-register-functional-description)
+    - [25.6 OTG_FS device mode register address mapping (p.464)](#256-otg_fs-device-mode-register-address-mapping)
+    - [25.7 OTG_FS device mode register functional description (p.465)](#257-otg_fs-device-mode-register-functional-description)
+    - [25.8 Full-speed OTG power and clock gating control register (OTG_FS_PCGCTRL) (p.481)](#258-full-speed-otg-power-and-clock-gating-control-register-otg_fs_pcgctrl)
 
+26. [Analog-digital converter (ADC) (p.483)](#26-analog-digital-converter-adc)
+    - [26.1 Full Name and Abbreviation of Terms (p.483)](#261-full-name-and-abbreviation-of-terms)
+    - [26.2 Introduction (p.484)](#262-introduction)
+    - [26.3 Main characteristics (p.484)](#263-main-characteristics)
+    - [26.4 Functional Description (p.485)](#264-functional-description)
+    - [26.5 Register address mapping (p.494)](#265-register-address-mapping)
+    - [26.6 Register functional description (p.495)](#266-register-functional-description)
 
-## 19.1  Full Name and Abbreviation of Terms.............................................................276
-## 19.2  Introduction............................................................................................ ...........276
-## 19.3  Main characteristics ........................................................................................276
-## 19.4  Functional Description ...................................................................................278
-## 19.5  Register address mapping.............................................................................292
-## 19.6  Register functional description.......................................................................292
+27. [Comparator (COMP) (p.504)](#27-comparator-comp)
+    - [27.1 Full Name and Abbreviation of Terms (p.504)](#271-full-name-and-abbreviation-of-terms)
+    - [27.2 Introduction (p.504)](#272-introduction)
+    - [27.3 Main characteristics (p.504)](#273-main-characteristics)
+    - [27.4 Structure block diagram (p.505)](#274-structure-block-diagram)
+    - [27.5 Functional Description (p.505)](#275-functional-description)
+    - [27.6 Register address mapping (p.506)](#276-register-address-mapping)
+    - [27.7 Register functional description (p.506)](#277-register-functional-description)
 
+28. [Random number (RNG) (p.509)](#28-random-number-rng)
+    - [28.1 Introduction (p.509)](#281-introduction)
+    - [28.2 Main characteristics (p.509)](#282-main-characteristics)
+    - [28.3 Functional Description (p.509)](#283-functional-description)
+    - [28.4 Register address mapping (p.510)](#284-register-address-mapping)
+    - [28.5 Register functional description (p.510)](#285-register-functional-description)
 
-# 20  Internal integrated circuit interface (I2C).........................................301
+29. [Cyclic redundancy check computing unit (CRC) (p.513)](#29-cyclic-redundancy-check-computing-unit-crc)
+    - [29.1 Introduction (p.513)](#291-introduction)
+    - [29.2 Functional Description (p.513)](#292-functional-description)
+    - [29.3 Register address mapping (p.513)](#293-register-address-mapping)
+    - [29.4 Register functional description (p.513)](#294-register-functional-description)
 
+30. [Chip electronic signature (p.515)](#30-chip-electronic-signature)
+    - [30.1 Introduction (p.515)](#301-introduction)
+    - [30.2 Register functional description (p.515)](#302-register-functional-description)
 
-## 20.1  Full Name and Abbreviation of Terms.............................................................301
-## 20.2  Introduction.......................................................................................................301
-## 20.3  Main characteristics ........................................................................................301
-## 20.4  Structure block diagram ................................................................................303
-## 20.5  Functional Description ...................................................................................303
-## 20.6  Register address mapping.............................................................................310
-## 20.7  Register functional description.......................................................................311
-
-
-# 21  Serial peripheral interface/Inter-IC sound interface (SPI/I2S)..........321
-
-
-## 21.1  Full Name and Abbreviation of Terms.............................................................321
-## 21.2  Introduction.......................................................................................................321
-## 21.3  Main characteristics ........................................................................................322
-## 21.4  SPI functional description ..............................................................................323
-## 21.5  I2S functional description...............................................................................334
-## 21.6  Register address mapping.............................................................................346
-## 21.7  Register functional description.......................................................................347
-
-
-# 22  Quad serial peripheral interface (QSPI)...........................................354
-
-
-## 22.1  Introduction.......................................................................................................354
-## 22.2  Main characteristics ........................................................................................354
-## 22.3  Functional Description ...................................................................................354
-## 22.4  Register address mapping.............................................................................363
-## 22.5  Register functional description.......................................................................364
-
-
-# 23  Controller area network (CAN).......................................................376
-
-
-
-
-## 23.1 Full Name and Abbreviation Description of Terms...............................................376
-## 23.2 Introduction..........................................................................................................376
-## 23.3 Main Features .....................................................................................................376
-## 23.4 Functional Description .........................................................................................376
-## 23.5 Register address mapping .................................................................................385
-## 23.6 Register functional description.............................................................................386
-
-# 24 Secure digital input/output interface (SDIO) .................................................404
-
-## 24.1 Full Name and Abbreviation of Terms.................................................................404
-## 24.2 Introduction..........................................................................................................404
-## 24.3 Main characteristics ............................................................................................404
-## 24.4 Functional Description ........................................................................................404
-## 24.5 Register address mapping ..................................................................................429
-## 24.6 Register functional description............................................................................429
-
-# 25 USB_OTG ........................................................................................................441
-
-## 25.1 Introduction..........................................................................................................441
-## 25.2 OTG_FS global register address mapping ..........................................................441
-## 25.3 OTG_FS global register functional description...................................................442
-## 25.4 OTG_FS master mode register address mapping...............................................457
-## 25.5 OTG_FS host mode register functional description............................................457
-## 25.6 OTG_FS device mode register address mapping ...............................................464
-## 25.7 OTG_FS device mode register functional description.........................................465
-## 25.8 Full-speed OTG power and clock gating control register (OTG_FS_PCGCTRL)481
-
-# 26 Analog-digital converter (ADC) .................................................................483
-
-## 26.1 Full Name and Abbreviation of Terms.................................................................483
-## 26.2 Introduction..........................................................................................................484
-## 26.3 Main characteristics ............................................................................................484
-## 26.4 Functional Description ........................................................................................485
-## 26.5 Register address mapping ..................................................................................494
-## 26.6 Register functional description............................................................................495
-
-# 27 Comparator (COMP) ....................................................................................504
-
-## 27.1 Full Name and Abbreviation of Terms.................................................................504
-## 27.2 Introduction..........................................................................................................504
-## 27.3 Main characteristics ............................................................................................504
-## 27.4 Structure block diagram ......................................................................................505
-## 27.5 Functional Description ........................................................................................505
-## 27.6 Register address mapping ..................................................................................506
-## 27.7 Register functional description............................................................................506
-
-
-
-# 28  Random number (RNG)..............................................................................509
-## 28.1 Introduction.......................................................................................................................509
-## 28.2 Main characteristics .................................................................................................509
-## 28.3 Functional Description ..............................................................................................509
-## 28.4 Register address mapping .....................................................................................510
-## 28.5 Register functional description.................................................................................510
-# 29  Cyclic redundancy check computing unit (CRC)........................... 513
-## 29.1 Introduction.......................................................................................................................513
-## 29.2 Functional Description ..............................................................................................513
-## 29.3 Register address mapping .....................................................................................513
-## 29.4 Register functional description.................................................................................513
-# 30  Chip electronic signature.................................................................515
-## 30.1 Introduction.......................................................................................................................515
-## 30.2 Register functional description..................................................................................515
-# 31  Revision....................................................................................................516
-
-
+31. [Revision (p.516)](#31-revision)
 
 
 # 1 Introduction and document description rules
-
-
-
 ## 1.1 Introduction
-
-
 This user manual provides application developers with all the information about 
 how to use MCU (micro-controller unit) system architecture, memory and 
 peripherals.
@@ -1145,30 +1107,25 @@ Offset address: 0x14
 Reset value: 0x0FFF AAED  
 This register can be accessed only when there is no Flash operation ongoing.
 
-
-
-
-| Field | Name | R/W | Description |
-| --------- | ----------- | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 0 | OPTLOCK | R/S | Option Lock                                                                                                                                                             <br>When this bit is set to 1, it means that this register is locked; when the unlocking sequence is detected, it will be cleared to zero by hardware. |
-| 1 | OPTSTART | R/S | Option Start                                                                                                                                                            <br>After this bit is set to 1 by software, the option byte can be operated and it can be cleared to zero when the BUSY bit is cleared to zero. |
-| 3:2 | BORLVL | R/W | Brownout Reset Level                                                                                                                                                    <br>When the power supply voltage is less than the threshold of the brownout reset level, a reset will be generated.<br>00: Level 3, voltage range: 2.7V~3.6V<br>01: Level 2, voltage range: 2.4V~2.7V<br>10: Level 1, voltage range: 2.1V~2.4V<br>11: Disable; voltage range: 1.8V~2.1V |
-| 4 |  |  | Reserved |
-| 5 | WDTSEL | R/W | Watchdog Select                                                                                                                                                         <br>0: Software watchdog<br>1: Hardware watchdog |
-| 6 | RSTSTOP | R/W | nReset in STOP Mode                                                                                                                                                     <br>0: Reset occurs when entering the Stop mode<br>1: Reset does not occur when entering the Stop mode |
-| 7 | RSTSTDB | R/W | nReset in STANDBY Mode                                                                                                                                                  <br>0: Reset occurs when entering the Standby mode<br>1: Reset does not occur when entering the Standby mode |
-| 15:8 | RPROT | R/W | Read Protect                                                                                                                                                            <br>This bit is used to select the read protection level.<br>0xAA: Level 0<br>0xCC: Level 2<br>Others: Level 1 |
-| 23:16 | NWPROT | R/W | Not Write Protect                                                                                                                                                       <br>0: Write protection is enabled<br>1: Write protection is disabled<br>When PCROPEN is reset:<br>0: Write protection is enabled for Sector i<br>1: Write protection is disabled for Sector i<br>When PCROPEN is set:<br>0: PCROP protection is disabled for Sector i<br>1: PCROP protection is enabled for Sector i |
-| 30:24 |  |  | Reserved |
-| 31 | PCROPEN | R/W | PCROP Enable                                                                                                                                                            <br>0: Disable<br>1: Enable |
-
+| Field | Name     | R/W | Description |
+| ----- | -------- | --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 0     | OPTLOCK  | R/S | Option Lock<br>When this bit is set to 1, it means that this register is locked; when the unlocking sequence is detected, it will be cleared to zero by hardware. |
+| 1     | OPTSTART | R/S | Option Start<br>After this bit is set to 1 by software, the option byte can be operated and it can be cleared to zero when the BUSY bit is cleared to zero. |
+| 3:2   | BORLVL   | R/W | Brownout Reset Level<br>When the power supply voltage is less than the threshold of the brownout reset level, a reset will be generated.<br>00: Level 3, voltage range: 2.7V~3.6V<br>01: Level 2, voltage range: 2.4V~2.7V<br>10: Level 1, voltage range: 2.1V~2.4V<br>11: Disable; voltage range: 1.8V~2.1V |
+| 4     |          |     | Reserved                                                        |
+| 5     | WDTSEL   | R/W | Watchdog Select<br>0: Software watchdog<br>1: Hardware watchdog |
+| 6     | RSTSTOP  | R/W | nReset in STOP Mode<br>0: Reset occurs when entering the Stop mode<br>1: Reset does not occur when entering the Stop mode |
+| 7     | RSTSTDB  | R/W | nReset in STANDBY Mode<br>0: Reset occurs when entering the Standby mode<br>1: Reset does not occur when entering the Standby mode |
+| 15:8  | RPROT    | R/W | Read Protect<br>This bit is used to select the read protection level.<br>0xAA: Level 0<br>0xCC: Level 2<br>Others: Level 1 |
+| 23:16 | NWPROT   | R/W | Not Write Protect<br>0: Write protection is enabled<br>1: Write protection is disabled<br>When PCROPEN is reset:<br>0: Write protection is enabled for Sector i<br>1: Write protection is disabled for Sector i<br>When PCROPEN is set:<br>0: PCROP protection is disabled for Sector i<br>1: PCROP protection is enabled for Sector i |
+| 30:24 |          |     | Reserved                                |
+| 31    | PCROPEN  | R/W | PCROP Enable<br>0: Disable<br>1: Enable |
 
 Static Memory Controller (SMC)
 
 
 
 ## 4.1 Full Name and Abbreviation Description of Terms
-
 
 Table 15 Full Name and Abbreviation Description of Terms
 
@@ -1195,16 +1152,11 @@ Table 15 Full Name and Abbreviation Description of Terms
 
 
 ## 4.2 SMC Introduction
-
-
 SMC is used to manage the peripherals of extended static memory; it can convert AHB transmission signals to the appropriate external devices; there are four internal memory blocks, each of which controls different types of memory and is distinguished by chip selection signal; only one external device can be accessed at any moment; each memory block can be configured separately, and the timing can be programmed for external devices.
 
 
 ## 4.3 SMC Structure Block Diagram
-
-
 SMC consists of five parts: AHB bus interface, configuration register, NORFlash controller, NANDFlash/PC card controller and external device interface, specifically as shown in the figure below:
-
 
 
 Figure 2 SMC Block Diagram
@@ -1234,11 +1186,7 @@ Figure 2 SMC Block Diagram
 
 ## 4.4 SMC Functional Description
 
-
-
 ### 4.4.1 SMC access rules
-
-
 SMC is an interface for internal CPU to access external static memory through
 AHB bus. On AHB bus, the operation of 32-bit data will be converted into
 continuous 16 or 8-bit operation. In order to ensure the consistency of data
@@ -1260,15 +1208,7 @@ operation is allowed.
 
 
 ### 4.4.2 External device address mapping
-
-
-SMC divides external devices into multiple memory blocks, and different
-
-www.geehy.com                                                                    Page 29
-
-
-
-memory blocks control different external devices. The specific classification is shown in the table below:
+SMC divides external devices into multiple memory blocks, and different memory blocks control different external devices. The specific classification is shown in the table below:
 
 
 | Start address | End address | Memory block | Memory type supported |
@@ -1285,11 +1225,7 @@ memory blocks control different external devices. The specific classification is
 
 ### 4.4.3 NOR flash memory and PSRAM
 
-
-
 #### 4.4.3.1 Address mapping
-
-
 Memory block 1 is used to control NOR/PSRAM memory, and is divided into four 64MB areas of the same size. The selection of each area depends on the value of HADDR[27:26], and the specific information is as follows:
 
 
@@ -1308,8 +1244,6 @@ HADDR is the internal AHB address line that needs to be converted to the externa
 
 
 #### 4.4.3.2 Interface signal and controller
-
-
 The memory block 1 supports NOR Flash, PSRAM, SRAM and ROM external memory. There are corresponding chip selection signals NE[x] (x=1..4) in the
 
 
@@ -1329,7 +1263,7 @@ interface signals and functions are as follows:
 |  | Output | Multiplexing: A[25:16] is address bus |
 | AD[15:0] | Input/Output | Non-multiplexing: Bidirectional data bus |
 |  | Input/Output | Multiplexing: Bidirectional address/Data |
-| NL (＝NADV） | Output | Effective address signal |
+| NL (=NADV) | Output | Effective address signal |
 
 
 Table 19PSRAM Interface Signal
@@ -1344,7 +1278,7 @@ Table 19PSRAM Interface Signal
 | NWAIT | Input | Signal that PSRAM requires SMC to wait |
 | A[25:0] | Output | Address bus |
 | D[15:0] | Input/Output | Bidirectional data bus |
-| NL (＝NADV） | Output | Effective address signal |
+| NL (=NADV) | Output | Effective address signal |
 | NBL[1] | Output | High byte enable |
 | NBL[0] | Output | Low byte enable |
 
@@ -4332,9 +4266,9 @@ Reset value: 0xXXXX XXXX, X=undefined bit
 
 | Field | Name | R/W | Description |
 | ------- | ------ | ----- | ---------------------------------------------------------------------------------------- |
-| 11:0 | EQR | R | Equipment Recognition                                                                  <br>APM32F411xCxE series products: 0x431 or 0x433;<br>The debugger/programming tool identifies chips by QR (11:0). |
+| 11:0 | EQR | R | Equipment Recognition<br>APM32F411xCxE series products: 0x431 or 0x433;<br>The debugger/programming tool identifies chips by QR (11:0). |
 | 15:12 |  |  | Reserved |
-| 31:16 | WVR | R | Wafer Version Recognition                                                              <br>This domain identifies wafer information<br>APM32F411xCxE series products version A: 0x0015 |
+| 31:16 | WVR | R | Wafer Version Recognition<br>This domain identifies wafer information<br>APM32F411xCxE series products version A: 0x0015 |
 
 
 ### 11.6.2 Debug MCU configuration register (DBGMCU_CFG)
@@ -8934,12 +8868,12 @@ Reset value of backup domain: 0x0000 0000
 System reset: 0xXXXX XXXX
 
 
-| Field | Name | R/W | Description |
-| ------- | ------- | ----- | ------------- |
-| 14:0 | SUBSEC | R/W | Sub Second Value Setup<br>The subsecond value is compared with the value in the synchronous prescaler counter to determine whether to activate the alarm B, and only the bits from 0 to MASKSEL-1 are compared. |
-| 23:15 |  |  | Reserved |
+| Field | Name    | R/W | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+|-------|---------|-----|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 14:0  | SUBSEC  | R/W | Sub Second Value Setup<br>The subsecond value is compared with the value in the synchronous prescaler counter to determine whether to activate the alarm B, and only the bits from 0 to MASKSEL-1 are compared.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| 23:15 |         |     | Reserved                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | 27:24 | MASKSEL | R/W | Mask the Most-significant Bits Starting at This Bit Select<br>0x0: Alarm B is not compared. The alarm is set when the second unit increases by 1<br>0x1: When comparing with alarm B, SUBSEC[14:1] is not involved, and only SUBSEC[0] is involved<br>0x2: When comparing with alarm B, SUBSEC[14:2] is not involved, and only SUBSEC[1:0] is involved<br>3: When comparing with alarm B, SUBSEC[14:3] is not involved, and only SUBSEC[2:0] is involved<br>...<br>0xC: When comparing with alarm B, SUBSEC[14:12] is not involved, and only SUBSEC[11:0] is involved<br>0xD: When comparing with alarm B, SUBSEC[14:13] is not involved, and only SUBSEC[12:0] is involved<br>0xE: When comparing with alarm B, SUBSEC[14] is not involved, and only SUBSEC[13:0] is involved<br>0xF: When comparing with alarm B, 15 SUBSEC bits all are involved, and the alarm can be activated only when all of them match.<br>The synchronous counter overrun bit (Bit 15) is never compared. This bit is not 0 only after shift operation. |
-| 31:28 |  |  | Reserved |
+| 31:28 |         |     | Reserved                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 
 
 ### 18.7.20 RTC backup register (RTC_BAKPx) (x=0-19)
@@ -8949,29 +8883,25 @@ Reset value of backup domain: 0x0000 0000
 Reset value: 0xXXXX XXXX
 
 
-| Field | Name | R/W | Description |
-| ------- | ------ | ----- | ------------- |
-| 31:0 | BAKP | R/W | Backup Value Setup<br>VAR will supply power after VDD power supply is cut off, so this bit is unaffected by system reset; when a tamper detection event occurs or the flash memory read protection is disabled, this register will be reset, and it will remain reset as long as TP1FLG=1.<br>The contents of this bit field are valid even if the device is running in low-power mode. |
+| Field | Name | R/W | Description                                                                                                                                                                                                                                                                                                                                                                             |
+|-------|------|-----|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 31:0  | BAKP | R/W | Backup Value Setup<br>VAR will supply power after VDD power supply is cut off, so this bit is unaffected by system reset; when a tamper detection event occurs or the flash memory read protection is disabled, this register will be reset, and it will remain reset as long as TP1FLG=1.<br>The contents of this bit field are valid even if the device is running in low-power mode. |
 
 
-# 19 Universal synchronous/asynchronous
-    transceiver (USART)
-
+# 19 Universal synchronous/asynchronous transceiver (USART)
 ## 19.1 Full Name and Abbreviation of Terms
 
-
-| Full name in English | English abbreviation |
-| ---------------------------- | ---------------------- |
-| Clear to Send | CTS |
-| Request to Send | RTS |
-| Most Significant Bit | MSB |
-| Least Significant Bit | LSB |
-| Guard | GRD |
-| Overrun | OVR |
+| Full name in English  | English abbreviation |
+|-----------------------|----------------------|
+| Clear to Send         | CTS                  |
+| Request to Send       | RTS                  |
+| Most Significant Bit  | MSB                  |
+| Least Significant Bit | LSB                  |
+| Guard                 | GRD                  |
+| Overrun               | OVR                  |
 
 
 ## 19.2 Introduction
-
 USART (universal synchronous/asynchronous receiver transmitter) is a serial 
 communication device that can flexibly exchange full-duplex and half-duplex 
 data with external devices, and meets the requirements of external devices for 
@@ -8985,7 +8915,6 @@ card protocol, IrDA SIR ENDEC specification and hardware flow control mode.
 USART also supports DMA function to realize high-speed data communication.
 
 ## 19.3 Main characteristics
-
 (1) Full-duplex asynchronous communication
 
 (2) Single-line half-duplex communication
@@ -9000,9 +8929,6 @@ USART also supports DMA function to realize high-speed data communication.
 
 (5) Check control
 - Transmit the check bit
-
-
-
 - Check the received data
 
 (6) Select speed and clock tolerance with programmable 8 or 16-time oversampling rate
@@ -9048,342 +8974,278 @@ USART also supports DMA function to realize high-speed data communication.
 
 
 ## 19.4 Functional Description
-
-
-
-| Pin | Type | Description |
-| ------------- | ------------------------------------------- | ------------------------------------------------------------------ |
-| USART_RX | Input | Data receiving |
-| USART_TX | Output <br> I/O (single-line mode/smart <br> card mode) | Data transmission <br> When the transmitter is enabled and does <br> not transmit data, the default is high |
-| USART_CK | Output | Clock output |
-| USART_nRTS | Input | Request to transmit in hardware flow control <br> mode |
-| USART_nCTS | Output | Clear to send in hardware flow control mode |
-| IrDA_RDI | Input | Data input in IrDA mode |
-| IrDA_TDO | Output | Data output in IrDA mode |
-
+| Pin        | Type                                                    | Description                                                                                                 |
+|------------|---------------------------------------------------------|-------------------------------------------------------------------------------------------------------------|
+| USART_RX   | Input                                                   | Data receiving                                                                                              |
+| USART_TX   | Output <br> I/O (single-line mode/smart <br> card mode) | Data transmission <br> When the transmitter is enabled and does <br> not transmit data, the default is high |
+| USART_CK   | Output                                                  | Clock output                                                                                                |
+| USART_nRTS | Input                                                   | Request to transmit in hardware flow control <br> mode                                                      |
+| USART_nCTS | Output                                                  | Clear to send in hardware flow control mode                                                                 |
+| IrDA_RDI   | Input                                                   | Data input in IrDA mode                                                                                     |
+| IrDA_TDO   | Output                                                  | Data output in IrDA mode                                                                                    |
 
 ### 19.4.1 Single-line half-duplex communication
-
-
-HDEN bit of USART_CTRL3 register determines whether to enter the single-line half-duplex mode.
-
-When USART enters single-line half-duplex mode:
-- The CLKEN and LINMEN bits of USART_CTRL2 register, and IREN and SCEN bits of USART_CTRL3 register must be cleared to 0.
-- RX pin is disabled.
-- TX pin should be configured as open-drain output and connected with RX pin inside the chip.
-- Transmitting data and receiving data can not be carried out at the same time. The data cannot be received before they are transmitted. If needing to receive data, enable receiving can be turned on only after TXCFLG bit of USART_STS register is set to 1.
+`HDEN` bit of `USART_CTRL3` register determines whether to enter the single-line half-duplex mode.
+When `USART` enters single-line half-duplex mode:
+- The `CLKEN` and `LINMEN` bits of `USART_CTRL2` register, and `IREN` and `SCEN` bits of `USART_CTRL3` register must be cleared to 0.
+- `RX` pin is disabled.
+- `TX` pin should be configured as open-drain output and connected with `RX` pin inside the chip.
+- Transmitting data and receiving data can not be carried out at the same time. The data cannot be received before they are transmitted. If needing to receive data, enable receiving can be turned on only after `TXCFLG` bit of `USART_STS` register is set to 1.
 - If there is data collision on the bus, software is required to manage the distributed communication process.
 
-
 ### 19.4.2 Frame format
-
-
 The frame format of data frame is controlled by USART_CTRL1 register
-- DBLCFG bit controls the character length, which can be set to 8 or 9 bits.
-- PCEN bit controls whether to enable the check bit or not.
-- PCFG bit controls whether the parity bit is odd or even.
+- `DBLCFG` bit controls the character length, which can be set to 8 or 9 bits.
+- `PCEN` bit controls whether to enable the check bit or not.
+- `PCFG` bit controls whether the parity bit is odd or even.
 
+| DBLCFG bit | PCEN bit | USART data frame                                     |
+|------------|----------|------------------------------------------------------|
+| 0          | 0        | Start bit + 8-bit data + stop bit                    |
+| 0          | 1        | Start bit + 7-bit data + parity check bit + stop bit |
+| 1          | 0        | Start bit + 9-bit data + stop bit                    |
+| 1          | 1        | Start bit + 8-bit data + parity check bit+stop bit   |
 
-| DBLCFG bit | PCEN bit | USART data frame |
-| ------------ | ---------- | --------------------------------- |
-| 0 | 0 | Start bit+8-bit data+stop bit |
-| 1 | 0 | Start bit+9-bit data+stop bit |
-| 1 | 1 | Start bit+8-bit data+ parity check bit+stop bit |
-
-
-Configurable stop bit
-
-
+**Configurable stop bit**
 Four different stop bits can be configured through STOPCFG bit of USART_CTRL2 register.
 - 1 stop bit: Default stop bit.
 - 0.5 stop bit: Used when receiving data in smart card mode.
 - 2 stop bits: Used in normal mode, single-line mode and hardware flow control mode.
 - 1.5 stop bits: Used when transmitting and receiving data in smart card mode.
 
-
-Check bit
-
-
-PCFG bit of USART_CTRL1 determines the parity check bit; when PCFG=0, it is even parity check, on the contrary, it is odd parity check.
+**Check bit**
+`PCFG` bit of `USART_CTRL1` determines the parity check bit; when `PCFG`=0, it is even parity check, on the contrary, it is odd parity check.
 - Even parity check: When the number of frame data and check bit 1 is even, the even parity check bit is 0; otherwise it is 1.
 - Odd parity check: When the number of frame data and check bit 1 is even, the odd parity check bit is 1; otherwise it is 0.
 
-
 ### 19.4.3 Transmitter
-
-
-When TXEN bit of the register USART_CTRL1 is set, the transmit shift register will output data through TX pin and the corresponding clock pulses will be output through CK pin.
-
+When `TXEN` bit of the register `USART_CTRL1` is set, the transmit shift register will output data through `TX` pin and the corresponding clock pulses will be output through `CK` pin.
 
 #### 19.4.3.1 Character transmission
-
-
-During transmission period of USART, the least significant bit of the data will be moved out by TX pin first. In this mode, USART_DATA register has a buffer between the internal bus and the transmit shift register.
-
+During transmission period of `USART`, the least significant bit of the data will be moved out by `TX` pin first. In this mode, `USART_DATA` register has a buffer between the internal bus and the transmit shift register.
 A data frame is composed of the start bit, character and stop bit, so there is a low-level start bit in front of each character; then there is a high-level stop bit who number is configurable.
 
+**Transmission configuration steps**
+- Set `UEN` bit of `USART_CTRL1` register to enable `USART`.
+- Decide the word length by setting `DBLCFG` bit of `USART_CTRL1` register.
+- Decide the number of stop bits by setting `STOPCFG` bit of `USART_CTRL2` register.
+- If multi-buffer communication is selected, `DMA` should be enabled in `USART_CTRL3` register.
+- Set the baud rate of communication in `USART_BR` register.
+- Enable `TXEN` bit in `USART_CTRL1` register, and transmit an idle frame.
+- Wait for `TXBEFLG` bit of `USART_STS` register to be set to 1.
+- Write data to `USART_DATA` register (if `DMA` is not enabled, repeat steps 7-8 for each byte to be transmitted).
+- Wait for `TXCFLG` bit of `USART_STS` register to be set to 1, indicating transmission completion.
 
-Transmission configuration steps
-
-- Set UEN bit of USART_CTRL1 register to enable USART.
-- Decide the word length by setting DBLCFG bit of USART_CTRL1 register.
-- Decide the number of stop bits by setting STOPCFG bit of USART_CTRL2 register.
-
-
-
-- If multi-buffer communication is selected, DMA should be enabled in USART_CTRL3 register.
-- Set the baud rate of communication in USART_BR register.
-- Enable TXEN bit in USART_CTRL1 register, and transmit an idle frame.
-- Wait for TXBEFLG bit of USART_STS register to be set to 1.
-- Write data to USART_DATA register (if DMA is not enabled, repeat steps 7-8 for each byte to be transmitted).
-- Wait for TXCFLG bit of USART_STS register to be set to 1, indicating transmission completion.
-
-Note: TXEN bit cannot be reset during data transmission; otherwise, the data on TX pin will be destroyed, which is because if the baud rate generator stops counting, the data being transmitted will be lost.
+Note: `TXEN` bit cannot be reset during data transmission; otherwise, the data on `TX` pin will be destroyed, which is because if the baud rate generator stops counting, the data being transmitted will be lost.
 
 
 #### 19.4.3.2 Single-byte communication
+`TXBEFLG` bit can be cleared to 0 by writing `USART_DATA` register. When the `TXBEFLG` bit is set by hardware, the shift register will receive the data transferred from the data transmit register, then the data will be transmitted, and the data transmit register will be emptied. The next data can be written in the data register without overwriting the previous data.
 
+(1) If `TXBEIEN` in `USART_CTRL1` register is set to 1, an interrupt will be generated.
 
-TXBEFLG bit can be cleared to 0 by writing USART_DATA register. When the TXBEFLG bit is set by hardware, the shift register will receive the data transferred from the data transmit register, then the data will be transmitted, and the data transmit register will be emptied. The next data can be written in the data register without overwriting the previous data.
+(2) If `USART` is in the state of transmitting data, write to the data register to save the data to the `DATA` register, and transfer the data to the shift register at the end of the current data transmission.
 
-(1) If TXBEIEN in USART_CTRL1 register is set to 1, an interrupt will be generated.
+(3) If `USART` is in idle state, write to the data register, put the data into the shift register, start transmitting data, and set `TXBEFLG` bit to 1.
 
-(2) If USART is in the state of transmitting data, write to the data register to save the data to the DATA register, and transfer the data to the shift register at the end of the current data transmission.
+(4) When a data transmission is completed and `TXBEFLG` bit is set, `TXCFLG` bit will be set to 1; at this time if `TXCIEN` bit in `USART_CTRL1` register is set to 1, an interrupt will be generated.
 
-(3) If USART is in idle state, write to the data register, put the data into the shift register, start transmitting data, and set TXBEFLG bit to 1.
-
-(4) When a data transmission is completed and TXBEFLG bit is set, TXCFLG bit will be set to 1; at this time if TXCIEN bit in USART_CTRL1 register is set to 1, an interrupt will be generated.
-
-(5) After the last data is written in the USART_DATA register, before entering the low-power mode or before disabling the USART module, wait to set TXCFLG to 1.
+(5) After the last data is written in the `USART_DATA` register, before entering the low-power mode or before disabling the `USART` module, wait to set `TXCFLG` to 1.
 
 
 #### 19.4.3.3 Break frame
+The break frames are considered to receive 0 in a frame period. Setting `TXBF` bit of `USART_CTRL1` register can transmit a break frame, and the length of the break frame is determined by `DBLCFG` bit of `USART_CTRL1` register. If the `TXBF` bit is set, after completion of transmission of current data, the `TX` line will transmit a break frame, and after completion of transmission of break frame, the `TXBF` bit will be reset. At the end of the break frame, the transmitter inserts one or two stop bits to respond to the start bit.
 
-
-The break frames are considered to receive 0 in a frame period. Setting TXBF bit of USART_CTRL1 register can transmit a break frame, and the length of the break frame is determined by DBLCFG bit of USART_CTRL1 register. If the TXBF bit is set, after completion of transmission of current data, the TX line will transmit a break frame, and after completion of transmission of break frame, the TXBF bit will be reset. At the end of the break frame, the transmitter inserts one or two stop bits to respond to the start bit.
-
-
-
-Note: If the TXBF bit is reset before transmission of the break frame starts, the break frame will not be
-transmitted. To transmit two consecutive break frames, the TXBF bit should be set after the stop bit of
+Note: If the `TXBF` bit is reset before transmission of the break frame starts, the break frame will not be
+transmitted. To transmit two consecutive break frames, the `TXBF` bit should be set after the stop bit of
 the previous break symbol.
 
 #### 19.4.3.4 Idle frame
-
 The idle frame is regarded as a complete data frame composed entirely of 1, 
-followed by the start bit of the next frame containing the data. Set TXEN bit of 
-USART_CTRL1 register to 1 and one idle frame can be transmitted before the 
+followed by the start bit of the next frame containing the data. Set `TXEN` bit of 
+`USART_CTRL1` register to 1 and one idle frame can be transmitted before the 
 first data frame.
 
 
 ### 19.4.4 Receiver
-
-
-
 #### 19.4.4.1 Character receiving
-
-
-During receiving period of USART, RX pin will first introduce the least significant 
-bit of the data. In this mode, USART_DATA register has a buffer between the 
+During receiving period of `USART`, `RX` pin will first introduce the least significant 
+bit of the data. In this mode, `USART_DATA` register has a buffer between the 
 internal bus and the receive shift register. The data is transmitted to the buffer 
 bit by bit. When the data is fully received, the corresponding receive register is 
-not empty, then the user can read USART_ DATA.
+not empty, then the user can read `USART_DATA`.
 
 **Receiving configuration steps**
-- Set UEN bit of USART_CTRL1 register to enable USART.
-- Decide the word length by setting DBLCFG bit of USART_CTRL1 
+- Set `UEN` bit of `USART_CTRL1` register to enable `USART`.
+- Decide the word length by setting `DBLCFG` bit of `USART_CTRL1` 
   register.
-- Decide the number of stop bits by setting STOPCFG bit of 
-  USART_CTRL2 register.
-- If multi-buffer communication is selected, DMA should be enabled in 
-  USART_CTRL3 register.
-- Set the baud rate of communication in USART_BR register.
-- Set RXEN bit of USART_CTRL1 to enable receiving.
+- Decide the number of stop bits by setting `STOPCFG` bit of 
+  `USART_CTRL2` register.
+- If multi-buffer communication is selected, `DMA` should be enabled in 
+  `USART_CTRL3` register.
+- Set the baud rate of communication in `USART_BR` register.
+- Set `RXEN` bit of `USART_CTRL1` to enable receiving.
 
 **Note:**
-1. RXEN bit cannot be reset during data receiving period; otherwise, the bytes being received will 
+1. `RXEN` bit cannot be reset during data receiving period; otherwise, the bytes being received will 
    be lost.
 2. In the process of the receiver receiving a data frame, if an overrun error, noise error or frame 
    error is detected, the error flag will be set to 1.
-3. When data is transferred from the shift register to USART_DATA register, the RXBNEFLG bit 
-   of USART_STS will be set by hardware.
-4. An interrupt will be generated if RXBNEIEN bit is set.
-5. In single buffer mode, the RXBNEFLG bit can be cleared by reading USART_DATA register 
+3. When data is transferred from the shift register to `USART_DATA` register, the `RXBNEFLG` bit 
+   of `USART_STS` will be set by hardware.
+4. An interrupt will be generated if `RXBNEIEN` bit is set.
+5. In single buffer mode, the `RXBNEFLG` bit can be cleared by reading `USART_DATA` register 
    by software or by writing 0.
-6. In multi-buffer mode, after each byte is received, the RXBNEFLG bit of USART_STS register 
-   will be set to 1, and can be cleared to 0 by reading the data register by DMA.
-
+6. In multi-buffer mode, after each byte is received, the `RXBNEFLG` bit of `USART_STS` register 
+   will be set to 1, and can be cleared to 0 by reading the data register by `DMA`.
 
 #### 19.4.4.2 Break frame
-
-
-When the receiver receives a break frame, USART will handle it as receiving a 
+When the receiver receives a break frame, `USART` will handle it as receiving a 
 frame error.
 
-
-
 #### 19.4.4.3 **Idle frame**
-
-When the receiver receives an idle frame, USART will handle it as receiving an ordinary data frame; if IDLEIEN bit of USART_CTRL1 is set, an interrupt will be generated.
+When the receiver receives an idle frame, `USART` will handle it as receiving an ordinary data frame; if `IDLEIEN` bit of `USART_CTRL1` is set, an interrupt will be generated.
 
 #### 19.4.4.4 **Oversampling rate**
-
-OSMCFG bit of USART_CTRL1 register determines the oversampling rate.
-
+`OSMCFG` bit of `USART_CTRL1` register determines the oversampling rate.
 If the oversampling rate is 8 times the baud rate, the speed is higher, but the clock tolerance is smaller. If it is 16 times, the speed is lower, but the clock tolerance is bigger.
 
 #### 19.4.4.5 **Overrun error**
-
-When RXBNEFLG bit of USART_STS register is set to 1 and a new character is received at the same time, an overrun error will be caused. Only after RXEN is reset, can the data be transferred from the shift register to DATA register. RXBNEFLG bit will be set to 1 after receiving the byte. This bit needs to be reset before receiving the next data or serving the previous DMA request; otherwise, an overrun error will be caused.
+When `RXBNEFLG` bit of `USART_STS` register is set to 1 and a new character is received at the same time, an overrun error will be caused. Only after `RXEN` is reset, can the data be transferred from the shift register to `DATA` register. `RXBNEFLG` bit will be set to 1 after receiving the byte. This bit needs to be reset before receiving the next data or serving the previous `DMA` request; otherwise, an overrun error will be caused.
 
 **When an overrun error occurs**
-
-- USART_STS OVREFLG bit is set to 1.
-- The data in DATA register will not be lost.
+- `USART_STS` `OVREFLG` bit is set to 1.
+- The data in `DATA` register will not be lost.
 - The data in the shift register received before will be overwritten, but the data received later will not be saved.
-- If RXBNEIEN bit of USART_CTRL1 is set to 1, an interrupt will be generated.
-- When OVREFLG bit is set to 1, it means that the data has been lost. There are two possibilities:
-  - When RXBNEFLG=1, the previous valid data is still on DATA register, and can be read.
-  - When RXBNEFLG=0, there is no valid data in DATA register.
-- The OVREFLG bit can be reset by reading USART_STS and USART_DATA registers successively.
+- If `RXBNEIEN` bit of `USART_CTRL1` is set to 1, an interrupt will be generated.
+- When `OVREFLG` bit is set to 1, it means that the data has been lost. There are two possibilities:
+  - When `RXBNEFLG`=1, the previous valid data is still on `DATA` register, and can be read.
+  - When `RXBNEFLG`=0, there is no valid data in `DATA` register.
+- The OVREFLG bit can be reset by reading `USART_STS` and `USART_DATA` registers successively.
 
 #### 19.4.4.6 **Noise error**
-
 When noise is detected in receiving process of the receiver:
-- Set NE flag on the rising edge of RXBNEFLG bit of USART_STS register.
-- Invalid data is transmitted from the shift register to USART_DATA register.
+- Set NE flag on the rising edge of `RXBNEFLG` bit of `USART_STS` register.
+- Invalid data is transmitted from the shift register to `USART_DATA` register.
 
-Note: 8-time oversampling ratio cannot be used in LIN, smart card and IrDA modes.
-
-
-
+Note: 8-time oversampling ratio cannot be used in `LIN`, smart card and `IrDA` modes.
 
 #### 19.4.4.7 Frame error
-
-
 If the stop bit is not received and recognized at the expected receiving time due to excessive noise or lack of synchronization, a frame error will be detected.
-
 When a frame error is detected in receiving process of the receiver:
-
-(1) Set the FEFLG bit of USART_STS register.
-
-(2) Invalid data is transmitted from the shift register to USART_DATA register.
-
-(3) In single byte communication, there is no interrupt, but in multi-buffer communication, an interrupt will be generated by setting the ERRIEN bit of USART_CTRL3 register.
-
+(1) Set the `FEFLG` bit of `USART_STS` register.
+(2) Invalid data is transmitted from the shift register to `USART_DATA` register.
+(3) In single byte communication, there is no interrupt, but in multi-buffer communication, an interrupt will be generated by setting the `ERRIEN` bit of `USART_CTRL3` register.
 
 ### 19.4.5 Baud rate generator
-
-
-The baud rate division factor (USARTDIV) is a 16-digit number consisting of 12-digit integer part and 4-digit decimal part. Its relationship with the system clock:
-
+The baud rate division factor (`USARTDIV`) is a 16-digit number consisting of 12-digit integer part and 4-digit decimal part. Its relationship with the system clock:
+```
 Baud rate=PCLK/16×(USARTDIV)
-
-The system clock of USART2/3 is PCLK1, and that of USART1 is PCLK2. USART can be enabled only after the clock control unit enables the system clock.
+```
+The system clock of `USART2/3` is `PCLK1`, and that of `USART1` is `PCLK2`. `USART` can be enabled only after the clock control unit enables the system clock.
 
 
 ### 19.4.6 Multiprocessor communication
-
-
-In multiprocessor communication, multiple USART are connected to form a network. In this network, two devices communicate with each other, and the mute mode can be enabled for other devices not participating in the communication to reduce the burden of USART. In mute mode, no receive state bit will be set and all receive interrupts are disabled.
+In multiprocessor communication, multiple `USART` are connected to form a network. In this
+network, two devices communicate with each other, and the mute mode can be enabled for other
+devices not participating in the communication to reduce the burden of `USART`. In mute
+mode, no receive state bit will be set and all receive interrupts are disabled.
 
 When mute mode is enabled, there are two ways to exit the mute mode:
-- Exit the mute mode when WUPMCFG bit is cleared and the bus is idle.
-- Exit the mute mode when WUPMCFG bit is set and the address flag is received.
+- Exit the mute mode when `WUPMCFG` bit is cleared and the bus is idle.
+- Exit the mute mode when `WUPMCFG` bit is set and the address flag is received.
 
-Idle bus detection (WUPMCFG=0)
+Idle bus detection (`WUPMCFG`=0)
 
-When RXMUTEEN is set to 1, USART enters the mute mode, and it can be waken up from the mute mode when an idle frame is detected, meanwhile, the RXMUTEEN bit will be cleared to 0 by hardware. RXMUTEEN can also be cleared to 0 by software.
+When `RXMUTEEN` is set to 1, `USART` enters the mute mode, and it can be waken up from the
+mute mode when an idle frame is detected, meanwhile, the `RXMUTEEN` bit will be cleared to 0 by
+hardware. `RXMUTEEN` can also be cleared to 0 by software.
 
 
 
 Figure 65 Idle Bus Exits Mute Mode
+```
+                                                             RXBNEFLG set to 1
+                                                             by hardware
+                                                                   ^
+                                                                   |
+   __   _________   _________   _________   _________________   _________   _________ 
+     \ /         \ /         \ /         \ /                 \ /         \ /         
+RX    \  Data 1   \  Data 2   \  Data 3   \    Idle frame     \  Data 4   \          
+   __/ \_________/ \_________/ \_________/ \_________________/ \_________/ \_________
+                                                                            ^
+                                                                            | (RXBNEFLG set to 1 by hardware)
 
-RXBNEFLG set to 1
-                      by hardware
-  RX  ──────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────
-            │Data 1  │Data 2  │Data 3  │Idle frame│Data 4  └────╴
-RXMUTEEN    Silent mode │                             Normal mode 
-                       Idle frame is detected
-                       RXMUTEEN set to 1
+                                                    
+             __________________________________________
+RXMUTEEN    |                                          |          Normal mode
+   _________|             Silent mode (RXMUTEEN=1)     |________________________________
+            ^                                          ^
+            |                                          |
+        RXMUTEEN set to 1                       Idle frame is detected
+```
+**Address flag detection (`WUPMCFG`=1)**<br>
+If the address flag bit is 1, this byte is regarded as the address. The address bytes are low
+four-byte storage address. When the receiver receives the address byte, it will be compared with its
+own address. If the addresses do not match, the receiver will enter the mute mode. If the addresses
+match, the receiver will wake up from the mute mode and be ready to receive the next byte. If the
+address byte is received again after exiting the mute mode, but the address does not match its own
+address, the receiver will enter the mute mode again.
 
-**Address flag detection (WUPMCFG=1)**
-
-If the address flag bit is 1, this byte is regarded as the address. The address 
-bytes are low four-byte storage address. When the receiver receives the 
-address byte, it will be compared with its own address. If the addresses do not 
-match, the receiver will enter the mute mode. If the addresses match, the 
-receiver will wake up from the mute mode and be ready to receive the next byte. 
-If the address byte is received again after exiting the mute mode, but the 
-address does not match its own address, the receiver will enter the mute mode 
-again.
-
-             Figure 66 Address Flag Exits Mute Mode
-
+Figure 66 Address Flag Exits Mute Mode
+```
 RXBNEFLG set to 1
                       by hardware
   RX  ──────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────
             │Data 1  │Address 1│Data 2  │Address 2│Data 3  │Address 3│Data 4  └────╴
 RXMUTEEN    Silent mode │                    Normal mode    │ Silent mode
                       Unmatched address   Matched address  Unmatched address
+```
 
 ### 19.4.7 **Synchronous mode**
-
 The synchronous mode supports full-duplex synchronous serial communication 
-in master mode, and has one more signal line USART_CK which can output 
+in master mode, and has one more signal line `USART_CK` which can output 
 synchronous clock than the asynchronous mode.
 
-CLKEN bit of USART_CTRL2 register decides whether to enter the 
+`CLKEN` bit of `USART_CTRL2` register decides whether to enter the 
 synchronous mode.
 
-When USART enters the synchronous mode:
-
-
-
-- The LINMEN bit of USART_CTRL2 register, and IREN, HDEN and 
-  SCEN bits of USART_CTRL3 register must be cleared to 0.
+When `USART` enters the synchronous mode:
+- The `LINMEN` bit of `USART_CTRL2` register, and `IREN`, `HDEN` and 
+  `SCEN` bits of `USART_CTRL3` register must be cleared to 0.
 - The start bit and stop bit of data frame have no clock output.
-- Whether the last data bit of data frame generates USART_CK clock is 
-  decided by the LBCPOEN bit of USART_CTRL2 register.
-- The clock polarity of USART_CK is decided by CPOL bit of 
-  USART_CTRL2 register.
-- The phase of USART_CK is decided by the CPHA bit of 
-  USART_CTRL2 register.
-- The external CK clock cannot be activated when the bus is idle or the 
+- Whether the last data bit of data frame generates `USART_CK` clock is 
+  decided by the `LBCPOEN` bit of `USART_CTRL2` register.
+- The clock polarity of `USART_CK` is decided by `CPOL` bit of 
+  `USART_CTRL2` register.
+- The phase of `USART_CK` is decided by the `CPHA` bit of 
+  `USART_CTRL2` register.
+- The external `CK` clock cannot be activated when the bus is idle or the 
   break frame appears.
 
 Figure 67 USART Synchronous Transmission Example
 
-
-| USART |  | Slave |
-| ------- | ------ | --------------- |
-|  |  | Clock input |
-| CK | ---> |  |
-| TX | ---> | Data input |
-| RX | <--- | Data output |
+| USART   |      | Slave           |
+| ------- |------| --------------- |
+| `CK`    | ---> | Clock input     |
+| `TX`    | <--- | Data input      |
+| `RX`    | <--- | Data output     |
 
 
-Figure 68 USART Synchronous Transmission Timing Diagram (DBLCFG=0)
+Figure 68 USART Synchronous Transmission Timing Diagram (`DBLCFG`=0)
+
+|                               | DBLCFG=0 (8-bit data)                                              |
+|-------------------------------|--------------------------------------------------------------------|
+| `CK` (`CPOL`=0, `CPHA`=0)     |                                                                    |
+| `CK` (`CPOL`=0, `CPHA`=1)     |                                                                    |
+| `CK` (`CPOL`=1, `CPHA`=0)     |                                                                    |
+| `CK` (`CPOL`=1, `CPHA`=1)     | <br>                                                               |
+| `TX` (from master device)     | Start bit Bit 0 Bit 1 Bit 2 Bit 3 Bit 4 Bit 5 Bit 6 Bit 7 Stop bit |
+| `RX` (from slave device)      | Bit 0 Bit 1 Bit 2 Bit 3 Bit 4 Bit 5 Bit 6 Bit 7                    |
 
 
-|  | DBLCFG=0 (8-bit data) |
-| --------------------------- | -------------------------------------- |
-| CK (CPOL=0, CPHA=0) |  |
-| CK (CPOL=0, CPHA=1) |  |
-| CK (CPOL=1, CPHA=0) |  |
-| CK (CPOL=1, CPHA=1) | <br> |
-| TX (from master device) | Start<br>bit   Bit 0 Bit 1 Bit 2 Bit 3 Bit 4 Bit 5 Bit 6 Bit 7 Stop<br>bit |
-| RX (from slave device) | Bit 0 Bit 1 Bit 2 Bit 3 Bit 4 Bit 5 Bit 6 Bit 7 |
-
-
-www.geehy.com                                               Page 285
-
-
-
-Figure 69 USART Synchronous Transmission Timing Diagram (DBLFCFG=1)
-
-+-----------------------------------------------------------------------------+
-
+Figure 69 USART Synchronous Transmission Timing Diagram (`DBLFCFG`=1)
+```
 | DBLFCFG=1(9-bit data) |
 |  |
 | CK (CPOL=0, CPHA=0)      ___     ___     ___     ___     ___     ___        <br>_ /  / ___ /  / ___ /  / ___ /  / ___ /  / ___ /  / ___ |
@@ -9404,77 +9266,75 @@ Figure 69 USART Synchronous Transmission Timing Diagram (DBLFCFG=1)
 |  |
 | TX (from master device)    Start    Bit 0  Bit 1  Bit 2  Bit 3  Bit 4 |
 | bit                                      Bit 8  <br><br>RX (from slave device)<br>Bit 0  Bit 1  Bit 2  Bit 3  Bit 4  Bit 5<br>Bit 6  Bit 7  Bit 8 |
-
-
-+-----------------------------------------------------------------------------+
+```
 
 
 ### 19.4.8 LIN mode
-
-
-LINMEN bit of USART_CTRL2 register decides whether to enter LIN mode.
-
-When entering LIN mode:
-
+`LINMEN` bit of `USART_CTRL2` register decides whether to enter `LIN` mode.
+When entering `LIN` mode:
 - All data frames are 8 data bits and 1 stop bit.
-- The CLKEN bit and STOPCF bit of USART_CTRL2 register and IREN bit, HDEN bit and SCEN bit of USART_CTRL3 register need to be cleared to 0.
+- The `CLKEN` bit and `STOPCF` bit of `USART_CTRL2` register and `IREN` bit, `HDEN` bit and `SCEN`
+  bit of `USART_CTRL3`  register need to be cleared to 0.
 
-In LIN master mode, USART can generate break frame, and the detection length of break frame can be set to 10 or 11 bits through LBDLCFG bit of USART_CTRL2. The break frame detection circuit is independent of USART receiver, and no matter in idle state or in data transmission state, RX pin can detect the break frame, and LBDFLG bit of USART_STS register is set to 1; at this time, if LBDIEN bit of USART_CTRL2 is enabled, an interrupt will be generated.
+In `LIN` master mode, `USART` can generate break frame, and the detection length of break frame can
+be set to 10 or 11 bits through `LBDLCFG` bit of `USART_CTRL2`. The break frame detection circuit is
+independent of `USART` receiver, and no matter in idle state or in data transmission state, `RX` pin
+can detect the break frame, and `LBDFLG` bit of `USART_STS` register is set to 1; at this time, if
+`LBDIEN` bit of `USART_CTRL2` is enabled, an interrupt will be generated.
 
 
-Detection of break frame in idle state
-
-
-In idle state, if a break frame is detected on RX pin, the receiver will receive a data frame of 0 and generate FEFLG.
-
-
+**Detection of break frame in idle state**<br>
+In idle state, if a break frame is detected on `RX` pin, the receiver will receive a data frame of 0
+and generate `FEFLG`.
 
 Figure 70 Break Frame Detection in Idle State
 
+| RX         | Data 1 | Data 2 | Idle frame | Break frame | Data 3 | Data 4 | Data 5 |
+|------------|--------|--------|------------|-------------|--------|--------|--------|
+| FEFLG      |        |        |            |             |        |        |        |
+| USART_DATA | Data 1 | Data 2 | 0x00       | Data 3      | Data 3 | Data 4 |        |
+| LBDFLG     |        |        |            |             |        |        |        |
 
-| RX | Data 1 | Data 2 | Idle frame | Break frame | Data 3 | Data 4 | Data 5 |
-| --------- | -------- | -------- | ------------ | ------------- | -------- | -------- | -------- |
-| FEFLG |  |  |  |  |  |  |  |
-| USART_DATA | Data 1 | Data 2 | 0x00 | Data 3 | Data 3 | Data 4 |  |
-| LBDFLG |  |  |  |  |  |  |  |
-
-
-**Break frame detection in data transmission state**
-
-In the process of data transmission, if the RX pin detects the break frame, the currently transmitted data frame will generate FEFLG.
+**Break frame detection in data transmission state**<br>
+In the process of data transmission, if the `RX` pin detects the break frame, the currently
+transmitted data frame will generate `FEFLG`.
 
 Figure 71 Break Frame Detection in Data Transmission State
 
-
-| RX | Data 1 | Data 2 | Break frame | Data 2 | Data 3 | Data 4 |
-| --------- | -------- | -------- | ------------- | -------- | -------- | -------- |
-| FEFLG |  |  |  |  |  |  |
-| USART_DATA | Data 1 | Data 2 |  | Data 3 | Data 3 | Data 4 |
-| LBDFLG |  |  |  |  |  |  |
+| RX         | Data 1 | Data 2 | Break frame | Data 2 | Data 3 | Data 4 |
+|------------|--------|--------|-------------|--------|--------|--------|
+| FEFLG      |        |        |             |        |        |        |
+| USART_DATA | Data 1 | Data 2 |             | Data 3 | Data 3 | Data 4 |
+| LBDFLG     |        |        |             |        |        |        |
 
 
 **19.4.9 Smart card mode**
+Smart card mode is a single-line half-duplex communication mode. The interface supports ISO7816-3
+standard protocol and can control the reading and writing of smart cards that meet the standard
+protocol.
 
-Smart card mode is a single-line half-duplex communication mode. The interface supports ISO7816-3 standard protocol and can control the reading and writing of smart cards that meet the standard protocol.
+`SCEN` bit of `USART_CTRL3` register decides whether to enter the smart card mode.
 
-SCEN bit of USART_CTRL3 register decides whether to enter the smart card mode.
+When `USART` enters the smart card mode:
+- The `LINMEN` bit of `USART_CTRL2` register, and `IREN` and `HDEN` bits of `USART_CTRL3` register
+  must be cleared to 0.
 
-When USART enters the smart card mode:
-- The LINMEN bit of USART_CTRL2 register, and IREN and HDEN bits of USART_CTRL3 register must be cleared to 0.
-- The data frame format is 8 data bits and 1 check bit, and 0.5 or 1.5 stop bits are used. (To avoid switching between two configurations, it is recommended that 1.5 stop bits should be used when transmitting and receiving data)
-- CLKEN bit of USART_CTRL2 register can be set to provide clocks for smart card.
+- The data frame format is 8 data bits and 1 check bit, and 0.5 or 1.5 stop bits are used. (To avoid
+  switching between two configurations, it is recommended that 1.5 stop bits should be used when
+  transmitting and receiving data)
 
+- `CLKEN` bit of `USART_CTRL2` register can be set to provide clocks for smart card.
 
-
-● During the communication, when the receiver detects a parity check
+- During the communication, when the receiver detects a parity check
   error, in order to inform the transmitter that the data has not been
   received successfully, the data line will be pulled down after half a
   baud rate clock, and keep pulling down for one baud rate clock.
-● The break frame has no meaning in smart card mode. A 00h data with
+
+- The break frame has no meaning in smart card mode. A 00h data with
   frame error will be regarded as a data instead of break symbol.
 
-                                 Figure 72 ISO7816-3 Standard Protocol
-
+Figure 72 ISO7816-3 Standard Protocol
+```
 ┌────────────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┐
 │            │     │     │     │     │     │     │     │     │
 │            │ Bit │ Bit │ Bit │ Bit │ Bit │ Bit │ Bit │     │
@@ -9485,7 +9345,8 @@ When USART enters the smart card mode:
 │ check      │     │     │     │     │     │     │     │ Check│
 │ error      │     │     │     │     │     │     │     │ bit  │
 └────────────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┘
-
+```
+```
 ┌────────────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┐
 │            │     │     │     │     │     │     │     │     │
 │            │ Bit │ Bit │ Bit │ Bit │ Bit │ Bit │ Bit │     │
@@ -9502,174 +9363,147 @@ When USART enters the smart card mode:
 │   pulls down the                                         │
 │   data line                                              │
 └──────────────────────────────────────────────────────────┘
-
+```
 
 ### 19.4.10 Infrared (IrDA SIR) function mode
-
-
-IrDA mode is a half-duplex protocol, transmitting and receiving data can not be
+`IrDA` mode is a half-duplex protocol, transmitting and receiving data can not be
 carried out at the same time, and the delay between data transmitting and
 receiving should be more than 10ms.
 
-IREN bit of USART_CTRL3 register decides whether to enter the IrDA mode.
+`IREN` bit of `USART_CTRL3` register decides whether to enter the `IrDA` mode.
 
 When USART enters the IrDA mode:
-● The CLKEN bit, STOPCF bit and LINMEN bit of USART_CTRL2
-  register and HDEN bit and SCEN bit of USART_CTRL3 register must
+- The `CLKEN` bit, `STOPCF` bit and `LINMEN` bit of `USART_CTRL2`
+  register and `HDEN` bit and `SCEN` bit of `USART_CTRL3` register must
   be cleared to 0.
-● The data frame uses 1 stop bit and the baud rate is less than
+
+- The data frame uses 1 stop bit and the baud rate is less than
   115200Hz.
-● Using infrared pulse (RZI) indicates logic 0, so in normal mode, its
+
+- Using infrared pulse (`RZI`) indicates logic 0, so in normal mode, its
   pulse width is 3/16 baud rate cycle. In IrDA low-power mode, it is
   recommended that the pulse width be greater than 3 DIV frequency
-  division clocks to ensure that this pulse can be detected by IrDA
+  division clocks to ensure that this pulse can be detected by `IrDA`
   normally.
 
-
-
 Figure 73 IrDA Mode Block Diagram
-
+```
 USART_RX        Receive          RX
                 decoder
                                  USART
       _____________    ____________________________
-
 |  |  |
-
 | USART |  |  |
 | Transmit |  | SIREN |
 | TX | decoder |  |
-
-
       -------------    |
 |  |
-
+```
 
 ### 19.4.11 Hardware flow control
-
 The function of hardware flow control is to control the serial data stream 
-between two devices through nCTS pin and nRTS pin.
+between two devices through `nCTS` pin and `nRTS` pin.
 
-                    Figure 74 Hardware Flow Control between Two USART
-
+Figure 74 Hardware Flow Control between Two USART
+```
       --------------------------------     --------------------------------
-
 | Transmit          Receive |  | Receive          Transmit |
 | circuit           circuit |  | circuit           circuit |
 |  |  |  |
 | USART1 |  | USART2                         <br> |
 | Receive          Transmit |  | Transmit          Receive |
 | circuit           circuit |  | circuit           circuit |
-
-
       --------------------------------     --------------------------------
           TX     RX  nCTS     nRTS           RX     TX  nRTS     nCTS
+```
 
-CTS flow control
-
-CTSEN bit of USART_CTRL3 register determines whether to enable CTS flow 
-control. If CTS flow control is enabled, the transmitter will detect whether the 
-data frame of nCTS pin can be transmitted. If TXBEFLG bit=0 for USART_STS 
+**`CTS` flow control**<br>
+`CTSEN` bit of `USART_CTRL3` register determines whether to enable `CTS` flow 
+control. If `CTS` flow control is enabled, the transmitter will detect whether the 
+data frame of nCTS pin can be transmitted. If `TXBEFLG` bit=0 for `USART_STS` 
 register and nCTS is pulled to low, the data frame can be transmitted. If nCTS 
 becomes high during transmission, the transmitter will stop transmitting after the 
 current data frame is transmitted.
 
-RTS flow control
-
-
-
-RTSEN bit of USART_CTRL3 register determines whether to enable RTS flow
-control. If RTS flow control is enabled, when the receiver receives data, nRTS
-will be pulled to low. When a data frame is received, nRTS will become high to
+**`RTS` flow control**<br>
+RTSEN bit of `USART_CTRL3` register determines whether to enable `RTS` flow
+control. If `RTS` flow control is enabled, when the receiver receives data, `nRTS`
+will be pulled to low. When a data frame is received, `nRTS` will become high to
 inform the transmitter to stop transmitting data frame.
 
-
 ### 19.4.12 DMA multi-buffer communication
-
-
-USART can access the data buffer in DMA mode to reduce the burden of
+`USART` can access the data buffer in `DMA` mode to reduce the burden of
 processors.
 
-**Transmission in DMA mode**
+**Transmission in DMA mode**<br>
+`DMATXEN` bit of `USART_CTRL3` register determines whether to transmit in
+DMA mode. When transmitting by `DMA`, the data in the designated `SRAM` will
+be transmitted to the buffer by `DMA`.
 
-DMATXEN bit of USART_CTRL3 register determines whether to transmit in
-DMA mode. When transmitting by DMA, the data in the designated SRAM will
-be transmitted to the buffer by DMA.
-
-Configuration steps of transmission by DMA:
-- Clear the TXCFLG bit of USART_STS register to zero.
-- Set the address of SRAM memory storing data as DMA source
+Configuration steps of transmission by `DMA`:
+- Clear the `TXCFLG` bit of `USART_STS` register to zero.
+- Set the address of `SRAM` memory storing data as DMA source
   address.
-- Set the address of USART_DATA register as DMA destination
+- Set the address of `USART_DATA` register as DMA destination
   address.
 - Set the number of data bytes to be transmitted.
 - Set channel priority.
 - Set interrupt enable.
-- Enable DMA channel.
-- Wait for TXCFLG bit of USART_STS register to be set to 1, indicating
+- Enable `DMA` channel.
+- Wait for `TXCFLG` bit of `USART_STS` register to be set to 1, indicating
   transmission completion.
 
-**Receive by DMA**
+**Receive by DMA**<br>
+`DMARXEN` bit of `USART_CTRL3` register determines whether to use `DMA` 
+mode to receive; when `DMA` is used to receive, every time one byte is received,
+the data of receive buffer will be transmitted to the specified `SRAM` area by
+`DMA`.
 
-DMARXEN bit of USART_CTRL3 register determines whether to use DMA 
-mode to receive; when DMA is used to receive, every time one byte is received,
-the data of receive buffer will be transmitted to the specified SRAM area by
-DMA.
-
-Configuration steps of receiving by DMA:
-- Set the address of USART_DATA register as DMA source address.
-- Set the address of SRAM memory storing data as DMA destination
+Configuration steps of receiving by `DMA`:
+- Set the address of `USART_DATA` register as `DMA` source address.
+- Set the address of `SRAM` memory storing data as `DMA` destination
   address.
 - Set the number of data bytes to be transmitted.
 - Set channel priority.
 - Set interrupt enable.
-- Enable DMA channel.
-
-
-
+- Enable `DMA` channel.
 
 ### 19.4.13 Interrupt request
 
+| Interrupt event                   | Event flag bit | Enable bit |
+|-----------------------------------|----------------|------------|
+| The receive register is not empty | RXNEFLG        | RXNEIEN    |
+| Overrun error                     | OVREFLG        |            |
+| Idle line is detected             | IDLEFLG        | IDLEIEN    |
+| Parity check error                | PEFLG          | PEIEN      |
+| LIN break frame flag              | LBDFLG         | LBDIEN     |
+| Receiving error in DMA mode       |                |            |
+| Noise error                       | NEFLG          |            |
+| Overrun error                     | OVREFLG        | ERRIEN     |
+| Frame error                       | FEFLG          |            |
+| Data transmit register is empty   | TXBEFLG        | TXBEIEN    |
+| Transmission Completed            | TXCFLG         | TXCIEN     |
+| CTS flag                          | CTSFLG         | CTSIEN     |
 
 
-| Interrupt event | Event flag bit | Enable bit |
-| ----------------------------------- | ---------------- | ------------ |
-| The receive register is not empty | RXNEFLG | RXNEIEN |
-| Overrun error | OVREFLG |  |
-| Idle line is detected | IDLEFLG | IDLEIEN |
-| Parity check error | PEFLG | PEIEN |
-| LIN break frame flag | LBDFLG | LBDIEN |
-| Receiving error in DMA mode |  |  |
-| Noise error | NEFLG |  |
-| Overrun error | OVREFLG | ERRIEN |
-| Frame error | FEFLG |  |
-| Data transmit register is empty | TXBEFLG | TXBEIEN |
-| Transmission Completed | TXCFLG | TXCIEN |
-| CTS flag | CTSFLG | CTSIEN |
-
-
-All interrupt requests of USART are connected to the same interrupt controller, and the interrupt requests have logical or relation before they are transmitted to the interrupt controller.
+All interrupt requests of `USART` are connected to the same interrupt controller, and the interrupt
+requests have logical or relation before they are transmitted to the interrupt controller.
 
 Figure 75 USART Interrupt Mapping
 
-
-
-
 ### 19.4.14 Comparison of USART supporting functions
 
-
-
-| USART mode | USART1 | USART2 | USART3 | UART4 | UART5 | USART6 |
-| ------------------------------ | -------- | -------- | -------- | ------- | ------- | -------- |
-| Half duplex (single-line mode) | √ | √ | √ | √ | √ | √ |
-| Multi-processor communication | √ | √ | √ | √ | √ | √ |
-| Synchronize | √ | √ | √ | — | — | √ |
-| Asynchronous mode | √ | √ | √ | √ | √ | √ |
-| LIN | √ | √ | √ | √ | √ | √ |
-| Smart card | √ | √ | √ | — | — | √ |
-| IrDA | √ | √ | √ | √ | √ | √ |
-| Hardware flow control | √ | √ | √ | — | — | √ |
-| Multi-buffer communication (DMA) | √ | √ | √ | √ | √ | √ |
+| USART mode                       | USART1 | USART2 | USART3 | UART4 | UART5 | USART6 |
+|----------------------------------|--------|--------|--------|-------|-------|--------|
+| Half duplex (single-line mode)   | √      | √      | √      | √     | √     | √      |
+| Multi-processor communication    | √      | √      | √      | √     | √     | √      |
+| Synchronize                      | √      | √      | √      | —     | —     | √      |
+| Asynchronous mode                | √      | √      | √      | √     | √     | √      |
+| LIN                              | √      | √      | √      | √     | √     | √      |
+| Smart card                       | √      | √      | √      | —     | —     | √      |
+| IrDA                             | √      | √      | √      | √     | √     | √      |
+| Hardware flow control            | √      | √      | √      | —     | —     | √      |
+| Multi-buffer communication (DMA) | √      | √      | √      | √     | √     | √      |
 
 
 Note: "√" means this function is supported, while "—" means that this function is not supported.
@@ -9677,194 +9511,136 @@ Note: "√" means this function is supported, while "—" means that this functi
 
 ## 19.5 Register address mapping
 
-
-
-| Register name | Description | Offset Address |
-| ---------------- | ------------------------------------------ | ---------------- |
-| USART_STS | Status register | 0x00 |
-| USART_DATA | Data register | 0x04 |
-| USART_BR | Baud rate register | 0x08 |
-| USART_CTRL1 | Control register 1 | 0x0C |
-| USART_CTRL2 | Control register 2 | 0x10 |
-| USART_CTRL3 | Control register 3 | 0x14 |
-| USART_GTPSC | Protection time and prescaler register | 0x18 |
+| Register name | Description                            | Offset Address |
+|---------------|----------------------------------------|----------------|
+| USART_STS     | Status register                        | 0x00           |
+| USART_DATA    | Data register                          | 0x04           |
+| USART_BR      | Baud rate register                     | 0x08           |
+| USART_CTRL1   | Control register 1                     | 0x0C           |
+| USART_CTRL2   | Control register 2                     | 0x10           |
+| USART_CTRL3   | Control register 3                     | 0x14           |
+| USART_GTPSC   | Protection time and prescaler register | 0x18           |
 
 
 ## 19.6 Register functional description
-
-
-
 ### 19.6.1 State register (USART_STS)
-
-
 Offset address: 0x00  
 Reset value: 0x00C0
 
-
-
-
-| Field | Name | R/W | Description |
-| ------- | ---------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 0 | PEFLG | R | Parity Error Occur Flag<br>0: No error<br>1: Parity check error occurs<br>In the receiving mode, when a parity check error occurs, set to 1 by hardware;<br>This bit can be cleared to 0 by software; after setting of RXBNEFLG, first read USART_STS register, and then read USART_DATA register to clear to 0. |
-| 1 | FEFLG | R | Frame Error Occur Flag<br>0: No frame error<br>1: A frame error or break symbol appears<br>When there is synchronous dislocation, too much noise or break symbol, set to 1 by hardware;<br>This bit can be cleared to 0 by software; first read USART_STS register, and then read USART_DATA register to clear to 0. |
-| 2 | NEFLG | R | Noise Error Occur Flag<br>0: No noise<br>1: There is noise error<br>When there is noise error, set to 1 by hardware;<br>This bit can be cleared to 0 by software; first read USART_STS register, and then read USART_DATA register to clear to 0. |
-| 3 | OVREFLG | R | Overrun Error Occur Flag<br>0: Overrun error<br>1: Overrun error occurs<br>When the RXBNEFLG bit is set and the data in the shift register is to be transmitted to the receive register, it will be set to 1 by hardware;<br>This bit can be cleared to 0 by software; first read USART_STS register, and then read USART_DATA register to clear to 0. |
-| 4 | IDLEFLG | R | IDLE Line Detected Flag<br>0: Idle bus is not detected<br>1: Idle bus is detected<br>When idle bus is detected, it will be set to 1 by hardware;<br>This bit can be cleared to 0 by software; first read USART_STS register, and then read USART_DATA register to clear to 0. |
-| 5 | RXBNEFLG | RC_W0 | Receive Data Buffer Not Empty Flag<br>0: The receive data buffer is empty<br>1: The receive data buffer is not empty<br>When the data register receives the data transmitted by the receive shift register, it will be set to 1 by hardware;<br>This bit can be cleared to 0 by software; read USART_DATA to clear to 0, or write 0 to this bit to clear it. |
-| 6 | TXCFLG | RC_W0 | Transmit Data Complete Flag <br> 0: Transmitting data is not completed <br> 1: Transmitting data is completed <br> After the last frame of data is transmitted and the TXBEFLG is set, it will be set to 1 by hardware; <br> This bit can be cleared to 0 by software; first read USART_STS register, and then write USART_DATA register to clear to 0; or this bit can be cleared by writing 0 to it. |
-| 7 | TXBEFLG | R | Transmit Data Buffer Empty Flag <br> 0: The transmit data buffer is not empty <br> 1: The transmit data buffer is empty <br> When the shift register receives the data transmitted by the transmit data register, it will be set to 1 by hardware; <br> This bit can be cleared to 0 by software; write USART_DATA register to clear to 0. |
-| 8 | LBDFLG | RC_W0 | LIN Break Detected Flag <br> 0: LIN break is not detected <br> 1: LIN break is detected <br> When LIN disconnection is detected, set to 1 by hardware; <br> This bit can be cleared to 0 by software; or cleared by writing 0 to this bit. |
-| 9 | CTSFLG | RC_W0 | CTS Change Flag <br> 0: No change on nCTS state line <br> 1: There is change on nCTS state line <br> If the CTSEN bit is set, when switching to the nCTS input, set to 1 by hardware; <br> This bit can be cleared to 0 by software; or cleared by writing 0 to this bit. |
-
-
-31:10                                Reserved
+| Field | Name     | R/W   | Description                                                                                                                                                                                                                                                                                                                                                                                            |
+|-------|----------|-------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 0     | PEFLG    | R     | Parity Error Occur Flag<br>0: No error<br>1: Parity check error occurs<br>In the receiving mode, when a parity check error occurs, set to 1 by hardware;<br>This bit can be cleared to 0 by software; after setting of RXBNEFLG, first read USART_STS register, and then read USART_DATA register to clear to 0.                                                                                       |
+| 1     | FEFLG    | R     | Frame Error Occur Flag<br>0: No frame error<br>1: A frame error or break symbol appears<br>When there is synchronous dislocation, too much noise or break symbol, set to 1 by hardware;<br>This bit can be cleared to 0 by software; first read USART_STS register, and then read USART_DATA register to clear to 0.                                                                                   |
+| 2     | NEFLG    | R     | Noise Error Occur Flag<br>0: No noise<br>1: There is noise error<br>When there is noise error, set to 1 by hardware;<br>This bit can be cleared to 0 by software; first read USART_STS register, and then read USART_DATA register to clear to 0.                                                                                                                                                      |
+| 3     | OVREFLG  | R     | Overrun Error Occur Flag<br>0: Overrun error<br>1: Overrun error occurs<br>When the RXBNEFLG bit is set and the data in the shift register is to be transmitted to the receive register, it will be set to 1 by hardware;<br>This bit can be cleared to 0 by software; first read USART_STS register, and then read USART_DATA register to clear to 0.                                                 |
+| 4     | IDLEFLG  | R     | IDLE Line Detected Flag<br>0: Idle bus is not detected<br>1: Idle bus is detected<br>When idle bus is detected, it will be set to 1 by hardware;<br>This bit can be cleared to 0 by software; first read USART_STS register, and then read USART_DATA register to clear to 0.                                                                                                                          |
+| 5     | RXBNEFLG | RC_W0 | Receive Data Buffer Not Empty Flag<br>0: The receive data buffer is empty<br>1: The receive data buffer is not empty<br>When the data register receives the data transmitted by the receive shift register, it will be set to 1 by hardware;<br>This bit can be cleared to 0 by software; read USART_DATA to clear to 0, or write 0 to this bit to clear it.                                           |
+| 6     | TXCFLG   | RC_W0 | Transmit Data Complete Flag <br> 0: Transmitting data is not completed <br> 1: Transmitting data is completed <br> After the last frame of data is transmitted and the TXBEFLG is set, it will be set to 1 by hardware; <br> This bit can be cleared to 0 by software; first read USART_STS register, and then write USART_DATA register to clear to 0; or this bit can be cleared by writing 0 to it. |
+| 7     | TXBEFLG  | R     | Transmit Data Buffer Empty Flag <br> 0: The transmit data buffer is not empty <br> 1: The transmit data buffer is empty <br> When the shift register receives the data transmitted by the transmit data register, it will be set to 1 by hardware; <br> This bit can be cleared to 0 by software; write USART_DATA register to clear to 0.                                                             |
+| 8     | LBDFLG   | RC_W0 | LIN Break Detected Flag <br> 0: LIN break is not detected <br> 1: LIN break is detected <br> When LIN disconnection is detected, set to 1 by hardware; <br> This bit can be cleared to 0 by software; or cleared by writing 0 to this bit.                                                                                                                                                             |
+| 9     | CTSFLG   | RC_W0 | CTS Change Flag <br> 0: No change on nCTS state line <br> 1: There is change on nCTS state line <br> If the CTSEN bit is set, when switching to the nCTS input, set to 1 by hardware; <br> This bit can be cleared to 0 by software; or cleared by writing 0 to this bit.                                                                                                                              |
+| 31:10 |          |       | Reserved                                                                                                                                                                                                                                                                                                                                                                                               |
 
 
 ### 19.6.2 Data register (USART_DATA)
-
 Offset address: 0x04  
 Reset value: 0xXXXX XXXX, X=undefined bit
 
-
-| Field | Name | R/W | Description |
-| ------- | ------ | ----- | ----------------------------------------------------------------------------------------------------------------- |
-| 8:0 | DATA | R/W | Data Value <br> Transmit or receive the data value; read data when receiving data, and write data to the register when transmitting data. <br> When the parity bit is enabled, for 9 data bits, the 8 bit of DATA is parity bit; for 8 data bits, the 7 bit of DATA is parity bit. |
-
-
-31:9                             Reserved
-
+| Field | Name | R/W | Description                                                                                                                                                                                                                                                                        |
+|-------|------|-----|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 8:0   | DATA | R/W | Data Value <br> Transmit or receive the data value; read data when receiving data, and write data to the register when transmitting data. <br> When the parity bit is enabled, for 9 data bits, the 8 bit of DATA is parity bit; for 8 data bits, the 7 bit of DATA is parity bit. |
+| 31:9  |      |     | Reserved                                                                                                                                                                                                                                                                           |
 
 ### 19.6.3 Baud rate register (USART_BR)
-
 Offset address: 0x08  
 Reset value: 0x0000
 
-
-
-
-| Field | Name | R/W | Description |
-| ------- | ---------- | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 3:0 | FBR[3:0] | R/W | Fraction of USART Baud Rate Divider factor<br>The decimal part of USART baud rate division factor is determined by<br>these four bits. |
-| 15:4 | IBR[15:4] | R/W | Integer of USART Baud Rate Divider factor<br>The integral part of USART baud rate division factor is determined by<br>these 12 bits. |
-| 31:16 |  |  | Reserved |
-
+| Field | Name      | R/W | Description                                                                                                                            |
+|-------|-----------|-----|----------------------------------------------------------------------------------------------------------------------------------------|
+| 3:0   | FBR[3:0]  | R/W | Fraction of USART Baud Rate Divider factor<br>The decimal part of USART baud rate division factor is determined by<br>these four bits. |
+| 15:4  | IBR[15:4] | R/W | Integer of USART Baud Rate Divider factor<br>The integral part of USART baud rate division factor is determined by<br>these 12 bits.   |
+| 31:16 |           |     | Reserved                                                                                                                               |
 
 ### 19.6.4 Control register 1 (USART_CTRL1)
-
 Offset address: 0x0C  
 Reset value: 0x0000
 
-
-| Field | Name | R/W | Description |
-| ------- | ----------- | ----- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 0 | TXBF | R/W | Transmit Break Frame<br>0: Not transmit<br>1: Will transmit<br>This bit can be set by software and cleared to 0 by hardware when<br>the stop bit of the break frame is transmitted. |
-| 1 | RXMUTEEN | R/W | Receive Mute Mode Enable<br>0: Normal working mode<br> 1: Mute mode<br>This bit is set or cleared to 0 by software, or cleared to 0 by hardware<br>when wakeup sequence is detected.<br>USART must receive a data before it is put in the mute mode, so that<br>it can be detected and awakened by idle bus.<br>In the wake-up of address flag detection, if the RXBNEFLG bit is set,<br>the RXMUTEEN bit cannot be modified by software. |
-| 2 | RXEN | R/W | Receive Enable<br>0: Disable<br>1: Enable, and start to detect the start bit on RX pin |
-| 3 | TXEN | R/W | Transmit Enable<br>0: Disable<br>1: Enable<br>Except in smart card mode, if there is a 0 pulse on this bit at any time<br>of transmitting data, an idle bus will be transmitted after the current<br>data is transmitted.<br>After this bit is set, the data will be transmitted after delay of one-bit<br>time. |
-| 4 | IDLEIEN | R/W | IDLE Interrupt Enable<br>0: Disable<br>1: An interrupt will be generated when IDLEFLG is set |
-| 5 | RXBNEIEN | R/W | Receive Buffer Not Empty Interrupt Enable<br>0: Disable<br>1: An interrupt will be generated when OVRFLG or RXBNEFLG is set |
-| 6 | TXCIEN | R/W | Transmit Complete Interrupt Enable <br> 0: Disable <br> 1: An interrupt will be generated when TXCFLG is set |
-| 7 | TXBEIEN | R/W | Transmit Buffer Empty Interrupt Enable <br> 0: Disable interrupt generation <br> 1: An interrupt will be generated when TXBEFLG is set |
-| 8 | PEIEN | R/W | Parity Error Interrupt Enable <br> 0: Disable interrupt generation <br> 1: An interrupt will be generated when PEFLG is set |
-| 9 | PCFG | R/W | Odd/Even Parity Configure <br> 0: Even parity check <br> 1: Odd parity check <br> The selection will not take effect until the current transmission of bytes is completed. |
-| 10 | PCEN | R/W | Parity Control Enable <br> 0: Disable <br> 1: Enable <br> If this bit is set, a check bit will be inserted in the most significant bit when transmitting data; when receiving data, check whether the check bit of the received data is correct. <br> The check control will not take effect until the current transmission of bytes is completed. |
-| 11 | WUPMCFG | R/W | Wakeup Method Configure <br> 0: Idle bus wakeup <br> 1: Address tag wakeup |
-| 12 | DBLCFG | R/W | Data Bits Length Configure <br> 0: 1 start bit, 8 data bits, n stop bits <br> 1: 1 start bit, 9 data bits, n stop bits <br> This bit cannot be modified during transmission of data. |
-| 13 | UEN | R/W | USART Enable <br> 0: Disable USART frequency divider and output <br> 1: Enable USART module |
-| 14 |  |  | Reserved |
-| 15 | OSMCFG | R/W | Oversampling Mode Configure <br> 0: 16-time oversampling <br> 1: 8-time oversampling <br> This bit can be set only when USART is not enabled. |
-|  | 31:16 |  | Reserved |
-
+| Field | Name     | R/W | Description                                                                                                                                                                                                                                                                                                                                                                                                                               |
+|-------|----------|-----|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 0     | TXBF     | R/W | Transmit Break Frame<br>0: Not transmit<br>1: Will transmit<br>This bit can be set by software and cleared to 0 by hardware when<br>the stop bit of the break frame is transmitted.                                                                                                                                                                                                                                                       |
+| 1     | RXMUTEEN | R/W | Receive Mute Mode Enable<br>0: Normal working mode<br> 1: Mute mode<br>This bit is set or cleared to 0 by software, or cleared to 0 by hardware<br>when wakeup sequence is detected.<br>USART must receive a data before it is put in the mute mode, so that<br>it can be detected and awakened by idle bus.<br>In the wake-up of address flag detection, if the RXBNEFLG bit is set,<br>the RXMUTEEN bit cannot be modified by software. |
+| 2     | RXEN     | R/W | Receive Enable<br>0: Disable<br>1: Enable, and start to detect the start bit on RX pin                                                                                                                                                                                                                                                                                                                                                    |
+| 3     | TXEN     | R/W | Transmit Enable<br>0: Disable<br>1: Enable<br>Except in smart card mode, if there is a 0 pulse on this bit at any time<br>of transmitting data, an idle bus will be transmitted after the current<br>data is transmitted.<br>After this bit is set, the data will be transmitted after delay of one-bit<br>time.                                                                                                                          |
+| 4     | IDLEIEN  | R/W | IDLE Interrupt Enable<br>0: Disable<br>1: An interrupt will be generated when IDLEFLG is set                                                                                                                                                                                                                                                                                                                                              |
+| 5     | RXBNEIEN | R/W | Receive Buffer Not Empty Interrupt Enable<br>0: Disable<br>1: An interrupt will be generated when OVRFLG or RXBNEFLG is set                                                                                                                                                                                                                                                                                                               |
+| 6     | TXCIEN   | R/W | Transmit Complete Interrupt Enable <br> 0: Disable <br> 1: An interrupt will be generated when TXCFLG is set                                                                                                                                                                                                                                                                                                                              |
+| 7     | TXBEIEN  | R/W | Transmit Buffer Empty Interrupt Enable <br> 0: Disable interrupt generation <br> 1: An interrupt will be generated when TXBEFLG is set                                                                                                                                                                                                                                                                                                    |
+| 8     | PEIEN    | R/W | Parity Error Interrupt Enable <br> 0: Disable interrupt generation <br> 1: An interrupt will be generated when PEFLG is set                                                                                                                                                                                                                                                                                                               |
+| 9     | PCFG     | R/W | Odd/Even Parity Configure <br> 0: Even parity check <br> 1: Odd parity check <br> The selection will not take effect until the current transmission of bytes is completed.                                                                                                                                                                                                                                                                |
+| 10    | PCEN     | R/W | Parity Control Enable <br> 0: Disable <br> 1: Enable <br> If this bit is set, a check bit will be inserted in the most significant bit when transmitting data; when receiving data, check whether the check bit of the received data is correct. <br> The check control will not take effect until the current transmission of bytes is completed.                                                                                        |
+| 11    | WUPMCFG  | R/W | Wakeup Method Configure <br> 0: Idle bus wakeup <br> 1: Address tag wakeup                                                                                                                                                                                                                                                                                                                                                                |
+| 12    | DBLCFG   | R/W | Data Bits Length Configure <br> 0: 1 start bit, 8 data bits, n stop bits <br> 1: 1 start bit, 9 data bits, n stop bits <br> This bit cannot be modified during transmission of data.                                                                                                                                                                                                                                                      |
+| 13    | UEN      | R/W | USART Enable <br> 0: Disable USART frequency divider and output <br> 1: Enable USART module                                                                                                                                                                                                                                                                                                                                               |
+| 14    |          |     | Reserved                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| 15    | OSMCFG   | R/W | Oversampling Mode Configure <br> 0: 16-time oversampling <br> 1: 8-time oversampling <br> This bit can be set only when USART is not enabled.                                                                                                                                                                                                                                                                                             |
+|       | 31:16    |     | Reserved                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 
 ### 19.6.5 Control register 2 (USART_CTRL2)
-
 Offset address: 0x10  
 Reset value: 0x0000 0000
 
+| Field | Name      | R/W | Description                                                                                                                                                                                                                                                                                           |
+|-------|-----------|-----|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 3:0   | ADDR[3:0] | R/W | USART Device Node Address Setup<br>This bit is valid only in the mute mode of multiprocessor<br>communication, and decides to enter the mute mode or wake up<br>depending on whether the detected address tags are consistent.                                                                        |
+| 4     |           |     | Reserved                                                                                                                                                                                                                                                                                              |
+| 5     | LBDLCFG   | R/W | LIN Break Detection Length Configure                                                            <br>0: 10 bits<br>1: 11 bits                                                                                                                                                                          |
+| 6     | LBDIEN    | R/W | LIN Break Detection Interrupt Enable                                                            <br>0: Disable<br>1: An interrupt is generated when LBDFLG bit is set                                                                                                                                 |
+| 7     |           |     | Reserved                                                                                                                                                                                                                                                                                              |
+| 8     | LBCPOEN   | R/W | Last Bit Clock Pulse Output Enable                                                              <br>0: Not output from CK<br>1: Output from CK<br>This bit is valid only in synchronous mode; this bit does not exist on<br>UART4 or UART5.                                                           |
+| 9     | CPHA      | R/W | Clock Phase Configure                                                                           <br>This bit indicates on the edge of which clock sampling is conducted<br>0: The first<br>1: The second<br>This bit is valid only in synchronous mode; this bit does not exist on<br>UART4 or UART5. |
+| 10    | CPOL      | R/W | Clock Polarity Configure                                                                        <br>The state of CK pin when USART is in idle state<br>0: Low level<br>1: High level<br>This bit is valid only in synchronous mode; this bit does not exist on<br>UART4 or UART5.                     |
+| 11    | CLKEN     | R/W | Clock Enable (CK pin)                                                                           <br>0: Disable<br>1: Enable<br>This bit does not exist on UART4 or UART5.                                                                                                                             |
+| 13:12 | STOPCFG   | R/W | STOP Bit Configure                                                                              <br>00: 1 stop bit<br>01: 0.5 stop bit<br>10: 2 stop bits<br>11: 1.5 stop bits<br>This bit does not exist on UART4 or UART5.                                                                          |
+| 14    | LINMEN    | R/W | LIN Mode Enable                                                                                 <br>0: Disable<br>1: Enable                                                                                                                                                                           |
+| 31:15 |           |     | Reserved                                                                                                                                                                                                                                                                                              |
 
-| Field | Name | R/W | Description |
-| ------- | ---------- | ----- | ----------------------------------------------- |
-| 3:0 | ADDR[3:0] | R/W | USART Device Node Address Setup |
-
-
-www.geehy.com                                                           Page 296
-
-
-
-
-| Field | Name | R/W | Description |
-| -------- | --------- | ----- | ------------------------------------------------------------------------------------------------- |
-|  |  |  | This bit is valid only in the mute mode of multiprocessor                                       <br>communication, and decides to enter the mute mode or wake up<br>depending on whether the detected address tags are consistent. |
-| 4 |  |  | Reserved |
-| 5 | LBDLCFG | R/W | LIN Break Detection Length Configure                                                            <br>0: 10 bits<br>1: 11 bits |
-| 6 | LBDIEN | R/W | LIN Break Detection Interrupt Enable                                                            <br>0: Disable<br>1: An interrupt is generated when LBDFLG bit is set |
-| 7 |  |  | Reserved |
-| 8 | LBCPOEN | R/W | Last Bit Clock Pulse Output Enable                                                              <br>0: Not output from CK<br>1: Output from CK<br>This bit is valid only in synchronous mode; this bit does not exist on<br>UART4 or UART5. |
-| 9 | CPHA | R/W | Clock Phase Configure                                                                           <br>This bit indicates on the edge of which clock sampling is conducted<br>0: The first<br>1: The second<br>This bit is valid only in synchronous mode; this bit does not exist on<br>UART4 or UART5. |
-| 10 | CPOL | R/W | Clock Polarity Configure                                                                        <br>The state of CK pin when USART is in idle state<br>0: Low level<br>1: High level<br>This bit is valid only in synchronous mode; this bit does not exist on<br>UART4 or UART5. |
-| 11 | CLKEN | R/W | Clock Enable (CK pin)                                                                           <br>0: Disable<br>1: Enable<br>This bit does not exist on UART4 or UART5. |
-| 13:12 | STOPCFG | R/W | STOP Bit Configure                                                                              <br>00: 1 stop bit<br>01: 0.5 stop bit<br>10: 2 stop bits<br>11: 1.5 stop bits<br>This bit does not exist on UART4 or UART5. |
-| 14 | LINMEN | R/W | LIN Mode Enable                                                                                 <br>0: Disable<br>1: Enable |
-| 31:15 |  |  | Reserved |
-
-
-Note: These three bits (CPOL, CPHA and LBCPOEN) cannot be changed after transmission is enabled.
+Note: These three bits (`CPOL`, `CPHA` and `LBCPOEN`) cannot be changed after transmission is
+enabled.
 
 
 ### 19.6.6 Control register 3 (USART_CTRL3)
-
 Offset address: 0x14
-
-www.geehy.com
-
-
-
 Reset value: 0x0000
 
-
-| Field | Name | R/W | Description |
-| ------- | --------- | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 0 | ERRIEN | R/W | Error interrupt Enable<br>0: Disable<br>1: Enable; when DMARXEN is set and one among FEFLG, OVEFLG or NEFLG is set, an interrupt will be generated. |
-| 1 | IREN | R/W | IrDA Function Enable<br>0: Disable<br>1: Enable |
-| 2 | IRLPEN | R/W | IrDA Low-power Mode Enable<br>0: Normal mode<br>1: Low-power mode |
-| 3 | HDEN | R/W | Half-duplex Mode Enable<br>0: Disable<br>1: Enable |
-| 4 | SCNACKEN | R/W | NACK Transmit Enable During Parity Error in Smartcard Function<br>0: Not transmit NACK<br>1: Transmit NACK<br>This bit does not exist on UART4 or UART5. |
-| 5 | SCEN | R/W | Smartcard Function Enable<br>0: Disable<br>1: Enable<br>This bit does not exist on UART4 or UART5. |
-| 6 | DMARXEN | R/W | DMA Receive Enable<br>0: Disable<br>1: Enable<br>This bit does not exist on UART4 or UART5. |
-| 7 | DMATXEN | R/W | DMA Transmit Enable<br>0: Disable<br>1: Enable<br>This bit does not exist on UART4 or UART5. |
-| 8 | RTSEN | R/W | RTS Hardware Flow Control Function Enable<br>0: Disable<br>1: Enable RTS interrupt<br>RTS: Require To Send, which is output signal, indicating it has been ready to receive.<br>Request is made to receive data only when there is space in the receive buffer; when data can be received, RTS output is pulled to low.<br>This bit does not exist on UART4 or UART5. |
-
-
-www.geehy.com                                                                                                Page 298
-
-
-
-
-| Field | Name | R/W | Description |
-| ------- | ------- | ----- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 9 | CTSEN | R/W | CTS Hardware Flow Control Function Enable<br>0: Disable<br>1: Enable<br><br>CTS: Clear To Send, which is input signal<br>Only when CTS input signal is low, the data can be transmitted;<br>otherwise, the data cannot be transmitted; if CTS signal is pulled high<br>during data transmission, the data transmission will be stopped after<br>the data transmission is completed; if write operation is performed for<br>the data register when CTS is high, the data will not be transmitted<br>until CTS is valid.<br>This bit does not exist on UART4 or UART5. |
-| 10 | CTSIEN | R/W | CTS Interrupt Enable<br>0: Disable<br>1: An interrupt will be generated when CTSFLG is set<br>This bit does not exist on UART4 or UART5. |
-| 11 | SAMCFG | R/W | Sample Method Configure<br>0: Sampling for three times<br>1: Single sampling; flag of noise detection disabled<br>This bit can be set only when USART is not enabled. |
-| 31:12 |  |  | Reserved |
-
+| Field | Name     | R/W | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+|-------|----------|-----|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 0     | ERRIEN   | R/W | Error interrupt Enable<br>0: Disable<br>1: Enable; when DMARXEN is set and one among FEFLG, OVEFLG or NEFLG is set, an interrupt will be generated.                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| 1     | IREN     | R/W | IrDA Function Enable<br>0: Disable<br>1: Enable                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| 2     | IRLPEN   | R/W | IrDA Low-power Mode Enable<br>0: Normal mode<br>1: Low-power mode                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| 3     | HDEN     | R/W | Half-duplex Mode Enable<br>0: Disable<br>1: Enable                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| 4     | SCNACKEN | R/W | NACK Transmit Enable During Parity Error in Smartcard Function<br>0: Not transmit NACK<br>1: Transmit NACK<br>This bit does not exist on UART4 or UART5.                                                                                                                                                                                                                                                                                                                                                                                                             |
+| 5     | SCEN     | R/W | Smartcard Function Enable<br>0: Disable<br>1: Enable<br>This bit does not exist on UART4 or UART5.                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| 6     | DMARXEN  | R/W | DMA Receive Enable<br>0: Disable<br>1: Enable<br>This bit does not exist on UART4 or UART5.                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| 7     | DMATXEN  | R/W | DMA Transmit Enable<br>0: Disable<br>1: Enable<br>This bit does not exist on UART4 or UART5.                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| 8     | RTSEN    | R/W | RTS Hardware Flow Control Function Enable<br>0: Disable<br>1: Enable RTS interrupt<br>RTS: Require To Send, which is output signal, indicating it has been ready to receive.<br>Request is made to receive data only when there is space in the receive buffer; when data can be received, RTS output is pulled to low.<br>This bit does not exist on UART4 or UART5.                                                                                                                                                                                                |
+| 9     | CTSEN    | R/W | CTS Hardware Flow Control Function Enable<br>0: Disable<br>1: Enable<br><br>CTS: Clear To Send, which is input signal<br>Only when CTS input signal is low, the data can be transmitted;<br>otherwise, the data cannot be transmitted; if CTS signal is pulled high<br>during data transmission, the data transmission will be stopped after<br>the data transmission is completed; if write operation is performed for<br>the data register when CTS is high, the data will not be transmitted<br>until CTS is valid.<br>This bit does not exist on UART4 or UART5. |
+| 10    | CTSIEN   | R/W | CTS Interrupt Enable<br>0: Disable<br>1: An interrupt will be generated when CTSFLG is set<br>This bit does not exist on UART4 or UART5.                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| 11    | SAMCFG   | R/W | Sample Method Configure<br>0: Sampling for three times<br>1: Single sampling; flag of noise detection disabled<br>This bit can be set only when USART is not enabled.                                                                                                                                                                                                                                                                                                                                                                                                |
+| 31:12 |          |     | Reserved                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 
 ### 19.6.7 Protection time and prescaler register (USART_GTPSC)
-
 Offset address: 0x18  
 Reset value: 0x0000  
 
-
-| Field | Name | R/W | Description |
-| ------- | ------ | ----- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 7:0 | PSC | R/W | Prescaler Factor Setup<br>Divide the frequency of the system clock and provide the clock; in<br>different working modes, the significant bits of PSC have difference,<br>specifically as follows:<br>In infrared low-power mode:<br>PSC[7:0] is significant.<br>00000000: Reserved<br>00000001: 1 divided frequency<br>00000010: 2 divided frequency<br>.......<br>11111111: 255 divided frequency<br>In infrared normal mode:<br>PSC can only be set to 00000001<br>In smart card mode:<br>PSC[7:5] is insignificant, PSC[4:0] is significant<br>00000: Reserved<br>00001: 2 divided frequency<br>00010: 4 divided frequency<br>00011: 6 divided frequency<br>…….<br>11111: 62 divided frequency<br>This bit does not exist on UART4 or UART5. |
-| 15:8 | GRDT | R/W | Guard Time Value Setup<br>After transmitting data, TXCFLG can be set only after the protection time; the time unit is baud clock; it can be applied to smart card mode; this bit does not exist on UART4 and UART5. |
-| 31:16 |  |  | Reserved |
+| Field | Name | R/W | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+|-------|------|-----|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 7:0   | PSC  | R/W | Prescaler Factor Setup<br>Divide the frequency of the system clock and provide the clock; in<br>different working modes, the significant bits of PSC have difference,<br>specifically as follows:<br>In infrared low-power mode:<br>PSC[7:0] is significant.<br>00000000: Reserved<br>00000001: 1 divided frequency<br>00000010: 2 divided frequency<br>.......<br>11111111: 255 divided frequency<br>In infrared normal mode:<br>PSC can only be set to 00000001<br>In smart card mode:<br>PSC[7:5] is insignificant, PSC[4:0] is significant<br>00000: Reserved<br>00001: 2 divided frequency<br>00010: 4 divided frequency<br>00011: 6 divided frequency<br>…….<br>11111: 62 divided frequency<br>This bit does not exist on UART4 or UART5. |
+| 15:8  | GRDT | R/W | Guard Time Value Setup<br>After transmitting data, TXCFLG can be set only after the protection time; the time unit is baud clock; it can be applied to smart card mode; this bit does not exist on UART4 and UART5.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| 31:16 |      |     | Reserved                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 
 
 # 20 Internal integrated circuit interface (I2C)
-
 ## 20.1 Full Name and Abbreviation of Terms
-
 
 | Full name in English | English abbreviation |
 | -------------------------------- | ---------------------- |
@@ -11152,7 +10928,7 @@ Figure 88 I2S Philips Protocol Waveform (16/32 bits)
 - The data to be received or transmitted is 0x62d8, which becomes 0x62D80000 after it is extended to 32 bits, and it is necessary to write 0x62D8 to SPI_DATA register or read out from SPI_DATA register.
 
 Figure 90 I2S Philips Protocol Waveform (extending from 16 bits to 32 bits)
-
+```
 SPI_CK ───────────────────────────────────────
 SPI_WS ───────────────────┬───────────────────
                           │
@@ -11163,6 +10939,7 @@ SPI_SD ───────┬───High───┴───Low────
                                                bits are forced to 0
 
 ─────────────────── Right channel ──────────── Left channel
+```
 
 In the transmission process, the MSB should be written to the register SPI_DATA, and when TXBEFLG flag bit is set to 1, new data can be written; if there is corresponding interrupt, an interrupt can be generated.
 
@@ -11175,7 +10952,7 @@ In MSB standard, WS signal and the first data bit are generated at the same time
 In the transmission process, the data is changed on the falling edge of the clock signal; in the receiving process, the data is read on the rising edge of the clock signal.
 
 Figure 91 MSB Alignment Standard Waveform (16/32-bit data)
-
+```
 SPI_CK ───────────────────────────────────────
 SPI_WS ───────────────────┬───────────────────
                           │
@@ -11185,11 +10962,11 @@ SPI_SD ───────┬───High───┴───Low────
               └────16-bit/32-bit data────────┘
 
 ─────────────────── Right channel ───────────────────── Left channel
-
+```
 
 
 Figure 92 MSB Alignment Standard Waveform (24-bit data)
-
+```
 SPI_CLK ───────────────────────────────
                ┌───────────────┐
 SPI_WS  ───────┘               └───────
@@ -11198,9 +10975,10 @@ SPI_SD ┘ ─── 24-bit data ─── └─┐        │
                             │ 8-bit data is forced to 0
     High bit             Low bit
 ─────── ◁          Right channel        Left channel ▷ ──────
+```
 
 Figure 93 MSB Alignment Standard Waveform (extending from 16 bits to 32 bits)
-
+```
 SPI_CLK ───────────────────────────────
                ┌───────────────┐
 SPI_WS  ───────┘               └───────
@@ -11209,7 +10987,7 @@ SPI_SD ┘ ─── 16-bit data ─── └         │
                             │ The remaining 16 bits are forced to 0
     High bit             Low bit
 ─────── ◁          Right channel        Left channel ▷ ───────
-
+```
 
 #### 21.5.2.3 LSB alignment standard
 
@@ -11370,38 +11148,32 @@ When I2S is disabled, I2SEN can be cleared to 0 only when the flag bit TXBEFLG i
 I2S master mode receiving process
 
 
-RXBNEFLG flag is used to control the receiving sequence. RXBNEFLG flag indicates whether the receive buffer is empty; when the receive buffer is full, the RXBNEFLG flag bit will be set to 1. If RXBNEIEN bit of SPI_CTRL2 is configured, an interrupt will occur and after the user reads out the data from SPI_DATA register, the RXBNEFLG flag bit will be cleared to 0. Make sure to receive new data after reading operation; otherwise, overrun will occur and the OVRFLG flag bit will be set to 1.
+`RXBNEFLG` flag is used to control the receiving sequence. `RXBNEFLG` flag indicates whether the receive buffer is empty; when the receive buffer is full, the RXBNEFLG flag bit will be set to 1. If `RXBNEIEN` bit of `SPI_CTRL2` is configured, an interrupt will occur and after the user reads out the data from `SPI_DATA` register, the `RXBNEFLG` flag bit will be cleared to 0. Make sure to receive new data after reading operation; otherwise, overrun will occur and the `OVRFLG` flag bit will be set to 1.
 
-The value of SCHDIR should be updated immediately after receiving data, and it depends on the WS signal generated by I2S.
+The value of `SCHDIR` should be updated immediately after receiving data, and it depends on the WS signal generated by `I2S`.
 
 Regardless of the data type and the channel length, the audio data is always received in the form of 16 bits. According to the configured data and the length of the channel, the data needs to be transmitted to the receive buffer once or twice.
 
 Disable the I2S function, and for different audio protocols, the data length and channel length operation steps are as follows:
 
-# 16-bit data length, 32-bit channel length (DATALEN=00, CHLEN=1, I2SSSEL=10), in LSB alignment mode
+- 16-bit data length, 32-bit channel length (`DATALEN`=00, `CHLEN`=1, `I2SSSEL`=10), in LSB alignment mode
 - Wait until the penultimate RXBNEFLG is set to 1
-- Wait for 17 I2S clock cycles (software delay)
-- I2SEN=0
-
-# 16-bit data length, 32-bit channel length (DATALEN=00, CHLEN=1, I2SSSEL=10), in MSB alignment mode
+- Wait for 17 `I2S` clock cycles (software delay)
+- `I2SEN`=0
+- 16-bit data length, 32-bit channel length (`DATALEN`=00, `CHLEN`=1, `I2SSSEL`=10), in MSB alignment mode
 - Wait until the last RXBNEFLG is set to 1
-
-
-
-●   Wait for 1 I2S clock cycle (software delay)  
-●   I2SEN=0
+- Wait for 1 `I2S` clock cycle (software delay)  
+- `I2SEN`=0
 
 All the other situations  
-●   Wait until the penultimate RXBNEFLG is set to 1  
-●   Wait for 1 I2S clock cycle (software delay)  
-●   I2SEN=0
+- Wait until the penultimate `RXBNEFLG` is set to 1  
+- Wait for 1 `I2S` clock cycle (software delay)  
+- `I2SEN`=0
 
-BSYFLG flag clock is low during data transmission.
+`BSYFLG` flag clock is low during data transmission.
 
 
 #### 21.5.4.2 I2S slave mode
-
-
 The configuration method of slave mode is basically the same as that of master mode. In slave mode, the clock signal and WS signal are provided by external I2S device instead of I2S.
 
 Configuration process:  
