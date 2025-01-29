@@ -256,12 +256,7 @@ Note that: Zhuhai Geehy Semiconductor Co., Ltd. is hereinafter referred to as
 
 
 ## 1.2 Document description rules
-
-
-
 ### 1.2.1 "Register functional description" rules
-
-
 (1) Control (CTRL) registers are all "set to 1 and cleared to 0 by software", 
 unless otherwise specified.  
 (2) The control registers are usually followed by verb abbreviations to make 
@@ -274,100 +269,98 @@ which are not followed by verbs, such as: xxPSC and CNT.
 
 
 ### 1.2.2 Full Name and Abbreviation Description of Terms
-
-
 Table 1 Abbreviation and Description of R/W Modes
 
 
-| R/W mode | Description | Abbreviations |
-| ------------ | ------------------------------------------------------------------------------ | --------------- |
-| read/write | The software can read and write this bit. | R/W |
-| read-only | The software can only read this bit. | R |
-| write-only | Software can only write this bit, and after reading this bit, | W |
-|  | the reset value will be returned. |  |
-| read/clear | The software can read this bit and clear it by writing 1. | RC_W1 |
-|  | Writing 0 has no effect on this bit. |  |
-| read/clear | The software can read this bit and clear it by writing 0. | RC_W0 |
-|  | Writing 1 has no effect on this bit. |  |
-| read/clear by read | The software can read this bit and reading this bit will automatically clear it to 0, and writing this bit is invalid. | RC_R |
-| read/set | The software can read and set this bit, and writing 0 has no effect on this bit. | R/S |
-| read-only write | The software can read this bit and writing 0 or 1 can trigger | RT_W |
-| trigger | an event but has no effect on the value of this bit. | RT_W |
-| toggle | The software can flip this bit only by writing 1, and writing 0 | T |
-|  | has no effect on this bit. |  |
+| R/W mode           | Description                                                                                                            | Abbreviations |
+|--------------------|------------------------------------------------------------------------------------------------------------------------|---------------|
+| read/write         | The software can read and write this bit.                                                                              | R/W           |
+| read-only          | The software can only read this bit.                                                                                   | R             |
+| write-only         | Software can only write this bit, and after reading this bit,                                                          | W             |
+|                    | the reset value will be returned.                                                                                      |               |
+| read/clear         | The software can read this bit and clear it by writing 1.                                                              | RC_W1         |
+|                    | Writing 0 has no effect on this bit.                                                                                   |               |
+| read/clear         | The software can read this bit and clear it by writing 0.                                                              | RC_W0         |
+|                    | Writing 1 has no effect on this bit.                                                                                   |               |
+| read/clear by read | The software can read this bit and reading this bit will automatically clear it to 0, and writing this bit is invalid. | RC_R          |
+| read/set           | The software can read and set this bit, and writing 0 has no effect on this bit.                                       | R/S           |
+| read-only write    | The software can read this bit and writing 0 or 1 can trigger                                                          | RT_W          |
+| trigger            | an event but has no effect on the value of this bit.                                                                   | RT_W          |
+| toggle             | The software can flip this bit only by writing 1, and writing 0                                                        | T             |
+|                    | has no effect on this bit.                                                                                             |               |
 
 
 Table 2 Functional Description and Full Name and Abbreviation of Terms of Commonly Used Registers
 
 
 | Full name in English | English abbreviation |
-| ---------------------- | ---------------------- |
-| Enable | EN |
-| Disable | D |
-| Clear | CLR |
-| Select | SEL |
-| Configure | CFG |
-| Contrl | CTRL |
-| Controller | C |
-| Reset | RST |
-| Stop | STOP |
-| Set | SET |
-| Load | LD |
-| Calibration | CAL |
-| Initialize | INIT |
-| Error | ERR |
-| Status | STS |
-| Ready | RDY |
-| Software | SW |
-| Hardware | HW |
-| Source | SRC |
-| System | SYS |
-| Peripheral | PER |
-| Address | ADDR |
-| Direction | DIR |
-| Clock | CLK |
-| Input | I |
-| Output | O |
-| Interrupt | INT |
-| Data | DATA |
-| Size | SIZE |
-| Divider | DIV |
-| Prescaler | PSC |
-| Multiplier | MUL |
-| Period | PRD |
+|----------------------|----------------------|
+| Enable               | EN                   |
+| Disable              | D                    |
+| Clear                | CLR                  |
+| Select               | SEL                  |
+| Configure            | CFG                  |
+| Contrl               | CTRL                 |
+| Controller           | C                    |
+| Reset                | RST                  |
+| Stop                 | STOP                 |
+| Set                  | SET                  |
+| Load                 | LD                   |
+| Calibration          | CAL                  |
+| Initialize           | INIT                 |
+| Error                | ERR                  |
+| Status               | STS                  |
+| Ready                | RDY                  |
+| Software             | SW                   |
+| Hardware             | HW                   |
+| Source               | SRC                  |
+| System               | SYS                  |
+| Peripheral           | PER                  |
+| Address              | ADDR                 |
+| Direction            | DIR                  |
+| Clock                | CLK                  |
+| Input                | I                    |
+| Output               | O                    |
+| Interrupt            | INT                  |
+| Data                 | DATA                 |
+| Size                 | SIZE                 |
+| Divider              | DIV                  |
+| Prescaler            | PSC                  |
+| Multiplier           | MUL                  |
+| Period               | PRD                  |
 
 
 Table 3 Full Name and Abbreviation of Modules
 
 
-| Full name in English | English abbreviation |
-| ---------------------------------------------------------------- | ---------------------- |
-| Static Memory Controller | SMC |
-| Reset and Clock Management Unit | RCM |
-| Power Management Unit | PMU |
-| Nested Vector Interrupt Controller | NVIC |
-| External Interrupt /Event Controller | EINT |
-| Direct Memory Access | DMA |
-| Debug MCU | DBG MCU |
-| General-Purpose Input Output Pin | GPIO |
-| Alternate Function Input Output Pin | AFIO |
-| Timer | TMR |
-| Watchdog Timer | WDT |
-| Independent Watchdog Timer | IWDT |
-| Windows Watchdog Timer | WWDT |
-| Real-Time Clock | RTC |
-| Universal Synchronous Asynchronous Receiver Transmitter | USART |
-| Inter-Integrated Circuit Interface | I2C |
-| Serial Peripheral Interface | SPI |
-| Inter-IC Sound Interface | I2S |
-| Quad Serial Peripheral Interface | QSPI |
-| Controller Area Network | CAN |
-| Secure Digital Input and Output | SDIO |
-| Universal Serial Bus Full-Speed Device | USB |
-| Analog-to-Digital Converter | ADC |
-| Comparator | COMP |
-| Cyclic Redundancy Check Calculation <br> Unit | CRC |
-| Float Point Unit | FPU |
+| Full name in English                                    | English abbreviation |
+|---------------------------------------------------------|----------------------|
+| Static Memory Controller                                | SMC                  |
+| Reset and Clock Management Unit                         | RCM                  |
+| Power Management Unit                                   | PMU                  |
+| Nested Vector Interrupt Controller                      | NVIC                 |
+| External Interrupt /Event Controller                    | EINT                 |
+| Direct Memory Access                                    | DMA                  |
+| Debug MCU                                               | DBG MCU              |
+| General-Purpose Input Output Pin                        | GPIO                 |
+| Alternate Function Input Output Pin                     | AFIO                 |
+| Timer                                                   | TMR                  |
+| Watchdog Timer                                          | WDT                  |
+| Independent Watchdog Timer                              | IWDT                 |
+| Windows Watchdog Timer                                  | WWDT                 |
+| Real-Time Clock                                         | RTC                  |
+| Universal Synchronous Asynchronous Receiver Transmitter | USART                |
+| Inter-Integrated Circuit Interface                      | I2C                  |
+| Serial Peripheral Interface                             | SPI                  |
+| Inter-IC Sound Interface                                | I2S                  |
+| Quad Serial Peripheral Interface                        | QSPI                 |
+| Controller Area Network                                 | CAN                  |
+| Secure Digital Input and Output                         | SDIO                 |
+| Universal Serial Bus Full-Speed Device                  | USB                  |
+| Analog-to-Digital Converter                             | ADC                  |
+| Comparator                                              | COMP                 |
+| Cyclic Redundancy Check Calculation <br> Unit           | CRC                  |
+| Float Point Unit                                        | FPU                  |
 
 
 # 2 System architecture
@@ -380,10 +373,10 @@ Table 3 Full Name and Abbreviation of Modules
 Table 4 Full Name and Abbreviation Description of Terms
 
 
-| Full name in English | English abbreviation |
-| --------------------------------- | ---------------------- |
-| Advanced High-Performance Bus | AHB |
-| Advanced Peripheral Bus | APB |
+| Full name in English          | English abbreviation |
+|-------------------------------|----------------------|
+| Advanced High-Performance Bus | AHB                  |
+| Advanced Peripheral Bus       | APB                  |
 
 
 ## 2.2 System architecture block diagram
@@ -402,19 +395,20 @@ The name and description of the bus are shown in the following table.
 Table 5 Bus Name
 
 
-| Name | Description |
-| -------------------- | ----------------------------------------------------------------------------- |
-| I-bus | Connect the instruction bus of Arm® Cortex®-M4F core and the bus matrix. <br> Used for obtaining instructions. |
-| D-bus | Connect the data bus of Arm® Cortex®-M4F core and the bus matrix. <br> Used for text loading and debugging access. |
-| S-bus | Connect the system bus (peripheral bus) of Arm® Cortex®-M4F core and the <br> bus matrix. <br> Used for accessing the data in peripherals and SRAM. |
-| DMA memory bus | Connect the main interface of DMA memory and the bus matrix. <br> Realize transmission related to the memory through DMA. |
+| Name               | Description                                                                                                                                                                                |
+|--------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| I-bus              | Connect the instruction bus of Arm® Cortex®-M4F core and the bus matrix. <br> Used for obtaining instructions.                                                                             |
+| D-bus              | Connect the data bus of Arm® Cortex®-M4F core and the bus matrix. <br> Used for text loading and debugging access.                                                                         |
+| S-bus              | Connect the system bus (peripheral bus) of Arm® Cortex®-M4F core and the <br> bus matrix. <br> Used for accessing the data in peripherals and SRAM.                                        |
+| DMA memory bus     | Connect the main interface of DMA memory and the bus matrix. <br> Realize transmission related to the memory through DMA.                                                                  |
 | DMA peripheral bus | Connect the main interface of DMA peripherals and the bus matrix. <br> It can not only realize access of DMA to the peripherals on AHB, but also <br> realize transmission among memories. |
-| Bus matrix | Coordinate the access among modules, and roll polling algorithm is used during arbitration. |
-| AHB/APB bridge | The bridge provides synchronous connection between AHB and APB buses.<br>The non-32-bit access to APB register will be converted into 32 bits automatically. |
+| Bus matrix         | Coordinate the access among modules, and roll polling algorithm is used during arbitration.                                                                                                |
+| AHB/APB bridge     | The bridge provides synchronous connection between AHB and APB buses.<br>The non-32-bit access to APB register will be converted into 32 bits automatically.                               |
 
 
 Figure 1 APM32F411xCxE System Architecture Block Diagram
 
+```
           +----------------------------------------------------------+
 
 | Arm® Cortex®-M4F with FPU |
@@ -479,6 +473,7 @@ Figure 1 APM32F411xCxE System Architecture Block Diagram
 
           +--------------------------------------------------------------------------+
 
+
 | TMR2/3/4/5/12/13/14 | TMR1/8/9/10/11 |
 | RTC | USART1/6 |
 | WDT | ADC1/2 |
@@ -492,59 +487,37 @@ Figure 1 APM32F411xCxE System Architecture Block Diagram
 
 
           +------------------------------------------------+----------------------------------+
-
+```
 
 
 Note: For the information of products of each model, please see the datasheet.
 
 
 ## 2.3 Memory mapping
-
-
 The assigned addresses of memory mapping include the core (including core peripherals), on-chip Flash (including main memory area, system memory area and option bytes), on-chip SRAM, and bus peripherals (including AHB and APB peripherals). Please refer to the data manual of the corresponding model for specific information of various addresses.
 
-
 ### 2.3.1 Embedded SRAM
-
-
 Built-in static SRAM. It allows access by byte, half word (16 bits) or full word (32 bits). The start address of SRAM is 0x2000 0000.
 
 
 ### 2.3.2 Bit band
-
-
 Arm® Cortex®-M4F memory is mapped with two bit-band areas, and it maps each word in the alias memory area to one bit in the bit-band memory. Write a word to the alias memory and there will be the same effect as the read-change-write operation on the target of the bit-band area. Both peripheral register and SRAM are mapped into one bit band area, and it is allowed to perform single bit-band write and read operations.
-
 A mapping formula is given below:
-
+```
 bit_word_addr=bit_band_base+ (byte_offset×32) + (bit_number×4 )
-
+```
 
 ## 2.4 Startup configuration
-
-
 APM32F411xCxE series MCU realizes a special mechanism. By configuring the BOOT[1:0] pin, three different startup modes can be used, and the system can not only start from Flash memory or system memory, but also start from the built-in SRAM. The memory selected as the start zone is determined by the selected startup mode.
 
 Table 6 Startup Mode Configuration and Access Mode
 
-
-| Startup mode configuration | Startup mode | Access methods |
-| ---------------------------- | ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| BOOT1 pin | BOOT0 pin |  |
-| X | 0 | Main flash memory <br>( Flash ) / The main flash memory is mapped to the boot space, but it can still be accessed at its original address, that is, the contents of the flash memory can be accessed in two address areas. |
-| 0 | 1 | System memory / The system memory is mapped to the boot space <br>(0x0000 0000), but it can still be accessed at its original address. |
-
-
-www.geehy.com
-
-
-
-
-| Startup mode configuration | Startup mode | Access methods |
-| ---------------------------- | -------------- | ------------------------------------- |
-| BOOT1 pin | BOOT0 pin |  |
-| 1 | 1 | Built-in SRAM                       <br>SRAM can be accessed only at the starting address. |
-
+| Startup mode configuration | Startup mode | Access methods                                                                                                                                                                                                             |
+|----------------------------|--------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| BOOT1 pin                  | BOOT0 pin    |                                                                                                                                                                                                                            |
+| X                          | 0            | Main flash memory <br>( Flash ) / The main flash memory is mapped to the boot space, but it can still be accessed at its original address, that is, the contents of the flash memory can be accessed in two address areas. |
+| 0                          | 1            | System memory / The system memory is mapped to the boot space <br>(0x0000 0000), but it can still be accessed at its original address.                                                                                     |
+| 1                          | 1            | Built-in SRAM                       <br>SRAM can be accessed only at the starting address.                                                                                                                                 |
 
 Note: 
 
@@ -557,14 +530,11 @@ Note:
 (7) If you choose to start from built-in SRAM, you must use NVIC's exception table and offset register to remap the vector table to SRAM when writing the application code.  
 
 
-Physical remapping
-
+**Physical remapping**
 
 After BOOT pin is selected, MMSEL bit of SYSCFG_MMSEL register can be modified through software program to configure some register to allow access from I-Code bus. See SYSCFG register for specific configuration.
 
-
-Embedded BootLoader
-
+**Embedded BootLoader**
 
 In embedded BootLoader mode, users can choose to reprogram Flash through any of the following serial interfaces:
 - USART1(PA9/PA10)
@@ -577,36 +547,25 @@ In embedded BootLoader mode, users can choose to reprogram Flash through any of 
 Note: The external pull-down resistor of BOOT0 is essential. It can affect the edge of the pull-down level in application and may also have an impact on system startup.
 
 
-
-
 # 3 Flash memory
-
-
-
 ## 3.1 Full Name and Abbreviation of Terms
-
 
 Table 7 Full Name and Abbreviation Description of Terms
 
-
-| Full name in English | English abbreviation |
-| ----------------------------- | ---------------------- |
-| Flash Memory Controller | FMC |
-| One-time Programmable | OTP |
-| Adaptive Real-time | ART |
+| Full name in English    | English abbreviation |
+|-------------------------|----------------------|
+| Flash Memory Controller | FMC                  |
+| One-time Programmable   | OTP                  |
+| Adaptive Real-time      | ART                  |
 
 
 ## 3.2 Introduction
-
-
 This chapter mainly introduces the storage structure, read, erase, write,  
 read/write protection, unlock/lock characteristics of Flash, and the involved  
 register functional description.
 
 
 ## 3.3 Main characteristics
-
-
 (1) Flash memory structure
 - Contain main memory area and information block
 - The capacity of main memory area is up to 512KB
@@ -632,38 +591,28 @@ register functional description.
   - Write
   - Read/Write protection
 
-
-
-
 ## 3.4 Flash memory structure
 
-
-
-| Block | Name | Address range | Size (bytes) | Sector |
-| ------------------ | --------------- | ---------------------------- | -------------- | ---------- |
-|  |  | 0x0800 0000–0x0800 3FFF | 16K | Sector 0 |
-|  |  | 0x0800 4000–0x0800 7FFF | 16K | Sector 1 |
-| Main memory block |  | 0x0800 8000–0x0800 BFFF | 16K | Sector 2 |
-|  |  | 0x0800 C000–0x0800 FFFF | 16K | Sector 3 |
-|  |  | 0x0801 0000 – 0x0801 FFFF | 64K | Sector 4 |
-|  |  | 0x0802 0000 – 0x0803 FFFF | 128K | Sector 5 |
-|  |  | 0x0804 0000 – 0x0805 FFFF | 128K | Sector 6 |
-|  |  | 0x0806 0000–0x0807 FFFF | 128K | Sector 7 |
-| Information block | System storage | 0x1FFF 0000–0x1FFF 77FF | 30K | - |
-|  | OTP area | 0x1FFF 7800–0x1FFF 7A0F | 528 | - |
-|  | Option byte | 0x1FFF C000–0x1FFF C00F | 16 | - |
+| Block             | Name           | Address range             | Size (bytes) | Sector   |
+|-------------------|----------------|---------------------------|--------------|----------|
+|                   |                | 0x0800 0000–0x0800 3FFF   | 16K          | Sector 0 |
+|                   |                | 0x0800 4000–0x0800 7FFF   | 16K          | Sector 1 |
+| Main memory block |                | 0x0800 8000–0x0800 BFFF   | 16K          | Sector 2 |
+|                   |                | 0x0800 C000–0x0800 FFFF   | 16K          | Sector 3 |
+|                   |                | 0x0801 0000 – 0x0801 FFFF | 64K          | Sector 4 |
+|                   |                | 0x0802 0000 – 0x0803 FFFF | 128K         | Sector 5 |
+|                   |                | 0x0804 0000 – 0x0805 FFFF | 128K         | Sector 6 |
+|                   |                | 0x0806 0000–0x0807 FFFF   | 128K         | Sector 7 |
+| Information block | System storage | 0x1FFF 0000–0x1FFF 77FF   | 30K          | -        |
+|                   | OTP area       | 0x1FFF 7800–0x1FFF 7A0F   | 528          | -        |
+|                   | Option byte    | 0x1FFF C000–0x1FFF C00F   | 16           | -        |
 
 
 Note: The number of sectors included in the main memory block of APM32F411xC series products is related to the specific Flash capacity; see the Datasheet for the Flash capacity of different models.
 
 
 ## 3.5 Functional description
-
-
-
 ### 3.5.1 Read Flash
-
-
 Flash has a prefetch buffer area, and it can be enabled only when the power supply voltage is not lower than 2.1V.
 
 The reading speed of Flash is affected by the number of wait cycles, and the number of wait cycles is affected by HCLK and power supply voltage. Assuming the wait cycle is n, and the rising base of HCLK range is X
@@ -674,11 +623,10 @@ The reading speed of Flash is affected by the number of wait cycles, and the num
 
 Table 9 X Affected by Voltage Range and Recommended Value of HCLK
 
-
-| Voltage range | 1.8V-2.1V | 2.1V-2.4V | 2.4V-2.7V | 2.7V-3.6V |
-| --------------- | -------------- | -------------- | -------------- | -------------- |
-| X | 16MHz | 18MHz | 24MHz | 30MHz |
-| Recommended value | 100MHz | 100MHz | 100MHz | 100MHz |
+| Voltage range     | 1.8V-2.1V | 2.1V-2.4V | 2.4V-2.7V | 2.7V-3.6V |
+|-------------------|-----------|-----------|-----------|-----------|
+| X                 | 16MHz     | 18MHz     | 24MHz     | 30MHz     |
+| Recommended value | 100MHz    | 100MHz    | 100MHz    | 100MHz    |
 
 
 Note: When VOSSEL=0x01 for PMU_CTRL register, the recommended value of HCLK is 64MHz; when 
@@ -688,32 +636,25 @@ value of HCLK is 100MHz.
 CPU frequency can be adjusted by selecting different wait cycles, so as to 
 adjust the reading speed of Flash.
 
-
 #### 3.5.1.1 Adaptive real-time memory accelerator (ART)
-
-
 ART accelerator can improve the execution speed of Flash, so that the Flash 
 can execute programs with fewer wait cycles at high CPU frequency.
 
 
-Prefetch buffer
-
+**Prefetch buffer**
 
 When wait cycle needs to be inserted to access Flash, the next instruction line 
 of Flash can be pre-read through I-Code bus, to improve the access rate.
 
 
-I-cache
-
+**I-cache**
 
 I-cache is an instruction buffer memory. The instructions in I-cache can be 
 obtained without delay. The system can store 64 lines of 128-bit instructions in I-
 cache and the I-cache function can be enabled through the ICACHEEN bit of 
 FMC_ACCTRL register.
 
-
-D-cache
-
+**D-cache**
 
 D-cache is a data buffer memory. The system accesses the data buffer area of 
 Flash through D-Bus to reduce the waiting time. Access of D-bus is prior to I- 
@@ -723,13 +664,9 @@ register.
 
 
 ### 3.5.2 Main memory block
-
-
 When erasing/writing to the main storage area, Flash can no longer be read.
 
-
-Number of parallel bits
-
+**Number of parallel bits**
 
 The number of parallel bits is the number of bytes to be processed when 
 erasing/writing to the Flash, and it is determined by the power supply voltage 
@@ -739,18 +676,13 @@ factors and the number of parallel bits are shown in the table below:
 
 Table 10 Relationship between Determinant Factors and Number of Parallel Bits
 
-
-| Voltage range (V) | 1.8-2.1 | 2.1-2.4 | 2.4-2.7 | 2.7-3.6 | 2.7-3.6 (external VPP is used) |
-| ----------------------- | --------- | --------- | --------- | --------- | ------------------------------- |
-| Number of parallel bits | 8-bit | 16-bit | 32-bit | 32-bit | 64-bit |
-
-
-www.geehy.com                                      Page 17
+| Voltage range (V)       | 1.8-2.1 | 2.1-2.4 | 2.4-2.7 | 2.7-3.6 | 2.7-3.6 (external VPP is used) |
+|-------------------------|---------|---------|---------|---------|--------------------------------|
+| Number of parallel bits | 8-bit   | 16-bit  | 32-bit  | 32-bit  | 64-bit                         |
 
 
 
 #### 3.5.2.1 **Erase main memory block**
-
 Flash can support sector erase and mass erase (erase all). Mass erase does not affect OTP sector or configuration sector.
 
 **Main memory page erase**
@@ -766,7 +698,6 @@ The mass erase operation will erase all the contents in the main storage area of
 Mass erase does not affect OTP sector or configuration sector.
 
 #### 3.5.2.2 **Write main memory block**
-
 Flash supports byte, half-word, word, and double-word write operation, specifically depending on the number of parallel bits.
 
 *It should be noted that, to ensure correct writing, it is necessary to check whether the destination address has been erased before writing. Flash unit can be written only when it is erased to 1.*
@@ -782,9 +713,6 @@ To program more than 128-bit lines of data to the Flash, a programming alignment
 **Programming parallelism error**
 
 If the width of the write operation is inconsistent with the number of parallel bits,
-
-
-
 the write operation will be suspended, a programming parallelism error will be
 generated, and the PGPRLERR bit will be set to 1.
 
@@ -805,7 +733,6 @@ If the programming sequence is wrong, a programming sequence error will
 occur, and the PGSEQERR bit will be set to 1.
 
 #### 3.5.2.3 Lock/unlock
-
 FMC_CTRL[LOCK] can only be set to 1, in order to lock the Flash control
 register. Then it is impossible to operate the main memory block area (i.e. it is
 locked).
@@ -816,7 +743,6 @@ register will be cleared to zero, and the Flash control register and main memory
 block can then be unlocked.
 
 #### 3.5.2.4 Cache
-
 If the write operation of Flash involves some data in D-cache, the data in Flash
 and D-cache will be modified.
 
@@ -824,7 +750,6 @@ If the erase operation of Flash involves the data in D-cache or I-cache, the dat
 shall be written to the cache before it.
 
 #### 3.5.2.5 Interrupt
-
 An interrupt will occur in any of the following events:
 - End of operation: End of erase/write operation
 - Write protection error: Perform erase/write operation for the write
@@ -835,32 +760,25 @@ When OPCINTEN bit or ERRINTEN bit in FMC_CTRL register is set to 1 and
 the corresponding interrupt event occurs, an interrupt will be generated.
 
 ### 3.5.3 Option byte
-
 The address and composition of the option byte are shown in the following
 table, and the specific meaning description can be seen in the corresponding bit
-
-
-
 of FMC_OPTCTRL register.
 
-
-| Address | Field | Option byte | Functional Description |
-| ------------- | -------- | ------------- | -------------------------------------------------- |
-|  | 1:0 | - | - |
-|  | 3:2 | BORLVL | Brownout reset level |
-|  | 4 | - | - |
-| 0x1FFF C000 | 5 | WDTSEL | Select the watchdog |
-|  | 6 | RSTSTOP | Reset occurs when entering the stop mode |
-|  | 7 | RSTSTDB | Reset occurs when entering the standby mode |
-|  | 15:8 | RPROT | Read protection |
-|  | 7:0 | NWPROT | No write protection |
-| 0x1FFF C008 | 14:8 | - | - |
-|  | 15 | SELRMOD | Select write protection mode |
+| Address     | Field | Option byte | Functional Description                      |
+|-------------|-------|-------------|---------------------------------------------|
+|             | 1:0   | -           | -                                           |
+|             | 3:2   | BORLVL      | Brownout reset level                        |
+|             | 4     | -           | -                                           |
+| 0x1FFF C000 | 5     | WDTSEL      | Select the watchdog                         |
+|             | 6     | RSTSTOP     | Reset occurs when entering the stop mode    |
+|             | 7     | RSTSTDB     | Reset occurs when entering the standby mode |
+|             | 15:8  | RPROT       | Read protection                             |
+|             | 7:0   | NWPROT      | No write protection                         |
+| 0x1FFF C008 | 14:8  | -           | -                                           |
+|             | 15    | SELRMOD     | Select write protection mode                |
 
 
 #### 3.5.3.1 Erase/write option byte
-
-
 The option byte must be unlocked before erase/write.
 
 The programming sequence of option byte is:
@@ -879,8 +797,6 @@ byte will be unlocked.
 
 
 ### 3.5.4 Write protection
-
-
 In order to prevent accidental rewriting of Flash due to program disorder, in
 default state, the Flash supports write protection function of up to 7 user
 sectors; when the corresponding bit of the FMC_OPTCTRL[NWPROT] field is at
@@ -889,8 +805,6 @@ cannot be erased/written.
 
 
 #### 3.5.4.1 Write protection error
-
-
 FMC_STS[WPROTERR] is a write protection error bit, and it will be set to 1
 when any of the following events occurs:
 - Perform erase/write operation for the write protection area
@@ -902,8 +816,6 @@ when any of the following events occurs:
 
 
 ### 3.5.5 Read protection
-
-
 In order to prevent untrusted code from reading Flash data, you can choose to
 use the read protection function for the Flash and the read protection level can
 be selected by configuring the value of the FMC_OPTCTRL[RPROT] bit field.
@@ -913,16 +825,16 @@ The access restriction at different read protection levels is shown in the
 following table.
 
 
-| Memory area | Level | Bootstrap from Flash | Debugging function, bootstrap from RAM or system memory |
-| ------------- | ------- | ------------------------------- | -------------------------------------------------------- |
-|  |  | Read | Write | Erase | Read | Write | Erase |
-| OTP | Level 1 | ✔ | - |  | ✔ | ✘ |  |
-|  | Level 2 |  | ✘ |  |  |  |  |
-| Option byte | Level 1 |  |  |  | ✔ |  |  |
-|  | Level 2 |  | ✘ |  |  |  |  |
-|  |  | Read  Write  Erase | Read  Write  Erase |  |  |  |  |
-| Main memory block | Level 1 |  | ✘     ✘ (1) |  |  |  |  |
-|  | Level 2 |  | ✘ |  |  |  |  |
+| Memory area       | Level   | Bootstrap from Flash | Debugging function, bootstrap from RAM or system memory |
+|-------------------|---------|----------------------|---------------------------------------------------------|
+|                   |         | Read                 | Write                                                   | Erase | Read | Write | Erase |
+| OTP               | Level 1 | ✔                    | -                                                       |  | ✔ | ✘ |  |
+|                   | Level 2 |                      | ✘                                                       |  |  |  |  |
+| Option byte       | Level 1 |                      |                                                         |  | ✔ |  |  |
+|                   | Level 2 |                      | ✘                                                       |  |  |  |  |
+|                   |         | Read  Write  Erase   | Read  Write  Erase                                      |  |  |  |  |
+| Main memory block | Level 1 |                      | ✘     ✘ (1)                                             |  |  |  |  |
+|                   | Level 2 |                      | ✘                                                       |  |  |  |  |
 
 
 Note:  
@@ -931,20 +843,14 @@ Note:
 
 
 #### 3.5.5.1 Level 0
-
-
 When FMC_OPTCTRL[RPROT]=0xAA, the read protection function is not used for Flash.
 
 
 #### 3.5.5.2 Level 1
-
-
 When FMC_OPTCTRL[RPROT]=any value (except 0xAA and 0xCC), the read protection level is 1. At this time, if the level is adjusted back to Level 0, mass erase operation will be performed to erase all data of main memory block. Mass erase only affects user code area, and write-protected other option bytes and OTP will not be affected.
 
 
 #### 3.5.5.3 Level 2
-
-
 When FMC_OPTCTRL[RPROT]=0xCC, the read protection level is 2. Then:
 ● Reserve the read protection function of Level 1  
 ● It is not allowed to bootstrap from RAM or system memory  
@@ -955,31 +861,27 @@ Note: When the read protection level is set to 2, it cannot be degraded any more
 
 
 ### 3.5.6 Proprietary code readout protection (PCROP)
-
-
 7 user sectors of the main memory block can prevent D-bus read access by using PCROP. When PCROPEN bit of FLASH_OPTCTRL register is set to 1, select PCROP protection.
 
 
 ### 3.5.7 OTP
-
-
 The following table shows OTP structure.
 
 
 
 
-| Address | [31:0] | [63:32] | [95:64] | [128:96] | Block |
-| ------------- | -------- | --------- | --------- | ---------- | -------------- |
-| 0x1FFF 7800 | OTP0 | OTP0 | OTP0 | OTP0 | Data block 0 |
-| 0x1FFF 7810 | OTP0 | OTP0 | OTP0 | OTP0 |  |
-| 0x1FFF 7820 | OTP1 | OTP1 | OTP1 | OTP1 | Data block 1 |
-| 0x1FFF 7830 | OTP1 | OTP1 | OTP1 | OTP1 |  |
-| 0x1FFF 7840 | OTP2 | OTP2 | OTP2 | OTP2 | Data block 2 |
-| 0x1FFF 7850 | OTP2 | OTP2 | OTP2 | OTP2 |  |
-| …… | …… | …… | …… |  | …… |
-| 0x1FFF 79E0 | OTP15 | OTP15 | OTP15 | OTP15 | Data block 15 |
-| 0x1FFF 79F0 | OTP15 | OTP15 | OTP15 | OTP15 |  |
-| 0x1FFF 7A00 | LOCKB0 <br> … <br> LOCKB3 | LOCKB4 <br> … <br> LOCKB7 | LOCKB8 <br> … <br> LOCKB11 | LOCKB12 <br> … <br> LOCKB15 | Lock block |
+| Address     | [31:0]                    | [63:32]                   | [95:64]                    | [128:96]                    | Block         |
+|-------------|---------------------------|---------------------------|----------------------------|-----------------------------|---------------|
+| 0x1FFF 7800 | OTP0                      | OTP0                      | OTP0                       | OTP0                        | Data block 0  |
+| 0x1FFF 7810 | OTP0                      | OTP0                      | OTP0                       | OTP0                        |               |
+| 0x1FFF 7820 | OTP1                      | OTP1                      | OTP1                       | OTP1                        | Data block 1  |
+| 0x1FFF 7830 | OTP1                      | OTP1                      | OTP1                       | OTP1                        |               |
+| 0x1FFF 7840 | OTP2                      | OTP2                      | OTP2                       | OTP2                        | Data block 2  |
+| 0x1FFF 7850 | OTP2                      | OTP2                      | OTP2                       | OTP2                        |               |
+| ……          | ……                        | ……                        | ……                         |                             | ……            |
+| 0x1FFF 79E0 | OTP15                     | OTP15                     | OTP15                      | OTP15                       | Data block 15 |
+| 0x1FFF 79F0 | OTP15                     | OTP15                     | OTP15                      | OTP15                       |               |
+| 0x1FFF 7A00 | LOCKB0 <br> … <br> LOCKB3 | LOCKB4 <br> … <br> LOCKB7 | LOCKB8 <br> … <br> LOCKB11 | LOCKB12 <br> … <br> LOCKB15 | Lock block    |
 
 
 OTP consists of 16 32-byte data blocks and 1 16-byte lock block. The lock block 
@@ -993,46 +895,35 @@ Note that neither data block nor lock block of OTP can be erased.
 
 ## 3.6 Register address mapping
 
-
-
-| Register name | Description | Offset Address |
-| --------------- | ---------------------------------- | ---------------- |
-| FMC_ACCTRL | Flash access control register | 0x00 |
-| FMC_KEY | Flash key register | 0x04 |
-| FMC_OPTKEY | Flash option key register | 0x08 |
-| FMC_STS | Flash state register | 0x0C |
-| FMC_CTRL | Flash control register | 0x10 |
-| FMC_OPTCTRL | Flash option control register | 0x14 |
+| Register name | Description                   | Offset Address |
+|---------------|-------------------------------|----------------|
+| FMC_ACCTRL    | Flash access control register | 0x00           |
+| FMC_KEY       | Flash key register            | 0x04           |
+| FMC_OPTKEY    | Flash option key register     | 0x08           |
+| FMC_STS       | Flash state register          | 0x0C           |
+| FMC_CTRL      | Flash control register        | 0x10           |
+| FMC_OPTCTRL   | Flash option control register | 0x14           |
 
 
 ## 3.7 Register functional description
-
-
-
 ### 3.7.1 Flash access control register (FMC_ACCTRL)
 
-
 Offset address: 0x00
-
-
-
 Reset value: 0x0000 0000
 
-
-| Field | Name | R/W | Description |
-| -------- | ----------- | ----- | ----------------------------------------------------------------------------- |
-| 3:0 | WAITP | R/W | Wait Period<br>This bit means the number of wait cycles.<br>0000: 0<br>0001: 1<br>0010: 2<br>0011: 3<br>.......<br>1110: 14<br>1111: 15 |
-| 7:4 |  |  | Reserved |
-| 8 | PREFEN | R/W | Prefetch Enable<br>0: Disable<br>1: Enable |
-| 9 | ICACHEEN | R/W | Instruction Cache Enable<br>0: Disable<br>1: Enable |
-| 10 | DCACHEEN | R/W | Data Cache Enable<br>0: Disable<br>1: Enable |
-| 11 | ICACHERST | W | Instruction Cache Reset<br>0: Invalid<br>1: Reset |
-| 12 | DCACHERST | R/W | Data Cache Reset<br>0: Invalid<br>1: Reset |
-| 31:13 |  |  | Reserved |
+| Field | Name      | R/W | Description                                                                                                                             |
+|-------|-----------|-----|-----------------------------------------------------------------------------------------------------------------------------------------|
+| 3:0   | WAITP     | R/W | Wait Period<br>This bit means the number of wait cycles.<br>0000: 0<br>0001: 1<br>0010: 2<br>0011: 3<br>.......<br>1110: 14<br>1111: 15 |
+| 7:4   |           |     | Reserved                                                                                                                                |
+| 8     | PREFEN    | R/W | Prefetch Enable<br>0: Disable<br>1: Enable                                                                                              |
+| 9     | ICACHEEN  | R/W | Instruction Cache Enable<br>0: Disable<br>1: Enable                                                                                     |
+| 10    | DCACHEEN  | R/W | Data Cache Enable<br>0: Disable<br>1: Enable                                                                                            |
+| 11    | ICACHERST | W   | Instruction Cache Reset<br>0: Invalid<br>1: Reset                                                                                       |
+| 12    | DCACHERST | R/W | Data Cache Reset<br>0: Invalid<br>1: Reset                                                                                              |
+| 31:13 |           |     | Reserved                                                                                                                                |
 
 
 ### 3.7.2 Flash key register (FMC_KEY)
-
 Offset address: 0x04  
 Reset value: 0x0000 0000
 
@@ -1043,117 +934,103 @@ Reset value: 0x0000 0000
 
 
 ### 3.7.3 Flash option key register (FMC_OPTKEY)
-
 Offset address: 0x08  
 Reset value: 0x0000 0000
 
-
-| Field | Name | R/W | Description |
-| ------- | -------- | ----- | ---------------------------------------------------------------- |
-| 31:0 | OPTKEY | W | Option Key<br>When unlocking, this key needs to be input into this register. |
+| Field | Name   | R/W | Description                                                                  |
+|-------|--------|-----|------------------------------------------------------------------------------|
+| 31:0  | OPTKEY | W   | Option Key<br>When unlocking, this key needs to be input into this register. |
 
 
 ### 3.7.4 Flash state register (FMC_STS)
-
 Offset address: 0x0C
-
-
-
 Reset value: 0x0000 0000
 
-
-| Field | Name | R/W | Description |
-| ------- | ---------- | -------- | --------------------------------------------------------------------------------------------- |
-| 0 | OPRCMP | RC_W1 | Operation Complete<br>This bit will be set to 1 when the operation for Flash is completed. |
-| 1 | OPRERR | RC_W1 | Operation Error<br>This bit will be set to 1 when an error occurs in operation process. |
-| 3:2 |  |  | Reserved |
-| 4 | WPROTERR | RC_W1 | Write Protection Error<br>This bit will be set to 1 when erase/write operation is performed for Flash write protection area. |
-| 5 | PGALGERR | RC_W1 | Programming Alignment Error<br>This bit will be set to 1 when a programming alignment error occurs. |
-| 6 | PGPRLERR | RC_W1 | Programming Parallelism Error<br>This bit will be set to 1 when a programming parallelism error occurs. |
-| 7 | PGSEQERR | RC_W1 | Programming Sequence Error<br>This bit will be set to 1 when a programming sequence error occurs. |
-| 8 | RPROERR | R/W | Read Protection Error<br>This bit will be set to 1 when read operation is performed for Flash read protection area. |
-| 15:9 |  |  | Reserved |
-| 16 | BUSY | R | Busy<br>This bit will be set to 1 when operation is performed for Flash. |
-| 31:17 |  |  | Reserved |
+| Field | Name     | R/W   | Description                                                                                                                  |
+|-------|----------|-------|------------------------------------------------------------------------------------------------------------------------------|
+| 0     | OPRCMP   | RC_W1 | Operation Complete<br>This bit will be set to 1 when the operation for Flash is completed.                                   |
+| 1     | OPRERR   | RC_W1 | Operation Error<br>This bit will be set to 1 when an error occurs in operation process.                                      |
+| 3:2   |          |       | Reserved                                                                                                                     |
+| 4     | WPROTERR | RC_W1 | Write Protection Error<br>This bit will be set to 1 when erase/write operation is performed for Flash write protection area. |
+| 5     | PGALGERR | RC_W1 | Programming Alignment Error<br>This bit will be set to 1 when a programming alignment error occurs.                          |
+| 6     | PGPRLERR | RC_W1 | Programming Parallelism Error<br>This bit will be set to 1 when a programming parallelism error occurs.                      |
+| 7     | PGSEQERR | RC_W1 | Programming Sequence Error<br>This bit will be set to 1 when a programming sequence error occurs.                            |
+| 8     | RPROERR  | R/W   | Read Protection Error<br>This bit will be set to 1 when read operation is performed for Flash read protection area.          |
+| 15:9  |          |       | Reserved                                                                                                                     |
+| 16    | BUSY     | R     | Busy<br>This bit will be set to 1 when operation is performed for Flash.                                                     |
+| 31:17 |          |       | Reserved                                                                                                                     |
 
 
 ### 3.7.5 Flash control register (FMC_CTRL)
-
 Offset address: 0x10  
 Reset value: 0x8000 0000  
 This register can be accessed only when there is no Flash operation ongoing.
 
-
-| Field | Name | R/W | Description |
-| ------- | ------ | ----- | ------------------------------------------------------------------- |
-| 0 | PG | R/W | Programming<br>When this bit is set to 1, Flash programming can be enabled. |
-| 1 | SERS | R/W | Sector Erase<br>When this bit is set to 1, sector erase can be enabled. |
-| 2 | MERS | R/W | Mass Erase<br>When this bit is set to 1, mass erase can be enabled. |
-| 6:3 | SNUM | R/W | Sector Number<br>This bit is used for the specified erase sector.<br>0000: Sector 0<br>0001: Sector 1<br>…….<br>0101: Sector 5<br>0110: Sector 6<br>0111: Sector 7<br>1000: Reserved<br>…….<br>1011: Reserved<br>1100: Specific sector of user<br>1101: Sector configured by user<br>Others: Reserved |
-| 7 |  |  | Reserved |
-| 9:8 | PGSIZE | R/W | Program Size<br>This bit is used to select the number of parallel bits.<br>00: 8-bit<br>01: 16-bit<br>10: 32-bit<br>11: 64-bit |
-| 15:10 |  |  | Reserved |
-| 16 | START | R/S | Start<br>When this bit is set to 1, the erase operation can be started.<br>This bit will be cleared to zero when BUSY bit is cleared to zero. |
-| 23:17 |  |  | Reserved |
-| 24 | OPCINTEN | R/W | Operation Complete Interrupt Enable<br>0: Disable<br>1: Enable |
-| 25 | ERRINTEN | R/W | Error interrupt Enable<br>0: Disable<br>1: Enable |
-| 30:26 |  |  | Reserved |
-| 31 | LOCK | R/S | Lock<br>When this bit is set to 1, it means that this register is locked; when the unlocking sequence is detected, it will be cleared to zero by hardware. |
+| Field | Name     | R/W | Description                                                                                                                                                                                                                                                                                           |
+|-------|----------|-----|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 0     | PG       | R/W | Programming<br>When this bit is set to 1, Flash programming can be enabled.                                                                                                                                                                                                                           |
+| 1     | SERS     | R/W | Sector Erase<br>When this bit is set to 1, sector erase can be enabled.                                                                                                                                                                                                                               |
+| 2     | MERS     | R/W | Mass Erase<br>When this bit is set to 1, mass erase can be enabled.                                                                                                                                                                                                                                   |
+| 6:3   | SNUM     | R/W | Sector Number<br>This bit is used for the specified erase sector.<br>0000: Sector 0<br>0001: Sector 1<br>…….<br>0101: Sector 5<br>0110: Sector 6<br>0111: Sector 7<br>1000: Reserved<br>…….<br>1011: Reserved<br>1100: Specific sector of user<br>1101: Sector configured by user<br>Others: Reserved |
+| 7     |          |     | Reserved                                                                                                                                                                                                                                                                                              |
+| 9:8   | PGSIZE   | R/W | Program Size<br>This bit is used to select the number of parallel bits.<br>00: 8-bit<br>01: 16-bit<br>10: 32-bit<br>11: 64-bit                                                                                                                                                                        |
+| 15:10 |          |     | Reserved                                                                                                                                                                                                                                                                                              |
+| 16    | START    | R/S | Start<br>When this bit is set to 1, the erase operation can be started.<br>This bit will be cleared to zero when BUSY bit is cleared to zero.                                                                                                                                                         |
+| 23:17 |          |     | Reserved                                                                                                                                                                                                                                                                                              |
+| 24    | OPCINTEN | R/W | Operation Complete Interrupt Enable<br>0: Disable<br>1: Enable                                                                                                                                                                                                                                        |
+| 25    | ERRINTEN | R/W | Error interrupt Enable<br>0: Disable<br>1: Enable                                                                                                                                                                                                                                                     |
+| 30:26 |          |     | Reserved                                                                                                                                                                                                                                                                                              |
+| 31    | LOCK     | R/S | Lock<br>When this bit is set to 1, it means that this register is locked; when the unlocking sequence is detected, it will be cleared to zero by hardware.                                                                                                                                            |
 
 
 ### 3.7.6 Flash option control register (FMC_OPTCTRL)
-
 Offset address: 0x14  
 Reset value: 0x0FFF AAED  
 This register can be accessed only when there is no Flash operation ongoing.
 
-| Field | Name     | R/W | Description |
-| ----- | -------- | --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 0     | OPTLOCK  | R/S | Option Lock<br>When this bit is set to 1, it means that this register is locked; when the unlocking sequence is detected, it will be cleared to zero by hardware. |
-| 1     | OPTSTART | R/S | Option Start<br>After this bit is set to 1 by software, the option byte can be operated and it can be cleared to zero when the BUSY bit is cleared to zero. |
-| 3:2   | BORLVL   | R/W | Brownout Reset Level<br>When the power supply voltage is less than the threshold of the brownout reset level, a reset will be generated.<br>00: Level 3, voltage range: 2.7V~3.6V<br>01: Level 2, voltage range: 2.4V~2.7V<br>10: Level 1, voltage range: 2.1V~2.4V<br>11: Disable; voltage range: 1.8V~2.1V |
-| 4     |          |     | Reserved                                                        |
-| 5     | WDTSEL   | R/W | Watchdog Select<br>0: Software watchdog<br>1: Hardware watchdog |
-| 6     | RSTSTOP  | R/W | nReset in STOP Mode<br>0: Reset occurs when entering the Stop mode<br>1: Reset does not occur when entering the Stop mode |
-| 7     | RSTSTDB  | R/W | nReset in STANDBY Mode<br>0: Reset occurs when entering the Standby mode<br>1: Reset does not occur when entering the Standby mode |
-| 15:8  | RPROT    | R/W | Read Protect<br>This bit is used to select the read protection level.<br>0xAA: Level 0<br>0xCC: Level 2<br>Others: Level 1 |
+| Field | Name     | R/W | Description                                                                                                                                                                                                                                                                                                                            |
+|-------|----------|-----|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 0     | OPTLOCK  | R/S | Option Lock<br>When this bit is set to 1, it means that this register is locked; when the unlocking sequence is detected, it will be cleared to zero by hardware.                                                                                                                                                                      |
+| 1     | OPTSTART | R/S | Option Start<br>After this bit is set to 1 by software, the option byte can be operated and it can be cleared to zero when the BUSY bit is cleared to zero.                                                                                                                                                                            |
+| 3:2   | BORLVL   | R/W | Brownout Reset Level<br>When the power supply voltage is less than the threshold of the brownout reset level, a reset will be generated.<br>00: Level 3, voltage range: 2.7V~3.6V<br>01: Level 2, voltage range: 2.4V~2.7V<br>10: Level 1, voltage range: 2.1V~2.4V<br>11: Disable; voltage range: 1.8V~2.1V                           |
+| 4     |          |     | Reserved                                                                                                                                                                                                                                                                                                                               |
+| 5     | WDTSEL   | R/W | Watchdog Select<br>0: Software watchdog<br>1: Hardware watchdog                                                                                                                                                                                                                                                                        |
+| 6     | RSTSTOP  | R/W | nReset in STOP Mode<br>0: Reset occurs when entering the Stop mode<br>1: Reset does not occur when entering the Stop mode                                                                                                                                                                                                              |
+| 7     | RSTSTDB  | R/W | nReset in STANDBY Mode<br>0: Reset occurs when entering the Standby mode<br>1: Reset does not occur when entering the Standby mode                                                                                                                                                                                                     |
+| 15:8  | RPROT    | R/W | Read Protect<br>This bit is used to select the read protection level.<br>0xAA: Level 0<br>0xCC: Level 2<br>Others: Level 1                                                                                                                                                                                                             |
 | 23:16 | NWPROT   | R/W | Not Write Protect<br>0: Write protection is enabled<br>1: Write protection is disabled<br>When PCROPEN is reset:<br>0: Write protection is enabled for Sector i<br>1: Write protection is disabled for Sector i<br>When PCROPEN is set:<br>0: PCROP protection is disabled for Sector i<br>1: PCROP protection is enabled for Sector i |
-| 30:24 |          |     | Reserved                                |
-| 31    | PCROPEN  | R/W | PCROP Enable<br>0: Disable<br>1: Enable |
+| 30:24 |          |     | Reserved                                                                                                                                                                                                                                                                                                                               |
+| 31    | PCROPEN  | R/W | PCROP Enable<br>0: Disable<br>1: Enable                                                                                                                                                                                                                                                                                                |
 
 Static Memory Controller (SMC)
 
 
-
 ## 4.1 Full Name and Abbreviation Description of Terms
-
 Table 15 Full Name and Abbreviation Description of Terms
 
-
-| Full name in English | English abbreviation |
-| ------------------------------------------ | ---------------------- |
-| Static Random Access Memory | SRAM |
-| Read Only Memory | ROM |
-| Pseudo Static Random Access Memory | PSRAM |
-| Random Access Memory | RAM |
-| Multiplex | MUX |
-| Width | WID |
-| Flash Memory | FM |
-| Access | ACC |
-| Wait | W |
-| Signal | S |
-| Polarity | POL |
-| Asynchronous | ASYN |
-| Burst | BURST |
-| Timing | TIM |
-| Setup | SET |
-| Hold | HLD |
-| Empty | E |
+| Full name in English               | English abbreviation |
+|------------------------------------|----------------------|
+| Static Random Access Memory        | SRAM                 |
+| Read Only Memory                   | ROM                  |
+| Pseudo Static Random Access Memory | PSRAM                |
+| Random Access Memory               | RAM                  |
+| Multiplex                          | MUX                  |
+| Width                              | WID                  |
+| Flash Memory                       | FM                   |
+| Access                             | ACC                  |
+| Wait                               | W                    |
+| Signal                             | S                    |
+| Polarity                           | POL                  |
+| Asynchronous                       | ASYN                 |
+| Burst                              | BURST                |
+| Timing                             | TIM                  |
+| Setup                              | SET                  |
+| Hold                               | HLD                  |
+| Empty                              | E                    |
 
 
 ## 4.2 SMC Introduction
 SMC is used to manage the peripherals of extended static memory; it can convert AHB transmission signals to the appropriate external devices; there are four internal memory blocks, each of which controls different types of memory and is distinguished by chip selection signal; only one external device can be accessed at any moment; each memory block can be configured separately, and the timing can be programmed for external devices.
-
 
 ## 4.3 SMC Structure Block Diagram
 SMC consists of five parts: AHB bus interface, configuration register, NORFlash controller, NANDFlash/PC card controller and external device interface, specifically as shown in the figure below:
@@ -1161,6 +1038,7 @@ SMC consists of five parts: AHB bus interface, configuration register, NORFlash 
 
 Figure 2 SMC Block Diagram
 
+```
  NORFlash signal             Common signal                     NANDFlash signal               PC card signal
 
  SMC_NC[1:1]    SMC_NC[0:0]/NAND SMC_NWE[0:0]  SMC_NCE[5:0]  SMC_NOE[5:0] SMC_NWAIT         SMC_NCE[3:3] SMC_INT[3:3]
@@ -1182,7 +1060,7 @@ Figure 2 SMC Block Diagram
                                                                                AHB bus
 
  HCLK from clock controller                                                                 Interrupt from SMC to NVIC
-
+```
 
 ## 4.4 SMC Functional Description
 
@@ -1209,7 +1087,6 @@ operation is allowed.
 
 ### 4.4.2 External device address mapping
 SMC divides external devices into multiple memory blocks, and different memory blocks control different external devices. The specific classification is shown in the table below:
-
 
 | Start address | End address | Memory block | Memory type supported |
 | --------------- | ------------- | --------------------- | ----------------------- |
@@ -10202,38 +10079,34 @@ Offset address: 0x24
 Reset value: 0x0000
 
 
-| Field | Name | R/W | Description |
-| ------- | -------- | ----- | ------------------------------------------------------------------------------------------------------ |
-| 3:0 | DNFCFG | R/W | Digital Noise Filter Filtering Capability Configure<br>0000: Disable<br>0001: 1 × TPCLK1<br>……<br>1111: 15 × TPCLK1<br>Note: These bits can be configured only when I2CEN=1. |
-| 4 | ANFDIS | R/W | Analog Noise Filter Disable<br>0: Enable<br>1: Disable |
-| 15:5 |  |  | Reserved |
+| Field | Name   | R/W | Description                                                                                                                                                                  |
+|-------|--------|-----|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 3:0   | DNFCFG | R/W | Digital Noise Filter Filtering Capability Configure<br>0000: Disable<br>0001: 1 × TPCLK1<br>……<br>1111: 15 × TPCLK1<br>Note: These bits can be configured only when I2CEN=1. |
+| 4     | ANFDIS | R/W | Analog Noise Filter Disable<br>0: Enable<br>1: Disable                                                                                                                       |
+| 15:5  |        |     | Reserved                                                                                                                                                                     |
 
 
-# 21    Serial peripheral interface/Inter-IC sound
-      interface (SPI/I2S)
-
+# 21    Serial peripheral interface/Inter-IC sound interface (SPI/I2S)
 ## 21.1  Full Name and Abbreviation of Terms
 
-
-| Full name in English | English abbreviation |
-| ---------------------------- | ---------------------- |
-| Most Significant Bit | MSB |
-| Least Significant Bit | LSB |
-| Master Out Slave In | MOSI |
-| Master In Slave Out | MISO |
-| Serial Clock | SCK |
-| Serial Data | SD |
-| Master Clock | MCK |
-| Word Select | WS |
-| Pulse-code Modulation | PCM |
-| Inter-IC Sound | I2S |
-| Transmit | TX |
-| Receive | RX |
-| Busy | BSY |
+| Full name in English  | English abbreviation |
+|-----------------------|----------------------|
+| Most Significant Bit  | MSB                  |
+| Least Significant Bit | LSB                  |
+| Master Out Slave In   | MOSI                 |
+| Master In Slave Out   | MISO                 |
+| Serial Clock          | SCK                  |
+| Serial Data           | SD                   |
+| Master Clock          | MCK                  |
+| Word Select           | WS                   |
+| Pulse-code Modulation | PCM                  |
+| Inter-IC Sound        | I2S                  |
+| Transmit              | TX                   |
+| Receive               | RX                   |
+| Busy                  | BSY                  |
 
 
 ## 21.2  Introduction
-
 SPI interface can be configured to support SPI protocol and I2S audio protocol.
 It works in SPI mode by default, and the functions can be switched in I2S mode
 by software.
@@ -10247,10 +10120,7 @@ The inter-IC sound interface (I2S) supports four audio standards: Philips I2S
 standard, MSB alignment standard, LSB alignment standard and PCM
 standard. It can work in master/slave mode during half-duplex communication.
 
-
-
 ## 21.3  Main characteristics
-
 ### 21.3.1  Main characteristics of SPI
 
 (1) Master and slave operation with 3-wire full duplex synchronous 
@@ -10284,15 +10154,14 @@ standard. It can work in master/slave mode during half-duplex communication.
 (13) Calculate, transmit and verify by hardware CRC
 
 ### 21.3.2  Main characteristics of I2S
-
 (1) Have master/slave mode of simplex communication (transmit/receive 
     only)
 
-(2) Four audio standards
-    ●  I2S Philips standard
-    ●  MSB alignment standard
-    ●  LSB alignment standard
-    ●  PCM standard
+(2) Four audio standards:
+  - I2S Philips standard
+  - MSB alignment standard
+  - LSB alignment standard
+  - PCM standard
 
 (3) 16/24/32-bit data length can be selected
 
@@ -10304,368 +10173,326 @@ standard. It can work in master/slave mode during half-duplex communication.
 
 (7) MSB is always the first in the data direction
 
-
-
 (8) Transmitting and receiving supports DMA function
 
-
 ## 21.4 SPI functional description
-
-
-
 ### 21.4.1 Description of SPI signal line
 
-
-
-| Pin Name | Description |
-| ---------- | ------------- |
-| SCK | Master device: SPI clock outputs<br>Slave device: SPI clock inputs |
-| MISO | Master device: Input the pin and receive data<br>Slave device: Output the pin and transmit data<br>Data direction: From slave device to master device |
-| MOSI | Master device: Output the pin and transmit data<br>Slave device: Input the pin and receive data<br>Data direction: From master device to slave device |
-| NSS | Software NSS mode: NSS pin can be used for other purposes.<br>NSS mode of master device hardware: NSS output, single master mode.<br>Disable NSS output: Operation of multiple master environments is allowed.<br>NSS mode of slave device hardware: NSS signal is set to low level as chip selection signal of slave. |
+| Pin Name | Description                                                                                                                                                                                                                                                                                                                                                     |
+|----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `SCK`    | **Master device:** SPI clock outputs<br>**Slave device:** SPI clock inputs                                                                                                                                                                                                                                                                                      |
+| `MISO`   | **Master device:** Input the pin and receive data<br>**Slave device:** Output the pin and transmit data<br>**Data direction:** From slave device to master device                                                                                                                                                                                               |
+| `MOSI`   | **Master device:** Output the pin and transmit data<br>**Slave device:** Input the pin and receive data<br>**Data direction:** From master device to slave device                                                                                                                                                                                               |
+| `NSS`    | **Software NSS mode:** NSS pin can be used for other purposes.<br>**NSS mode of master device hardware:** NSS output, single master mode.<br>**Disable NSS output:** Operation of multiple master environments is allowed.<br>**NSS mode of slave device hardware:** NSS signal is set to low level as chip selection signal of slave. |
 
 
 ### 21.4.2 Phase and polarity of clock signal
+The clock polarity and clock phase are `CPOL` and `CPHA` bits of `SPI_CTRL1` register.
 
+Clock polarity `CPOL` means the level signal of `SCK` signal line when SPI is in idle state.
+- When `CPOL`=0, `SCK` signal line is low in idle state
+- When `CPOL`=1, `SCK` signal line is high in idle state
 
-The clock polarity and clock phase are CPOL and CPHA bits of SPI_CTRL1 register.
+Clock phase `CPHA` means the sampling moment of data
+- When `CPHA`=0, the signal on `MOSI` or `MISO` data line will be sampled by the "odd edge" on `SCK` clock line.
+- When `CPHA`=1, the signal on `MOSI` or `MISO` data line will be sampled by the "even edge" on `SCK` clock line.
 
-Clock polarity CPOL means the level signal of SCK signal line when SPI is in idle state.
-- When CPOL=0, SCK signal line is low in idle state
-- When CPOL=1, SCK signal line is high in idle state
-
-Clock phase CPHA means the sampling moment of data
-- When CPHA=0, the signal on MOSI or MISO data line will be sampled by the "odd edge" on SCK clock line.
-- When CPHA=1, the signal on MOSI or MISO data line will be sampled by the "even edge" on SCK clock line.
-
-SPI can be divided into four modes according to the states of clock phase CPHA and clock polarity CPOL.
-
+`SPI` can be divided into four modes according to the states of clock phase `CPHA` and clock polarity `CPOL`.
 
 | SPI mode | CPHA | CPOL | Sampling moment | Idle SCK clock |
-| ---------- | ------ | ------ | ----------------- | ---------------- |
-| 0 | 0 | 0 | Odd edge | Low level |
-| 1 | 0 | 1 | Odd edge | High Level |
-| 2 | 1 | 0 | Even edge | Low level |
-| 3 | 1 | 1 | Even edge | High Level |
-
+|----------|------|------|-----------------|----------------|
+| 0        | 0    | 0    | Odd edge        | Low level      |
+| 1        | 0    | 1    | Odd edge        | High Level     |
+| 2        | 1    | 0    | Even edge       | Low level      |
+| 3        | 1    | 1    | Even edge       | High Level     |
 
 ### 21.4.3 Data frame format
-
-
-Set MSB or LSB to be first by configuring LSBSEL bit of SPI_CTRL1 register. Select to transmit/receive in 8/16-bit data frame format by configuring DFLSEL bit of SPI_CTRL1 register.
-
+Set `MSB` or `LSB` to be first by configuring `LSBSEL` bit of `SPI_CTRL1` register. Select to
+transmit/receive in 8/16-bit data frame format by configuring `DFLSEL` bit of `SPI_CTRL1` register.
 
 ### 21.4.4 NSS mode
+**Software NSS mode:** Select to enable or disable this mode by configuring `SSEN` bit of 
+`SPI_CTRL1`
+register, and the internal NSS signal level is driven by `ISSEL` bit of `SPI_CTRL1` register.
 
-
-Software NSS mode: Select to enable or disable this mode by configuring SSEN bit of SPI_CTRL1 register, and the internal NSS signal level is driven by ISSEL bit of SPI_CTRL1 register.
-
-Hardware NSS mode:
-- Enable NSS output: When SPI is in master mode, enable SSOEN bit, NSS pin will be pulled to low and SPI will automatically enter the slave mode.
+**Hardware NSS mode:**
+- Enable NSS output: When SPI is in master mode, enable `SSOEN` bit, `NSS` pin will be pulled to
+low and SPI will automatically enter the slave mode.
 - Disable NSS output: Operation is allowed in multi-master environments.
 
 
 ### 21.4.5 SPI mode
-
-
-
 #### 21.4.5.1 SPI master mode
 
+In master mode, generate serial clock on `SCK` pin
 
-In master mode, generate serial clock on SCK pin
+**Master Mode Configuration**
+- Configure `MSMSEL`=1 in `SPI_CTRL1` register
+- Select the polarity and phase by configuring `CPOL` and `CPHA` bits of `SPI_CTRL1` register.
+- Select 8/16-bit data frame format by configuring `DFLSEL` bit of `SPI_CTRL1` register
+- Select `LSB` or `MSB` first by configuring `LSBSEL` bit in `SPI_CTRL1` register
+- `NSS` configuration:
+  - `NSS` pin works in input mode: in hardware mode, it is required to connect `NSS` pin to high
+    level during the entire data frame transmission; in software mode, it is required to set `SSEN` 
+    bit and `ISSEL` bit in `SPI_CTRL1` register
+  - `NSS` works in output mode and it is required to configure `SSOEN` bit of `SPI_CTRL2` register
+- Configure `FRFCFG` bit of `SPI_CTRL2` register to select TI mode protocol for serial communication
+- Enable SPI by configuring `SPIEN` bit in `SPI_CTRL1` register
 
-Master mode configuration
-- Configure MSMSEL=1 in SPI_CTRL1 register
-- Select the polarity and phase by configuring CPOL and CPHA bits of SPI_CTRL1 register.
-- Select 8/16-bit data frame format by configuring DFLSEL bit of SPI_CTRL1 register
-- Select LSB or MSB first by configuring LSBSEL bit in SPI_CTRL1 register
-- NSS configuration:
-  - NSS pin works in input mode: in hardware mode, it is required to connect NSS pin to high level during the entire data frame transmission; in software mode, it is required to set SSEN bit and ISSEL bit in SPI_CTRL1 register
-  - NSS works in output mode and it is required to configure SSOEN bit of SPI_CTRL2 register
-- Configure FRFCFG bit of SPI_CTRL2 register to select TI mode protocol for serial communication
-- Enable SPI by configuring SPIEN bit in SPI_CTRL1 register
+In master mode: `MOSI` pin is data output, while `MISO` is data input
 
-In master mode: MOSI pin is data output, while MISO is data input
-
-
-
-TI protocol
-
-In slave mode, SPI interface supports TI protocol. It is controlled by FRFCFG bit of SPI_CTRL2 register. Both clock polarity and phase conform to TI protocol. NSS management is specific to TI protocol, not needing to configure SPI_CTRL1 and SPI_CTRL2 registers.
+**TI protocol**
+In slave mode, SPI interface supports TI protocol. It is controlled by `FRFCFG` bit of `SPI_CTRL2`
+register. Both clock polarity and phase conform to TI protocol. `NSS` management is specific to TI
+protocol, not needing to configure `SPI_CTRL1` and `SPI_CTRL2` registers.
 
 #### 21.4.5.2 SPI slave mode
+In slave mode, `SCK` pin receives the serial clock transmitted from the master device
 
-In slave mode, SCK pin receives the serial clock transmitted from the master device
+**Slave Mode Configuration**
+- Configure `MSMSEL`=0 in `SPI_CTRL1` register
+- Select the polarity and phase by configuring `CPOL` and `CPHA` bits of `SPI_CTRL1` register.
+- Select 8/16-bit data frame format by configuring `DFLSEL` bit of `SPI_CTRL1` register
+- Select LSB or MSB first by configuring `LSBFSEL` in `SPI_CTRL1` register
+- `NSS` configuration:
+  - In hardware mode: `NSS` pin must be low in the whole data frame transmission process
+  - In software mode: Set `SSEN` bit in `SPI_CTRL1` register and clear ISSEL bit (this step is not required for TI mode)
+- Configure `FRFCFG` bit of `SPI_CTRL2` register to select TI mode protocol for serial communication
+- Enable SPI by configuring `SPIEN` bit in `SPI_CTRL1` register
 
-Configuration of slave mode
-- Configure MSMSEL=0 in SPI_CTRL1 register
-- Select the polarity and phase by configuring CPOL and CPHA bits of SPI_CTRL1 register.
-- Select 8/16-bit data frame format by configuring DFLSEL bit of SPI_CTRL1 register
-- Select LSB or MSB first by configuring LSBFSEL in SPI_CTRL1 register
-- NSS configuration:
-  - In hardware mode: NSS pin must be low in the whole data frame transmission process
-  - In software mode: Set SSEN bit in SPI_CTRL1 register and clear ISSEL bit (this step is not required for TI mode)
-- Configure FRFCFG bit of SPI_CTRL2 register to select TI mode protocol for serial communication
-- Enable SPI by configuring SPIEN bit in SPI_CTRL1 register
+In slave mode: `MOSI` pin is data input, while `MISO` is data output 
 
-In slave mode: MOSI pin is data input, while MISO is data output 
+**TI protocol**
 
-TI protocol
+In slave mode, SPI interface supports TI protocol. It is controlled by `FRFCFG` bit of `SPI_CTRL2`
+register. Both clock polarity and phase conform to TI protocol. `NSS` management is specific to
+TI protocol, not needing to configure `SPI_CTRL1` and `SPI_CTRL2` registers.
 
-In slave mode, SPI interface supports TI protocol. It is controlled by FRFCFG bit of SPI_CTRL2 register. Both clock polarity and phase conform to TI protocol. NSS management is specific to TI protocol, not needing to configure SPI_CTRL1 and SPI_CTRL2 registers.
-
-In slave mode, SPI baud rate prescaler can use any baud rate to control the moment of switching MISO pin state to high-impedance state, so it can determine this moment very flexibly. The baud rate is generally the baud rate of external master clock. The baud rate value set by BRSEL[2:0] of SPI_CTRL1 register and the internal circuit of the chip synchronously determine the time when the MISO pin state changes to high-impedance state.
+In slave mode, SPI baud rate prescaler can use any baud rate to control the moment of switching
+`MISO` pin state to high-impedance state, so it can determine this moment very flexibly. The baud
+rate is generally the baud rate of external master clock. The baud rate value set by
+`BRSEL[2:0]` of `SPI_CTRL1` register and the internal circuit of the chip synchronously determine
+the time when the `MISO` pin state changes to high-impedance state.
 
 #### 21.4.5.3 Half-duplex communication of SPI
-
 One clock line and one bidirectional data line
-- Enable this mode by setting BMEN of SPI_CTRL1 register
-
-
-
-- Control the data line to be input or output by setting BMOEN bit of SPI_CTRL1 register
-- SCK pin is used as clock, MOSI pin is used in master device to transmit data, and MISO pin is used in slave device to transmit data
+- Enable this mode by setting `BMEN` of `SPI_CTRL1` register
+- Control the data line to be input or output by setting `BMOEN` bit of `SPI_CTRL1` register
+- `SCK` pin is used as clock, `MOSI` pin is used in master device to transmit data, and `MISO` pin is used in slave device to transmit data
 
 
 ### 21.4.6 Data transmission and receiving process in different modes of SPI
-
-
 Table 90 Run Mode of SPI
 
-
-| Mode | Configure | Data pin |
-| ------------------------------------------------- | ------------------- | -------------------------------------------- |
-| Full-duplex mode of master device | BMEN=0,  RXOMEN=0 | MOSI transmits; MISO receives |
-| Unidirectional receiving mode of master device | BMEN=0,  RXOMEN=1 | MOSI is not used; MISO receives |
-| Bidirectional transmitting mode of master device | BMEN=1,  BMOEN=1 | MOSI transmits; MISO is not used |
-| Bidirectional receiving mode of master device | BMEN=1,  BMOEN=0 | MOSI is not used; MISO receives |
-| Full-duplex mode of slave device | BMEN=0,  RXOMEN=0 | MOSI receives, and MISO transmits |
-| Unidirectional receiving mode of slave device | BMEN=0,  RXOMEN=1 | MOSI receives, and MISO is not used |
-| Bidirectional transmitting mode of slave device | BMEN=1,  BMOEN=1 | MOSI is not used, and MISO transmits |
-| Bidirectional receiving mode of slave device | BMEN=1,  BMOEN=0 | MOSI receives, and MISO is not used |
-
+| Mode                                             | Configure         | Data pin                             |
+|--------------------------------------------------|-------------------|--------------------------------------|
+| Full-duplex mode of master device                | BMEN=0,  RXOMEN=0 | MOSI transmits; MISO receives        |
+| Unidirectional receiving mode of master device   | BMEN=0,  RXOMEN=1 | MOSI is not used; MISO receives      |
+| Bidirectional transmitting mode of master device | BMEN=1,  BMOEN=1  | MOSI transmits; MISO is not used     |
+| Bidirectional receiving mode of master device    | BMEN=1,  BMOEN=0  | MOSI is not used; MISO receives      |
+| Full-duplex mode of slave device                 | BMEN=0,  RXOMEN=0 | MOSI receives, and MISO transmits    |
+| Unidirectional receiving mode of slave device    | BMEN=0,  RXOMEN=1 | MOSI receives, and MISO is not used  |
+| Bidirectional transmitting mode of slave device  | BMEN=1,  BMOEN=1  | MOSI is not used, and MISO transmits |
+| Bidirectional receiving mode of slave device     | BMEN=1,  BMOEN=0  | MOSI receives, and MISO is not used  |
 
 Figure 84 Connection in Full-duplex Mode
 
-
+| Master device |         | Slave device |
+|---------------|---------|--------------|
+| SCK           | ------> | SCK          |
+| MISO          | <------ | MISO         |
+| MOSI          | ------> | MOSI         |
+| NSS           | ------> | NSS          |
 
 Figure 85 Connection in Half-duplex Mode (the master receives, while the slave transmits)
 
-
-| Master device |  | Slave device |
-| --------------- | --------- | -------------- |
-| SCK | ------> | SCK |
-| MISO | <------ | MISO |
-| MOSI |  | MOSI |
-| NSS |  | NSS |
-
+| Master device |         | Slave device |
+|---------------|---------|--------------|
+| SCK           | ------> | SCK          |
+| MISO          | <------ | MISO         |
+| MOSI          |         | MOSI         |
+| NSS           | ------> | NSS          |
 
 Figure 86 Connection in Half-duplex Mode (the master only transmits, while the slave receives)
 
+| Master device |         | Slave device |
+|---------------|---------|--------------|
+| SCK           | ------> | SCK          |
+| MISO          |         | MISO         |
+| MOSI          | ------> | MOSI         |
+| NSS           | ------> | NSS          |
 
-| Master device |  | Slave device |
-| --------------- | --------- | -------------- |
-| SCK | ------> | SCK |
-| MISO |  | MISO |
-| MOSI | ------> | MOSI |
-| NSS |  | NSS |
+Figure 87 Bidirectional Line Connection (MOSI from master to MISO from slave)
 
-
-Figure 87 Bidirectional Line Connection
-
-
-| Master device |  | Slave device |
-| --------------- | --------- | -------------- |
-| SCK | ------> | SCK |
-| MISO | <-----> | MISO |
-| MOSI | <-----> | MOSI |
-| NSS |  | NSS |
+| Master device |          | Slave device |
+|---------------|----------|--------------|
+| SCK           | -------> | SCK          |
+| MISO          |    /-->  | MISO         |
+| MOSI          | <--/     | MOSI         |
+| NSS           | ------>  | NSS          |
 
 
 #### 21.4.6.1 Transmitting and receiving of processed data
-
 
 **Data transmission**
 
 After the mode configuration is completed, the SPI module is enabled to remain idle.
 
-Master mode: The software writes a data frame to the transmit buffer, and the transmission process starts
+**Master mode:** The software writes a data frame to the transmit buffer, and the transmission 
+process starts
 
-
-
-Slave mode: The SCK signal on the SCK pin starts to jump, while the NSS pin
+**Slave mode:** The `SCK` signal on the `SCK` pin starts to jump, while the `NSS` pin
 level is low, and the transmission process starts (before starting data
 transmission, make sure that the data has been written to the transmit buffer in
 advance).
 
 When SPI is transmitting a data frame, it will load the data frame from the data
 buffer to the shift register, and then start to transmit data. After one bit of data
-frame is transmitted, TXBEFLG is set to 1. To continue to transmit data, the
-software needs to wait and when TXBEFLG=1 data will be written to the
-SPI_DATA register. (TXBEFLG flag is set to 1 by hardware and cleared to 0 by
+frame is transmitted, `TXBEFLG` is set to 1. To continue to transmit data, the
+software needs to wait and when `TXBEFLG`=1 data will be written to the
+`SPI_DATA` register. (`TXBEFLG` flag is set to 1 by hardware and cleared to 0 by
 software).
 
 
-Data receiving
+**Data receiving**
 
-
-BSYFLG flag is always set to 1 in the data receiving process.
+`BSYFLG` flag is always set to 1 in the data receiving process.
 
 At the last edge of the sampling clock, the received data is transmitted from the
-shift register to the receive buffer; set the RXBNEFLG flag, and the software
-reads the data in data register (SPI_DATA) to obtain the content of the receive
-buffer; if RXBNEIEN bit of SPI_CTRL2 register is set, an interrupt will be
-generated, and after data is read, the BSYFLG flag will be automatically
+shift register to the receive buffer; set the `RXBNEFLG` flag, and the software
+reads the data in data register (`SPI_DATA`) to obtain the content of the receive
+buffer; if `RXBNEIEN` bit of `SPI_CTRL2` register is set, an interrupt will be
+generated, and after data is read, the `BSYFLG` flag will be automatically
 cleared.
 
 
 #### 21.4.6.2 Full duplex transmitting and receiving mode under master/slave device
-
-
 **Full duplex mode under master device**
-- After writing data to SPI_DATA register (transmit buffer), data
+- After writing data to `SPI_DATA` register (transmit buffer), data
   transmission starts.
 - When SPI transmits the first bit of data, the data is transmitted from
   the transmit buffer to the shift register and then transmitted to the
-  MOSI pin serially according to the sequence.
-- The data received on MISO pin is serially transmitted to SPI_DATA
+  `MOSI` pin serially according to the sequence.
+- The data received on `MISO` pin is serially transmitted to `SPI_DATA`
   register (receive buffer) according to the sequence.
 
 Transmitting and receiving are synchronous.
 
 **Full duplex mode under slave device**
 - When the slave device receives the clock signal and the first data bit
-  appears on the MOSI pin, data transmission starts, and the
+  appears on the `MOSI` pin, data transmission starts, and the
   subsequent data bits will be transmitted to the shift register in turn.
 - When SPI transmits the first bit of data, the data is transmitted from
   the transmit buffer to the shift register and then transmitted to the
-  MISO pin serially according to the sequence.
+  `MISO` pin serially according to the sequence.
 - The software must ensure that the data to be transmitted has been
   written before the SPI master device starts to transmit data.
 
 Transmitting and receiving are synchronous.
 
-www.geehy.com
-
-
-
 **Full duplex transmitting and receiving process under master/slave device**
 
-(1) Enable SPI module: Configure SPIEN=1 for SPI_CTRL1 register.
+(1) Enable SPI module: Configure `SPIEN=1` for `SPI_CTRL1` register.
 
-(2) Write the first data to be transmitted to SPI_DATA register, and the TXBEFLG flag will be cleared.
+(2) Write the first data to be transmitted to `SPI_DATA` register, and the `TXBEFLG` flag will be cleared.
 
-(3) Wait until TXBEFLG flag bit is set to 1 (controlled by hardware), and write the second data bit to be transmitted.
+(3) Wait until `TXBEFLG` flag bit is set to 1 (controlled by hardware), and write the second data bit to be transmitted.
 
-(4) Wait until RXBNEFLG flag bit is set to 1 (controlled by hardware), read the first received data in the SPI_DATA register, at the same time, clear the RXBNEFLG flag (cleared to 0 by software). Repeat the operation, and transmit and receive data at the same time.
+(4) Wait until `RXBNEFLG` flag bit is set to 1 (controlled by hardware), read the first received data in the `SPI_DATA` register, at the same time, clear the `RXBNEFLG` flag (cleared to 0 by software). Repeat the operation, and transmit and receive data at the same time.
 
-(5) Wait until RXBNEFLG=1 and receive the last data.
+(5) Wait until `RXBNEFLG=1` and receive the last data.
 
-(6) Wait until TXBEFLG=1 and disable SPI module after BSYFLG=0.
+(6) Wait until `TXBEFLG=1` and disable SPI module after `BSYFLG=0`.
 
 
 #### 21.4.6.3 Bidirectional transmission mode under master/slave device
-
-
 **Bidirectional transmission under master device**
 
-- After the data is written to SPI_DATA register, start transmission
-- The data in the transmit buffer is transmitted to the shift register in parallel, and then transmitted to the MOSI pin serially according to the sequence.
+- After the data is written to `SPI_DATA` register, start transmission
+- The data in the transmit buffer is transmitted to the shift register in parallel, and then transmitted to the `MOSI` pin serially according to the sequence.
 
 **Bidirectional transmission under slave device**
 
 - When the slave device receives the clock signal and the first data bit appears on the MISO pin, data transmission starts.
-- At the same time, the data to be transmitted by the transmit buffer is transmitted to the shift register in parallel, and then transmitted to the MISO pin serially (before data transmission, make sure that the data has been written to the transmit buffer in advance).
+- At the same time, the data to be transmitted by the transmit buffer is transmitted to the shift register in parallel, and then transmitted to the `MISO` pin serially (before data transmission, make sure that the data has been written to the transmit buffer in advance).
 
 **Bidirectional transmission process under master/slave device**
 
-(1) Enable SPI module: Configure SPIEN=1 for SPI_CTRL1 register.
+(1) Enable SPI module: Configure `SPIEN=1` for `SPI_CTRL1` register.
 
-(2) Write the first data to be transmitted to SPI_DATA register, and the TXBEFLG flag will be cleared.
+(2) Write the first data to be transmitted to `SPI_DATA` register, and the `TXBEFLG` flag will be cleared.
 
-(3) Wait until TXBEFLG=1, write the second data, repeat the operation and transmit the subsequent data
+(3) Wait until `TXBEFLG=1`, write the second data, repeat the operation and transmit the subsequent data
 
-(4) After the last data is written, wait until TXBEFLG=1 and BSYFLG=0 and transmission is completed
+(4) After the last data is written, wait until `TXBEFLG=1` and `BSYFLG=0` and transmission is completed
 
 
 #### 21.4.6.4 Unidirectional/Bidirectional receiving mode under master/slave device
+(1) Enable SPI module: Configure `SPIEN=1` for `SPI_CTRL1` register.
 
-
-(1) Enable SPI module: Configure SPIEN=1 for SPI_CTRL1 register.
-
-
-
-(2) In the master device: Generate SCK clock immediately, and 
+(2) In the master device: Generate `SCK` clock immediately, and 
     continuously receive data before SPI is disabled.
 
-(3) Slave device: When SPI master device pulls down NSS and generates a 
+(3) Slave device: When SPI master device pulls down `NSS` and generates a 
     clock, receive data.
 
-(4) Wait until the RXBNEFLG flag is set to 1, read data through SPI_DATA, 
+(4) Wait until the `RXBNEFLG` flag is set to 1, read data through `SPI_DATA`, 
     and repeat the operation to receive data.
 
-
 ### 21.4.7 CRC functions
-
-
-SPI module contains two CRC computing units, which are used for data 
+SPI module contains two `CRC` computing units, which are used for data 
 receiving and data transmission respectively.
 
-CRC computing unit is used to define polynomials in SPI_CRCPOLY register.
+`CRC` computing unit is used to define polynomials in `SPI_CRCPOLY` register.
 
-Enable CRC computing by configuring CRCEN bit in SPI_CTRL1 register; at the 
-same time, reset the CRC register (SPI_RXCRC and SPI_TXCRC).
+Enable `CRC` computing by configuring `CRCEN` bit in `SPI_CTRL1` register; at the 
+same time, reset the CRC register (`SPI_RXCRC` and `SPI_TXCRC`).
 
 To obtain the CRC value of transmission calculation, after the last data is written 
-to the transmit buffer, it is required to set CRCNEXT bit of SPI_CTRL1; indicate 
+to the transmit buffer, it is required to set `CRCNEXT` bit of `SPI_CTRL1`; indicate 
 that the hardware transmits the CRC value after the last data is transmitted, and 
-the CRCNEXT bit will be cleared; at the same time, compare the values of CRC 
-and SPI_RXCRC, and if they do not match, it is required to set CRCERRFLG bit of 
-SPI_STS register, and after ERRIEN bit of SPI_CTRL2 register is set, an 
+the `CRCNEXT` bit will be cleared; at the same time, compare the values of `CRC` 
+and `SPI_RXCRC`, and if they do not match, it is required to set `CRCERRFLG` bit of 
+`SPI_STS` register, and after `ERRIEN` bit of `SPI_CTRL2` register is set, an 
 interrupt will occur.
 
 Note:
 
-(1) If SPI is under slave device and CRC function is used, CRC computing will continue when 
-NSS pin is at high level. For example, when the master device communicates with multiple 
+(1) If SPI is under slave device and `CRC` function is used, `CRC` computing will continue when 
+`NSS` pin is at high level. For example, when the master device communicates with multiple 
 slave devices alternately, the above situation will occur, so it is necessary to avoid faulty 
-operation of CRC.
+operation of `CRC`.
 
-(2) In the process of a slave device from being unselected (NSS is at high level) to being selected 
-(NSS is at low level 0), it is required to clear the CRC value at both ends of the master and 
-slave devices to keep the next CRC computing results of the master and slave devices 
+(2) In the process of a slave device from being unselected (`NSS` is at high level) to being selected 
+(`NSS` is at low level 0), it is required to clear the `CRC` value at both ends of the master and 
+slave devices to keep the next `CRC` computing results of the master and slave devices 
 synchronized.
 
-(3) When SPI is in slave mode, CRC computing can be enabled after the clock becomes stable.
+(3) When SPI is in slave mode, `CRC` computing can be enabled after the clock becomes stable.
 
 (4) When the SPI clock frequency is too high, the CPU operation will affect the SPI bandwidth. It 
 is recommended to use DMA mode to avoid reduction of SPI speed.
 
-(5) When the SPI clock frequency is too high, during the CRC transmission period, the CPU 
-utilization frequency will be reduced, and the function call is disabled in the CRC transmission 
-process to avoid errors when receiving the last data and CRC.
+(5) When the SPI clock frequency is too high, during the `CRC` transmission period, the CPU 
+utilization frequency will be reduced, and the function call is disabled in the `CRC` transmission 
+process to avoid errors when receiving the last data and `CRC`.
 
-(6) When NSS hardware mode is used in slave mode, NSS pin should be kept low during data 
-transmission and CRC transmission period.
-
-
-Sequence of clearing CRC values
+(6) When `NSS` hardware mode is used in slave mode, `NSS` pin should be kept low during data 
+transmission and `CRC` transmission period.
 
 
-(1) Disable SPI (SPIEN=0)
+**Sequence of clearing CRC values**
 
-(2) Clear CRCEN bit
+(1) Disable SPI (`SPIEN=0`)
 
+(2) Clear `CRCEN` bit
 
+(3) Set `CRCEN` bit to 1
 
-(3) Set CRCEN bit to 1
-
-(4) Enable SPI (SPIEN=1)
+(4) Enable SPI (`SPIEN=1`)
 
 
 ### 21.4.8 DMA function
-
-
 The request/response DMA mechanism in SPI facilitates high-speed data 
 transmission, improves the system efficiency and enable to transfer data to SPI 
 transmit buffer promptly, and the receive buffer can read the data in time to 
@@ -10675,257 +10502,256 @@ When SPI only transmits data, it is only necessary to enable DMA transmission
 channel; when SPI only receives data, it is only necessary to enable DMA 
 receiving channel.
 
-DMA function of SPI mode can be enabled by configuring TXDEN and RXDEN 
-bits of SPI_CTRL2 register.
-- ● During transmitting: When TXBEFLG flag bit is set to 1, issue the 
-  DMA request, DMA controller writes data to SPI_DATA register, and 
-  then the TXBEFLG flag bit will be cleared.
-- ● When receiving: When setting RXBNEFLG flag bit to 1, issue the 
-  DMA request, DMA controller reads data from SPI_DATA register, and 
-  then RXBNEFLG flag bit is cleared.
+DMA function of SPI mode can be enabled by configuring `TXDEN` and `RXDEN` 
+bits of `SPI_CTRL2` register.
+- **During transmitting:** When `TXBEFLG` flag bit is set to 1, issue the 
+  DMA request, DMA controller writes data to `SPI_DATA` register, and 
+  then the `TXBEFLG` flag bit will be cleared.
+- **When receiving:** When setting `RXBNEFLG` flag bit to 1, issue the 
+  DMA request, DMA controller reads data from `SPI_DATA` register, and 
+  then `RXBNEFLG` flag bit is cleared.
 
-By monitoring BSYFLG flag bit, confirm whether SPI communication is over 
+By monitoring `BSYFLG` flag bit, confirm whether SPI communication is over 
 after DMA has transferred all data to be transmitted in transmitting mode, which 
 can avoid damaging the transmission of last data.
 
+**DMA function with CRC**
 
-DMA function with CRC
-
-
-By the end of communication, if SPI enables both CRC operation and DMA 
-function, transmitting and receiving of CRC bytes will be completed 
+By the end of communication, if SPI enables both `CRC` operation and DMA 
+function, transmitting and receiving of `CRC` bytes will be completed 
 automatically.
 
-At the end of data and CRC transmission, if CRCEFLG flag bit of SPI_STS 
+At the end of data and `CRC` transmission, if `CRCEFLG` flag bit of `SPI_STS` 
 register is set to 1, it indicates that an error occurred during transmission.
 
-
 ### 21.4.9 Disable SPI
-
-
 After data transmission is over, end the communication by disabling SPI 
 module. In some configurations, if SPI is disabled before data transmission is 
 completed, a data transmission error may be caused. Different methods are 
 required in different operation modes to disable SPI
 
+**Master mode/Full-duplex slave mode**
 
-Maser mode/Full-duplex slave mode
+(1) Wait until `RXBNEFLG` flag bit is set to 1, and receive the last data
 
+(2) Wait until `TXBEFLG` flag bit is set to 1
 
-(1) Wait until RXBNEFLG flag bit is set to 1, and receive the last data
+(3) Wait for clearing `BSYFLG` flag bit to 0
 
-(2) Wait until TXBEFLG flag bit is set to 1
-
-(3) Wait for clearing BSYFLG flag bit to 0
-
-
-
-(4) Disable SPI (set SPIEN=0 for SPI_CTRL1 register)
+(4) Disable SPI (set `SPIEN=0` for `SPI_CTRL1` register)
 
 **Unidirectional transmit-only/Bidirectional transmitting mode of master mode/slave mode**
 
-After the last data is written into SPI_DATA register:
+After the last data is written into `SPI_DATA` register:
 
-(1) Wait until TXBEFLG flag bit is set to 1
+(1) Wait until `TXBEFLG` flag bit is set to 1
 
-(2) Wait for clearing BSYFLG flag bit to 0
+(2) Wait for clearing `BSYFLG` flag bit to 0
 
-(3) Disable SPI (set SPIEN=0 for SPI_CTRL1 register)
+(3) Disable SPI (set `SPIEN=0` for `SPI_CTRL1` register)
 
 **Unidirectional receive-only/bidirectional receiving mode of master mode/slave mode**
 
-(1) Wait until No. n-1 RXBNEFLG flag bit is set to 1
+(1) Wait until No. `n-1` `RXBNEFLG` flag bit is set to 1
 
-(2) Wait for one SPI clock cycle before SPI is disabled (set SPIEN=0 for SPI_CTRL1 register)
+(2) Wait for one SPI clock cycle before SPI is disabled (set `SPIEN=0` for `SPI_CTRL1` register)
 
-(3) Before entering the stop mode, wait until the last RXBNEFLG flag bit is set to 1
+(3) Before entering the stop mode, wait until the last `RXBNEFLG` flag bit is set to 1
 
 **Receive-only/bidirectional receiving mode in slave mode**
 
-SPI can be disabled at any time (set SPIEN=0 for SPI_CTRL1 register) and it will be disabled when the transmission is over. To enter the stop mode, wait until BSYFLG flag bit is cleared to 0.
+SPI can be disabled at any time (set `SPIEN=0` for `SPI_CTRL1` register) and it will be disabled
+when the transmission is over. To enter the stop mode, wait until `BSYFLG` flag bit is cleared to 0.
 
 
 ### 21.4.10 SPI interrupt
-
-
-
 #### 21.4.10.1 Status flag bit
-
 
 **Transmit buffer idle flag TXBEFLG**
 
-TXBEFLG=1 indicates that the transmit buffer bit is empty, and the next data to be transmitted can be written. When the data is written to SPI_DATA register, clear the TXBEFLG flag bit.
+`TXBEFLG=1` indicates that the transmit buffer bit is empty, and the next data to be transmitted
+can be written. When the data is written to `SPI_DATA` register, clear the `TXBEFLG` flag bit.
 
 **Receive buffer non-empty flag RXBNEFLG**
 
-RXBNEFLG=1 indicates that the receive buffer contains valid data and the data can be read through SPI_DATA register; and the RXBNEFLG flag can be cleared.
+`RXBNEFLG=1` indicates that the receive buffer contains valid data and the data can be read
+through `SPI_DATA` register; and the `RXBNEFLG` flag can be cleared.
 
 **Busy flag BSYFLG**
 
-BSYFLG flag is set and cleared by hardware, which can indicate the state of SPI communication layer. BSYFLG=1 indicates SPI is communicating, but in the two-line receiving mode under the master device, BSYFLG=0 during the period
+`BSYFLG` flag is set and cleared by hardware, which can indicate the state of SPI communication
+layer. `BSYFLG=1` indicates SPI is communicating, but in the two-line receiving mode under the
+master device, `BSYFLG=0` during the period of receiving data.
 
-
-
-of receiving data.
-
-BSYFLG flag can be used to detect whether transmission is over to avoid 
+`BSYFLG` flag can be used to detect whether transmission is over to avoid 
 destroying the last transmitted data.
 
-BSYFLG flag bit can be used to avoid conflict when writing data in multi-master 
+`BSYFLG` flag bit can be used to avoid conflict when writing data in multi-master 
 mode.
 
-BSYFLG flag will be cleared to 0 when the transmission ends (except for 
+`BSYFLG` flag will be cleared to 0 when the transmission ends (except for 
 continuous communication in master mode), SPI is disabled and the master 
 mode fails.
 
-BSYFLG=0 between data item and data item when communication is 
+`BSYFLG=0` between data item and data item when communication is 
 discontinuous.
 
 When communication is continuous:
-- In master mode: BSYFLG=1 in the whole transmission process
-- In save mode: BSYFLG is kept low within one SCK clock cycle 
+- In master mode: `BSYFLG=1` in the whole transmission process
+- In save mode: `BSYFLG` is kept low within one `SCK` clock cycle 
   between transmission of data
 
-Note: It is better to use TXBEFLG and RXBNEFLG flags to process the transmitting and receiving of 
-each data item.
+Note: It is better to use `TXBEFLG` and `RXBNEFLG` flags to process the transmitting and receiving
+of each data item.
 
 #### 21.4.10.2 Error flag bit
+**Master mode error MEFLG**
 
-Master mode error MEFLG
+`MEFLG` is an error flag bit. The master mode error occurs when: in hardware 
+`NSS` mode, the `NSS` pin of the master device is pulled down; in software `NSS` 
+mode, `ISSEL` bit is cleared to 0; `MEFLG` bit is set automatically.
 
-MEFLG is an error flag bit. The master mode error occurs when: in hardware 
-NSS mode, the NSS pin of the master device is pulled down; in software NSS 
-mode, ISSEL bit is cleared to 0; MEFLG bit is set automatically.
-
-Influence of master mode failure: MEFLG is set to 1, and SPI interrupt is 
-generated when ERRIEN is set; SPIEN is cleared to 0 (output stops, and SPI 
-interface is disabled); MSMSEL is cleared to 0 and the device is forced to enter 
+Influence of master mode failure: `MEFLG` is set to 1, and SPI interrupt is 
+generated when `ERRIEN` is set; `SPIEN` is cleared to 0 (output stops, and SPI 
+interface is disabled); `MSMSEL` is cleared to 0 and the device is forced to enter 
 the slave mode.
 
-Operation of clearing the MEFLG flag bit: When MEFLG bit is set to 1, it is 
-required to read or write SPI_STS register, and then write to SPI_CTRL1 
+Operation of clearing the `MEFLG` flag bit: When `MEFLG` bit is set to 1, it is 
+required to read or write `SPI_STS` register, and then write to `SPI_CTRL1` 
 register.
 
-When MEFLG flag bit is 1, it is not allowed to set SPIEN and MSMSEL bits.
+When `MEFLG` flag bit is 1, it is not allowed to set `SPIEN` and `MSMSEL` bits.
 
-Overrun error OVRFLG
+**Overrun error `OVRFLG`**
 
-Overrun error: After the master device transmits the data, the RXBNEFLG flag 
-bit is still 1, which indicates that an overrun error occurred. Then OVRFLG bit is 
-set to 1, and if the ERRIEN bit is also set, an interrupt will be generated.
+Overrun error: After the master device transmits the data, the `RXBNEFLG` flag 
+bit is still 1, which indicates that an overrun error occurred. Then `OVRFLG` bit is 
+set to 1, and if the `ERRIEN` bit is also set, an interrupt will be generated.
 
 After an overrun error occurs, the data in the receive buffer is not the data 
-transmitted by the master device, then the read data in SPI_DATA register is the 
+transmitted by the master device, then the read data in `SPI_DATA` register is the 
 data not read before, while the data transmitted later will not be read.
 
-
-
-OVRFLG flag can be cleared by reading SPI_DATA register and SPI_STS
+`OVRFLG` flag can be cleared by reading `SPI_DATA` register and `SPI_STS`
 register according to the sequence.
 
+**`CRC` error flag `CRCEFLG`**
 
-CRC error flag CRCEFLG
-
-
-By setting CRCEN bit of SPI_CTRL1 register, enable CRC computing, and CRC
+By setting `CRCEN` bit of `SPI_CTRL1` register, enable `CRC` computing, and `CRC`
 error flag can be used to check whether the received data is valid.
 
-When the value transmitted by SPI_TXCRC register does not match the value
-in SPI_RXCRC register, a CRC error will be generated, and CRCEFLG flag bit
-in SPI_STS register will be set to 1.
+When the value transmitted by `SPI_TXCRC` register does not match the value
+in `SPI_RXCRC` register, a `CRC` error will be generated, and `CRCEFLG` flag bit
+in `SPI_STS` register will be set to 1.
 
-CRCEFLG can be cleared by writing 0 to CRCEFLG bit of SPI_STS register.
+`CRCEFLG` can be cleared by writing 0 to `CRCEFLG` bit of `SPI_STS` register.
 
-
-TI frame format error flag FREFLG
-
+**TI frame format error flag `FREFLG`**
 
 If SPI supports TI protocol in slave mode, TI frame format error will be detected
-when NSS pulse occurs during communication. When this error appears,
-SPI_STS[FREFLG]=1, SPI will not be disabled, but NSS pulse will be ignored,
-and SPI will start new transmission when next NSS pulse arrives. As the error
+when `NSS` pulse occurs during communication. When this error appears,
+`SPI_STS[FREFLG]=1`, SPI will not be disabled, but `NSS` pulse will be ignored,
+and SPI will start new transmission when next `NSS` pulse arrives. As the error
 detection may cause the loss of two data bytes, the data may be damaged.
 
-FREFLG flag will be cleared to 0 when reading SPI_STS register. If ERRIEN=1,
+`FREFLG` flag will be cleared to 0 when reading `SPI_STS` register. If `ERRIEN=1`,
 and a frame format error is detected, an interrupt will be generated. The
 continuity of data cannot be guaranteed at this time, the SPI shall be disabled
 and after the slave SPI is enabled again, the master will restart the
 communication.
 
-
-| Interrupt flag | Interrupt event | Enable control bit | Clearing method |
-| ---------------- | --------------------------- | -------------------- | --------------------------------------------------------- |
-| TXBEFLG | Transmit buffer empty flag | TXBEIEN | Write SPI_DATA register |
-| RXBNEFLG | Receive buffer non-empty flag | RXBNEIEN | Read SPI_DATA register |
-| MEFLG | Master mode failure event |  | Read/Write SPI_STS register,<br>and then write SPI_CTRL1 register |
-| OVRFLG | Overrun error | ERRIEN | Read SPI_DATA register, and<br> then read SPI_STS register |
-| CRCEFLG | CRC error flag |  | Write 0 to CRCEFLG bit |
-| FREFLG | TI frame format error |  | Read SPI_STS register |
+| Interrupt flag | Interrupt event               | Enable control bit | Clearing method                                                       |
+|----------------|-------------------------------|--------------------|-----------------------------------------------------------------------|
+| `TXBEFLG`      | Transmit buffer empty flag    | `TXBEIEN`          | Write `SPI_DATA` register                                             |
+| `RXBNEFLG`     | Receive buffer non-empty flag | `RXBNEIEN`         | Read `SPI_DATA` register                                              |
+| `MEFLG`        | Master mode failure event     |                    | Read/Write `SPI_STS` register,<br>and then write `SPI_CTRL1` register |
+| `OVRFLG`       | Overrun error                 | `ERRIEN`           | Read `SPI_DATA` register, and<br> then read `SPI_STS` register        |
+| `CRCEFLG`      | CRC error flag                |                    | Write 0 to `CRCEFLG` bit                                              |
+| `FREFLG`       | TI frame format error         |                    | Read `SPI_STS` register                                               |
 
 
 ## 21.5 I2S functional description
 
-
-Enable I2S function by setting I2SMOD bit of SPI_I2SCFG.
-
-
+Enable I2S function by setting `I2SMOD` bit of `SPI_I2SCFG`.
 
 I2S and SPI share four pins:
 
-- SD: Serial data, transmitting and receiving the data of 2-way time division multiplexing channel
-- WS: Chip selection, switching the data of left and right channels
-- CK: Serial clock; the clock signal is output in master mode, and is input in slave mode
-- MCK: Master clock; in master mode, when MCOEN bit of SPI_I2SPSC register is set to 1, it can be used as the pin for outputting the extra clock signal.
+- `SD`: **Serial data**, transmitting and receiving the data of 2-way time division multiplexing 
+  channel
+- `WS`: **Chip selection**, switching the data of left and right channels
+- `CK`: **Serial clock**; the clock signal is output in master mode, and is input in slave mode
+- `MCK`: **Master clock**; in master mode, when `MCOEN` bit of `SPI_I2SPSC` register is set to 1, it 
+  can be used as the pin for outputting the extra clock signal.
 
 
 ### 21.5.1 I2S full duplex
+In addition to `I2S2` and `I2S3`, two extended I2S can also be used to support I2S full-duplex mode.
+Therefore, the first I2S full-duplex interface is based on `I2S2` and `I2S2_ext`, and the second is
+based on `I2S3` and `I2S3_ext`.
 
+`I2Sx` can work in master mode:
 
-In addition to I2S2 and I2S3, two extended I2S can also be used to support I2S full-duplex mode. Therefore, the first I2S full-duplex interface is based on I2S2 and I2S2_ext, and the second is based on I2S3 and I2S3_ext.
+(1) Output `SCK` and `WS` in half-duplex mode
 
-I2Sx can work in master mode:
+(2) Provide `SCK` and `WS` for `I2S2_ext` and `I2S3_ext` in full-duplex mode
 
-(1) Output SCK and WS in half-duplex mode
-
-(2) Provide SCK and WS for I2S2_ext and I2S3_ext in full-duplex mode
-
-Extended I2S is only used for full-duplex mode and always works in slave mode. Both I2Sx and I2Sx_ext can be used for transmitting and receiving.
+Extended I2S is only used for full-duplex mode and always works in slave mode. Both `I2Sx` and
+`I2Sx_ext` can be used for transmitting and receiving.
 
 
 ### 21.5.2 I2S audio standard
+I2S audio standard is selected by setting `I2SSEL` bit and `PFSSEL` bit of `SPI_I2SCFG` register,
+and four audio standards can be selected in total: I2S Philips standard, MSB alignment standard,
+LSB alignment standard and PCM standard. Except PCM standard, other audio standards have two
+channels: left and right channels.
 
+The data length and channel length can be configured by `DATALEN` and `CHLEN` bits in `SPI_I2SCFG`
+register. The channel length must be greater than or equal to the data length. There are four data
+formats to transmit data: 16-bit data packed into 16-bit frame, 16-bit data packed into 32-bit
+frame, 24-bit data packed into 32-bit frame, and 32-bit data packed into 32-bit frame.
 
-I2S audio standard is selected by setting I2SSEL bit and PFSSEL bit of SPI_I2SCFG register, and four audio standards can be selected in total: I2S Philips standard, MSB alignment standard, LSB alignment standard and PCM standard. Except PCM standard, other audio standards have two channels: left and right channels.
+When the 16-bit data is extended to 32 bits, the first 16 bits are valid data, and the last 16 bits
+are forced to be 0. No external intervention is needed in this process.
 
-The data length and channel length can be configured by DATALEN and CHLEN bits in SPI_I2SCFG register. The channel length must be greater than or equal to the data length. There are four data formats to transmit data: 16-bit data packed into 16-bit frame, 16-bit data packed into 32-bit frame, 24-bit data packed into 32-bit frame, and 32-bit data packed into 32-bit frame.
+Since the data buffers used for transmitting and receiving are all 16 bits, SPI_DATA needs to
+read/write twice when 24-bit and 32-bit data are transmitted. If DMA is used, DMA transmission
+twice is required.
 
-When the 16-bit data is extended to 32 bits, the first 16 bits are valid data, and the last 16 bits are forced to be 0. No external intervention is needed in this process.
+For all communication standards and data formats, the most significant bit of data is always
+transmitted first.
 
-Since the data buffers used for transmitting and receiving are all 16 bits, SPI_DATA needs to read/write twice when 24-bit and 32-bit data are transmitted. If DMA is used, DMA transmission twice is required.
-
-For all communication standards and data formats, the most significant bit of data is always transmitted first.
-
-For time division multiplexing, the left channel is always transmitted first, and
-
-
-
-then the right channel is transmitted.
+For time division multiplexing, the left channel is always transmitted first, and then the right
+channel is transmitted.
 
 
 #### 21.5.2.1 I2S Philips standard
+In I2S Philips standard, the pin `WS` can indicate the data being transmitted comes from the left
+channel or the right channel.
 
+In I2S Philips standard, both `WS` and `SD` change on the falling edge of `CK` clock signal.
 
-In I2S Philips standard, the pin WS can indicate the data being transmitted comes from the left channel or the right channel.
-
-In I2S Philips standard, both WS and SD change on the falling edge of CK clock signal.
-
-The sender will change the data on the falling edge of the clock signal CK, while the receiver will change the data on the rising edge of the clock signal CK.
+The sender will change the data on the falling edge of the clock signal `CK`, while the receiver 
+will change the data on the rising edge of the clock signal `CK`.
 
 Figure 88 I2S Philips Protocol Waveform (16/32 bits)
 
+In I2S Philips standard, if you want to transmit/receive 24-bit and 32-bit data, the 
+`SPI_DATA` register needs to read/write twice; for example: 
 
+- If you need to transmit `0x9FBB88` (24-bit data), write `0x9FBB` to 
+  `SPI_DATA` register for the first time, and write `0x88XX` to the register 
+  for the second time.
+- If you need to receive `0x9FBB88` (24-bit data), read out `0x9FBB` from 
+  `SPI_DATA` register for the first time and read out `0x8800` from the 
+  register for the second time.
 
-- The data to be received or transmitted is 0x62d8, which becomes 0x62D80000 after it is extended to 32 bits, and it is necessary to write 0x62D8 to SPI_DATA register or read out from SPI_DATA register.
+In I2S configuration, when selecting the frame format of extending 16-bit data to 
+32-bit data frame, it is required to access `SPI_DATA` register, and the remaining 
+16-bit data will be set to `0x0000` by hardware by force; for example:
+
+- The data to be received or transmitted is `0x62d8`, which becomes `0x62D80000` after it is
+  extended to 32 bits, and it is necessary to write `0x62D8` to `SPI_DATA` register or read out from 
+  `SPI_DATA` register.
 
 Figure 90 I2S Philips Protocol Waveform (extending from 16 bits to 32 bits)
 ```
@@ -10941,15 +10767,18 @@ SPI_SD ───────┬───High───┴───Low────
 ─────────────────── Right channel ──────────── Left channel
 ```
 
-In the transmission process, the MSB should be written to the register SPI_DATA, and when TXBEFLG flag bit is set to 1, new data can be written; if there is corresponding interrupt, an interrupt can be generated.
+In the transmission process, the `MSB` should be written to the register `SPI_DATA`, and when
+`TXBEFLG` flag bit is set to 1, new data can be written; if there is corresponding interrupt, an
+interrupt can be generated.
 
-In the receiving process, every time the MSB is received, the RXBNEFLG flag bit will be set to 1; if there is corresponding interrupt, an interrupt can be generated.
+In the receiving process, every time the `MSB` is received, the `RXBNEFLG` flag bit will be set to
+1; if there is corresponding interrupt, an interrupt can be generated.
 
 #### 21.5.2.2 **MSB alignment standard**
+In `MSB` standard, `WS` signal and the first data bit are generated at the same time.
 
-In MSB standard, WS signal and the first data bit are generated at the same time
-
-In the transmission process, the data is changed on the falling edge of the clock signal; in the receiving process, the data is read on the rising edge of the clock signal.
+In the transmission process, the data is changed on the falling edge of the clock signal; in the
+receiving process, the data is read on the rising edge of the clock signal.
 
 Figure 91 MSB Alignment Standard Waveform (16/32-bit data)
 ```
@@ -10963,7 +10792,6 @@ SPI_SD ───────┬───High───┴───Low────
 
 ─────────────────── Right channel ───────────────────── Left channel
 ```
-
 
 Figure 92 MSB Alignment Standard Waveform (24-bit data)
 ```
@@ -10990,12 +10818,14 @@ SPI_SD ┘ ─── 16-bit data ─── └         │
 ```
 
 #### 21.5.2.3 LSB alignment standard
-
-
-In the transmission process of LSB alignment standard, the data is changed on the falling edge of the clock signal; in the receiving process, the data is read on the rising edge of the clock signal. When the channel length is the same as the data length, the LSB alignment standard is the same as the MSB alignment standard. If the channel length is larger than the data length, the valid data of the LSB alignment standard is aligned with the least significant bit.
+In the transmission process of `LSB` alignment standard, the data is changed on the falling edge
+of the clock signal; in the receiving process, the data is read on the rising edge of the clock
+signal. When the channel length is the same as the data length, the `LSB` alignment standard is the
+same as the `MSB` alignment standard. If the channel length is larger than the data length, the
+valid data of the `LSB` alignment standard is aligned with the least significant bit.
 
 Figure 94 LSB Alignment Standard Waveform (16/32-bit data)
-
+```
 SPI_CLK  ───────────────────────────────
                ┌───────────────┐
 SPI_WS  ──────┘               └───────
@@ -11003,11 +10833,10 @@ SPI_WS  ──────┘               └───────
 SPI_SD ┘ ─── 16-bit/32-bit data ───└───┐
     High bit                   Low bit  High bit
 ─────── ◁            Right channel        Left channel ▷ ───────
-
-
+```
 
 Figure 95 LSB Alignment Standard Waveform (24-bit data)
-
+```
 SPI_CK
 SPI_WS
 SPI_SD
@@ -11018,16 +10847,24 @@ High bit
 Low bit
 Right channel
 Left channel
+```
 
-In the transmission process, if you want to transmit/receive 24-bit data, it is required to read/write the SPI_DATA register twice; for example:
-- When 0x56EA98 needs to be transmitted, first write 0xXX56 to SPI_DATA register, and then write 0xEA98 to SPI_DATA register.
-- When you need to receive 0x56EA98, read out 0x0056 from SPI_DATA register for the first time, ad read out 0xEA98 from SPI_DATA register for the second time.
+In the transmission process, if you want to transmit/receive 24-bit data, it is required to
+read/write the `SPI_DATA` register twice; for example:
+- When `0x56EA98` needs to be transmitted, first write `0xXX56` to `SPI_DATA` register, and then
+  write `0xEA98` to `SPI_DATA` register.
+- When you need to receive `0x56EA98`, read out `0x0056` from `SPI_DATA` register for the first
+  time, ad read out `0xEA98` from `SPI_DATA` register for the second time.
 
-In I2S configuration, when selecting the frame format of extending from 16-bit data to 32-bit data frame, it is required to access SPI_DATA register, and the high 16-bit data will be set to 0x0000 by hardware by force; for example:
-- The data to be received or transmitted is 0x98A5, which becomes 0x000098A5 after it is extended to 32 bits, and it is necessary to write 0x98A5 to SPI_DATA register or read out from SPI_DATA register.
+In I2S configuration, when selecting the frame format of extending from 16-bit data to 32-bit data
+frame, it is required to access `SPI_DATA` register, and the high 16-bit data will be set to
+`0x0000` by hardware by force; for example:
+- The data to be received or transmitted is `0x98A5`, which becomes `0x000098A5` after it is
+  extended to 32 bits, and it is necessary to write `0x98A5` to `SPI_DATA` register or read out from 
+  `SPI_DATA` register.
 
 Figure 96 Under LSB Alignment Standard (extending from 16 bits to 32 bits)
-
+```
 SPI_CK
 SPI_WS
 SPI_SD
@@ -11038,178 +10875,188 @@ High bit
 Low bit
 Right channel
 Left channel
-
+```
 
 #### 21.5.2.4 PCM standard
-
-
-There is no sound channel selection in PCM standard. Short frame and long frame of PCM standard are selected by configuring PFSSEL bit in SPI_I2SCFG register.
+There is no sound channel selection in PCM standard. Short frame and long frame of PCM standard are
+selected by configuring `PFSSEL` bit in `SPI_I2SCFG` register.
 
 In the master mode, the valid time of synchronous WS signal of the long frame structure is 13 bits.
-
-
-
+```
 Figure 97 PCM Standard Waveform
+```
 
-───
-In the master mode, the length of the synchronous WS signal of the short frame
+In the master mode, the length of the synchronous `WS` signal of the short frame
 structure is 1 bit.
-───
-
-                       Figure 98 PCM Standard Waveform
-
-
+```
+Figure 98 PCM Standard Waveform
+```
 
 ### 21.5.3 I2S clock
-
-
-The clock source of I2SxCLK is PLL2CLK or external clock projected to
-I2S_CKIN pin
+The clock source of `I2SxCLK` is `PLL2CLK` or external clock projected to
+`I2S_CKIN` pin
 
 The bit rate of I2S determines the data stream on I2S data line and the clock
 signal frequency of I2S. 
 
 - I2S bit rate = the number of bits per channel × the number of sound 
   channels × audio sampling frequency
-- There are two channels of 16-bit audio signal: I2S bit rate=16×2×Fs
+- There are two channels of 16-bit audio signal: `I2S bit rate=16×2×Fs`
 
-The relationship between audio sampling frequency (Fs) and I2S bit rate (I2S) is
+The relationship between audio sampling frequency (`Fs`) and I2S bit rate (I2S) is
 defined by the following formula:
 
 
-| MCOEN | CHLEN | Audio sampling frequency (Fs) |
-| ------- | ------- | ------------------------------------------- |
-| 1 | 0 | I2SxCLK/[ (16*2) * ((2*I2SPSC) +ODDPSC) *8] |
-| 1 | 1 | I2SxCLK/[ (32*2) * ((2*I2SPSC) +ODDPSC) *4] |
-| 0 | 0 | I2SxCLK/[ (16*2) * ((2*I2SPSC) +ODDPSC) ] |
-| 0 | 1 | I2SxCLK/[  (32*2)  *  ((2*I2SPSC)  +ODDPSC)  ] |
+| `MCOEN` | `CHLEN` | Audio sampling frequency (Fs)                  |
+|---------|---------|------------------------------------------------|
+| 1       | 0       | `I2SxCLK/[ (16*2) * ((2*I2SPSC) +ODDPSC) * 8]` |
+| 1       | 1       | `I2SxCLK/[ (32*2) * ((2*I2SPSC) +ODDPSC) * 4]` |
+| 0       | 0       | `I2SxCLK/[ (16*2) * ((2*I2SPSC) +ODDPSC)]`     |
+| 0       | 1       | `I2SxCLK/[  (32*2)  *  ((2*I2SPSC)  +ODDPSC)]` |
 
 
 ### 21.5.4 I2S mode
-
-
 I2S can be configured as follows:
 
 (1) Transmit master or receive master which uses I2Sx in half-duplex mode
 
 (2) Master that receives and transmits concurrently in full-duplex mode
 
-
-| Operation Modes | SD | WS | CK | MCK |
-| -------------------- | ------- | ------- | ------- | --------------- |
+| Operation Modes     | `SD`   | `WS`   | `CK`   | `MCK`          |
+|---------------------|--------|--------|--------|----------------|
 | Master transmitting | Output | Output | Output | Output/Not use |
-| Master receiving | Input | Output | Output | Output/Not use |
-| Slave transmitting | Output | Input | Input | Output/Not use |
-| Slave receiving | Input | Input | Input | Output/Not use |
+| Master receiving    | Input  | Output | Output | Output/Not use |
+| Slave transmitting  | Output | Input  | Input  | Output/Not use |
+| Slave receiving     | Input  | Input  | Input  | Output/Not use |
 
 
 #### 21.5.4.1 I2S master mode
-
-
-When I2S works in master mode, the serial clock is output by pin CK, and the
-word selection signal is generated by pin WS. SPI_I2SPSC[MCOEN] controls
+When I2S works in master mode, the serial clock is output by pin `CK`, and the
+word selection signal is generated by pin `WS`. `SPI_I2SPSC[MCOEN]` controls
 whether to output master clock.
 
 Configuration process:
-(1) Configure I2SPSC bit and ODDPSC bit of SPI_I2SPSC register to
+(1) Configure `I2SPSC` bit and `ODDPSC` bit of `SPI_I2SPSC` register to
     define the baud rate of serial clock and the actual frequency division
     factor corresponding to the audio sampling frequency.
-(2) Configure CPOL bit of SPI_I2SCFG register to define the clock polarity
+(2) Configure `CPOL` bit of `SPI_I2SCFG` register to define the clock polarity
     of SPI in idle state.
-(3) Configure I2SMOD bit of SPI_I2SCFG register to activate I2S function
-    and configure I2SMOD and PFSSEL bits of SPI_I2SCFG register to
-    select I2S standard; configure DATALEN bit of SPI_I2SCFG register to
-    select the data bits of the sound channel, and configure I2SMOD bit to
+(3) Configure `I2SMOD` bit of `SPI_I2SCFG` register to activate I2S function
+    and configure `I2SMOD` and `PFSSEL` bits of `SPI_I2SCFG` register to
+    select I2S standard; configure `DATALEN` bit of `SPI_I2SCFG` register to
+    select the data bits of the sound channel, and configure `I2SMOD` bit to
     select I2S master mode and transmitting terminal/receiving terminal.
-(4) Configure SPI_CTRL2 register to select to enable the interrupt and DMA
+(4) Configure `SPI_CTRL2` register to select to enable the interrupt and DMA
     function or not (select required or not).
-(5) Configure WS pin and CK pin to output mode; when MCOEN bit of
-    SPI_I2SPSC is set to 1, the MCK pin should also be configured to
+(5) Configure `WS` pin and `CK` pin to output mode; when `MCOEN` bit of
+    `SPI_I2SPSC` is set to 1, the `MCK` pin should also be configured to
     output mode.
-(6) Set the running mode of I2S by configuring the I2SMOD bit of
-    SPI_I2SCFG.
-(7) Set I2SEN bit of SPI_I2SCFG register to 1.
+(6) Set the running mode of I2S by configuring the `I2SMOD` bit of
+    `SPI_I2SCFG`.
+(7) Set `I2SEN` bit of `SPI_I2SCFG` register to 1.
 
+**I2S master mode transmission process**
 
+When the data is written to the transmit buffer, the transmission will start, and the data will be
+transmitted from the transmit buffer to the shift register, the `TXBEFLG` flag position is set to 1,
+and the `SCHDIR` flag bit indicates the corresponding sound channel of the currently transmitted
+data. The value of `SCHDIR` flag bit will be updated when `TXBEFLG` flag bit is 1.
 
+When transmitting the first bit of data, 16-bit data will be transmitted to the 16-bit shift
+register in parallel, and then transmitted from the pin `MISO/SD` in serial. The next data needs to
+be written to `SPI_DATA` register when `TXBEFLG` bit is 1. If `TXBEIEN` bit of `SPI_CTRL2` is 1, an
+interrupt will be generated.
 
-I2S master mode transmission process
+Before the completion of the current data transmission, write the next data to be transmitted to
+ensure continuous transmission of audio data.
 
+When I2S is disabled, `I2SEN` can be cleared to 0 only when the flag bit `TXBEFLG` is 1 and `BSYFLG`
+is 0.
 
-When the data is written to the transmit buffer, the transmission will start, and the data will be transmitted from the transmit buffer to the shift register, the TXBEFLG flag position is set to 1, and the SCHDIR flag bit indicates the corresponding sound channel of the currently transmitted data. The value of SCHDIR flag bit will be updated when TXBEFLG flag bit is 1.
+**I2S master mode receiving process**
 
-When transmitting the first bit of data, 16-bit data will be transmitted to the 16-bit shift register in parallel, and then transmitted from the pin MISO/SD in serial. The next data needs to be written to SPI_DATA register when TXBEFLG bit is 1. If TXBEIEN bit of SPI_CTRL2 is 1, an interrupt will be generated.
+`RXBNEFLG` flag is used to control the receiving sequence. `RXBNEFLG` flag indicates whether the
+receive buffer is empty; when the receive buffer is full, the RXBNEFLG flag bit will be set to 1.
+If `RXBNEIEN` bit of `SPI_CTRL2` is configured, an interrupt will occur and after the user reads out
+the data from `SPI_DATA` register, the `RXBNEFLG` flag bit will be cleared to 0. Make sure to
+receive new data after reading operation; otherwise, overrun will occur and the `OVRFLG` flag bit
+will be set to 1.
 
-Before the completion of the current data transmission, write the next data to be transmitted to ensure continuous transmission of audio data.
+The value of `SCHDIR` should be updated immediately after receiving data, and it depends on the `WS`
+signal generated by `I2S`.
 
-When I2S is disabled, I2SEN can be cleared to 0 only when the flag bit TXBEFLG is 1 and BSYFLG is 0.
+Regardless of the data type and the channel length, the audio data is always received in the form of
+16 bits. According to the configured data and the length of the channel, the data needs to be
+transmitted to the receive buffer once or twice.
 
+Disable the I2S function, and for different audio protocols, the data length and channel length
+operation steps are as follows:
 
-I2S master mode receiving process
-
-
-`RXBNEFLG` flag is used to control the receiving sequence. `RXBNEFLG` flag indicates whether the receive buffer is empty; when the receive buffer is full, the RXBNEFLG flag bit will be set to 1. If `RXBNEIEN` bit of `SPI_CTRL2` is configured, an interrupt will occur and after the user reads out the data from `SPI_DATA` register, the `RXBNEFLG` flag bit will be cleared to 0. Make sure to receive new data after reading operation; otherwise, overrun will occur and the `OVRFLG` flag bit will be set to 1.
-
-The value of `SCHDIR` should be updated immediately after receiving data, and it depends on the WS signal generated by `I2S`.
-
-Regardless of the data type and the channel length, the audio data is always received in the form of 16 bits. According to the configured data and the length of the channel, the data needs to be transmitted to the receive buffer once or twice.
-
-Disable the I2S function, and for different audio protocols, the data length and channel length operation steps are as follows:
-
-- 16-bit data length, 32-bit channel length (`DATALEN`=00, `CHLEN`=1, `I2SSSEL`=10), in LSB alignment mode
-- Wait until the penultimate RXBNEFLG is set to 1
+- 16-bit data length, 32-bit channel length (`DATALEN=00`, `CHLEN=1`, `I2SSSEL=10`), in LSB alignment mode
+- Wait until the penultimate `RXBNEFLG` is set to 1
 - Wait for 17 `I2S` clock cycles (software delay)
 - `I2SEN`=0
-- 16-bit data length, 32-bit channel length (`DATALEN`=00, `CHLEN`=1, `I2SSSEL`=10), in MSB alignment mode
-- Wait until the last RXBNEFLG is set to 1
+- 16-bit data length, 32-bit channel length (`DATALEN=00`, `CHLEN=1`, `I2SSSEL=10`), in MSB alignment mode
+- Wait until the last `RXBNEFLG` is set to 1
 - Wait for 1 `I2S` clock cycle (software delay)  
 - `I2SEN`=0
 
 All the other situations  
 - Wait until the penultimate `RXBNEFLG` is set to 1  
 - Wait for 1 `I2S` clock cycle (software delay)  
-- `I2SEN`=0
+- `I2SEN=0`
 
 `BSYFLG` flag clock is low during data transmission.
 
 
 #### 21.5.4.2 I2S slave mode
-The configuration method of slave mode is basically the same as that of master mode. In slave mode, the clock signal and WS signal are provided by external I2S device instead of I2S.
+The configuration method of slave mode is basically the same as that of master mode. In slave mode,
+the clock signal and `WS` signal are provided by external I2S device instead of I2S.
 
 Configuration process:  
-(1) Configure I2SMOD bit of SPI_I2SCFG register to activate I2S function.  
-(2) Configure I2SSSEL bit of SPI_I2SCFG register to select the I2S standard; configure DATALEN[1:0] bit of SPI_I2SCFG register to select the bits of data; configure CHLEN bit of SPI_I2SCFG register to select the data bits per channel; configure I2SMOD bit of SPI_I2SCFG register to select I2S slave mode as transmitting terminal/receiving terminal.  
-(3) Configure SPI_CTRL2 register to select to enable the interrupt and DMA function or not (select required or not).  
-(4) Set I2SEN bit of SPI_I2SCFG register to 1.
+(1) Configure `I2SMOD` bit of `SPI_I2SCFG` register to activate I2S function.  
+(2) Configure `I2SSSEL` bit of `SPI_I2SCFG` register to select the I2S standard; configure
+`DATALEN[1:0]` bit of `SPI_I2SCFG` register to select the bits of data; configure `CHLEN` bit of
+`SPI_I2SCFG` register to select the data bits per channel; configure `I2SMOD` bit of `SPI_I2SCFG`
+register to select I2S slave mode as transmitting terminal/receiving terminal.  
+(3) Configure `SPI_CTRL2` register to select to enable the interrupt and DMA function or not (select
+required or not).  
+(4) Set `I2SEN` bit of `SPI_I2SCFG` register to 1.
 
+**I2S slave mode transmission process**
 
-I2S slave mode transmission process
+Enable the slave device, write the data to the I2S data register, the external master device will
+start to communicate, and the external master device will transmit the clock signal, and when the
+data transmission starts, the transmitting process will begin.
 
+When the first bit data is transmitted, the 16-bit data will be transmitted to the 16-bit shift
+register in parallel, and then transmitted from the pin `MOSI/SD` in series. When the data is
+transmitted from the data register to the shift register, the `TXBEFLG` flag bit will be set to 1;
+at this time if `TXBEIEN` bit of `SPI_CTRL2` register is set, an interrupt will be generated. In
+order to ensure the continuity of data transmission, before the data transmission is completed, the
+next data should be written to `SPI_DATA` register; otherwise, "underrun" will occur, and the
+`UDRFLG` bit will be set to 1.
 
-Enable the slave device, write the data to the I2S data register, the external master device will start to communicate, and the external master device will transmit the clock signal, and when the data transmission starts, the transmitting process will begin.
+`SCHDIR` bit of `SPI_STS` register indicates the channel corresponding to the transmitted data. In
+the slave mode, the `SCHDIR` bit is determined by the `WS` signal of the external master device.
 
-When the first bit data is transmitted, the 16-bit data will be transmitted to the 16-bit shift register in parallel, and then transmitted from the pin MOSI/SD in series. When the data is transmitted from the data register to the shift register, the TXBEFLG flag bit will be set to 1; at this time if TXBEIEN bit of SPI_CTRL2 register is set, an interrupt will be generated. In order to ensure the continuity of data transmission, before the data transmission is completed, the next data should be written to SPI_DATA register; otherwise, "underrun" will occur, and the UDRFLG bit will be set to 1.
+In `MSB` and `LSB` alignment mode of I2S, the first data written to the data register corresponds to
+the data of the left channel.
 
-SCHDIR bit of SPI_STS register indicates the channel corresponding to the transmitted data. In the slave mode, the SCHDIR bit is determined by the WS signal of the external master device.
-
-In MSB and LSB alignment mode of I2S, the first data written to the data register corresponds to the data of the left channel.
-
-
-
-To disable I2S, wait until TXBEFLG flag bit is set to 1 and BSYFLG flag bit is 
+To disable I2S, wait until `TXBEFLG` flag bit is set to 1 and `BSYFLG` flag bit is 
 cleared to 0.
 
-I2S slave mode receiving process
+**I2S slave mode receiving process**
 
-RXBNEFLG bit is used to control the receiving sequence. The RXBNEFLG bit 
+`RXBNEFLG` bit is used to control the receiving sequence. The `RXBNEFLG` bit 
 indicates whether the receive buffer is empty; after the receive buffer is full, the 
-RXBNEFLG bit will be set to 1; if RXBNEIEN bit of SPI_CTRL2 register is 
-configured, an interrupt will occur, and after the data is read out from SPI_DATA 
-register, RXBNEFLG bit will be cleared to 0; make sure to receive new data 
-after read operation; otherwise, "overrun" will occur, and the OVRFLG bit 
+`RXBNEFLG` bit will be set to 1; if `RXBNEIEN` bit of `SPI_CTRL2` register is 
+configured, an interrupt will occur, and after the data is read out from `SPI_DATA` 
+register, `RXBNEFLG` bit will be cleared to 0; make sure to receive new data 
+after read operation; otherwise, "overrun" will occur, and the `OVRFLG` bit 
 will be set to 1.
 
-The value of SCHDIR should be updated immediately after receiving data, and 
+The value of `SCHDIR` should be updated immediately after receiving data, and 
 it depends on the WS signal generated by I2S.
 
 Regardless of the data type and the channel length, the audio data is always 
@@ -11217,300 +11064,247 @@ received in the form of 16 bits. According to the configured data and the length
 of the channel, the data needs to be transmitted to the receive buffer once or 
 twice.
 
-To disable I2S, I2SEN flag bit shall be cleared to 0 when the last RXBNEFLG 
+To disable I2S, `I2SEN` flag bit shall be cleared to 0 when the last `RXBNEFLG` 
 received is set to 1.
 
-
 ### 21.5.5 I2S interrupt
-
-
-
 #### 21.5.5.1 Status flag bit
-
 
 There are three state flag bits in I2S to monitor the state of I2S bus.
 
-Transmit buffer empty flag bit TXBEFLG
+**Transmit buffer empty flag bit `TXBEFLG`**
 
-When the TXBEFLG bit is 1, it indicates that the transmit buffer is empty, and 
+When the `TXBEFLG` bit is 1, it indicates that the transmit buffer is empty, and 
 the data to be transmitted can be written to the transmit buffer; after data is 
-written, the TXBEFLG bit will be cleared to 0. (When I2S is disabled, the 
-TXBEFLG bit is 0).
+written, the `TXBEFLG` bit will be cleared to 0. (When I2S is disabled, the 
+`TXBEFLG` bit is 0).
 
-Receive buffer non-empty flag bit RXBNEFLG
+**Receive buffer non-empty flag bit `RXBNEFLG`**
 
-When the RXBNEFLG flag bit is 1, it indicates that the receive buffer has data to 
-be received; after read operation is performed on the SPI_DATA register, 
-RXBNEFLG flag bit will be cleared to 0.
+When the `RXBNEFLG` flag bit is 1, it indicates that the receive buffer has data to 
+be received; after read operation is performed on the `SPI_DATA` register, 
+`RXBNEFLG` flag bit will be cleared to 0.
 
-Busy flag bit BSYFLG
+**Busy flag bit `BSYFLG`**
 
-When the BSYFLG bit is 1, it indicates that I2S is in communication state (set 
-and cleared to 0 by hardware), but in the master receiving mode, the BSYFLG 
+When the `BSYFLG` bit is 1, it indicates that I2S is in communication state (set 
+and cleared to 0 by hardware), but in the master receiving mode, the `BSYFLG` 
 flag bit is always 0 during the receiving period. 
 
-When I2S is disabled and data transmission is over, the BSYFLG bit will be
-
-
-
-cleared to 0.
+When I2S is disabled and data transmission is over, the `BSYFLG` bit will be cleared to 0.
 
 During continuous communication:
-- In the master transmitting mode, the BSYFLG flag bit is always high during the transmission period
-- In the slave mode, during transmission of each data item, the BSYFLG flag bit is set to 0 within one I2S clock cycle
+- In the master transmitting mode, the `BSYFLG` flag bit is always high during the transmission
+  period
+- In the slave mode, during transmission of each data item, the `BSYFLG` flag bit is set to 0 within
+  one I2S clock cycle
 
+**Channel flag bit SCHDIR**
 
-Channel flag bit SCHDIR
+In the transmitting mode, the `SCHDIR` flag bit indicates whether the data transmitted on the `SD`
+pin is in the left channel or the right channel. This flag bit will be refreshed when `TXBEFLG=1`.
 
+In the transmitting process of slave mode, if an underrun error occurs, the value of `SCHDIR` flag
+bit will be invalid. If communication needs to be restarted, the I2S function shall be disabled and
+then enabled.
 
-In the transmitting mode, the SCHDIR flag bit indicates whether the data transmitted on the SD pin is in the left channel or the right channel. This flag bit will be refreshed when TXBEFLG=1.
+In the receiving mode, the `SCHDIR` flag bit indicates whether the received data is from the left
+channel or the right channel. This flag bit is refreshed when `SPI_DATA` register receives data.
 
-In the transmitting process of slave mode, if an underrun error occurs, the value of SCHDIR flag bit will be invalid. If communication needs to be restarted, the I2S function shall be disabled and then enabled.
+If an underrun error occurs in the receiving mode, the `SCHDIR` flag bit will be invalid. If
+communication needs to be restarted, the I2S function shall be disabled and then enabled.
 
-In the receiving mode, the SCHDIR flag bit indicates whether the received data is from the left channel or the right channel. This flag bit is refreshed when SPI_DATA register receives data.
+As there is no channel selection in `PCM` standard, the `SCHDIR` flg bit is meaningless.
 
-If an underrun error occurs in the receiving mode, the SCHDIR flag bit will be invalid. If communication needs to be restarted, the I2S function shall be disabled and then enabled.
-
-As there is no channel selection in PCM standard, the SCHDIR flg bit is meaningless.
-
-When OVRFLG and UDRFLG flag bits of SPI_STS register are 1 and ERRIEN=1 for SPI_CTRL2, an interrupt will be generated. The interrupt flag can be cleared by reading the value of SPI_STS register.
+When `OVRFLG` and `UDRFLG` flag bits of `SPI_STS` register are 1 and `ERRIEN=1` for `SPI_CTRL2`, an
+interrupt will be generated. The interrupt flag can be cleared by reading the value of `SPI_STS`
+register.
 
 
 #### 21.5.5.2 Error flag bit
+**Underrun flag bit `UDRFLG`**
+
+In the transmitting mode, if new data to be transmitted is written to `SPI_DATA` register before the
+data is transmitted, `UDRFLG` bit will be set to 1; at this time if `ERRIEN` bit of `SPI_CTRL2`
+register is set to 1, an interrupt will be generated.
+
+This flag bit will take effect only after `I2SMOD` bit of `SPI_I2SCFG` is set to 1. Clear the
+`UDRFLG` bit by reading `SPI_STS` register.
 
 
+**Overrun flag bit `OVRFLG`**
 
-Underrun flag bit UDRFLG
+In the receiving mode, if a new data is received before the data is read, `OVRFLG` flag bit will be
+set to 1. At this time if `ERRIEN` bit of `SPI_CTRL2` register is set to 1, an interrupt will be
+generated, indicating the occurrence of the error.
 
+Read `SPI_DATA` register to return the last correctly received data, and all the other newly
+received data will be lost. `OVRFLG` bit can be cleared by first reading `SPI_STS` register and then
+reading `SPI_DATA` register.
 
-In the transmitting mode, if new data to be transmitted is written to SPI_DATA register before the data is transmitted, UDRFLG bit will be set to 1; at this time if ERRIEN bit of SPI_CTRL2 register is set to 1, an interrupt will be generated.
+**Frame error flag `FREFLG`**
 
-This flag bit will take effect only after I2SMOD bit of SPI_I2SCFG is set to 1. Clear the UDRFLG bit by reading SPI_STS register.
+When I2S is configured in slave mode, this flag will be set to 1 by hardware. If the external master
+arbitrarily changes the `WS` signal, this flag will be set to 1. When synchronization is lost, to
+recover from this state and resynchronize the external master with the I2S slave, first disable the
+I2S, and then re-enable it when correct level is detected on the `WS` line.
 
-
-Overrun flag bit OVRFLG
-
-
-In the receiving mode, if a new data is received before the data is read, OVRFLG flag bit will be set to 1. At this time if ERRIEN bit of SPI_CTRL2 register is set to 1, an interrupt will be generated, indicating the occurrence of the error.
-
-
-
-Read SPI_DATA register to return the last correctly received data, and all the other newly received data will be lost. OVRFLG bit can be cleared by first reading SPI_STS register and then reading SPI_DATA register.
-
-**Frame error flag FREFLG**
-
-When I2S is configured in slave mode, this flag will be set to 1 by hardware. If the external master arbitrarily changes the WS signal, this flag will be set to 1. When synchronization is lost, to recover from this state and resynchronize the external master with the I2S slave, first disable the I2S, and then re-enable it when correct level is detected on the WS line.
-
-The loss of synchronization between the master and the slave may be caused by noise interference on the SCK communication clock or WS frame synchronization signal line. If ERRIEN bit is set, an error interrupt will be generated. When reading SPI_STS register, this flag will be cleared to 0 by software.
+The loss of synchronization between the master and the slave may be caused by noise interference
+on the `SCK` communication clock or `WS` frame synchronization signal line. If `ERRIEN` bit is set,
+an error interrupt will be generated. When reading `SPI_STS` register, this flag will be cleared to
+0 by software.
 
 **Table 94 I2S Interrupt Request**
 
-
-| Interrupt flag | Interrupt event | Enable control bit | Clearing method |
-| ---------------- | ------------------------------- | -------------------- | -------------------------------------------------- |
-| TXBEFLG | Transmit buffer empty flag | TXBEIEN | Write SPI_DATA register |
-| RXNEFLG | Receive buffer non-empty flag | RXBNEIEN | Read SPI_DATA register |
-| OVRFLG | Underrun flag bit |  | Read SPI_STS register |
-| UDRFLG | Overrun flag bit | ERRIEN | Read SPI_STS register<br>Read SPI_DATA register again |
-| FREFLG | Frame error flag |  | Read SPI_STS register |
-
+| Interrupt flag | Interrupt event               | Enable control bit | Clearing method                                           |
+|----------------|-------------------------------|--------------------|-----------------------------------------------------------|
+| `TXBEFLG`      | Transmit buffer empty flag    | `TXBEIEN`          | Write `SPI_DATA` register                                 |
+| `RXNEFLG`      | Receive buffer non-empty flag | `RXBNEIEN`         | Read `SPI_DATA` register                                  |
+| `OVRFLG`       | Underrun flag bit             | `ERRIEN`           | Read `SPI_STS` register                                   |
+| `UDRFLG`       | Overrun flag bit              | `ERRIEN`           | Read `SPI_STS` register<br>Read `SPI_DATA` register again |
+| `FREFLG`       | Frame error flag              | `ERRIEN`           | Read `SPI_STS` register                                   |
 
 #### 21.5.5.3 DMA function
 
-
-In I2S mode, the work mode of DMA is the same as that in SPI mode, except that it does not support CRC function.
+In I2S mode, the work mode of DMA is the same as that in SPI mode, except that it does not support
+`CRC` function.
 
 
 ## 21.6 Register address mapping
-
-
 **Table 95 SPI and I2S Register Address Mapping**
-
 
 | Register name | Description | Offset Address |
 | --------------- | ---------------------- | ---------------- |
-| SPI_CTRL1 | SPI control register 1 | 0x00 |
-| SPI_CTRL2 | SPI control register 2 | 0x04 |
-
-
-www.geehy.com                                                Page 346
-
-
-
-
-| Register name | Description | Offset Address |
-| -------------- | ------------------------------- | -------------- |
-| SPI_STS | SPI status register | 0x08 |
-| SPI_DATA | SPI data register | 0x0C |
-| SPI_CRCPOLY | SPI CRC polynomial register | 0x10 |
-| SPI_RXCRC | SPI receive CRC register | 0x14 |
-| SPI_TXCRC | SPI transmit CRC register | 0x18 |
-| SPI_I2SCFG | SPI I2S configuration register | 0x1C |
-| SPI_I2SPSC | SPI I2S prescaler register | 0x20 |
-
+| `SPI_CTRL1` | SPI control register 1 | `0x00` |
+| `SPI_CTRL2` | SPI control register 2 | `0x04` |
+| `SPI_STS` | SPI status register | `0x08` |
+| `SPI_DATA` | SPI data register | `0x0C` |
+| `SPI_CRCPOLY` | SPI CRC polynomial register | `0x10` |
+| `SPI_RXCRC` | SPI receive CRC register | `0x14` |
+| `SPI_TXCRC` | SPI transmit CRC register | `0x18` |
+| `SPI_I2SCFG` | SPI I2S configuration register | `0x1C` |
+| `SPI_I2SPSC` | SPI I2S prescaler register | `0x20` |
 
 ## 21.7 Register functional description
-
-
 These peripheral registers can be operated by half word (16 bits) or word (32 bits).
 
-
 ### 21.7.1 SPI control register 1 (SPI_CTRL1) (not used in I2S mode)
-
 Offset address: 0x00  
 Reset value: 0x0000
 
-
-| Field | Name | R/W | Description |
-| ----- | ------ | ---- | --------------------------------------------------------------------------- |
-| 0 | CPHA | R/W | Clock Phase Configure<br>This bit indicates on the edge of which clock to start sampling<br>0: On the edge of the first clock<br>1: On the edge of the second clock<br>Note: This bit cannot be modified during communication. |
-| 1 | CPOL | R/W | Clock Polarity Configure<br>The level state maintained by SCK when SPI is in idle state.<br>0: Low level<br>1: High level<br>Note: This bit cannot be modified during communication |
-| 2 | MSMCFG | R/W | Master/Salve Mode Configure<br>0: Configure as slave mode<br>1: Configure as master mode<br>Note: This bit cannot be modified during communication |
-| 5:3 | BRSEL | R/W | Baud Rate Divider Factor Select<br>000: DIV=2<br>001: DIV=4<br>010: DIV=8<br>011: DIV=16<br>100: DIV=32<br>101: DIV=64<br>110: DIV=128<br>111: DIV=256<br>Baud rate=Fpclk/DIV<br>Note: This bit cannot be modified during communication |
-| 6 | SPIEN | R/W | SPI Device Enable<br>0: Disable<br>1: Enable<br>Note: When SPI device is disabled, please operate according to the process of disabling SPI. |
-| 7 | LSSEL | R/W | LSB First Transfer Select<br>0: First transmit the most significant bit (MSB)<br>1: First transmit the least significant bit (LSB) |
-| 8 | ISSEL | R/W | Internal Slave Device Select<br>When CTRL1_SSEN=1 (software NSS mode), configure this bit to select internal NSS level<br>0: Internal NSS is low<br>1: Internal NSS is high |
-| 9 | SSEN | R/W | Software Slave Device Enable<br>0: Software NSS mode is disabled, and the internal NSS level is determined by external NSS pin<br>1: Software NSS mode is enabled, and the internal NSS level is determined by external NSS pin |
-| 10 | RXOMEN | R/W | Receive Only Mode Enable<br>0: Transmit and receive at the same time<br>1: Receive-only mode<br>RXOMEN bit and BMEN bit together determine the transmission direction in the two-line and two-way mode. In the configuration of multiple slave devices, in order to avoid data transmission collision, it is necessary to set RXOMEN bit to 1 on the slave devices that are not accessed. |
-| 11 | DFLSEL | R/W | Data Frame Length Format Select<br>0: 8-bit data frame format<br>1: 16-bit data frame format<br>Only when SPIEN=0, can this bit be written to change the data frame length. |
-| 12 | CRCNXT | R/W | CRC Transfer Next Enable<br>0: The next transmitted data is from transmit buffer<br>1: The next transmitted data is from CRC register<br>Note: After the last data is written to SPI_DATA register, set CRCNXT bit immediately. |
-| 13 | CRCEN | R/W | CRC Calculate Enable<br>0: Disable<br>1: Enable<br>CRC check function only applies to full-duplex mode; only when SPIEN=0, can this bit be changed. |
-| 14 | BMOEN | R/W | Bidirectional Mode Output Enable<br>0: Disable, namely, receive-only mode<br>1: Enable, namely, transmit-only mode<br>When BMEN=1, namely, in single-line/double-line mode, this bit decides the transmission direction of transmission line. |
-| 15 | BMEN | R/W | Bidirectional Mode Enable <br> 0: Double-line unidirectional mode <br> 1: Single-line bidirectional mode <br> Single-line bidirectional transmission means: the transmission between MOSI pin of data master and MISO pin of slave |
-
+| Field | Name   | R/W | Description                                                                                                                                                                                                                                                                                                                                                                               |
+|-------|--------|-----|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 0     | CPHA   | R/W | Clock Phase Configure<br>This bit indicates on the edge of which clock to start sampling<br>0: On the edge of the first clock<br>1: On the edge of the second clock<br>Note: This bit cannot be modified during communication.                                                                                                                                                            |
+| 1     | CPOL   | R/W | Clock Polarity Configure<br>The level state maintained by SCK when SPI is in idle state.<br>0: Low level<br>1: High level<br>Note: This bit cannot be modified during communication                                                                                                                                                                                                       |
+| 2     | MSMCFG | R/W | Master/Salve Mode Configure<br>0: Configure as slave mode<br>1: Configure as master mode<br>Note: This bit cannot be modified during communication                                                                                                                                                                                                                                        |
+| 5:3   | BRSEL  | R/W | Baud Rate Divider Factor Select<br>000: DIV=2<br>001: DIV=4<br>010: DIV=8<br>011: DIV=16<br>100: DIV=32<br>101: DIV=64<br>110: DIV=128<br>111: DIV=256<br>Baud rate=Fpclk/DIV<br>Note: This bit cannot be modified during communication                                                                                                                                                   |
+| 6     | SPIEN  | R/W | SPI Device Enable<br>0: Disable<br>1: Enable<br>Note: When SPI device is disabled, please operate according to the process of disabling SPI.                                                                                                                                                                                                                                              |
+| 7     | LSSEL  | R/W | LSB First Transfer Select<br>0: First transmit the most significant bit (MSB)<br>1: First transmit the least significant bit (LSB)                                                                                                                                                                                                                                                        |
+| 8     | ISSEL  | R/W | Internal Slave Device Select<br>When CTRL1_SSEN=1 (software NSS mode), configure this bit to select internal NSS level<br>0: Internal NSS is low<br>1: Internal NSS is high                                                                                                                                                                                                               |
+| 9     | SSEN   | R/W | Software Slave Device Enable<br>0: Software NSS mode is disabled, and the internal NSS level is determined by external NSS pin<br>1: Software NSS mode is enabled, and the internal NSS level is determined by external NSS pin                                                                                                                                                           |
+| 10    | RXOMEN | R/W | Receive Only Mode Enable<br>0: Transmit and receive at the same time<br>1: Receive-only mode<br>RXOMEN bit and BMEN bit together determine the transmission direction in the two-line and two-way mode. In the configuration of multiple slave devices, in order to avoid data transmission collision, it is necessary to set RXOMEN bit to 1 on the slave devices that are not accessed. |
+| 11    | DFLSEL | R/W | Data Frame Length Format Select<br>0: 8-bit data frame format<br>1: 16-bit data frame format<br>Only when SPIEN=0, can this bit be written to change the data frame length.                                                                                                                                                                                                               |
+| 12    | CRCNXT | R/W | CRC Transfer Next Enable<br>0: The next transmitted data is from transmit buffer<br>1: The next transmitted data is from CRC register<br>Note: After the last data is written to SPI_DATA register, set CRCNXT bit immediately.                                                                                                                                                           |
+| 13    | CRCEN  | R/W | CRC Calculate Enable<br>0: Disable<br>1: Enable<br>CRC check function only applies to full-duplex mode; only when SPIEN=0, can this bit be changed.                                                                                                                                                                                                                                       |
+| 14    | BMOEN  | R/W | Bidirectional Mode Output Enable<br>0: Disable, namely, receive-only mode<br>1: Enable, namely, transmit-only mode<br>When BMEN=1, namely, in single-line/double-line mode, this bit decides the transmission direction of transmission line.                                                                                                                                             |
+| 15    | BMEN   | R/W | Bidirectional Mode Enable <br> 0: Double-line unidirectional mode <br> 1: Single-line bidirectional mode <br> Single-line bidirectional transmission means: the transmission between MOSI pin of data master and MISO pin of slave                                                                                                                                                        |
 
 ### 21.7.2 SPI control register 2 (SPI_CTRL2)
-
 Offset address: 0x04  
 Reset value: 0x0000
 
-
-| Field | Name | R/W | Description |
-| ------- | --------- | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 0 | RXDEN | R/W | Receive Buffer DMA Enable <br> When RXDEN=1, once RXBNEFLG flag is set, DMA request will be issued. <br> 0: Disable <br> 1: Enable |
-| 1 | TXDEN | R/W | Transmit Buffer DMA Enable <br> When this bit is set, once TXBEFLG flag is set, DMA request will be issued. <br> 0: Disable <br> 1: Enable |
-| 2 | SSOEN | R/W | SS Output Enable <br> SS output in master mode <br> 0: Disable SS output, and it can work in multi-master mode. <br> 1: Enable SS output, and it cannot work in multi-master mode.<br> Note: Not available in I2S mode. |
-| 3 |  |  | Reserved |
-| 4 | FRFCFG | R/W | Frame Format Configure <br> 0: SPI Motorola mode <br> 1: SPI TI mode <br> Note: Not available in I2S mode. |
-| 5 | ERRIEN | R/W | Error interrupt Enable <br> 0: Disable <br> 1: Enable <br> When an error occurs, ERRIEN bit controls whether to generate the interrupt. |
-| 6 | RXBNEIEN | R/W | Receive Buffer Not Empty Interrupt Enable <br> 0: Disable <br> 1: Enable <br> When RXBNEFLG flag bit is set to 1, an interrupt request will be generated |
-| 7 | TXBEIEN | R/W | Transmit Buffer Empty Interrupt Enable <br> 0: Disable <br> 1: Enable <br> When TXBEFLG fag bit is set to 1, an interrupt request will be generated |
-| 15:8 |  |  | Reserved |
-
+| Field | Name     | R/W | Description                                                                                                                                                                                                             |
+|-------|----------|-----|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 0     | RXDEN    | R/W | Receive Buffer DMA Enable <br> When RXDEN=1, once RXBNEFLG flag is set, DMA request will be issued. <br> 0: Disable <br> 1: Enable                                                                                      |
+| 1     | TXDEN    | R/W | Transmit Buffer DMA Enable <br> When this bit is set, once TXBEFLG flag is set, DMA request will be issued. <br> 0: Disable <br> 1: Enable                                                                              |
+| 2     | SSOEN    | R/W | SS Output Enable <br> SS output in master mode <br> 0: Disable SS output, and it can work in multi-master mode. <br> 1: Enable SS output, and it cannot work in multi-master mode.<br> Note: Not available in I2S mode. |
+| 3     |          |     | Reserved                                                                                                                                                                                                                |
+| 4     | FRFCFG   | R/W | Frame Format Configure <br> 0: SPI Motorola mode <br> 1: SPI TI mode <br> Note: Not available in I2S mode.                                                                                                              |
+| 5     | ERRIEN   | R/W | Error interrupt Enable <br> 0: Disable <br> 1: Enable <br> When an error occurs, ERRIEN bit controls whether to generate the interrupt.                                                                                 |
+| 6     | RXBNEIEN | R/W | Receive Buffer Not Empty Interrupt Enable <br> 0: Disable <br> 1: Enable <br> When RXBNEFLG flag bit is set to 1, an interrupt request will be generated                                                                |
+| 7     | TXBEIEN  | R/W | Transmit Buffer Empty Interrupt Enable <br> 0: Disable <br> 1: Enable <br> When TXBEFLG fag bit is set to 1, an interrupt request will be generated                                                                     |
+| 15:8  |          |     | Reserved                                                                                                                                                                                                                |
 
 ### 21.7.3 SPI status register (SPI_STS)
-
 Offset address: 0x08  
 Reset value: 0x0002
 
-
-| Field | Name | R/W | Description |
-| ------- | ---------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 0 | RXBNEFLG | R | Receive Buffer Not Empty Flag<br>0: Empty<br>1: Not empty |
-| 1 | TXBEFLG | R | Transmit Buffer Empty Flag<br>0: Not empty<br>1: Empty |
-| 2 | SCHDIR | R | Sound Channel Direction Flag<br>0: Indicate that the left channel is transmitting or receiving the required data<br>1: Indicate that the right channel is transmitting or receiving the required data<br>Note: Not used in SPI mode, without left and right channels in PCM mode. |
-| 3 | UDRFLG | R | Underrun Occur Flag<br>0: Not occur<br>1: Occurred<br>This flag bit is set by hardware, and it can be cleared by writing 0 to this bit by software.<br>Note: It is not used in SPI mode |
-| 4 | CRCEFLG | RC_W0 | CRC Error Occur Flag<br>This bit indicates whether the received CRC value matches the value of RXCRC register<br>0: Match<br>1: Not match<br>This bit is set by hardware, can be cleared by writing 0 to this bit by software, and is not used in I2S mode. |
-| 5 | MEFLG | R | Mode Error Occur Flag<br>0: Not occur<br>1: Occurred<br>This bit is set by hardware, can be cleared by writing 0 to this bit by software, and is not used in I2S mode. |
-| 6 | OVRFLG | R | Overrun Occur Flag<br>0: Not occur<br>1: Occurred<br>This bit is set by hardware, and can be cleared by writing 0 to this bit by software. |
-| 7 | BSYFLG | R | SPI Busy Flag<br>0: SPI is idle<br>1: SPI is communicating<br>It is set or cleared by hardware. |
-| 8 | FREFLG | R | Frame Format Error Flag <br> 0: Not occur <br> 1: Occurred <br> Note: This flag is used when working in TI slave mode or I2S slave mode. This bit is set to 1 by hardware and can be cleared to 0 when reading SPI_STS register. |
-| 15:9 |  |  | Reserved |
-
+| Field | Name     | R/W   | Description                                                                                                                                                                                                                                                                       |
+|-------|----------|-------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 0     | RXBNEFLG | R     | Receive Buffer Not Empty Flag<br>0: Empty<br>1: Not empty                                                                                                                                                                                                                         |
+| 1     | TXBEFLG  | R     | Transmit Buffer Empty Flag<br>0: Not empty<br>1: Empty                                                                                                                                                                                                                            |
+| 2     | SCHDIR   | R     | Sound Channel Direction Flag<br>0: Indicate that the left channel is transmitting or receiving the required data<br>1: Indicate that the right channel is transmitting or receiving the required data<br>Note: Not used in SPI mode, without left and right channels in PCM mode. |
+| 3     | UDRFLG   | R     | Underrun Occur Flag<br>0: Not occur<br>1: Occurred<br>This flag bit is set by hardware, and it can be cleared by writing 0 to this bit by software.<br>Note: It is not used in SPI mode                                                                                           |
+| 4     | CRCEFLG  | RC_W0 | CRC Error Occur Flag<br>This bit indicates whether the received CRC value matches the value of RXCRC register<br>0: Match<br>1: Not match<br>This bit is set by hardware, can be cleared by writing 0 to this bit by software, and is not used in I2S mode.                       |
+| 5     | MEFLG    | R     | Mode Error Occur Flag<br>0: Not occur<br>1: Occurred<br>This bit is set by hardware, can be cleared by writing 0 to this bit by software, and is not used in I2S mode.                                                                                                            |
+| 6     | OVRFLG   | R     | Overrun Occur Flag<br>0: Not occur<br>1: Occurred<br>This bit is set by hardware, and can be cleared by writing 0 to this bit by software.                                                                                                                                        |
+| 7     | BSYFLG   | R     | SPI Busy Flag<br>0: SPI is idle<br>1: SPI is communicating<br>It is set or cleared by hardware.                                                                                                                                                                                   |
+| 8     | FREFLG   | R     | Frame Format Error Flag <br> 0: Not occur <br> 1: Occurred <br> Note: This flag is used when working in TI slave mode or I2S slave mode. This bit is set to 1 by hardware and can be cleared to 0 when reading SPI_STS register.                                                  |
+| 15:9  |          |       | Reserved                                                                                                                                                                                                                                                                          |
 
 ### 21.7.4 SPI data register (SPI_DATA) (not used in I2S mode)
-
 Offset address: 0x0C  
 Reset value: 0x0000
 
-
-| Field | Name | R/W | Description |
-| -------- | ------ | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 15:0 | DATA | R/W | Transmit Receive Data register <br> When writing this register, the data will be written to the transmit buffer; when reading this register, the data in receive buffer will be read. <br> The size of the buffer is consistent with the length of the data frame, that is, for 8-bit data, only DATA[7:0] will be used when transmitting and receiving data, and DATA[15:8] is invalid; for 16-bit data, DATA[15:0] will be used when transmitting and receiving data. |
-
+| Field | Name | R/W | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+|-------|------|-----|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 15:0  | DATA | R/W | Transmit Receive Data register <br> When writing this register, the data will be written to the transmit buffer; when reading this register, the data in receive buffer will be read. <br> The size of the buffer is consistent with the length of the data frame, that is, for 8-bit data, only DATA[7:0] will be used when transmitting and receiving data, and DATA[15:8] is invalid; for 16-bit data, DATA[15:0] will be used when transmitting and receiving data. |
 
 ### 21.7.5 SPI CRC polynomial register (SPI_CRCPOLY) (not used in I2S mode)
-
 Offset address: 0x10  
 Reset value: 0x0007
 
-
-| Field | Name | R/W | Description |
-| -------- | --------- | ----- | ------------------------------------------------------------------------------------------------------- |
-| 15:0 | CRCPOLY | R/W | CRC Polynomial Value Setup <br> This register contains CRC polynomial of CRC computing, which can be modified, and the reset value is 0x0007. |
-
+| Field | Name    | R/W | Description                                                                                                                                   |
+|-------|---------|-----|-----------------------------------------------------------------------------------------------------------------------------------------------|
+| 15:0  | CRCPOLY | R/W | CRC Polynomial Value Setup <br> This register contains CRC polynomial of CRC computing, which can be modified, and the reset value is 0x0007. |
 
 ### 21.7.6 SPI receive CRC register (SPI_RXCRC) (not used in I2S mode)
-
 Offset address: 0x14  
 Reset value: 0x0000
 
-
-| Field | Name | R/W | Description |
-| -------- | ------- | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 15:0 | RXCRC | R | Receive Data CRC Value <br> The CRC data of the data received and calculated by hardware are stored in this register; the bits and the length of data frames are consistent, that is, if the received data are 8 bits, the CRC computing is made based on CRC8; if the received data are 16 bits, the CRC computing is made based on CRC16. <br> When CRCEN is set, the hardware clears the register. <br> Note: When BSYFLG bit is set to 1, the value of reading RXCRC register may be wrong. |
-
+| Field | Name  | R/W | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+|-------|-------|-----|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 15:0  | RXCRC | R   | Receive Data CRC Value <br> The CRC data of the data received and calculated by hardware are stored in this register; the bits and the length of data frames are consistent, that is, if the received data are 8 bits, the CRC computing is made based on CRC8; if the received data are 16 bits, the CRC computing is made based on CRC16. <br> When CRCEN is set, the hardware clears the register. <br> Note: When BSYFLG bit is set to 1, the value of reading RXCRC register may be wrong. |
 
 ### 21.7.7 SPI transmit CRC register (SPI_TXCRC) (not used in I2S mode)
-
 Offset address: 0x18  
 Reset value: 0x0000
 
-
-
-
-| Field | Name | R/W | Description |
-| ------- | -------- | ----- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 15:0 | TXCRC | R | Transmit Data CRC Value <br>The CRC data of transmitted data calculated by hardware is stored in this register; the bits and the length of data frames are consistent, that is, if the transmitted data are 8 bits, the CRC computing is made based on CRC8; if the transmitted data are 16 bits, the CRC computing is made based on CRC16. <br>When CRCEN is set, the hardware clears the register. <br>Note: When BSYFLG bit is set to 1, the value of reading RXCRC register may be wrong. |
-
+| Field | Name  | R/W | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+|-------|-------|-----|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 15:0  | TXCRC | R   | Transmit Data CRC Value <br>The CRC data of transmitted data calculated by hardware is stored in this register; the bits and the length of data frames are consistent, that is, if the transmitted data are 8 bits, the CRC computing is made based on CRC8; if the transmitted data are 16 bits, the CRC computing is made based on CRC16. <br>When CRCEN is set, the hardware clears the register. <br>Note: When BSYFLG bit is set to 1, the value of reading RXCRC register may be wrong. |
 
 ### 21.7.8 SPI_I2S configuration register (SPI_I2SCFG)
-
 Offset address: 0x1C  
 Reset value: 0x0000  
 
-
-| Field | Name | R/W | Description |
-| ------- | --------- | ----- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| 0 | CHLEN | R/W | Channel Length Configure <br>The channel length refers to the data bits per audio channel <br>0: 16-bit width <br>1: 32-bit width <br>The sound channel length can be configured successfully only when the sound channel length is greater than the data length; otherwise, the hardware will automatically adjust the sound channel length; this bit can only be configured when I2SEN=0, and is not used in SPI mode. |
-| 2:1 | DATALEN | R/W | Configure the Length of the Data to Be Transferred <br>00: 16-bit data length <br>01: 24-bit data length <br>10: 32-bit data length <br>11: Disable <br>This bit can only be configured when I2SEN=0, and is not used in SPI mode. |
-| 3 | CPOL | R/W | Idle State Clock Polarity Configure <br>0: Low level <br>1: High level <br>This bit can only be configured when I2SEN=0, and is not used in SPI mode. |
-| 5:4 | I2SSSEL | R/W | I2S Standard Select <br>00: I2S Philips standard <br>01: High-byte alignment standard (left alignment) <br>10: Low-byte alignment standard (right alignment) <br>11: PCM standard <br>This bit can only be configured when I2SEN=0, and is not used in SPI mode. |
-| 6 |  |  | Reserved |
-| 7 | PFSSEL | R/W | PCM Frame Synchronization Mode Select <br>0: Synchronization of short frames <br>1: Synchronization of long frames <br>Apply only to PCM standard (I2SSSEL=11); this bit can only be configured when I2SEN=0, and is not used in SPI mode. |
-
-
-www.geehy.com
-
-
-
-
-| Field | Name | R/W | Description |
-| ------- | -------- | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 9:8 | I2SMOD | R/W | I2S Master/Slave Transmit/Receive Mode Configure<br>00: Slave device transmits<br>01: Slave device receives<br>10: Master device transmits<br>11: Master device receives<br>This bit can only be configured when I2SEN=0, and is not used in SPI mode. |
-| 10 | I2SEN | R/W | I2S Enable<br>0: Disable I2S<br>1: Enable I2S<br>Note: It is not used in SPI mode. |
-| 11 | MODESEL | R/W | SPI/I2C Mode Select<br>0: Select SPI mode<br>1: Select I2S mode<br>Note: This bit can be set only when SPI or I2S is disabled. |
-| 15:12 | Reserved |  |  |
+| Field | Name     | R/W | Description                                                                                                                                                                                                                                                                                                                                                                                                              |
+|-------|----------|-----|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 0     | CHLEN    | R/W | Channel Length Configure <br>The channel length refers to the data bits per audio channel <br>0: 16-bit width <br>1: 32-bit width <br>The sound channel length can be configured successfully only when the sound channel length is greater than the data length; otherwise, the hardware will automatically adjust the sound channel length; this bit can only be configured when I2SEN=0, and is not used in SPI mode. |
+| 2:1   | DATALEN  | R/W | Configure the Length of the Data to Be Transferred <br>00: 16-bit data length <br>01: 24-bit data length <br>10: 32-bit data length <br>11: Disable <br>This bit can only be configured when I2SEN=0, and is not used in SPI mode.                                                                                                                                                                                       |
+| 3     | CPOL     | R/W | Idle State Clock Polarity Configure <br>0: Low level <br>1: High level <br>This bit can only be configured when I2SEN=0, and is not used in SPI mode.                                                                                                                                                                                                                                                                    |
+| 5:4   | I2SSSEL  | R/W | I2S Standard Select <br>00: I2S Philips standard <br>01: High-byte alignment standard (left alignment) <br>10: Low-byte alignment standard (right alignment) <br>11: PCM standard <br>This bit can only be configured when I2SEN=0, and is not used in SPI mode.                                                                                                                                                         |
+| 6     |          |     | Reserved                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| 7     | PFSSEL   | R/W | PCM Frame Synchronization Mode Select <br>0: Synchronization of short frames <br>1: Synchronization of long frames <br>Apply only to PCM standard (I2SSSEL=11); this bit can only be configured when I2SEN=0, and is not used in SPI mode.                                                                                                                                                                               |
+| 9:8   | I2SMOD   | R/W | I2S Master/Slave Transmit/Receive Mode Configure<br>00: Slave device transmits<br>01: Slave device receives<br>10: Master device transmits<br>11: Master device receives<br>This bit can only be configured when I2SEN=0, and is not used in SPI mode.                                                                                                                                                                   |
+| 10    | I2SEN    | R/W | I2S Enable<br>0: Disable I2S<br>1: Enable I2S<br>Note: It is not used in SPI mode.                                                                                                                                                                                                                                                                                                                                       |
+| 11    | MODESEL  | R/W | SPI/I2C Mode Select<br>0: Select SPI mode<br>1: Select I2S mode<br>Note: This bit can be set only when SPI or I2S is disabled.                                                                                                                                                                                                                                                                                           |
+| 15:12 | Reserved |     |                                                                                                                                                                                                                                                                                                                                                                                                                          |
 
 
 ### 21.7.9 SPI_I2S prescaler register (SPI_I2SPSC) (not used in SPI mode)
-
 Offset address: 0x20  
 Reset value: 0x0002  
 
-
-| Field | Name | R/W | Description |
-| ------- | -------- | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 7:0 | I2SPSC | R/W | I2S Linear Prescaler Factor Configure<br>I2SPSC cannot be set to 0 and 1; this bit can be configured only when I2SEN=0, and is not used in SPI mode. |
-| 8 | ODDPSC | R/W | Configure the prescaler factor to be odd<br>0: Actual division factor=I2SPSC*2<br>1: Actual division factor=(I2SPSC*2)+1<br>This bit can only be configured when I2SEN=0, and is not used in SPI mode. |
-| 9 | MCOEN | R/W | Master Device Clock Output Enable<br>0: Disable<br>1: Enable<br>This bit can only be configured when I2SEN=0, and is not used in SPI mode. |
-| 15:10 | Reserved |  |  |
+| Field | Name     | R/W | Description                                                                                                                                                                                            |
+|-------|----------|-----|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 7:0   | I2SPSC   | R/W | I2S Linear Prescaler Factor Configure<br>I2SPSC cannot be set to 0 and 1; this bit can be configured only when I2SEN=0, and is not used in SPI mode.                                                   |
+| 8     | ODDPSC   | R/W | Configure the prescaler factor to be odd<br>0: Actual division factor=I2SPSC*2<br>1: Actual division factor=(I2SPSC*2)+1<br>This bit can only be configured when I2SEN=0, and is not used in SPI mode. |
+| 9     | MCOEN    | R/W | Master Device Clock Output Enable<br>0: Disable<br>1: Enable<br>This bit can only be configured when I2SEN=0, and is not used in SPI mode.                                                             |
+| 15:10 | Reserved |     |                                                                                                                                                                                                        |
 
 
 # 22 Quad serial peripheral interface (QSPI)
-
-
-
 ## 22.1 Introduction
 
 
