@@ -10733,7 +10733,23 @@ In I2S Philips standard, both `WS` and `SD` change on the falling edge of `CK` c
 The sender will change the data on the falling edge of the clock signal `CK`, while the receiver 
 will change the data on the rising edge of the clock signal `CK`.
 
-Figure 88 I2S Philips Protocol Waveform (16/32 bits)
+Figure 88: I2S Philips Protocol Waveform (16/32 bits)
+
+```
+                           (time →)
+
+SPI_CK:    __      __      __      __      __      __      __      __
+         _|  |____|  |____|  |____|  |____|  |____|  |____|  |____|  |
+
+SPI_WS:  ________________________________                ________________________________
+                                   |______________________|
+            Right-channel frame                         Left-channel frame
+
+SPI_SD:        <- Right Channel (16/32 bits) ->              <- Left Channel (16/32 bits) ->
+              MSB          ...           LSB           MSB          ...           LSB
+              (High bit)                           ...                        (High bit)
+
+```
 
 In I2S Philips standard, if you want to transmit/receive 24-bit and 32-bit data, the 
 `SPI_DATA` register needs to read/write twice; for example: 
