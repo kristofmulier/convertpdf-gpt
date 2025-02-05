@@ -1,28 +1,66 @@
 # REQUEST
 # =======
-You are given the following data from the MCU:
-- snippet from `user_manual.pdf` (aka "the document")
-- snippet from `APM32F411.svd` (aka "the svd snippet")
+You are given a chapter from the `APM32F411` MCU reference manual. Here is "the chapter":
 
-Together we will update the SVD file of the `APM32F411` MCU. We will do it register-by-register. I ask you to "update register XXX". This is how we'll work:
+# ======= BEGIN CHAPTER ======= #
 
-Extract the register data from the svd snippet. Process each `<field>` (bitfield) in there as follows:
+
+
+# ======= END CHAPTER ======= #
+
+Based on "the chapter", you should update registers in the SVD file of the MCU. I'll give you an SVD
+snippet of one register. This is how you process the register:
 
     - Retain the `<name>` value as-is.
 
-    - Add or update the `<displayName>` tag with the full name of the bitfield.
+    - Add or update the `<displayName>` tag with the full name of the register. Expand it if it is
+    an acronym.
 
-    - Add or update the `<description>` tag with an accurate description from the document. The description should clarify in a few words what the bitfield does/means.
+    - Add or update the `<description>` tag with an accurate description from "the chapter". It
+    should clarify what the register does/means, but don't list all the bitfields here (as they
+    will get their description later on, in their own tags, see further).
+
+    - Retain the `<addressOffset>` value as-is.
+
+    - Retain the `<size>` value as-is.
+
+    - Retain the `<access>` value as-is or add it based on "the chapter".
+
+    - Retain the `<protection>` value as-is or add it based on "the chapter".
+
+    - Retain the `<resetValue>` value as-is or add it based on "the chapter".
+
+    - Retain the `<resetMask>` value as-is or add it based on "the chapter".
+
+The last tag of the register is the `<fields>` tag. In there, the bitfields are defined (every
+`<field>` tag represents one bitfield). This is how you'll process each `<field>` tag:
+
+    - Retain the `<name>` value as-is.
+
+    - Add or update the `<displayName>` tag with the full name of the bitfield. Expand it if it is
+    an acronym.
+
+    - Add or update the `<description>` tag with an accurate description from "the chapter". It
+    should clarify what the bitfield does/means, in a rather general way. The explanation of what
+    each *value* means, belongs to the `<enumeratedValues>` tag (see further).
 
     - Retain the `<bitOffset>` value as-is.
 
     - Retain the `<bitWidth>` value as-is.
 
-    - Retain the `<access>` tag or add it based on the document.
+    - Retain the `<access>` value as-is or add it based on "the chapter".
 
-    - Add `<enumeratedValues>` with enumerations for the bitfield based on the document. Within each `<enumeratedValue>` tag should be the following tags: `<name>`, `<description>` and `<value>`.
+    - Add or update `<enumeratedValues>` with enumerations for the bitfield based on "the chapter".
+    Within each `<enumeratedValue>` tag should be the following four tags:
+        - `<name>`: Choose a logical name, based on "the chapter".
+        - `<displayName>`: If the former is an acronym, give the fully expanded name here.
+        Otherwise, still provide the `<displayName>` tag, but give it the same content as the
+        `<name>` tag.
+        - `<description>`: Describe what the value means.
+        - `<value>`: The value of the bitfield.
 
-    - Add a vendor extension tag for the bitfield, to indicate if it is a "runtime" or a "setting" bitfield. For example:
+    - Add or update the vendor extension tag for the bitfield, to indicate if it is a "runtime" or a
+    "setting" bitfield. For example:
     ```
     <vendorExtensions>
       <embeetle:fieldKind>runtime</embeetle:fieldKind>
@@ -33,16 +71,8 @@ Extract the register data from the svd snippet. Process each `<field>` (bitfield
     in "runtime functions" that you invoke to do things with the peripheral (eg. send or receive
     data, ...) *after* it has been initialized.
 
-# USER MANUAL SNIPPET
-# ===================
-```markdown
-...
-```
+    - Finally, add `<embeetle:fieldKindCmt>` tag under the `<embeetle:fieldKind>` tag to explain
+    why you chose for either "runtime" or "setting".
 
-# SVD SNIPPET
-# ===========
-```svd
-...
-```
+Ready? Let's start with updating this register:
 
-Ready? Let's start with updating register `DATA`.
