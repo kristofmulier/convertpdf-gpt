@@ -8777,7 +8777,6 @@ USART also supports DMA function to realize high-speed data communication.
 (3) NRZ standard format
 
 (4) Characteristics of programmable serial port:
-
 - Data bit: 8 or 9 bits
 - Check bits: Even parity check, odd parity check, no check
 - Support 0.5, 1, 1.5 and 2 stop bits
@@ -8825,10 +8824,8 @@ USART also supports DMA function to realize high-speed data communication.
   - Overrun error
   - Frame error
 
-
-
-
 ## 19.4 Functional Description
+
 | Pin        | Type                                                    | Description                                                                                                 |
 | ---------- | ------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
 | USART_RX   | Input                                                   | Data receiving                                                                                              |
@@ -8840,6 +8837,7 @@ USART also supports DMA function to realize high-speed data communication.
 | IrDA_TDO   | Output                                                  | Data output in IrDA mode                                                                                    |
 
 ### 19.4.1 Single-line half-duplex communication
+
 `HDEN` bit of `USART_CTRL3` register determines whether to enter the single-line half-duplex mode.
 When `USART` enters single-line half-duplex mode:
 - The `CLKEN` and `LINMEN` bits of `USART_CTRL2` register, and `IREN` and `SCEN` bits of `USART_CTRL3` register must be cleared to 0.
@@ -8849,6 +8847,7 @@ When `USART` enters single-line half-duplex mode:
 - If there is data collision on the bus, software is required to manage the distributed communication process.
 
 ### 19.4.2 Frame format
+
 The frame format of data frame is controlled by USART_CTRL1 register
 - `DBLCFG` bit controls the character length, which can be set to 8 or 9 bits.
 - `PCEN` bit controls whether to enable the check bit or not.
@@ -8862,6 +8861,7 @@ The frame format of data frame is controlled by USART_CTRL1 register
 | 1          | 1        | Start bit + 8-bit data + parity check bit+stop bit   |
 
 **Configurable stop bit**
+
 Four different stop bits can be configured through STOPCFG bit of USART_CTRL2 register.
 - 1 stop bit: Default stop bit.
 - 0.5 stop bit: Used when receiving data in smart card mode.
@@ -8869,14 +8869,17 @@ Four different stop bits can be configured through STOPCFG bit of USART_CTRL2 re
 - 1.5 stop bits: Used when transmitting and receiving data in smart card mode.
 
 **Check bit**
+
 `PCFG` bit of `USART_CTRL1` determines the parity check bit; when `PCFG`=0, it is even parity check, on the contrary, it is odd parity check.
 - Even parity check: When the number of frame data and check bit 1 is even, the even parity check bit is 0; otherwise it is 1.
 - Odd parity check: When the number of frame data and check bit 1 is even, the odd parity check bit is 1; otherwise it is 0.
 
 ### 19.4.3 Transmitter
+
 When `TXEN` bit of the register `USART_CTRL1` is set, the transmit shift register will output data through `TX` pin and the corresponding clock pulses will be output through `CK` pin.
 
 #### 19.4.3.1 Character transmission
+
 During transmission period of `USART`, the least significant bit of the data will be moved out by `TX` pin first. In this mode, `USART_DATA` register has a buffer between the internal bus and the transmit shift register.
 A data frame is composed of the start bit, character and stop bit, so there is a low-level start bit in front of each character; then there is a high-level stop bit who number is configurable.
 
@@ -8895,6 +8898,7 @@ Note: `TXEN` bit cannot be reset during data transmission; otherwise, the data o
 
 
 #### 19.4.3.2 Single-byte communication
+
 `TXBEFLG` bit can be cleared to 0 by writing `USART_DATA` register. When the `TXBEFLG` bit is set by hardware, the shift register will receive the data transferred from the data transmit register, then the data will be transmitted, and the data transmit register will be emptied. The next data can be written in the data register without overwriting the previous data.
 
 (1) If `TXBEIEN` in `USART_CTRL1` register is set to 1, an interrupt will be generated.
@@ -8909,6 +8913,7 @@ Note: `TXEN` bit cannot be reset during data transmission; otherwise, the data o
 
 
 #### 19.4.3.3 Break frame
+
 The break frames are considered to receive 0 in a frame period. Setting `TXBF` bit of `USART_CTRL1` register can transmit a break frame, and the length of the break frame is determined by `DBLCFG` bit of `USART_CTRL1` register. If the `TXBF` bit is set, after completion of transmission of current data, the `TX` line will transmit a break frame, and after completion of transmission of break frame, the `TXBF` bit will be reset. At the end of the break frame, the transmitter inserts one or two stop bits to respond to the start bit.
 
 Note: If the `TXBF` bit is reset before transmission of the break frame starts, the break frame will not be
@@ -8916,6 +8921,7 @@ transmitted. To transmit two consecutive break frames, the `TXBF` bit should be 
 the previous break symbol.
 
 #### 19.4.3.4 Idle frame
+
 The idle frame is regarded as a complete data frame composed entirely of 1, 
 followed by the start bit of the next frame containing the data. Set `TXEN` bit of 
 `USART_CTRL1` register to 1 and one idle frame can be transmitted before the 
@@ -8923,7 +8929,9 @@ first data frame.
 
 
 ### 19.4.4 Receiver
+
 #### 19.4.4.1 Character receiving
+
 During receiving period of `USART`, `RX` pin will first introduce the least significant 
 bit of the data. In this mode, `USART_DATA` register has a buffer between the 
 internal bus and the receive shift register. The data is transmitted to the buffer 
@@ -8955,17 +8963,21 @@ not empty, then the user can read `USART_DATA`.
    will be set to 1, and can be cleared to 0 by reading the data register by `DMA`.
 
 #### 19.4.4.2 Break frame
+
 When the receiver receives a break frame, `USART` will handle it as receiving a 
 frame error.
 
-#### 19.4.4.3 **Idle frame**
+#### 19.4.4.3 Idle frame
+
 When the receiver receives an idle frame, `USART` will handle it as receiving an ordinary data frame; if `IDLEIEN` bit of `USART_CTRL1` is set, an interrupt will be generated.
 
-#### 19.4.4.4 **Oversampling rate**
+#### 19.4.4.4 Oversampling Rate
+
 `OSMCFG` bit of `USART_CTRL1` register determines the oversampling rate.
 If the oversampling rate is 8 times the baud rate, the speed is higher, but the clock tolerance is smaller. If it is 16 times, the speed is lower, but the clock tolerance is bigger.
 
-#### 19.4.4.5 **Overrun error**
+#### 19.4.4.5 Overrun error
+
 When `RXBNEFLG` bit of `USART_STS` register is set to 1 and a new character is received at the same time, an overrun error will be caused. Only after `RXEN` is reset, can the data be transferred from the shift register to `DATA` register. `RXBNEFLG` bit will be set to 1 after receiving the byte. This bit needs to be reset before receiving the next data or serving the previous `DMA` request; otherwise, an overrun error will be caused.
 
 **When an overrun error occurs**
@@ -8978,7 +8990,8 @@ When `RXBNEFLG` bit of `USART_STS` register is set to 1 and a new character is r
   - When `RXBNEFLG`=0, there is no valid data in `DATA` register.
 - The OVREFLG bit can be reset by reading `USART_STS` and `USART_DATA` registers successively.
 
-#### 19.4.4.6 **Noise error**
+#### 19.4.4.6 Noise error
+
 When noise is detected in receiving process of the receiver:
 - Set NE flag on the rising edge of `RXBNEFLG` bit of `USART_STS` register.
 - Invalid data is transmitted from the shift register to `USART_DATA` register.
@@ -8986,6 +8999,7 @@ When noise is detected in receiving process of the receiver:
 Note: 8-time oversampling ratio cannot be used in `LIN`, smart card and `IrDA` modes.
 
 #### 19.4.4.7 Frame error
+
 If the stop bit is not received and recognized at the expected receiving time due to excessive noise or lack of synchronization, a frame error will be detected.
 When a frame error is detected in receiving process of the receiver:
 (1) Set the `FEFLG` bit of `USART_STS` register.
@@ -8993,6 +9007,7 @@ When a frame error is detected in receiving process of the receiver:
 (3) In single byte communication, there is no interrupt, but in multi-buffer communication, an interrupt will be generated by setting the `ERRIEN` bit of `USART_CTRL3` register.
 
 ### 19.4.5 Baud rate generator
+
 The baud rate division factor (`USARTDIV`) is a 16-digit number consisting of 12-digit integer part and 4-digit decimal part. Its relationship with the system clock:
 ```
 Baud rate=PCLK/16×(USARTDIV)
@@ -9001,6 +9016,7 @@ The system clock of `USART2/3` is `PCLK1`, and that of `USART1` is `PCLK2`. `USA
 
 
 ### 19.4.6 Multiprocessor communication
+
 In multiprocessor communication, multiple `USART` are connected to form a network. In this
 network, two devices communicate with each other, and the mute mode can be enabled for other
 devices not participating in the communication to reduce the burden of `USART`. In mute
@@ -9018,7 +9034,7 @@ hardware. `RXMUTEEN` can also be cleared to 0 by software.
 
 
 
-Figure 65 Idle Bus Exits Mute Mode
+**Figure 65 Idle Bus Exits Mute Mode**
 ```
                                                              RXBNEFLG set to 1
                                                              by hardware
@@ -9028,10 +9044,8 @@ Figure 65 Idle Bus Exits Mute Mode
      \ /         \ /         \ /         \ /                 \ /         \ /         
 RX    \  Data 1   \  Data 2   \  Data 3   \    Idle frame     \  Data 4   \          
    __/ \_________/ \_________/ \_________/ \_________________/ \_________/ \_________
-                                                                            ^
-                                                                            | (RXBNEFLG set to 1 by hardware)
 
-                                                    
+
              __________________________________________
 RXMUTEEN    |                                          |          Normal mode
    _________|             Silent mode (RXMUTEEN=1)     |________________________________
@@ -9039,6 +9053,22 @@ RXMUTEEN    |                                          |          Normal mode
             |                                          |
         RXMUTEEN set to 1                       Idle frame is detected
 ```
+
+> Figure description:
+> 1. Silent Mode Takes Effect Immediately Upon `RXMUTEEN = 1`
+> - As soon as the diagram shows the `RXMUTEEN` signal going high (from `0` to `1`), the receiver immediately stops processing incoming data.
+> - Any subsequent frames arriving while `RXMUTEEN` is high are effectively ignored; they do not generate the normal "receive buffer not empty" flag (`RXBNEFLG`), nor do they trigger receive interrupts.
+> 
+> 2. Idle Frame Causes a Return to Normal Mode
+> - Once an idle line (idle frame) is detected on the `RX` pin, the `USART` hardware switches itself out of Silent mode.
+> - In other words, the very moment the idle frame is recognized, the `USART` returns to Normal (non-mute) mode—even if `RXMUTEEN` is still shown high in the diagram, it is effectively overridden/cleared internally.
+> - After this transition, the receiver resumes normal data acquisition and sets `RXBNEFLG` on subsequent valid data frames.
+>
+> Why This Behavior Makes Sense
+> - Silent (Mute) mode is typically used in multi-processor or multi-drop configurations, where only the node that is addressed (or awakened) should process further data.
+> - An idle frame often marks the end of a communication sequence or a gap in transmission; detecting that idle condition is one standard way to signal other devices to come out of Silent mode and listen for a possible new address or data phase.
+
+
 **Address flag detection (`WUPMCFG`=1)**<br>
 If the address flag bit is 1, this byte is regarded as the address. The address bytes are low
 four-byte storage address. When the receiver receives the address byte, it will be compared with its
@@ -9047,15 +9077,47 @@ match, the receiver will wake up from the mute mode and be ready to receive the 
 address byte is received again after exiting the mute mode, but the address does not match its own
 address, the receiver will enter the mute mode again.
 
-Figure 66 Address Flag Exits Mute Mode
+**Figure 66 Address Flag Exits Mute Mode**
 ```
-RXBNEFLG set to 1
-                      by hardware
-  RX  ──────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────
-            │Data 1  │Address 1│Data 2  │Address 2│Data 3  │Address 3│Data 4  └────╴
-RXMUTEEN    Silent mode │                    Normal mode    │ Silent mode
-                      Unmatched address   Matched address  Unmatched address
+                                                          RXBNEFLG set to 1
+                                                          by hardware
+                                                               ^
+                                                               |
+       __   _________   _________   _________   _________   _________   _________   _________  
+         \ /         \ /         \ /         \ /         \ /         \ /         \ /         
+    RX    \   Data 1  \ Address 1 \   Data 2  \ Address 2 \   Data 3  \ Address 3 \   Data 4  
+       __/ \_________/:\_________/ \_________/ \_________/:\_________/ \_________/:\_________
+           :          :                                   :                       :
+           :          :                                   :                       :
+           :__________:___________________________________:                       :__________
+RXMUTEEN   |          :   Silent Mode                     |      Normal Mode      | Silent Mode
+   ________|          ^   (RXMUTEEN=1)                    |_______________________| (RXMUTEEN=1)
+           ^          |                                   ^                       ^
+           |      Unmatched                               |                       |
+        RXMUTEEN    address                            Matched                Unmatched
+        set to 1                                       address                Address
+
+
 ```
+
+> **Figure Description**
+> 
+> Top Waveform — `RX` Data Line
+> - This is a timing diagram of bytes (or frames) arriving on the RX line.
+> - The labeled frames are: `Data 1`, `Address 1`, `Data 2`, `Address 2`, `Data 3`, `Address 3`, and `Data 4`.
+> - Each frame is shown as a "lump" of signal activity enclosed by underscores, indicating the start and stop bits of typical UART/USART frames.
+> 
+> Second Line — `RXMUTEEN` Signal
+> - This line indicates when the device is in Normal mode (`RXMUTEEN = 0`) or in Silent mode (`RXMUTEEN = 1`).
+> - There are vertical markers showing transitions in and out of Silent mode:
+>  - "`RXMUTEEN` set to 1" at the first marker, which begins a region labeled Silent Mode.
+>  - Later, after a matched address is received, we see a region labeled Normal Mode (`RXMUTEEN` goes low).
+>  - Finally, after another unmatched address, the signal is taken high again for Silent Mode.
+> 
+> Text Annotations
+> - "Unmatched address" or "Matched address" above some markers, showing which address frames match the device's address filter and thus cause wake-up (or a transition to Normal mode) vs. which ones do not.
+> - "Silent Mode (`RXMUTEEN=1`)" and "Normal Mode" blocks indicating the mode of the receiver over time.
+> - An arrow labeled "`RXBNEFLG` set to 1 by hardware" near the upper waveform, showing where the receiver actually latches incoming data (i.e., the device is not muted at that moment).
 
 ### 19.4.7 **Synchronous mode**
 The synchronous mode supports full-duplex synchronous serial communication 
@@ -9078,7 +9140,7 @@ When `USART` enters the synchronous mode:
 - The external `CK` clock cannot be activated when the bus is idle or the 
   break frame appears.
 
-Figure 67 USART Synchronous Transmission Example
+**Figure 67 USART Synchronous Transmission Example**
 
 | USART |      | Slave       |
 | ----- | ---- | ----------- |
@@ -9087,44 +9149,147 @@ Figure 67 USART Synchronous Transmission Example
 | `RX`  | <--- | Data output |
 
 
-Figure 68 USART Synchronous Transmission Timing Diagram (`DBLCFG`=0)
+**Figure 68 USART Synchronous Transmission Timing Diagram (`DBLCFG`=0)**
 
-|                           | DBLCFG=0 (8-bit data)                                              |
-| ------------------------- | ------------------------------------------------------------------ |
-| `CK` (`CPOL`=0, `CPHA`=0) |                                                                    |
-| `CK` (`CPOL`=0, `CPHA`=1) |                                                                    |
-| `CK` (`CPOL`=1, `CPHA`=0) |                                                                    |
-| `CK` (`CPOL`=1, `CPHA`=1) | <br>                                                               |
-| `TX` (from master device) | Start bit Bit 0 Bit 1 Bit 2 Bit 3 Bit 4 Bit 5 Bit 6 Bit 7 Stop bit |
-| `RX` (from slave device)  | Bit 0 Bit 1 Bit 2 Bit 3 Bit 4 Bit 5 Bit 6 Bit 7                    |
-
-
-Figure 69 USART Synchronous Transmission Timing Diagram (`DBLFCFG`=1)
 ```
-| DBLFCFG=1(9-bit data) |
-|  |
-| CK (CPOL=0, CPHA=0)      ___     ___     ___     ___     ___     ___        <br>_ /  / ___ /  / ___ /  / ___ /  / ___ /  / ___ /  / ___ |
+                                                        DBLCFG=0 (8-bit data)
+                                        ___     ___     ___     ___     ___     ___     ___     ___             
+                                       ^   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |            
+CK(CPOL=0,CPHA=0)______________________|   |___|   |___|   |___|   |___|   |___|   |___|   |___|   |______________
+                                                                                                                
+                                    ___     ___     ___     ___     ___     ___     ___     ___                 
+                                   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |                
+CK(CPOL=0,CPHA=1)__________________|   v___|   |___|   |___|   |___|   |___|   |___|   |___|   |__________________
+                                                                                                                
+                 ______________________     ___     ___     ___     ___     ___     ___     ___     ______________
+                                       |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |            
+CK(CPOL=1,CPHA=0)                      v___|   |___|   |___|   |___|   |___|   |___|   |___|   |___|            
+                                                                                                                
+                 __________________     ___     ___     ___     ___     ___     ___     ___     __________________
+                                   |   ^   |   |   |   |   |   |   |   |   |   |   |   |   |   |                
+CK(CPOL=1,CPHA=1)                  |___|   |___|   |___|   |___|   |___|   |___|   |___|   |___|                
+                                           
+                 __________         _______ _______ _______ _______ _______ _______ _______ _______ _______ 
+                           | Start | Bit 0 | Bit 1 | Bit 2 | Bit 3 | Bit 4 | Bit 5 | Bit 6 | Bit 7 | Stop  |
+TX (from master device)    |_bit___|_______|_______|_______|_______|_______|_______|_______|_______| bit   |______
 
-| CK (CPOL=0, CPHA=1)                                                              
-| ___     ___     ___     ___     ___     ___ |
+                 __________________________ _______ _______ _______ _______ _______ _______ _______ ______________
+                                   | Bit 0 | Bit 1 | Bit 2 | Bit 3 | Bit 4 | Bit 5 | Bit 6 | Bit 7 |        
+RX (from slave device)_____________|_______|_______|_______|_______|_______|_______|_______|_______|______________
 
-|  |  | ___ |  | ___ |  | ___ |  | ___ |  | ___ |  | ___ |
-
-| CK (CPOL=1, CPHA=0)      ___     ___     ___     ___     ___     ___ |
-
-| _ |  | ___ |  | ___ |  | ___ |  | ___ |  | ___ |  | ___ |
-
-| CK (CPOL=1, CPHA=1)     ___     ___     ___     ___     ___     ___ |
-
-|  |  | ___ |  | ___ |  | ___ |  | ___ |  | ___ |  | ___ |
-
-|  |
-| TX (from master device)    Start    Bit 0  Bit 1  Bit 2  Bit 3  Bit 4 |
-| bit                                      Bit 8  <br><br>RX (from slave device)<br>Bit 0  Bit 1  Bit 2  Bit 3  Bit 4  Bit 5<br>Bit 6  Bit 7  Bit 8 |
 ```
+
+> **Figure 68 Explanation**
+> 
+> It shows synchronous serial transmission using a USART peripheral, illustrating how the clock (`CK`) is
+generated under different combinations of `CPOL` (clock polarity) and `CPHA` (clock phase), and how
+transmit (`TX`) and receive (`RX`) signals line up with those clock edges.
+> In synchronous USART mode, the master device provides a clock (`CK`) on a separate line. Data changes or
+> is sampled on either the rising or falling edges, depending on `CPOL` (clock polarity) and `CPHA` (clock
+> phase). This figure shows four mini-timing diagrams at the top, each labeled:
+> - `CK` (`CPOL=0`, `CPHA=0`)
+> - `CK` (`CPOL=0`, `CPHA=1`)
+> - `CK` (`CPOL=1`, `CPHA=0`)
+> - `CK` (`CPOL=1`, `CPHA=1`)
+>
+> Here's what each line indicates:
+> a) `CPOL=0`, `CPHA=0`
+>   - `CPOL=0` means the clock is idle low (the line rests at 0 when no data is being clocked).
+>   - `CPHA=0` means data is sampled on the first (leading) rising edge of the clock period.
+>   - The diagram shows that the clock transitions from low to high in mid-bit; that rising edge is where the device captures data. Then it drops back low at the end of the bit period.
+> 
+> b) `CPOL=0`, `CPHA=1`
+>   - Still idle low (`CPOL=0`).
+>   - `CPHA=1` means data is sampled on the second (falling) edge within each clock cycle.
+>   - You can see the wave is the same idle low but shifted so that the sampling edge is the falling edge.
+> 
+> c) `CPOL=1`, `CPHA=0`
+>   - `CPOL=1` means the clock is idle high.
+>   - `CPHA=0` indicates data is sampled on the first (leading) transition (now that leading transition is a fall from high to low because the clock starts high).
+>   - The wave begins high, then drops down mid-bit (the arrow "v") to sample data.
+> 
+> d) `CPOL=1`, `CPHA=1`
+>   - The clock is idle high.
+>   - `CPHA=1` means data is captured on the second edge in each cycle (which is the rising edge this time, as the clock toggles low then high again).
+>   - The diagram shows the clock line dropping and then rising again within the bit time; data sampling occurs at the second transition (the up arrow "^").
+> 
+> In summary, those four small waveforms illustrate exactly which clock edge is used to sample data for each `CPOL`/`CPHA` mode.
+>
+> The large waveform labeled `TX` (at the bottom) shows a typical 10-bit frame in asynchronous fashion (as is
+> often used in standard USARTs, even in synchronous mode). The bits are spread out over the clock cycles:
+> - `Start bit` (low level)
+> - `Bit 0`
+> - `Bit 1`
+> - `Bit 2`
+> - `Bit 3`
+> - `Bit 4`
+> - `Bit 5`
+> - `Bit 6`
+> - `Bit 7`
+> - `Stop bit` (high level)
+> 
+> Because this is a synchronous USART mode, each bit period in `TX` coincides with a clock pulse from the master.
+> When the clock toggles at the correct edge, the data line should be stable for the receiver to sample it.
+> However, there are still start- and stop bits to help the receiver synchronize incoming data! So even though
+> it's synchronous (meaning data transitions occur in sync with a clock provided by the master), you still see
+> references to a "start bit" and a "stop bit" in the transmitted frame. This is simply how the peripheral is
+> designed—reusing the same data shift register and framing hardware in both modes. Hence, the presence of a
+> 'start' and 'stop' bit does not necessarily imply traditional "asynchronous" UART. It's more about how the
+> hardware internally sequences the bits.
+> 
+> On the line labeled `RX`, we see another sequence of bits:
+> - `Bit 0` through `Bit 7` (eight bits total).
+> - There is no explicit "start" or "stop" bit shown here for the slave's return path (depending on the
+> specific USART implementation, the slave might frame it differently, or it might rely purely on the shared
+> clock for synchronous timing).
+> 
+> As the master toggles the clock line, the slave outputs its data in sync, so on each clock pulse:
+> - The master samples `RX` from the slave at the correct edge (depending on `CPOL`/`CPHA`).
+> - You see that `Bit 0` lines up with the first relevant clock edge, `Bit 1` with the second, and so on,
+>   until `Bit 7`.
+
+
+
+**Figure 69 USART Synchronous Transmission Timing Diagram (`DBLFCFG`=1)**
+
+```
+                                                        DBLCFG=1 (9-bit data)
+                                        ___     ___     ___     ___     ___     ___     ___     ___     ___             
+                                       ^   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |            
+CK(CPOL=0,CPHA=0)______________________|   |___|   |___|   |___|   |___|   |___|   |___|   |___|   |___|   |______________
+                                                                                                                
+                                    ___     ___     ___     ___     ___     ___     ___     ___     ___                 
+                                   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |                
+CK(CPOL=0,CPHA=1)__________________|   v___|   |___|   |___|   |___|   |___|   |___|   |___|   |___|   |__________________
+                                                                                                                
+                 ______________________     ___     ___     ___     ___     ___     ___     ___     ___     ______________
+                                       |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |            
+CK(CPOL=1,CPHA=0)                      v___|   |___|   |___|   |___|   |___|   |___|   |___|   |___|   |___|            
+                                                                                                                
+                 __________________     ___     ___     ___     ___     ___     ___     ___     ___     __________________
+                                   |   ^   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |                
+CK(CPOL=1,CPHA=1)                  |___|   |___|   |___|   |___|   |___|   |___|   |___|   |___|   |___|                
+                                           
+                 __________         _______ _______ _______ _______ _______ _______ _______ _______ _______ _______       
+                           | Start | Bit 0 | Bit 1 | Bit 2 | Bit 3 | Bit 4 | Bit 5 | Bit 6 | Bit 7 | Bit 8 | Stop  |      
+TX (from master device)    |_bit___|_______|_______|_______|_______|_______|_______|_______|_______|_______| bit   |______
+
+                 __________________________ _______ _______ _______ _______ _______ _______ _______ _______ ______________
+                                   | Bit 0 | Bit 1 | Bit 2 | Bit 3 | Bit 4 | Bit 5 | Bit 6 | Bit 7 | Bit 8 | 
+RX (from slave device)_____________|_______|_______|_______|_______|_______|_______|_______|_______|_______|______________
+
+```
+
+> **Figure 69 Explanation**
+> 
+> Figure 69 is *exactly* the same as figure 68, with one difference: there are 9 data bits (0..8) instead of 8.
+> In other words, the bitfield `DBLCFG` determines how many data bits are present:
+>  - `DBLCFG=0`: 8 data bits
+>  - `DBLCFG=1`: 9 data bits
 
 
 ### 19.4.8 LIN mode
+
 `LINMEN` bit of `USART_CTRL2` register decides whether to enter `LIN` mode.
 When entering `LIN` mode:
 - All data frames are 8 data bits and 1 stop bit.
@@ -12320,9 +12485,9 @@ In this mode, the transmitted data are directly transmitted to the input end for
 
 Figure 110 CAN Works in Mute Loopback Mode
 ```
-Figure 110 shows the MCU configured for “mute loopback” mode, which is essentially a combination of mute (silent) mode and loopback:
+Figure 110 shows the MCU configured for "mute loopback" mode, which is essentially a combination of mute (silent) mode and loopback:
 
-    Mute: Externally, the TX line is held recessive (shown as “= 1”), so the MCU does not drive any signals onto the CAN bus.
+    Mute: Externally, the TX line is held recessive (shown as "= 1"), so the MCU does not drive any signals onto the CAN bus.
     Loopback: Internally, the TX signal is fed back into the RX input, allowing the MCU to self‑test CAN transmissions without affecting (or needing) the actual CAN bus lines.
 
 This mode lets the controller test sending and receiving frames entirely within itself while remaining silent on the external bus.
@@ -12334,7 +12499,7 @@ In this mode, data can be transmitted to the bus and be received from the bus.
 
 Figure 111 CAN Works in Normal Mode
 ```
-Figure 111 illustrates the standard “normal” CAN operating mode. The MCU actively drives the TX line onto the bus (through CANTX) and simultaneously receives incoming CAN signals on the RX line (through CANRX). Unlike the mute or loopback modes, there is no special internal routing or forced recessive state—this is the usual mode where the MCU can both transmit to and receive from the CAN bus under normal operating conditions.
+Figure 111 illustrates the standard "normal" CAN operating mode. The MCU actively drives the TX line onto the bus (through CANTX) and simultaneously receives incoming CAN signals on the RX line (through CANRX). Unlike the mute or loopback modes, there is no special internal routing or forced recessive state—this is the usual mode where the MCU can both transmit to and receive from the CAN bus under normal operating conditions.
 ```
 
 ### 23.4.5 Data transmission
@@ -12944,17 +13109,17 @@ Reset value: 0x0000 0000
 Offset address: 0x1C  
 Reset value: 0x0123 0000  
 
-| Field | Name     | R/W | Description                                                                                                          |
-| ----- | -----    | --- | -------------------------------------------------------------------------------------------------------------------- |
-| 9:0   | BRPSC    | R/W | Baud Rate Prescaler Factor Setup<br>Time unit t<sub>q</sub>=(BRPSC+1) x t<sub>PCLK</sub>                             |
-| 15:10 | Reserved |     |                                                                                                                      |
-| 19:16 | TIMSEG1  | R/W | Set the time segment 1 (Time Segment 1 Setup)<br>Time occupied by time period 1 `tBS1 = tCAN x (TIMSEG1+1)`.         |
-| 22:20 | TIMSEG2  | R/W | Time Segment 2 Setup<br>Time occupied by time period 2 `tBS2 = tCAN x (TIMSEG2+1)`.                                  |
-| 23    | Reserved |     |                                                                                                                      |
-| 25:24 | RSYNJW   | R/W | Resynchronization Jump Width<br>Time that CAN hardware can extend or shorten in this bit: `tR/W =tCAN x (RSYNJW+1)`. |
-| 29:26 | Reserved |     |                                                                                                                      |
-| 30    | LBKMEN   | R/W | Loop Back Mode Enable<br>0: Disable<br>1: Enable                                                                     |
-| 31    | SILMEN   | R/W | Silent Mode Enable<br>0: Normal state<br>1: Mute mode                                                                |
+| Field | Name     | R/W | Description                                                                                                           |
+| ----- | -----    | --- | --------------------------------------------------------------------------------------------------------------------- |
+| 9:0   | BRPSC    | R/W | Baud Rate Prescaler Factor Setup<br>Time unit t<sub>q</sub>=(BRPSC+1) x t<sub>PCLK</sub>                              |
+| 15:10 | Reserved |     |                                                                                                                       |
+| 19:16 | TIMSEG1  | R/W | Set the time segment 1 (Time Segment 1 Setup)<br>Time occupied by time period 1 `tBS1 = tCAN x (TIMSEG1+1)`.          |
+| 22:20 | TIMSEG2  | R/W | Time Segment 2 Setup<br>Time occupied by time period 2 `tBS2 = tCAN x (TIMSEG2+1)`.                                   |
+| 23    | Reserved |     |                                                                                                                       |
+| 25:24 | RSYNJW   | R/W | Resynchronization Jump Width<br>Time that CAN hardware can extend or shorten in this bit: `tRJW = tCAN x (RSYNJW+1)`. |
+| 29:26 | Reserved |     |                                                                                                                       |
+| 30    | LBKMEN   | R/W | Loop Back Mode Enable<br>0: Disable<br>1: Enable                                                                      |
+| 31    | SILMEN   | R/W | Silent Mode Enable<br>0: Normal state<br>1: Mute mode                                                                 |
 
 Note: When CAN is in initialization mode, this register can be accessed only by software
 
@@ -15261,18 +15426,9 @@ Offset address: 0x814
 Reset value: 0x0000 0000
 
 
-| Field | Name    | R/W | Description                                                 |
-| ----- | ------- | --- | ----------------------------------------------------------- |
-| 0     | TSFCMPM | R/W | Transfer Completed Interrupt Mask<br>0: Mask<br>1: Not mask |
-
-
-www.geehy.com                                                Page 468
-
-
-
-
 | Field | Name      | R/W | Description                                                              |
-| ----- | --------- | --- | ------------------------------------------------------------------------ |
+|-------|-----------|-----|--------------------------------------------------------------------------|
+| 0     | TSFCMPM   | R/W | Transfer Completed Interrupt Mask<br>0: Mask<br>1: Not mask              |
 | 1     | EPDISM    | R/W | Endpoint Disable Interrupt Mask<br>0: Mask<br>1: Not mask                |
 | 2     |           |     | Reserved                                                                 |
 | 3     | SETPCMPM  | R/W | SETUP Phase Complete Mask<br>0: Mask<br>1: Not mask                      |

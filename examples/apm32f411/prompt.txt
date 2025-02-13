@@ -74,5 +74,6 @@ The last tag of the register is the `<fields>` tag. In there, the bitfields are 
     - Finally, add `<embeetle:fieldKindCmt>` tag under the `<embeetle:fieldKind>` tag to explain
     why you chose for either "runtime" or "setting".
 
+In your reworked SVD snippet, you shouldn't insert `<!-- -->` comments. Also don't insert empty lines in between tags. Observe a two-space indentation.
 Ready? Let's start with updating this register:
 
