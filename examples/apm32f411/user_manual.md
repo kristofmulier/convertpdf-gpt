@@ -412,7 +412,7 @@ Table 5 Bus Name
 Figure 1 APM32F411xCxE System Architecture Block Diagram
 
 ```
-Below is a structured, "verbal block-diagram" style description capturing each component and how it connects, so an LLM can reconstruct the figure’s data in text form:
+Below is a structured, "verbal block-diagram" style description capturing each component and how it connects, so an LLM can reconstruct the figure's data in text form:
 
 ---
 
@@ -603,17 +603,17 @@ register functional description.
 
 | Block             | Name           | Address range             | Size (bytes) | Sector   |
 | ----------------- | -------------- | ------------------------- | ------------ | -------- |
-|                   |                | 0x0800 0000–0x0800 3FFF   | 16K          | Sector 0 |
-|                   |                | 0x0800 4000–0x0800 7FFF   | 16K          | Sector 1 |
-| Main memory block |                | 0x0800 8000–0x0800 BFFF   | 16K          | Sector 2 |
-|                   |                | 0x0800 C000–0x0800 FFFF   | 16K          | Sector 3 |
-|                   |                | 0x0801 0000 – 0x0801 FFFF | 64K          | Sector 4 |
-|                   |                | 0x0802 0000 – 0x0803 FFFF | 128K         | Sector 5 |
-|                   |                | 0x0804 0000 – 0x0805 FFFF | 128K         | Sector 6 |
-|                   |                | 0x0806 0000–0x0807 FFFF   | 128K         | Sector 7 |
-| Information block | System storage | 0x1FFF 0000–0x1FFF 77FF   | 30K          | -        |
-|                   | OTP area       | 0x1FFF 7800–0x1FFF 7A0F   | 528          | -        |
-|                   | Option byte    | 0x1FFF C000–0x1FFF C00F   | 16           | -        |
+|                   |                | 0x0800 0000-0x0800 3FFF   | 16K          | Sector 0 |
+|                   |                | 0x0800 4000-0x0800 7FFF   | 16K          | Sector 1 |
+| Main memory block |                | 0x0800 8000-0x0800 BFFF   | 16K          | Sector 2 |
+|                   |                | 0x0800 C000-0x0800 FFFF   | 16K          | Sector 3 |
+|                   |                | 0x0801 0000 - 0x0801 FFFF | 64K          | Sector 4 |
+|                   |                | 0x0802 0000 - 0x0803 FFFF | 128K         | Sector 5 |
+|                   |                | 0x0804 0000 - 0x0805 FFFF | 128K         | Sector 6 |
+|                   |                | 0x0806 0000-0x0807 FFFF   | 128K         | Sector 7 |
+| Information block | System storage | 0x1FFF 0000-0x1FFF 77FF   | 30K          | -        |
+|                   | OTP area       | 0x1FFF 7800-0x1FFF 7A0F   | 528          | -        |
+|                   | Option byte    | 0x1FFF C000-0x1FFF C00F   | 16           | -        |
 
 
 Note: The number of sectors included in the main memory block of APM32F411xC series products is related to the specific Flash capacity; see the Datasheet for the Flash capacity of different models.
@@ -2285,7 +2285,7 @@ f<sub>(OTG_FS_SDIO.RNG clock output)</sub>=f<sub>VCO clock</sub>/PLLD
 | Field | Name    | R/W | Description                                                                                                                                                                                                                                                                                                                                                                                                                |
 | ----- | ------- | --- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 5:0   | PLLB    | R/W | Division Factor B <br> It is used to calculate the clock frequency of VCO. These bits can be written only when PLL and PLL2S are disabled. <br> 000000: PLLB=0 (error) <br> 000001: PLLB=1 (error) <br> 000010: PLLB=2 <br> 000011: PLLB=3 <br> …… <br> 111110: PLLB=62 <br> 111111: PLLB=63                                                                                                                               |
-| 14:6  | PLL1A   | R/W | PLL Multiplication Factor A <br> It is used to calculate VCO frequency. The calculation formula is f<sub>VCO output</sub>= f<sub>VCO input</sub>×PLL1A, and the formula is established only when PLL1A is 50–432. <br> 000000000: PLLA=0 (error) <br> 000000001: PLLA=1 (error) <br> …… <br> 000110010: PLLA=50 <br> …… <br> 110110000: PLLA=432 <br> 110110001: PLLA=433 (error) <br> …… <br> 111111111: PLLA=511 (error) |
+| 14:6  | PLL1A   | R/W | PLL Multiplication Factor A <br> It is used to calculate VCO frequency. The calculation formula is f<sub>VCO output</sub>= f<sub>VCO input</sub>×PLL1A, and the formula is established only when PLL1A is 50-432. <br> 000000000: PLLA=0 (error) <br> 000000001: PLLA=1 (error) <br> …… <br> 000110010: PLLA=50 <br> …… <br> 110110000: PLLA=432 <br> 110110001: PLLA=433 (error) <br> …… <br> 111111111: PLLA=511 (error) |
 | 15    |         |     | Reserved                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | 17:16 | PLL1C   | R/W | Division Factor C<br>It is used to calculate the output clock frequency of PLL1.<br>00:  PLL1C=2<br>01:  PLL1C=4<br>10:  PLL1C=6<br>11:  PLL1C=8<br>Note: This bit can be written only when PLL1 is disabled.                                                                                                                                                                                                              |
 | 21:18 |         |     | Reserved                                                                                                                                                                                                                                                                                                                                                                                                                   |
@@ -8322,13 +8322,13 @@ System reset: RCMCFG =0: 0x0000 0000; RCMCFG =1: 0xXXXX XXXX
 | Field | Name     | R/W | Description                                                |
 | ----- | -------- | --- | ---------------------------------------------------------- |
 | 3:0   | SECU     | R/W | Second Ones Unit in BCD Format Setup                       |
-| 6:4   | SECT     | R/W | Second Ten’s Place Unit in BCD Format Setup                |
+| 6:4   | SECT     | R/W | Second Ten's Place Unit in BCD Format Setup                |
 | 7     |          |     | Reserved                                                   |
 | 11:8  | MINU     | R/W | Minute Ones Unit in BCD Format Setup                       |
-| 14:12 | MINT     | R/W | Minute Ten’s Place Unit in BCD Format Setup                |
+| 14:12 | MINT     | R/W | Minute Ten's Place Unit in BCD Format Setup                |
 | 15    |          |     | Reserved                                                   |
 | 19:16 | HRU      | R/W | Hour Ones Unit in BCD Format Setup                         |
-| 21:20 | HRT      | R/W | Hour Ten’s Place Unit in BCD Format Setup                  |
+| 21:20 | HRT      | R/W | Hour Ten's Place Unit in BCD Format Setup                  |
 | 22    | TIMEFCFG | R/W | Time Format Configure<br>0: AM or 24-hour system<br>1:  PM |
 | 31:23 |          |     | Reserved                                                   |
 
@@ -8345,13 +8345,13 @@ System reset: RCMCFG =0: 0x0000 0000; RCMCFG =1: 0xXXXX XXXX
 | Field | Name    | R/W | Description                                                                |
 | ----- | ------- | --- | -------------------------------------------------------------------------- |
 | 3:0   | DAYU    | R/W | Day Ones Unit in BCD Format Setup                                          |
-| 5:4   | DAYT    | R/W | Day Ten’s Place Unit in BCD Format Setup                                   |
+| 5:4   | DAYT    | R/W | Day Ten's Place Unit in BCD Format Setup                                   |
 | 7:6   |         |     | Reserved                                                                   |
 | 11:8  | MONU    | R/W | Month Ones Unit in BCD Format Setup                                        |
-| 12    | MONT    | R/W | Month Ten’s Place Unit in BCD Format Setup                                 |
+| 12    | MONT    | R/W | Month Ten's Place Unit in BCD Format Setup                                 |
 | 15:13 | WEEKSEL | R/W | Week Day Units Select<br>000: Disable<br>001: Monday<br>...<br>111: Sunday |
 | 19:16 | YRU     | R/W | Year Ones Unit in BCD Format Setup                                         |
-| 23:20 | YRT     | R/W | Year Ten’s Place Unit in BCD Format Setup                                  |
+| 23:20 | YRT     | R/W | Year Ten's Place Unit in BCD Format Setup                                  |
 | 31:24 |         |     | Reserved                                                                   |
 
 
@@ -8499,17 +8499,17 @@ System reset: 0xXXXX XXXX
 | Field | Name     | R/W | Description                                                                                                                                            |
 | ----- | -------- | --- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | 3:0   | SECU     | R/W | Second Ones Unit in BCD Format Setup                                                                                                                   |
-| 6:4   | SECT     | R/W | Second Ten’s Place Unit in BCD Format Setup       <br>Alarm A Seconds Mask Enable                                                                      |
+| 6:4   | SECT     | R/W | Second Ten's Place Unit in BCD Format Setup       <br>Alarm A Seconds Mask Enable                                                                      |
 | 7     | SECMEN   | R/W | 0: If the "second" matches, set Alarm A           <br>1: Mask the effect of the "second" value on Alarm A                                              |
 | 11:8  | MINU     | R/W | Minute Ones Unit in BCD Format Setup                                                                                                                   |
-| 14:12 | MINT     | R/W | Minute Ten’s Place Unit in BCD Format Setup                                                                                                            |
+| 14:12 | MINT     | R/W | Minute Ten's Place Unit in BCD Format Setup                                                                                                            |
 | 15    | MINMEN   | R/W | Alarm A Minutes Mask Enable                       <br>0: If the "minute" matches, set Alarm A<br>1: Mask the effect of the "minute" value on Alarm A   |
 | 19:16 | HRU      | R/W | Hour Ones Unit in BCD Format Setup                                                                                                                     |
 | 21:20 | HRT      | R/W | Hour Ten's Place Unit in BCD Format Setup                                                                                                              |
 | 22    | TIMEFCFG | R/W | Time Format Configure                             <br>0: AM or 24-hour system<br>1: PM                                                                 |
 | 23    | HRMEN    | R/W | Alarm A Hours Mask Enable                         <br>0: If the "hour" matches, set Alarm A<br>1: Mask the effect of the "hour" value on Alarm A       |
 | 27:24 | DAYU     | R/W | Day Ones Unit in BCD Format Setup                                                                                                                      |
-| 29:28 | DAYT     | R/W | Day Ten’s Place Unit in BCD Format Setup                                                                                                               |
+| 29:28 | DAYT     | R/W | Day Ten's Place Unit in BCD Format Setup                                                                                                               |
 | 30    | WEEKSEL  | R/W | Week Day Select                                   <br>0: DAYU means date<br>1: DAYU means the number of weeks. DAYT has no effect.                     |
 | 31    | DATEMEN  | R/W | Alarm A Date Mask Enable                          <br>0: If the date/week matches, set Alarm A<br>1: Mask the effect of the date/week value on Alarm A |
 
@@ -8525,10 +8525,10 @@ System reset: 0xXXXX XXXX
 | Field | Name   | R/W | Description                                                                                                                                          |
 | ----- | ------ | --- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 3:0   | SECU   | R/W | Second Ones Unit in BCD Format Setup                                                                                                                 |
-| 6:4   | SECT   | R/W | Second Ten’s Place Unit in BCD Format Setup                                                                                                          |
+| 6:4   | SECT   | R/W | Second Ten's Place Unit in BCD Format Setup                                                                                                          |
 | 7     | SECMEN | R/W | Alarm B Seconds Mask Enable                       <br>0: If the "second" matches, set Alarm B<br>1: Mask the effect of the "second" value on Alarm B |
 | 11:8  | MINU   | R/W | Minute Ones Unit in BCD Format Setup                                                                                                                 |
-| 14:12 | MINT   | R/W | Minute Ten’s Place Unit in BCD Format Setup                                                                                                          |
+| 14:12 | MINT   | R/W | Minute Ten's Place Unit in BCD Format Setup                                                                                                          |
 
 
 www.geehy.com                                                                                                            Page 268
@@ -8660,7 +8660,7 @@ System reset: 0xXXXX XXXX
 | 12:9  |          |     | Reserved                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | 13    | CAL16CFG | R/W | 16 Second Calibration Cycle Period Configure<br>When CAL16CFG is set to 1, 16-second calibration cycle is used, and it cannot be set to 1 at the same time with CAL8CFG bit.<br>When CAL16CFG=1, RECALF[0] is always 0.                                                                                                                                                                                                                                    |
 | 14    | CAL8CFG  | R/W | 8 Second Calibration Cycle Period Configure<br>When CAL8CFG is set to 1, 8-second calibration cycle is used, and it cannot be set to 1 at the same time with CAL16CFG bit.<br>When CAL8CFG=1, RECALF[1:0] is always 00.                                                                                                                                                                                                                                    |
-| 15    | ICALFEN  | R/W | Increase Calibration Frequency Enable<br>0: RTCCLK pulse is not increased<br>1: One RTCCLK pulse is increased (the frequency increases by 488.5 ppm) every 2^11 pulses<br>It takes effect at the same time with RECALF, and when the resolution is high, the date frequency will be reduced. If the input frequency is 32768Hz, the number of RTCCLK pulses added in the 32-second window is determined by the following formula:<br>(512*ICALFEN)–RECALF. |
+| 15    | ICALFEN  | R/W | Increase Calibration Frequency Enable<br>0: RTCCLK pulse is not increased<br>1: One RTCCLK pulse is increased (the frequency increases by 488.5 ppm) every 2^11 pulses<br>It takes effect at the same time with RECALF, and when the resolution is high, the date frequency will be reduced. If the input frequency is 32768Hz, the number of RTCCLK pulses added in the 32-second window is determined by the following formula:<br>(512*ICALFEN)-RECALF. |
 | 31:16 |          |     | Reserved                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 
 
@@ -9303,32 +9303,135 @@ can detect the break frame, and `LBDFLG` bit of `USART_STS` register is set to 1
 `LBDIEN` bit of `USART_CTRL2` is enabled, an interrupt will be generated.
 
 
-**Detection of break frame in idle state**<br>
+**Detection of break frame in idle state**
+
 In idle state, if a break frame is detected on `RX` pin, the receiver will receive a data frame of 0
 and generate `FEFLG`.
 
-Figure 70 Break Frame Detection in Idle State
 
-| RX         | Data 1 | Data 2 | Idle frame | Break frame | Data 3 | Data 4 | Data 5 |
-| ---------- | ------ | ------ | ---------- | ----------- | ------ | ------ | ------ |
-| FEFLG      |        |        |            |             |        |        |        |
-| USART_DATA | Data 1 | Data 2 | 0x00       | Data 3      | Data 3 | Data 4 |        |
-| LBDFLG     |        |        |            |             |        |        |        |
+**Figure 70 Break Frame Detection in Idle State**
+```
+            __   _________   _________   ______                    _________   _________   _________
+              \ /         \ /         \ / Idle \        Break     /         \ /         \ /
+        RX     \  Data 1   \  Data 2   / frame  \       frame    /  Data 3   \  Data 4   \  Data 5
+            __/ \_________/ \_________/          \______________/:\_________/ \_________/ \_________
+                                                                 :
+                                                                 :
+                                                                 :__________________________________
+     FEFLG                                                       |                                  
+            _____________________________________________________|                                  
+                                                                 :
+            ______________   _________   _______________________ : _________   _________   _________
+                          \ /         \ /                       \ /         \ /         \ /         
+USART_DATA                 \  Data 1   \         Data 2          \   0x00    \  Data 3   \  Data 4  
+            ______________/ \_________/ \_______________________/ \_________/ \_________/ \_________
+                                                                     :________________________________
+    LBDFLG                                                           |                                  
+            _________________________________________________________|                                  
 
-**Break frame detection in data transmission state**<br>
+```
+
+**Figure 70 Explanation**
+
+> Here's a step-by-step reading of what Figure 70 is illustrating. The diagram shows what happens on the USART
+> receive line (`RX`) when an unexpected "break" condition occurs while the line is idle, and how the USART
+> hardware reacts (including the framing-error flag `FEFLG` and the line-break detection flag `LBDFLG`):
+> 
+> - Top Signal: `RX` Line
+>   You see normal data frames labeled `Data 1` and `Data 2` being received.
+>   Then there is an Idle frame period—no data being transmitted—and the line remains high (idle).
+>   Next, a Break frame occurs: the `RX` line goes low for a longer-than-normal frame duration
+>   (long enough that it looks like a start bit and data bits never returning high).
+>   After the break, the line returns to normal data with `Data 3`, `Data 4`, and `Data 5` following.
+> 
+> - `FEFLG` (Framing Error Flag)
+>   Just under the `RX` waveform, there's a line labeled `FEFLG`, which stays low at first.
+>   When the break frame is detected, the hardware interprets it as a malformed frame with no valid
+>   stop bit—that triggers a Framing Error (`FE`) condition.
+>   You can see `FEFLG` asserted (driven high) during the break, indicating that the USART has flagged
+>   a framing error.
+> 
+> - `USART_DATA` (What the Receiver Actually Reads)
+>   This line shows what the hardware puts into the `RX` data register when each "frame" completes.
+>   For `Data 1` and `Data 2`, it simply shows those normal data bytes being received.
+>   When the break occurs, the USART essentially captures a "data byte of `0x00`" and simultaneously raises
+>   the framing-error flag.
+>   That zero byte is the peripheral's best attempt at interpreting a "frame" that never had a proper stop bit.
+>   After the break, the next frames are `Data 3`, `Data 4`, etc., received normally again.
+> 
+> - `LBDFLG` (Line Break Detection Flag)
+>   On the bottom line, you see `LBDFLG` going high when the break is detected.
+>   This is a separate flag (often used in `LIN` or other protocols) indicating that a
+>   break (long low pulse) was found on the line.
+>   Once the break has passed, `LBDFLG` can be cleared by software or automatically, depending on
+>   the MCU's configuration.
+
+
+**Break frame detection in data transmission state**
+
 In the process of data transmission, if the `RX` pin detects the break frame, the currently
 transmitted data frame will generate `FEFLG`.
 
-Figure 71 Break Frame Detection in Data Transmission State
+**Figure 71 Break Frame Detection in Data Transmission State**
+```
+            __   _________   ____                    ____   _________   _________   ___________
+              \ /         \ /Data\                  /Data\ /         \ /         \ /
+        RX     \  Data 1   \  2   \  Break frame   /  2   \  Data 3   \  Data 4   \
+            __/ \_________/:\____/ \______________/ \____/ \_________/:\_________/:\___________
+                           :           :                              :           :
+                           :           :                              :           :
+                           :           :_______________________________________________________
+     FEFLG                 :           |                              :           :
+            ___________________________|                              :           :
+                           :                                          :           :
+            ______________ : _________   ____________________________ : _________ : ___________
+                          \:/         \ /                            \:/         \:/                 
+USART_DATA                 \  Data 1   \           Data 2             \  Data 3   \  Data 4  
+            ______________/ \_________/ \____________________________/ \_________/ \___________
+                                                       ________________________________________
+    LBDFLG                                            |                                  
+            __________________________________________|                                  
 
-| RX         | Data 1 | Data 2 | Break frame | Data 2 | Data 3 | Data 4 |
-| ---------- | ------ | ------ | ----------- | ------ | ------ | ------ |
-| FEFLG      |        |        |             |        |        |        |
-| USART_DATA | Data 1 | Data 2 |             | Data 3 | Data 3 | Data 4 |
-| LBDFLG     |        |        |             |        |        |        |
+```
+
+**Figure 71 Explanation**
+
+> Here is a step-by-step explanation of what Figure 71 shows. In contrast to the previous figure
+> (Figure 70) where a break occurred while the line was idle, here the break arises in the midst
+> of transmitting "Data 2." That event triggers a framing error for the current frame being
+> transmitted.
+> 1. Top Signal: `RX`
+> - The top waveform labeled `RX` shows the line activity:
+>   - `Data 1` is sent/received normally.
+>   - The next frame begins as `Data 2`, but partway through this frame, the line suddenly goes low for an extended time (Break frame).
+>   - After the break, the line comes back up, and it continues finishing the second `Data 2` frame (as drawn), followed by `Data 3` and `Data 4`.
+> 
+> - Visually, the diagram labels:
+>   - `Data 2` partially interrupted by Break
+>   - The line remains low long enough for the receiver to declare a break.
+>   - Then normal data resumes.
+> 
+> 2. `FEFLG` (Framing Error Flag)
+> - Beneath the `RX` line is a trace labeled `FEFLG`.
+> - Initially, it is low (clear).
+> - Once the Break disrupts the on-going frame (`Data 2`), the USART realizes this frame has no valid stop bit (because the line stayed low well beyond the expected stop-bit position).
+> - That causes the hardware to raise the Framing Error flag (`FEFLG`).
+> - As soon as the break is detected in the middle of transmission, `FEFLG` goes high. The diagram shows the flag staying asserted until it's cleared by software or by a specific read sequence.
+> 
+> 3. `USART_DATA` (Received Data Buffer Content)
+> - This line shows what the USART hardware actually places into the receive register for each frame:
+>   - `Data 1` is received normally (so `Data 1` is latched in the buffer).
+>   - For `Data 2`, a break occurs midway. Even though the label still says `Data 2`, the critical point is that the USART sees an invalid frame (missing stop bit) and sets `FEFLG`. The partial frame might be read by the hardware, but it is flagged as corrupt (framing error).
+>   - After the break, normal data (`Data 3`, `Data 4`, and so on) resumes. The diagram shows that the USART continues decoding the next frames properly and placing them in the receive register.
+> 
+> 4. `LBDFLG` (Line Break Detection Flag)
+> - Finally, the bottom trace `LBDFLG` shows when the hardware detects the break condition.
+> - It goes high sometime during the break pulse (once the line remains low long enough to meet the break detection criteria).
+> - Like `FEFLG`, the `LBDFLG` must typically be cleared by software if you need to detect a subsequent break.
 
 
-**19.4.9 Smart card mode**
+### 19.4.9 Smart card mode
+
 Smart card mode is a single-line half-duplex communication mode. The interface supports ISO7816-3
 standard protocol and can control the reading and writing of smart cards that meet the standard
 protocol.
@@ -9353,37 +9456,80 @@ When `USART` enters the smart card mode:
 - The break frame has no meaning in smart card mode. A 00h data with
   frame error will be regarded as a data instead of break symbol.
 
-Figure 72 ISO7816-3 Standard Protocol
+**Figure 72 ISO7816-3 Standard Protocol**
 ```
-┌────────────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┐
-│            │     │     │     │     │     │     │     │     │
-│            │ Bit │ Bit │ Bit │ Bit │ Bit │ Bit │ Bit │     │
-│ Start bit  │ 0   │ 1   │ 2   │ 3   │ 4   │ 5   │ 6   │ Bit │
-│            │     │     │     │     │     │     │     │ 7   │
-├────────────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
-│ No parity  │     │     │     │     │     │     │     │     │
-│ check      │     │     │     │     │     │     │     │ Check│
-│ error      │     │     │     │     │     │     │     │ bit  │
-└────────────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┘
+No parity check error
+________         _______ _______ _______ _______ _______ _______ _______ _______ _______       
+        | Start | Bit 0 | Bit 1 | Bit 2 | Bit 3 | Bit 4 | Bit 5 | Bit 6 | Bit 7 | Check |      
+        |_bit___|_______|_______|_______|_______|_______|_______|_______|_______|_bit___|______
+
+                                                                                        :0.5:   1   :
+Parity check error occurs                                                               :bit:  bit  :
+________         _______ _______ _______ _______ _______ _______ _______ _______ _______:___:       :
+        | Start | Bit 0 | Bit 1 | Bit 2 | Bit 3 | Bit 4 | Bit 5 | Bit 6 | Bit 7 | Check |   |       |
+        |_bit___|_______|_______|_______|_______|_______|_______|_______|_______|_bit___|   |_______|
+                                                                                                ^
+                                                                                                |
+                                                                                            The receiver
+                                                                                            pulls down the
+                                                                                            data line
 ```
-```
-┌────────────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┐
-│            │     │     │     │     │     │     │     │     │
-│            │ Bit │ Bit │ Bit │ Bit │ Bit │ Bit │ Bit │     │
-│ Start bit  │ 0   │ 1   │ 2   │ 3   │ 4   │ 5   │ 6   │ Bit │
-│            │     │     │     │     │     │     │     │ 7   │
-├────────────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
-│ Parity     │     │     │     │     │     │     │     │ Check│
-│ check      │     │     │     │     │     │     │     │ bit  │
-│ error      │     │     │     │     │     │     │     │     │
-│ occurs     │     │     │     │     │     │     │     │     │
-├────────────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┤
-│                                                          │
-│   The receiver                                           │
-│   pulls down the                                         │
-│   data line                                              │
-└──────────────────────────────────────────────────────────┘
-```
+
+**Figure 72 Explanation**
+
+> Below is a detailed explanation of Figure 72, which shows how data is transmitted in Smart Card mode (ISO 7816-3) over a
+> single-wire half-duplex link, along with what happens when a parity check error is detected. The key points involve:
+> - Frame Format (Start bit, 8 data bits, 1 check bit, and 0.5 or 1.5 stop bits)
+> - What the Receiver Does if it detects an error in the check bit (parity).
+> - How the Stop Bit Timing is chosen in ISO 7816-3.
+>
+> **1. No Parity Check Error**
+> 
+> In the top waveform ("No parity check error"), you see:
+> - **Start Bit**: The line transitions low for the start of the frame.
+> - **Bits 0-7**:  The eight data bits, each sampled in turn.
+> - **Check Bit**: Also called a parity bit in the ISO 7816 standard. The transmitter calculates
+>                  this bit such that the total number of "1" bits (data + check) satisfies the
+>                  required parity (often even parity).
+> - **Stop Bits**: After the check bit, the line returns high for either 0.5 or 1.5 stop bits, as
+>                  specified by ISO 7816-3 (and recommended to set 1.5 stop bits to avoid switching
+>                  between two configurations).
+> 
+> Because there is no parity error, the receiver does not pull the line down; the frame completes normally with the line
+> in the idle (high) state.
+> 
+> **2. Parity Check Error**
+> 
+> In the bottom waveform ("Parity check error occurs"), the beginning of the frame is the same:
+> 
+> - **Start bit**
+> - **Bits 0-7**
+> - **Check bit**
+> 
+> However, once the receiver detects the parity (check) bit is incorrect, it asserts an error signal
+> to inform the transmitter that this byte was not successfully received:
+> 
+> - Parity Error Detection: The receiver compares the received data bits plus check bit to the expected parity.
+> - Pulling Down the Line: Half a baud-rate clock after the check bit is transmitted, the receiver drives the data
+>   line low for one baud-rate clock. This is effectively a "negative acknowledgment" (NACK).
+>   - The diagram shows a short high period right after the check bit (about 0.5 of a bit time), then the line goes
+>     low for a full bit time.
+>   - This forced low is the receiver's way of signaling the transmitter that parity failed.
+> 
+> After that forced-low duration, the line can return high again, and subsequent frames can resume.
+>
+> **3. Stop Bit Length (0.5 vs 1.5)**
+> 
+> The standard mentions 0.5 or 1.5 stop bits:
+> - ISO 7816-3 typically uses 1.5 stop bits in both directions for consistency.
+> - Some MCUs allow 0.5 stop bits in certain conditions, but the recommendation is to use 1.5 stop bits during both
+>   transmit and receive phases.
+> 
+> **4. Break Frames in Smart Card Mode**
+> 
+> From the text, we learn that break frames (long low pulses used in standard UART) have no special meaning in
+> ISO 7816-3 mode. Instead, a 0x00 frame with a framing error is treated simply as data. Hence, you do not use
+break pulses as a synchronization or error-recovery mechanism in this mode.
 
 ### 19.4.10 Infrared (IrDA SIR) function mode
 `IrDA` mode is a half-duplex protocol, transmitting and receiving data can not be
@@ -9398,7 +9544,7 @@ When USART enters the IrDA mode:
   be cleared to 0.
 
 - The data frame uses 1 stop bit and the baud rate is less than
-  115200Hz.
+  `115200Hz`.
 
 - Using infrared pulse (`RZI`) indicates logic 0, so in normal mode, its
   pulse width is 3/16 baud rate cycle. In IrDA low-power mode, it is
@@ -9406,36 +9552,122 @@ When USART enters the IrDA mode:
   division clocks to ensure that this pulse can be detected by `IrDA`
   normally.
 
-Figure 73 IrDA Mode Block Diagram
+**Figure 73 IrDA Mode Block Diagram**
 ```
-USART_RX        Receive          RX
-                decoder
-                                 USART
-      _____________    ____________________________
-|  |  |
-| USART |  |  |
-| Transmit |  | SIREN |
-| TX | decoder |  |
-      -------------    |
-|  |
+                                                                              +--------------+
+                                                                              |              |
+          |                                    |\                             |              |
+          |        +-------------------------->| \                            |              |
+          |        |         +----------+      |  |                           |              |
+          |        |         | Receive  |      |  |-------------------------->|     USART    |
+USART_RX  O--------+-------->| decoder  |----->|  |                  RX       |              |
+          |                  +----------+      | /                            |              |
+          |                                    |/|                            |              |
+          |                                      |                            |              |
+          |    +---------------------------------+----------------------------|              |
+          |    |                                                    SIREN     |              |
+          |    |                                                              |              |
+          |    |/|           +----------+                                     |              |
+          |    / |           | Transmit |                                     |              |
+          |   |  |<----------| decoder  |<------+-----------------------------|              |
+USART_TX  O<--|  |           +----------+       |                   TX        +--------------+
+          |   |  |<-----------------------------+
+          |    \ |
+          |     \|
 ```
 
+**Figure 73 Explanation**
+
+> **1. The "Receive Decoder" Block**
+> - Connected directly to `USART_RX`, the Receive decoder block does the special `IrDA` demodulation or filtering for inbound IR pulses.
+> - After decoding, it outputs a digital data signal—still a serial bit stream but cleaned up according to `IrDA` requirements (e.g.,
+>   removing the short IR pulse encoding).
+> - The output of this block goes to a small multiplexer (shown as `| \` and `| /` lines) which determines whether the normal or
+>   IR-decoded signal gets passed on internally.
+> 
+> **2. The "Transmit Decoder" Block**
+> - On the lower half, you see a block labeled Transmit decoder, whose input is the `TX` signal coming from the `USART` core.
+> - In `IrDA` mode, the USART's `TX` is still a standard serial bit stream. The Transmit decoder encodes that stream into the
+>   short IR pulses or other signal shaping required by `IrDA`.
+> - The final output of the Transmit decoder then goes out through another multiplexer before reaching the `USART_TX` pin.
+> 
+> **3. The Multiplexers and the `SIREN` Signal**
+> - The diagram shows two MUX-like triangles:
+>   - Top MUX: Feeds into the USART's `RX` path. It can select the raw UART input or the IR-decoded input. The line labeled
+>     `SIREN` is the internal route that connects the decoder outputs to the USART's `RX`.
+>   - Bottom MUX: On the `TX` path, selects between normal UART `TX` output or the IR-encoded signals to drive the `USART_TX`
+>     pin.
+> 
+> - `SIREN`: Often labeled as the internal "Serial Infrared ENcoded" or similar. In many designs, `SIREN` is simply the
+>   internal bus or signal carrying the IR-processed receive data into the USART's `RX` logic.
+> 
+> **4. The Main USART Block**
+> - On the right side labeled USART, it has two key internal signals:
+>   - `RX`: The receive input going into the main UART logic.
+>   - `TX`: The transmit output from the main UART logic.
+> 
+> When `IrDA` mode (`IREN` bit) is enabled and `SCEN`/other conflicting bits are off, these decoders and multiplexers become
+> active so that the USART sends/receives properly modulated IR signals via the single-wire interface.
+
+
+
 ### 19.4.11 Hardware flow control
+
 The function of hardware flow control is to control the serial data stream 
 between two devices through `nCTS` pin and `nRTS` pin.
 
-Figure 74 Hardware Flow Control between Two USART
+**Figure 74 Hardware Flow Control between Two USARTs**
 ```
-      --------------------------------     --------------------------------
-| Transmit          Receive |  | Receive          Transmit |
-| circuit           circuit |  | circuit           circuit |
-|  |  |  |
-| USART1 |  | USART2                         <br> |
-| Receive          Transmit |  | Transmit          Receive |
-| circuit           circuit |  | circuit           circuit |
-      --------------------------------     --------------------------------
-          TX     RX  nCTS     nRTS           RX     TX  nRTS     nCTS
++--------------------+                +--------------------+
+|   +------------+   | TX          RX |   +------------+   |
+|   |  Transmit  |----------------------->|  Receive   |   |
+|   |  Circuit   |<-----------------------|  Circuit   |   |
+|   +------------+   | nCTS      nRTS |   +------------+   |
+|                    |                |                    |
+|                    |                |                    |
+|   +------------+   | RX          TX |   +------------+   |
+|   |  Receive   |----------------------->|  Transmit  |   |
+|   |  Circuit   |<-----------------------|  Circuit   |   |
+|   +------------+   | nRTS      nCTS |   +------------+   |
+|                    |                |                    |
+|       USART1       |                |       USART2       |
++--------------------+                +--------------------+
 ```
+
+**Figure 74 Explanation**
+
+> Below is a breakdown of what Figure 74 illustrates: it shows two USART devices (labeled `USART1` and `USART2`) wired together
+> with both data signals (`TX` and `RX`) and hardware flow control signals (`nCTS` and `nRTS`).
+> 
+> **1. Data Lines (`TX`/`RX`)**
+> - `USART1_TX` -> `USART2_RX`: The transmit output of `USART1` goes to the receive input of `USART2`.
+> - `USART1_RX` <- `USART2_TX`: The receive input of `USART1` comes from the transmit output of `USART2`.
+> - This creates the usual cross-connection for two-wire serial data exchange (transmit of one device is
+> the receive of the other and vice versa).
+> 
+> **2. Flow Control Lines (`nCTS`/`nRTS`)**
+> Each USART has two additional handshake pins for hardware flow control:
+> - `nCTS` ("Clear To Send," active-low) is an input to a USART, telling that
+>   USART whether it can send data.
+> - `nRTS` ("Request To Send," active-low) is an output from a USART, telling
+>   the other USART to pause or continue sending data.
+> 
+> In the diagram:
+> - `USART1_nCTS` is wired to `USART2_nRTS`.
+> - `USART1_nRTS` is wired to `USART2_nCTS`.
+> 
+> This "crossover" of `CTS` <-> `RTS` ensures that when `USART1` wants to transmit more data, it checks `nCTS` from `USART2`.
+> If `USART2` is not ready (because its buffer is full), it will drive `nRTS` low, effectively telling `USART1` "do not send."
+> Similarly, `USART2` checks `USART1`'s `nRTS` to see if it may safely transmit.
+>
+> **3. Transmit/Receive Circuit Blocks**
+> Inside each USART, the diagram separates:
+> - A Transmit Circuit (the driver/logic that sends bits out on `TX`)
+> - A Receive Circuit (the receiver/logic that reads bits in on `RX`)
+> 
+> Hardware flow control lines integrate with these circuits to enable or suspend outgoing data,
+> preventing overruns or data loss when the other device is temporarily busy.
+
 
 **`CTS` flow control**<br>
 `CTSEN` bit of `USART_CTRL3` register determines whether to enable `CTS` flow 
@@ -9452,6 +9684,7 @@ will be pulled to low. When a data frame is received, `nRTS` will become high to
 inform the transmitter to stop transmitting data frame.
 
 ### 19.4.12 DMA multi-buffer communication
+
 `USART` can access the data buffer in `DMA` mode to reduce the burden of
 processors.
 
@@ -9490,26 +9723,152 @@ Configuration steps of receiving by `DMA`:
 
 ### 19.4.13 Interrupt request
 
-| Interrupt event                   | Event flag bit | Enable bit |
-| --------------------------------- | -------------- | ---------- |
-| The receive register is not empty | RXNEFLG        | RXNEIEN    |
-| Overrun error                     | OVREFLG        |            |
-| Idle line is detected             | IDLEFLG        | IDLEIEN    |
-| Parity check error                | PEFLG          | PEIEN      |
-| LIN break frame flag              | LBDFLG         | LBDIEN     |
-| Receiving error in DMA mode       |                |            |
-| Noise error                       | NEFLG          |            |
-| Overrun error                     | OVREFLG        | ERRIEN     |
-| Frame error                       | FEFLG          |            |
-| Data transmit register is empty   | TXBEFLG        | TXBEIEN    |
-| Transmission Completed            | TXCFLG         | TXCIEN     |
-| CTS flag                          | CTSFLG         | CTSIEN     |
+**Table 79 USART Interrupt Request**
+```
++------------------------------------------+-----------------+-----------------+
+| Interrupt event                          | Event flag bit  | Enable bit      |
++==========================================+=================+=================+
+| The receive register is not empty        | RXBNEFLG        |                 |
++------------------------------------------+-----------------| RXBNEIEN        |
+| Overrun error                            | OVREFLG         |                 |
++------------------------------------------+-----------------+-----------------+
+| Idle line is detected                    | IDLEFLG         | IDLEIEN         |
++------------------------------------------+-----------------+-----------------+
+| Parity check error                       | PEFLG           | PEIEN           |
++------------------------------------------+-----------------+-----------------+
+| LIN break frame flag                     | LBDFLG          | LBDIEN          |
++------------------------------------------+-----------------+-----------------+
+| Receiving error      | Noise error       | NEFLG           |                 |
+| in DMA mode          | Overrun error     | OVREFLG         | ERRIEN          |
+|                      | Frame error       | FEFLG           |                 |
++------------------------------------------+-----------------+-----------------+
+| Data transmit register is empty          | TXBEFLG         | TXBIEEN         |
++------------------------------------------+-----------------+-----------------+
+| Transmission Completed                   | TXCFLG          | TXCIEN          |
++------------------------------------------+-----------------+-----------------+
+| CTS flag                                 | CTSFLG          | CTSIEN          |
++------------------------------------------+-----------------+-----------------+
+```
+
+**Table 79 in json-format**
+
+```json
+[
+  {
+    "Interrupt event": "The receive register is not empty",
+    "Event flag bit": "RXBNEFLG",
+    "Enable bit": "RXBNEIEN"
+  },
+  {
+    "Interrupt event": "Overrun error",
+    "Event flag bit": "OVREFLG",
+    "Enable bit": "RXBNEIEN"
+  },
+  {
+    "Interrupt event": "Idle line is detected",
+    "Event flag bit": "IDLEFLG",
+    "Enable bit": "IDLEIEN"
+  },
+  {
+    "Interrupt event": "Parity check error",
+    "Event flag bit": "PEFLG",
+    "Enable bit": "PEIEN"
+  },
+  {
+    "Interrupt event": "LIN break frame flag",
+    "Event flag bit": "LBDFLG",
+    "Enable bit": "LBDIEN"
+  },
+  {
+    "Interrupt event": "Receiving error in DMA mode: Noise error",
+    "Event flag bit": "NEFLG",
+    "Enable bit": "ERRIEN"
+  },
+  {
+    "Interrupt event": "Receiving error in DMA mode: Overrun error",
+    "Event flag bit": "OVREFLG",
+    "Enable bit": "ERRIEN"
+  },
+  {
+    "Interrupt event": "Receiving error in DMA mode: Frame error",
+    "Event flag bit": "FEFLG",
+    "Enable bit": "ERRIEN"
+  },
+  {
+    "Interrupt event": "Data transmit register is empty",
+    "Event flag bit": "TXBEFLG",
+    "Enable bit": "TXBIEEN"
+  },
+  {
+    "Interrupt event": "Transmission Completed",
+    "Event flag bit": "TXCFLG",
+    "Enable bit": "TXCIEN"
+  },
+  {
+    "Interrupt event": "CTS flag",
+    "Event flag bit": "CTSFLG",
+    "Enable bit": "CTSIEN"
+  }
+]
+```
 
 
 All interrupt requests of `USART` are connected to the same interrupt controller, and the interrupt
 requests have logical or relation before they are transmitted to the interrupt controller.
 
-Figure 75 USART Interrupt Mapping
+**Figure 75 USART Interrupt Mapping**
+
+Below is one possible JSON representation of the diagram's logic, showing how each interrupt flag
+(and its corresponding enable bit) contributes to either the `Receive interrupt` or the `Transmit interrupt`,
+which are finally OR'ed together to produce the `USART interrupt`.
+
+```json
+{
+  "USART_interrupt_logic": {
+    "Receive_interrupt": {
+      "conditions": [
+        {
+          "flags": ["RXBNEFLG", "OVREFLG"],
+          "enable_bit": "RXBNEIEN"
+        },
+        {
+          "flags": ["IDLEFLG"],
+          "enable_bit": "IDLEIEN"
+        },
+        {
+          "flags": ["PEFLG"],
+          "enable_bit": "PEIEN"
+        },
+        {
+          "flags": ["LBDFLG"],
+          "enable_bit": "LBDIEN"
+        },
+        {
+          "flags": ["NEFLG", "OVREFLG", "FEFLG"],
+          "enable_bit": "ERRIEN"
+        }
+      ]
+    },
+    "Transmit_interrupt": {
+      "conditions": [
+        {
+          "flags": ["TXBEFLG"],
+          "enable_bit": "TXBIEEN"
+        },
+        {
+          "flags": ["TXCFLG"],
+          "enable_bit": "TXCIEN"
+        },
+        {
+          "flags": ["CTSFLG"],
+          "enable_bit": "CTSIEN"
+        }
+      ]
+    },
+    "final_output": "USART_interrupt = Receive_interrupt OR Transmit_interrupt"
+  }
+}
+```
 
 ### 19.4.14 Comparison of USART supporting functions
 
@@ -9543,7 +9902,9 @@ Note: "√" means this function is supported, while "—" means that this functi
 
 
 ## 19.6 Register functional description
+
 ### 19.6.1 State register (USART_STS)
+
 Offset address: 0x00  
 Reset value: 0x00C0
 
@@ -9563,6 +9924,7 @@ Reset value: 0x00C0
 
 
 ### 19.6.2 Data register (USART_DATA)
+
 Offset address: 0x04  
 Reset value: 0xXXXX XXXX, X=undefined bit
 
@@ -9572,6 +9934,7 @@ Reset value: 0xXXXX XXXX, X=undefined bit
 | 31:9  |      |     | Reserved                                                                                                                                                                                                                                                                           |
 
 ### 19.6.3 Baud rate register (USART_BR)
+
 Offset address: 0x08  
 Reset value: 0x0000
 
@@ -9582,6 +9945,7 @@ Reset value: 0x0000
 | 31:16 |           |     | Reserved                                                                                                                               |
 
 ### 19.6.4 Control register 1 (USART_CTRL1)
+
 Offset address: 0x0C  
 Reset value: 0x0000
 
@@ -9606,6 +9970,7 @@ Reset value: 0x0000
 |       | 31:16    |     | Reserved                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 
 ### 19.6.5 Control register 2 (USART_CTRL2)
+
 Offset address: 0x10  
 Reset value: 0x0000 0000
 
@@ -9629,6 +9994,7 @@ enabled.
 
 
 ### 19.6.6 Control register 3 (USART_CTRL3)
+
 Offset address: 0x14
 Reset value: 0x0000
 
@@ -9649,6 +10015,7 @@ Reset value: 0x0000
 | 31:12 |          |     | Reserved                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 
 ### 19.6.7 Protection time and prescaler register (USART_GTPSC)
+
 Offset address: 0x18  
 Reset value: 0x0000  
 
@@ -11532,7 +11899,7 @@ Figure 99 QSPI Transmit FIFO State in Transmitting and Receiving State
 
 Transmit only
 
-When TXMODE=2’b01, only the transmitting logic unit is effective. The receiving 
+When TXMODE=2'b01, only the transmitting logic unit is effective. The receiving 
 logic unit is ineffective, when the data is written to the transmit FIFO and the
 number of data is greater than the FIFO transmitting threshold (TFTH of
 QSPI_TFTL register), the transmission will start, and the serial data will be 
@@ -11576,7 +11943,7 @@ Figure 100 QSPI Transmit FIFO State in Transmitting State
 
 Receive only
 
-When TXMODE=2’b10, only the receiving logic unit is effective, and the 
+When TXMODE=2'b10, only the receiving logic unit is effective, and the 
 transmitting logic unit is ineffective. No data will be transmitted. The data on the
 
 
@@ -11611,7 +11978,7 @@ receives two data from an external serial device.
 #### 22.3.2.1 EEPROM (electrically erasable programmable read-only memory) read
 
 
-When TXMODE=2’b11, the transmitted data is used to transmit the
+When TXMODE=2'b11, the transmitted data is used to transmit the
 instruction/address to the corresponding external device. Three data frames (8-
 bit instruction code, 8-bit high address, and 8-bit low address.) are usually
 required. In the process of transmitting data, the receiving logic unit will not
@@ -12324,71 +12691,71 @@ Multiple communication nodes can be designed on the CAN bus, and each node consi
 
 ![Figure 106 Standard Data Frame]
 ```
-Figure 106: Standard Data Frame
+Figure 106: Standard Data Frame
 
     SOF (Start of Frame)
         A single dominant bit that indicates the start of the CAN frame.
 
     Arbitration Field
-        11‑bit ID: An 11‑bit identifier that identifies the message.
+        11-bit ID: An 11-bit identifier that identifies the message.
         RTR (Remote Transmission Request): A single bit used to distinguish between a Data Frame (dominant for data frames) and a Remote Frame (recessive if a node requests data).
 
     Control Field
         IDE (Identifier Extension) & r0: IDE indicates whether the frame is standard (IDE = dominant) or extended (IDE = recessive). In the standard frame, IDE is always dominant to signal no extended identifier. "r0" is a reserved bit that must be dominant (logic 0) in CAN 2.0A standard frames.
-        DLC (Data Length Code): A 4‑bit field specifying how many bytes of data are in the Data Field (0 to 8 bytes).
+        DLC (Data Length Code): A 4-bit field specifying how many bytes of data are in the Data Field (0 to 8 bytes).
 
     Data Field
-        Contains up to 8 bytes of application data if this is a Data Frame (the field is absent in a Remote Frame).
+        Contains up to 8 bytes of application data if this is a Data Frame (the field is absent in a Remote Frame).
 
     CRC Field
-        This field holds a 15‑bit CRC (Cyclic Redundancy Check) followed by a CRC delimiter bit, used by receivers to detect transmission errors.
+        This field holds a 15-bit CRC (Cyclic Redundancy Check) followed by a CRC delimiter bit, used by receivers to detect transmission errors.
 
     ACK Field
-        2 bits long. The first bit is the ACK slot and the second is the ACK delimiter. In the ACK slot, receivers that have successfully received the frame send a dominant bit to acknowledge; the transmitting node observes this bit to confirm reception.
+        2 bits long. The first bit is the ACK slot and the second is the ACK delimiter. In the ACK slot, receivers that have successfully received the frame send a dominant bit to acknowledge; the transmitting node observes this bit to confirm reception.
 
     EOF (End of Frame)
-        7 recessive bits signaling the end of the CAN frame.
+        7 recessive bits signaling the end of the CAN frame.
 ```
 
 ![Figure 107 Extended Data Frame]
 
 ```
-Figure 107: Extended Data Frame
+Figure 107: Extended Data Frame
 
     SOF (Start of Frame)
         As in the standard frame, a single dominant bit indicating the start.
 
     Arbitration Field (Extended)
-        11‑bit ID: The first portion of the 29‑bit identifier.
+        11-bit ID: The first portion of the 29-bit identifier.
         SRR (Substitute Remote Request): A recessive bit that acts like the RTR bit for extended frames (helps maintain arbitration when mixing standard and extended IDs).
         IDE (Identifier Extension): Recessive in an extended frame to indicate there is more identifier bits to follow.
-        18‑bit ID: The remaining 18 bits of the extended identifier.
+        18-bit ID: The remaining 18 bits of the extended identifier.
         RTR (Remote Transmission Request): As in the standard frame, used for requesting data if set recessive in a Remote Frame.
 
     Control Field
         r1, r0: Two reserved bits in an extended frame, usually kept dominant (0) but reserved for future expansions.
-        DLC (Data Length Code): Same 4‑bit data length indication (0 to 8 bytes).
+        DLC (Data Length Code): Same 4-bit data length indication (0 to 8 bytes).
 
     Data Field
-        Up to 8 bytes of payload (application data).
+        Up to 8 bytes of payload (application data).
 
     CRC Field
-        Same 15‑bit CRC plus 1‑bit delimiter, used to verify data integrity.
+        Same 15-bit CRC plus 1-bit delimiter, used to verify data integrity.
 
     ACK Field
         As before, includes the ACK slot where receivers can acknowledge and the ACK delimiter bit.
 
     EOF (End of Frame)
-        7 recessive bits marking the end of the extended CAN frame.
+        7 recessive bits marking the end of the extended CAN frame.
 
 Key Differences Between Standard and Extended Frames
 
-    Identifier Length: Standard frames use an 11‑bit identifier, while extended frames use a total of 29 bits (11 bits + 18 bits).
-    IDE Bit: In standard frames, IDE is dominant, indicating no extended identifier. In extended frames, IDE is recessive, signaling the presence of the additional 18 identifier bits.
+    Identifier Length: Standard frames use an 11-bit identifier, while extended frames use a total of 29 bits (11 bits + 18 bits).
+    IDE Bit: In standard frames, IDE is dominant, indicating no extended identifier. In extended frames, IDE is recessive, signaling the presence of the additional 18 identifier bits.
     SRR Bit: Appears only in extended frames and is used in place of the RTR bit for arbitration consistency with standard frames.
     Reserved Bits: Extended frames have extra reserved bits (r1, r0).
 
-These diagrams demonstrate the bit‑by‑bit structure of how CAN data is organized "on the wire," including the arbitration field, control field, data field, CRC, acknowledgment, and end‑of‑frame markers.
+These diagrams demonstrate the bit-by-bit structure of how CAN data is organized "on the wire," including the arbitration field, control field, data field, CRC, acknowledgment, and end-of-frame markers.
 ```
 
 Note:
@@ -12465,7 +12832,7 @@ bus.
 
 Figure 108 CAN Works in Mute Mode
 ```
-Figure 108 shows a microcontroller (MCU) placed in a "mute" (or "silent") mode for CAN communication. Inside the MCU, the transmit (TX) pin is held at a fixed recessive level (annotated by "= 1") so that the MCU does not drive the CAN bus at all. Meanwhile, the receive (RX) pin remains active and connected to the external CANRX line, allowing the MCU to monitor (receive) CAN frames from the bus. Hence, in this mute mode, the node can "listen" to the bus (via RX) without placing any signals on the bus (TX is held inactive).
+Figure 108 shows a microcontroller (MCU) placed in a "mute" (or "silent") mode for CAN communication. Inside the MCU, the transmit (TX) pin is held at a fixed recessive level (annotated by "= 1") so that the MCU does not drive the CAN bus at all. Meanwhile, the receive (RX) pin remains active and connected to the external CANRX line, allowing the MCU to monitor (receive) CAN frames from the bus. Hence, in this mute mode, the node can "listen" to the bus (via RX) without placing any signals on the bus (TX is held inactive).
 ```
 
 #### 23.4.4.2 Loopback mode 
@@ -12474,7 +12841,7 @@ Set the `LBKMEN` bit of the configuration register `CAN_BITTIM` to 1 and select 
 
 Figure 109 CAN Works in Loopback Mode
 ```
-Figure 109 illustrates the "loopback" (self‑test) operating mode of a CAN controller inside the MCU. In this mode, the MCU's transmit (`TX`) output is internally routed back to its receive (`RX`) input—so any frames it transmits are immediately read back, regardless of the external CAN bus connections. This allows the controller to perform self‑testing of CAN transmissions and reception in isolation, without requiring a physical bus or external nodes.
+Figure 109 illustrates the "loopback" (self-test) operating mode of a CAN controller inside the MCU. In this mode, the MCU's transmit (`TX`) output is internally routed back to its receive (`RX`) input—so any frames it transmits are immediately read back, regardless of the external CAN bus connections. This allows the controller to perform self-testing of CAN transmissions and reception in isolation, without requiring a physical bus or external nodes.
 ```
 
 #### 23.4.4.3 Loopback mute mode
@@ -12485,10 +12852,10 @@ In this mode, the transmitted data are directly transmitted to the input end for
 
 Figure 110 CAN Works in Mute Loopback Mode
 ```
-Figure 110 shows the MCU configured for "mute loopback" mode, which is essentially a combination of mute (silent) mode and loopback:
+Figure 110 shows the MCU configured for "mute loopback" mode, which is essentially a combination of mute (silent) mode and loopback:
 
-    Mute: Externally, the TX line is held recessive (shown as "= 1"), so the MCU does not drive any signals onto the CAN bus.
-    Loopback: Internally, the TX signal is fed back into the RX input, allowing the MCU to self‑test CAN transmissions without affecting (or needing) the actual CAN bus lines.
+    Mute: Externally, the TX line is held recessive (shown as "= 1"), so the MCU does not drive any signals onto the CAN bus.
+    Loopback: Internally, the TX signal is fed back into the RX input, allowing the MCU to self-test CAN transmissions without affecting (or needing) the actual CAN bus lines.
 
 This mode lets the controller test sending and receiving frames entirely within itself while remaining silent on the external bus.
 ```
@@ -12499,7 +12866,7 @@ In this mode, data can be transmitted to the bus and be received from the bus.
 
 Figure 111 CAN Works in Normal Mode
 ```
-Figure 111 illustrates the standard "normal" CAN operating mode. The MCU actively drives the TX line onto the bus (through CANTX) and simultaneously receives incoming CAN signals on the RX line (through CANRX). Unlike the mute or loopback modes, there is no special internal routing or forced recessive state—this is the usual mode where the MCU can both transmit to and receive from the CAN bus under normal operating conditions.
+Figure 111 illustrates the standard "normal" CAN operating mode. The MCU actively drives the TX line onto the bus (through CANTX) and simultaneously receives incoming CAN signals on the RX line (through CANRX). Unlike the mute or loopback modes, there is no special internal routing or forced recessive state—this is the usual mode where the MCU can both transmit to and receive from the CAN bus under normal operating conditions.
 ```
 
 ### 23.4.5 Data transmission
@@ -15907,14 +16274,14 @@ set to 1, an interrupt will be generated.
 
 Figure 123 Single Conversion Mode Timing Diagram
 ```
-Below is a detailed, "text‐based" description of Figure 123 so that its timing relationships and signals are unambiguously captured:
+Below is a detailed, "text-based" description of Figure 123 so that its timing relationships and signals are unambiguously captured:
 
 1. **Title/Context**  
-   - The figure is labeled "Figure 123 Single Conversion Mode Timing Diagram," indicating it shows how an ADC (or similar converter) performs **single, one‐at‐a‐time conversions**.
+   - The figure is labeled "Figure 123 Single Conversion Mode Timing Diagram," indicating it shows how an ADC (or similar converter) performs **single, one-at-a-time conversions**.
 
 2. **Horizontal Axis / Time Progression**  
-   - The diagram shows signals along a left‐to‐right time axis.
-   - Each repeated pattern (from left to right) represents one single‐conversion sequence on the same channel (labeled "CH1").
+   - The diagram shows signals along a left-to-right time axis.
+   - Each repeated pattern (from left to right) represents one single-conversion sequence on the same channel (labeled "CH1").
 
 3. **Top Row (Conversion Events)**  
    - Four separate "CH1" diamond shapes appear in succession, each representing one single conversion on Channel 1.
@@ -15925,7 +16292,7 @@ Below is a detailed, "text‐based" description of Figure 123 so that its timin
    - Each pulse (a short high level, then returning low) occurs immediately before a corresponding "CH1" conversion.
    - This indicates that **each trigger pulse initiates one single conversion** on Channel 1.
 
-5. **End‐of‐Conversion Flag (EOCFLG)**  
+5. **End-of-Conversion Flag (EOCFLG)**  
    - The lowest signal in the diagram is labeled **"EOCFLG."**  
    - For each single conversion, **EOCFLG** goes high (or pulses) after the trigger begins and the ADC completes its sampling/conversion.  
    - Then EOCFLG returns low before the next trigger.
@@ -15939,7 +16306,7 @@ Below is a detailed, "text‐based" description of Figure 123 so that its timin
 
 7. **Key Takeaways**  
    - In "Single Conversion Mode," each trigger initiates exactly one channel conversion.  
-   - The end‐of‐conversion flag (EOCFLG) signals when that single conversion is done.  
+   - The end-of-conversion flag (EOCFLG) signals when that single conversion is done.  
    - The figure illustrates a repeated pattern of "trigger → conversion → EOCFLG → idle" for the same channel (CH1) each time.
 
 This textual description captures the salient features, signals, and timing flow in the original diagram.
@@ -15962,7 +16329,7 @@ set to 1, an interrupt will be generated.
 
 Figure 124 Continuous Conversion Mode Timing Diagram
 ```
-Below is a structured text description of **Figure 124** along with how it differs from **Figure 123** (single‐conversion mode):
+Below is a structured text description of **Figure 124** along with how it differs from **Figure 123** (single-conversion mode):
 
 ---
 
@@ -15973,14 +16340,14 @@ Below is a structured text description of **Figure 124** along with how it diff
 
 2. **Horizontal (Time) Axis**  
    - Signals are plotted from left to right over time.  
-   - Several overlapping "CH1" diamond shapes show that **multiple back‐to‐back conversions** happen continuously on the same channel.
+   - Several overlapping "CH1" diamond shapes show that **multiple back-to-back conversions** happen continuously on the same channel.
 
 3. **Regular Trigger Signal**  
    - Near the beginning of the timeline, there is **one** distinct trigger pulse ("Regular trigger").  
    - After that initial pulse, the signal remains in a steady state (low) for the rest of the diagram.  
    - Importantly, **no further trigger pulses** are shown, illustrating that **only one trigger** is required to start a continuous sequence of conversions.
 
-4. **End‐of‐Conversion Flag (EOCFLG)**  
+4. **End-of-Conversion Flag (EOCFLG)**  
    - On the lower part of the diagram, the "EOCFLG" signal shows **multiple pulses** spaced out in time.  
    - Each pulse indicates completion of **one** of the repeated CH1 conversions.  
    - Because conversions run continuously, the EOC flag keeps toggling (i.e., goes high then back low) after each successive conversion, with no need for another external trigger.
@@ -15993,7 +16360,7 @@ Below is a structured text description of **Figure 124** along with how it diff
 
 ---
 
-### Distinction from Figure 123 (Single‐Conversion Mode)
+### Distinction from Figure 123 (Single-Conversion Mode)
 
 - **Figure 123 (Single)**  
   - **Multiple trigger pulses** occur over time, each initiating exactly one CH1 conversion.  
@@ -16002,10 +16369,10 @@ Below is a structured text description of **Figure 124** along with how it diff
 
 - **Figure 124 (Continuous)**  
   - **Only one trigger pulse** is needed at the start.  
-  - Conversions then proceed **back‐to‐back** on CH1 without additional triggers.  
+  - Conversions then proceed **back-to-back** on CH1 without additional triggers.  
   - EOCFLG pulses after **each** continuous conversion, reflecting the repeated conversions automatically performed by the ADC once triggered.
 
-Thus, the key difference is that in **single‐conversion mode**, each conversion depends on a new trigger, whereas in **continuous mode**, a single trigger initiates a chain of automatically repeating conversions.
+Thus, the key difference is that in **single-conversion mode**, each conversion depends on a new trigger, whereas in **continuous mode**, a single trigger initiates a chain of automatically repeating conversions.
 ```
 
 
@@ -16081,7 +16448,7 @@ can be selected at once. When temperature sensor and `VBAT` conversion are set a
 
 Figure 125 Scan Mode Timing Diagram
 ```
-Below is a structured, text‐based description of **Figure 125**, which shows an ADC operating in **scan mode** with both "regular" and "injection" groups of channels. The figure depicts:
+Below is a structured, text-based description of **Figure 125**, which shows an ADC operating in **scan mode** with both "regular" and "injection" groups of channels. The figure depicts:
 
 ---
 
@@ -16096,14 +16463,14 @@ Below is a structured, text‐based description of **Figure 125**, which shows 
 
 3. **Regular Channels (Top Half)**  
    - On each pulse of the **Regular trigger** signal, the ADC begins scanning a set of "regular" channels in a specific order.  
-   - The diagram’s example shows a sequence: **CH0 → CH3 → CH1 → CH2**.  
+   - The diagram's example shows a sequence: **CH0 → CH3 → CH1 → CH2**.  
      - You see four diamond shapes in a row labeled CH0, CH3, CH1, CH2.  
-   - After the entire sequence completes, the **EOCFLG** (End‐Of‐Conversion flag) for the regular group goes high to indicate **all** of those channels have finished converting.  
+   - After the entire sequence completes, the **EOCFLG** (End-Of-Conversion flag) for the regular group goes high to indicate **all** of those channels have finished converting.  
    - Then, at the next Regular trigger pulse, the same set of channels (CH0, CH3, CH1, CH2) is scanned again.
 
 4. **Injection Channels (Bottom Half)**  
    - Separate from the regular channels, **injection channels** are triggered by an **Injection trigger** signal (shown further down in the figure).  
-   - The diagram’s example shows the injection scan sequence: **CH4 → CH6 → CH5**.  
+   - The diagram's example shows the injection scan sequence: **CH4 → CH6 → CH5**.  
      - Three diamond shapes labeled CH4, CH6, CH5 appear in order.  
    - After the entire injection sequence completes, its **EOCFLG** (sometimes called JEOC or a separate flag) goes high to indicate completion of the injection group.  
    - Each new Injection trigger pulse initiates a new scan of channels CH4, CH6, CH5.
@@ -16155,7 +16522,7 @@ Below is a detailed description of **Figure 126**, illustrating **Discontinuous
 
 ### Overall Purpose and Title
 - **Figure 126 Discontinuous Mode Timing Diagram**  
-- Shows how an ADC configured in "discontinuous" scan mode processes its "regular" channels and "injection" channels in smaller sub‐groups each time a trigger occurs.
+- Shows how an ADC configured in "discontinuous" scan mode processes its "regular" channels and "injection" channels in smaller sub-groups each time a trigger occurs.
 
 ### Signals and Channels
 
@@ -16165,20 +16532,20 @@ Below is a detailed description of **Figure 126**, illustrating **Discontinuous
    - Each rising edge triggers a **subset** of the regular channel sequence (rather than all channels at once).
 
 2. **Regular Channel Groups**  
-   - The figure’s example shows the regular channels broken into sub‐groups:
+   - The figure's example shows the regular channels broken into sub-groups:
      1. First trigger: converts **CH0** and then **CH3**.  
      2. Second trigger: converts **CH4** and then **CH2**.  
      3. Third trigger: converts **CH1**.  
      4. Fourth trigger: again CH0 and CH3, and so on (the diagram shows "…" indicating it continues in that pattern).
 
 3. **Regular EOCFLG**  
-   - The corresponding **EOCFLG** (End‐of‐Conversion flag) for the regular group pulses once each sub‐group finishes.  
+   - The corresponding **EOCFLG** (End-of-Conversion flag) for the regular group pulses once each sub-group finishes.  
    - Thus, each trigger causes a *discontinuous chunk* of the channel sequence to run, and EOCFLG goes high after that chunk completes.
 
 #### Injection Trigger (Bottom Half)
 1. **Injection Trigger Pulses**  
    - The lower waveform labeled **Injection trigger** also has distinct pulses over time.  
-   - Each pulse starts conversions on an *injection* sub‐group of channels.
+   - Each pulse starts conversions on an *injection* sub-group of channels.
 
 2. **Injection Channel Groups**  
    - In this example, the injection channels are similarly split:
@@ -16188,7 +16555,7 @@ Below is a detailed description of **Figure 126**, illustrating **Discontinuous
      4. Fourth injection trigger: converts **CH5** again, and so forth ("…" indicates repetition).
 
 3. **Injection EOCFLG**  
-   - A separate EOCFLG signal (often labeled "JEOC" or similar) is shown pulsing after each injection sub‐group completes.
+   - A separate EOCFLG signal (often labeled "JEOC" or similar) is shown pulsing after each injection sub-group completes.
 
 ---
 
@@ -16198,7 +16565,7 @@ Below is a detailed description of **Figure 126**, illustrating **Discontinuous
   - EOC is set *once* after *all* channels in the group have been converted.  
 
 - **Discontinuous Scan Mode (Figure 126)**  
-  - Each trigger only processes *part* of the channel sequence (sub‐group). Multiple triggers are required to complete the entire list.  
+  - Each trigger only processes *part* of the channel sequence (sub-group). Multiple triggers are required to complete the entire list.  
   - This "discontinuous" behavior is evident in repeated, smaller channel sequences (e.g. CH0→CH3, then CH4→CH2, then CH1, etc.) rather than one big block all at once.
 
 ---
@@ -16218,13 +16585,13 @@ will be recovered.
 
 Figure 127 Trigger Injection Timing Diagram
 ```
-Below is a structured textual description of **Figure 127** and how it relates to the previous "scan" and "discontinuous" mode diagrams. It highlights the **trigger‐based injection** process alongside a regular conversion group:
+Below is a structured textual description of **Figure 127** and how it relates to the previous "scan" and "discontinuous" mode diagrams. It highlights the **trigger-based injection** process alongside a regular conversion group:
 
 ---
 
 ### 1. Title and Purpose
 - **Figure 127: "Trigger Injection Timing Diagram"**  
-- Demonstrates how an ADC can simultaneously manage a "regular" group of channels (scanned in some sequence) **and** an "injected" channel group (triggered separately), each producing its own end‐of‐conversion signals.
+- Demonstrates how an ADC can simultaneously manage a "regular" group of channels (scanned in some sequence) **and** an "injected" channel group (triggered separately), each producing its own end-of-conversion signals.
 
 ---
 
@@ -16236,7 +16603,7 @@ Below is a structured textual description of **Figure 127** and how it relates 
   2. **CH1 → CH2 → CH3**  
   3. **CH0 → CH1**  
   4. "…" indicating the pattern continues thereafter.  
-- These channel "blocks" represent the ADC’s normal (i.e. regular) scan cycle, which can be triggered by its own mechanism or run continuously (the diagram focuses on the injection aspect).
+- These channel "blocks" represent the ADC's normal (i.e. regular) scan cycle, which can be triggered by its own mechanism or run continuously (the diagram focuses on the injection aspect).
 
 #### Injected Group (Second Row)
 - A row labeled **"Injected group"** shows **CH5** conversions, repeated whenever an injection trigger occurs.
@@ -16245,25 +16612,25 @@ Below is a structured textual description of **Figure 127** and how it relates 
 ---
 
 ### 3. Injection Trigger
-- Below the injected‐group channels is the **"Injection trigger"** signal, shown as a series of pulses.
-- **Each rising edge** of this trigger starts the injected‐channel conversion (CH5 in the example).
+- Below the injected-group channels is the **"Injection trigger"** signal, shown as a series of pulses.
+- **Each rising edge** of this trigger starts the injected-channel conversion (CH5 in the example).
 - These injection triggers happen asynchronously relative to the regular group; they can occur at any time, potentially interrupting or running alongside the regular sequence.
 
 ---
 
-### 4. End‐of‐Conversion Flags
+### 4. End-of-Conversion Flags
 - The next two waveforms depict **two separate EOC ("End of Conversion") signals**:
   1. **EOCFLG**: Tied to the completion of the *regular* group conversions.  
      - Goes high after the regular block (e.g., CH0→CH1→CH2→CH3) finishes, then returns low.  
   2. **EOCIEN**: Tied to the completion of the *injected* group.  
-     - Pulses after each injected‐channel (CH5) conversion completes.  
+     - Pulses after each injected-channel (CH5) conversion completes.  
      - The figure shows these pulses aligned with each injection trigger event.
 
 ---
 
 ### 5. Key Observations / Comparison to Previous Figures
 
-- **Scan Mode vs. Injection**: Unlike a simple single or continuous scan (Figures 123–124) or the main "Scan/Discontinuous" modes (Figures 125–126), **Figure 127** shows:
+- **Scan Mode vs. Injection**: Unlike a simple single or continuous scan (Figures 123-124) or the main "Scan/Discontinuous" modes (Figures 125-126), **Figure 127** shows:
   - A *regular* scan group running in its own sequence.
   - An *injected* group triggered by a separate line, possibly interrupting or overlaying the regular flow.
 
@@ -16271,11 +16638,11 @@ Below is a structured textual description of **Figure 127** and how it relates 
   1. **Regular group EOC** for normal channel conversions.  
   2. **Injected group EOC** for special channels triggered externally.
 
-- **Discontinuous vs. Injection**: In discontinuous mode (Figure 126), the regular group itself was sliced into sub‐groups. **Here** we see an *additional* injection mechanism layered on top of whatever the regular group is doing.
+- **Discontinuous vs. Injection**: In discontinuous mode (Figure 126), the regular group itself was sliced into sub-groups. **Here** we see an *additional* injection mechanism layered on top of whatever the regular group is doing.
 
 ---
 
-In summary, **Figure 127** highlights that a regular set of channels can be scanned in one process, while **injected** conversions (CH5 in the example) can be initiated by a dedicated external trigger, each producing its own end‐of‐conversion signal.
+In summary, **Figure 127** highlights that a regular set of channels can be scanned in one process, while **injected** conversions (CH5 in the example) can be initiated by a dedicated external trigger, each producing its own end-of-conversion signal.
 ```
 
 Automatic injection: Start by `INJGACEN` bit of configuration register 
@@ -16289,7 +16656,7 @@ of regular group and injected group will convert continuously.
 
 Figure 128 Automatic Injection Timing Diagram
 ```
-Below is a structured textual description of **Figure 128**, labeled **"Automatic Injection Timing Diagram."** This figure shows an ADC setup where the "injected" channel group is triggered automatically (i.e., without an external injection‐trigger signal), alongside a regular scan sequence:
+Below is a structured textual description of **Figure 128**, labeled **"Automatic Injection Timing Diagram."** This figure shows an ADC setup where the "injected" channel group is triggered automatically (i.e., without an external injection-trigger signal), alongside a regular scan sequence:
 
 ---
 
@@ -16305,15 +16672,15 @@ Below is a structured textual description of **Figure 128**, labeled **"Automat
 
 ---
 
-### 2. End‐of‐Conversion Flags
+### 2. End-of-Conversion Flags
 
 - **EOCFLG (Third Row)**  
-  This is the regular end‐of‐conversion flag.  
-  - You can see **two pulses** on this line, corresponding to the completions of the regular‐group conversions (e.g., once after CH4, once after the next set of channels).  
+  This is the regular end-of-conversion flag.  
+  - You can see **two pulses** on this line, corresponding to the completions of the regular-group conversions (e.g., once after CH4, once after the next set of channels).  
   - Each time the entire block of regular channels (CH0…CH4 or CH0…CH1, etc.) is done, **EOCFLG** asserts and then returns low.
 
 - **INJEOCFLG (Fourth Row)**  
-  This is the injection end‐of‐conversion flag (often called **JEOC** in some datasheets).  
+  This is the injection end-of-conversion flag (often called **JEOC** in some datasheets).  
   - It pulses in the diagram after CH5 completes, indicating the "injected" channel conversion is done.  
   - Because injection is triggered automatically (rather than by an external signal), the ADC runs CH5 conversions at the configured points, and each time CH5 finishes, **INJEOCFLG** goes high briefly.
 
@@ -16322,7 +16689,7 @@ Below is a structured textual description of **Figure 128**, labeled **"Automat
 ### 3. Key Observations
 
 1. **No Separate Injection Trigger**  
-   - Unlike previous figures (e.g., Figures 125–127) which showed an "injection trigger" line, **Figure 128** omits it. This indicates **automatic injection** mode: the hardware itself initiates the injected channel (CH5) at specific times.
+   - Unlike previous figures (e.g., Figures 125-127) which showed an "injection trigger" line, **Figure 128** omits it. This indicates **automatic injection** mode: the hardware itself initiates the injected channel (CH5) at specific times.
 
 2. **Regular vs. Injected Conversions**  
    - The regular group (CH0→CH1→CH2→CH3→CH4, etc.) proceeds in a typical scan.  
@@ -16461,7 +16828,7 @@ data result can be transmitted to the memory from the `ADC_REGDATA` register.
 | `ADC_REGSEQ2`  | ADC regular sequence register 2             | `0x30`         |
 | `ADC_REGSEQ3`  | ADC regular sequence register 3             | `0x34`         |
 | `ADC_INJSEQ`   | ADC injected sequence register              | `0x38`         |
-| `ADC_INJDATAx` | ADC injected data register x                | `0x3C–0x48`    |
+| `ADC_INJDATAx` | ADC injected data register x                | `0x3C-0x48`    |
 | `ADC_REGDATA`  | ADC regular data register                   | `0x4C`         |
 | `ADC_CCTRL`    | ADC general-purpose control register        | `0x304`        |
 
@@ -16643,7 +17010,7 @@ Reset value: 0x0000 0000
 
 | Field | Name      | R/W | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | ----- | --------- | --- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 4:0   | INJSEQ1   | R/W | 1ˢᵗ Conversion In Injected Sequence<br>Define the channel number of 1ˢᵗ  conversion in injected sequence (0–17)                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| 4:0   | INJSEQ1   | R/W | 1ˢᵗ Conversion In Injected Sequence<br>Define the channel number of 1ˢᵗ  conversion in injected sequence (0-17)                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | 9:5   | INJSEQ2   | R/W | 2ⁿᵈ Conversion In Injected Sequence                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | 14:10 | INJSEQ3   | R/W | 3ʳᵈ Conversion In Injected Sequence                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | 19:15 | INJSEQ4   | R/W | 4ᵗʰ Conversion In Injected Sequence                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
@@ -17126,8 +17493,8 @@ Geehy owns all rights, ownership and intellectual property rights involved in th
 Geehy shall not be deemed to grant the license or right of any intellectual property to users
 explicitly or implicitly due to the sale or distribution of Geehy products or this document.
 
-If any third party’s products, services or intellectual property are involved in this document, it
-shall not be deemed that Geehy authorizes users to use the aforesaid third party’s products, services
+If any third party's products, services or intellectual property are involved in this document, it
+shall not be deemed that Geehy authorizes users to use the aforesaid third party's products, services
 or intellectual property, unless otherwise agreed in sales order or sales contract.
 
 3. Version Update
@@ -17147,12 +17514,12 @@ cooperative third-party testing organization. However, clerical errors in correc
 by differences in testing environment may occur inevitably. Therefore, users should understand that 
 Geehy does not bear any responsibility for such errors that may occur in this document. The relevant 
 data in this document are only used to guide users as performance parameter reference and do not 
-constitute Geehy’s guarantee for any product performance.
+constitute Geehy's guarantee for any product performance.
 
 Users shall select appropriate Geehy products according to their own needs, and effectively 
 verify and test the applicability of Geehy products to confirm that Geehy products meet their own 
 needs, corresponding standards, safety or other reliability requirements. If losses are caused to users 
-due to the user’s failure to fully verify and test Geehy products, Geehy will not bear any 
+due to the user's failure to fully verify and test Geehy products, Geehy will not bear any 
 responsibility.
 
 5. Legality
