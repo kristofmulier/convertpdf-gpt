@@ -8831,8 +8831,8 @@ USART also supports DMA function to realize high-speed data communication.
 | USART_RX   | Input                                                   | Data receiving                                                                                              |
 | USART_TX   | Output <br> I/O (single-line mode/smart <br> card mode) | Data transmission <br> When the transmitter is enabled and does <br> not transmit data, the default is high |
 | USART_CK   | Output                                                  | Clock output                                                                                                |
-| USART_nRTS | Input                                                   | Request to transmit in hardware flow control <br> mode                                                      |
-| USART_nCTS | Output                                                  | Clear to send in hardware flow control mode                                                                 |
+| USART_nRTS | Output                                                  | Request to transmit in hardware flow control <br> mode                                                      |
+| USART_nCTS | Input                                                   | Clear to send in hardware flow control mode                                                                 |
 | IrDA_RDI   | Input                                                   | Data input in IrDA mode                                                                                     |
 | IrDA_TDO   | Output                                                  | Data output in IrDA mode                                                                                    |
 
